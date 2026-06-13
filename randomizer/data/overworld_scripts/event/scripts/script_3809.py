@@ -134,45 +134,21 @@ script = EventScript([
 		A_WalkNortheastPixels(8),
 		A_WalkSouthwestPixels(4)
 	]),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_Pause(30),
-		A_TransferToObjectXY(NPC_10),
-		A_TransferXYZFPixels(x=0, y=0, z=8, direction=EAST),
-		A_SetPriority(3),
-		A_JumpToHeight(height=144, silent=True),
-		A_ToggleSubroutineSlots(mask=0x03),
-		A_SetSubroutineXTargets(slot_26_x=0xF600, slot_27_x=0xFD80),
-		A_Pause(60),
-		A_KillAllSubroutineSlots(),
-		A_TransferToXYZF(x=11, y=86, z=0, direction=EAST)
-	]),
-	ActionQueueSync(target=NPC_6, subscript=[
-		A_Pause(34),
-		A_TransferToObjectXY(NPC_10),
-		A_TransferXYZFPixels(x=0, y=8, z=12, direction=EAST),
-		A_SetPriority(3),
-		A_JumpToHeight(height=136, silent=True),
-		A_SetWalkingSpeed(VERY_FAST),
-		A_WalkEastSteps(4)
-	]),
 	FadeInFromBlack(sync=True),
 	Pause(28),
 	ReturnFD(),
-	Pause(20),
+    Pause(2),
+    CreatePacketAtObjectCoords(P127_CHAPEL_SHOES, NPC_10, ["brooch_packet_creation"]),
+    Pause(4, identifier="brooch_packet_creation"),
+    CreatePacketAtObjectCoords(P128_CHAPEL_BROOCH, NPC_10, ["chapel_fade_in_1"]),
+	Pause(14, identifier="chapel_fade_in_1"),
 	ReturnFD(),
-	ActionQueueSync(target=NPC_8, subscript=[
-		A_Pause(48),
-		A_TransferToObjectXY(NPC_10),
-		A_TransferXYZFPixels(x=0, y=12, z=14, direction=EAST),
-		A_SetPriority(3),
-		A_JumpToHeight(height=152, silent=True),
-		A_SetWalkingSpeed(VERY_FAST),
-		A_WalkWestSteps(5),
-		A_VisibilityOn()
-	]),
-	RememberLastObject(),
+    Pause(48),
+    Set70107015ToObjectXYZ(NPC_10),
+    CreatePacketAtObjectCoords(P129_CHAPEL_RING, NPC_10, ["ring_packet_creation"]),
+	RememberLastObject(identifier="ring_packet_creation"),
+    Pause(12),
 	ActionQueueAsync(target=NPC_10, subscript=[
-		A_Pause(60),
 		A_SetSpriteSequence(index=0, sprite_offset=5, is_mold=True, is_sequence=True, looping=True, identifier="chapel_character_animation_3")
 	], identifier="chapel_character_queue_2"),
 	Pause(20),
@@ -427,8 +403,8 @@ script = EventScript([
 	Pause(10),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_Pause(140),
-		A_VisibilityOff(),
-		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4)
+		A_SetBit(TEMP_7044_7),
+		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
 	]),
 	ActionQueueSync(target=NPC_9, subscript=[
 		A_FixedFCoordOn(),
@@ -498,7 +474,7 @@ script = EventScript([
 	]),
 	Pause(10),
 	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	RemoveObjectFromCurrentLevel(NPC_6),
+	SetBit(TEMP_7044_6),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_Pause(30),
 		A_SetSequenceSpeed(FAST),
@@ -512,7 +488,6 @@ script = EventScript([
 	SetSyncActionScript(SCREEN_FOCUS, A0215_SANCTUARY_CAMERA),
 	Pause(10),
 	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
-	RemoveObjectFromCurrentLevel(NPC_5),
 	ActionQueueAsync(target=NPC_2, subscript=[
 		A_Pause(60),
 		A_SetSequenceSpeed(FAST),
@@ -520,19 +495,11 @@ script = EventScript([
 		A_SetSequenceSpeed(SLOW),
 		A_FaceNortheast()
 	]),
-	ActionQueueAsync(target=NPC_7, subscript=[
-		A_TransferToObjectXYZ(NPC_9),
-		A_ShiftZUpSteps(2, identifier="crown_adjust_height"),
-		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
-	], identifier="crown_adjust_height_aq"),
+    Set70107015ToObjectXYZ(NPC_9),
+    CreatePacketAt7010WithEvent(P130_CHAPEL_CROWN, E2091_CHAPEL_CROWN, ["crown_adjust_npc9_aq"]),
 	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetSolidityBits(cant_pass_npcs=True),
-	]),
-	# ActionQueueAsync(target=NPC_7, subscript=[
-	# 	A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True, cant_pass_npcs=True),
-	# 	A_FloatingOn(),
-	# 	A_JumpToHeight(height=0, silent=True),
-	# ]),
+	], identifier="crown_adjust_npc9_aq"),
 	Pause(30),
 	SetSyncActionScript(NPC_2, A0376_TURN_RANDOMLY_IN_PLACE),
 	SetSyncActionScript(NPC_0, A0376_TURN_RANDOMLY_IN_PLACE),
@@ -562,6 +529,8 @@ script = EventScript([
 	SetVarToConst(FACTORY_FALL_3, 0),
 	ClearBit(SANCTUARY_LOCKED),
 	SetVarToConst(TIMER_701C, 300),
+    ClearBit(TEMP_7044_7),
+	ClearBit(TEMP_7044_6),
 	RunBackgroundEventWithPauseReturnOnExit(event_id=E0647_MARRYMORE_SANCTUARY_CANDLE_1, timer_var=TIMER_701C, bit_4=True, bit_5=True),
 	Return()
 ])

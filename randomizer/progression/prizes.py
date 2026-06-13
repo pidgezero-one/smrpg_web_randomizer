@@ -441,6 +441,7 @@ class HammerPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = HammerObject
+    _packet_data = (SPR0247_HAMMER_PACKET, 0)
 
 
 class FroggiestickPrize(ItemPrize):
@@ -451,6 +452,7 @@ class FroggiestickPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _model = StickObject
+    _packet_data = (SPR0246_STICK_PACKET, 0)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
 
@@ -461,6 +463,7 @@ class NokNokShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = GreenShellObject
+    _packet_data = (SPR0250_GREEN_SHELL, 0)
 
 
 class PunchGlovePrize(ItemPrize):
@@ -480,7 +483,7 @@ class FingerShotPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = GunObject
-
+    _packet_data = (SPR0228_GUN_PACKET, 0)
 
 class CymbalsPrize(ItemPrize):
     item = CymbalsItem
@@ -501,6 +504,7 @@ class ChompPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = ChompObject
+    _packet_data = (SPR0245_CHOMP_BALL, 0)
 
 
 class MasherPrize(ItemPrize):
@@ -510,6 +514,7 @@ class MasherPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = HammerObject
+    _packet_data = (SPR0247_HAMMER_PACKET, 0)
 
 
 class ChompShellPrize(ItemPrize):
@@ -520,6 +525,7 @@ class ChompShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = ChompObject
+    _packet_data = (SPR0245_CHOMP_BALL, 0)
 
 
 class SuperHammerPrize(ItemPrize):
@@ -529,6 +535,7 @@ class SuperHammerPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = HammerObject
+    _packet_data = (SPR0247_HAMMER_PACKET, 0)
 
 
 class HandGunPrize(ItemPrize):
@@ -538,6 +545,7 @@ class HandGunPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = GunObject
+    _packet_data = (SPR0228_GUN_PACKET, 0)
 
 
 class WhompGlovePrize(ItemPrize):
@@ -567,6 +575,7 @@ class TroopaShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = RedShellObject
+    _packet_data = (SPR0249_RED_SHELL, 0)
 
 
 class ParasolPrize(ItemPrize):
@@ -606,6 +615,7 @@ class RibbitStickPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = StickObject
+    _packet_data = (SPR0246_STICK_PACKET, 0)
 
 
 class SpikedLinkPrize(ItemPrize):
@@ -615,6 +625,7 @@ class SpikedLinkPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = ChompObject
+    _packet_data = (SPR0245_CHOMP_BALL, 0)
 
 
 class MegaGlovePrize(ItemPrize):
@@ -634,6 +645,7 @@ class WarFanPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = FanObject
+    _packet_data = (SPR0227_FAN_PACKET, 0)
 
 
 class HandCannonPrize(ItemPrize):
@@ -643,6 +655,7 @@ class HandCannonPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = GunObject
+    _packet_data = (SPR0228_GUN_PACKET, 0)
 
 
 class StickyGlovePrize(ItemPrize):
@@ -662,6 +675,7 @@ class UltraHammerPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = HammerObject
+    _packet_data = (SPR0247_HAMMER_PACKET, 0)
 
 
 class SuperSlapPrize(ItemPrize):
@@ -716,6 +730,7 @@ class LazyShellWeaponPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = RedShellObject
+    _packet_data = (SPR0249_RED_SHELL, 0)
 
 
 class FryingPanPrize(ItemPrize):
@@ -725,6 +740,7 @@ class FryingPanPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = FryingPanObject
+    _packet_data = (SPR0227_FAN_PACKET, 0)
 
 
 class WonderChompPrize(ItemPrize):
@@ -737,6 +753,7 @@ class WonderChompPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = ChompObject
+    _packet_data = (SPR0245_CHOMP_BALL, 0)
 
 
 class Stella023Prize(ItemPrize):
@@ -760,6 +777,7 @@ class SageStickPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = StickObject
+    _packet_data = (SPR0246_STICK_PACKET, 0)
 
 
 class LuckyHammerPrize(ItemPrize):
@@ -769,6 +787,7 @@ class LuckyHammerPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
     _model = HammerObject
+    _packet_data = (SPR0247_HAMMER_PACKET, 0)
 
 
 class ShirtPrize(ItemPrize):
@@ -778,6 +797,7 @@ class ShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class PantsPrize(ItemPrize):
@@ -787,6 +807,7 @@ class PantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class ThickShirtPrize(ItemPrize):
@@ -796,6 +817,7 @@ class ThickShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class ThickPantsPrize(ItemPrize):
@@ -805,6 +827,7 @@ class ThickPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class MegaShirtPrize(ItemPrize):
@@ -814,6 +837,7 @@ class MegaShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class MegaPantsPrize(ItemPrize):
@@ -824,6 +848,7 @@ class MegaPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class WorkPantsPrize(ItemPrize):
@@ -833,6 +858,7 @@ class WorkPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class MegaCapePrize(ItemPrize):
@@ -842,6 +868,7 @@ class MegaCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class HappyShirtPrize(ItemPrize):
@@ -851,6 +878,7 @@ class HappyShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class HappyPantsPrize(ItemPrize):
@@ -860,6 +888,7 @@ class HappyPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class HappyCapePrize(ItemPrize):
@@ -869,6 +898,7 @@ class HappyCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class HappyShellPrize(ItemPrize):
@@ -878,6 +908,7 @@ class HappyShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = GreenShellObject
+    _packet_data = (SPR0250_GREEN_SHELL, 0)
 
 
 class PolkaDressPrize(ItemPrize):
@@ -887,6 +918,7 @@ class PolkaDressPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = DressObject
+    _packet_data = (SPR0231_DRESS, 0)
 
 
 class SailorShirtPrize(ItemPrize):
@@ -896,6 +928,7 @@ class SailorShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class SailorPantsPrize(ItemPrize):
@@ -905,6 +938,7 @@ class SailorPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class SailorCapePrize(ItemPrize):
@@ -914,6 +948,7 @@ class SailorCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class NauticaDressPrize(ItemPrize):
@@ -923,6 +958,7 @@ class NauticaDressPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = DressObject
+    _packet_data = (SPR0231_DRESS, 0)
 
 
 class CourageShellPrize(ItemPrize):
@@ -932,6 +968,7 @@ class CourageShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = GreenShellObject
+    _packet_data = (SPR0250_GREEN_SHELL, 0)
 
 
 class FuzzyShirtPrize(ItemPrize):
@@ -941,6 +978,7 @@ class FuzzyShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class FuzzyPantsPrize(ItemPrize):
@@ -951,6 +989,7 @@ class FuzzyPantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class FuzzyCapePrize(ItemPrize):
@@ -960,6 +999,7 @@ class FuzzyCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class FuzzyDressPrize(ItemPrize):
@@ -969,6 +1009,7 @@ class FuzzyDressPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = DressObject
+    _packet_data = (SPR0231_DRESS, 0)
 
 
 class FireShirtPrize(ItemPrize):
@@ -978,6 +1019,7 @@ class FireShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class FirePantsPrize(ItemPrize):
@@ -987,6 +1029,7 @@ class FirePantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class FireCapePrize(ItemPrize):
@@ -996,6 +1039,7 @@ class FireCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class FireShellPrize(ItemPrize):
@@ -1005,6 +1049,7 @@ class FireShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = RedShellObject
+    _packet_data = (SPR0249_RED_SHELL, 0)
 
 
 class FireDressPrize(ItemPrize):
@@ -1014,6 +1059,7 @@ class FireDressPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = DressObject
+    _packet_data = (SPR0231_DRESS, 0)
 
 
 class HeroShirtPrize(ItemPrize):
@@ -1023,6 +1069,7 @@ class HeroShirtPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class PrincePantsPrize(ItemPrize):
@@ -1032,6 +1079,7 @@ class PrincePantsPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = PantsObject
+    _packet_data = (SPR0229_PANTS, 0)
 
 
 class StarCapePrize(ItemPrize):
@@ -1041,6 +1089,7 @@ class StarCapePrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = CapeObject
+    _packet_data = (SPR0232_CAPE, 0)
 
 
 class HealShellPrize(ItemPrize):
@@ -1050,6 +1099,7 @@ class HealShellPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = GreenShellObject
+    _packet_data = (SPR0250_GREEN_SHELL, 0)
 
 
 class RoyalDressPrize(ItemPrize):
@@ -1058,7 +1108,7 @@ class RoyalDressPrize(ItemPrize):
         nickname="Fancy Dress", description="Check out the gold trim!"
     )
     _model = DressObject
-    _packet_data = (SPR0216_CROWN, 0)
+    _packet_data = (SPR0231_DRESS, 0)
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
 
 
@@ -1071,6 +1121,7 @@ class SuperSuitPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
     _model = OverallsObject
+    _packet_data = (SPR0230_OVERALLS, 0)
 
 
 class LazyShellArmorPrize(ItemPrize):
@@ -1081,6 +1132,7 @@ class LazyShellArmorPrize(ItemPrize):
     )
     _monstro_shuffle = True
     _model = RedShellObject
+    _packet_data = (SPR0249_RED_SHELL, 0)
     _fortune_type: FortuneEnum = FortuneEnum.ARMOR
 
 
@@ -1154,6 +1206,7 @@ class ExpBoosterPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = FrogCoinItemObject
+    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0)
 
 
 class AttackScarfPrize(ItemPrize):
@@ -1165,6 +1218,7 @@ class AttackScarfPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = BandObject
+    _packet_data = (SPR0212_BAND_PACKET, 0)
 
 
 class RareScarfPrize(ItemPrize):
@@ -1174,6 +1228,7 @@ class RareScarfPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = BandObject
+    _packet_data = (SPR0212_BAND_PACKET, 0)
 
 
 class BtubRingPrize(ItemPrize):
@@ -1234,6 +1289,7 @@ class CoinTrickPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = FrogCoinItemObject
+    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0)
 
 
 class GhostMedalPrize(ItemPrize):
@@ -1245,6 +1301,7 @@ class GhostMedalPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = SmallCoinItemObject
+    _packet_data = (SPR0236_COIN_STATIC_SMALL, 0)
 
 
 class JinxBeltPrize(ItemPrize):
@@ -1256,7 +1313,7 @@ class JinxBeltPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = BandObject
-
+    _packet_data = (SPR0212_BAND_PACKET, 0)
 
 class FeatherPrize(ItemPrize):
     item = FeatherItem
@@ -1311,6 +1368,7 @@ class TeamworkBandPrize(ItemPrize):
     _monstro_shuffle = True
     _fortune_type: FortuneEnum = FortuneEnum.ACCESSORY
     _model = BandObject
+    _packet_data = (SPR0212_BAND_PACKET, 0)
 
 
 class EnduringBroochPrize(ItemPrize):
@@ -1516,6 +1574,7 @@ class FlowerTabPrize(ItemPrize):
         nickname="Flower Capsule", description="You collect these, right?"
     )
     _model = FlowerItemObject
+    _packet_data = (SPR0195_FLOWER, 0)
 
 
 class FlowerJarPrize(ItemPrize):
@@ -1524,6 +1583,7 @@ class FlowerJarPrize(ItemPrize):
         nickname="Flower Set", description="You collect these, right?"
     )
     _model = FlowerItemObject
+    _packet_data = (SPR0195_FLOWER, 0)
 
 
 class FlowerBoxPrize(ItemPrize):
@@ -1532,6 +1592,7 @@ class FlowerBoxPrize(ItemPrize):
         nickname="Flower Gift", description="You collect these, right?"
     )
     _model = FlowerItemObject
+    _packet_data = (SPR0195_FLOWER, 0)
 
 
 class YoshiCandyPrize(ItemPrize):
@@ -1590,6 +1651,7 @@ class SeeYaPrize(ItemPrize):
         nickname="Eject Button", description="Seems useful in a pinch, doesn't\n it?"
     )
     _model = FrogCoinItemObject
+    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0)
 
 
 class TempleKeyPrize(ItemPrize, KeyPrize):
@@ -1615,6 +1677,7 @@ class EarlierTimesPrize(ItemPrize):
         nickname="Reset Button", description="Sounds useful in a pinch, doesn't\n it?"
     )
     _model = FrogCoinItemObject
+    _packet_data = (SPR0238_STATIC_FROG_COIN_SMALL, 0)
 
 
 class FreshenUpPrize(ItemPrize):
@@ -1951,6 +2014,7 @@ class RegularFireworksPrize(ItemPrize):
     )
     _fortune_type: FortuneEnum = FortuneEnum.RARE
     _model = TinyStarObject
+    _packet_data = (SPR0226_TINY_STAR, 0)
 
 
 class ProgressiveFireworksPrize(ProgressiveItemPrize, KeyPrize):
@@ -6317,6 +6381,7 @@ class GunyolkBossFight(BossFightPrize):
     _seaside_letter_name_if_seaside_boss = "the Chief"
     _seaside_letter_name_if_volcano_boss = "a big machine rolling"
     _seaside_letter_name_if_final_boss = "the Factory Chief's goons."
+    _gender = ("it", "it", "its", "its", "itself")
 
     _npc_models = [FactoryChiefObject]
     _statue_npc = FactoryChiefStatueObject

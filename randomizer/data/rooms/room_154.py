@@ -39,8 +39,8 @@ from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
-        allow_extra_sprite_buffer=False,
-        extra_sprite_buffer_size=0,
+        allow_extra_sprite_buffer=True,
+        extra_sprite_buffer_size=2,
         buffers=[
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
@@ -48,12 +48,12 @@ room = Room(
                 index_in_main_buffer=True,
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -107,7 +107,7 @@ room = Room(
         ),
         RegularClone(  # 1
             npc=npcs.SNIFIT_NPC,
-            event_script=E3595_GET_ITEM_FROM_CHAPEL_HENCHMAN_2,
+            event_script=E3593_GET_ITEM_FROM_CHAPEL_HENCHMAN_3,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
             x=9,
@@ -118,7 +118,7 @@ room = Room(
         ),
         RegularClone(  # 2
             npc=npcs.SNIFIT_NPC,
-            event_script=E3593_GET_ITEM_FROM_CHAPEL_HENCHMAN_3,
+            event_script=E3595_GET_ITEM_FROM_CHAPEL_HENCHMAN_2,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
             x=9,
@@ -174,8 +174,8 @@ room = Room(
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
-            x=21,
-            y=117,
+            x=0,
+            y=0,
             z=0,
             z_half=False,
             direction=SOUTHWEST,
@@ -195,39 +195,43 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=False
         ),
         RegularClone(  # 6
-            npc=npcs.RING_NPC,
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
-            x=21,
-            y=117,
+            x=0,
+            y=0,
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False
         ),
         RegularClone(  # 7
-            npc=npcs.CROWN_NPC,
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
-            x=21,
-            y=117,
+            x=0,
+            y=0,
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False
         ),
         RegularClone(  # 8
-            npc=npcs.BROOCH_NPC,
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0119_SLOW_SEQUENCE_LOOP,
             visible=True,
-            x=21,
-            y=117,
+            x=0,
+            y=0,
             z=0,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=False
         ),
         RegularNPC(  # 9
             npc=npcs.BOOSTER_NPC,
@@ -342,7 +346,8 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            directions=VramStore.DIR2_SWSE
+            directions=VramStore.DIR2_SWSE,
+            cannot_clone=False
         ),
     ],
     npc_expected_animations={

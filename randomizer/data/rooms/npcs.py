@@ -30,8 +30,8 @@ class _item_npc_base(NPC):
         )
 
 
-HAMMER_BASE = _item_npc_base(SPR0045_HAMMER_PACKET)
-FROGGIE_STICK_BASE = _item_npc_base(SPR0735_STICK_PACKET)
+HAMMER_BASE = _item_npc_base(SPR0247_HAMMER_PACKET)
+FROGGIE_STICK_BASE = _item_npc_base(SPR0246_STICK_PACKET)
 GREEN_SHELL_BASE = _item_npc_base(
     SPR0250_GREEN_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
@@ -41,9 +41,9 @@ RED_SHELL_BASE = _item_npc_base(
     SPR0249_RED_SHELL, acute_axis=4, obtuse_axis=7, height=5
 )
 PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
-FAN_BASE = _item_npc_base(SPR0225_FRYING_PAN_PACKET)
+FAN_BASE = _item_npc_base(SPR0227_FAN_PACKET)
 TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
-PAN_BASE = _item_npc_base(SPR0227_FAN_PACKET)
+PAN_BASE = _item_npc_base(SPR0225_FRYING_PAN_PACKET)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
 SHOES_BASE = _item_npc_base(SPR0202_SHOES)
 BROOCH_BASE = _item_npc_base(SPR0207_BROOCH)
@@ -8546,7 +8546,7 @@ BELOME_SCARECROW_NPC = NPC(
 )
 
 WIND_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=SPR0647_WIND_CRYSTAL_GRIDPLANE,
+    sprite_id=SPR0844_WIND_CRYSTAL_GRIDPLANE_ALT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -9637,7 +9637,7 @@ ZEOSTAR_NPC = NPC(
 )
 
 WATER_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=SPR0645_WATER_CRYSTAL_GRIDPLANE,
+    sprite_id=SPR0838_WATER_CRYSTAL_GRIDPLANE_ALT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16039,7 +16039,7 @@ MARIO_ENDING_2 = NPC(
 )
 
 FIRE_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=SPR0644_FIRE_CRYSTAL_GRIDPLANE,
+    sprite_id=SPR0838_FIRE_CRYSTAL_GRIDPLANE_ALT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,
@@ -16081,7 +16081,7 @@ FIRE_CRYSTAL_GRIDPLANE_NPC_2 = NPC(
 )
 
 EARTH_CRYSTAL_GRIDPLANE_NPC = NPC(
-    sprite_id=SPR0646_EARTH_CRYSTAL_GRIDPLANE,
+    sprite_id=SPR0842_EARTH_CRYSTAL_GRIDPLANE_ALT,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=5,
     obtuse_axis=5,

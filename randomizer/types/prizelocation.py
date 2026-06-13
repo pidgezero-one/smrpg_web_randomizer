@@ -3029,20 +3029,29 @@ class StandingLocationRow15(StandingLocationRow):
 class PacketLocation(StandingLocationRow):
     _replace: str
     _packet_id: int
+    # Additional packets whose sprite should also be repointed to the assigned
+    # prize, for items displayed by more than one packet in the room (e.g. a
+    # cutscene that spawns the same item more than once). The primary
+    # ``_packet_id`` is always included; subclasses opt in by listing extras here.
+    _extra_packet_ids: list[int] = []
 
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        p = world.packets.packets[self._packet_id]
-        assert self.prize is not None and self.prize.model is not None and p is not None
-        p._set_sprite_id(self.prize.packet_data[0])
-        prep_script = world.action_scripts.scripts[p.action_script_id]
-        prep_script.insert_before_nth_command(
-            0,
-            A_SetSpriteSequence(
-                index=self.prize.packet_data[1], is_sequence=True, looping=True
-            ),
-        )
+        assert self.prize is not None and self.prize.model is not None
+        for packet_id in [self._packet_id, *self._extra_packet_ids]:
+            p = world.packets.packets[packet_id]
+            assert p is not None, (
+                f"Packet {packet_id} not found while rendering {type(self).__name__}"
+            )
+            p._set_sprite_id(self.prize.packet_data[0])
+            prep_script = world.action_scripts.scripts[p.action_script_id]
+            prep_script.insert_before_nth_command(
+                0,
+                A_SetSpriteSequence(
+                    index=self.prize.packet_data[1], is_sequence=True, looping=True
+                ),
+            )
         return super().render(world)
 
 

@@ -386,8 +386,8 @@ def render_booster_tower_indoor_boss(
         )
 
     # Crown height in the chapel
-    ev_crown = world.event_scripts.get_subscript_command_by_identifier(
-        "crown_adjust_height_aq", "crown_adjust_height", A_ShiftZUpSteps
+    ev_crown = world.action_scripts.get_command_by_identifier(
+        "crown_adjust_height", A_ShiftZUpSteps
     )
     ev_crown.set_steps(m.crown_height)
 
@@ -801,6 +801,10 @@ def render_marrymore_character_empty(world: GameWorld) -> None:
             "chapel_character_queue_12",
             ["chapel_character_animation_20", "chapel_character_animation_21"],
         ),
+        (
+            "chapel_reload_crying_aq",
+            ["chapel_reload_crying"],
+        ),
     ]
     for queue, actions in deletions:
         if len(actions) == 0:
@@ -971,6 +975,12 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
     )
     update_ally_animation(
         a22, ally, SpriteAnimationState.SHOCKED_LOOP, use_primary=use_primary
+    )
+    a23 = world.event_scripts.get_subscript_command_by_identifier(
+        "chapel_reload_crying_aq", "chapel_reload_crying", A_SetSpriteSequence
+    )
+    update_ally_animation(
+        a23, ally, SpriteAnimationState.CRYING_BACKWARDS, use_primary=use_primary
     )
 
 # NPC fills for each ending-cutscene render. Each AllyNPCSub here points at an

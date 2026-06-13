@@ -1,4 +1,4 @@
-# E2091_EMPTY
+# E2091_CHAPEL_CROWN
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    SetBit(CROWN_COLLECTED),
+    JmpToEvent(E0241_FREESTANDING_1_GRANT)
 ])

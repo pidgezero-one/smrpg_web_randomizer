@@ -50,7 +50,7 @@ script = EventScript([
     JmpIfBitClear(CHAPEL_ITEM_1_RETRIEVED, ["EVENT_663_checks_dialog"], identifier="EVENT_663_adjust_music_tempo_12"),
     JmpIfBitClear(CHAPEL_ITEM_2_RETRIEVED, ["EVENT_663_checks_dialog"]),
     JmpIfBitClear(CHAPEL_ITEM_3_RETRIEVED, ["EVENT_663_checks_dialog"]),
-    JmpIfObjectInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_663_checks_dialog"]),
+    JmpIfBitClear(CROWN_COLLECTED, ["EVENT_663_checks_dialog"]),
 	
 	SlowDownMusicTempoBy(duration=0, change=0),
 	StopBackgroundEvent(TIMER_701C),

@@ -46,21 +46,17 @@ script = EventScript([
 	ActionQueueSync(target=NPC_10, subscript=[
 		A_TransferToXYZF(x=22, y=72, z=2, direction=EAST),
 		A_FaceNortheast(),
-		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+		A_SetSequenceSpeed(FAST),
+		A_SetSpriteSequence(index=14, is_sequence=True, looping=True, mirror_sprite=True, identifier="chapel_reload_crying")
+	], identifier="chapel_reload_crying_aq"),
 	ActionQueueSync(target=NPC_9, subscript=[
 		A_TransferToXYZF(x=22, y=73, z=2, direction=EAST),
 		A_WalkSoutheastPixels(5),
 		A_FaceNortheast()
 	]),
-	JmpIfObjectInSpecificLevel(NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_3930_pause_7"]),
-	Jmp(["EVENT_3930_pause_9"]),
-	Pause(1, identifier="EVENT_3930_pause_7"),
-	ActionQueueAsync(target=NPC_7, subscript=[
-		A_TransferToObjectXYZ(NPC_9),
-		A_ShiftZUpSteps(2),
-		A_SetSolidityBits(cant_jump_through=True, bit_4=True, cant_walk_through=True)
-	]),
+	JmpIfBitSet(CROWN_COLLECTED, ["EVENT_3930_pause_9"]),
+    Set70107015ToObjectXYZ(NPC_9),
+    CreatePacketAt7010WithEvent(P130_CHAPEL_CROWN, E2091_CHAPEL_CROWN, ["EVENT_3930_pause_9"]),
 	Pause(30, identifier="EVENT_3930_pause_9"),
 	Jmp(["EVENT_3809_set_action_script_133"])
 ])

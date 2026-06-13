@@ -528,7 +528,7 @@ dialog_data[181] = '''BOOSTER: Found all of `MARRYMORE_CHARACTER`'s things?[awai
  10-4, good buddy. But aren't you missing a few things in this room?[await]'''
 dialog_data[182] = ''' Please take this complimentary
  gift.[await]'''
-dialog_data[183] = '''Man, did I sleep!
+dialog_data[183] = ''' Man, did I sleep!
  Thanks for the service.
  Here's your tip.[await]
  Don't spend it all in one place![await]'''

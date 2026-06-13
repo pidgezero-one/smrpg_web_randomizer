@@ -710,7 +710,8 @@ dialog_data[254] = ''' Wow, thanks a lot!
 dialog_data[255] = ''' Sorry, curatives are all gone.
 [end]'''
 dialog_data[256] = ''' Tank you, pweese come again![await]'''
-dialog_data[257] = ''' Oooh, you found the Fireworks![await] I lost my Shiny Stone, though, so you can just take this.[await]'''
+dialog_data[257] = ''' Oooh, you found the Fireworks![await]
+ I lost my Shiny Stone, though, so you can just take this.[await]'''
 dialog_data[258] = '''[center]
  I wanna ride the trolley![await]'''
 dialog_data[259] = ''' Hey `MAIN_CHARACTER_TITLE`! Have ya been to Land's End?[await][pause] I wanna play on the Sky Bridge, but my ma's afraid I'm gonna fall in the dog pit.[await]'''

@@ -105,6 +105,24 @@ class ShipPrizePacket(Packet):
             0,
         )
 
+class ChapelPacket(Packet):
+    def __init__(self, packet_id: int, sprite_id: int, action_script_id: int) -> None:
+        super().__init__(
+            packet_id,
+            sprite_id,
+            action_script_id,
+            0,
+            0,
+            3,
+            4,
+            False,
+            False,
+            False,
+            True,
+            0,
+            0,
+        )
+
 
 P000_FLASHING_POOF_FLOWER = ChestPacket(
     packet_id=0,
@@ -1024,10 +1042,26 @@ P126_CAPE_PACKET = ChestPacket(
     sprite_id=SPR0232_CAPE,
     action_script_id=A1007_CHEST_SEQUENCE_0_DEFAULT,
 )
-P127_UNUSED = None
-P128_UNUSED = None
-P129_UNUSED = None
-P130_UNUSED = None
+P127_CHAPEL_SHOES = ChapelPacket(
+    packet_id=127,
+    sprite_id=SPR0202_SHOES,
+    action_script_id=A0830_CHAPEL_SHOES_PLACEMENT,
+)
+P128_CHAPEL_BROOCH = ChapelPacket(
+    packet_id=128,
+    sprite_id=SPR0207_BROOCH,
+    action_script_id=A0831_CHAPEL_BROOCH_PLACEMENT,
+)
+P129_CHAPEL_RING = ChapelPacket(
+    packet_id=129,
+    sprite_id=SPR0196_RING,
+    action_script_id=A0832_CHAPEL_RING_PLACEMENT,
+)
+P130_CHAPEL_CROWN = ChapelPacket(
+    packet_id=130,
+    sprite_id=SPR0216_CROWN,
+    action_script_id=A0833_CHAPEL_CROWN_PLACEMENT,
+)
 P131_UNUSED = None
 P132_UNUSED = None
 P133_UNUSED = None
@@ -1284,10 +1318,10 @@ ALL_PACKETS = PacketCollection(
         P124_OVERALLS_PACKET,
         P125_DRESS_PACKET,
         P126_CAPE_PACKET,
-        P127_UNUSED,
-        P128_UNUSED,
-        P129_UNUSED,
-        P130_UNUSED,
+        P127_CHAPEL_SHOES,
+        P128_CHAPEL_BROOCH,
+        P129_CHAPEL_RING,
+        P130_CHAPEL_CROWN,
         P131_UNUSED,
         P132_UNUSED,
         P133_UNUSED,

@@ -41,7 +41,7 @@ class RedShellObject(ItemNPC):
 
 
 class ParasolObject(ItemNPC):
-    _base = PARASOL_BASE
+    pass
 
 
 class FanObject(ItemNPC):

@@ -65,6 +65,7 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     BoosterHillLocation,
     FrogDiscipleLocation,
+    PacketLocation,
     PacketLocationRow1,
     InvisibleFlagLocation,
     WorldAreaEnum,
@@ -8090,16 +8091,21 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     # flag as checked: npc 0 in room 9 has its object trigger disabled.
 
 
-# These are really NPC grants but they need sprite replacements.
-# Override container event
-class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
+# The three snifit items keep their NPC-quest grants (npc_grant via E0253/E0252/
+# E0251) — they are presented during the chapel cutscene, not picked up. Their
+# in-room item sprite is shown by a packet (P127-P129) instead of a room-NPC model
+# to save VRAM, so PacketLocation is mixed in purely to repoint the display
+# packet's sprite to the assigned prize (its render runs alongside the NPC-grant
+# render; npc_grant wins because EventLocation precedes StandingLocation in the MRO).
+# Only the altar/crown is an interactive freestanding packet (PacketLocationRow1 / E0241).
+class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1, PacketLocation):
     _bias = True
     _originally_held = BroochPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
     _world_area = WorldAreaEnum.MARRYMORE
+    _packet_id = P128_CHAPEL_BROOCH
     _container_event = E0253_NPC_QUEST_1_GRANT
-    _npc_ids = [NPC_8]
+    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 196),
         RunDialog(
@@ -8122,13 +8128,14 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1):
     # flag as checked: CHAPEL_ITEM_1_RETRIEVED
 
 
-class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
+class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2, PacketLocation):
     _bias = True
     _originally_held = ShoesPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _world_area = WorldAreaEnum.MARRYMORE
+    _packet_id = P127_CHAPEL_SHOES
     _container_event = E0252_NPC_QUEST_2_GRANT
+    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 197),
         RunDialog(
@@ -8151,14 +8158,14 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2):
     # flag as checked: CHAPEL_ITEM_2_RETRIEVED
 
 
-class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
+class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3, PacketLocation):
     _bias = True
     _originally_held = RingPrize
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _world_area = WorldAreaEnum.MARRYMORE
-    _npc_ids = [NPC_5]
+    _packet_id = P129_CHAPEL_RING
     _container_event = E0251_NPC_QUEST_3_GRANT
+    _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 198),
         RunDialog(
@@ -8181,13 +8188,15 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3):
     # flag as checked: CHAPEL_ITEM_3_RETRIEVED
 
 
-class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
+class MarrymoreAltarHeadLocation(KeyItemLocation, PacketLocationRow1):
     _bias = True
     _originally_held = CrownPrize
+    _replace = "spawn_chapel_crown_item"
     _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
-    _npc_ids = [NPC_7]
-    _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _world_area = WorldAreaEnum.MARRYMORE
+    _packet_type = PacketType.STATIC
+    _packet_id = P130_CHAPEL_CROWN
+    _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 199),
         RunDialog(
@@ -8200,9 +8209,7 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, StandingLocationRow1):
         ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
-        JmpIfObjectNotInSpecificLevel(
-            NPC_7, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["next"]
-        ),
+        JmpIfBitSet(CROWN_COLLECTED, ["next"]),
         Jmp(["marrymore_hint_text"]),
     ]
 
@@ -8309,6 +8316,15 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
         ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["marrymore_hint_text"]),
+        StoreItemAmountTo7000(RingItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(CrownItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(ShoesItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(BroochItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hint_text"]),
     ]
 
@@ -8349,6 +8365,15 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
+        JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["marrymore_hint_text"]),
+        StoreItemAmountTo7000(RingItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(CrownItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(ShoesItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
+        StoreItemAmountTo7000(BroochItem),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hint_text"]),
     ]
 

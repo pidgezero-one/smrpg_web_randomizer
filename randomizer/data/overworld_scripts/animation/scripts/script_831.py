@@ -1,4 +1,4 @@
-#A0831_EMPTY
+#A0831_CHAPEL_BROOCH_PLACEMENT
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,16 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_TransferToObjectXY(NPC_10),
+    A_TransferXYZFPixels(x=0, y=8, z=12, direction=EAST),
+    A_SetPriority(3),
+    A_VisibilityOn(),
+    A_JumpToHeight(height=136, silent=True),
+    A_SetWalkingSpeed(VERY_FAST),
+    A_WalkEastSteps(4),
+	A_Pause(1, identifier="ACTION_831_pause_8"),
+	A_JmpIfBitClear(TEMP_7044_6, ["ACTION_831_pause_8"]),
+    A_VisibilityOff(),
+    A_ReturnQueue(),
+])
