@@ -20,7 +20,7 @@ class Packet(PacketBase):
 
 
 class BoosterHillPacket(Packet):
-    # Booster Hill prize packets (both falling room-54 variants spawned by
+    # Booster Hill prize packets (both room-54 variants spawned by
     # CreatePacketAtObjectCoords and standing room-14 variants spawned by
     # CreatePacketAt7010WithEvent). Both stay on the vanilla bitmap path
     # at $C1:9547 — `goes_to_npc_slot_buffer = False` (inherited).

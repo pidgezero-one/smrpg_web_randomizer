@@ -10330,7 +10330,7 @@ PUNCHINELLO_NPC = NPC(
 
 
 PUNCHINELLO_POSTGAME_NPC = NPC(
-    sprite_id=SPR0392_PUNCHINELLO_2,
+    sprite_id=SPR0753_PUNCHINELLO_POSTGAME_2,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=11,
     obtuse_axis=8,

@@ -41,7 +41,7 @@ script = EventScript([
 		A_UnknownCommand(bytearray([0xFD, 0xF2]))
 	]),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI3060_SHOES_AUTOTERM, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI3060_SHOES_AUTOTERM, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
 	Inc(WEDDING_GEAR_COUNTER),
 	AddToInventory(ShoesItem),
 	Return()

@@ -488,7 +488,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`SUPER_JUMP_PRIZE_2_CAP`", str(sjc2))
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`FIREWORKS_CLAUSE`", "Aren't those in Moleville?" if world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA) else "I wonder where you could find one?")
     if (world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)):
-        world.overworld_dialogs.replace_dialog(DI1296_PURTEND_STORE_NEED_FIREWORKS, " If ya bring me a “Fireworks”, then I'll give you a present.")
+        world.overworld_dialogs.replace_dialog(DI1296_PURTEND_STORE_NEED_FIREWORKS, " If ya bring me a “Fireworks”, then\n I'll give you a present.")
 
     # Bowser's Keep access
     keep_cond = world.settings.get_flag(BowsersKeepGate).selected

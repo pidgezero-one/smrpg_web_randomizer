@@ -134,7 +134,7 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, GoldPaintItem, ["river_key_item_sound"]),
 	JmpIfVarEqualsConst(ITEM_ID, CookiesItem, ["river_key_item_sound"]),
 	JmpIfVarEqualsConst(ITEM_ID, MarioDollItem, ["river_key_item_sound"]),
-	PlaySound(sound=SO014_FLOWER, channel=6),
+	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6),
 	Return(),
 	PlaySound(sound=SO085_FLOWER, channel=6, identifier="river_key_item_sound"),
 	Return(),
@@ -152,8 +152,8 @@ script = EventScript([
 	AddToInventory(ITEM_ID),
 	Jmp(["EVENT_2820_choose_sound"]),
 	# YoshiAde: sync=False, keep sound BEFORE dialog (unchanged)
-	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_2820_yoshi_ade"),
-	RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
+	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6, identifier="EVENT_2820_yoshi_ade"),
 	AddToInventory(ITEM_ID),
 	Return(),
 ])

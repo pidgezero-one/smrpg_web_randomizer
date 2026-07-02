@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
     DisableObjectTrigger(MEM_70A8),
     DisableTriggerOfObjectAt70A8InCurrentLevel(),
-	EnableControlsUntilReturn([]),
+	EnableControlsUntilReturn([B]),
 	SetSyncActionScript(MEM_70A8, A0365_BOOSTER_HILL_LEFTOVER_FLOWERS_PICKED_UP),
     JmpToEvent(E0213_BOOSTER_HILL_PRIZE_CONTAINER_EVENT),
 ])

@@ -4333,6 +4333,10 @@ class JohnnyBossFight(BossFightPrize):
         WATERCRYSTALEnemy,
     ]
     _scaling_excluded_enemies = [WATERCRYSTALEnemy, WATERCRYSTALEnemy]
+    # Red-shark mook henchman (swapped into PACK068/PACK069). Registering it here
+    # scales it with Johnny (matching Croco2/Booster/Punchinello) AND adds it to
+    # the shuffler's boss_enemy_types so its henchman formations aren't reshuffled.
+    _additional_enemies_to_scale = [BANDANAREDEnemyHenchman]
 
     _npc_models = [JohnnyLargeObject, JohnnySmallObject]
     _statue_npc = JohnnyStatueObject

@@ -117,6 +117,8 @@ smrpgr.code-workspace
 CLAUDE.md
 /.planning
 patchvenv
+.agents
+skills-lock.json
 
 **/.DS_Store
 

@@ -167,8 +167,8 @@ script = EventScript([
 	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_165_btub_ring"),
 	AddToInventory(ITEM_ID),
 	Return(),
-	# yoshi ade (sync=False; sound already fired up top)
-	RunDialog(dialog_id=DI2013_GOT_A_YOSHI_ADE_AUTO_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_165_yoshi_ade"),
+	# yoshi ade (sound already fired up top)
+	RunDialog(dialog_id=DI2013_GOT_A_YOSHI_ADE_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, identifier="EVENT_165_yoshi_ade"),
 	AddToInventory(ITEM_ID),
 	Return(),
 ])
