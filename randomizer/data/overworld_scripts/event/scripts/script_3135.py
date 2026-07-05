@@ -45,6 +45,14 @@ script = EventScript([
 	),
     RemoveObjectFromCurrentLevel(NPC_1),
 	SummonObjectToCurrentLevel(NPC_8),
+    
+	
+	JmpIfObjectTriggerDisabledInSpecificLevel(
+		NPC_8,
+		R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
+		["EVENT_3135_jmp_if_bit_set_711"],
+	),
+    
     ResumeActionScript(NPC_8),
     
     

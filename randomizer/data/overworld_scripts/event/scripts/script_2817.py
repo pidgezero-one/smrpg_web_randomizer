@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	PlaySound(sound=SO085_FLOWER, channel=6),
+	PlaySound(sound=SO014_FLOWER, channel=6),
 	SetVarToConst(PRIMARY_TEMP_7000, 1),
 	Add7000ToMaxFP(),
 	Return()

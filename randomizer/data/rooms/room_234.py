@@ -15,11 +15,15 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=3,
+        # Trimmed 3→2 to offset the +4 buffer-A chest-packet reservation below
+        # (net-neutral VRAM vs vanilla); this room is near capacity.
+        extra_sprite_buffer_size=2,
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
-                main_buffer_space=BufferSpace.BYTES_0,
+                # +8 chest-packet reservation (5 close chests, 2+ simultaneous
+                # distinct-sprite packets); honored via packet_allocation.py.
+                main_buffer_space=BufferSpace.BYTES_256,
                 index_in_main_buffer=True
             ),
             Buffer(

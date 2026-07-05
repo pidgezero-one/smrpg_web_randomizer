@@ -2350,6 +2350,7 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         SlotsPrize,
+        InfiniteCoinsPrize
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 43),
@@ -2432,6 +2433,7 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
         SlotsPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
+        InfiniteCoinsPrize
     ]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 45),
@@ -8979,10 +8981,11 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
             multiline=True,
             use_background=True,
         ),
-        JmpIfObjectInSpecificLevel(
-            NPC_0, R316_SEASIDE_TOWN_BEACH, ["seaside_town_hint_text"]
-        ),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
+        JmpIfBitClear(SEASIDE_LIBERATED, ["next"]),
+        JmpIfObjectNotInSpecificLevel(
+            NPC_0, R316_SEASIDE_TOWN_BEACH, ["next"]
+        ),
         Jmp(["seaside_town_hint_text"]),
     ]
 
@@ -9325,6 +9328,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _packet_type = PacketType.FALLING
     _packet_id = P029_SUNKEN_SHIP_3D_MAZE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
+    _blacklist = [RecoveryMushroomPrize]
     _hint = [
         SetVarToConst(PRIMARY_TEMP_7000, 222),
         RunDialog(

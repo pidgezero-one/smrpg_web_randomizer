@@ -1,4 +1,4 @@
-# E4089_EMPTY
+# E4089_PACKET_OF_E3938 (auto: E3938 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,14 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+	]),
+	PlaySound(sound=SO085_FLOWER, channel=6),
+	RunDialog(dialog_id=DI3062_CROWN_AUTOTERM, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
+	Inc(WEDDING_GEAR_COUNTER),
+	AddToInventory(CrownItem),
+	Return()
 ])

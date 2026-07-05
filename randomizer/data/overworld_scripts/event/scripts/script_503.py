@@ -47,6 +47,7 @@ script = EventScript([
 	EndLoop(),
 	Return(),
 	EnableControlsUntilReturn([], identifier="EVENT_503_enable_controls_until_return_12"),
+    SetBit(TEMP_7043_1),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_ClearSolidityBits(cant_pass_walls=True),
 		A_SetSpriteSequence(index=16, sprite_offset=2, is_mold=True, is_sequence=True, looping=True, identifier="crouch_for_coin"),
@@ -57,13 +58,15 @@ script = EventScript([
 		A_SetWalkingSpeed(VERY_SLOW),
 		A_WalkNortheastPixels(4),
 		A_SetWalkingSpeed(NORMAL),
-		A_WalkToXYCoords(x=8, y=64)
+		A_WalkToXYCoords(x=8, y=64),
+		A_ClearBit(TEMP_7043_1),
 	], identifier="crouch_for_coin_aq"),
 	JmpIfObjectNotInSpecificLevel(NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["EVENT_503_remember_last_object_18"]),
 	Pause(10),
 	SetVarToConst(ACTIVE_NPC, 25),
 	RunEventAsSubroutine(E0236_FREESTANDING_6_GRANT),
-	RememberLastObject(identifier="EVENT_503_remember_last_object_18"),
-	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
+    Pause(1, identifier="wait_for_crouch"),
+    JmpIfBitSet(TEMP_7043_1, ["wait_for_crouch"]),
+	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY, identifier="EVENT_503_remember_last_object_18"),
 	Return()
 ])

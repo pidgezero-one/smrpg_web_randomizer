@@ -1,5 +1,6 @@
 from __future__ import annotations
 import random
+from copy import deepcopy
 from typing import TYPE_CHECKING, Sequence, TypeVar
 
 from ..data.variables.sprite_names import (
@@ -119,6 +120,7 @@ class Prize:
     _npc_grant: EventScript | None = None
     _chest_grant: EventScript | None = None
     _standing_grant: EventScript | None = None
+    _packet_grant: EventScript | None = None
     _river_grant: EventScript | None = None
     _hill_grant: EventScript | None = None
     _character_grant: EventScript | None = None
@@ -167,6 +169,50 @@ class Prize:
     @property
     def standing_grant(self) -> EventScript | None:
         return self._standing_grant
+
+    # Source freestanding-grant event -> its packet-safe variant. A packet is a
+    # dynamically-spawned object one slot past the room's last static NPC, so it has no
+    # presence bit of its own; ANY persistent presence write on it — event RemoveObject
+    # (F5/F9) OR the action-level "set object presence" (FD F2) — aliases into the NEXT
+    # room's NPC_0. Each variant is a copy of the grant with every such write stripped
+    # (object-local despawn only) and its own onward jumps repointed to variants. Grants
+    # that never write presence aren't listed and pass through unchanged; the guard in
+    # PacketLocation.render fails the build if any FD F2 / $70A8 write reaches a packet.
+    _PACKET_VARIANT_EVENTS: dict[int, int] = {
+        E1801_FREESTANDING_FLOWER: E4090_FREESTANDING_FLOWER_PACKET,
+        E2822_ASYNC_NO_ANIMATION_MUSHROOM: E4091_ASYNC_NO_ANIMATION_MUSHROOM_PACKET,
+        E0165_FREESTANDING_GRANT_ITEM_BAG: E4077_PACKET_OF_E0165,
+        E0166_FREESTANDING_GRANT_STAR_PIECE: E4078_PACKET_OF_E0166,
+        E1293_COLLECT_FREESTANDING_SMALL_COIN: E4079_PACKET_OF_E1293,
+        E3083_FREESTANDING_SHUFFLED_FROG_COIN: E4080_PACKET_OF_E3083,
+        E3109_FREESTANDING_BEETLEMANIA_GRANT: E4081_PACKET_OF_E3109,
+        E3110_FREESTANDING_JUICE_BAR_CARD_GRANT: E4082_PACKET_OF_E3110,
+        E3111_FREESTANDING_PROGRESSIVE_EGG_GRANT: E4083_PACKET_OF_E3111,
+        E3113_FREESTANDING_PROGRESSIVE_FIREWORKS_GRANT: E4084_PACKET_OF_E3113,
+        E3146_FREESTANDING_BIG_COIN: E4085_PACKET_OF_E3146,
+        E3935_FREESTANDING_SHOES: E4086_PACKET_OF_E3935,
+        E3936_FREESTANDING_BROOCH: E4087_PACKET_OF_E3936,
+        E3937_FREESTANDING_RING: E4088_PACKET_OF_E3937,
+        E3938_FREESTANDING_CROWN: E4089_PACKET_OF_E3938,
+    }
+
+    @property
+    def packet_grant(self) -> EventScript | None:
+        if self._packet_grant is not None:
+            return self._packet_grant
+        grant = self.standing_grant
+        if grant is None:
+            return None
+        # Reroute each JmpToEvent to its presence-write-free packet variant. deepcopy so
+        # a prize's shared standing_grant instance is never mutated.
+        grant = deepcopy(grant)
+        for cmd in grant.contents:
+            if (
+                isinstance(cmd, JmpToEvent)
+                and cmd.destination in self._PACKET_VARIANT_EVENTS
+            ):
+                cmd.set_destination(self._PACKET_VARIANT_EVENTS[cmd.destination])
+        return grant
 
     @property
     def river_grant(self) -> EventScript | None:

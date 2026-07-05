@@ -42,7 +42,7 @@ RED_SHELL_BASE = _item_npc_base(
 )
 PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
 FAN_BASE = _item_npc_base(SPR0227_FAN_PACKET)
-TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
+TINY_STAR_BASE = _item_npc_base(SPR0768_TINY_STAR)
 PAN_BASE = _item_npc_base(SPR0225_FRYING_PAN_PACKET)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
 SHOES_BASE = _item_npc_base(SPR0202_SHOES)
@@ -5291,7 +5291,7 @@ LEVEL_UP_BONUS_SELECTION_BOX_NPC = NPC(
 )
 
 TINY_STAR_NPC = NPC(
-    sprite_id=SPR0226_TINY_STAR,
+    sprite_id=SPR0768_TINY_STAR,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,

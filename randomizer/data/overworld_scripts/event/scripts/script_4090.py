@@ -1,4 +1,4 @@
-# E4090_EMPTY
+# E4090_FREESTANDING_FLOWER_PACKET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -33,6 +33,22 @@ from ....packets import *
 from ....spells.spells import *
 from ....variables.event_palette_names import *
 
+# Packet-safe variant of E1801_FREESTANDING_FLOWER.
+# A packet is a dynamically-spawned object one slot past the room's last static NPC, so
+# its relative id = objcount(level), which has NO presence bit inside its own level's
+# dynamic-width slice ($7E:6D20). ANY persistent presence write therefore lands in the
+# NEXT level's slice (that room's NPC_0). E1801 does TWO such writes for a packet: the
+# event-level RemoveObjectAt70A8FromCurrentLevel (F5) AND the action-level "set object
+# presence" (FD F2, inside the A1016 pickup animation). Neither may run for a packet.
+# Despawn transiently instead — object-local only (mark obj-mem bit 0x30.4 + visibility
+# off, the pattern vanilla uses for packet collection); the packet's respawn is gated by
+# its story flag, so no persistent presence write is needed.
 script = EventScript([
-	
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff()
+	]),
+	SetVarToConst(PRIMARY_TEMP_7000, 1),
+	Add7000ToMaxFP(),
+	Return()
 ])

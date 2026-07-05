@@ -1,4 +1,4 @@
-# E4081_EMPTY
+# E4081_PACKET_OF_E3109 (auto: E3109 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,13 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+		A_PlaySound(sound=SO027_FOUND_AN_ITEM, channel=4),
+	]),
+	SetBit(BEETLEMANIA_UNLOCKED),
+	RunDialog(dialog_id=DI3077_GOT_BEETLEMANIA_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

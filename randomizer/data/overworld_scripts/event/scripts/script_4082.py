@@ -1,4 +1,4 @@
-# E4082_EMPTY
+# E4082_PACKET_OF_E3110 (auto: E3110 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,21 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+	]),
+	StoreItemAmountTo7000(AltoCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4082L_3110_set_var_to_const_9"]),
+	StoreItemAmountTo7000(TenorCardItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4082L_3110_set_var_to_const_6"]),
+	SetVarToConst(ITEM_ID, AltoCardItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, SopranoCardItem, identifier="EVENT_4082L_3110_set_var_to_const_6"),
+	RemoveOneOfItemFromInventory(TenorCardItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, TenorCardItem, identifier="EVENT_4082L_3110_set_var_to_const_9"),
+	RemoveOneOfItemFromInventory(AltoCardItem),
+	JmpToEvent(E4077_PACKET_OF_E0165)
 ])

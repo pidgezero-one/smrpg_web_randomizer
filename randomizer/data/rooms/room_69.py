@@ -294,5 +294,5 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
     ],
-    effects_npc=EffectsNpc.NOTHING,
+    effects_npc=EffectsNpc.WATERFALL,
 )

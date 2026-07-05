@@ -1,4 +1,4 @@
-# E4085_EMPTY
+# E4085_PACKET_OF_E3146 (auto: E3146 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,14 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	PlaySound(sound=SO013_COIN, channel=4),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ClearSolidityBits(bit_4=True, cant_walk_through=True),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=False),
+		A_ShiftZUpSteps(2),
+		A_VisibilityOff(),
+	]),
+	AddCoins(10),
+	Return()
 ])

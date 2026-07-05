@@ -1,4 +1,4 @@
-# E4084_EMPTY
+# E4084_PACKET_OF_E3113 (auto: E3113 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,24 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+	]),
+	StoreItemAmountTo7000(FireworksItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4084L_3098_set_var_to_const_10"]),
+	StoreItemAmountTo7000(ShinyStoneItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4084L_3098_set_var_to_const_7"]),
+	SetVarToConst(FIREWORKS_COUNTER, 5),
+	SetVarToConst(ITEM_ID, FireworksItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, CarboCookieItem, identifier="EVENT_4084L_3098_set_var_to_const_7"),
+	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
+	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
+	RemoveOneOfItemFromInventory(ShinyStoneItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_4084L_3098_set_var_to_const_10"),
+	RemoveOneOfItemFromInventory(FireworksItem),
+	JmpToEvent(E4077_PACKET_OF_E0165)
 ])

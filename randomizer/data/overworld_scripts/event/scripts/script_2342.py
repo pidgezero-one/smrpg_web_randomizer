@@ -92,7 +92,7 @@ script = EventScript([
 		A_SetVRAMPriority(NORMAL_PRIORITY)
 	]),
 	Set7016701BToObjectXYZ(target=NPC_0),
-	AddConstToVar(Z_COORD_2, 304),
+	AddConstToVar(Z_COORD_2, 456),
 	ActionQueueSync(target=NPC_3, subscript=[
 		A_UnknownCommand(bytearray([0x99])),
 		A_ShadowOn(),

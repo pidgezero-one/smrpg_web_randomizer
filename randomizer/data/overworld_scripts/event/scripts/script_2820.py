@@ -151,9 +151,8 @@ script = EventScript([
 	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, identifier="EVENT_2820_btub_ring"),
 	AddToInventory(ITEM_ID),
 	Jmp(["EVENT_2820_choose_sound"]),
-	# YoshiAde: sync=False, keep sound BEFORE dialog (unchanged)
-	RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
-	PlaySound(sound=SO027_FOUND_AN_ITEM, channel=6, identifier="EVENT_2820_yoshi_ade"),
+	RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False, identifier="EVENT_2820_yoshi_ade"),
 	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_2820_choose_sound"]),
 	Return(),
 ])

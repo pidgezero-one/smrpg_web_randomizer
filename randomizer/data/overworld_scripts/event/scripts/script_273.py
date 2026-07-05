@@ -162,11 +162,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R009_MARRYMORE_INN_REGULAR_ROOM, mod_id=0),
 	JmpIfObjectNotInSpecificLevel(NPC_1, R009_MARRYMORE_INN_REGULAR_ROOM, ["EVENT_273_jmp_if_object_trigger_disabled_106"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R009_MARRYMORE_INN_REGULAR_ROOM, mod_id=33),
-	JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["EVENT_273_ret_108"], identifier="EVENT_273_jmp_if_object_trigger_disabled_106"),
-	ActionQueueAsync(target=NPC_0, subscript=[
-		A_VisibilityOff()
-	]),
-	Return(identifier="EVENT_273_ret_108"),
+	Return(identifier="EVENT_273_jmp_if_object_trigger_disabled_106"),
 	EnterArea(room_id=R012_MARRYMORE_INN_SUITE_ROOM, face_direction=SOUTH, x=8, y=13, z=1, identifier="EVENT_273_enter_area_109"),
 	ApplyTileModToLevel(use_alternate=True, room_id=R012_MARRYMORE_INN_SUITE_ROOM, mod_id=0),
 	ActionQueueAsync(target=NPC_5, subscript=[

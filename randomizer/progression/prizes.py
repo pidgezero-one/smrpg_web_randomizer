@@ -2324,6 +2324,13 @@ class RecoveryMushroomPrize(StandardPrize):
             JmpToEvent(E2822_ASYNC_NO_ANIMATION_MUSHROOM),
         ])
 
+    @property
+    def packet_grant(self) -> EventScript:
+        # standing_grant has an INLINE FD F2 (presence write) before jumping to E2822,
+        # so the base map-derive (which only repoints the jump) can't make it packet-safe.
+        # E4091 already does the object-local hide + heal, so just jump straight to it.
+        return EventScript([JmpToEvent(E4091_ASYNC_NO_ANIMATION_MUSHROOM_PACKET)])
+
 
 class YouMissed(StandardPrize):
     @property

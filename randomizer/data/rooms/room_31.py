@@ -19,7 +19,9 @@ room = Room(
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
-                main_buffer_space=BufferSpace.BYTES_0,
+                # +8 chest-packet reservation (6 chests, 2+ simultaneous
+                # distinct-sprite packets); honored via packet_allocation.py.
+                main_buffer_space=BufferSpace.BYTES_256,
                 index_in_main_buffer=True
             ),
             Buffer(

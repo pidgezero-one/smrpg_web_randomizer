@@ -322,7 +322,7 @@ P022_RECURSIVE_SPARKLES = Packet(
     action_script_id=A0446_SUMMON_EXTRA_SPARKLES,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla=0; rebase import inflated to 1
     sprite_priority=3,
     layer_priority=3,
     b2b2=True,
@@ -337,7 +337,7 @@ P023_LOOPING_SINGLE_SPARKLE = Packet(
     action_script_id=A0447_LOOPING_SINGLE_SPARKLE,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla=0; rebase import inflated to 1
     sprite_priority=3,
     layer_priority=3,
     b2b2=True,
@@ -382,7 +382,7 @@ P028_MUSHROOM_THROWN_SOUTHWEST = Packet(
     action_script_id=A0907_MUSHROOM_THROWN_SOUTHWEST,
     show_shadow=True,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla=0; rebase import inflated to 1
     sprite_priority=1,
     layer_priority=4,
     b2b2=False,
@@ -432,7 +432,7 @@ P032_BLUE_CLOUD = Packet(
     action_script_id=A0651_MOKURA_PACKET,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla=0; rebase import inflated to 1
     sprite_priority=1,
     layer_priority=3,
     b2b2=False,
@@ -447,7 +447,7 @@ P033_BOMB_EXPLOSION = Packet(
     action_script_id=A0303_BOMB_EXPLOSION,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla = 0 (1 slot); rebase import inflated to 1 (2 slots)
     sprite_priority=1,
     layer_priority=3,
     b2b2=False,
@@ -547,7 +547,7 @@ P047_BLUE_FIRE_TRAIL = Packet(
     action_script_id=A0943_BLUE_FIRE_TRAIL,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla=0; rebase import inflated to 1
     sprite_priority=2,
     layer_priority=4,
     b2b2=False,
@@ -612,7 +612,7 @@ P052_BOMB_EXPLOSION_FASTER = Packet(
     action_script_id=A0195_BOMB_EXPLOSION_FASTER,
     show_shadow=False,
     b0=0,
-    vram_size=1,
+    vram_size=0,  # vanilla = 0 (1 slot); rebase import inflated to 1 (2 slots)
     sprite_priority=1,
     layer_priority=3,
     b2b2=False,

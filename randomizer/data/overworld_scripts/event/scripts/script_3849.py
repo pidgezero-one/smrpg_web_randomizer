@@ -34,6 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	# Seed the platform "active ride" selector to a never-match sentinel so idle
+	# transport platforms (action 434 -> 433 wait: `while held_buttons != 7034`)
+	# don't free-run when 7034 is left at 0 (e.g. residual after a prior ride).
+	SetVarToConst(TEMP_7034, 65535),
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	StopAllBackgroundEvents(),
 	UnknownCommand(bytearray([0xFD, 0x44])),

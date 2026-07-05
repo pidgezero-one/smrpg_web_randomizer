@@ -77,8 +77,15 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ActionQueueAsync,
     Set7000ToCurrentLevel,
     SetBit,
-    Jmp
+    Jmp,
+    RemoveObjectAt70A8FromCurrentLevel,
+    RemoveObjectFromCurrentLevel,
+    ActionQueueSync,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_UnknownCommand,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import MEM_70A8
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.flag import Flag
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_SetSpriteSequence,
@@ -3035,10 +3042,62 @@ class PacketLocation(StandingLocationRow):
     # ``_packet_id`` is always included; subclasses opt in by listing extras here.
     _extra_packet_ids: list[int] = []
 
+    def grant(self) -> EventScript:
+        # Packets use their prize's dedicated packet_grant (transient, object-local
+        # despawn) instead of standing_grant, because a packet has no presence bit of
+        # its own and an event-level RemoveObject on $70A8 aliases into the next room's
+        # NPC_0. See Prize.packet_grant.
+        if self.prize is None:
+            return EventScript([Return()])
+        packet_grant = self.prize.packet_grant
+        if packet_grant is None:
+            return EventScript([Return()])
+        return packet_grant
+
+    def _assert_packet_grant_safe(self, world: GameWorld) -> None:
+        # A packet is a dynamically-spawned object one slot past the room's last static
+        # NPC, so it has no presence bit inside its own level's dynamic-width slice
+        # ($7E:6D20). ANY persistent presence write on it therefore clears bit 0 of the
+        # NEXT level's slice (that room's NPC_0). Two ways to write presence: event-level
+        # RemoveObject on $70A8 (F5/F9), and the action-level "set object presence" command
+        # (raw bytes FD F2) inside an ActionQueueSync. Walk the whole grant + every event
+        # reachable by JmpToEvent and fail the build if any such write survives — so a new
+        # prize type (or an un-repointed grant) can't silently regress this.
+        def writes_presence(script: EventScript) -> bool:
+            for cmd in script.contents:
+                if isinstance(cmd, RemoveObjectAt70A8FromCurrentLevel):
+                    return True
+                if isinstance(cmd, RemoveObjectFromCurrentLevel) and cmd.target == MEM_70A8:
+                    return True
+                if isinstance(cmd, ActionQueueSync):
+                    for a in cmd.subscript.contents:
+                        if isinstance(a, A_UnknownCommand) and bytes(a.render())[:2] == b"\xfd\xf2":
+                            return True
+            return False
+
+        seen: set[int] = set()
+        stack: list[EventScript | None] = [self.grant()]
+        while stack:
+            script = stack.pop()
+            if script is None:
+                continue
+            if writes_presence(script):
+                raise AssertionError(
+                    f"{type(self).__name__}: packet grant for "
+                    f"{type(self.prize).__name__} does a persistent presence write on $70A8 "
+                    f"(RemoveObject or FD F2) — would despawn the next room's NPC_0. Route it "
+                    f"to an FD-F2-free packet variant (see Prize._PACKET_VARIANT_EVENTS)."
+                )
+            for cmd in script.contents:
+                if isinstance(cmd, JmpToEvent) and cmd.destination not in seen:
+                    seen.add(cmd.destination)
+                    stack.append(world.event_scripts.get_script_by_id(cmd.destination))
+
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         assert self.prize is not None and self.prize.model is not None
+        self._assert_packet_grant_safe(world)
         for packet_id in [self._packet_id, *self._extra_packet_ids]:
             p = world.packets.packets[packet_id]
             assert p is not None, (

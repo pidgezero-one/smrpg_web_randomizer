@@ -158,10 +158,6 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                Mold(8, gridplane=False,
-                    tiles=[
-                    ]
-                ),
             ],
             sequences=[
                 AnimationSequence(
@@ -170,7 +166,6 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=6, mold_id=1),
                         AnimationSequenceFrame(duration=4, mold_id=2),
                         AnimationSequenceFrame(duration=4, mold_id=3),
-                        AnimationSequenceFrame(duration=4, mold_id=8),
                     ]
                 ),
                 AnimationSequence(
@@ -179,7 +174,6 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=4, mold_id=5),
                         AnimationSequenceFrame(duration=2, mold_id=6),
                         AnimationSequenceFrame(duration=2, mold_id=7),
-                        AnimationSequenceFrame(duration=2, mold_id=8),
                     ]
                 ),
             ]

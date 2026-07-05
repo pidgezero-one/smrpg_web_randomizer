@@ -1,4 +1,4 @@
-#A0622_EMPTY
+#A0622_INFINITE_RESET
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,8 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+    A_FaceSouthwest(identifier="infinite_reset"),
+    A_Pause(1),
+    A_Jmp(["infinite_reset"]),
+])

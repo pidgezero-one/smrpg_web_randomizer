@@ -34,7 +34,7 @@ dialog_data[21] = ''' Now that our kingdom isn't in peril
  I heard that Link and Samus are
  visiting some towns down below![delay]
  How exciting![await]'''
-dialog_data[22] = '''Whoa, you won [0x7000] time(s)!
+dialog_data[22] = ''' Whoa, you won [0x7000] time(s)!
  Here's a special prize for you![await]'''
 dialog_data[23] = '''
 [center]BIRDO: Don't forget about me![await]'''

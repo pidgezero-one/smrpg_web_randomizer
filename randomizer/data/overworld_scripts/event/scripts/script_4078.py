@@ -1,4 +1,4 @@
-# E4078_EMPTY
+# E4078_PACKET_OF_E0166 (auto: E166 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,10 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+		A_PlaySound(sound=SO081_STAR, channel=6),
+	]),
+	JmpToEvent(E3092_STAR_PIECE_GRANT)
 ])

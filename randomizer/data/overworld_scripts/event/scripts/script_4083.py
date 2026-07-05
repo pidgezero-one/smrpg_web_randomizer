@@ -1,4 +1,4 @@
-# E4083_EMPTY
+# E4083_PACKET_OF_E3111 (auto: E3111 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,25 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+	]),
+	StoreItemAmountTo7000(MysteryEggItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4083L_3111_set_var_to_const_15"]),
+	StoreItemAmountTo7000(LambsLureItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4083L_3111_set_var_to_const_12"]),
+	StoreItemAmountTo7000(SheepAttackItem),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_4083L_3111_set_var_to_const_8"]),
+	SetVarToConst(ITEM_ID, MysteryEggItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_4083L_3111_set_var_to_const_8"),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, SheepAttackItem, identifier="EVENT_4083L_3111_set_var_to_const_12"),
+	RemoveOneOfItemFromInventory(LambsLureItem),
+	JmpToEvent(E4077_PACKET_OF_E0165),
+	SetVarToConst(ITEM_ID, LambsLureItem, identifier="EVENT_4083L_3111_set_var_to_const_15"),
+	RemoveOneOfItemFromInventory(MysteryEggItem),
+	JmpToEvent(E4077_PACKET_OF_E0165)
 ])

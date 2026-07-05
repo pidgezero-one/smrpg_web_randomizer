@@ -38,7 +38,6 @@ script = EventScript([
 	RemoveObjectFromCurrentLevel(MEM_70A8),
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	MoveScriptToBackgroundThread2(),
-    EnableControlsUntilReturn([A, B, X, Y, LEFT, RIGHT, UP, DOWN]),
 	RestoreAllHP(),
 	RestoreAllFP(),
 	TintLayers(layers=[LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND], red=64, green=160, blue=64, speed=3, bit_15=True),

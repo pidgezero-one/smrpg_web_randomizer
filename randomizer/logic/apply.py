@@ -1506,6 +1506,20 @@ def apply_hint_text(world: GameWorld) -> None:
     from ..progression.prizelocations import (
         MonstroFirstSuperJumpRewardLocation,
         MonstroSecondSuperJumpRewardLocation,
+        InnerMinesPostgameStarPiece,
+        InnerMinesPostgameDrop,
+        BoosterTowerIndoorStarPieceRemake,
+        BoosterTowerRemakeBossFightPrizeLocation,
+        MarrymoreBossFightStarPieceRemake,
+        MarrymoreBossFightRemakeItemDrop,
+        ShipPostgameFightItemDrop,
+        ShipPostgameStarPiece,
+        TempleBossFightStarPiecePostgame,
+        TemplePostgameFightItemDrop,
+        DojoFifthFightStarPiece,
+        MonstroDojoPostgameClearRewardLocation,
+        MonstroSealedDoorStarPiecePostgame,
+        MonstroSealedDoorClearRewardLocationPostgame,
     )
     from ..progression.prizes import InfiniteCoinsPrize
     from ..types.prizelocation import (
@@ -1519,7 +1533,26 @@ def apply_hint_text(world: GameWorld) -> None:
 
     # Collect hints in world.locations order, skipping empty hints
     super_jump_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+    postgame_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
     regular_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+
+    # Postgame locations go last, but before the super jump locations
+    postgame_loc_types = (
+        InnerMinesPostgameStarPiece,
+        InnerMinesPostgameDrop,
+        BoosterTowerIndoorStarPieceRemake,
+        BoosterTowerRemakeBossFightPrizeLocation,
+        MarrymoreBossFightStarPieceRemake,
+        MarrymoreBossFightRemakeItemDrop,
+        ShipPostgameFightItemDrop,
+        ShipPostgameStarPiece,
+        TempleBossFightStarPiecePostgame,
+        TemplePostgameFightItemDrop,
+        DojoFifthFightStarPiece,
+        MonstroDojoPostgameClearRewardLocation,
+        MonstroSealedDoorStarPiecePostgame,
+        MonstroSealedDoorClearRewardLocationPostgame,
+    )
 
     # Determine if we should exclude locations that can't hold star pieces,
     # key items, or character recruits
@@ -1562,17 +1595,20 @@ def apply_hint_text(world: GameWorld) -> None:
                 JmpIfBitSet(location.bit, ["next"]),
             )
 
-        # Super jump locations go last
+        # Super jump locations go last; postgame locations go after regular
+        # hints but before super jump
         if loc_type in (
             MonstroFirstSuperJumpRewardLocation,
             MonstroSecondSuperJumpRewardLocation,
         ):
             super_jump_hints.append((loc_type, hint_commands))
+        elif loc_type in postgame_loc_types:
+            postgame_hints.append((loc_type, hint_commands))
         else:
             regular_hints.append((loc_type, hint_commands))
 
-    # Combine: regular hints first, then super jump hints at the end
-    all_hints = regular_hints + super_jump_hints
+    # Combine: regular hints, then postgame hints, then super jump hints at the end
+    all_hints = regular_hints + postgame_hints + super_jump_hints
 
     if not all_hints:
         return
