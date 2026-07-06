@@ -39,3 +39,24 @@ def test_reprice_equipment_by_rank():
     assert tb.price == max(2, round(calc_equip_rank(tb)))
     assert tb.price > 2       # four buffs now count toward price
     assert dummy.price == 0   # placeholder left untouched
+
+
+def test_reprice_floors_zero_rank_item_to_two():
+    from randomizer.logic.shufflers.equipment import (
+        reprice_equipment_by_rank,
+        calc_equip_rank,
+    )
+    from randomizer.data.items.items import TeamworkBandItem
+
+    tb = TeamworkBandItem()
+    tb.set_temp_buffs([])  # strip its only rank contribution -> rank 0
+    assert calc_equip_rank(tb) == 0
+
+    class _Items:
+        items = [tb]
+
+    class _World:
+        items = _Items()
+
+    reprice_equipment_by_rank(_World())
+    assert tb.price == 2  # floored, never 0

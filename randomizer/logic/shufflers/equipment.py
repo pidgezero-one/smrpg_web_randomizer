@@ -318,7 +318,7 @@ def build_item_impact_categories(world: GameWorld) -> None:
     Categorizes consumables and equipment into low/high/highest impact tiers.
     Equipment is ranked based on stats, immunities, and special properties.
     """
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory, Equipment
+    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
     from ...data.items.items import (
         PickMeUpItem,
         MushroomItem,
