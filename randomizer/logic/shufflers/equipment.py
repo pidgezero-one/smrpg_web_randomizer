@@ -291,6 +291,27 @@ def calc_equip_rank(item: Equipment) -> float:
     return rank
 
 
+def reprice_equipment_by_rank(world: GameWorld) -> None:
+    """Set each equipment's price from its combat rank (buff-aware).
+
+    Called by apply_equipment_settings only in RANDOM equipment-properties mode.
+    Placeholder/empty equipment slots keep their (zero) price.
+    """
+    from ...types.item import Weapon, Armor, Accessory
+    from ...data.items.items import (
+        WeaponItem,
+        ArmorItem,
+        AccessoryItem,
+        SpaceItem,
+        SpaceItem2,
+    )
+
+    dummy_equipment = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
+    for item in world.items.items:
+        if isinstance(item, (Weapon, Armor, Accessory)) and type(item) not in dummy_equipment:
+            item.set_price(max(2, round(calc_equip_rank(item))))
+
+
 def build_item_impact_categories(world: GameWorld) -> None:
     """Build item impact categories for use in shop shuffling and other systems.
 

@@ -91,6 +91,7 @@ def apply_equipment_settings(world: GameWorld) -> None:
     from ..shufflers.equipment import (
         randomize_equipment_properties,
         randomize_equipment_characters,
+        reprice_equipment_by_rank,
     )
 
     # Spell element infusion
@@ -264,3 +265,10 @@ def apply_equipment_settings(world: GameWorld) -> None:
     for item in world.items.items:
         if isinstance(item, Equipment):
             item.set_description(item.build_equipment_description())
+
+    # Reprice equipment from combat rank so stat buffs / immunities / KO protection
+    # count toward price (RANDOM mode only; vanilla and SOME keep hand-tuned prices).
+    if world.settings.is_flag_value(
+        EquipmentProperties, EquipmentPropertiesOptions.RANDOM
+    ):
+        reprice_equipment_by_rank(world)
