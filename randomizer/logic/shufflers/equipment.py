@@ -262,6 +262,35 @@ def _randomize_single_equip_chars(
     item.set_equip_chars(list(new_chars))
 
 
+def calc_equip_rank(item: Equipment) -> float:
+    """Rank an equipment item by combat value (stats, immunities, buffs, KO)."""
+    from smrpgpatchbuilder.datatypes.items.classes import Weapon
+
+    variance = int(item.variance) if isinstance(item, Weapon) else 0
+    attack = item.attack
+    attack_base = attack - variance if attack - variance != 0 else 1
+    attack_variance_factor = (
+        min(2, (attack + variance) / attack_base) if attack > 0 else 0
+    )
+
+    rank = (
+        attack * max(0, attack_variance_factor)
+        + max(
+            0,
+            (item.magic_attack / (2 if item.magic_attack < 0 else 1))
+            + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
+            + (item.defense / (2 if item.defense < 0 else 1))
+            + min(20, item.speed / 2),
+        )
+        + 10 * len(item.status_immunities)
+        + 15 * len(item.elemental_immunities)
+        + 7.5 * len(item.elemental_resistances)
+        + 50 * (1 if item.prevent_ko else 0)
+        + 30 * len(item.temp_buffs)
+    )
+    return rank
+
+
 def build_item_impact_categories(world: GameWorld) -> None:
     """Build item impact categories for use in shop shuffling and other systems.
 
@@ -353,32 +382,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
         KerokeroColaItem,
         RockCandyItem,
     ]
-
-    # Calculate equipment rank values and categorize them
-    def calc_equip_rank(item: Equipment) -> float:
-        variance = int(item.variance) if isinstance(item, Weapon) else 0
-        attack = item.attack
-        attack_base = attack - variance if attack - variance != 0 else 1
-        attack_variance_factor = (
-            min(2, (attack + variance) / attack_base) if attack > 0 else 0
-        )
-
-        rank = (
-            attack * max(0, attack_variance_factor)
-            + max(
-                0,
-                (item.magic_attack / (2 if item.magic_attack < 0 else 1))
-                + (item.magic_defense / (2 if item.magic_defense < 0 else 1))
-                + (item.defense / (2 if item.defense < 0 else 1))
-                + min(20, item.speed / 2),
-            )
-            + 10 * len(item.status_immunities)
-            + 15 * len(item.elemental_immunities)
-            + 7.5 * len(item.elemental_resistances)
-            + 50 * (1 if item.prevent_ko else 0)
-            + 30 * len(item.temp_buffs)
-        )
-        return rank
 
     # Get all equipment and sort by rank
     all_equipment = [
