@@ -844,11 +844,6 @@ def set_locations(world: GameWorld) -> None:
             world.locations[MonstroSealedDoorClearRewardLocationPostgame] = (
                 MonstroSealedDoorClearRewardLocationPostgame()
             )
-        # Checks for postgame-unlocking bosses by default expect an impossible value.
-        # Enabling the remake flag sets it to the correct value, 7.
-        world.event_scripts.get_script_by_id(E0225_CHECK_VOUCHER_UNLOCK).set_contents([
-            Return()
-        ])
         room = world.rooms._rooms[R204_MUSHROOM_WAY_AREA_02]
         assert room is not None, f"Room {R204_MUSHROOM_WAY_AREA_02} not found"
         npc_10 = room.get_npc_by_target_id(NPC_10)
@@ -862,6 +857,10 @@ def set_locations(world: GameWorld) -> None:
         npc_19 = room.get_npc_by_target_id(NPC_19)
         assert npc_19 is not None, f"NPC_19 not found in room {R142_LANDS_END_AREA_05_SKY_BRIDGE}"
         npc_19.set_visible(True)
+    else:
+        world.event_scripts.get_script_by_id(E0225_CHECK_VOUCHER_UNLOCK).set_contents([
+            Return()
+        ])
 
 
     invisible_item_pool = [

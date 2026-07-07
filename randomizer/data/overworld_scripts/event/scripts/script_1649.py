@@ -216,7 +216,7 @@ script = EventScript([
 		A_FaceNorthwest()
 	]),
 	CopyVarToVar(from_var=TEMP_7030, to_var=PRIMARY_TEMP_7000),
-	RunDialog(dialog_id=DI1100_MINECART_SCORE, above_object=NPC_8, closable=False, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1100_MINECART_SCORE, above_object=NPC_8, closable=False, sync=False, multiline=True, use_background=True),
 	CopyVarToVar(from_var=TEMP_702E, to_var=PRIMARY_TEMP_7000),
 	RunDialogForDuration(dialog_id=DI1101_MINECART_HIGH_SCORE, duration=0, sync=False),
 	CopyVarToVar(from_var=TEMP_7030, to_var=PRIMARY_TEMP_7000),

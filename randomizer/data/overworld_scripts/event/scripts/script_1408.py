@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	Pause(4),
+	Pause(5),
 	JmpIfBitClear(TEMP_7042_0, ["EVENT_1408_action_queue_3"]),
 	ApplyTileModToLevel(use_alternate=True, room_id=R016_MARIOS_PAD, mod_id=33),
 	ActionQueueSync(target=NPC_0, subscript=[

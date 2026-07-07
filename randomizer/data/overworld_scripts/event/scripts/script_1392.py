@@ -44,6 +44,7 @@ script = EventScript([
 	]),
 	PaletteSet(palette_set_starts_at=EPAL0033, from_row=LEVEL_PALETTE_1, to_row=LEVEL_PALETTE_7),
 	PlayMusicAtDefaultVolume(M0014_MARIO_SPAD),
+    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	FadeInFromBlack(sync=False),
 	Return()
 ])

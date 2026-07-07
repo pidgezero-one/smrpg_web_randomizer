@@ -1062,7 +1062,27 @@ P130_CHAPEL_CROWN = ChapelPacket(
     sprite_id=SPR0216_CROWN,
     action_script_id=A0833_CHAPEL_CROWN_PLACEMENT,
 )
-P131_UNUSED = None
+P131_BLUE_CLOUD_VRAM1 = Packet(
+    packet_id=131,
+    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    action_script_id=A0651_MOKURA_PACKET,
+    show_shadow=False,
+    b0=0,
+    # Copy of P032_BLUE_CLOUD but vram_size=1 (>0) to force the extra-sprite-
+    # buffer (bitmap) path instead of the NPC-slot/chest-packet path. A vram_size=0
+    # cloud shares a palette row with a co-resident chest-prize packet (both route
+    # through buffer A's chest-packet slots), discolouring the prize. Vanilla routed
+    # P032 to the bitmap path by packet-id (>=8); the vram_size routing patch dropped
+    # vram_size=0 P032 onto the chest path. 1 = 2 VRAM units; the cloud needs 1.
+    vram_size=1,
+    sprite_priority=1,
+    layer_priority=3,
+    b2b2=False,
+    b2b3=False,
+    b2b4=False,
+    b2=0,
+    b4=0,
+)
 P132_UNUSED = None
 P133_UNUSED = None
 P134_UNUSED = None
@@ -1322,7 +1342,7 @@ ALL_PACKETS = PacketCollection(
         P128_CHAPEL_BROOCH,
         P129_CHAPEL_RING,
         P130_CHAPEL_CROWN,
-        P131_UNUSED,
+        P131_BLUE_CLOUD_VRAM1,
         P132_UNUSED,
         P133_UNUSED,
         P134_UNUSED,

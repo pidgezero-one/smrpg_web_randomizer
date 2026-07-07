@@ -1327,6 +1327,9 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     
     SetAMEM16BitToAbsolute7E(0x6A, ALLY_SLOT_1_CURRENT_HP),
     JmpIfAMEM16BitEqualsConst(0x6A, 0, ["meteor_part_2"]),
+    # Red Essence / invincibility: skip this ally if the invincible bit (7) is set
+    SetAMEM8BitToAbsolute7E(0x6A, ALLY_SLOT_1_STATUS_EFFECTS),
+    JmpIfAMEMBitsSet(0x6A, [7], ["meteor_part_2"]),
     SetAMEM16BitToAbsolute7E(0x6A, ALLY_SLOT_1_MAX_HP),
     JmpIfAMEM16BitNotEqualsAbsolute7E(0x6A, ALLY_SLOT_1_CURRENT_HP, ["meteor_part_4"]),
     SetAMEM16BitToConst(0x6A, 1),
@@ -1335,6 +1338,9 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     
 	SetAMEM16BitToAbsolute7E(0x6B, ALLY_SLOT_0_CURRENT_HP, identifier="meteor_part_2"),
     JmpIfAMEM16BitEqualsConst(0x6B, 0, ["meteor_part_3"]),
+    # Red Essence / invincibility: skip this ally if the invincible bit (7) is set
+    SetAMEM8BitToAbsolute7E(0x6B, ALLY_SLOT_0_STATUS_EFFECTS),
+    JmpIfAMEMBitsSet(0x6B, [7], ["meteor_part_3"]),
     SetAMEM16BitToAbsolute7E(0x6B, ALLY_SLOT_0_MAX_HP),
     JmpIfAMEM16BitNotEqualsAbsolute7E(0x6B, ALLY_SLOT_0_CURRENT_HP, ["meteor_part_6"]),
     SetAMEM16BitToConst(0x6B, 1),
@@ -1346,6 +1352,9 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     
     SetAMEM16BitToAbsolute7E(0x6C, ALLY_SLOT_2_CURRENT_HP),
     JmpIfAMEM16BitEqualsConst(0x6C, 0, ["meteor_exit"]),
+    # Red Essence / invincibility: skip this ally if the invincible bit (7) is set
+    SetAMEM8BitToAbsolute7E(0x6C, ALLY_SLOT_2_STATUS_EFFECTS),
+    JmpIfAMEMBitsSet(0x6C, [7], ["meteor_exit"]),
     SetAMEM16BitToAbsolute7E(0x6C, ALLY_SLOT_2_MAX_HP),
     JmpIfAMEM16BitNotEqualsAbsolute7E(0x6C, ALLY_SLOT_2_CURRENT_HP, ["meteor_part_7"]),
     SetAMEM16BitToConst(0x6C, 1),
@@ -1353,24 +1362,7 @@ script = AnimationScriptBlock(expected_size=4958, expected_beginning=0x35ECA2, s
     UseSpriteQueue(field_object=2, destinations=["meteor_ally_sprq_subroutine"], character_slot=True),
     
 	ReturnSubroutine(identifier="meteor_exit"),
-    
 
-	SpriteSequence(3, identifier="meteor_ally_sprq"),
-    PauseScriptUntilSpriteSequenceDone(),
-    SpriteSequence(0, looping_off=True),
-    ReturnSubroutine(),
-    RunSubroutine(["meteor_ally_sprq"], identifier="meteor_ally_sprq_subroutine"),
-    ReturnSpriteQueue(),
-    
-	SpriteSequence(3, identifier="meteor_ally_sprq_2"),
-    PauseScriptUntil(FRAMES_ELAPSED, frames=20),
-    SpriteSequence(7),
-    PauseScriptUntil(FRAMES_ELAPSED, frames=32),
-    SpriteSequence(8, looping_off=True),
-    ReturnSubroutine(),
-    RunSubroutine(["meteor_ally_sprq_2"], identifier="meteor_ally_sprq_subroutine_2"),
-    ReturnSpriteQueue(),
-    
     SetAMEM16BitToConst(0x6A, 0, identifier="meteor_part_4"),
     SetAbsolute7EToAMEM16Bit(ALLY_SLOT_1_CURRENT_HP, 0x6A),
     UseSpriteQueue(field_object=1, destinations=["meteor_ally_sprq_subroutine_2"], character_slot=True),

@@ -47,6 +47,14 @@ script = EventScript([
 	Store00To0248(),
 	Pause(1),
 	SetBit(TEMP_7043_0),
+	# re-sync working copies from persistent $70AC before the order dispatch: a co-located chest
+	# grant (E3080/E3084 quick-hit) borrows $7024 as scratch and leaves the coin count in it.
+	CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
+	Mem7000AndConst(0x0003),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=SECONDARY_TEMP_7024),
+	CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),
+	Mem7000AndConst(0x000C),
+	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_7026),
 	JmpIfVarNotEqualsConst(SECONDARY_TEMP_7024, 0, ["EVENT_1685_jmp_if_var_not_equals_const_20"]),
 	SetVarToConst(SECONDARY_TEMP_7024, 1),
 	CopyVarToVar(from_var=TEMP_70AC, to_var=PRIMARY_TEMP_7000),

@@ -69,7 +69,15 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=0, volume=100),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
 	Pause(1),
-    RunEventAsSubroutine(E0868_DOJO_5TH_BOSS_CHALLENGE_DEESCALATE),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ResetProperties(),
+		A_FaceNortheast(),
+	]),
+	ActionQueueAsync(target=NPC_4, subscript=[
+        A_TransferToXYZF(6, 14, 0, EAST),
+		A_ResetProperties(),
+		A_FaceSouthwest(),
+	]),
     FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_4, subscript=[
 		A_Pause(70),

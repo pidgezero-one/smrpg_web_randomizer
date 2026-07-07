@@ -909,8 +909,7 @@ dialog_data[324] = ''' Heard the fireworks guy's workin'
  and cheer him on?[await]'''
 dialog_data[325] = '''SERGEANT FLUTTER: 
  Mission accomplished!
- Elapsed time is [0x7000timer].[await]
-[end]'''
+ Elapsed time is [0x7000timer].[await]'''
 dialog_data[326] = ''' Look for the whirl where the ant
  pops up and proceed after it.[await][page]
  Keep following it and you'll find
@@ -1269,7 +1268,7 @@ dialog_data[477] = '''JOHNNY: You must've REALLY
  Now go on! Get outta here
  before I change my mind.[await]'''
 dialog_data[478] = '''JOHNNY: YOU again?!
- So, have you already beaten that[await]
+ So, have you already beaten that
  Smithy creature?[await]'''
 dialog_data[479] = '''JOHNNY: Yo, mate! Just 'cuz
  we're buds doesn't give ya

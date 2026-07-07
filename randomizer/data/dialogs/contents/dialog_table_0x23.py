@@ -835,7 +835,7 @@ dialog_data[273] = '''JAGGER: Now this should be
 dialog_data[274] = '''  You will enter combat against me?[await]
   [select] (Yes)
   [select] (Uh...)[await]'''
-dialog_data[275] = '''  You will enter combat against me\n
+dialog_data[275] = ''' You will enter combat against me
  in 3D?[await]
   [select] (Yes)
   [select] (Uh...)[await]'''

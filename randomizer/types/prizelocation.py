@@ -3042,11 +3042,38 @@ class PacketLocation(StandingLocationRow):
     # ``_packet_id`` is always included; subclasses opt in by listing extras here.
     _extra_packet_ids: list[int] = []
 
+    def render(
+        self, world: GameWorld
+    ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        # Repoint the display packet's sprite to the assigned prize. This is ALL a bare
+        # PacketLocation does — it is a COSMETIC mixin. The grant path comes from the
+        # location's other bases (e.g. the Marrymore snifits keep their npc_grant; the
+        # packet there is only a picture). A location whose prize is actually delivered by
+        # the dynamically-spawned packet object must subclass PacketLocationRow1, which
+        # routes grant -> packet_grant (object-local despawn) and runs the guard.
+        assert self.prize is not None and self.prize.model is not None
+        for packet_id in [self._packet_id, *self._extra_packet_ids]:
+            p = world.packets.packets[packet_id]
+            assert p is not None, (
+                f"Packet {packet_id} not found while rendering {type(self).__name__}"
+            )
+            p._set_sprite_id(self.prize.packet_data[0])
+            prep_script = world.action_scripts.scripts[p.action_script_id]
+            prep_script.insert_before_nth_command(
+                0,
+                A_SetSpriteSequence(
+                    index=self.prize.packet_data[1], is_sequence=True, looping=True
+                ),
+            )
+        return super().render(world)
+
+
+class PacketLocationRow1(StandingLocationRow1, PacketLocation):
+    # A real freestanding packet: the prize is delivered BY the dynamically-spawned packet
+    # object, so its grant must be the object-local (FD-F2-free) packet_grant and the
+    # presence-write guard applies. (A bare PacketLocation mixed into an NPCLocation is a
+    # cosmetic sprite repoint only and keeps that location's npc_grant.)
     def grant(self) -> EventScript:
-        # Packets use their prize's dedicated packet_grant (transient, object-local
-        # despawn) instead of standing_grant, because a packet has no presence bit of
-        # its own and an event-level RemoveObject on $70A8 aliases into the next room's
-        # NPC_0. See Prize.packet_grant.
         if self.prize is None:
             return EventScript([Return()])
         packet_grant = self.prize.packet_grant
@@ -3061,8 +3088,7 @@ class PacketLocation(StandingLocationRow):
         # NEXT level's slice (that room's NPC_0). Two ways to write presence: event-level
         # RemoveObject on $70A8 (F5/F9), and the action-level "set object presence" command
         # (raw bytes FD F2) inside an ActionQueueSync. Walk the whole grant + every event
-        # reachable by JmpToEvent and fail the build if any such write survives — so a new
-        # prize type (or an un-repointed grant) can't silently regress this.
+        # reachable by JmpToEvent and fail the build if any such write survives.
         def writes_presence(script: EventScript) -> bool:
             for cmd in script.contents:
                 if isinstance(cmd, RemoveObjectAt70A8FromCurrentLevel):
@@ -3096,26 +3122,8 @@ class PacketLocation(StandingLocationRow):
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
-        assert self.prize is not None and self.prize.model is not None
         self._assert_packet_grant_safe(world)
-        for packet_id in [self._packet_id, *self._extra_packet_ids]:
-            p = world.packets.packets[packet_id]
-            assert p is not None, (
-                f"Packet {packet_id} not found while rendering {type(self).__name__}"
-            )
-            p._set_sprite_id(self.prize.packet_data[0])
-            prep_script = world.action_scripts.scripts[p.action_script_id]
-            prep_script.insert_before_nth_command(
-                0,
-                A_SetSpriteSequence(
-                    index=self.prize.packet_data[1], is_sequence=True, looping=True
-                ),
-            )
         return super().render(world)
-
-
-class PacketLocationRow1(StandingLocationRow1, PacketLocation):
-    pass
 
 
 class RiverLocationRow(PrizeRow, RiverLocation):

@@ -89,7 +89,7 @@ script = EventScript([
 		A_Pause(24),
 		A_SetPriority(3),
 		A_Walk1StepNortheast(),
-		A_SetSpriteSequence(index=4, sprite_offset=2, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=6, is_sequence=True, looping=True),
 		A_FaceSouthwest()
 	]),
 	RunDialog(dialog_id=DI3122_MALLOW_WISH_CUTSCENE, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),

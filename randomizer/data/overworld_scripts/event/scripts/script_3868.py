@@ -36,6 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	SetBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3375_KEEP_SET_DOOR_ORDER),
+    ClearBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE),
 	EnterArea(room_id=R476_BOWSERS_KEEP_2ND_TIME_AREA_01, face_direction=NORTHEAST, x=4, y=37, z=0, run_entrance_event=True),
 	Return()
 ])

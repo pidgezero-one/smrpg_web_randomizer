@@ -1556,7 +1556,7 @@ class TeamworkBandItem(Accessory):
     _item_id: int = 95
     _description: str = " It's a headband"
     _equip_chars: list[PartyCharacter] = [MARIO, TOADSTOOL, BOWSER, GENO, MALLOW]
-    _price: int = 2
+    _price: int = 5
     _inflict_type = None
     _temp_buffs: list[TempStatBuff] = [TempStatBuff.MAGIC_ATTACK, TempStatBuff.ATTACK, TempStatBuff.MAGIC_DEFENSE, TempStatBuff.DEFENSE]
 

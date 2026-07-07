@@ -46,6 +46,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_PlaySound(sound=SO014_FLOWER, channel=4),
 		A_VisibilityOff()
 	]),
 	SetVarToConst(PRIMARY_TEMP_7000, 1),

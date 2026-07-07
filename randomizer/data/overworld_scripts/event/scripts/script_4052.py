@@ -1,4 +1,4 @@
-# E4052_EMPTY
+# E4052_PACKET_OF_E0993 (auto: spell E993 minus FD F2 + RemoveObj)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,13 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	DisableObjectTrigger(MEM_70A8),
+	ActionQueueSync(target=MEM_70A8, subscript=[
+		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
+		A_VisibilityOff(),
+		A_PlaySound(sound=SO085_FLOWER, channel=4),
+	]),
+	LearnSpell(MARIO, SuperJumpSpell, identifier="freestanding_spell_3_character_PKT"),
+	RunDialog(dialog_id=DI1952_LEARN_SPELL_3_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return()
 ])

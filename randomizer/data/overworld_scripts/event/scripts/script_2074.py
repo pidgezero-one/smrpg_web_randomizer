@@ -46,6 +46,10 @@ script = EventScript([
 	FadeInFromBlack(sync=False, duration=70),
 	Pause(60),
 	ActionQueueAsync(target=NPC_1, subscript=[
+        A_SetSpriteSequence(0, looping=True, is_sequence=True),
+		A_SequenceLoopingOn()
+	], identifier="sealed_boss_2_seq_loop_on"),
+	ActionQueueAsync(target=NPC_1, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthSteps(1),
 		A_Pause(30),
@@ -110,6 +114,10 @@ script = EventScript([
 	RunEventAsSubroutine(E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False, duration=70),
 	Pause(60),
+	ActionQueueAsync(target=NPC_1, subscript=[
+        A_SetSpriteSequence(0, looping=True, is_sequence=True),
+		A_SequenceLoopingOn()
+	], identifier="sealed_boss_1_seq_loop_on"),
 	ActionQueueAsync(target=NPC_0, subscript=[
 		A_SetWalkingSpeed(NORMAL),
 		A_WalkSouthSteps(1),

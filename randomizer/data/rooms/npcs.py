@@ -42,7 +42,7 @@ RED_SHELL_BASE = _item_npc_base(
 )
 PARASOL_BASE = _item_npc_base(SPR0821_PARASOL_PACKET)
 FAN_BASE = _item_npc_base(SPR0227_FAN_PACKET)
-TINY_STAR_BASE = _item_npc_base(SPR0768_TINY_STAR)
+TINY_STAR_BASE = _item_npc_base(SPR0226_TINY_STAR)
 PAN_BASE = _item_npc_base(SPR0225_FRYING_PAN_PACKET)
 CROWN_BASE = _item_npc_base(SPR0216_CROWN)
 SHOES_BASE = _item_npc_base(SPR0202_SHOES)
@@ -1413,7 +1413,7 @@ JONATHAN_JONES_NPC = NPC(
 )
 
 JONATHAN_JONES_POSTGAME_NPC = NPC(
-    sprite_id=SPR0961_JOHNNY_2_OVERWORLD,
+    sprite_id=SPR0739_JOHNNY_2_SMALL,
     shadow_size=ShadowSize.OVAL_MED,
     acute_axis=5,
     obtuse_axis=5,

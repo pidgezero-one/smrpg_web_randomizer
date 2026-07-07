@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SequenceLoopingOff()
 	], identifier="EVENT_2637_action_queue_0"),
 	ActionQueueAsync(target=MARIO, subscript=[
@@ -54,13 +54,13 @@ script = EventScript([
 		A_SetSpriteSequence(index=11, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	JmpIfRandom1of2(["EVENT_2637_action_queue_16"]),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=3, is_sequence=True, looping=True)
 	]),
 	Pause(30),
 	RunEventAsSubroutine(E2646_CASINO_GRATE_GUY_AWAIT_BUTTON),
 	Jmp(["EVENT_2637_play_sound_32"]),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True)
 	], identifier="EVENT_2637_action_queue_16"),
 	Pause(30),
@@ -72,13 +72,13 @@ script = EventScript([
 		A_SetSpriteSequence(index=10, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	JmpIfRandom1of2(["EVENT_2637_action_queue_28"]),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=3, is_sequence=True, looping=True)
 	]),
 	Pause(30),
 	RunEventAsSubroutine(E2646_CASINO_GRATE_GUY_AWAIT_BUTTON),
 	Jmp(["EVENT_2637_play_sound_36"]),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_SetSpriteSequence(index=2, is_sequence=True, looping=True)
 	], identifier="EVENT_2637_action_queue_28"),
 	Pause(30),
@@ -86,7 +86,7 @@ script = EventScript([
 	Jmp(["EVENT_2637_play_sound_32"]),
 	PlaySound(sound=SO088_WRONG_SIGNAL, channel=6, identifier="EVENT_2637_play_sound_32"),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_ResetProperties(),
 		A_SequenceLoopingOn()
 	]),
@@ -94,7 +94,7 @@ script = EventScript([
 	PlaySound(sound=SO087_CORRECT_SIGNAL, channel=6, identifier="EVENT_2637_play_sound_36"),
 	Pause(25),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	ActionQueueSync(target=NPC_1, subscript=[
+	ActionQueueSync(target=NPC_0, subscript=[
 		A_ResetProperties(),
 		A_SequenceLoopingOn()
 	]),

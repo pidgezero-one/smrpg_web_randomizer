@@ -41,8 +41,10 @@ script = EventScript([
 	], identifier="EVENT_3732_action_queue_2"),
     JmpIfBitClear(NIMBUS_LAND_LIBERATED, ["EVENT_3732_run_event_as_subroutine_0"]),
 	JmpIfObjectTriggerEnabledInSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["EVENT_3732_run_event_as_subroutine_0"]),
-	RemoveObjectFromSpecificLevel(NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND),
-	SummonObjectToSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND),
+	RemoveObjectFromCurrentLevel(NPC_0),
+	SummonObjectToCurrentLevel(NPC_1),
+    JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["EVENT_3732_run_event_as_subroutine_0"]),
+	ResumeActionScript(NPC_1),     
     
 	RunEventAsSubroutine(E0839_NIMBUS_CASTLE_SECOND_POST_THRONE_HALLWAY_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_3732_run_event_as_subroutine_0"),
 	FadeInFromBlack(sync=False),

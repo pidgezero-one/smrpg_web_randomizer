@@ -18,7 +18,7 @@ room = Room(
         extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
-                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
@@ -176,7 +176,8 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.EMPTY_NPC,
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
-            event_script=E1747_PERISCOPE_POSTGAME,
+            #event_script=E1747_PERISCOPE_POSTGAME,
+            event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=24,

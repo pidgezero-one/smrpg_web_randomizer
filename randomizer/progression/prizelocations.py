@@ -4891,10 +4891,9 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
             use_background=True,
         ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["next"]
+        JmpIfObjectInSpecificLevel(
+            NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["mines_hint_text"]
         ),
-        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4921,10 +4920,9 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
             use_background=True,
         ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["next"]
+        JmpIfObjectInSpecificLevel(
+            NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["mines_hint_text"]
         ),
-        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -4951,12 +4949,9 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
             use_background=True,
         ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectTriggerDisabledInSpecificLevel(
-            NPC_1,
-            R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM,
-            ["next"],
+        JmpIfObjectInSpecificLevel(
+            NPC_1, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, ["mines_hint_text"]
         ),
-        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -9774,19 +9769,6 @@ class Mimic2DropRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.HIDON_REWARD_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
-    _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 234),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
-        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"]),
-    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -9824,19 +9806,6 @@ class Mimic2StarPiece(StarPieceLocation):
     _rooms = [513]
     _override_id = 513
     _parent = Mimic2BossFight
-    _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 235),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
-        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"]),
-    ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
@@ -9852,19 +9821,6 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.HIDON_REWARD_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
-    _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 236),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
-        JmpIfBitSet(MIMIC_2_CLEARED, ["next"]),
-        Jmp(["sunken_ship_hint_text"]),
-    ]
     # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
     # This location's can_access requires defeating second mimic, which requires
     # accessing the SecondMimicFightLauncher location - can't be the same location.
@@ -12486,6 +12442,19 @@ class MonstroSealedDoorBossFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sealed_door_boss(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        if not isinstance(
+            self.prize, (CulexBossFight, Culex3DBossFight, MokuraBossFight, KnifeGuyGrateGuyBossFight, KingCalamariBossFight, MegasmilaxBossFight, CzarDragonBossFight)
+        ):
+            world.event_scripts.delete_command_by_identifier("sealed_boss_1_seq_loop_on")
+        return op
+
     # Flag as checked: MONSTRO_MIDDLE_DOOR_COMPLETED
 
 
@@ -12619,6 +12588,19 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sealed_postgame_boss(world, inventory)
+    
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int, int]],
+    ]:
+        op = super().render(world)
+        assert isinstance(self.prize, BossFightPrize)
+        if not isinstance(
+            self.prize, (CulexBossFight, Culex3DBossFight, MokuraBossFight, KnifeGuyGrateGuyBossFight, KingCalamariBossFight, MegasmilaxBossFight, CzarDragonBossFight)
+        ):
+            world.event_scripts.delete_command_by_identifier("sealed_boss_2_seq_loop_on")
+        return op
 
     _dialogs_expecting_replacement = [DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT]
 
@@ -17611,7 +17593,7 @@ class KeepFinalStarPiece(StarPieceLocation):
             ]
             second: list[UsableEventScriptCommand] = [
                 ClearBit(
-                    DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE, identifier=identifier
+                    RETURN_TO_OVERWORLD_AFTER_KEEP_STAR_PIECE, identifier=identifier
                 ),
                 JmpToEvent(E2149_KEEP_RESUMMON_ENEMIES_ON_EXIT),
             ]

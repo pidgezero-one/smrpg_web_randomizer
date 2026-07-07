@@ -578,31 +578,51 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
 
             if char_type is MarioRecruitmentPrize:
                 character = world.allies._allies[0]
-                for c in p.character_replacement_ids:
+                for c in p.character_replacement_ids + [
+                    _pc + "_PKT"
+                    for _pc in p.character_replacement_ids
+                    if _pc.startswith("freestanding")
+                ]:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MARIO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
             elif char_type is ToadstoolRecruitmentPrize:
                 character = world.allies._allies[1]
-                for c in p.character_replacement_ids:
+                for c in p.character_replacement_ids + [
+                    _pc + "_PKT"
+                    for _pc in p.character_replacement_ids
+                    if _pc.startswith("freestanding")
+                ]:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(TOADSTOOL)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
             elif char_type is BowserRecruitmentPrize:
                 character = world.allies._allies[2]
-                for c in p.character_replacement_ids:
+                for c in p.character_replacement_ids + [
+                    _pc + "_PKT"
+                    for _pc in p.character_replacement_ids
+                    if _pc.startswith("freestanding")
+                ]:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(BOWSER)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
             elif char_type is GenoRecruitmentPrize:
                 character = world.allies._allies[3]
-                for c in p.character_replacement_ids:
+                for c in p.character_replacement_ids + [
+                    _pc + "_PKT"
+                    for _pc in p.character_replacement_ids
+                    if _pc.startswith("freestanding")
+                ]:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(GENO)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)
             elif char_type is MallowRecruitmentPrize:
                 character = world.allies._allies[4]
-                for c in p.character_replacement_ids:
+                for c in p.character_replacement_ids + [
+                    _pc + "_PKT"
+                    for _pc in p.character_replacement_ids
+                    if _pc.startswith("freestanding")
+                ]:
                     world.event_scripts.get_command_by_identifier(c, LearnSpell).set_character(MALLOW)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id, "`CHARACTER`", character.name)
                 world.overworld_dialogs.search_and_replace_in_dialog(dialog_id_2, "`CHARACTER`", character.name)

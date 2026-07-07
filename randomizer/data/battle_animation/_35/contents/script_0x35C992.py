@@ -1375,4 +1375,20 @@ script = AnimationScriptBlock(expected_size=4971, expected_beginning=0x35C992, s
 	SetAMEM32ToXYZCoords(origin=TARGET_CURRENT_POSITION, x=0, y=-16, z=0, set_x=True, set_y=True, set_z=True),
 	RunSubroutine(["command_0x35A096"]),
 	ReturnObjectQueue(),
+	# Relocated from script_0x35ECA2 to free bank-35 space: Meteor ally hit-reaction
+	# subroutines (reached only by label from the meteor_* block's UseSpriteQueue calls).
+	SpriteSequence(3, identifier="meteor_ally_sprq"),
+	PauseScriptUntilSpriteSequenceDone(),
+	SpriteSequence(0, looping_off=True),
+	ReturnSubroutine(),
+	RunSubroutine(["meteor_ally_sprq"], identifier="meteor_ally_sprq_subroutine"),
+	ReturnSpriteQueue(),
+	SpriteSequence(3, identifier="meteor_ally_sprq_2"),
+	PauseScriptUntil(FRAMES_ELAPSED, frames=20),
+	SpriteSequence(7),
+	PauseScriptUntil(FRAMES_ELAPSED, frames=32),
+	SpriteSequence(8, looping_off=True),
+	ReturnSubroutine(),
+	RunSubroutine(["meteor_ally_sprq_2"], identifier="meteor_ally_sprq_subroutine_2"),
+	ReturnSpriteQueue(),
 ])

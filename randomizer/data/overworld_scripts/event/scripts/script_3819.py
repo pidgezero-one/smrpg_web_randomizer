@@ -86,7 +86,6 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_2, R319_LANDS_END_DESERT_AREA_06),
 	SummonObjectToSpecificLevel(NPC_6, R402_LANDS_END_DESERT_AREA_03),
 	SummonObjectToSpecificLevel(NPC_2, R403_LANDS_END_DESERT_AREA_05),
-	SummonObjectToSpecificLevel(NPC_3, R404_LANDS_END_DESERT_AREA_04),
 	SummonObjectToSpecificLevel(NPC_6, R318_LANDS_END_DESERT_AREA_02),
 	SetBit(TEMP_7044_7),
 	FadeInFromBlack(sync=False),
