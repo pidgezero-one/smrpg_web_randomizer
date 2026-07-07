@@ -32,25 +32,39 @@ from collections.abc import Iterator
 
 _ASSET = os.path.join(os.path.dirname(__file__), "static_data.bin")
 
-# ``credits.py`` (update_credits) regenerates the ending-credits command buffer,
-# the string-pointer table, and the strings into these ROM ranges on EVERY
-# build. static_data.bin must not carry stale base-ROM bytes here: a leftover
-# blob is applied in address order between two freshly written strings and
-# clobbers the tail of whichever string precedes it (seen as garbled credit
-# lines, e.g. "WITHOUT YOU..." -> "WITHOUER DSGN."). The render-disjoint
-# extraction predated the open_mode->credits.py move and wrongly captured the
-# old credits region; trim it out here. Ranges mirror credits.py finalize():
-# region-1 string pool, command+table+strings, and the underscore tile.
-_CREDITS_OWNED = ((0x3F9C40, 0x3F9FF8), (0x3FDBB0, 0x3FF104), (0x3FFDDA, 0x3FFDDE))
+# Ranges owned by a ``render()`` pass that regenerates them on EVERY build.
+# static_data.bin must not carry base-ROM bytes here: a leftover blob is applied
+# in address order (patch keys are sorted at build time) and clobbers freshly
+# rendered data whose key sits below it.
+#
+# credits.py (update_credits): ending-credits command buffer, string-pointer
+# table, strings. A stale blob lands between two freshly written strings and
+# clobbers the tail of the one before it (garbled lines, e.g. "WITHOUT YOU..."
+# -> "WITHOUER DSGN."). Ranges mirror credits.py finalize().
+#
+# rooms.render() (RoomCollection): the entire room-object region 0x148000-0x14FFFF
+# (512-entry pointer table + object data). The extraction captured base-ROM FF
+# padding at 0x14EDFC-0x14F017; when a seed's packed room data grows past
+# 0x14EDFC (postgame/shuffle content), that pad is applied after the last room
+# and clobbers room 509's final objects (clones 11-14) into 0xFF.
+#
+# The render-disjoint extraction predated the open_mode->render() moves and
+# wrongly captured these regions; trim them out here.
+_RENDERER_OWNED = (
+    (0x148000, 0x150000),
+    (0x3F9C40, 0x3F9FF8),
+    (0x3FDBB0, 0x3FF104),
+    (0x3FFDDA, 0x3FFDDE),
+)
 
 
-def _excluding_credits(offset: int, data: bytes) -> Iterator[tuple[int, bytes]]:
+def _excluding_owned(offset: int, data: bytes) -> Iterator[tuple[int, bytes]]:
     """Yield the sub-records of ``[offset, offset+len(data))`` that remain after
-    removing every credits-owned range (so static_data never overwrites the
-    credits region that ``credits.py`` regenerates)."""
+    removing every renderer-owned range (so static_data never overwrites a
+    region that a ``render()`` pass regenerates on every build)."""
     start, end = offset, offset + len(data)
     pos = start
-    for lo, hi in sorted(r for r in _CREDITS_OWNED if r[0] < end and r[1] > start):
+    for lo, hi in sorted(r for r in _RENDERER_OWNED if r[0] < end and r[1] > start):
         if lo > pos:
             yield pos, data[pos - start : lo - start]
         pos = max(pos, hi)
@@ -67,7 +81,7 @@ def get_patch() -> dict[int, bytes]:
     while pos < len(blob):
         offset, length = struct.unpack_from("<II", blob, pos)
         pos += 8
-        for sub_off, sub_data in _excluding_credits(offset, blob[pos : pos + length]):
+        for sub_off, sub_data in _excluding_owned(offset, blob[pos : pos + length]):
             if sub_data:
                 out[sub_off] = sub_data
         pos += length
