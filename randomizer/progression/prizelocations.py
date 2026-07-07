@@ -448,15 +448,15 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
         )
 
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 0),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 0),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(VOUCHER_CHECK_DONE, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(TOWER_BOSS_1_STAR_PIECE, ["next"]),
@@ -487,15 +487,15 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
         SlotsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R203_MUSHROOM_WAY_AREA_01, ["next"]
         ),
@@ -517,15 +517,15 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
         SlotsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 2),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 2),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R203_MUSHROOM_WAY_AREA_01, ["next"]
         ),
@@ -540,15 +540,15 @@ class MushroomWay1ToadRescue(NPCLocationRow2):
     _id = ShuffleLocationSelector.TOAD_RESCUE_1
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 3),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 3),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_1, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -570,15 +570,15 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
         InfiniteCoinsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 4),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 4),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R204_MUSHROOM_WAY_AREA_02, ["next"]
         ),
@@ -593,15 +593,15 @@ class MushroomWay2ToadRescue(NPCLocationRow3):
     _id = ShuffleLocationSelector.TOAD_RESCUE_2
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 5),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 5),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_2, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -623,15 +623,15 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         InfiniteCoinsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 6),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 6),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R204_MUSHROOM_WAY_AREA_02, ["next"]
         ),
@@ -649,15 +649,15 @@ class MushroomWayLeftItemRemake(StandingLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _remake_only = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 7),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 7),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_10, R204_MUSHROOM_WAY_AREA_02, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -674,15 +674,15 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _remake_only = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 8),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 8),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_11, R204_MUSHROOM_WAY_AREA_02, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -820,15 +820,15 @@ class MushroomWayStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _parent = MushrooomWayBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 9),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 9),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -843,15 +843,15 @@ class MushroomWayBossFightRewardItem(NPCLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_WAY
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 10),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 10),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -874,15 +874,15 @@ class MushroomWayCharacter(CharacterRecruitmentLocation):
         AllyNPCSub(R206_BANDITS_WAY_AREA_05, NPC_10),
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 11),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 11),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_3, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
@@ -1000,15 +1000,15 @@ class MushroomKingdomMainHall(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 12),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 12),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R017_MUSHROOM_KINGDOM_CASTLE_MAIN_HALL, ["next"]
         ),
@@ -1027,15 +1027,15 @@ class MushroomKingdomLiberatedVaultLeft(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 13),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 13),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_0, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
@@ -1052,15 +1052,15 @@ class MushroomKingdomLiberatedVaultRight(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 14),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 14),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_1, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
@@ -1077,15 +1077,15 @@ class MushroomKingdomLiberatedVaultMiddle(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 15),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 15),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(NPC_2, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
@@ -1105,15 +1105,15 @@ class MushroomKingdomChair(NPCLocationRow1):
     _id = ShuffleLocationSelector.PEACH_SURPRISE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 16),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 16),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_0, R020_MUSHROOM_KINGDOM_CASTLE_TOADSTOOLS_ROOM, ["next"]
         ),
@@ -1131,15 +1131,15 @@ class MushroomKingdomFreeShopItem(NPCLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 17),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 17),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MUSHROOM_KINGDOM_SHOPKEEPER_FREE_ITEM_GRANTED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
@@ -1154,15 +1154,15 @@ class MushroomKingdomShopBasementLeft(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 18),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 18),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]
         ),
@@ -1179,15 +1179,15 @@ class MushroomKingdomShopBasementRight(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 19),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 19),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R492_MUSHROOM_KINGDOM_ITEM_SHOP_BASEMENT, ["next"]
         ),
@@ -1205,15 +1205,15 @@ class MushroomKingdomWalletGuyFirstRewardLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.WALLET_GUY_1
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 20),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 20),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(RETURNED_WALLET, ["next"]),
         StoreItemAmountTo7000(WalletItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -1236,15 +1236,15 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
     _id = ShuffleLocationSelector.WALLET_GUY_2
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 21),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 21),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SECOND_WALLET_PRIZE_RECEIVED, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(RETURNED_WALLET, ["next"]),
@@ -1268,15 +1268,15 @@ class MushroomKingdomOccupiedOutdoorGuardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.INVASION_EASTERN_GUARD
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 22),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 22),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE, ["next"]
@@ -1300,15 +1300,15 @@ class MushroomKingdomOccupiedCastleToadRescueLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.INVASION_TOAD_RESCUE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 23),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 23),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_TOAD_RESCUED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
@@ -1331,15 +1331,15 @@ class MushroomKingdomOccupiedFamilyRescueLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.INVASION_FAMILY
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 24),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 24),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfObjectInSpecificLevel(
             NPC_3, R480_MUSHROOM_KINGDOM_DURING_MACK_JUMPING_KIDS_HOUSE_1F, ["mushroom_kingdom_hint_text"]
@@ -1365,15 +1365,15 @@ class MushroomKingdomOccupiedGuestRoomLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.INVASION_GUEST_ROOM
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 25),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 25),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(OCCUPIED_MUSHROOM_KINGDOM_GUEST_ROOM_ITEM_GRANTED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
@@ -1394,15 +1394,15 @@ class MushroomKingdomOccupiedVaultLeft(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1300),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1300),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
@@ -1422,15 +1422,15 @@ class MushroomKingdomOccupiedVaultRight(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1400),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1400),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
@@ -1450,15 +1450,15 @@ class MushroomKingdomOccupiedVaultMiddle(TreasureChestLocationRow6):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1500),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1500),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MUSHROOM_KINGDOM_OCCUPIED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R031_MUSHROOM_KINGDOM_CASTLE_VAULT, ["next"]
@@ -1644,15 +1644,15 @@ class MushroomKingdomStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _parent = MushroomKingdomBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 26),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 26),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitSet(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
@@ -1679,15 +1679,15 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_STORE_EXCHANGE
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 27),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 27),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(RARE_FROG_COIN_EXCHANGED, ["next"]),
         JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
         StoreItemAmountTo7000(RareFrogCoinItem),
@@ -1712,15 +1712,15 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.MUSHROOM_KINGDOM_INN
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 28),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 28),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(GAMEBOY_KID_PURCHASE_COMPLETE, ["next"]),
         JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
@@ -1749,15 +1749,15 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
         SlotsPrize,
     ]  # slots can work here graphically but this is a stupid place for it
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 29),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 29),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9, R207_BANDITS_WAY_AREA_02, ["next"]
         ),
@@ -1779,15 +1779,15 @@ class BanditsWayCoin1Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_1
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 30),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 30),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         #    JmpIfObjectNotInSpecificLevel(NPC_3, R207_BANDITS_WAY_AREA_02, ["next"]),
         #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         #    Jmp(["bandits_way_hint_text"])
@@ -1807,15 +1807,15 @@ class BanditsWayCoin2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_2
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 31),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 31),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         #    JmpIfObjectNotInSpecificLevel(NPC_4, R207_BANDITS_WAY_AREA_02, ["next"]),
         #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         #    Jmp(["bandits_way_hint_text"])
@@ -1835,15 +1835,15 @@ class BanditsWayCoin3Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.BANDITS_WAY_COIN_3
     _world_area = WorldAreaEnum.BANDITS_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 32),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 32),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         #    JmpIfObjectNotInSpecificLevel(NPC_5, R207_BANDITS_WAY_AREA_02, ["next"]),
         #    JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         #    Jmp(["bandits_way_hint_text"])
@@ -1864,15 +1864,15 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 33),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 33),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R077_BANDITS_WAY_AREA_03, ["next"]
         ),
@@ -1895,15 +1895,15 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 34),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 34),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R078_BANDITS_WAY_AREA_04, ["next"]
         ),
@@ -1935,15 +1935,15 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 35),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 35),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R078_BANDITS_WAY_AREA_04, ["next"]
         ),
@@ -1980,15 +1980,15 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 36),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 36),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R206_BANDITS_WAY_AREA_05, ["next"]
         ),
@@ -2071,15 +2071,15 @@ class BanditsWayStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _parent = BanditsWayBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 37),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 37),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         Jmp(["bandits_way_hint_text"]),
@@ -2101,15 +2101,15 @@ class BanditsWayBossFirstItemDropLocation(NPCLocationRow1, KeyItemLocation):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 38),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 38),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         Jmp(["bandits_way_hint_text"]),
@@ -2129,15 +2129,15 @@ class BanditsWayBossSecondItemDropLocation(NPCLocationRow2, KeyItemLocation):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 39),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 39),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BANDITS_WAY_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         Jmp(["bandits_way_hint_text"]),
@@ -2161,15 +2161,15 @@ class KeroSewersStairRoomLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 40),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 40),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_1"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -2196,15 +2196,15 @@ class KeroSewersStairRoomRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 41),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 41),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_2"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -2311,15 +2311,15 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 42),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 42),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_3"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -2353,15 +2353,15 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
         InfiniteCoinsPrize
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 43),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 43),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_4"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -2394,15 +2394,15 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
         InfiniteCoinsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 44),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 44),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_5"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -2436,15 +2436,15 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
         InfiniteCoinsPrize
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 45),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 45),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8,
             R301_KERO_SEWERS_AREA_07_WATER_SWITCH_ROOM_WBOOS,
@@ -2497,15 +2497,15 @@ class KeroSewersStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _parent = KeroSewersBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 46),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 46),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["sewers_closed_check_6"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(SEWER_BOSS_DEFEATED, ["next"], identifier="sewers_closed_check_6"),
@@ -2529,15 +2529,15 @@ class MidasRiverFirstCompletionRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.MIDAS_RIVER_FIRST_TIME
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 47),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 47),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MIDAS_RIVER_FIRST_VISIT_PRIZE_RECEIVED, ["next"]),
         Jmp(["midas_river_hint_text"]),
     ]
@@ -2551,15 +2551,15 @@ class MidasRiverLeftCaveLocation(RiverLocationRow2):
     _id = ShuffleLocationSelector.MIDAS_RIVER_LEFT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 48),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 48),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_2_BIT_1, ["next"]),
         Jmp(["midas_river_hint_text"]),
     ]
@@ -2573,15 +2573,15 @@ class MidasRiverBottomLeftCaveLocation(RiverLocationRow2):
     _id = ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_LEFT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 49),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 49),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_3_PRIZE, ["next"]),
         Jmp(["midas_river_hint_text"]),
     ]
@@ -2595,15 +2595,15 @@ class MidasRiverBottomRightCaveLocation(RiverLocationRow2):
     _id = ShuffleLocationSelector.MIDAS_RIVER_BOTTOM_RIGHT_CAVE
     _world_area = WorldAreaEnum.MIDAS_RIVER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 50),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 50),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MIDAS_RIVER_TUNNEL_4_PRIZE, ["next"]),
         Jmp(["midas_river_hint_text"]),
     ]
@@ -2621,15 +2621,15 @@ class TadpolePondCricketPieExchangeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.TADPOLE_POND
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 51),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 51),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(CRICKET_PIE_EXCHANGED, ["next"]),
         StoreItemAmountTo7000(CricketPieItem),
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
@@ -2649,15 +2649,15 @@ class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.CRICKET_JAM_REWARD
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 52),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 52),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(CRICKET_PIE_EXCHANGED, ["next"]),
         JmpIfBitSet(CRICKET_JAM_EXCHANGED, ["next"]),
         StoreItemAmountTo7000(CricketJamItem),
@@ -2679,15 +2679,15 @@ class MelodyBayFirstRewardLocation(NPCLocationRow1, KeyItemLocation):
     _id = ShuffleLocationSelector.MELODY_BAY_1
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 53),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 53),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
         Jmp(["tadpole_pond_hint_text"]),
     ]
@@ -2701,15 +2701,15 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
     _id = ShuffleLocationSelector.MELODY_BAY_2
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 54),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 54),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
         JmpIfBitClear(MELODY_BAY_ITEM_1_GRANTED, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
@@ -2729,15 +2729,15 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
     _id = ShuffleLocationSelector.MELODY_BAY_3
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 55),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 55),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MELODY_BAY_ITEM_3_GRANTED, ["next"]),
         JmpIfBitClear(MELODY_BAY_ITEM_2_GRANTED, ["next"]),
         JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
@@ -2770,15 +2770,15 @@ class RoseWaySwingingPlatformRoomLocation(TreasureChestLocationRow1):
         SlotsPrize,
     ]  # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 56),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 56),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R080_ROSE_WAY_TWO_FASTFLOATING_PLATFORMS, ["next"]
         ),
@@ -2794,15 +2794,15 @@ class RoseWayLeftIslandLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.ROSE_WAY_FLOWER
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 57),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 57),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_7, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         Jmp(["rose_way_hint_text"]),
     ]
@@ -2816,15 +2816,15 @@ class RoseWayMiddleIslandLocation(StandingLocationRow2):
     _id = ShuffleLocationSelector.ROSE_WAY_MUSHROOM
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 58),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 58),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_8, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         Jmp(["rose_way_hint_text"]),
     ]
@@ -2838,15 +2838,15 @@ class RoseWayCoin1Location(StandingLocationRow7):
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_1
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 59),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 59),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_18, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2860,15 +2860,15 @@ class RoseWayCoin2Location(StandingLocationRow6):
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_2
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 60),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 60),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_19, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2882,15 +2882,15 @@ class RoseWayCoin3Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_3
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 61),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 61),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_20, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2904,15 +2904,15 @@ class RoseWayCoin4Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_4
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 62),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 62),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_21, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2926,15 +2926,15 @@ class RoseWayCoin5Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.ROSE_WAY_COIN_5
     _world_area = WorldAreaEnum.ROSE_WAY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 63),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 63),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_22, R079_ROSE_WAY_MAIN_AREA, ["next"]),
         # Jmp(["rose_way_hint_text"])
     ]
@@ -2949,15 +2949,15 @@ class RoseWayFiveChestRoomTopLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 64),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 64),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
         ),
@@ -2974,15 +2974,15 @@ class RoseWayFiveChestRoomBottomLeftLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 65),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 65),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
         ),
@@ -2999,15 +2999,15 @@ class RoseWayFiveChestRoomRightLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 66),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 66),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
         ),
@@ -3024,15 +3024,15 @@ class RoseWayFiveChestRoomLeftLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 67),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 67),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
         ),
@@ -3049,15 +3049,15 @@ class RoseWayFiveChestRoomBottomRightLocation(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.ROSE_WAY
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 68),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 68),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R081_ROSE_WAY_TREASURE_CHESTS_WCOINS_AREA, ["next"]
         ),
@@ -3076,15 +3076,15 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 70),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 70),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
         ),
@@ -3101,15 +3101,15 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 69),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 69),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R087_ROSE_TOWN_ITEM_SHOP, ["next"]
         ),
@@ -3129,15 +3129,15 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 71),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 71),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R419_LAZY_SHELL_CLOUD, ["next"]
         ),
@@ -3176,15 +3176,15 @@ class RoseTownCloudLeftChestLocation(TreasureChestLocationRow2):
     _blacklist = [EXPStarPrize, SlotsPrize]
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 72),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 72),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R419_LAZY_SHELL_CLOUD, ["next"]
         ),
@@ -3225,15 +3225,15 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 73),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 73),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(ROSE_TOWN_INN_TOAD_ITEM_RECEIVED, ["next"]),
         Jmp(["rose_town_hint_text"]),
     ]
@@ -3248,15 +3248,15 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 74),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 74),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(ROSE_TOWN_GAZ_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         Jmp(["rose_town_hint_text"]),
@@ -3283,15 +3283,15 @@ class RoseTownTreasureHouseLeftChestLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 75),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 75),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]
         ),
@@ -3315,15 +3315,15 @@ class RoseTownTreasureHouseRightChestLocation(TreasureChestLocationRow2):
         ThirdMimicFightLauncher,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 76),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 76),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R093_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_1F, ["next"]
         ),
@@ -3343,15 +3343,15 @@ class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 77),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 77),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TREASURE_HUNTER_HOUSE_PRIZE, ["next"]),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(FOREST_MAZE_SECRET_FOUND, ["forest_maze_hint_text"]),
@@ -3375,15 +3375,15 @@ class RoseTownTreasureHouseUpperChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 78),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 78),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R097_ROSE_TOWN_DURING_BOWYER_TREASURE_HOUSE_2F, ["next"]
@@ -3405,15 +3405,15 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 79),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 79),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R224_FOREST_MAZE_AREA_01, ["next"]
@@ -3436,15 +3436,15 @@ class ForestMazeFirstUndergroundExitLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 80),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 80),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R228_FOREST_MAZE_AREA_04, ["next"]
@@ -3475,15 +3475,15 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         InfiniteCoinsPrize
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 81),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 81),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
@@ -3513,15 +3513,15 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         InfiniteCoinsPrize
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 82),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 82),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
@@ -3552,15 +3552,15 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         InfiniteCoinsPrize
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 83),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 83),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R242_FOREST_MAZE_ALL_TREE_TRUNK_UNDERGROUND_AREAS, ["next"]
@@ -3583,15 +3583,15 @@ class ForestMazeInnerMazeEntranceLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 84),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 84),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R227_FOREST_MAZE_AREA_09_LEADS_TO_4PATH_MAZE, ["next"]
@@ -3614,15 +3614,15 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 85),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 85),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R234_FOREST_MAZE_SECRET, ["next"]
@@ -3645,15 +3645,15 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 86),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 86),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R234_FOREST_MAZE_SECRET, ["next"]
@@ -3676,15 +3676,15 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 87),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 87),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R234_FOREST_MAZE_SECRET, ["next"]
@@ -3707,15 +3707,15 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 88),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 88),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R234_FOREST_MAZE_SECRET, ["next"]
@@ -3738,15 +3738,15 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 89),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 89),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R234_FOREST_MAZE_SECRET, ["next"]
@@ -3917,15 +3917,15 @@ class ForestMazeStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _parent = ForestMazeBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 90),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 90),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         Jmp(["forest_maze_hint_text"]),
@@ -3959,15 +3959,15 @@ class ForestMazeCharacter(CharacterRecruitmentLocation):
         ),
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 91),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 91),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitSet(FOREST_LIBERATED, ["next"]),
         Jmp(["forest_maze_hint_text"]),
@@ -4090,15 +4090,15 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 92),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 92),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
@@ -4121,15 +4121,15 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 93),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 93),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
@@ -4152,15 +4152,15 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 94),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 94),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_10, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
@@ -4182,15 +4182,15 @@ class PipeVaultSlidingCoinRoomCoin1Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_1
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 95),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 95),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_0, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -4209,15 +4209,15 @@ class PipeVaultSlidingCoinRoomCoin2Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_2
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 96),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 96),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_1, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -4236,15 +4236,15 @@ class PipeVaultSlidingCoinRoomCoin3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_3
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 97),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 97),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_2, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -4263,15 +4263,15 @@ class PipeVaultSlidingCoinRoomCoin4Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_4
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 98),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 98),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_3, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -4290,15 +4290,15 @@ class PipeVaultSlidingCoinRoomCoin5Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_COIN_5
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 99),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 99),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_4, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]),
         # Jmp(["pipe_vault_hint_text"])
     ]
@@ -4317,15 +4317,15 @@ class PipeVaultSlidingCoinRoomCrouchItemLocation(StandingLocationRow6):
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_FROG_COIN
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 100),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 100),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_5, R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES, ["next"]
@@ -4346,15 +4346,15 @@ class PipeVaultGoombaThumpinFirstPrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_1
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 101),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 101),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_1_GRANTED, ["next"]),
         Jmp(["pipe_vault_hint_text"]),
@@ -4373,15 +4373,15 @@ class PipeVaultGoombaThumpinSecondPrizeLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.GOOMBA_THUMPING_2
     _world_area = WorldAreaEnum.PIPE_VAULT
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 102),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 102),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(GOOMBA_THUMPIN_PRIZE_2_GRANTED, ["next"]),
         Jmp(["pipe_vault_hint_text"]),
@@ -4402,15 +4402,15 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 103),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 103),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]
@@ -4433,15 +4433,15 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.PIPE_VAULT
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 104),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 104),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R128_PIPE_VAULT_AREA_07_LONG_PATH_WMOVING_PLATFORMS, ["next"]
@@ -4467,15 +4467,15 @@ class YosterEntranceChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 105),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 105),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R033_YOSTER_ISLE_ENTRANCE_FROM_PIPE_VAULT, ["next"]
@@ -4496,15 +4496,15 @@ class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_COOKIE
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 106),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 106),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitSet(YOSHI_ITEM_GRANTED, ["next"]),
         Jmp(["yoster_isle_hint_text"]),
@@ -4523,15 +4523,15 @@ class YosterRacePrize1Location(NPCLocationRow1):
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_1
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 107),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 107),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
@@ -4554,15 +4554,15 @@ class YosterRacePrize2Location(NPCLocationRow3):
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_2
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 108),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 108),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
@@ -4585,15 +4585,15 @@ class YosterRacePrize3Location(NPCLocationRow4):
     _id = ShuffleLocationSelector.YOSTER_ISLE_RACE_REWARD_3
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 109),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 109),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(COMPLETED_MUSHROOM_DERBY, ["next"]),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(COOKIES_SHUFFLED, ["yoster_isle_hint_text"]),
@@ -4619,15 +4619,15 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.TREASURE_SELLER_1
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 110),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 110),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_1_PURCHASED, ["next"]),
         Jmp(["moleville_hint_text"]),
@@ -4655,15 +4655,15 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
     _id = ShuffleLocationSelector.TREASURE_SELLER_2
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 111),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 111),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(SEASIDE_LIBERATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_2_PURCHASED, ["next"]),
@@ -4694,15 +4694,15 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     _id = ShuffleLocationSelector.TREASURE_SELLER_3
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 112),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 112),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(VOLCANO_LIBERATED, ["next"]),
         JmpIfBitSet(TREASURE_SHOP_ITEM_3_PURCHASED, ["next"]),
@@ -4731,15 +4731,15 @@ class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.FIREWORKS_SHOP
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 113),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 113),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(FIREWORKS_HOUSE_ITEM_SOLD, ["next"]),
         Jmp(["moleville_hint_text"]),
@@ -4764,15 +4764,15 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
     _id = ShuffleLocationSelector.PURTEND_STORE
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 114),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 114),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(PURTEND_STORE_CHECK_DONE, ["next"]),
         JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
@@ -4801,15 +4801,15 @@ class CookieTraderLocation(KeyItemLocation, NPCLocationRow4):
     _id = ShuffleLocationSelector.COOKIE_TRADER
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 115),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 115),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(COOKIE_TRADER_CHECKED, ["next"]),
         JmpIfBitClear(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
@@ -4836,15 +4836,15 @@ class BucketGirlRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BUCKET_GIRL
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 116),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 116),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(CARBO_COOKIE_GIVEN, ["next"]),
         StoreItemAmountTo7000(CarboCookieItem),
@@ -4881,25 +4881,24 @@ class OuterMinesTrampolineHenchmanLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_1
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 117),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 117),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
+        JmpIfBitSet(MINES_HENCHMAN_MIDDLE_DEFEATED, ["next"]),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectInSpecificLevel(
-            NPC_1, R273_MOLEVILLE_MINES_AREA_04_WTRAMPOLINE, ["mines_hint_text"]
-        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
 
-    # Flag as checked: NPC 1 invisible in room 273
+    # Flag as checked: MINES_HENCHMAN_MIDDLE_DEFEATED
 
 
 class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
@@ -4910,26 +4909,24 @@ class OuterMinesLeftHenchmanLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_2
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 118),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 118),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
+        JmpIfBitSet(MINES_HENCHMAN_LEFT_DEFEATED, ["next"]),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectInSpecificLevel(
-            NPC_1, R277_MOLEVILLE_MINES_AREA_05_LEFT_OF_TRAMPOLINE_ROOM, ["mines_hint_text"]
-        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
 
-    # Flag as checked: NPC 1 invisible in room 277
-
+    # Flag as checked: MINES_HENCHMAN_LEFT_DEFEATED
 
 class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _bias = True
@@ -4939,25 +4936,24 @@ class OuterMinesRightHenchmanLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.CROCO_FLUNKIE_3
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 119),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 119),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
+        JmpIfBitSet(MINES_HENCHMAN_RIGHT_DEFEATED, ["next"]),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
-        JmpIfObjectInSpecificLevel(
-            NPC_1, R283_MOLEVILLE_MINES_AREA_09_LEADS_LEFT_TO_CROCOS_BOMBED_ROOM, ["mines_hint_text"]
-        ),
+        Jmp(["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_entrance(world, inventory)
 
-    # Flag as checked: NPC 1 invisible in room 283
+    # Flag as checked: MINES_HENCHMAN_RIGHT_DEFEATED
 
 
 class OuterMinesBossFight(BossFightLocation):
@@ -5055,15 +5051,15 @@ class OuterMinesStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _parent = OuterMinesBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 120),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 120),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
         Jmp(["mines_hint_text"]),
@@ -5092,15 +5088,15 @@ class OuterMinesBossPrizeLocation(KeyItemLocation, NPCLocationRow1):
     ]
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 121),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 121),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_1_DEFEATED, ["next"]),
         Jmp(["mines_hint_text"]),
@@ -5121,15 +5117,15 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 122),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 122),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]
@@ -5156,15 +5152,15 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_SHY_GUY
     _world_area = WorldAreaEnum.MOLEVILLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 123),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 123),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
@@ -5188,15 +5184,15 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 124),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 124),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -5224,15 +5220,15 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 125),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 125),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -5260,15 +5256,15 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.MOLEVILLE
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 126),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 126),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
@@ -5412,15 +5408,15 @@ class InnerMinesStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _parent = InnerMinesBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 127),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 127),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
@@ -5452,15 +5448,15 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
         ),
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 128),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 128),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
@@ -5584,15 +5580,15 @@ class InnerMinesPostgameStarPiece(StarPieceLocation):
     _remake_only = True
     _parent = InnerMinesPostgameBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 129),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 129),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BACK_OPENED, ["_mines_boss_2_defeated_check"]),
         StoreItemAmountTo7000(BambinoBombItem),
@@ -5630,15 +5626,15 @@ class InnerMinesPostgameDrop(NPCLocationRow1):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 130),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 130),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BACK_OPENED, ["__mines_boss_2_defeated_check"]),
         StoreItemAmountTo7000(BambinoBombItem),
@@ -5673,15 +5669,15 @@ class BoosterPassBushLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_PASS_BUSH
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 131),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 131),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_PASS_BUSH_ITEM_FOUND, ["next"]),
         Jmp(["booster_pass_hint_text"]),
     ]
@@ -5701,15 +5697,15 @@ class BoosterPassFirstRoomLeftChestLocation(TreasureChestLocationRow1):
         SlotsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 132),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 132),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8, R100_BOOSTER_PASS_AREA_01, ["next"]
         ),
@@ -5731,15 +5727,15 @@ class BoosterPassFirstRoomRightChestLocation(TreasureChestLocationRow2):
         SlotsPrize,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 133),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 133),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9, R100_BOOSTER_PASS_AREA_01, ["next"]
         ),
@@ -5755,15 +5751,15 @@ class BoosterPassSecondRoomFlowerLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_PASS_FLOWER
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 134),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 134),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_6, R101_BOOSTER_PASS_AREA_02, ["next"]),
         Jmp(["booster_pass_hint_text"]),
     ]
@@ -5779,15 +5775,15 @@ class BoosterPassSecretMiddleChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 135),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 135),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_10, R405_BOOSTER_PASS_SECRET, ["next"]
         ),
@@ -5811,15 +5807,15 @@ class BoosterPassSecretRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 136),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 136),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_11, R405_BOOSTER_PASS_SECRET, ["next"]
         ),
@@ -5843,15 +5839,15 @@ class BoosterPassSecretLeftChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOOSTER_PASS
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 137),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 137),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_12, R405_BOOSTER_PASS_SECRET, ["next"]
         ),
@@ -5879,15 +5875,15 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _blacklist = [ThirdMimicFightLauncher]
     _extra_sprite_buffer_rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 138),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 138),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS, ["next"]
         ),
@@ -5909,15 +5905,15 @@ class BoosterTowerTrainRoomCreviceLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_RAILWAY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 139),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 139),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_1, R194_BOOSTER_TOWER_2F_AREA_02_BOOSTERS_RAILWAY_ROOM, ["next"]
         ),
@@ -5940,15 +5936,15 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 140),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 140),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -5970,15 +5966,15 @@ class BoosterTowerFallingChestLocation(
     _container_event = E0253_NPC_QUEST_1_GRANT
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 141),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 141),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_SEESAW_CHEST_OPENED, ["next"]),
         JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -5997,15 +5993,15 @@ class BoosterTowerKnifeGuyPrizeLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 142),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 142),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check"]),
         Jmp(["next"]),
@@ -6035,15 +6031,15 @@ class BoosterTowerKnifeGuy2PrizeLocation(NPCLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_KNIFE_GUY_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 143),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 143),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_"]),
         Jmp(["next"]),
@@ -6077,15 +6073,15 @@ class BoosterTowerPortraitPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PORTRAITS
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 144),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 144),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_7, R195_BOOSTER_TOWER_6F_AREA_02_BOOSTERS_ANCESTOR_GAME_ROOM, ["next"]
         ),
@@ -6110,15 +6106,15 @@ class BoosterTowerElderKeyItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 145),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 145),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_0, R200_BOOSTER_TOWER_6F_AREA_03_ELDERS_ROOM_WCHOMP, ["next"]
         ),
@@ -6152,15 +6148,15 @@ class BoosterTowerParachuteRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 146),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 146),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]
         ),
@@ -6182,15 +6178,15 @@ class BoosterTowerParachuteRoomCreviceLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_PARACHUTE_CREVICE
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 147),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 147),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_8, R035_BOOSTER_TOWER_7F_3LEVEL_WPARACHUTING_SPOOKUMS, ["next"]
         ),
@@ -6215,15 +6211,15 @@ class BoosterTowerCheckerboardRightmostItemLocation(
     _id = ShuffleLocationSelector.BOOSTER_TOWER_ROOM_KEY
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 148),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 148),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_5,
             R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
@@ -6249,15 +6245,15 @@ class BoosterTowerCheckerboardTopItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 149),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 149),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_0,
             R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
@@ -6283,15 +6279,15 @@ class BoosterTowerCheckerboardLeftmostItemLocation(StandingLocationRow2):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 150),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 150),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_1,
             R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
@@ -6317,15 +6313,15 @@ class BoosterTowerCheckerboardUpperRightItemLocation(StandingLocationRow3):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 151),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 151),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_2,
             R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
@@ -6351,15 +6347,15 @@ class BoosterTowerCheckerboardBottomItemLocation(StandingLocationRow4):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_FROG_COIN_4
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 152),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 152),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_3,
             R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS,
@@ -6385,15 +6381,15 @@ class BoosterTowerCheckerboardCoin1Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_1
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 153),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 153),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_7, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6415,15 +6411,15 @@ class BoosterTowerCheckerboardCoin2Location(StandingLocationRow6):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_2
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 154),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 154),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6445,15 +6441,15 @@ class BoosterTowerCheckerboardCoin3Location(StandingLocationRow7):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_3
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 155),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 155),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6475,15 +6471,15 @@ class BoosterTowerCheckerboardCoin4Location(StandingLocationRow8):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_4
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 156),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 156),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6505,15 +6501,15 @@ class BoosterTowerCheckerboardCoin5Location(StandingLocationRow9):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_5
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 157),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 157),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6535,15 +6531,15 @@ class BoosterTowerCheckerboardCoin6Location(StandingLocationRow10):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_6
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 158),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 158),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6565,15 +6561,15 @@ class BoosterTowerCheckerboardCoin7Location(StandingLocationRow11):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_7
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 159),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 159),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6595,15 +6591,15 @@ class BoosterTowerCheckerboardCoin8Location(StandingLocationRow12):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_8
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 160),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 160),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6625,15 +6621,15 @@ class BoosterTowerCheckerboardCoin9Location(StandingLocationRow13):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_COIN_9
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 161),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 161),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS, ["next"]),
         # JmpIfBitSet(TOWER_OPENED, ["booster_tower_hint_text"]),
         # JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["booster_tower_hint_text"]),
@@ -6655,15 +6651,15 @@ class BoosterTowerRoomKeyChestLocation(TreasureChestLocationRow1):
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 162),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 162),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R048_BOOSTER_TOWER_8F_AREA_02_ZOOM_SHOES_ROOM, ["next"]
         ),
@@ -6695,15 +6691,15 @@ class BoosterTowerTopFloorLowerChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 163),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 163),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
@@ -6728,15 +6724,15 @@ class BoosterTowerTopFloorUpperChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 164),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 164),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
@@ -6761,15 +6757,15 @@ class BoosterTowerTopFloorCornerChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 165),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 165),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3,
             R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,
@@ -6793,15 +6789,15 @@ class BoosterTowerCurtainGamePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 166),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 166),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check__"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check__"]),
         Jmp(["next"]),
@@ -6834,15 +6830,15 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_MARIO_DOLL
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 167),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 167),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check___"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check___"]),
         Jmp(["next"]),
@@ -7089,15 +7085,15 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerIndoorBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 168),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 168),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check____"]),
         Jmp(["next"]),
@@ -7202,15 +7198,15 @@ class BoosterTowerIndoorStarPieceRemake(StarPieceLocation):
     _remake_only = True
     _parent = BoosterTowerIndoorBossFightRemake
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 169),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 169),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_____"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_____"]),
         Jmp(["next"]),
@@ -7253,15 +7249,15 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 170),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 170),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check_______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check_______"]),
         Jmp(["next"]),
@@ -7332,15 +7328,15 @@ class BoosterTowerBalconyStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _parent = BoosterTowerBalconyBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 171),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 171),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["returned_mario_doll_check______"]),
         JmpIfBitSet(TOWER_CHARACTER_RECRUITED, ["returned_mario_doll_check______"]),
         Jmp(["next"]),
@@ -7379,15 +7375,15 @@ class BoosterHillGuaranteedItem1(BoosterHillLocation, StandingLocation):
         P069_BOOSTER_HILL_PRIZE_STANDING_0,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 172),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 172),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 1),
@@ -7413,15 +7409,15 @@ class BoosterHillGuaranteedItem2(BoosterHillLocation, StandingLocation):
         P071_BOOSTER_HILL_PRIZE_STANDING_1,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 173),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 173),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 2),
@@ -7447,15 +7443,15 @@ class BoosterHillGuaranteedItem3(BoosterHillLocation, StandingLocation):
         P072_BOOSTER_HILL_PRIZE_STANDING_2,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 174),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 174),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 3),
@@ -7481,15 +7477,15 @@ class BoosterHillGuaranteedItem4(BoosterHillLocation, StandingLocation):
         P074_BOOSTER_HILL_PRIZE_STANDING_3,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 175),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 175),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 4),
@@ -7515,15 +7511,15 @@ class BoosterHillGuaranteedItem5(BoosterHillLocation, StandingLocation):
         P075_BOOSTER_HILL_PRIZE_STANDING_4,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 176),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 176),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 5),
@@ -7549,15 +7545,15 @@ class BoosterHillGuaranteedItem6(BoosterHillLocation, StandingLocation):
         P077_BOOSTER_HILL_PRIZE_STANDING_5,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 177),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 177),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 6),
@@ -7583,15 +7579,15 @@ class BoosterHillGuaranteedItem7(BoosterHillLocation, StandingLocation):
         P078_BOOSTER_HILL_PRIZE_STANDING_6,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 178),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 178),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 7),
@@ -7617,15 +7613,15 @@ class BoosterHillGuaranteedItem8(BoosterHillLocation, StandingLocation):
         P080_BOOSTER_HILL_PRIZE_STANDING_7,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 179),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 179),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 8),
@@ -7651,15 +7647,15 @@ class BoosterHillGuaranteedItem9(BoosterHillLocation, StandingLocation):
         P081_BOOSTER_HILL_PRIZE_STANDING_8,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 180),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 180),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 9),
@@ -7685,15 +7681,15 @@ class BoosterHillGuaranteedItem10(BoosterHillLocation, StandingLocation):
         P082_BOOSTER_HILL_PRIZE_STANDING_9,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 181),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 181),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 10),
@@ -7719,15 +7715,15 @@ class BoosterHillGuaranteedItem11(BoosterHillLocation, StandingLocation):
         P083_BOOSTER_HILL_PRIZE_STANDING_10,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 182),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 182),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 11),
@@ -7753,15 +7749,15 @@ class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
         P084_BOOSTER_HILL_PRIZE_STANDING_11,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 183),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 183),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 12),
@@ -7787,15 +7783,15 @@ class BoosterHillGuaranteedItem13(BoosterHillLocation, StandingLocation):
         P085_BOOSTER_HILL_PRIZE_STANDING_12,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 184),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 184),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 13),
@@ -7821,15 +7817,15 @@ class BoosterHillGuaranteedItem14(BoosterHillLocation, StandingLocation):
         P086_BOOSTER_HILL_PRIZE_STANDING_13,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 185),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 185),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 14),
@@ -7855,15 +7851,15 @@ class BoosterHillGuaranteedItem15(BoosterHillLocation, StandingLocation):
         P087_BOOSTER_HILL_PRIZE_STANDING_14,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 186),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 186),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 15),
@@ -7889,15 +7885,15 @@ class BoosterHillGuaranteedItem16(BoosterHillLocation, StandingLocation):
         P088_BOOSTER_HILL_PRIZE_STANDING_15,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 187),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 187),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BOOSTER_HILL_CLOSED, ["next"]),
         CopyVarToVar(from_var=BOOSTER_HILL_FLOWER_COUNTER, to_var=PRIMARY_TEMP_7000),
         CompareVarToConst(PRIMARY_TEMP_7000, 16),
@@ -7921,15 +7917,15 @@ class MarrymoreFirstSuitePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 188),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 188),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0709_SUITE_1_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize1Threshold setting
@@ -7942,15 +7938,15 @@ class MarrymoreSecondSuitePrizeLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 189),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 189),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0710_SUITE_2_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize2Threshold setting
@@ -7963,15 +7959,15 @@ class MarrymoreThirdSuitePrizeLocation(NPCLocationRow3):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 190),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 190),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0711_SUITE_3_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize3Threshold setting
@@ -7984,15 +7980,15 @@ class MarrymoreFourthSuitePrizeLocation(NPCLocationRow4):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 191),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 191),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0712_SUITE_4_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize4Threshold setting
@@ -8005,15 +8001,15 @@ class MarrymoreFifthSuitePrizeLocation(NPCLocationRow5):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 192),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 192),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0713_SUITE_5_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize5Threshold setting
@@ -8026,15 +8022,15 @@ class MarrymoreSixthSuitePrizeLocation(NPCLocationRow6):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 193),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 193),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         RunEventAsSubroutine(E0714_SUITE_6_HINT_SUBR),
     ]
     # flag as checked: MARRYMORE_SUITE_LEGAL_COUNT >= SuitePrize6Threshold setting
@@ -8048,15 +8044,15 @@ class MarrymoreBigTipLocation(NPCLocationRow7):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 194),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 194),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MARRYMORE_MAJOR_TIP_GIVEN, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
     ]
@@ -8071,15 +8067,15 @@ class MarrymoreHotelChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MARRYMORE
     _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 195),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 195),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R009_MARRYMORE_INN_REGULAR_ROOM, ["next"]
         ),
@@ -8104,15 +8100,15 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1, PacketLocation)
     _container_event = E0253_NPC_QUEST_1_GRANT
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_1
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 196),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 196),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_1_RETRIEVED, ["next"]),
@@ -8134,15 +8130,15 @@ class MarrymoreSnifit2Location(KeyItemLocation, NPCLocationRow2, PacketLocation)
     _container_event = E0252_NPC_QUEST_2_GRANT
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_2
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 197),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 197),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_2_RETRIEVED, ["next"]),
@@ -8164,15 +8160,15 @@ class MarrymoreSnifit3Location(KeyItemLocation, NPCLocationRow3, PacketLocation)
     _container_event = E0251_NPC_QUEST_3_GRANT
     _id = ShuffleLocationSelector.MARRYMORE_SNIFIT_3
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 198),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 198),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CHAPEL_ITEM_3_RETRIEVED, ["next"]),
@@ -8195,15 +8191,15 @@ class MarrymoreAltarHeadLocation(KeyItemLocation, PacketLocationRow1):
     _packet_id = P130_CHAPEL_CROWN
     _id = ShuffleLocationSelector.MARRYMORE_ALTAR
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 199),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 199),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitSet(CROWN_COLLECTED, ["next"]),
@@ -8302,15 +8298,15 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _parent = MarrymoreBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 200),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 200),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["marrymore_hint_text"]),
@@ -8351,15 +8347,15 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         ),
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 201),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 201),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(CHAPEL_ITEMS_ANYWHERE_ENABLED, ["marrymore_hint_text"]),
@@ -8571,15 +8567,15 @@ class MarrymoreBossFightStarPieceRemake(StarPieceLocation):
     _remake_only = True
     _parent = MarrymoreBossFightRemake
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 202),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 202),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
@@ -8606,15 +8602,15 @@ class MarrymoreBossFightRemakeItemDrop(NPCLocationRow4):
     _remake_only = True
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 203),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 203),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(POSTGAME_CHAPEL_COMPLETE, ["next"]),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
@@ -8639,15 +8635,15 @@ class StarHillStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.STAR_HILL_STAR_PIECE_1
     _world_area = WorldAreaEnum.STAR_HILL
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 204),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 204),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectInSpecificLevel(
             NPC_9, R159_STAR_HILL_AREA_04, ["star_hill_hint_text"]
         ),
@@ -8666,15 +8662,15 @@ class FrogDiscipleLocation1(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_1
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 205),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 205),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_1_PURCHASED, ["next"]),
         Jmp(["frog_disciple_hint_text"]),
     ]
@@ -8686,15 +8682,15 @@ class FrogDiscipleLocation2(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_2
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 206),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 206),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_2_PURCHASED, ["next"]),
         Jmp(["frog_disciple_hint_text"]),
     ]
@@ -8707,15 +8703,15 @@ class FrogDiscipleLocation3(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_3
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 207),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 207),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_3_PURCHASED, ["next"]),
         Jmp(["frog_disciple_hint_text"]),
     ]
@@ -8728,15 +8724,15 @@ class FrogDiscipleLocation4(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_4
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 208),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 208),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_4_PURCHASED, ["next"]),
         Jmp(["frog_disciple_hint_text"]),
     ]
@@ -8749,15 +8745,15 @@ class FrogDiscipleLocation5(FrogDiscipleLocation):
     _id = ShuffleLocationSelector.FROG_DISCIPLE_5
     _world_area = WorldAreaEnum.TADPOLE_POND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 209),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 209),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FROG_DISCIPLE_ITEM_5_PURCHASED, ["next"]),
         Jmp(["frog_disciple_hint_text"]),
     ]
@@ -8936,15 +8932,15 @@ class SeasideBeachStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _parent = SeasideBeachBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 210),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 210),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SEASIDE_LIBERATED, ["next"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         Jmp(["seaside_town_hint_text"]),
@@ -8967,15 +8963,15 @@ class SeasideTownBossPrizeLocation(KeyItemLocation, StandingLocationRow1):
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 211),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 211),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         JmpIfBitClear(SEASIDE_LIBERATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
@@ -9001,15 +8997,15 @@ class SeasideTownShedRescueLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.SEASIDE_TOWN_RESCUE
     _world_area = WorldAreaEnum.SEASIDE_TOWN
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 212),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 212),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["next"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         JmpIfObjectNotInSpecificLevel(
@@ -9042,15 +9038,15 @@ class SeaStarslapRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SEA
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 213),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 213),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R134_SEA_AREA_03_SUPER_STAR_ROOM, ["next"]
@@ -9073,15 +9069,15 @@ class SeaSaveRoomBackChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 214),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 214),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
@@ -9104,15 +9100,15 @@ class SeaSaveRoomMiddleChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 215),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 215),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
@@ -9135,15 +9131,15 @@ class SeaSaveRoomFrontChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 216),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 216),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R132_SEA_AREA_05_FROM_AREA_02_WSAVE_POINT, ["next"]
@@ -9166,15 +9162,15 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SEA
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 217),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 217),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R133_SEA_AREA_06_WATER_ROOM_WWHIRLPOOLS, ["next"]
@@ -9200,15 +9196,15 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 218),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 218),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -9234,15 +9230,15 @@ class ShipRatStairsBoxesLocation(PacketLocationRow1):
     _packet_id = P037_SHIP_STAIRCASE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS_FLOWER
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 219),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 219),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_STAIRWAY_FREESTANDING_ITEM_OBTAINED, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9264,15 +9260,15 @@ class ShipTroopaPuzzleLocation(PacketLocationRow1):
     _packet_id = P027_SUNKEN_SHIP_TROOPA_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TROOPA_PUZZLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 220),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 220),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_TROOPA_PRIZE, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9294,15 +9290,15 @@ class ShipTrampolinePuzzle(PacketLocationRow1):
     _packet_id = P026_SUNKEN_SHIP_TRAMPOLINE_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_TRAMPOLINE_PUZZLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 221),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 221),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(UNKNOWN_707D_1, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9325,15 +9321,15 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_3D_MAZE
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 222),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 222),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_MAZE_PRIZE, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9354,15 +9350,15 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 223),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 223),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -9424,15 +9420,15 @@ class ShipCoinSnakePuzzleLocation(StandingLocationRow1):
     ]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COIN_SNAKE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 224),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 224),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_COIN_PRIZE, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9454,15 +9450,15 @@ class ShipCannonballPuzzle(PacketLocationRow1):
     _packet_id = P035_SUNKEN_SHIP_CANNONBALL_PUZZLE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_CANNONBALL_PUZZLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 225),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 225),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_CANNONBALL_PRIZE, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9484,15 +9480,15 @@ class ShipBarrelPuzzle(PacketLocationRow1):
     _packet_id = P036_BARREL_PUZZLE_PRIZE
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BARREL_PUZZLE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 226),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 226),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(UNKNOWN_707D_5, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9552,15 +9548,15 @@ class ShipPasswordStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _parent = ShipPasswordBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 227),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 227),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_MIDBOSS_COMPLETED, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -9581,15 +9577,15 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 228),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 228),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -9614,15 +9610,15 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 229),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 229),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
@@ -9647,15 +9643,15 @@ class InnerShipCloneRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 230),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 230),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM, ["next"]
@@ -9678,15 +9674,15 @@ class InnerShipBehindBoxesChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 231),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 231),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R183_SUNKEN_SHIP_POSTKC_AREA_08_SECRET_ROOM_WITH_FROG_COIN, ["next"]
@@ -9709,15 +9705,15 @@ class InnerShipSaveRoomLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 232),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 232),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]
@@ -9740,15 +9736,15 @@ class InnerShipSaveRoomRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 233),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 233),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R184_SUNKEN_SHIP_POSTKC_AREA_09_HIDONS_ROOM_WSAVE_POINT, ["next"]
@@ -9861,15 +9857,15 @@ class InnerShipFirstUnderwaterRoomBottomItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 237),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 237),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_0, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
@@ -9892,15 +9888,15 @@ class InnerShipFirstUnderwaterRoomTopItemLocation(StandingLocationRow2):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 238),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 238),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_1, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
@@ -9923,15 +9919,15 @@ class InnerShipFirstUnderwaterRoomLeftItemLocation(StandingLocationRow3):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 239),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 239),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_2, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
@@ -9954,15 +9950,15 @@ class InnerShipFirstUnderwaterRoomMiddleItemLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _model_allowlist = [DefaultItem, FlowerObject, KeyObject, RecoveryMushroomObject, FrogCoinObject, SmallFrogCoinObjectNoMoney, SmallFrogCoinObject, SmallCoinObject, BigCoinObject]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 240),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 240),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_3, R187_SUNKEN_SHIP_POSTKC_AREA_10_WATER_ROOM_WITH_FROG_COINS, ["next"]
@@ -9985,15 +9981,15 @@ class InnerShipSecretRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 241),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 241),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R185_SUNKEN_SHIP_POSTKC_AREA_14_SECRET_SAFETY_RING, ["next"]
@@ -10015,15 +10011,15 @@ class InnerShipPoolRoomLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.SUNKEN_SHIP_BLOOBER_ROOM
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 242),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 242),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_5,
@@ -10048,15 +10044,15 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 243),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 243),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4,
@@ -10201,15 +10197,15 @@ class ShipFinalStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _parent = ShipFinalBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 244),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 244),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(SHIP_LIBERATED, ["next"]),
         Jmp(["sunken_ship_hint_text"]),
@@ -10293,15 +10289,15 @@ class ShipPostgameFightItemDrop(KeyItemLocation, NPCLocationRow1):
     _remake_only = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 245),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 245),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
         JmpIfBitClear(SHIP_LIBERATED, ["next"]),
@@ -10327,15 +10323,15 @@ class ShipPostgameStarPiece(StarPieceLocation):
     _remake_only = True
     _parent = ShipPostgameBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 246),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 246),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitSet(POSTGAME_SHIP_COMPLETED, ["next"]),
         JmpIfBitClear(SHIP_LIBERATED, ["next"]),
@@ -10363,15 +10359,15 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 247),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 247),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R137_LANDS_END_AREA_01, ["next"]
@@ -10394,15 +10390,15 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = []
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 248),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 248),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R138_LANDS_END_AREA_02, ["next"]
@@ -10427,15 +10423,15 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
         SlotsPrize
     ]  # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 249),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 249),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R138_LANDS_END_AREA_02, ["next"]
@@ -10457,15 +10453,15 @@ class LandsEndBeeTowerChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.LNDS_END_BEE_ROOM
     _world_area = WorldAreaEnum.LANDS_END
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 250),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 250),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R141_LANDS_END_AREA_04_ROTATING_FLOWERS, ["next"]
@@ -10488,15 +10484,15 @@ class LandsEndCaveSideRemake(StandingLocationRow1):
     _remake_only = True
     _id = ShuffleLocationSelector.LANDS_END_CAVE_SIDE_REMAKE
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 251),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 251),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_19, R142_LANDS_END_AREA_05_SKY_BRIDGE, ["next"]
@@ -10521,15 +10517,15 @@ class LandsEndGrottoEntranceChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 252),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 252),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7,
@@ -10554,15 +10550,15 @@ class LandsEndGrottoCornerChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 253),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 253),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6,
@@ -10587,15 +10583,15 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 254),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 254),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(LANDS_END_GATED, ["lands_end_grotto_end_chest_sewers_closed"]),
         JmpIfBitSet(SEWERS_CLOSED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
@@ -10622,15 +10618,15 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 255),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 255),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R263_LANDS_END_UNDERGROUND_AREA_01, ["next"]
@@ -10653,15 +10649,15 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 256),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 256),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_18, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]
@@ -10684,15 +10680,15 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 257),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 257),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_19, R262_LANDS_END_UNDERGROUND_AREA_04_BUY_SUPER_STARS, ["next"]
@@ -10713,15 +10709,15 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.TROOPA_CLIMB
     _world_area = WorldAreaEnum.LANDS_END
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 258),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 258),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["next"]),
         Jmp(["lands_end_hint_text"]),
@@ -10779,15 +10775,15 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     _override_id = 519
     _parent = LandsEndCloudBoss
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 259),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 259),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # can appear in first room
         JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["next"]),
         Jmp(["lands_end_hint_text"]),
@@ -10808,15 +10804,15 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 260),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 260),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R420_BELOME_TEMPLE_AREA_02_FORTUNE_ROOM, ["next"]
@@ -10839,15 +10835,15 @@ class BelomeTempleLMRChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 261),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 261),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
@@ -10877,15 +10873,15 @@ class BelomeTempleLRMChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 262),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 262),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
@@ -10915,15 +10911,15 @@ class BelomeTempleRLMChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 263),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 263),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
@@ -10953,15 +10949,15 @@ class BelomeTempleRMLChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 264),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 264),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9, R421_BELOME_TEMPLE_AREA_04_ROOM_DETERMINED_BY_FORTUNE, ["next"]
@@ -10991,15 +10987,15 @@ class BelomeBeforeBossRightChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 265),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 265),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -11022,15 +11018,15 @@ class BelomeBeforeBossLowerLeftChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 266),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 266),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -11053,15 +11049,15 @@ class BelomeBeforeBossMiddleChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 267),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 267),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -11084,15 +11080,15 @@ class BelomeBeforeBossUpperLeftChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.TEMPLE
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 268),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 268),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -11117,15 +11113,15 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 269),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 269),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_0, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11155,15 +11151,15 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 270),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 270),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_1, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11193,15 +11189,15 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 271),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 271),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_2, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11231,15 +11227,15 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 272),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 272),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_3, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11269,15 +11265,15 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 273),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 273),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_4, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11307,15 +11303,15 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 274),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 274),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_5, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11345,15 +11341,15 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 275),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 275),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_6, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11383,15 +11379,15 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 276),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 276),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_7, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11421,15 +11417,15 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 277),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 277),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_8, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11459,15 +11455,15 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 278),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 278),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_9, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11497,15 +11493,15 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 279),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 279),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_10, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11535,15 +11531,15 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 280),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 280),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_11, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11573,15 +11569,15 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 281),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 281),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_13, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11611,15 +11607,15 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 282),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 282),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_14, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11649,15 +11645,15 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
         DefaultItem,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 283),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 283),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_15, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
@@ -11724,15 +11720,15 @@ class TempleBossFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.TEMPLE
     _parent = TempleBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 284),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 284),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_BOSS_DEFEATED, ["next"]),
         JmpIfBitClear(TEMPLE_BOSS_GATED, ["belome_temple_hint_text"]),
@@ -11790,15 +11786,15 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
     _remake_only = True
     _parent = TempleBossFightPostgame
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 285),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 285),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used"]),
@@ -11833,15 +11829,15 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
     _remake_only = True
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 286),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 286),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitSet(TEMPLE_POSTGAME_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["belome3_voucher_used2"]),
@@ -11877,15 +11873,15 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 287),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 287),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]
         ),
@@ -11906,15 +11902,15 @@ class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
     _id = ShuffleLocationSelector.MONSTRO_TOWN_THWOMP
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 288),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 288),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -11947,15 +11943,15 @@ class DojoFirstFight(BossFightLocation):
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 289),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 289),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
         Jmp(["monstro_town_hint_text"]),
     ]
@@ -11990,15 +11986,15 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _parent = DojoFirstFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 290),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 290),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -12077,15 +12073,15 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _override_id = 515
     _parent = DojoSecondFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 291),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 291),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -12159,15 +12155,15 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _override_id = 516
     _parent = DojoThirdFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 292),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 292),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -12240,15 +12236,15 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _override_id = 517
     _parent = DojoFourthFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 293),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 293),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -12270,15 +12266,15 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 294),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 294),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
@@ -12353,15 +12349,15 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _remake_only = True
     _parent = DojoFifthFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 295),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 295),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
@@ -12389,15 +12385,15 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 296),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 296),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
@@ -12473,15 +12469,15 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
         ),
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 297),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 297),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -12522,15 +12518,15 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _monstro_shuffle = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 298),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 298),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -12617,15 +12613,15 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _remake_only = True
     _parent = MonstroSealedDoorBossFightPostgame
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 299),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 299),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -12654,15 +12650,15 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
     _remake_only = True
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 300),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 300),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
@@ -12688,15 +12684,15 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 301),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 301),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_1_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["super_jump_hint_text"]),
@@ -12718,15 +12714,15 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 302),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 302),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_2_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["super_jump_hint_text"]),
@@ -12748,15 +12744,15 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 303),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 303),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MUSTY_FEARS_QUEST_COMPLETE, ["next"]),
         StoreItemAmountTo7000(DryBonesFlagItem),
@@ -12790,15 +12786,15 @@ class BeanValleyFirstDeadEndLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 304),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 304),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R252_BEAN_VALLEY_MAIN_AREA, ["next"]
         ),
@@ -12815,15 +12811,15 @@ class BeanValleyFirstProgressChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 305),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 305),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R252_BEAN_VALLEY_MAIN_AREA, ["next"]
         ),
@@ -12840,15 +12836,15 @@ class BeanValleyLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 306),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 306),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R334_BEAN_VALLEY_PIPE_ROOM_LEFTMOST_PIPE, ["next"]
         ),
@@ -12865,15 +12861,15 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 307),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 307),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R348_BEAN_VALLEY_PIPE_ROOM_BOTTOM_LEFT, ["next"]
         ),
@@ -12890,15 +12886,15 @@ class BeanValleyBottomRightPiranhaPipeUpperLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 308),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 308),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]
         ),
@@ -12915,15 +12911,15 @@ class BeanValleyBottomRightPiranhaPipeLowerLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 309),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 309),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R349_BEAN_VALLEY_PIPE_ROOM_BOTTOM_RIGHT, ["next"]
         ),
@@ -12940,15 +12936,15 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 310),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 310),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
         ),
@@ -13009,15 +13005,15 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 311),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 311),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
         ),
@@ -13033,15 +13029,15 @@ class BeanValleyRightPipeUnderStairsLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_HIDDEN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 312),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 312),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_9, R335_BEAN_VALLEY_PIPE_ROOM_RIGHTMOST_PIPE_LARGE_ROOM, ["next"]
         ),
@@ -13058,15 +13054,15 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 313),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 313),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_14, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA, ["next"]
         ),
@@ -13136,15 +13132,15 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _parent = BeanValleyPlanterBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 314),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 314),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BEAN_VALLEY_BOSS_DEFEATED, ["next"]),
         Jmp(["bean_valley_hint_text"]),
     ]
@@ -13163,15 +13159,15 @@ class BeanValleyBossNoteLocation(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 315),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 315),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(BEAN_VALLEY_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(SEED_CHECKED, ["next"]),
         Jmp(["bean_valley_hint_text"]),
@@ -13191,15 +13187,15 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 316),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 316),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]
         ),
@@ -13215,15 +13211,15 @@ class BeanValley1stRoomFloatingItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 317),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 317),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_3, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]
         ),
@@ -13239,15 +13235,15 @@ class BeanValley1stRoomMiddleCoinLocation(StandingLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_MIDDLE_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 318),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 318),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_4, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13261,15 +13257,15 @@ class BeanValley1stRoomUpperCoinLocation(StandingLocationRow3):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_UPPER_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 319),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 319),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_5, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13283,15 +13279,15 @@ class BeanValley1stRoomLowerCoinLocation(StandingLocationRow4):
     _id = ShuffleLocationSelector.BEAN_VALLEY_FIRST_VINE_ROOM_LOWER_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 320),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 320),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectNotInSpecificLevel(NPC_6, R378_BEAN_VALLEY_BEANSTALKS_AREA_01, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13305,15 +13301,15 @@ class Beanstalk2ndRoomFloatingItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 321),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 321),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_6, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]
         ),
@@ -13329,15 +13325,15 @@ class Beanstalk2ndRoomCoin1Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 322),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 322),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13351,15 +13347,15 @@ class Beanstalk2ndRoomCoin2Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 323),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 323),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13373,15 +13369,15 @@ class Beanstalk2ndRoomCoin3Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 324),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 324),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R379_BEAN_VALLEY_BEANSTALKS_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13395,15 +13391,15 @@ class BeanValleyEastBeanstalkCoin1Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 325),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 325),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_3, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13417,15 +13413,15 @@ class BeanValleyEastBeanstalkCoin2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 326),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 326),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13439,15 +13435,15 @@ class BeanValleyEastBeanstalkCoin3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 327),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 327),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13461,15 +13457,15 @@ class BeanValleyEastBeanstalkCoin4Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_4
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 328),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 328),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13483,15 +13479,15 @@ class BeanValleyEastBeanstalkCoin5Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.BEAN_VALLEY_EAST_BEANSTALK_COIN_5
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 329),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 329),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_7, R380_BEAN_VALLEY_BEANSTALKS_AREA_03_FROM_RIGHT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13505,15 +13501,15 @@ class BeanValleyWestBeanstalkCoin1Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 330),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 330),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_4, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13527,15 +13523,15 @@ class BeanValleyWestBeanstalkCoin2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 331),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 331),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_5, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13549,15 +13545,15 @@ class BeanValleyWestBeanstalkCoin3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_COIN_3
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 332),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 332),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfObjectTriggerDisabledInSpecificLevel(NPC_6, R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02, ["next"]),
         # Jmp(["beanstalk_hint_text"])
     ]
@@ -13571,15 +13567,15 @@ class BeanValleyWestBeanstalkFloatingItemLocation(StandingLocationRow4):
     _id = ShuffleLocationSelector.BEAN_VALLEY_WEST_BEANSTALK_FROG_COIN
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 333),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 333),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_7,
             R381_BEAN_VALLEY_BEANSTALKS_AREA_04_FROM_LEFT_BEANSTALK_OF_AREA_02,
@@ -13598,15 +13594,15 @@ class BeanstalkUpperCloudLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 334),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 334),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]
         ),
@@ -13623,15 +13619,15 @@ class BeanstalkUpperCloudRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 335),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 335),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R372_NIMBUS_LAND_FALL_FROM_PLATFORM_2ND, ["next"]
         ),
@@ -13648,15 +13644,15 @@ class BeanstalkLowerCloudLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 336),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 336),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]
         ),
@@ -13673,15 +13669,15 @@ class BeanstalkLowerCloudRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 337),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 337),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R373_NIMBUS_LAND_FALL_FROM_PLATFORM_3RD, ["next"]
         ),
@@ -13700,15 +13696,15 @@ class CasinoGrateGuyPrizeLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.CASINO_GRATE_GUY_PRIZE
     _world_area = WorldAreaEnum.CASINO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 338),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 338),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(CASINO_PRIZE_WON, ["next"]),
         StoreItemAmountTo7000(BrightCardItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -13734,15 +13730,15 @@ class NimbusShopChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 339),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 339),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R344_NIMBUS_LAND_ITEM_SHOP, ["next"]
@@ -13764,15 +13760,15 @@ class NimbusInnDreamPrize1Location(NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 340),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 340),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
@@ -13792,15 +13788,15 @@ class NimbusInnDreamPrize2Location(NPCLocationRow2):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 341),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 341),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(NIMBUS_INN_PRIZE_GRANTED, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
@@ -13820,15 +13816,15 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_GARRO
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 342),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 342),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(GARRO_ITEM_GRANTED, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
@@ -13852,15 +13848,15 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 343),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 343),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["next"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_castle_hint_text"]),
@@ -13965,15 +13961,15 @@ class StatueRoomStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = StatueRoomBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 344),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 344),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
@@ -14003,15 +13999,15 @@ class NimbusCastleOuterPrisonCellarRightNPCLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 345),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 345),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(BLUE_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
@@ -14034,15 +14030,15 @@ class NimbusCastleOuterPrisonCellarLeftNPCLocation(KeyItemLocation, NPCLocationR
     _id = ShuffleLocationSelector.NIMBUS_LAND_PRISONERS_2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 346),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 346),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(RED_CELLAR_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_castle_hint_text"]),
@@ -14068,15 +14064,15 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [SlotsPrize, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 347),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 347),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
         ),
@@ -14106,15 +14102,15 @@ class NimbusCastleCornerBridgeChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 348),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 348),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2,
             R111_NIMBUS_CASTLE_AREA_04_LEFT_OF_4WAY_PATH_RIGHTANGLE_RED_BRICK_PATH_W_TREASURE,
@@ -14146,15 +14142,15 @@ class NimbusCastleOutOfBoundsChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 349),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 349),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
             R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
@@ -14185,15 +14181,15 @@ class NimbusCastleAboveJawfulChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 350),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 350),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
             R410_NIMBUS_CASTLE_AREA_07_STRAIGHT_FROM_AREA_06_WLONG_STAIRCASE,
@@ -14224,15 +14220,15 @@ class NimbusCastleSingleGoldBirdChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = []
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 351),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 351),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
             R113_NIMBUS_CASTLE_AREA_16_SMALL_TWODOOR_ROOM_WTREASURE_FROM_AREA_15,
@@ -14264,15 +14260,15 @@ class NimbusCastleTwoLevelLowerChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 352),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 352),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
             R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
@@ -14327,15 +14323,15 @@ class GiantEggStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = GiantEggBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 353),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 353),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_1"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_1"]),
@@ -14373,15 +14369,15 @@ class NimbusCastleGiantEggRewardLocation(KeyItemLocation, NPCLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 354),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 354),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_2"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_2"]),
@@ -14424,15 +14420,15 @@ class NimbusCastleTwoLevelUpperChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 355),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 355),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
             R114_NIMBUS_CASTLE_AREA_10_RED_BRICK_2LEVEL_ROOM_WTREASURE_FROM_BIRDOS_ROOM,
@@ -14478,15 +14474,15 @@ class NimbusCastleBackHallwayOccupiedChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 356),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 356),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]
         ),
@@ -14798,15 +14794,15 @@ class NimbusFinalStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _parent = NimbusFinalBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 357),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 357),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(NIMBUS_LAND_LIBERATED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_40"]),
@@ -14853,15 +14849,15 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 358),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 358),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R121_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_2ND, ["next"]
         ),
@@ -14905,15 +14901,15 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow2
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 359),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 359),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectTriggerEnabledInSpecificLevel(
             NPC_0, R499_NIMBUS_CASTLE_AREA_05_LONG_5EXIT_ROOM_AFTER_VALENTINA, ["next"]
         ),
@@ -14959,15 +14955,15 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_RIGHT_SIDE
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 360),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 360),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_9, R438_NIMBUS_LAND_OUTSIDE_AFTER_VALENTINA, ["next"]
         ),
@@ -15010,15 +15006,15 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_SIGNAL_RING
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 361),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 361),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfObjectNotInSpecificLevel(
             NPC_5, R345_NIMBUS_LAND_TOPRIGHT_HOUSE_CROCO_DROPS_SIGNAL_RING, ["next"]
         ),
@@ -15060,15 +15056,15 @@ class NimbusLandInnerCellarLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.NIMBUS_LAND_CELLAR
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 362),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 362),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(NIMBUS_CASTLE_LIBERATED_GUARD_ITEM_GRANTED, ["next"]),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_9"]),
@@ -15113,15 +15109,15 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 363),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 363),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]
@@ -15144,15 +15140,15 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 364),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 364),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2, R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS, ["next"]
@@ -15175,15 +15171,15 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 365),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 365),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R384_VOLCANO_AREA_05, ["next"]
@@ -15206,15 +15202,15 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 366),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 366),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R384_VOLCANO_AREA_05, ["next"]
@@ -15236,15 +15232,15 @@ class VolcanoEarlyProgressThirdChestLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_STAR_ROOM
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 367),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 367),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R385_VOLCANO_AREA_06, ["next"]
@@ -15266,15 +15262,15 @@ class VolcanoLavaPoolLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_LAVA_POOL
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 368),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 368),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_1, R361_VOLCANO_AREA_09, ["next"]),
         Jmp(["barrel_volcano_hint_text"]),
@@ -15294,15 +15290,15 @@ class VolcanoReverseRecoilItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_REVERSE
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 369),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 369),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_4, R383_VOLCANO_AREA_10_JUMPING_PYROSPHERES, ["next"]
@@ -15324,15 +15320,15 @@ class VolcanoRightDonutItemLocation(StandingLocationRow1):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 370),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 370),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_1, R358_VOLCANO_AREA_11, ["next"]),
         Jmp(["barrel_volcano_hint_text"]),
@@ -15352,15 +15348,15 @@ class VolcanoLeftDonutItemLocation(StandingLocationRow2):
     _id = ShuffleLocationSelector.BARREL_VOLCANO_DONUT_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 371),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 371),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_2, R358_VOLCANO_AREA_11, ["next"]),
         Jmp(["barrel_volcano_hint_text"]),
@@ -15381,15 +15377,15 @@ class VolcanoSaveRoomLowerChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 372),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 372),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]
@@ -15412,15 +15408,15 @@ class VolcanoSaveRoomUpperChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 373),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 373),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R366_VOLCANO_AREA_13_WSAVE_POINT, ["next"]
@@ -15443,15 +15439,15 @@ class VolcanoShopEntranceChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 374),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 374),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R367_VOLCANO_AREA_17_LEADS_TO_HINOPIOS_SHOP, ["next"]
@@ -15516,15 +15512,15 @@ class VolcanoBridgeStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _parent = VolcanoBridgeBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 375),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 375),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitSet(VOLCANO_MIDBOSS_DEFEATED, ["next"]),
         Jmp(["barrel_volcano_hint_text"]),
@@ -15669,15 +15665,15 @@ class VolcanoExitStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _parent = VolcanoExitBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 376),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 376),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitSet(VOLCANO_LIBERATED, ["next"]),
         Jmp(["barrel_volcano_hint_text"]),
@@ -15731,15 +15727,15 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 377),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 377),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["next"]
@@ -15762,15 +15758,15 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 378),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 378),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
@@ -15793,15 +15789,15 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 379),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 379),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
@@ -15824,15 +15820,15 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 380),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 380),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
@@ -15855,15 +15851,15 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 381),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 381),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
@@ -15886,15 +15882,15 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 382),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 382),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
@@ -15917,15 +15913,15 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 383),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 383),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
@@ -15947,15 +15943,15 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 384),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 384),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -15975,15 +15971,15 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 385),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 385),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16003,15 +15999,15 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 386),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 386),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16031,15 +16027,15 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_COIN_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 387),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 387),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16060,15 +16056,15 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 388),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 388),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
@@ -16091,15 +16087,15 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 389),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 389),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
@@ -16122,15 +16118,15 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 390),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 390),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
@@ -16153,15 +16149,15 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 391),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 391),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
@@ -16184,15 +16180,15 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 392),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 392),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8,
@@ -16217,15 +16213,15 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 393),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 393),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
@@ -16248,15 +16244,15 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 394),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 394),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
@@ -16279,15 +16275,15 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 395),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 395),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
@@ -16310,15 +16306,15 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 396),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 396),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
@@ -16341,15 +16337,15 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 397),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 397),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
@@ -16371,15 +16367,15 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 398),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 398),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16399,15 +16395,15 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 399),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 399),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16427,15 +16423,15 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 400),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 400),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16455,15 +16451,15 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 401),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 401),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16483,15 +16479,15 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 402),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 402),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16511,15 +16507,15 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 403),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 403),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16539,15 +16535,15 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_7
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 404),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 404),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16567,15 +16563,15 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_COIN_8
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 405),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 405),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
@@ -16598,15 +16594,15 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 406),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 406),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
@@ -16633,15 +16629,15 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 407),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 407),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2,
@@ -16668,15 +16664,15 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 408),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 408),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3,
@@ -16703,15 +16699,15 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 409),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 409),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4,
@@ -16738,15 +16734,15 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 410),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 410),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5,
@@ -16773,15 +16769,15 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 411),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 411),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6,
@@ -16881,15 +16877,15 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = ObstacleCourseFinalFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 412),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 412),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
         Jmp(["keep_obstacle_hint_text"]),
@@ -16915,15 +16911,15 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 413),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 413),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_1_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -16952,15 +16948,15 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 414),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 414),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_2_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -16989,15 +16985,15 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 415),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 415),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17026,15 +17022,15 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 416),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 416),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17059,15 +17055,15 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 417),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 417),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_5_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17096,15 +17092,15 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 418),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 418),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17331,15 +17327,15 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _parent = KeepAfterObstaclesBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 419),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 419),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17362,15 +17358,15 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _blacklist = [EXPStarPrize, RecoveryMushroomPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 420),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 420),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]
@@ -17476,15 +17472,15 @@ class KeepChandelierStarPiece(StarPieceLocation):
     _override_id = 521
     _parent = KeepChandelierBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 421),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 421),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17563,15 +17559,15 @@ class KeepFinalStarPiece(StarPieceLocation):
     _override_id = 522
     _parent = KeepFinalBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 422),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 422),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_3_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
@@ -17616,15 +17612,15 @@ class OuterFactorySaveRoomChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 423),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 423),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R237_SMITHY_FACTORY_AREA_05_WSAVE_POINT, ["next"]
@@ -17647,15 +17643,15 @@ class FactoryBoltPlatformsChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 424),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 424),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER, ["next"]
@@ -17717,15 +17713,15 @@ class FactoryEntranceStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.FACTORY
     _parent = FactoryEntranceBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 425),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 425),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(ABYSS_BOSS_1_DEFEATED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -17750,15 +17746,15 @@ class FactoryAxemConveyorsChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 426),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 426),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6,
@@ -17785,15 +17781,15 @@ class FactoryTreasurePitBackChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 427),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 427),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0,
@@ -17820,15 +17816,15 @@ class FactoryTreasurePitFrontChestLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 428),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 428),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2,
@@ -17855,15 +17851,15 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 429),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 429),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8,
@@ -17890,15 +17886,15 @@ class FactoryBigConveyorRoomSecondChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 430),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 430),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_9,
@@ -17925,15 +17921,15 @@ class FactoryBehindNinjasRightChestLocation(TreasureChestLocationRow2):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 431),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 431),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
@@ -17960,15 +17956,15 @@ class FactoryBehindNinjasLeftChestLocation(TreasureChestLocationRow4):
     _world_area = WorldAreaEnum.FACTORY
     _blacklist = [EXPStarPrize]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 432),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 432),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3,
@@ -18013,15 +18009,15 @@ class FactoryTransitionStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.FACTORY
     _parent = FactoryTransitionBossFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 433),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 433),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(ABYSS_BOSS_2_DEFEATED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18092,15 +18088,15 @@ class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryFirstFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 434),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 434),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_1_COMPLETED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18123,15 +18119,15 @@ class InnerFactoryToadGiftLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.FACTORY_TOAD_GIFT
     _world_area = WorldAreaEnum.INNER_FACTORY
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 435),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 435),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(TOAD_SHOP_FREEBIE_RECEIVED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18208,15 +18204,15 @@ class InnerFactorySecondFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactorySecondFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 436),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 436),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_2_COMPLETED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18293,15 +18289,15 @@ class InnerFactoryThirdFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryThirdFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 437),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 437),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfObjectNotInSpecificLevel(NPC_10, R472_FACTORY_GROUNDS_AREA_03, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18378,15 +18374,15 @@ class InnerFactoryFourthFightStarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryFourthFight
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 438),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 438),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitSet(INNER_FACTORY_ROOM_4_COMPLETED, ["next"]),
         Jmp(["factory_hint_text"]),
@@ -18535,15 +18531,15 @@ class FinalBossFightStarPiece(StarPieceLocation):
         R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     ]
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 439),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 439),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
             NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, ["next"]
@@ -18592,15 +18588,15 @@ class MariosPadBedFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARIOS_PAD
     _clue_text = """[center]My item's underneath a green bed.[await]"""
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 440),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 440),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"]),
@@ -18623,15 +18619,15 @@ class RoseTownSignFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = """[center]My item's behind a wooden flower.[await]"""
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 441),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 441),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"]),
@@ -18652,15 +18648,15 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
     _y_shift = -4
     _clue_text = """[center]My item's between "O" and "A".[await]"""
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 442),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 442),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -18683,15 +18679,15 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = "[center]Mine is underneath a steamwhistle.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 443),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 443),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["monstro_town_hint_text"]),
@@ -18712,15 +18708,15 @@ class MariosPadLanternFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is under a white lantern.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 444),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 444),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18739,15 +18735,15 @@ class MariosPadHatFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = """[center]My item's under a red hat.[await]"""
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 445),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 445),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18767,15 +18763,15 @@ class MushroomWayTreeFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine's under a tree, up on a ledge\n by itself.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 446),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 446),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18798,15 +18794,15 @@ class MushroomKingdomSignFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine's behind a wooden mushroom.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 447),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 447),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18828,15 +18824,15 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is under the bed in an empty\n house.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 448),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 448),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18858,15 +18854,15 @@ class ChancellorThroneFlag(InvisibleFlagLocation):
     _z_coord = 3
     _clue_text = "[center]Mine's under a blue chair.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 449),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 449),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -18885,15 +18881,15 @@ class BanditsWayFlowerFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "[center]Mine's on a landing flower.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 450),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 450),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BANDITS_WAY, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -18916,15 +18912,15 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 451),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 451),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(
@@ -18950,15 +18946,15 @@ class KeroGateFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = "[center]Mine is by a lone metal spike fence.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 452),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 452),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(SEWERS_CLOSED, ["ks_availability_check_2"]),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(
@@ -18983,15 +18979,15 @@ class MidasTreesFlag(InvisibleFlagLocation):
     _x_shift = -8
     _clue_text = " Mine's between a lone pair of\n palm trees, near the water.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 453),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 453),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19012,15 +19008,15 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine is in a frog cabinet.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 454),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 454),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19038,15 +19034,15 @@ class RoseWayDirtPatchFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_WAY
     _clue_text = " Mine is in the middle of a HUGE\n patch of dirt.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 455),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 455),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19068,15 +19064,15 @@ class RoseTownHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is under a depressed hydrant.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 456),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 456),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19098,15 +19094,15 @@ class RoseTownSinkFlag(InvisibleFlagLocation):
     _y_shift = 1
     _clue_text = "[center]My item is in a kitchen sink under\n[center] some green curtains.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 457),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 457),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19127,15 +19123,15 @@ class RoseTownBowserFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = "[center]Mine's under a tiny turtle.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 458),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 458),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19154,15 +19150,15 @@ class RoseTownGardenerHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is under a private hydrant.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 459),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 459),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
@@ -19186,15 +19182,15 @@ class RoseTownGardenerBucketFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.ROSE_TOWN
     _clue_text = "[center]Mine is under a private bucket.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 460),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 460),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
@@ -19219,15 +19215,15 @@ class RoseTownGardenerLeafFlag(InvisibleFlagLocation):
     _z_coord = 10
     _clue_text = "[center]Mine's on a big leaf between\n[center] two chests.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 461),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 461),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_LIBERATED, ["next"]),
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         JmpIfBitSet(GAVE_SEED_AND_FERTILIZER, ["rose_town_cloud_invisible_hint_check"]),
@@ -19269,15 +19265,15 @@ class ForestMazeSecretStumpFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = " Mine is behind a brightly\n illuminated tree stump.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 462),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 462),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19299,15 +19295,15 @@ class ForestMazeSecretMushroomsFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on an illuminated pack of\n 5 mushrooms.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 463),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 463),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19328,15 +19324,15 @@ class ForestMazeSecretWigglerFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.FOREST_MAZE
     _clue_text = "[center]Mine is on a sleepy bug.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 464),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 464),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_FOREST_MAZE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19359,15 +19355,15 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 465),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 465),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19389,15 +19385,15 @@ class PipeVaultRedPipeFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine is behind a low red pipe.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 466),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 466),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19418,15 +19414,15 @@ class YosterIsleHutFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.YOSTER_ISLE
     _clue_text = "[center]Mine's under a fruity gazebo.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 467),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 467),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19451,15 +19447,15 @@ class MolevilleHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine's under a gold hydrant.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 468),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 468),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19483,15 +19479,15 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _x_shift = -8
     _y_shift = -8
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 469),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 469),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19512,15 +19508,15 @@ class MolevilleMountainGoFlag(InvisibleFlagLocation):
     _z_coord = 12
     _clue_text = " Mine is on “GO”.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1009),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1009),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19540,15 +19536,15 @@ class MolevilleBedFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "[center]Mine's under a middle bed.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 470),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 470),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19566,15 +19562,15 @@ class MolevilleMinesArrowsFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _clue_text = " Mine's between two arrows pointing away from each other.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 471),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 471),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19596,15 +19592,15 @@ class MolevilleMinesCeilingFlag(InvisibleFlagLocation):
     _z_coord = 4
     _clue_text = " Mine's in a zig-zag room, up\n on the ceiling.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 472),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 472),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19627,15 +19623,15 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = " My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a big hole.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 473),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 473),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -19658,15 +19654,15 @@ class BoosterPassCornerBushFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's in a corner bush.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 474),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 474),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19685,15 +19681,15 @@ class BoosterTowerExteriorSignFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = " Mine's behind a sign with Japanese\n letters.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 475),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 475),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19712,15 +19708,15 @@ class BoosterTowerDeskFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = '\n      Mine\'s under "B" and "K".[await]'
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 476),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 476),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_1"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_1"),
@@ -19743,15 +19739,15 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's on a lightly-loaded see-saw.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 477),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 477),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_2"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_2"),
@@ -19775,15 +19771,15 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 478),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 478),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_3"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_3"),
@@ -19806,15 +19802,15 @@ class BoosterTowerThwompInvisibleFlag(InvisibleFlagLocation):
     _z_coord = 12
     _clue_text = "[center]Mine is near a lonely thwomp.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 479),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 479),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_4"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_4"),
@@ -19838,15 +19834,15 @@ class BoosterTowerBrokenFrameFlag(InvisibleFlagLocation):
     _y_shift = -9
     _clue_text = "[center]Mine is in a broken frame.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 480),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 480),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_5"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_5"),
@@ -19868,15 +19864,15 @@ class BoosterTowerBeetleCageFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _clue_text = "[center]Mine is on an insect cage.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 481),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 481),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_6"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_6"),
@@ -19899,15 +19895,15 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "[center]Mine is behind a toy box.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 482),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 482),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(TOWER_OPENED, ["tower_invis_check_7"]),
         JmpIfBitClear(TOWER_CHARACTER_RECRUITED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"], "tower_invis_check_7"),
@@ -19935,15 +19931,15 @@ class MarrymoreOutsideCrateFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is under a lone backyard box.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 483),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 483),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19962,15 +19958,15 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
     _z_coord = 3
     _clue_text = " My item is in a flower pot in a\n hallway.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 484),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 484),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -19989,15 +19985,15 @@ class MarrymoreCurtains(InvisibleFlagLocation):
     _z_coord = 0
     _clue_text = " Mine's beneath a clock that's beside red curtains.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1008),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1008),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20016,15 +20012,15 @@ class MarrymoreSuiteBedFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine's beneath two adjoined\n red beds.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 485),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 485),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20044,15 +20040,15 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 486),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 486),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20073,15 +20069,15 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is in an empty fireplace.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 487),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 487),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20102,15 +20098,15 @@ class MarrymoreWindowFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _clue_text = " Mine is under a single stained glass window.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1007),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1007),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20136,15 +20132,15 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine is behind a big musical\n instrument.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 488),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 488),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20169,15 +20165,15 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = "[center]Mine's behind a podium.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 489),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 489),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MARRYMORE_BACKDOOR_OPEN, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20200,15 +20196,15 @@ class StarHillNorthStarFlag(InvisibleFlagLocation):
     _x_shift = -10
     _clue_text = "[center]Mine is atop the North Star.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 490),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 490),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20227,15 +20223,15 @@ class SeasideTownAnchorFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "[center]Mine is behind an anchor.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 491),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 491),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20256,15 +20252,15 @@ class SeasideTownHydrantFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is under a high steel hydrant.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 492),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 492),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20283,15 +20279,15 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _z_coord = 3
     _clue_text = "[center]Mine is in a bucket between two\n[center]staircases.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 493),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 493),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20314,15 +20310,15 @@ class SeasideTownFlowersFlag(InvisibleFlagLocation):
     _x_shift = -8
     _clue_text = " Mine's in the middle of three\n pink flowers.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 494),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 494),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20341,15 +20337,15 @@ class SeasideTownShedBoxFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine's under a lone crate in an\n empty house.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 495),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 495),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(SEASIDE_SHED_EMPTIED, ["seaside_town_invis_check"]),
         JmpIfBitClear(SEASIDE_BOSS_AVAILABLE, ["next"]),
         JmpIfObjectNotInSpecificLevel(
@@ -20384,15 +20380,15 @@ class SeaArrowFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = "[center]Mine is beside a mossy up-arrow.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 496),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 496),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20414,15 +20410,15 @@ class SeaBoxesFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's in some V-shaped boxes.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 497),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 497),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20446,15 +20442,15 @@ class SeaStalagnateFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is behind a big gray\n stalagnate.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 498),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 498),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20475,15 +20471,15 @@ class SeaUnderwaterSailFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SEA
     _clue_text = "[center]Mine's behind a sail.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 499),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 499),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20505,15 +20501,15 @@ class ShipBarrelPileFlag(InvisibleFlagLocation):
     _z_coord = 3
     _clue_text = "[center]Mine is atop a big pile of barrels.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 500),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 500),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20536,15 +20532,15 @@ class ShipDoorMarkerFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on a stack of boxes.[await][pause]\n[delay] Hm?[delay] Is that not specific enough?[await][page]\n Well,[delay] the boxes act as a door\n marker.[delay] They represent the\n number “4”.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 501),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 501),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20565,15 +20561,15 @@ class ShipButtonFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _clue_text = "[center]Mine is under a floating button.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 502),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 502),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20596,15 +20592,15 @@ class ShipSwitchFlag(InvisibleFlagLocation):
         'Mine is underneath a floating "J"\n[center]that is all on its lonesome.[await]'
     )
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 503),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 503),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_SEA, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20625,15 +20621,15 @@ class LandsEndPlatformFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _clue_text = "[center]Mine is under a rising platform.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 504),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 504),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20652,15 +20648,15 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine's under a big, quiet cannon.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 505),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 505),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20682,15 +20678,15 @@ class LandsEndArrowFlag(InvisibleFlagLocation):
     _x_shift = 16
     _clue_text = "[center]Mine is beside an orange up-arrow.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 506),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 506),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20713,15 +20709,15 @@ class LandsEndHillFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = " Mine is on a short, remote red hill.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 507),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 507),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20742,15 +20738,15 @@ class LandsEndTwoHillFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.LANDS_END
     _clue_text = "   My item's between two red hills.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 508),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 508),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20776,15 +20772,15 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
         " Mine's on a big stalagmite\n formation in an underground cave.[await]"
     )
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 509),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 509),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20806,15 +20802,15 @@ class LandsEndCliffBushFlag(InvisibleFlagLocation):
     _z_coord = 22
     _clue_text = " Mine is on a bush, way up high on\n a cliff.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 510),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 510),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20838,15 +20834,15 @@ class LandsEndSignFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = "[center]My item's on a yellow arrow.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 511),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 511),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -20868,15 +20864,15 @@ class TempleShaftFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = " My item's in an elevator shaft.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1004),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1004),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -20900,15 +20896,15 @@ class TempleShaftSwitchFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = " My item's below one golden wall ornament.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1005),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1005),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R425_BELOME_TEMPLE_AREA_05_FROM_FORTUNE_ROOM, ["next"]
@@ -20931,15 +20927,15 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's underneath a bonsai tree.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 512),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 512),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20957,15 +20953,15 @@ class MonstroEntranceSignFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _clue_text = "[center]Mine's in a lone flowery bush.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 513),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 513),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -20985,15 +20981,15 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's behind a wooden bat.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 514),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 514),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21013,15 +21009,15 @@ class MonstroFanFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = "[center]Mine's beside a fan.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 515),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 515),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21041,15 +21037,15 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine's beneath a spinning shell.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 516),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 516),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21069,15 +21065,15 @@ class BeanValleyPipeFlag(InvisibleFlagLocation):
     _x_shift = -16
     _clue_text = " Mine's on an isolated, dead-end\n pipe.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 517),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 517),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21095,15 +21091,15 @@ class BeanValleyBeanstalkBlockFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _clue_text = "[center]Mine's underneath a big beanstalk.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 518),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 518),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21122,15 +21118,15 @@ class BeanValleyCloudsFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _clue_text = "Mine is below a long red spiral.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1010),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1010),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21151,15 +21147,15 @@ class CasinoBellFlag(InvisibleFlagLocation):
     _y_shift = -4
     _clue_text = "[center]Mine is beside a tiny bell.[await][pause]\n[center]I don't think it does anything.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 519),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 519),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         StoreItemAmountTo7000(BrightCardItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
@@ -21182,15 +21178,15 @@ class NimbusGoldGoombaFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = "[center]Mine is on a golden Goomba.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 520),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 520),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21215,15 +21211,15 @@ class NimbusOutdoorFlag(InvisibleFlagLocation):
     _z_coord = 2
     _clue_text = "My item is under a tree star.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1011),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1011),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21247,15 +21243,15 @@ class NimbusInnLobbyFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is under a stove with two\n pots.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 521),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 521),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21279,15 +21275,15 @@ class NimbusPlantFlag(InvisibleFlagLocation):
     _z_coord = 1
     _clue_text = " Mine is behind a big potted plant\n in a corner.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 522),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 522),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_10"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_10"]),
@@ -21315,15 +21311,15 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _y_shift = -8
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 523),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 523),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(NIMBUS_MAINLAND_UNLOCKED, ["next"]),
         JmpIfBitSet(STATUE_GAME_DONE, ["nimbus_ck_dummy_11"]),
         JmpIfBitClear(PAINT_GATING, ["nimbus_ck_dummy_11"]),
@@ -21367,15 +21363,15 @@ class NimbusHotSpringsFlag(InvisibleFlagLocation):
     _z_coord = 5
     _clue_text = " Mine's on the right side of a\n hot pool.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 524),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 524),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(
             INVISIBLE_ITEMS_SUMMONED, ["next"], identifier="nimbus_ck_dummy3_12"
@@ -21401,15 +21397,15 @@ class BarrelVolcanoInnSignFlag(InvisibleFlagLocation):
         "\n My item?[await]\n It's on an “INN” that's missing its second “N”.[await]"
     )
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1000),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1000),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21433,15 +21429,15 @@ class BarrelVolcanoStumpetFlag(InvisibleFlagLocation):
         "\n Mine is behind a big tree. A BIIIIIG tree. It doesn't have leaves.[await]"
     )
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1002),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1002),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21463,15 +21459,15 @@ class VolcanoShipsFlag(InvisibleFlagLocation):
     _z_coord = 2
     _clue_text = "[center]Mine is between two vehicles.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 525),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 525),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21494,15 +21490,15 @@ class VolcanoBedFlag(InvisibleFlagLocation):
     _x_shift = 8
     _clue_text = "[center]Mine is on a firm mattress.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1001),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1001),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21526,15 +21522,15 @@ class VolcanoLampFlag(InvisibleFlagLocation):
         " Mine is under the only artificial light source in the volcano.[await]"
     )
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 1003),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 1003),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_BARREL_VOLCANO, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21557,15 +21553,15 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "[center]Mine is between two red doors.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 526),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 526),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21588,15 +21584,15 @@ class KeepThwompFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _clue_text = "[center]Mine is under a big thwomp.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 527),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 527),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21621,15 +21617,15 @@ class FactoryCanopyFlag(InvisibleFlagLocation):
     _y_shift = 8
     _clue_text = "  My item's under a bolted canopy.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 528),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 528),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21651,15 +21647,15 @@ class FactoryLugnutFlag(InvisibleFlagLocation):
     _z_coord = 7
     _clue_text = "    My item's underneath a lugnut.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 529),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 529),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21681,15 +21677,15 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _y_shift = 16
     _clue_text = " My item is with the world's\n loneliest trampoline.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 530),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 530),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -21713,15 +21709,15 @@ class FactoryButtonFlag(InvisibleFlagLocation):
     _z_coord = 5
     _clue_text = " Mine is on a jammed machine\n button.[await]"
     _hint = [
-        SetVarToConst(PRIMARY_TEMP_7000, 531),
-        RunDialog(
-            dialog_id=DI2010_DEBUG_7000,
-            above_object=BOWSER,
-            closable=True,
-            sync=False,
-            multiline=True,
-            use_background=True,
-        ),
+        # SetVarToConst(PRIMARY_TEMP_7000, 531),
+        # RunDialog(
+            # dialog_id=DI2010_DEBUG_7000,
+            # above_object=BOWSER,
+            # closable=True,
+            # sync=False,
+            # multiline=True,
+            # use_background=True,
+        # ),
         JmpIfBitClear(MAP_GATE, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),

@@ -1441,6 +1441,24 @@ def _apply_ending_cutscene_assignments(
                 if obj is not None:
                     obj.set_min_vram_size(1)
 
+        # 5. Palette-collision fix (Geno protagonist only, R292 only). The
+        # hardcoded Geno doll (NPC_7) carries Geno's palette. When Geno is the
+        # overworld protagonist, the doll dedups against the protagonist in
+        # R292's OBJ palette-row arrangement, so the star-piece ("glow") palette
+        # lands one row off and the spinning stars render with the wrong palette.
+        # Swap the doll to a Peach doll: Peach is always present in this
+        # cutscene, so this only rearranges existing palette rows (adds no new
+        # palette) and restores the row the star piece expects. Only R292 needs
+        # it — the spinning stars live in R292's half of the cutscene.
+        if room_id == R292_UNMAPPED_HOUSE_ROOM and isinstance(
+            world.overworld_character, GenoRecruitmentPrize
+        ):
+            r292 = world.rooms._rooms[room_id]
+            if r292 is not None:
+                doll_obj = r292.get_npc_by_target_id(NPC_7)
+                if doll_obj is not None:
+                    doll_obj._npc = TOADSTOOL_DOLL_NPC
+
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
     """Return the doll NPC matching `prize` for the render_ending_character_3

@@ -98,6 +98,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1969_CHECK_IF_STAR_PIECES_FOR_FACTORY_BOSS_COLLECTED),
 	JmpIfComparisonResultIsLesser(["EVENT_2603_fade_in_from_black_async_36"]),
 	SummonObjectToSpecificLevel(NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM),
+	SummonObjectToCurrentLevel(NPC_14),
 	FadeInFromBlack(sync=False, identifier="EVENT_2603_fade_in_from_black_async_36"),
 	RunEventAsSubroutine(E1244_INNER_FACTORY_4_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),

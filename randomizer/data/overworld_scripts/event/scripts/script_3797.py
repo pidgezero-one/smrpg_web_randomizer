@@ -43,6 +43,9 @@ script = EventScript([
 	JmpIfBitSet(WIN_CONDITION_STAR_PIECES, ["EVENT_3797_jmp_if_bit_set_9"]),
 	JmpIfBitSet(WIN_CONDITION_MONSTRO_DOOR, ["EVENT_3797_jmp_if_bit_set_9"]),
     JmpIfBitSet(SMITHY_BOSS_HUNT_WIN_CONDITION, ["EVENT_3797_jmp_if_bit_set_9"]),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ShiftToXYCoords(x=4, y=48),
+	], identifier="EVENT_2064_action_queue_11"),
 	JmpToEvent(E3885_END_GAME),
 	JmpIfBitSet(BUCKET_WARP_DIRECTIONAL_BIT, ["EVENT_3797_enter_area_15"], identifier="EVENT_3797_jmp_if_bit_set_9"),
 	JmpIfBitSet(CASINO_WARP_DIRECTIONAL_BIT, ["EVENT_3797_clear_bit_17"]),
