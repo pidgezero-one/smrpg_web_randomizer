@@ -40,10 +40,12 @@ script = EventScript([
 
 
     StoreItemAmountTo7000(GoldPaintItem, identifier="EVENT_3640_check_paint"),
-    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3640_run_dialog_308"]),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_3640_is_statue_game_already_done"]),
     RemoveOneOfItemFromInventory(GoldPaintItem),
     Jmp(["EVENT_3640_start"]),
 
+
+    JmpIfBitSet(STATUE_GAME_DONE, ["EVENT_3640_over"], identifier="EVENT_3640_is_statue_game_already_done"),
 	RunDialog(dialog_id=DI2465_GARRO_GATE_1, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True, identifier=f"EVENT_3640_run_dialog_308"),
     JmpIfBitSet(GARRO_ITEM_GRANTED, ["EVENT_3640_end"]),
     RunDialog(dialog_id=DI2466_GARRO_GATE_2, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),

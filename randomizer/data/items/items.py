@@ -2246,6 +2246,7 @@ class DebugCandyItem(RegularItem):
     _target_all: bool = True
     _one_side_only: bool = True
     _reusable: bool = True
+    _no_sell: bool = True
 
 
 class CastleKey1Item(RegularItem):

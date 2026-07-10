@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	Set7000ToPartySize(),
-	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_1"),
 	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_209_set_bit_4"]),
 	Return(),
 	SetBit(SWITCH_MENU_UNLOCKED, identifier="EVENT_209_set_bit_4"),

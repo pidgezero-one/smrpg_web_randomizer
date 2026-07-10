@@ -42,6 +42,6 @@ script = EventScript([
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	SetBit(TREASURE_HUNTER_HOUSE_PRIZE),
 	Return(),
-	RunDialog(dialog_id=DI0799_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_534_run_dialog_7"),
+	RunDialog(dialog_id=DI0797_LEAVE_NO_STONE_UNTURNED, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_534_run_dialog_7"),
 	Return()
 ])

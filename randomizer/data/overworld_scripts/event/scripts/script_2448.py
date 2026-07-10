@@ -147,7 +147,7 @@ script = EventScript([
 	PlayMusicAtDefaultVolume(M0026_FORESTMAZE),
 	UnfreezeCamera(),
 	Set7000ToPartySize(),
-	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_3"),
 	JmpIfComparisonResultIsLesser(["EVENT_2448_j_24"]),
 	SetBit(SWITCH_MENU_UNLOCKED),
     RunEventAsSubroutine(E1198_FOREST_MAZE_BOSS_UNLOCKS, identifier="EVENT_2448_j_24"),

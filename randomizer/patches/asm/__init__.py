@@ -42,6 +42,7 @@ Always-on byte patches:
     * :mod:`battle_attribute_patches` — Confuse-status mask + attribute table.
     * :mod:`menu_item_always_available` — Force a $40:30E3 menu item available.
     * :mod:`grid_menu_navigation` — 2-D grid-menu cursor rework.
+    * :mod:`equip_menu_sort` — Sort the equipment list when the Equip menu opens.
     * :mod:`title_loop` — Title screen loops forever (no attract-mode demo).
     * :mod:`battle_init` — Copy overworld party size to battle party size.
     * :mod:`star_piece_sprite_fix` — Credits ending sequence sprite ID.
@@ -57,6 +58,7 @@ Flag-gated byte patches:
     * :mod:`no_exp` — Zero EXP table.
     * :mod:`show_equips` — Show equipped item bitmasks in menu.
     * :mod:`uncap_max_fp` — Uncap max FP from 99 to 255.
+    * :mod:`unsellable_items` — Bar ``no_sell`` items from being sold or discarded.
     * :mod:`selected_music` — Battle music ID overrides.
     * :mod:`hold_b` — Hold-B-to-advance dialog patch.
     * :mod:`debug_fp` — Starting FP override under debug mode.
@@ -79,6 +81,7 @@ from . import (
     no_exp,
     battle_attribute_patches,
     dialogue_text_expansion,
+    equip_menu_sort,
     grid_menu_navigation,
     learn_special_event,
     menu_item_always_available,
@@ -98,6 +101,7 @@ from . import (
     title_screen,
     uncap_coins,
     uncap_max_fp,
+    unsellable_items,
 )
 
 __all__ = [
@@ -115,6 +119,7 @@ __all__ = [
     "no_exp",
     "battle_attribute_patches",
     "dialogue_text_expansion",
+    "equip_menu_sort",
     "grid_menu_navigation",
     "learn_special_event",
     "menu_item_always_available",
@@ -134,4 +139,5 @@ __all__ = [
     "title_screen",
     "uncap_coins",
     "uncap_max_fp",
+    "unsellable_items",
 ]

@@ -132,7 +132,7 @@ room = Room(
             byte7_upper2=3),
     ],
     extra_sprite_actions=[
-        SpriteAnimationState.SALUTE,
+        SpriteAnimationState.DOWN_PIPE,
     ],
     effects_npc=EffectsNpc.SAVE_POINT_NPC1,
 )

@@ -41,6 +41,6 @@ script = EventScript([
 	SetSyncActionScript(NPC_7, A0422_GOOMBA_THUMPIN_BONK),
 	AddConstToVar(SECONDARY_TEMP_7024, 3),
 	CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
-	RunDialog(dialog_id=DI0835_DUPLICATE, above_object=MARIO, closable=False, sync=True, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI0833_GOOMBA_THUMPIN_SCORE, above_object=MARIO, closable=False, sync=True, multiline=True, use_background=False),
 	Return()
 ])

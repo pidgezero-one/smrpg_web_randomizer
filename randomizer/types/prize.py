@@ -63,6 +63,7 @@ if TYPE_CHECKING:
 
 class FortuneEnum(StrEnum):
     RARE = '''[center]You'll find some rare items.[await]'''
+    STAR = '''[center]You're going to save the world.[await]'''
     GREAT = '''[center]You'll pick up great items.[await]'''
     SNACK = '''[center]Some tasty snacks are awaiting\nyou in the future.[await]'''
     MEAL = '''[center]Looks like you'll have a great meal\nsometime in the future.[await]'''
@@ -364,7 +365,7 @@ class StarPiecePrize(StandardPrize):
     _hint: Flag
     _model = TinyStarObject
     _packet_data = (SPR0226_TINY_STAR, 0)
-    _fortune_type: FortuneEnum = FortuneEnum.RARE
+    _fortune_type: FortuneEnum = FortuneEnum.STAR
 
     @property
     def chest_grant(self) -> EventScript:

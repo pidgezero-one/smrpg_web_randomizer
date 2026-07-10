@@ -78,6 +78,6 @@ script = EventScript([
 	SetBit(FIREWORKS_HOUSE_ITEM_SOLD),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	Return(),
-	RunDialog(dialog_id=DI1287_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1872_run_dialog_44"),
+	RunDialog(dialog_id=DI1286_FIREWORKS_GUY_THANKS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_1872_run_dialog_44"),
 	Return()
 ])

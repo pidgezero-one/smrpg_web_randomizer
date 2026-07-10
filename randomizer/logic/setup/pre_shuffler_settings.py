@@ -26,7 +26,8 @@ from ...data.variables.variable_names import (
     PRIMARY_TEMP_7000,
     RETURNED_MARIO_DOLL,
     YOSHI_ITEM_GRANTED,
-    BANDITS_WAY_LIBERATED
+    BANDITS_WAY_LIBERATED,
+    MAP_INNER_FACTORY
 )
 from ...data.variables.dialog_names import (
     DI1051_MOLEVILLE_CLOSED,
@@ -47,6 +48,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ApplySolidityModToLevel,
     ApplyTileModToLevel,
     SetVarToConst,
+    CompareVarToConst,
     SummonObjectToSpecificLevel,
     RemoveObjectFromSpecificLevel,
     JmpIfBitClear,
@@ -72,7 +74,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
 )
 from smrpgpatchbuilder.datatypes.levels.classes import EventInitiator
 
-from ...types.flags import BossScaleOptions, BossShuffleScaleStats, EnemySpells, ShuffleCookies, ShuffleMarioDoll
+from ...types.flags import AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -184,10 +186,14 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER,
     )
 
-    world.event_2496_startup += [SetBit(MAP_CASINO)]
-    world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_BEAN_VALLEY_CASINO)]
-    world.event_2496_startup += [SetBit(MAP_YOSTER_ISLE)]
-    world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE)]
+    if world.settings.debug_mode:
+        world.event_2496_startup += [SetBit(MAP_CASINO)]
+        world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_BEAN_VALLEY_CASINO)]
+        if world.settings.is_flag_value(PipeVaultGate, PipeVaultGating.OPEN):
+            world.event_2496_startup += [SetBit(MAP_YOSTER_ISLE)]
+            world.event_2496_startup += [SetBit(MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE)]
+        if world.settings.isflag_enabled(FastTravel):
+            world.event_2496_startup += [SetBit(MAP_INNER_FACTORY)]
 
     # Win conditions
     if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
@@ -224,6 +230,12 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
 
     if world.settings.isflag_enabled(SkipBossFights):
         world.event_2496_startup += [SetBit(ALTERNATE_STAR_PIECE_WIN_CONDITION)]
+
+    if world.settings.isflag_enabled(AllowAllySwitching):
+        switcher_ids = ["party_size_switcher_1", "party_size_switcher_2", "party_size_switcher_3", "party_size_switcher_4", "party_size_switcher_5", "party_size_switcher_6"]
+        for identifier in switcher_ids:
+            world.event_scripts.get_command_by_identifier(identifier, CompareVarToConst).set_value(2)
+
 
     # Area gates
 

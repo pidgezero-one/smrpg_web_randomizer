@@ -2466,16 +2466,16 @@ def render_ship_postgame_boss(world: GameWorld, prize: BossFightPrize) -> None:
     m = prize.smallest_npc()
     # boss room on revisit
     if m.animations.ship_chair is not None:
-        c = world.event_scripts.get_subscript_command_by_identifier(
-            "ship_boss_idle_script_2", "ship_boss_idle_sequence_2", A_SetSpriteSequence
+        c = world.action_scripts.get_command_by_identifier(
+            "ship_boss_idle_sequence_2", A_SetSpriteSequence
         )
         c.set_index(m.animations.ship_chair.sequence_id)
     else:
-        world.event_scripts.replace_subscript_command_by_identifier(
-            "ship_boss_idle_script_2", "ship_boss_idle_sequence_2", A_FaceSouthwest()
+        world.action_scripts.replace_command_by_identifier(
+            "ship_boss_idle_sequence_2", A_FaceSouthwest()
         )
-        world.event_scripts.delete_subscript_command_by_identifier(
-            "ship_boss_idle_script_2", "ship_boss_idle_sequence_loop_2"
+        world.action_scripts.delete_command_by_identifier(
+            "ship_boss_idle_sequence_loop_2"
         )
         
 # =============================================================================
@@ -3259,7 +3259,8 @@ def render_volcano_exit_boss(
         loops += 1
 
     if loops == 0:
-        world.event_scripts.delete_command_by_identifier("axem_trampoline_aqueue")
+        world.event_scripts.delete_subscript_command_by_identifier("axem_trampoline_aqueue", "axem_trampoline_loop")
+        world.event_scripts.delete_subscript_command_by_identifier("axem_trampoline_aqueue", "axem_trampoline_endloop")
     else:
         # Get the loop command and set its count (don't delete it)
         world.event_scripts.get_subscript_command_by_identifier(

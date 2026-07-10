@@ -911,10 +911,10 @@ P100_BOOSTER_HILL_PRIZE_11 = BoosterHillPacket(
     sprite_id=SPR0195_FLOWER,
     action_script_id=A0076_BOOSTER_HILL_PRIZE_11,
 )
-P101_FLOWER_COLLECTION = ChestPacket(
+P101_INFINITE_COIN_STATIC = ChestPacket(
     packet_id=101,
-    sprite_id=SPR0195_FLOWER,
-    action_script_id=A0992_CHEST_ITEMS_WITH_SPECIFIC_IDS,
+    sprite_id=SPR0236_COIN_STATIC_SMALL,
+    action_script_id=A1008_BRIEF_STATIC_COIN,
 )
 P102_SMALL_FROG_COIN_STILL = ChestPacket(
     packet_id=102,
@@ -1312,7 +1312,7 @@ ALL_PACKETS = PacketCollection(
         P098_GRAY_SPELL_CHEST,
         P099_BAG_STATIC,
         P100_BOOSTER_HILL_PRIZE_11,
-        P101_FLOWER_COLLECTION,
+        P101_INFINITE_COIN_STATIC,
         P102_SMALL_FROG_COIN_STILL,
         P103_MIMIC_1_POOF_ON_DEFEAT,
         P104_MIMIC_2_POOF_ON_DEFEAT,

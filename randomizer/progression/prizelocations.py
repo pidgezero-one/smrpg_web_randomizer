@@ -135,7 +135,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_VisibilityOn,
     A_PlaySound,
     A_TransferXYZFPixels,
+    A_WalkNorthPixels,
+    A_WalkEastPixels
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import Pause
 from typing import TYPE_CHECKING, cast
 
 from ..data.physical_objects.items import (
@@ -567,7 +570,6 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
         FrogCoinPrize,
         EXPStarPrize,
         SlotsPrize,
-        InfiniteCoinsPrize,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 4),
@@ -620,7 +622,6 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         ThirdMimicFightLauncher,
         SlotsPrize,
         FrogCoinPrize,
-        InfiniteCoinsPrize,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 6),
@@ -1862,7 +1863,7 @@ class BanditsWayDogChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_2
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 33),
         # RunDialog(
@@ -1893,7 +1894,7 @@ class BanditsWayPlatformsLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BANDITS_WAY_STAR_CHEST
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 34),
         # RunDialog(
@@ -1933,7 +1934,7 @@ class BanditsWayPlatformsRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BANDITS_WAY_DOG_JUMP
     _world_area = WorldAreaEnum.BANDITS_WAY
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 35),
         # RunDialog(
@@ -2350,7 +2351,6 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         SlotsPrize,
-        InfiniteCoinsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 43),
@@ -3472,7 +3472,6 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
-        InfiniteCoinsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 81),
@@ -3510,7 +3509,6 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
-        InfiniteCoinsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 82),
@@ -3549,7 +3547,6 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         FrogCoinPrize,
         CoinPrize,
         SlotsPrize,
-        InfiniteCoinsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 83),
@@ -5130,10 +5127,9 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM, ["next"]
         ),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5163,10 +5159,9 @@ class InnerMinesShyguyCartLocation(StandingLocationRow1):
         # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["next"]),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5199,10 +5194,9 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
             R280_MOLEVILLE_MINES_AREA_15_2LEVEL_ROOM_WSPARKY_AND_10COIN_TC,
             ["next"],
         ),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5235,10 +5229,9 @@ class InnerMinesSaveBlockChestLocation(TreasureChestLocationRow1):
             R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS,
             ["next"],
         ),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5271,10 +5264,9 @@ class InnerMinesHighUpChestLocation(TreasureChestLocationRow2):
             R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS,
             ["next"],
         ),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -5419,10 +5411,9 @@ class InnerMinesStarPiece(StarPieceLocation):
         # ),
         JmpIfBitSet(MOLEVILLE_MINES_ENTRANCE_GATING, ["next"]),
         JmpIfBitSet(MINES_BOSS_2_DEFEATED, ["next"]),
-        JmpIfBitClear(MINES_BACK_OPENED, ["next"]),
+        JmpIfBitSet(MINES_BACK_OPENED, ["mines_hint_text"]),
         StoreItemAmountTo7000(BambinoBombItem),
-        JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
-        Jmp(["mines_hint_text"]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
@@ -5476,6 +5467,25 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
         return can_clear_mines(world, inventory) and is_all_starting_chars_set(
             world, inventory
         )
+    
+    def render(self, world: GameWorld):
+        op = super().render(world)
+        if isinstance(self.prize, MarioRecruitmentPrize):
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
+            ).set_pixels(10)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
+            ).set_pixels(7)
+        if isinstance(self.prize, GenoRecruitmentPrize):
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
+            ).set_pixels(5)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
+            ).set_pixels(6)
+        return op
+
 
     # Flag as checked: MINES_BOSS_2_DEFEATED
 
@@ -9194,7 +9204,7 @@ class ShipRatStairsChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_RAT_STAIRS
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 218),
         # RunDialog(
@@ -9817,9 +9827,6 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _id = ShuffleLocationSelector.HIDON_REWARD_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
-    # SecondMimicFightLauncher must be blacklisted to prevent circular dependency:
-    # This location's can_access requires defeating second mimic, which requires
-    # accessing the SecondMimicFightLauncher location - can't be the same location.
     _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize, InfiniteCoinsPrize]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11875,12 +11882,12 @@ class MonstroEntranceLocation(TreasureChestLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 287),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R267_MONSTRO_TOWN_ENTRANCE, ["next"]
@@ -11904,12 +11911,12 @@ class MonstroThwompItemLocation(KeyItemLocation, StandingLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 288),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfObjectNotInSpecificLevel(NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -11945,12 +11952,12 @@ class DojoFirstFight(BossFightLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 289),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
         Jmp(["monstro_town_hint_text"]),
@@ -11988,12 +11995,12 @@ class DojoFirstFightStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 290),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -12075,12 +12082,12 @@ class DojoSecondFightStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 291),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -12157,12 +12164,12 @@ class DojoThirdFightStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 292),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_3_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -12238,12 +12245,12 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 293),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -12268,12 +12275,12 @@ class MonstroDojoClearRewardLocation(NPCLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 294),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
@@ -12351,16 +12358,16 @@ class DojoFifthFightStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 295),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
+        JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["monstro_town_hint_text"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -12387,16 +12394,16 @@ class MonstroDojoPostgameClearRewardLocation(NPCLocationRow2):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 296),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_POSTGAME_COMPLETED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["monstro_town_hint_text"]),
+        JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["next"]),
         JmpIfBitSet(STAY_VOUCHER_USED, ["monstro_town_hint_text"]),
         StoreItemAmountTo7000(StayVoucherItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
@@ -12471,19 +12478,19 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 297),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
         # door will be open if you have progressive fireworks or single fireworks enabled and have gotten to the carbo cookie
         JmpIfObjectNotInSpecificLevel(
-            NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
+            NPC_2, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
         ),
         # door is always openable if you have a shiny stone
         StoreItemAmountTo7000(ShinyStoneItem),
@@ -12520,19 +12527,19 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 298),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
         JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["next"]),
         # door will be open if you have progressive fireworks or single fireworks enabled and have gotten to the carbo cookie
         JmpIfObjectNotInSpecificLevel(
-            NPC_0, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
+            NPC_2, R324_MONSTRO_TOWN_OUTSIDE, ["monstro_town_hint_text"]
         ),
         # door is always openable if you have a shiny stone
         StoreItemAmountTo7000(ShinyStoneItem),
@@ -12615,12 +12622,12 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 299),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
@@ -12652,12 +12659,12 @@ class MonstroSealedDoorClearRewardLocationPostgame(KeyItemLocation, NPCLocationR
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 300),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitClear(MONSTRO_MIDDLE_DOOR_COMPLETED, ["next"]),
@@ -12686,12 +12693,12 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 301),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_1_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -12716,12 +12723,12 @@ class MonstroSecondSuperJumpRewardLocation(NPCLocationRow2):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 302),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitSet(SUPER_JUMP_PRIZE_2_GRANTED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
@@ -12746,12 +12753,12 @@ class MonstroFlagExchangeLocation(NPCLocationRow1):
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 303),
         # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
+        #     dialog_id=DI2010_DEBUG_7000,
+        #     above_object=BOWSER,
+        #     closable=True,
+        #     sync=False,
+        #     multiline=True,
+        #     use_background=True,
         # ),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         JmpIfBitSet(MUSTY_FEARS_QUEST_COMPLETE, ["next"]),
@@ -14062,7 +14069,7 @@ class NimbusCastleBusinessCentreOccupiedChestLocation(TreasureChestLocationRow1)
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_BUSINESS_CENTRE
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [SlotsPrize, InfiniteCoinsPrize]
+    _blacklist = [SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 347),
         # RunDialog(
@@ -17239,6 +17246,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
 
             # rise script not used for box summon or battle halls, so have a separate if block
             if m.animations.keep_summon is not None:
+                cast_length = m.animations.keep_summon.contact_frame or m.animations.keep_summon.total_duration
                 world.action_scripts.get_command_by_identifier(
                     "keep_battle_room_summon", A_SetSpriteSequence
                 ).set_index(m.animations.keep_summon.sequence_id)
@@ -17246,8 +17254,7 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                     "EVENT_941_pause_0", Pause
                 ).set_length(
                     (
-                        m.animations.keep_summon.contact_frame
-                        or m.animations.keep_summon.total_duration
+                        cast_length
                     )
                     + 12
                 )
@@ -17287,6 +17294,48 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 world.action_scripts.delete_command_by_identifier(
                     "keep_battle_room_summon"
                 )
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "keep_boss_1_heal_aq",
+                    "keep_boss_1_heal",
+                )
+
+            contact_frame = 25
+            cast_duration = 25
+            if m.animations.keep_summon is not None:
+                cast_duration = m.animations.keep_summon.total_duration
+                if m.animations.keep_summon.contact_frame is not None:
+                    contact_frame = m.animations.keep_summon.contact_frame
+                else:
+                    contact_frame = m.animations.keep_summon.total_duration
+            arms_go_up = max(0, contact_frame - 5)
+            pause_ends = contact_frame
+            reset_properties_after = (contact_frame + 10) if contact_frame == cast_duration else cast_duration
+            arms_go_down = reset_properties_after + 5
+            if arms_go_up == 0:
+                world.event_scripts.delete_subscript_command_by_identifier(
+                    "keep_heal_arms_raised_aq",
+                    "keep_heal_arms_go_up",
+                )
+            else:
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "keep_heal_arms_raised_aq",
+                    "keep_heal_arms_go_up", A_Pause
+                ).set_length(arms_go_up)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "keep_heal_arms_raised_aq",
+                "keep_heal_arms_go_down", A_Pause
+            ).set_length(arms_go_down)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "keep_boss_1_heal_aq",
+                "keep_boss_1_heal_length", A_Pause
+            ).set_length(reset_properties_after)
+            world.event_scripts.get_command_by_identifier(
+                "keep_heal_animation_starts", Pause
+            ).set_length(pause_ends)
+            world.event_scripts.get_command_by_identifier(
+                "keep_heal_animation_ends", Pause
+            ).set_length(reset_properties_after - pause_ends)
+            
         else:
             world.event_scripts.delete_command_by_identifier("kamek_palette_3")
 
@@ -18599,7 +18648,7 @@ class MariosPadBedFlag(InvisibleFlagLocation):
         # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -18630,7 +18679,7 @@ class RoseTownSignFlag(InvisibleFlagLocation):
         # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -18660,7 +18709,7 @@ class YosterIsleGoalFlag(InvisibleFlagLocation):
         JmpIfBitSet(PIPE_VAULT_GATED, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -18690,7 +18739,7 @@ class MariosPadSteamwhistleFlag(InvisibleFlagLocation):
         # ),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["monstro_town_hint_text"]),
+        Jmp(["invisible_item_hint_text"]),
     ]
 
     # All other flag locations are in logic only after you can talk to the musty fears because otherwise how tf would you know where to look?
@@ -20646,7 +20695,7 @@ class LandsEndCannonFlag(InvisibleFlagLocation):
     _y_coord = 115
     _world_area = WorldAreaEnum.LANDS_END
     _y_shift = -8
-    _clue_text = " Mine's under a big, quiet cannon.[await]"
+    _clue_text = " Mine's inside a big, quiet cannon.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 505),
         # RunDialog(

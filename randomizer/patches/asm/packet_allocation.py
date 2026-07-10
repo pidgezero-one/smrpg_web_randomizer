@@ -131,7 +131,10 @@ _HOOK_BYTES = bytes([
 ])
 
 _ROUTINE_OFFSET = 0x0080C8
-_ROUTINE_MAX_BYTES = 120
+# $C0:80C8..$C0:812F only — learn_special_event.py owns $C0:8130-8136 and is
+# applied later (last-writer-wins), so anything we place at $8130+ is silently
+# eaten. The 22 B of vanilla copyright padding at $C0:8137-814C is still free.
+_ROUTINE_MAX_BYTES = 0x8130 - 0x80C8  # 104
 
 # Chest-packet slot reservation (per-room). See docstring, site ``$C0:9137``.
 # The helper recomputes the treasure-chest buffer's cursor advance as
@@ -163,6 +166,11 @@ _CHEST_RESERVE_HELPER = bytes([
 # correctly fall through to the bitmap-free path at $97DD. The index/mask math
 # at $97BF already recomputes the bit from $19,X, so only the gate changes.
 _LEAK_HOOK_OFFSET = 0x0097B9
+# Lives in the second free block ($C0:8137-814C, 22 B of vanilla copyright
+# padding) rather than trailing the allowlist routine — the first block ends at
+# $8130 where learn_special_event.py's opcode-$CE handler starts.
+_LEAK_HELPER_OFFSET = 0x008137
+_LEAK_HELPER_MAX_BYTES = 0x814D - 0x8137  # 22
 _LEAK_VALIDATE_HELPER = bytes([
     0xB5, 0x19,         # LDA $19,X      packet's stored VRAM offset
     0x38,               # SEC
@@ -265,19 +273,24 @@ def get_patch(packet_ids: Iterable[int]) -> dict[int, bytes]:
     slot allocation path.
     """
     routine = _build_npc_slot_lookup_routine(packet_ids)
-    # Both helpers live immediately after the allowlist routine in the same
-    # free region ($C0:80C8..8140); addresses computed at patch time so they
-    # never collide with the (variable-length) routine.
+    # The allowlist routine and the chest-reserve helper share the first free
+    # block; addresses computed at patch time so they never collide with the
+    # (variable-length) routine. The leak helper sits in the second block.
     reserve_offset = _ROUTINE_OFFSET + len(routine)
-    leak_offset = reserve_offset + len(_CHEST_RESERVE_HELPER)
-    used = (leak_offset + len(_LEAK_VALIDATE_HELPER)) - _ROUTINE_OFFSET
+    used = (reserve_offset + len(_CHEST_RESERVE_HELPER)) - _ROUTINE_OFFSET
     if used > _ROUTINE_MAX_BYTES:
         raise RuntimeError(
             f"npc_slot routine ({len(routine)} B) + chest-reserve helper "
-            f"({len(_CHEST_RESERVE_HELPER)} B) + leak-fix helper "
-            f"({len(_LEAK_VALIDATE_HELPER)} B) = {used} B exceed the "
-            f"{_ROUTINE_MAX_BYTES} B free region at $C0:80C8 (before the "
-            f"$C0:8140 fade-in stub). Reduce npc_slot_packet_ids."
+            f"({len(_CHEST_RESERVE_HELPER)} B) = {used} B exceed the "
+            f"{_ROUTINE_MAX_BYTES} B free region at $C0:80C8 (before "
+            f"learn_special_event's handler at $C0:8130). "
+            f"Reduce npc_slot_packet_ids."
+        )
+    leak_offset = _LEAK_HELPER_OFFSET
+    if len(_LEAK_VALIDATE_HELPER) > _LEAK_HELPER_MAX_BYTES:
+        raise RuntimeError(
+            f"leak-fix helper ({len(_LEAK_VALIDATE_HELPER)} B) exceeds the "
+            f"{_LEAK_HELPER_MAX_BYTES} B free region at $C0:8137."
         )
     # Same-bank ($C0) JSRs; HiROM $C0:xxxx ROM low-16.
     reserve_snes = reserve_offset & 0xFFFF

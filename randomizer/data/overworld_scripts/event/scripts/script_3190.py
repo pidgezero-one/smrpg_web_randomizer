@@ -90,8 +90,12 @@ script = EventScript([
 		A_Pause(1, identifier="EVENT_3190_action_queue_10_SUBSCRIPT_pause_26"),
 		A_JmpIfBitClear(TEMP_7044_5, ["EVENT_3190_action_queue_10_SUBSCRIPT_pause_26"]),
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0]),
-		A_SetVRAMPriority(PRIORITY_3)
-	]),
+		A_SetVRAMPriority(PRIORITY_3),
+		A_FixedFCoordOn(),
+        A_WalkNorthPixels(10, identifier="mines_character_reposition_y"),
+        A_WalkEastPixels(7, identifier="mines_character_reposition_x"),
+		A_FixedFCoordOff(),
+	], identifier="mines_character_reposition"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_JumpToHeight(108),
 		A_WalkToXYCoords(x=12, y=61),
@@ -140,7 +144,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1200_INNER_MINES_BOSS_UNLOCKS),
     RunEventAsSubroutine(E1227_MOLEVILLE_CHARACTER),
 	Set7000ToPartySize(),
-	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_6"),
 	JmpIfComparisonResultIsLesser(["EVENT_3190_j_24"]),
 	SetBit(SWITCH_MENU_UNLOCKED),
 	JmpIfBitClear(TEMP_7044_5, ["EVENT_3190_pause_15"], identifier="EVENT_3190_j_24"),

@@ -1,4 +1,4 @@
-#A0347_EMPTY
+#A0347_SHIP_BOSS_2
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,13 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_SetPriority(3),
+	A_SetSpriteSequence(index=10, is_sequence=True, looping=True, identifier="ship_boss_idle_sequence_2"),
+	A_SequenceLoopingOn(identifier="ship_boss_idle_sequence_loop_2"),
+	A_Pause(1, identifier="ACTION_347_pause_3"),
+	A_JmpIfBitClear(TEMP_7044_7, ["ACTION_347_pause_3"]),
+	A_ResetProperties(),
+	A_SequenceLoopingOff(),
+	A_ReturnQueue()
+])

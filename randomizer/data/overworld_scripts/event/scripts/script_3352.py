@@ -164,7 +164,7 @@ script = EventScript([
 	SetSyncActionScript(NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS),
 	Pause(8),
 	PlayMusicAtDefaultVolume(M0009_VICTORY),
-	RunDialog(dialog_id=DI1886_DUPLICATE, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1882_QUIZ_PASSED, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	SetBit(TEMP_7044_7),
 	Pause(32),
 	ActionQueueSync(target=NPC_0, subscript=[

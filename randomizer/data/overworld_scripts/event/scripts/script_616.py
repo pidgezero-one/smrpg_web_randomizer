@@ -55,7 +55,7 @@ script = EventScript([
 		A_WalkToXYCoords(x=6, y=62),
 		A_FaceNorthwest()
 	]),
-	RunDialog(dialog_id=DI0968_DUPLICATE, above_object=NPC_12, closable=False, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI0967_ARE_YOU_LEAVING_MARRYMORE_HOTEL, above_object=NPC_12, closable=False, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_616_set_action_script_18"]),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	Pause(10),

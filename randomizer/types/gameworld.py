@@ -126,6 +126,7 @@ from ..logic.setup.enemy_tweaks import (
     apply_experience_zero_settings,
 )
 from ..logic.setup.equipment_setup import apply_equipment_settings
+from ..logic.setup.item_protection import apply_item_protection
 from ..logic.setup.minigames_setup import apply_minigame_settings
 from ..logic.setup.cosmetics import apply_cosmetic_settings
 from ..logic.setup.prize_locations import set_locations
@@ -1205,6 +1206,9 @@ class GameWorld:
         # Apply equipment and spell element settings
         apply_equipment_settings(self)
 
+        # Mark player-chosen items as unsellable
+        apply_item_protection(self)
+
         # Build item impact categories (used for shop shuffling and other systems)
         self._build_item_impact_categories()
 
@@ -1913,6 +1917,10 @@ class GameWorld:
 
         # Always-on byte patches.
         patch.add_dict(asm.key_item_inventory.get_patch(), source="key_item_inventory")
+        # Unconditional: Debug Candy is always protected, and the hooks are inert
+        # for any item whose no_sell bit is clear.
+        patch.add_dict(asm.unsellable_items.get_patch(), source="unsellable_items")
+        patch.add_dict(asm.equip_menu_sort.get_patch(), source="equip_menu_sort")
         # Coin counter cap 999 -> 9999 (overworld add-coins, battle reward,
         # X-menu). Reproduces the legacy open_mode.json clamp edits so the
         # JSON entries can be retired.

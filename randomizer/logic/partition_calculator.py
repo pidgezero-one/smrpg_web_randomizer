@@ -716,20 +716,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
     # =========================================================================
-    if world.settings.debug_mode and room_id in (154, 254):
-        print(f"[PARTITION DBG] Room {room_id}:")
-        for i, obj in enumerate(room.objects):
-            npc_info = next((n for n in npc_infos if n.obj_index == i), None)
-            fc = npc_info.force_cannot_clone if npc_info else "?"
-            gp = npc_info.is_gridplane if npc_info else "?"
-            fmt = npc_info.gridplane_format if npc_info else "?"
-            buffered = npc_info.sprite_id in buffered_sprite_ids if npc_info else "?"
-            mvs = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
-            occ = obj.cannot_clone
-            print(f"  obj[{i}]: sprite={obj._npc.sprite_id} force_cc={fc} obj.cc={occ} gridplane={gp} fmt={fmt} buffered={buffered} min_vram={mvs}")
-        print(f"  buffers: {[(bt.name, bs.name) for bt, bs in zip(new_buffer_types, new_buffer_space)]}")
-        print(f"  buffered_sprite_ids: {buffered_sprite_ids}")
-        print(f"  sprite_to_new_buffer: {sprite_to_new_buffer}")
 
     # Rooms whose buffer TYPES must always be preserved from the source partition,
     # regardless of what the orchestrator's analysis would otherwise pick. The

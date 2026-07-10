@@ -76,7 +76,7 @@ script = EventScript([
 	Pause(10, identifier="EVENT_351_pause_32"),
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	Jmp(["EVENT_351_action_queue_37"]),
-	RunDialog(dialog_id=DI3741_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_351_run_dialog_35"),
+	RunDialog(dialog_id=DI3740_GAMEBOY_KID_INSUFFICIENT_COINS, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True, identifier="EVENT_351_run_dialog_35"),
 	Jmp(["EVENT_351_action_queue_37"]),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=True),

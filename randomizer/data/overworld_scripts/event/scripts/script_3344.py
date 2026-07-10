@@ -170,7 +170,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=0, looping=False),
 		A_Pause(4),
 		A_ClearBit(TEMP_7043_0),
-		A_EndLoop()
+		A_EndLoop(identifier="axem_trampoline_endloop")
 	], identifier="axem_trampoline_aqueue"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(NORMAL),

@@ -4,8 +4,17 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     Weapon as WeaponBase,
     Armor as ArmorBase,
     Accessory as AccessoryBase)
+from smrpgpatchbuilder.datatypes.items.constants import ITEMS_BASE_ADDRESS
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from .physical_objects import ItemNPC
+
+# Item stat byte 0, bit 6. Unused by vanilla: no ROM code reads it, and
+# smrpgpatchbuilder neither writes nor parses it. The randomizer claims it as a
+# "cannot be sold or thrown away" flag, honoured by the ``unsellable_items`` ASM
+# patch. This is a randomizer feature, not a game feature, so it lives here
+# rather than in smrpgpatchbuilder's Item.
+NO_SELL_BIT = 0x40
+_ITEM_RECORD_SIZE = 18
 
 
 def _add_desc_fields(fields: list[tuple[str, object, list | bool]]) -> str:
@@ -36,7 +45,34 @@ class Item(ItemBase):
     _remake_name: str | None = None
     _text_shop_menu: str | None = None
     _remake_text_shop_menu: str | None = None
-    
+    _no_sell: bool = False
+
+    @property
+    def no_sell(self) -> bool:
+        """Whether this item is barred from being sold or thrown away."""
+        return self._no_sell
+
+    def set_no_sell(self, no_sell: bool) -> None:
+        """Set whether this item is barred from being sold or thrown away."""
+        self._no_sell = no_sell
+
+    def render(self) -> dict[int, bytearray]:
+        patch = super().render()
+        if not self._no_sell:
+            return patch
+
+        base_addr = ITEMS_BASE_ADDRESS + (self.item_id * _ITEM_RECORD_SIZE)
+        record = patch.get(base_addr)
+        if record is None:
+            # ItemBase.render() early-returns before the stat block when
+            # price == 0, so there would be no byte 0 to set the bit on.
+            raise ValueError(
+                f"{type(self).__name__}: no_sell requires a nonzero price "
+                f"(price={self.price}); the stat block is not rendered otherwise"
+            )
+        record[0] |= NO_SELL_BIT
+        return patch
+
     @property
     def room_service_price(self) -> int:
         return max(2, int(self.price // 2 * 0.75))

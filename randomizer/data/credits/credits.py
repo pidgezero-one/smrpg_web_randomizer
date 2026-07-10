@@ -505,12 +505,23 @@ def update_credits(world: GameWorld) -> dict[int, bytearray]:
 
     # 25
     credits.begin_titles(BEGIN_TITLES_DELAY)
+    credits.add_title(0x80, 0x00, 0x08, "CORE REWRITE")
+    credits.end_titles(END_TITLES_DELAY)
+
+    credits.begin_credits()
+    credits.add_credit(0x80, 0x40, 0x81, "PIDGEZERO_ONE")
+    credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
+
+
+    # 25
+    credits.begin_titles(BEGIN_TITLES_DELAY)
     credits.add_title(0x80, 0x00, 0x08, "CORE DEVELOPMENT")
     credits.end_titles(END_TITLES_DELAY)
 
     credits.begin_credits()
-    credits.add_credit(0x80, 0xC0, 0xC0, "ALANIM    DORKMASTER FLEK")
-    credits.add_credit(0x80, 0x80, 0x81, "PATCDR      PIDGEZERO_ONE")
+    credits.add_credit(0x80, 0x80, 0xC0, "ALANIM")
+    credits.add_credit(0x80, 0x40, 0x81, "DORKMASTER FLEK")
+    credits.add_credit(0x80, 0x00, 0xC2, "PATCDR")
     credits.end_credits(END_CREDITS_DELAY_1, END_CREDITS_DELAY_2)
 
     # 26

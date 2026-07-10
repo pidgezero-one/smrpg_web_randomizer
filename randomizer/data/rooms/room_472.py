@@ -43,17 +43,17 @@ room = Room(
         extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
-                main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True,
-            ),
-            Buffer(
                 buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True,
+            ),
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -255,6 +255,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            cannot_clone=True,
         ),
         RegularClone(  # 8
             npc=npcs.POUNDETTE_NPC_2,
@@ -266,6 +267,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularClone(  # 9
             npc=npcs.POUNDETTE_NPC_2,
@@ -277,6 +279,7 @@ room = Room(
             z=5,
             z_half=False,
             direction=SOUTHWEST,
+            cannot_clone=True,
         ),
         RegularNPC(  # 10
             npc=npcs.FACTORY_DIRECTOR_RED_NPC,

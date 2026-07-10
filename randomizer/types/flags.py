@@ -435,6 +435,13 @@ class MaxCharacters(RangeFlag):
 
 
 # ✅
+class AllowAllySwitching(BooleanFlag):
+    _name = "Allow switching allies with 2 or more party members"
+    _description = """If enabled, you can switch allies as soon as you have two party members instead of four, so that you can always choose which party member will face Dodo 2, Johnny 2, etc."""
+    _id = "allyswap"
+
+
+# ✅
 # Build StartingCharacterEnum dynamically - use ally instances as values (not class, to avoid aliases)
 _inclusion_members = {}
 for ally in ally_collection._allies:
@@ -1927,6 +1934,27 @@ class FreeShops(BooleanFlag):
     _id = "free"
 
 
+class ProtectedItemEnum(CategorizationOption):
+    """Items a player may mark unsellable. Debug Candy is always unsellable."""
+
+    LUCKY_JEWEL = "Lucky Jewel"
+    SEE_YA = "See Ya"
+    EARLIER_TIMES = "EarlierTimes"
+    GOODIE_BAG = "Goodie Bag"
+    PROGRESSIVE_EGGS = "Mystery Egg/Lamb's Lure/Sheep Attack"
+    STAR_EGG = "Star Egg"
+
+
+# ✅
+class ProtectSpecialItems(CategorizationFlag[ProtectedItemEnum]):
+    _name = "Prevent accidentally selling special items"
+    _description = """Highlighted (white text over blue) items cannot be sold or thrown in the Waste Basket, and appear in dark blue text in the Sell Items menu. They will still take up space in your inventory.
+    <br>
+    <br>Note: The Wallet, Seed, Fertilizer, Bright Card, and (when shuffled) Fireworks/Shiny Stone/Carbo Cookie are not covered because they are key items now."""
+    _default = {o: False for o in ProtectedItemEnum.__members__.values()}
+    _id = "nosell"
+
+
 # ******** Enemies & Bosses
 
 
@@ -2529,6 +2557,7 @@ class CharacterRecruitmentSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         ShuffleCharacters,
         MaxCharacters,
+        AllowAllySwitching,
         AvailableCharacters,
         StartingCharacters,
     ]
@@ -2749,6 +2778,7 @@ class ShopsCategory(FlagCategory):
         NoPickMeUps,
         ShowEquips,
         FreeShops,
+        ProtectSpecialItems,
     ]
     _size: int = 3
     _id: str = "S"

@@ -180,7 +180,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1204_CHAPEL_BOSS_UNLOCKS),
 	RunEventAsSubroutine(E1228_MARRYMORE_CHARACTER),
 	Set7000ToPartySize(),
-	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_2"),
 	JmpIfComparisonResultIsLesser(["EVENT_668_j_24"]),
 	SetBit(SWITCH_MENU_UNLOCKED),
 	RemoveOneOfItemFromInventory(ShoesItem, identifier="EVENT_668_j_24"),

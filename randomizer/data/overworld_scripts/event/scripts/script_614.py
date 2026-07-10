@@ -49,7 +49,7 @@ script = EventScript([
 	Jmp(["EVENT_614_pause_16"]),
 	RunDialog(dialog_id=DI0987_CANT_AFFORD_TIP, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_614_run_dialog_13"),
 	Pause(10, identifier="EVENT_614_pause_14"),
-	RunDialog(dialog_id=DI0973_DUPLICATE, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI0970_ENJOY_YOUR_STAY, above_object=NPC_0, closable=True, sync=False, multiline=True, use_background=True),
 	Pause(10, identifier="EVENT_614_pause_16"),
 	JmpIfBitSet(BELLHOP_CALLED, ["EVENT_614_action_queue_28"]),
 	ActionQueueAsync(target=NPC_0, subscript=[

@@ -34,6 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI3845_DUPLICATE, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI3841_MARRYMORE_ROBE, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
 	Return()
 ])

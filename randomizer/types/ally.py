@@ -67,6 +67,7 @@ class SpriteAnimationState(str, Enum):
     SPELL_FRAME_5 = "spell_frame_5"
     SPELL_FRAME_6 = "spell_frame_6"
     THINKING = "thinking"
+    ARMS_RAISED = "arms_raised"
     # Extra sprite actions (merged from ExtraSpriteActions)
     SWIM = "swim"
     WHIRL = "whirl"

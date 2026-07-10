@@ -81,7 +81,7 @@ script = EventScript([
 	JmpIfBitSet(TEMP_7043_2, ["EVENT_3479_run_dialog_duration_47"]),
 	RunDialogForDuration(dialog_id=DI1043_MIDAS_EXCHANGE, duration=0, sync=False),
 	Jmp(["EVENT_3479_copy_var_to_var_48"]),
-	RunDialogForDuration(dialog_id=DI1037_DUPLICATE, duration=0, sync=False, identifier="EVENT_3479_run_dialog_duration_47"),
+	RunDialogForDuration(dialog_id=DI1036_MIDAS_RIVER_TRADE_TUTORIAL, duration=0, sync=False, identifier="EVENT_3479_run_dialog_duration_47"),
 	CopyVarToVar(from_var=TEMP_702A, to_var=PRIMARY_TEMP_7000, identifier="EVENT_3479_copy_var_to_var_48"),
 	JmpIfVarEqualsConst(MIDAS_RIVER_70D4, 0, ["EVENT_3479_compare_7000_to_var_53"]),
 	RunDialogForDuration(dialog_id=DI1044_MIDAS_EXCHANGE, duration=0, sync=False),

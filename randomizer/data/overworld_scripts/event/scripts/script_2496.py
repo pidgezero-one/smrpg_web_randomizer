@@ -135,7 +135,7 @@ script = EventScript([
     RunEventAsSubroutine(E3840_STARTER_DEBUG_ITEMS),
     RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START, identifier="EVENT_2496_flag_setup"),
 	Set7000ToPartySize(),
-	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_4"),
 	JmpIfComparisonResultIsLesser(["EVENT_2496_j"]),
 	SetBit(SWITCH_MENU_UNLOCKED),
 	EnterArea(room_id=R189_MARIOS_PIPEHOUSE, face_direction=SOUTHEAST, x=3, y=13, z=0, identifier="EVENT_2496_j"),

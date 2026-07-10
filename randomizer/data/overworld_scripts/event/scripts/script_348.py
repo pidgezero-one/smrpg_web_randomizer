@@ -34,6 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI2319_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI2318_TOAD_GUARD, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	Return()
 ])

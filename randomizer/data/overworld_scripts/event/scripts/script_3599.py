@@ -80,7 +80,7 @@ script = EventScript([
 	RunDialog(dialog_id=DI2510_WON_COOKIES_IN_EXCESS, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
 	PlaySound(sound=SO061_DEEP_UHOH, channel=6),
 	Pause(60),
-	RunDialog(dialog_id=DI0952_DUPLICATE, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI0951_ATE_EXCESS_COOKIES, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=True),
 	SetVarToConst(UNKNOWN_70D8, 200),
 	SetVarToConst(TEMP_70AE, 0, identifier="EVENT_3599_set_var_to_const_48"),
 	SetVarToConst(TEMP_70B8, 0),

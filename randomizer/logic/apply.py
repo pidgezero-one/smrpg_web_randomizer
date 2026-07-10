@@ -32,7 +32,7 @@ from ..types.prizelocation import (
     TreasureShopLocation,
     ROOM_TO_BATTLEFIELD
 )
-from ..types.flags import AvailableCharacters, BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, PlayAsStarter, SpellsAnywhere
+from ..types.flags import AvailableCharacters, BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, PlayAsStarter, SpellsAnywhere, WinCondition, WinConditions
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     UsableEventScriptCommand,
 )
@@ -63,6 +63,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
     A_TransferXYZFPixels,
     A_WalkNortheastSteps,
 )
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import UseObjectQueueAtOffsetWithAMEM60Index
 from ..types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
@@ -129,6 +130,8 @@ from ..progression.prizelocations import (
     TreasureShopItem1,
     TreasureShopItem2,
     TreasureShopItem3,
+    MonstroSealedDoorBossFight,
+    FinalBossFight
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_9, NPC_0, NPC_3, NPC_4, NPC_5
 from ..data.enemies.enemies import CULEX3DEnemy
@@ -987,6 +990,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("EVENT_3717_action_queue_6", "EVENT_3717_fan_lean_forward_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_FORWARD)[1])
         world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.THINKING)[0])
         world.event_scripts.get_subscript_command_by_identifier("tadpole_thinking_aq", "tadpole_thinking", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.THINKING)[1])
+        world.event_scripts.get_subscript_command_by_identifier("keep_fall_thinking_aq", "keep_fall_thinking", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.THINKING)[0])
+        world.event_scripts.get_subscript_command_by_identifier("keep_fall_thinking_aq", "keep_fall_thinking", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.THINKING)[1])
+        world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.ARMS_RAISED)[0])
+        world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.ARMS_RAISED)[1])
         # bandits way anim — `ally.index` is sprite/area-object order
         # (Geno = 3), but Set7000ToIDOfMemberInSlot reports the party roster
         # in menu order (Geno = 2). Convert so the script's protagonist check
@@ -1027,6 +1034,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
+        world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_mirror_sprite(False)
         try:
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
@@ -1098,7 +1106,22 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         if statue_palette is not None:
             world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_palette_set_starts_at(statue_palette)
 
-    # TODO: ending credits bullshittery
+    
+    if not world.settings.is_flag_value(
+        WinCondition, WinConditions.SMITHY
+    ):
+        if world.settings.is_flag_value(WinCondition, WinConditions.SEALED) and isinstance(world.get_location(MonstroSealedDoorBossFight).prize, SmithyBossFight):
+            world.battle_animations[0x3A].delete_command_by_name("smithy_defeated_ending_effect_amem")
+        elif world.settings.is_flag_value(WinCondition, WinConditions.FACTORY) and isinstance(world.get_location(FinalBossFight).prize, SmithyBossFight):
+            world.battle_animations[0x3A].delete_command_by_name("smithy_defeated_ending_effect_amem")
+        else:
+            world.battle_animations[0x3A].replace_command_by_name(
+                "smithy_defeated_ending_effect",
+                UseObjectQueueAtOffsetWithAMEM60Index(destinations=["smithy_non_ending_oq_outer"], identifier="smithy_defeated_ending_effect"),
+            )
+    else:
+        world.battle_animations[0x3A].delete_command_by_name("smithy_defeated_ending_effect_amem")
+
 
     apply_hint_text(world)
 
@@ -1565,8 +1588,12 @@ def apply_hint_text(world: GameWorld) -> None:
         if not hint_commands:
             continue
 
-        # Exclude locations disabled by game settings
-        if not should_shuffle(location, world):
+        # Exclude locations disabled by game settings.
+        # InvisibleFlagLocation hints always emit: the Musty Fears items exist in
+        # every seed regardless of ShuffleItems, so exempt them from the shuffle gate.
+        if not should_shuffle(location, world) and not isinstance(
+            location, InvisibleFlagLocation
+        ):
             continue
 
         # If KeyItemsAnywhere and StarPieceAvailability are both off,

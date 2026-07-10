@@ -36,7 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	JmpIfBitSet(TEMP_7044_7, ["EVENT_1864_ret_10"]),
 	SetBit(TEMP_7044_7),
-	RunDialog(dialog_id=DI1252_DUPLICATE, above_object=TOADSTOOL, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1251_GIVE_UP_PROMPT, above_object=TOADSTOOL, closable=True, sync=False, multiline=True, use_background=False),
 	JmpIfDialogOptionBSelected(["EVENT_1864_action_queue_5"]),
 	Return(),
 	ActionQueueSync(target=MARIO, subscript=[

@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI2098_GOT_CROWN, above_object=BOWSER, closable=False, sync=False, multiline=False, use_background=False),
+	RunDialog(dialog_id=DI2098_GOT_CROWN, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
 	Inc(WEDDING_GEAR_COUNTER),
 	AddToInventory(CrownItem),
 	Return()

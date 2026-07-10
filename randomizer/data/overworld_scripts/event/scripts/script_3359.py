@@ -161,7 +161,7 @@ script = EventScript([
 	]),
 	ClearBit(TEMP_7044_7),
 	SetSyncActionScript(NPC_0, A0059_SEWER_STAIR_UPPER_RIGHT_RAT_PACING_AND_BOWSERS_KEEP_GAME_MOLDS),
-	RunDialog(dialog_id=DI1907_DUPLICATE, above_object=NPC_14, closable=True, sync=True, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1906_COIN_GAME_LOSE, above_object=NPC_14, closable=True, sync=True, multiline=True, use_background=False),
 	SetBit(TEMP_7044_7),
 	Pause(240),
 	FadeOutToBlack(sync=False),

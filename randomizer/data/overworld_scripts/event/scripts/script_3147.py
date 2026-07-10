@@ -34,6 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunDialog(dialog_id=DI1599_DUPLICATE, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1595_ROSE_WAY_PLATFORM_TIP, above_object=NPC_14, closable=True, sync=False, multiline=True, use_background=False),
 	Return()
 ])

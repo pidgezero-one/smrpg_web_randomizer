@@ -63,6 +63,7 @@ class Settings:
         self._flags = {
             ShuffleCharacters: ShuffleCharacters(),
             MaxCharacters: MaxCharacters(),
+            AllowAllySwitching: AllowAllySwitching(),
             StartingCharacters: StartingCharacters(),
             PlayAsStarter: PlayAsStarter(),
             EquipmentCharacters: EquipmentCharacters(),
@@ -164,6 +165,7 @@ class Settings:
             NoPickMeUps: NoPickMeUps(),
             ShowEquips: ShowEquips(),
             FreeShops: FreeShops(),
+            ProtectSpecialItems: ProtectSpecialItems(),
             BossShuffle: BossShuffle(),
             BossShuffleScaleStats: BossShuffleScaleStats(),
             KeepMinigameSpritesIntact: KeepMinigameSpritesIntact(),

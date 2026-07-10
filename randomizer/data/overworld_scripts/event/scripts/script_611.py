@@ -112,7 +112,7 @@ script = EventScript([
 	Return(),
 	SetBit(TEMP_704C_0, identifier="EVENT_611_set_bit_61"),
 	ClearBit(TEMP_7042_6),
-	RunDialog(dialog_id=DI1002_DUPLICATE, above_object=NPC_1, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI1001_YOURE_BROKE_NEED_TO_WORK_REMAINING, above_object=NPC_1, closable=True, sync=False, multiline=True, use_background=True),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
 	DecVarFrom7000(TEMP_7026),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AC),

@@ -40,6 +40,7 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_2793_ret_5"]),
+    SetBit(STAR_HILL_CHECKED), # don't need to go all the way to the top of the hill if they have the signal ring on
 	RunEventAsSubroutine(E3903_STAR_HILL_STAR_PIECE_SIGNAL),
 	Return(identifier="EVENT_2793_ret_5")
 ])

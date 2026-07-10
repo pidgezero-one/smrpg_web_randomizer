@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetBit(TEMP_7043_0),
-	RunDialog(dialog_id=DI1663_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI1661_BLUE_GUY_IN_MINES, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	ClearBit(TEMP_7043_0),
 	Return()
 ])

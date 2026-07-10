@@ -38,7 +38,7 @@ script = EventScript([
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),
 	JmpIfMarioOnAnObjectOrNot(['EVENT_1852_set_action_script_20', 'EVENT_1852_set_action_script_57']),
 	JmpIfBitSet(TEMP_7043_2, ["EVENT_1852_stop_all_background_events_59"]),
-	RunDialog(dialog_id=DI1300_DUPLICATE, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	RunDialog(dialog_id=DI1299_SKY_BRIDGE_PROMPT, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
 	JmpIfDialogOptionBSelected(["EVENT_1852_pause_7"]),
 	Jmp(["EVENT_1852_pause_12"]),
 	Pause(10, identifier="EVENT_1852_pause_7"),

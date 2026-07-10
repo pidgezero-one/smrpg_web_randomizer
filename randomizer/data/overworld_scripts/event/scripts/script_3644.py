@@ -353,7 +353,7 @@ script = EventScript([
 	SetAsyncActionScript(MARIO, A0671_SHAKE_HEAD_NO),
 	JmpToEvent(E0280_SLEEP_IN_NIMBUS_INN),
 	Return(),
-	RunDialog(dialog_id=DI3767_DUPLICATE, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True, identifier="EVENT_3644_run_dialog_181"),
+	RunDialog(dialog_id=DI3766_NIMBUS_INNKEEPER_AFTER_DREAM_CUSHION, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True, identifier="EVENT_3644_run_dialog_181"),
 	JmpIfBitSet(TEMP_7042_4, ["EVENT_3644_run_dialog_187"]),
 	JmpIfBitSet(TEMP_7042_6, ["EVENT_3644_run_dialog_189"]),
 	JmpIfBitSet(TEMP_7042_7, ["EVENT_3644_run_dialog_191"]),

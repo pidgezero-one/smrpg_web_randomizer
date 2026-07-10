@@ -50,7 +50,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=6, is_sequence=True, looping=True, mirror_sprite=True),
 		A_Pause(24),
 		A_SetSequenceSpeed(FAST),
-		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=3, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True, identifier="keep_fall_thinking"),
 		A_Pause(64),
 		A_StartLoopNTimes(7),
 		A_SetSpriteSequence(index=8, sprite_offset=3, is_sequence=True, looping=True, mirror_sprite=True),
@@ -70,6 +70,6 @@ script = EventScript([
 		A_PlaySound(sound=SO058_INSERT, channel=4),
 		A_SetBit(MAGIKOOPA_SAVE_ANIMATION_DONE),
 		A_SetSequenceSpeed(NORMAL)
-	]),
+	], identifier="keep_fall_thinking_aq"),
 	Return()
 ])

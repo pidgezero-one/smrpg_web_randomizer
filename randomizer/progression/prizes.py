@@ -4164,7 +4164,18 @@ class KingCalamariBossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n King Calamari is busy right now, so\n he can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering King Calamari.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """KING CALAMARI: It's not so weird\n for a squid to run a town.[await]""",
-        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find King Calamari...\n in his house. He is...the most\n respected person here.[await]""",
+        DI2832_OCCUPIED_SEASIDE_INNKEEPER: """ (Stay in the inn for free?)[await]\n  [select] (Thanks)\n  [select] (I'll pass)[await]""",
+        DI2834_OCCUPIED_SEASIDE_HENCHMAN_HINT_TO_LEFT_BUILDING: "[center]\n••••••[await]",
+        DI2837_OCCUPIED_SEASIDE_HENCHMAN_SEA_MAY_BE_LOCKED: "[center]\n••••••[await]",
+        DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: "[center]\n••••••[await]",
+        DI2839_OCCUPIED_SEASIDE_HENCHMAN_AVOID_SHED: "[center]\n••••••[await]",
+        DI2841_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: "[center]\n••••••[await]",
+        DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: "[center]\n••••••[await]",
+        DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: "[center]\n••••••[await]",
+        DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: "[center]\n••••••[await]",
+        DI2845_OCCUPIED_SEASIDE_HENCHMAN_CUSTOMER: "[center]\n••••••[await]",
+        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "[center]\n••••••[await]",
+        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "[center]\n••••••[await]",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """KING CALAMARI: Think you can beat\n the dojo master?[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
         DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ What do you want?[await]\n  [select] (Let's fight)\n  [select] (Uh...)[await]""",
@@ -4957,7 +4968,8 @@ class CulexBossFight(BossFightPrize):
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI1120_NIMBUS_BIRD_GUARD: """WATER CRYSTAL: This area is\n off-limits.[await]""",
         DI1945_NIMBUS_GUARD: """EARTH CRYSTAL: Are you sure you\n want to mess with a water crystal\n in a cloud kingdom?[await]""",
-    }
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: '''  You will enter combat against me?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''
+        }
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """CRYSTAL: Proceed forth. Culex\n awaits you.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """CRYSTAL: Well met! You have\n satisfied Culex's hunger for a\n true challenge.[await]""",
@@ -6869,6 +6881,7 @@ class Culex3DBossFight(BossFightPrize):
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: ''' You will enter combat against me\n in 3D?[await]\n  [select] (Yes)\n  [select] (Uh...)[await]'''
     }
     _dialog_replacements_remake = {
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Culex is busy right now, so he\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",

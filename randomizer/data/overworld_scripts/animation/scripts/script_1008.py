@@ -1,4 +1,4 @@
-#A1008_EMPTY
+#A1008_BRIEF_STATIC_COIN
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
@@ -15,4 +15,14 @@ from ....variables.variable_names import *
 from ....packets import *
 from ....items import *
 
-script = ActionScript([])
+script = ActionScript([
+	A_FloatingOff(),
+	A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
+	A_VisibilityOff(),
+	A_SequenceLoopingOn(),
+	A_Pause(9),
+	A_VisibilityOn(),
+	A_Pause(10),
+	A_VisibilityOff(),
+	A_ReturnQueue()
+])
