@@ -92,8 +92,8 @@ script = EventScript([
 		A_SetObjectMemoryBits(arg_1=0x0E, bits=[0]),
 		A_SetVRAMPriority(PRIORITY_3),
 		A_FixedFCoordOn(),
-        A_WalkNorthPixels(10, identifier="mines_character_reposition_y"),
-        A_WalkEastPixels(7, identifier="mines_character_reposition_x"),
+        A_WalkNorthPixels(5, identifier="mines_character_reposition_y"),
+        A_WalkEastPixels(5, identifier="mines_character_reposition_x"),
 		A_FixedFCoordOff(),
 	], identifier="mines_character_reposition"),
 	ActionQueueSync(target=MARIO, subscript=[

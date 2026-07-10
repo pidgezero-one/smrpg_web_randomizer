@@ -3074,7 +3074,7 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 70),
         # RunDialog(
@@ -3099,7 +3099,7 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 69),
         # RunDialog(
@@ -3403,7 +3403,7 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_1
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 79),
         # RunDialog(
@@ -5477,13 +5477,18 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
             ).set_pixels(7)
-        if isinstance(self.prize, GenoRecruitmentPrize):
+        elif isinstance(self.prize, GenoRecruitmentPrize):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
             ).set_pixels(5)
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
             ).set_pixels(6)
+        elif self.prize is None:
+            pass
+        else:
+            world.event_scripts.delete_subscript_command_by_identifier("mines_character_reposition", "mines_character_reposition_y")
+            world.event_scripts.delete_subscript_command_by_identifier("mines_character_reposition", "mines_character_reposition_x")
         return op
 
 
@@ -12497,6 +12502,8 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["monstro_town_hint_text"]),
         # if none of the above are true, you need to turn in the fireworks if moleville is liberated and shuffle one is turned on
         # or just buy a fireworks if vanilla behaviour enabled
+        # but if progressive is turned on, you're blocked until you find another upgrade
+        JmpIfBitSet(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(
             SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]
@@ -12546,6 +12553,8 @@ class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["monstro_town_hint_text"]),
         # if none of the above are true, you need to turn in the fireworks if moleville is liberated and shuffle one is turned on
         # or just buy a fireworks if vanilla behaviour enabled
+        # but if progressive is turned on, you're blocked until you find another upgrade
+        JmpIfBitSet(PROGRESSIVE_FIREWORKS_ENABLED, ["next"]),
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         JmpIfBitClear(
             SHUFFLE_ONE_FIREWORKS_ENABLED, ["moleville_hint_text"]

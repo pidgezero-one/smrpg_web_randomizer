@@ -1921,6 +1921,7 @@ class GameWorld:
         # for any item whose no_sell bit is clear.
         patch.add_dict(asm.unsellable_items.get_patch(), source="unsellable_items")
         patch.add_dict(asm.equip_menu_sort.get_patch(), source="equip_menu_sort")
+        patch.add_dict(asm.special_items_menu_sort.get_patch(), source="special_items_menu_sort")
         # Coin counter cap 999 -> 9999 (overworld add-coins, battle reward,
         # X-menu). Reproduces the legacy open_mode.json clamp edits so the
         # JSON entries can be retired.

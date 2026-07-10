@@ -686,6 +686,7 @@ class BossFightPrize(Prize):
     _name: str = ""
     _remake_name: str = ""
     _canon_name: str = ""
+    _marrymore_name: str = ""
     _seaside_letter_name_if_sunken_ship_boss: str = ""
     _seaside_letter_name_if_sunken_ship_boss_remake: str = ""
     _seaside_letter_name_if_sunken_ship_boss_canon: str = ""
@@ -713,6 +714,7 @@ class BossFightPrize(Prize):
 
     # subject, object, possessive adjective, possessive pronoun, reflexive pronoun
     _gender: tuple[str, str, str, str, str] = ("he", "him", "his", "his", "himself")
+    _marrymore_single_gender: tuple[str, str, str, str, str] | None = None
 
     @property
     def character_henchmen(self) -> list[BossFightHenchman] | None:
@@ -1007,10 +1009,27 @@ class BossFightPrize(Prize):
         if remake:
             return self._remake_name or self._name or self._text
         return self._name or self._text
+    
+    def marrymore_name(self, remake: bool = False, canon: bool = False) -> str:
+        if self._marrymore_name:
+            return self._marrymore_name
+        return self.name(remake, canon)
 
     @property
     def gender(self) -> tuple[str, str, str, str, str]:
         """Returns a tuple of (subject, object, possessive adjective, possessive pronoun, reflexive pronoun)"""
+        return self._gender
+
+    @property
+    def gender(self) -> tuple[str, str, str, str, str]:
+        """Returns a tuple of (subject, object, possessive adjective, possessive pronoun, reflexive pronoun)"""
+        return self._gender
+    
+    @property 
+    def marrymore_gender(self) -> tuple[str, str, str, str, str]:
+        """Returns a tuple of (subject, object, possessive adjective, possessive pronoun, reflexive pronoun)"""
+        if self._marrymore_single_gender:
+            return self._marrymore_single_gender
         return self._gender
 
     @property

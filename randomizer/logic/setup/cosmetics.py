@@ -469,10 +469,10 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
 
     bossfight_pool = [cast(BossFightPrize, l.prize) for l in world.locations.values() if isinstance(l, BossFightLocation) and isinstance(l.prize, BossFightPrize)]
-    boss_pool = list(set([(x.name(
+    boss_pool = list(set([(x.marrymore_name(
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
-    ), x.gender) for x in bossfight_pool]))
+    ), x.marrymore_gender) for x in bossfight_pool]))
     random_boss_names = random.sample([n for n in boss_pool  if n[0] != towerboss_name], k=5)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_1`", random_boss_names[0][0])
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_2`", random_boss_names[1][0])

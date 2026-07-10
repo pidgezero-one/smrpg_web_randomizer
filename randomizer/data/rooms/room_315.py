@@ -84,7 +84,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 1
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -111,7 +112,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 2
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -138,7 +140,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 3
             npc=npcs.SEASIDE_TOWN_FAKE_GREEN_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -165,7 +168,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 4
             npc=npcs.BANDANA_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -192,7 +196,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 5
             npc=npcs.BANDANA_BLUE_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
@@ -219,7 +224,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularNPC( # 6
             npc=npcs.SEASIDE_TOWN_FAKE_ELDER_GREEN_NPC,
             initiator=EventInitiator.NONE,

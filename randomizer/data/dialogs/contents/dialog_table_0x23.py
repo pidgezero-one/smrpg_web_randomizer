@@ -74,7 +74,8 @@ dialog_data[24] = ''' Don't listen to that guy. He's just
 dialog_data[25] = ''' I was hoping for this seed to solve
  the romantic tension between `RANDOM_BOSS_NAME_2` and `RANDOM_BOSS_NAME_3`.[await]
  Oh well, can't win 'em all.[await]'''
-dialog_data[26] = ''' Really? `MARRYMORE_CHARACTER` and `TOWER_BOSS_1` getting married?[delay_30] Are these writers even trying anymore?[await]'''
+dialog_data[26] = ''' Really?[await]
+ `MARRYMORE_CHARACTER` and `TOWER_BOSS_1` getting married?[delay_30] Are these writers even trying anymore?[await]'''
 dialog_data[27] = ''' Huh?[delay_30] A bathroom?[delay_30] No, I'm just
  cold![await]'''
 dialog_data[28] = ''' The chapel kitchen has been making

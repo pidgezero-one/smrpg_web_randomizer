@@ -48,6 +48,6 @@ script = EventScript([
 		A_PlaySound(sound=SO019_LONG_FALL, channel=6),
 		A_WalkSouthwestSteps(10)
 	], identifier="inner_mines_mario_shoved_backward"),
-	Pause(30),
+	Pause(30, identifier="inner_mines_mario_shoved_backward_pause"),
 	Return()
 ])

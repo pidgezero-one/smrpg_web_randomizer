@@ -43,6 +43,7 @@ Always-on byte patches:
     * :mod:`menu_item_always_available` — Force a $40:30E3 menu item available.
     * :mod:`grid_menu_navigation` — 2-D grid-menu cursor rework.
     * :mod:`equip_menu_sort` — Sort the equipment list when the Equip menu opens.
+    * :mod:`special_items_menu_sort` — Sort the key-items list when its menu opens.
     * :mod:`title_loop` — Title screen loops forever (no attract-mode demo).
     * :mod:`battle_init` — Copy overworld party size to battle party size.
     * :mod:`star_piece_sprite_fix` — Credits ending sequence sprite ID.
@@ -94,6 +95,7 @@ from . import (
     room_layouts,
     selected_music,
     show_equips,
+    special_items_menu_sort,
     sprite_group_whitelist,
     star_piece_sprite_fix,
     static_data,
@@ -133,6 +135,7 @@ __all__ = [
     "room_layouts",
     "selected_music",
     "show_equips",
+    "special_items_menu_sort",
     "sprite_group_whitelist",
     "star_piece_sprite_fix",
     "static_data",

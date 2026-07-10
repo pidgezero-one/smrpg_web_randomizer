@@ -59,7 +59,7 @@ script = EventScript([
 		A_Pause(20)
 	]),
 	CopyVarToVar(from_var=SECONDARY_TEMP_7024, to_var=PRIMARY_TEMP_7000),
-	RunDialog(dialog_id=DI1263_TROOPA_CLIFF_TIME, above_object=MARIO, closable=False, sync=False, multiline=True, use_background=False),
+	RunDialog(dialog_id=DI1263_TROOPA_CLIFF_TIME, above_object=MARIO, closable=True, sync=False, multiline=True, use_background=False),
 	ActionQueueAsync(target=NPC_1, subscript=[
 		A_ResetProperties()
 	]),

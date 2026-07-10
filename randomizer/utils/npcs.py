@@ -9,7 +9,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import NPC, VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHWEST
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject, Direction
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import ActionQueueSync
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import ActionQueueSync, Pause
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import A_SetSpriteSequence, A_Pause
 
 from ..types.physical_objects import BossNPC
@@ -184,4 +184,5 @@ def set_mines_punch_command(world: GameWorld, boss: BossNPC):
         "inner_mines_mario_shoved_backward_duration",
         A_Pause(contact_frame)
     )
+    world.event_scripts.get_command_by_identifier("inner_mines_mario_shoved_backward_pause", Pause).set_length(contact_frame)
         

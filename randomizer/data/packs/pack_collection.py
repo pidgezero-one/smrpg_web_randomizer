@@ -29,7 +29,7 @@ from ..variables.battle_event_names import *
 FORM0000_ONE_SNIFIT = Formation(
     id=0,
     members=[
-        FormationMember(SNIFITEnemyHenchman, 183, 127),
+        FormationMember(SNIFITEnemyStatic, 183, 127),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
@@ -207,8 +207,8 @@ FORM0016_ONE_K9_TWO_FROGOG = Formation(
 FORM0017_TWO_SHYSTER = Formation(
     id=17,
     members=[
-        FormationMember(BODYGUARDEnemy, 167, 119),
-        FormationMember(BODYGUARDEnemy, 199, 135),
+        FormationMember(SHYSTEREnemy, 167, 119),
+        FormationMember(SHYSTEREnemy, 199, 135),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -218,9 +218,9 @@ FORM0017_TWO_SHYSTER = Formation(
 FORM0018_THREE_SHYSTER = Formation(
     id=18,
     members=[
-        FormationMember(BODYGUARDEnemy, 151, 111),
-        FormationMember(BODYGUARDEnemy, 215, 143),
-        FormationMember(BODYGUARDEnemy, 167, 135),
+        FormationMember(SHYSTEREnemy, 151, 111),
+        FormationMember(SHYSTEREnemy, 215, 143),
+        FormationMember(SHYSTEREnemy, 167, 135),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -609,7 +609,7 @@ FORM0053_THREE_SPARKY = Formation(
 FORM0054_ONE_APPRENTICE = Formation(
     id=54,
     members=[
-        FormationMember(APPRENTICEEnemyHenchman, 183, 127),
+        FormationMember(APPRENTICEEnemyStatic, 183, 127),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -1355,10 +1355,10 @@ FORM0120_FOUR_MRKIPPER = Formation(
 FORM0121_FOUR_BANDANARED = Formation(
     id=121,
     members=[
-        FormationMember(BANDANAREDEnemyHenchman, 151, 127),
-        FormationMember(BANDANAREDEnemyHenchman, 183, 143),
-        FormationMember(BANDANAREDEnemyHenchman, 167, 103),
-        FormationMember(BANDANAREDEnemyHenchman, 231, 135),
+        FormationMember(BANDANAREDEnemy, 151, 127),
+        FormationMember(BANDANAREDEnemy, 183, 143),
+        FormationMember(BANDANAREDEnemy, 167, 103),
+        FormationMember(BANDANAREDEnemy, 231, 135),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -1368,11 +1368,11 @@ FORM0121_FOUR_BANDANARED = Formation(
 FORM0122_FIVE_BANDANARED = Formation(
     id=122,
     members=[
-        FormationMember(BANDANAREDEnemyHenchman, 199, 151),
-        FormationMember(BANDANAREDEnemyHenchman, 135, 119),
-        FormationMember(BANDANAREDEnemyHenchman, 215, 127),
-        FormationMember(BANDANAREDEnemyHenchman, 167, 135),
-        FormationMember(BANDANAREDEnemyHenchman, 183, 111),
+        FormationMember(BANDANAREDEnemy, 199, 151),
+        FormationMember(BANDANAREDEnemy, 135, 119),
+        FormationMember(BANDANAREDEnemy, 215, 127),
+        FormationMember(BANDANAREDEnemy, 167, 135),
+        FormationMember(BANDANAREDEnemy, 183, 111),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -1555,9 +1555,9 @@ FORM0137_ONE_BUNDT2_ONE_RASPBERRY2_TWO_TORTE2_ONE_CANDLE = Formation(
 FORM0138_THREE_CROOK = Formation(
     id=138,
     members=[
-        FormationMember(CROOKEnemyHenchman, 135, 119),
-        FormationMember(CROOKEnemyHenchman, 199, 119),
-        FormationMember(CROOKEnemyHenchman, 199, 151),
+        FormationMember(CROOKEnemyStatic, 135, 119),
+        FormationMember(CROOKEnemyStatic, 199, 119),
+        FormationMember(CROOKEnemyStatic, 199, 151),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
@@ -1566,11 +1566,11 @@ FORM0138_THREE_CROOK = Formation(
 FORM0139_FIVE_CROOK = Formation(
     id=139,
     members=[
-        FormationMember(CROOKEnemyHenchman, 167, 103),
-        FormationMember(CROOKEnemyHenchman, 135, 119),
-        FormationMember(CROOKEnemyHenchman, 183, 127),
-        FormationMember(CROOKEnemyHenchman, 199, 151),
-        FormationMember(CROOKEnemyHenchman, 231, 135),
+        FormationMember(CROOKEnemyStatic, 167, 103),
+        FormationMember(CROOKEnemyStatic, 135, 119),
+        FormationMember(CROOKEnemyStatic, 183, 127),
+        FormationMember(CROOKEnemyStatic, 199, 151),
+        FormationMember(CROOKEnemyStatic, 231, 135),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,
@@ -2942,9 +2942,9 @@ FORM0261_ONE_GUNYOLK_ONE_FACTORYCHIEF = Formation(
 FORM0262_THREE_MADMALLETENEMYHENCHMAN = Formation(
     id=262,
     members=[
-        FormationMember(MADMALLETEnemyHenchman, 151, 111),
-        FormationMember(MADMALLETEnemyHenchman, 167, 135),
-        FormationMember(MADMALLETEnemyHenchman, 215, 143),
+        FormationMember(MADMALLETEnemyStatic, 151, 111),
+        FormationMember(MADMALLETEnemyStatic, 167, 135),
+        FormationMember(MADMALLETEnemyStatic, 215, 143),
     ],
     music=NormalBattleMusic(),
     can_run_away=False,
@@ -4091,9 +4091,9 @@ FORM0364_ONE_BOXBOY_ONE_FAUTSO = Formation(
 FORM0365_THREE_BOBOMBHENCHMAN = Formation(
     id=365,
     members=[
-        FormationMember(BOBOMBEnemyHenchman, 167, 111),
-        FormationMember(BOBOMBEnemyHenchman, 167, 135),
-        FormationMember(BOBOMBEnemyHenchman, 215, 135),
+        FormationMember(BOBOMBEnemyStatic, 167, 111),
+        FormationMember(BOBOMBEnemyStatic, 167, 135),
+        FormationMember(BOBOMBEnemyStatic, 215, 135),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,

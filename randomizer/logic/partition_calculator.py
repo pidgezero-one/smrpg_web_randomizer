@@ -44,7 +44,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaOb
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.levels.classes import RoomObject
+    from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, RoomObject
     from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
 
 
@@ -224,6 +224,51 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
                 break
 
     return changed
+
+
+def _size_dedicated_min_vram(
+    world: GameWorld,
+    room_id: int,
+    obj_index: int,
+    obj: BaseRoomObject,
+    sprite_id: int,
+    is_gridplane: bool,
+) -> None:
+    """Raise an NPC's min_vram_size to fit its sprite's largest mold.
+
+    Only meaningful for cannot_clone NPCs: the engine gives them
+    `4 * (min_vram_size + 1)` dedicated tile slots at $C0:8EBC. Undersize it
+    and the sprite's tile upload runs past its allocation into the next
+    dedicated NPC's slots.
+
+    Gridplane sprites live in a fixed-size block, so min_vram_size stays 0.
+
+    Only increases, never decreases — an NPC default may be hand-tuned above
+    what the formula computes.
+    """
+    if is_gridplane:
+        return
+
+    from ..utils.npcs import min_vram_from_sequence_for_sprite
+
+    current_min = (
+        obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
+    )
+    sprite = world.get_sprite(sprite_id)
+    molds = sprite.animation.properties.molds
+    max_vram = current_min
+    for seq_idx, seq in enumerate(sprite.animation.properties.sequences):
+        for frame in seq.frames:
+            if frame.mold_id >= len(molds):
+                raise IndexError(
+                    f"Room {room_id} NPC {obj_index} (sprite {sprite_id}): "
+                    f"sequence {seq_idx} frame references mold_id {frame.mold_id} "
+                    f"but sprite only has {len(molds)} molds"
+                )
+        max_vram = max(max_vram, min_vram_from_sequence_for_sprite(world, sprite_id, seq_idx))
+
+    if max_vram > current_min:
+        obj.set_min_vram_size(max_vram)
 
 
 def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
@@ -742,8 +787,12 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     for npc in npc_infos:
         obj = room.objects[npc.obj_index]
         if npc.force_cannot_clone:
-            # Room-level override — always dedicated VRAM, don't touch
-            pass
+            # Room-level override — always dedicated VRAM. Which sprite occupies
+            # this slot still varies with boss shuffle, so the allocation must be
+            # sized for whatever landed here.
+            _size_dedicated_min_vram(
+                world, room_id, npc.obj_index, obj, npc.sprite_id, npc.is_gridplane
+            )
         elif npc.original_cannot_clone is False:
             # Room author explicitly opted this NPC INTO cloning. Honor it
             # even if the sprite didn't end up in a frequency-selected buffer
@@ -757,31 +806,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             obj.set_cannot_clone(False)
         else:
             obj.set_cannot_clone(True)
-            # Non-gridplane cannot_clone NPCs need min_vram_size set based on
-            # their sprite's largest mold. Without this, the game allocates 0
-            # extra VRAM rows and they overwrite other sprites.
-            # NOTE: Only increase min_vram, never decrease — the NPC default
-            # may be hand-tuned to a value higher than what the formula computes
-            # (the formula's baseline assumption can underestimate).
-            if not npc.is_gridplane:
-                from ..utils.npcs import min_vram_from_sequence_for_sprite
-                current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
-                max_vram = current_min
-                sprite = world.get_sprite(npc.sprite_id)
-                for seq_idx in range(len(sprite.animation.properties.sequences)):
-                    seq = sprite.animation.properties.sequences[seq_idx]
-                    for frame in seq.frames:
-                        if frame.mold_id >= len(sprite.animation.properties.molds):
-                            raise IndexError(
-                                f"Room {room_id} NPC {npc.obj_index} (sprite {npc.sprite_id}): "
-                                f"sequence {seq_idx} frame references mold_id {frame.mold_id} "
-                                f"but sprite only has {len(sprite.animation.properties.molds)} molds"
-                            )
-                    vram = min_vram_from_sequence_for_sprite(world, npc.sprite_id, seq_idx)
-                    if vram > max_vram:
-                        max_vram = vram
-                if max_vram > current_min:
-                    obj.set_min_vram_size(max_vram)
+            _size_dedicated_min_vram(
+                world, room_id, npc.obj_index, obj, npc.sprite_id, npc.is_gridplane
+            )
 
     # =========================================================================
     # Step 8: Log warnings

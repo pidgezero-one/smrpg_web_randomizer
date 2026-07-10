@@ -3293,6 +3293,8 @@ class HammerBrosFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "the Hammer Bros' pals."
 
     _gender = ("they", "them", "their", "theirs", "themselves")
+    _marrymore_name = "Hammer Bro"
+    _marrymore_single_gender = ("he", "him", "his", "his", "himself")
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """HAMMER BRO: Alright already, you won, now go away![await]""",
@@ -3981,6 +3983,8 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
     _statue_npc = GrateGuyStatueObject
 
     _gender = ("they", "them", "their", "theirs", "themselves")
+    _marrymore_name = "Grate Guy"
+    _marrymore_single_gender = ("he", "him", "his", "his", "himself")
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """GRATE GUY: Get lost, buddy, I'm\n busy![await]""",
@@ -3996,7 +4000,7 @@ class KnifeGuyGrateGuyBossFight(BossFightPrize):
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Heya `MAIN_CHARACTER_NAME`,[await][page]\n Looks like you totally thrashed `SEASIDE_BOSS`. Whoopdy do![await]\n Knife Guy tells me he saw `VOLCANO_BOSS_DESCRIPTION` near the volcano.[await]\n They're in a traveling circus with `FINAL_BOSS_NAME`[await]\n I was going to open another casino, but Knife Guy dropped the ball on the building permits.[await]\n So now our ship is sunk. Stop by sometime, we're always down to clown.[await][page]\n\n                                    Later!\n                 Grate Guy & Knife Guy[await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big clown! It is...\n masterpiece![await]""",
         DI2180_CHAPEL_NPC: """ Reverend Grate Guy must have\n gotten lost on his way here.""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """GRATE GUY: Hm?[await][pause] Well, you took all\n the trouble to find [0x7000] item(s,\n so... keep looking for the other [0x7024]![await]\n I can stick around all day.[await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """GRATE GUY: Hm?[await][pause] Well, you took all\n the trouble to find [0x7000] item(s),\n so... keep looking for the other [0x7024]![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """GRATE GUY: Hm?[await][pause] You took all the trouble to find all\n the wedding gear, but not pick up\n the gear lying around this room?[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Knife Guy and Grate Guy are busy\n right now, so they can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Knife Guy and\n Grate Guy.[await]""",
@@ -4455,15 +4459,15 @@ class YaridovichBossFight(BossFightPrize):
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """YARIDOVICH: Ridiculous! How could\n a genius like me lose to them...?[await]""",
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """YARIDOVICH: I'm thinking it might\n be time for me to switch careers.[await][page]\n Say, do you happen to know anyone\n who's looking to hire a\n hydrodemolitions expert?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """YARIDOVICH: This is just adding\n insult to injury![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """VILLAGER: We must.. be\n careful. We could rust.. down here.[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,[await][page]\n By now, you've certainly defeated `SEASIDE_BOSS`, I think.[await]\n My "Toad" spies tell me they saw `VOLCANO_BOSS_DESCRIPTION` near the volcano.[await]\n I suspect they're one of `FINAL_BOSS_NAME`[await]\n Give'em "the Tickler" from me![await]\n My joints are starting to rust, so I'll be headin' back down.[await]\n Stop by whenever you need something unsavory, okay?[await][page]\n\n                   Your confidant,\n                         Yaridovich[await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """TOWNSPERSON: Hop on... the\n trampoline... in the next room.\n It'll take you... outside.[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """VILLAGER: Hop on... the\n trampoline... in the next room.\n It'll take you... outside.[await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """VILLAGER: We must.. be\n careful. We could rust.. down here.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ My disguise was as see-through[await]\n as this glass of Motor Oil!![await]""",
         DI2023_SHIP_BOSS_2_DRINK: """ My disguise was as see-through[await]\n as this glass of Motor Oil!![await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """TOWNSPERSON: We must.. be\n careful. We could rust.. down here.[await]""",
-        DI2061_HEAD_CHEF: """TOWNSPERSON: We must... make\n this cake... look exactly...\n like Yaridovich.[await]""",
-        DI2062_APPRENTICE_CHEF: """TOWNSPERSON:\n[center]We need... more fondant.[await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """VILLAGER: We must.. be\n careful. We could rust.. down here.[await]""",
+        DI2061_HEAD_CHEF: """VILLAGER: We must... make\n this cake... look exactly...\n like Yaridovich.[await]""",
+        DI2062_APPRENTICE_CHEF: """VILLAGER:\n[center]We need... more fondant.[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Yaridovich must have\n gotten lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """YARIDOVICH: Eee hee...! You're\n still missing a few things. They\n should be in this room.[await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """YARIDOVICH: Finally! You found all\n the gear![await][page]\n Now make yourself useful and pick\n up the rest of the trash in this\n room![await]""",
@@ -4486,7 +4490,7 @@ class YaridovichBossFight(BossFightPrize):
         DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """SPEARDOVICH: I'm thinking it might\n be time for me to switch careers.[await][page]\n Say, do you happen to know anyone\n who's looking to hire a\n hydrodemolitions expert?[await]""",
         DI1781_SHIP_BOSS_JUMP_ON_HEAD: """SPEARDOVICH: This is just adding\n insult to injury![await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n To `MAIN_CHARACTER_NAME`,[await][page]\n By now, you've certainly defeated `SEASIDE_BOSS`, I think.[await]\n My "Toad" spies tell me they saw `VOLCANO_BOSS_DESCRIPTION` near the volcano.[await]\n I suspect they're one of `FINAL_BOSS_NAME`[await]\n Give'em "the Tickler" from me![await]\n My joints are starting to rust, so I'll be headin' back down.[await]\n Stop by whenever you need something unsavory, okay?[await][page]\n\n                   Your confidant,\n                        Speardovich[await]""",
-        DI2061_HEAD_CHEF: """TOWNSPERSON: We must... make\n this cake... look exactly...\n like Speardovich.[await]""",
+        DI2061_HEAD_CHEF: """VILLAGER: We must... make\n this cake... look exactly...\n like Speardovich.[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Speardovich must have\n gotten lost on his way here.""",
         DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """SPEARDOVICH: Eee hee...! You're\n still missing [0x7024] item(s)! Isn't that\n a shame?[await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """SPEARDOVICH: Finally! You found\n all the gear![await][page]\n Now make yourself useful and pick\n up the rest of the trash in this\n room![await]""",
@@ -4497,16 +4501,16 @@ class YaridovichBossFight(BossFightPrize):
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """SPEARDOVICH: I guess I wasn't as\n strong as I thought...[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """TOWNSPERSON: Well done...\n You may go on... to Yaridovich.[await]""",
-        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """TOWNSPERSON: You won...\n Well done...[await]""",
-        DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]""",
-        DI2572_TOWER_HENCHMAN_2: """TOWNSPERSON: This is...not...\n the right way.[await]""",
-        DI3072_TOWER_HENCHMAN_3_WINDOW: """TOWNSPERSON: It's nice...\n outside.[await]""",
-        DI3073_TOWER_HENCHMAN_3: """TOWNSPERSON: You want...to\n fight?[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """VILLAGER: Well done...\n You may go on... to Yaridovich.[await]""",
+        DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """VILLAGER: You won...\n Well done...[await]""",
+        DI2560_TOWER_HENCHMAN_1: """VILLAGER: I'm just... a\n secretary. Don't bother...\n Yaridovich.[await]""",
+        DI2572_TOWER_HENCHMAN_2: """VILLAGER: This is...not...\n the right way.[await]""",
+        DI3072_TOWER_HENCHMAN_3_WINDOW: """VILLAGER: It's nice...\n outside.[await]""",
+        DI3073_TOWER_HENCHMAN_3: """VILLAGER: You want...to\n fight?[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed_remake = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """TOWNSPERSON: Well done...\n You may go on... to Speardovich.[await]""",
-        DI2560_TOWER_HENCHMAN_1: """TOWNSPERSON: I'm just... a\n secretary. Don't bother...\n Speardovich.[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """VILLAGER: Well done...\n You may go on... to Speardovich.[await]""",
+        DI2560_TOWER_HENCHMAN_1: """VILLAGER: I'm just... a\n secretary. Don't bother...\n Speardovich.[await]""",
     }
 
     def get_forced_npc_model_for_location(
@@ -4564,7 +4568,7 @@ class MokuraBossFight(BossFightPrize):
         DI2023_SHIP_BOSS_2_DRINK: """ Mmm...uhhh. Cotton Candy![await]\n ...It's...so...airy...YUM![await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
-        DI1786_LETTER_FROM_SHIP_BOSS: """\n ()...Is this invisible ink?)[await][page] "Defeated `SEASIDE_BOSS`. Good."[await]\n "Sensed... `VOLCANO_BOSS_DESCRIPTION` near volcano..."[await]\n "Ethereal bond with `FINAL_BOSS_NAME`"[await][page]\n (This last part just reeks of\n flatulence...) [await]""",
+        DI1786_LETTER_FROM_SHIP_BOSS: """\n (...Is this invisible ink?)[await][page]\n“Defeated `SEASIDE_BOSS`. Good.”[await]\n“Sensed... `VOLCANO_BOSS_DESCRIPTION` near volcano...”[await]\n“Ethereal bond with `FINAL_BOSS_NAME`”[await][page]\n(This last part just reeks of\n flatulence...) [await]""",
         DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It'll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big cloud! It is...\n masterpiece![await]""",
@@ -5573,6 +5577,8 @@ class AxemRangersBossFight(BossFightPrize):
     ]
 
     _gender = ("they", "them", "their", "theirs", "themselves")
+    _marrymore_name = "Axem Red"
+    _marrymore_single_gender = ("he", "him", "his", "his", "himself")
 
     _npc_models = [AxemRedObject]
     _statue_npc = AxemRedStatueObject
