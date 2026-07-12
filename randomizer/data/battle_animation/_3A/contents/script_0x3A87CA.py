@@ -1074,7 +1074,8 @@ script = AnimationScriptBlock(expected_size=7842, expected_beginning=0x3A87CA, s
 	RunSubroutine(["command_0x3A7630"]),
 	ReturnObjectQueue(),
 	DefineObjectQueue(["command_0x3A97D2", "command_0x3A9823"], identifier="command_0x3A97CE"),
-	SetAMEM32ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=0, y=-136, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x3A97D2"),
+	# Same stale-caster bug as command_0x3A9823 below, but for King Calamari (BE0027).
+	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=0, y=-136, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x3A97D2"),
 	SetAMEM16BitToConst(0x60, 33023),
 	SetAMEMToAMEM16Bit(dest_amem=0x6C, upper=0x20, amem=0x60),
 	ResetTargetMappingMemory(),
@@ -1096,7 +1097,10 @@ script = AnimationScriptBlock(expected_size=7842, expected_beginning=0x3A87CA, s
 	RunSubroutine(["command_0x3A756C"]),
 	ClearEffectIndex(),
 	ReturnObjectQueue(),
-	SetAMEM32ToXYZCoords(origin=CASTER_INITIAL_POSITION, x=0, y=-136, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x3A9823"),
+	# Vanilla uses CASTER_INITIAL_POSITION, but battle events have no caster, so it reads stale
+	# AMEM. This object drives the BG1 scroll (bind field $40:002C = 0x80FF; $C2:0CB0 sets
+	# scroll = -(obj.X, obj.Y + obj.Z)), so a stale caster X/Z displaces the whole battlefield.
+	SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=0, y=-136, z=0, set_x=True, set_y=True, set_z=True, identifier="command_0x3A9823"),
 	SetAMEM16BitToConst(0x60, 33023),
 	SetAMEMToAMEM16Bit(dest_amem=0x6C, upper=0x20, amem=0x60),
 	ResetTargetMappingMemory(),

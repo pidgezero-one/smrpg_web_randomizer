@@ -325,7 +325,7 @@ class RecoveryMushroomObject(ItemNPC):
 
 
 class FrogCoinObject(ItemNPC):
-    _base = FROG_COIN_BASE
+    _base = FROG_COIN_STILL_BASE
     _chest_event_id: int = E3084_FROG_COIN_CHEST_QUICK_HIT
 
 

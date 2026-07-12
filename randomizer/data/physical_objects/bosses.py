@@ -22,6 +22,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequ
 )
 from copy import deepcopy
 
+# Object is too high up: increase eye_height
+# Object is too low: decrease eye_height
+
 
 class HammerBroLargeObject(BossNPC):
     """Hammer Bro object in Mushroom Way Area 03."""
@@ -1057,7 +1060,7 @@ class BundtSmallObject(BossNPC):
     """Small Bundt object."""
 
     _base = BUNDT_OBJECT_NPC
-    _eye_height = 8
+    _eye_height = 13
     _evil_palette = [
         0xFFFFFF,
         0xF8B8B8,
@@ -2732,6 +2735,7 @@ class Booster2SmallObject(BossNPC):
     _tpose_mold_id = 12
     _tpose = 15
     _look_at_ceiling = 6
+    _eye_height = 15
 
 
 class Bundt2SmallObject(BossNPC):

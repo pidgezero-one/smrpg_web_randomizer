@@ -42,6 +42,7 @@ script = EventScript([
         A_ClearSolidityBits(bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
         A_WalkToXYCoords(25, 100),
         A_FaceNorthwest(),
+        A_SetAllSpeeds(NORMAL),
 	]),
     EnableControlsUntilReturn([]),
     Pause(30),

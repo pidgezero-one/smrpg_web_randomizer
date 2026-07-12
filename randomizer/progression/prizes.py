@@ -3339,7 +3339,7 @@ class Croco1BossFight(BossFightPrize):
         FormationMember(CROCO1Enemy, 183, 127),
     ]
     _seaside_letter_name_if_volcano_boss = "a thieving reptile dashing"
-    _seaside_letter_name_if_final_boss = "Croco's flunkiess."
+    _seaside_letter_name_if_final_boss = "Croco's flunkies."
     _name = "Croco"
 
     _npc_models = [Croco1Object]
@@ -4075,7 +4075,7 @@ class BundtBossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """CHEF TORTE: This masterpiece is\n our latest creation... wait...[await]""",
         DI2062_APPRENTICE_CHEF: """APPRENTICE: Chef Torte! [delay]Why\n did we make another Bundt?[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Bundt must have gotten\n lost on its way here.""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BUNDT: Hmm?[delay] You look like you could\n use a break![await][pause] Come back with\n the other [0x7024] item(s)![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BUNDT: Hmm?[delay] You look like you\n could use a break![await][pause] Come back with\n the other [0x7024] item(s)![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BUNDT: You found all the wedding\n gear, but you're missing a few\n things in this room.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Bundt.[await]""",
@@ -4097,7 +4097,7 @@ class BundtBossFight(BossFightPrize):
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """APPRENTICE: Fine, go on ahead.\n I'll warn you, though, some idiot\n stepped on the cake, so be careful.await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """APPRENTICE: Wow, you ate the\n whole thing? [delay_30]...[delay_30]How was it?[await]""",
-        DI2560_TOWER_HENCHMAN_1: """CHEF TORTE: 'Allo. Ze dessert ees\n not ready yet. Please come back\n later, yes?[await][page]\n [delay]...[delay]Escuse me, sir, I said to please\n come back... LATER![await][page]\n[delay]\n   (He von't leave... [delay]Vat to do?)[await][page]\n                YOU FOOLS!![await]""",
+        DI2560_TOWER_HENCHMAN_1: """CHEF TORTE: 'Allo. Ze dessert ees\n not ready yet. Please come back\n later, yes?[await][page]\n [delay]...[delay]Escuse me, sir, I said to please\n come back... LATER![await][page]\n[delay]\n   (He von't leave... [delay]Vat to do?)[await][page]\n\n                YOU FOOLS!![await]""",
         DI2572_TOWER_HENCHMAN_2: """APPRENTICE: Hey, genius, this way\n is the kitchen. Stay out![await]""",
         DI3072_TOWER_HENCHMAN_3_WINDOW: """APPRENTICE: Why did Chef Torte\n tell me to stay up here? This is\n nowhere near the kitchen...[await]""",
         DI3073_TOWER_HENCHMAN_3: """APPRENTICE: I'm so bored! The\n other chefs won't let me into the\n kitchen![await]""",
@@ -4310,7 +4310,7 @@ class HidonBossFight(BossFightPrize):
     _dialog_replacements_if_mandatory_fights_changed = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """GOOMBETTE: You mighta' won\n against us, but Hidon's gonna\n beat you up![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """GOOMBETTE: You beat Hidon?![await]\n Oh, man...[await]""",
-        DI2560_TOWER_HENCHMAN_1: """GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] "How are you going to\n use a pen when you don't have any\n arms"?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
+        DI2560_TOWER_HENCHMAN_1: """GOOMBETTE: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] “How are you going to\n use a pen when you don't have any\n arms”?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
         DI2572_TOWER_HENCHMAN_2: """GOOMBETTE: Hey! Hidon's trying to\n stay in hidin' over here![delay] Get lost![await]""",
         DI3072_TOWER_HENCHMAN_3_WINDOW: """GOOMBETTE: (I'm too short to see\n out this window.)[await]""",
         DI3073_TOWER_HENCHMAN_3: """GOOMBETTE: Put up your dukes,\n tough guy![await]""",
@@ -4318,7 +4318,7 @@ class HidonBossFight(BossFightPrize):
     _dialog_replacements_if_mandatory_fights_changed_remake = {
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """MINI GOOMBA: You mighta' won\n against us, but Whuhoh's gonna\n beat you up![await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """MINI GOOMBA: You beat Whuhoh?![await]\n Oh, man...[await]""",
-        DI2560_TOWER_HENCHMAN_1: """MINI GOOMBA: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] "How are you going to\n use a pen when you don't have any\n arms"?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
+        DI2560_TOWER_HENCHMAN_1: """MINI GOOMBA: I need a pen, but I\n can't reach the top drawer of this\n desk. Can you help me out?[await][page]\n [delay]...What?[delay] “How are you going to\n use a pen when you don't have any\n arms”?[await][pause] You makin' fun of me?!\n [delay]That's IT, buddy! Get down here![await]""",
         DI2572_TOWER_HENCHMAN_2: """MINI GOOMBA: Hey! Whuhoh's trying\n to stay in hidin' over here![delay_30]\n Get lost![await]""",
         DI3072_TOWER_HENCHMAN_3_WINDOW: """MINI GOOMBA: (I'm too short to\n see out this window.)[await]""",
         DI3073_TOWER_HENCHMAN_3: """MINI GOOMBA: Put up your dukes,\n tough guy![await]""",
@@ -6673,7 +6673,7 @@ class Bundt2BossFight(BossFightPrize):
         DI2061_HEAD_CHEF: """CHEF TORTE: This masterpiece is\n our latest creation... wait...[await]""",
         DI2062_APPRENTICE_CHEF: """APPRENTICE: Chef Torte! [delay]Why\n did we make another Bundt?[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Bundt must have gotten\n lost on his way here.""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BUNDT: Hmm?[delay] You look like you could\n use a break![await][pause] Come back with\n the other [0x7024] item(s)![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BUNDT: Hmm?[delay] You look like you\n could use a break![await][pause] Come back with\n the other [0x7024] item(s)![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BUNDT: You found all the wedding\n gear, but you're missing a few\n things in this room.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Bundt is busy right now, so it\n can't play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Bundt.[await]""",

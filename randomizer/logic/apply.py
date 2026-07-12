@@ -889,6 +889,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0085_MALLOW_ENDING)
         clone_room_npc_0._npc = ALLY_CLONE_NPC
+    else:
+        world.event_scripts.delete_command_by_identifier("midas_palette_1")
+        world.event_scripts.delete_command_by_identifier("midas_palette_2")
+        world.event_scripts.delete_command_by_identifier("midas_palette_3")
+        world.event_scripts.delete_command_by_identifier("midas_palette_4")
+        world.event_scripts.delete_command_by_identifier("midas_palette_5")
+        world.event_scripts.delete_command_by_identifier("midas_palette_6")
 
     # Room 496 ending cutscene: pick the first non-Bowser slot among the four
     # character recruit positions (19/20/21/22) and demote it to cannot_clone=False

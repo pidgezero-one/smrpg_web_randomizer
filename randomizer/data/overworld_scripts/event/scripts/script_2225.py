@@ -88,6 +88,7 @@ script = EventScript([
 	SetBit(KEEP_BOSS_2_DEFEATED),
 	SetVarToConst(PRIMARY_TEMP_7000, 521),
 	RunEventAsSubroutine(E1237_KEEP_CHANDELIER_BOSS_UNLOCKS),
+    RemoveObjectFromCurrentLevel(NPC_0),
 	SetBit(DO_SECOND_KEEP_BOSS_FIGHT_FROM_STAR_PIECE),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_2225_jmp_to_event_19"),
