@@ -222,7 +222,9 @@ room = Room(
             byte7_upper2=3, cannot_clone=True,
             acute_axis=UInt4(5),
             obtuse_axis=UInt4(5),
-            height=UInt8(10),),
+            height=UInt8(10),
+            vram_size=0
+            ),
         RegularNPC( # 9
             npc=npcs.TRAMPOLINE_WARP_NPC,
             initiator=EventInitiator.JUMP_ON,

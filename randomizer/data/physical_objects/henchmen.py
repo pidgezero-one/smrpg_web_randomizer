@@ -241,24 +241,6 @@ class DrillbitHenchman(HenchmanNPC):
     """Drillbit (Fake Seaside Town Toad) henchman NPC for boss fights."""
 
     _base = SEASIDE_TOWN_FAKE_GREEN_NPC
-    _recoil = 2
-    _tower_crying = 4
-    _bandits_way_distracted = 4
-    _mines_punch = 3
-    _tower_bullet = 3
-    _tower_toss = 3
-    _chapel_laugh = 4
-    _kitchen_prep = 3
-    _ship_beckon = 3
-    _ship_chair = 4
-    _dojo_challenge = 3
-    _statue_intro = 4
-    _statue_flustered = 2
-    _keep_challenge = 3
-    _keep_summon = 3
-    _chandelier_challenge = 5
-    _factory_pierce = 3
-    _endgame_challenge = 3
 
 
 class MokuraHenchman(HenchmanNPC):

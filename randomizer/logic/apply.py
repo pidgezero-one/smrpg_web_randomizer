@@ -656,7 +656,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         tower_npc_4._npc = EMPTY_NPC
 
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n a pretty good jumper for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n a pretty good jumper for that.[await]""")
         if world.overworld_character.ally.index == 0:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mario_self_script.contents
@@ -667,7 +667,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
             tower_npc_0._npc = MARIO_WALKING_DOWN_LEFT_NPC
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can't get inside Booster's\n Tower very easily. You'll need\n some pretty magical fluff for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN, """ You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n some pretty magical fluff for that.[await]""")
         if world.overworld_character.ally.index == 4:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 mallow_self_script.contents
@@ -678,7 +678,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
             tower_npc_0._npc = MALLOW_WALKING_DOWN_LEFT_NPC_2
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pretty strong gun for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n a pretty strong gun for that.[await]""")
         if world.overworld_character.ally.index == 3:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 geno_self_script.contents
@@ -689,7 +689,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
             tower_npc_0._npc = GENO_WALKING_DOWN_LEFT_NPC_2_CLONEABLE
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a REALLY strong person for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n a REALLY strong person for that.[await]""")
         if world.overworld_character.ally.index == 2:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 bowser_self_script.contents
@@ -700,7 +700,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
             tower_npc_0._npc = BOWSER_WALKING_DOWN_LEFT_NPC_2
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n a pyrotechnician for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n a pyrotechnician for that.[await]""")
         if world.overworld_character.ally.index == 1:
             world.event_scripts.get_script_by_id(E1331_TOWER_BREAK_DOWN_DOOR).set_contents(
                 toadstool_self_script.contents
@@ -711,9 +711,9 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
             tower_npc_0._npc = TOADSTOOL_WALKING_DOWN_LEFT_LOW_VRAM
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to track down a hot-head for that.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n someone famous for that.[await]""")
     elif world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
-        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can't get inside Booster's\n Tower very easily. You'll need\n to get there via minecart.[await]""")
+        world.overworld_dialogs.replace_dialog(DI1163_BOOSTER_TOWER_DOOR_OPEN,""" You can\u2019t get inside Booster\u2019s\n Tower very easily. You\u2019ll need\n to get there via minecart.[await]""")
 
 
     # Apply boss stat scaling after all prizes are set

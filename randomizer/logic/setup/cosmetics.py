@@ -488,12 +488,12 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`SUPER_JUMP_PRIZE_2_CAP`", str(sjc2))
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`FIREWORKS_CLAUSE`", "Aren't those in Moleville?" if world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA) else "I wonder where you could find one?")
     if (world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE)):
-        world.overworld_dialogs.replace_dialog(DI1296_PURTEND_STORE_NEED_FIREWORKS, " If ya bring me a “Fireworks”, then\n I'll give you a present.")
+        world.overworld_dialogs.replace_dialog(DI1296_PURTEND_STORE_NEED_FIREWORKS, " If ya bring me a “Fireworks”, then\n I\u2019ll give you a present.")
 
     # Bowser's Keep access
     keep_cond = world.settings.get_flag(BowsersKeepGate).selected
     if keep_cond == BowsersKeepGating.AXEM:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "with the Axem Rangers' permission.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "with the Axem Rangers\u2019 permission.")
     elif keep_cond == BowsersKeepGating.OPEN:
         world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSERS_KEEP_CONDITION`", "on foot.")
     elif keep_cond == BowsersKeepGating.STAR_6:
@@ -503,9 +503,9 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     volcano_cond = world.settings.get_flag(BarrelVolcanoGate).selected
     if volcano_cond == BarrelVolcanoGating.NIMBUS:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "while the castle is occupied by\n invaders, we're under strict\n orders to forbid entry.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "while the castle is occupied by\n invaders, we\u2019re under strict\n orders to forbid entry.")
     elif volcano_cond == BarrelVolcanoGating.VALENTINA:
-        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "you need Valentina's\n permission to enter.")
+        world.overworld_dialogs.search_and_replace_in_all_dialogs("`VOLCANO_CONDITION`", "you need Valentina\u2019s\n permission to enter.")
 
     # Seaside letter
     seasideboss = world.get_location(SeasideBeachBossFight).prize

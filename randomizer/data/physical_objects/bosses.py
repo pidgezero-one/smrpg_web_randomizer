@@ -27,7 +27,7 @@ from copy import deepcopy
 
 
 class HammerBroLargeObject(BossNPC):
-    """Hammer Bro object in Mushroom Way Area 03."""
+    """Hammer Bro object"""
 
     _base = HAMMER_BRO_NPC
     _recoil = 2
@@ -51,7 +51,7 @@ class HammerBroLargeObject(BossNPC):
 
 
 class HammerBroSmallObject(BossNPC):
-    """Small Hammer Bro object in Mushroom Way Area 03."""
+    """Small Hammer Bro object"""
 
     _base = HAMMER_BRO_SMALL_NPC
     _eye_height = 16
@@ -75,7 +75,7 @@ class HammerBroSmallObject(BossNPC):
 
 
 class HammerBroStatueObject(StatueNPC):
-    """Hammer Bro statue object in Mushroom Way Area 03."""
+    """Hammer Bro statue object"""
 
     _base = HAMMER_BRO_STATUE_NPC
     _facing_shifts = {
@@ -84,7 +84,7 @@ class HammerBroStatueObject(StatueNPC):
 
 
 class Croco1Object(BossNPC):
-    """Croco 1 object in Mushroom Way Area 03."""
+    """Croco 1 object"""
 
     _base = CROCO_1_NPC
     _eye_height = 16
@@ -125,7 +125,7 @@ class Croco1Object(BossNPC):
 
 
 class Croco2Object(BossNPC):
-    """Croco 2 object in Mushroom Way Area 03."""
+    """Croco 2 object"""
 
     _base = CROCO_2_NPC
     _eye_height = 16
@@ -166,7 +166,7 @@ class Croco2Object(BossNPC):
 
 
 class CrocoStatueObject(StatueNPC):
-    """Croco statue object in Mushroom Way Area 03."""
+    """Croco statue object"""
 
     _base = CROCO_STATUE_NPC
     _facing_shifts = {
@@ -177,7 +177,7 @@ class CrocoStatueObject(StatueNPC):
 
 
 class MackSmallObject(BossNPC):
-    """Small Mack object in Mushroom Way Area 03."""
+    """Small Mack object"""
 
     _base = MACK_SMALL_NPC
     _eye_height = 20
@@ -202,13 +202,13 @@ class MackSmallObject(BossNPC):
 
 
 class MackMediumObject(BossNPC):
-    """Medium Mack object in Mushroom Way Area 03."""
+    """Medium Mack object"""
 
     _base = MACK_MEDIUM_NPC
 
 
 class MackBattleObject(BossNPC):
-    """Battle Mack object in Mushroom Way Area 03."""
+    """Battle Mack object"""
 
     _base = MACK_NPC
     _recoil = 2
@@ -234,7 +234,7 @@ class MackBattleObject(BossNPC):
 
 
 class MackStatueObject(StatueNPC):
-    """Mack statue object in Mushroom Way Area 03."""
+    """Mack statue object"""
 
     _base = MACK_STATUE_NPC
     _facing_shifts = {
@@ -243,7 +243,7 @@ class MackStatueObject(StatueNPC):
 
 
 class PandoriteSmallObject(BossNPC):
-    """Small Pandorite object in Mushroom Way Area 03."""
+    """Small Pandorite object"""
 
     _base = PANDORITE_SMALL_NPC
     _evil_palette = [
@@ -268,7 +268,7 @@ class PandoriteSmallObject(BossNPC):
 
 
 class PandoriteLargeObject(BossNPC):
-    """Large Pandorite object in Mushroom Way Area 03."""
+    """Large Pandorite object"""
 
     _base = PANDORITE_NPC
     _recoil = 2
@@ -291,7 +291,7 @@ class PandoriteLargeObject(BossNPC):
 
 
 class MimicStatueObject(StatueNPC):
-    """Mimic statue object in Mushroom Way Area 03."""
+    """Mimic statue object"""
 
     _base = MIMIC_STATUEL_NPC
     _eye_height = 4
@@ -299,7 +299,7 @@ class MimicStatueObject(StatueNPC):
 
 
 class Belome1SmallObject(BossNPC):
-    """Small Belome 1 object in Mushroom Way Area 03."""
+    """Small Belome 1 object"""
 
     _tower_entrance_horizontal_shift = 3
     _eye_height = 12
@@ -325,7 +325,7 @@ class Belome1SmallObject(BossNPC):
 
 
 class Belome1LargeObject(BossNPC):
-    """Large Belome 1 object in Mushroom Way Area 03."""
+    """Large Belome 1 object"""
 
     _base = BELOME_ST_TIME_NPC
     _evil_palette = [
@@ -366,7 +366,7 @@ class Belome1LargeObject(BossNPC):
 
 
 class Belome2SmallObject(BossNPC):
-    """Small Belome 2 object in Mushroom Way Area 03."""
+    """Small Belome 2 object"""
 
     _base = BELOME_2_SMALL_NPC
     _tower_entrance_horizontal_shift = 3
@@ -391,7 +391,7 @@ class Belome2SmallObject(BossNPC):
 
 
 class Belome2LargeObject(BossNPC):
-    """Large Belome 2 object in Mushroom Way Area 03."""
+    """Large Belome 2 object"""
 
     _base = GOLDEN_BELOME_NPC
     _evil_palette = [
@@ -432,7 +432,7 @@ class Belome2LargeObject(BossNPC):
 
 
 class Belome3SmallObject(BossNPC):
-    """Small Belome 3 object in Mushroom Way Area 03."""
+    """Small Belome 3 object"""
 
     _base = BELOME_3_SMALL_NPC
     _tower_entrance_horizontal_shift = 3
@@ -457,7 +457,7 @@ class Belome3SmallObject(BossNPC):
 
 
 class Belome3LargeObject(BossNPC):
-    """Large Belome 3 object in Mushroom Way Area 03."""
+    """Large Belome 3 object"""
 
     _base = BELOME_3_LARGE_2_NPC
     _evil_palette = [
@@ -498,7 +498,7 @@ class Belome3LargeObject(BossNPC):
 
 
 class BelomeSmallStatueObject(StatueNPC):
-    """Small Belome statue object in Mushroom Way Area 03."""
+    """Small Belome statue object"""
 
     _facing_shifts = {
         SOUTHWEST: PixelShift(-4, 0),
@@ -525,7 +525,7 @@ class BelomeSmallStatueObject(StatueNPC):
 
 
 class BowyerSmallObject(BossNPC):
-    """Small Bowyer object in Mushroom Way Area 03."""
+    """Small Bowyer object"""
 
     _base = BOWYER_SMALL_NPC
     _eye_height = 19
@@ -549,13 +549,13 @@ class BowyerSmallObject(BossNPC):
 
 
 class BowyerStatueObject(StatueNPC):
-    """Bowyer statue object in Mushroom Way Area 03."""
+    """Bowyer statue object"""
 
     _base = BOWYER_STATUE_NPC
 
 
 class BowyerLargeObject(BossNPC):
-    """Large Bowyer object in Mushroom Way Area 03."""
+    """Large Bowyer object"""
 
     _base = BOWYER_NPC_BATTLE
 

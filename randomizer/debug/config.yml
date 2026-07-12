@@ -25,19 +25,19 @@ starting_frog_coins: 999
 items:
   start:
     - DebugCandyItem
-  #override:
+  override:
     # covnenience
-    # StartingItem1Location: StayVoucherPrize
-    # StartingItem2Location: BambinoBombPrize
-    # StartingItem3Location: CastleKey1Prize
-    # StartingItem4Location: CastleKey2Prize
-    # BoosterPassSecondRoomFlowerLocation: ElderKeyPrize
-    # MushroomKingdomFreeShopItem: ShedKeyPrize
-    # MushroomKingdomChair: TempleKeyPrize
-    # BoosterPassBushLocation: RoomKeyPrize
-    # MarrymoreFirstSuitePrizeLocation: FertilizerPrize
-    # RoseTownInnToadPrizeLocation: SeedPrize
-    # RoseWayMiddleIslandLocation: BrightCardPrize
-    # RoseWayLeftIslandLocation: ExtraShinyStonePrize
-    # BoosterTowerPortraitPrizeLocation: MaxMushroomPrize
-    # MushroomWayLeftItemRemake: MarioDollPrize
+    StartingItem1Location: StayVoucherPrize
+    StartingItem2Location: BambinoBombPrize
+    StartingItem3Location: CastleKey1Prize
+    StartingItem4Location: CastleKey2Prize
+    BoosterPassSecondRoomFlowerLocation: ElderKeyPrize
+    MushroomKingdomFreeShopItem: ShedKeyPrize
+    MushroomKingdomChair: TempleKeyPrize
+    BoosterPassBushLocation: RoomKeyPrize
+    MarrymoreFirstSuitePrizeLocation: FertilizerPrize
+    RoseTownInnToadPrizeLocation: SeedPrize
+    RoseWayMiddleIslandLocation: BrightCardPrize
+    RoseWayLeftIslandLocation: ExtraShinyStonePrize
+    BoosterTowerPortraitPrizeLocation: MaxMushroomPrize
+    MushroomWayLeftItemRemake: MarioDollPrize
