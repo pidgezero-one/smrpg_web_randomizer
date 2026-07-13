@@ -1,6 +1,8 @@
 from smrpgpatchbuilder.datatypes.enemies.classes import Enemy as EnemyBase
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 
+from randomizer.data.variables import psychopath_symbols as sym
+
 
 class Enemy(EnemyBase):
     _remake_name: str | None = None
@@ -68,30 +70,35 @@ class Enemy(EnemyBase):
     def build_psychopath_text(self) -> str:
         """Generate Psychopath text showing elemental weaknesses/immunities and status vulnerabilities.
 
-        Uses ~empty~ (character 141) as invisible placeholder for missing elements/statuses.
-        The encoder trims trailing ~empty~ characters before terminating.
+        Uses EMPTY as an invisible placeholder for missing elements/statuses, and
+        strips the trailing run before returning -- the encoder does NOT trim it for
+        us, and psychopath data is tight (~20 bytes/enemy).
 
         Format: [resist_icon elements] [weak_icon elements] [V statuses ohko]
+
+        Every symbol is emitted as a raw ``chr()``: the codes are randomizer-owned
+        glyphs in the dialogue font's blank slots, and the encoder passes unmapped
+        characters through as their ordinal. See
+        :mod:`randomizer.data.variables.psychopath_symbols` -- in particular, none
+        of these may land on 0x7B-0x7E, which item names need for ``! # - '``.
 
         Returns:
             Psychopath message string with special characters for game display.
         """
-        EMPTY = '~empty~'  # Invisible placeholder (character 141)
+        EMPTY = chr(sym.EMPTY)  # invisible placeholder
 
-        # Element tokens map to their byte values via BATTLE_CHAR_MAP in encoder
-        ELEMENT_TOKENS = {
-            Element.ICE: '~ice~',       # 125
-            Element.FIRE: '~fire~',     # 126
-            Element.THUNDER: '~thunder~',  # 127
-            Element.JUMP: '~jump~',     # 133
+        ELEMENT_CHARS = {
+            Element.ICE: chr(sym.ICE),
+            Element.FIRE: chr(sym.FIRE),
+            Element.THUNDER: chr(sym.THUNDER),
+            Element.JUMP: chr(sym.JUMP),
         }
 
-        # Status tokens - using raw bytes since they're not in BATTLE_CHAR_MAP
         STATUS_CHARS = {
-            Status.SLEEP: '\x80',    # 128
-            Status.FEAR: '\x81',     # 129
-            Status.MUTE: '\x82',     # 130
-            Status.POISON: '\x83',   # 131
+            Status.SLEEP: chr(sym.SLEEP),
+            Status.FEAR: chr(sym.FEAR),
+            Status.MUTE: chr(sym.MUTE),
+            Status.POISON: chr(sym.POISON),
         }
 
         desc = ''
@@ -100,18 +107,18 @@ class Enemy(EnemyBase):
         element_order = [Element.FIRE, Element.ICE, Element.THUNDER, Element.JUMP]
         resist_elements = [e for e in element_order if e in self.resistances]
         if resist_elements:
-            desc += '|'  # Resistance icon (124)
+            desc += chr(sym.RESISTANCE)
             for element in resist_elements:
-                desc += ELEMENT_TOKENS[element]
-            desc += EMPTY 
+                desc += ELEMENT_CHARS[element]
+            desc += EMPTY
 
         # Elemental weaknesses - collect present elements, then pad with empty
         weak_elements = [e for e in element_order if e in self.weaknesses]
         if weak_elements:
-            desc += '{'  # Weakness icon (123)
+            desc += chr(sym.WEAKNESS)
             for element in weak_elements:
-                desc += ELEMENT_TOKENS[element]
-            desc += EMPTY 
+                desc += ELEMENT_CHARS[element]
+            desc += EMPTY
 
         # Status vulnerabilities (inverse of immunities) - collect present, then pad
         status_order = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
@@ -129,7 +136,7 @@ class Enemy(EnemyBase):
             # Pad to 4 statuses
             # OHKO vulnerability
             if has_ohko_vuln:
-                desc += '~ohko~~ohko~'  # Two OHKO symbols (132, 132)
+                desc += chr(sym.OHKO) * 2
         # Strip trailing EMPTY placeholders (must strip full substring, not individual chars)
         while desc.endswith(EMPTY):
             desc = desc[:-len(EMPTY)]

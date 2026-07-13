@@ -179,15 +179,9 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
         Jmp([f"gen_{uniq}_play_sound_95"]),
         JmpIfVarEqualsConst(UNKNOWN_70CD, 2, [f"gen_{uniq}_summon_to_current_level_78"], identifier=f"gen_{uniq}_jmp_if_var_equals_const_76"),
         Jmp([f"gen_{uniq}_play_sound_95"]),
-        SummonObjectToCurrentLevel(npcs[3], identifier=f"gen_{uniq}_summon_to_current_level_78"),
-        PlaySound(sound=SO094_FROG_COIN, channel=6),
-        ActionQueueSync(target=npcs[3], subscript=[
-            A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-            A_SetPriority(3),
-            A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
-            A_Pause(32),
-            A_VisibilityOff()
-        ]),
+        Set70107015ToObjectXYZ(target=npcs[3], identifier=f"gen_{uniq}_summon_to_current_level_78"),
+        CreatePacketAt7010(packet=P064_FROG_COIN_CHEST_STILL, destinations=[f"gen_{uniq}_fc_sound"]),
+        PlaySound(sound=SO094_FROG_COIN, channel=6, identifier=f"gen_{uniq}_fc_sound"),
         AddFrogCoins(1),
         Jmp([f"gen_{uniq}_action_queue_109"]),
         PlaySound(sound=SO014_FLOWER, channel=6, identifier=f"gen_{uniq}_play_sound_83"),

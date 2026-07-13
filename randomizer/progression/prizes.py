@@ -4961,8 +4961,8 @@ class CulexBossFight(BossFightPrize):
         DI2842_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Oh, yeah, there’s a wall of boxes\n hiding a treasure chest. It’s pretty\n easy to miss it.[await]""",
         DI2843_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ Once you get through the Sunken\n Ship, you can... er...[await]""",
         DI2844_OCCUPIED_SEASIDE_HENCHMAN_SHIP_CHEST_HINT: """ You can come back here. We’ll have\n something good waiting for you...\n heh heh...[await]""",
-        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """FIRE CRYSTAL: This area is\n off-limits.[await]""",
-        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """WATER CRYSTAL: This door is a...\n uh... portal to another dimension!\n We can’t let you fall into it.[await]""",
+        DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """\n[center]This area is off-limits.[await]""",
+        DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: """ This door is a... uh... portal to another dimension! We can’t let you fall into it.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """CULEX: It will be quite difficult to\n claim victory over the dojo master.\n I wish you luck.[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """CULEX: Well met! Thank you for\n the excellent battle.[await]""",
@@ -5815,6 +5815,15 @@ class KamekBossFight(BossFightPrize):
         DI2560_TOWER_HENCHMAN_1: """SNIFSTER 1: Hello there.[await]\n Kamek’s busy right now, so he\n can’t play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Kamek.[await]""",
     }
+
+    def get_forced_npc_model_for_location(
+        self, location: "BossFightLocation"
+    ) -> type[BossNPC] | None:
+        from .prizelocations import InnerMinesBossFight
+
+        if isinstance(location, InnerMinesBossFight):
+            return MagikoopaSmallObject
+        return None
 
     def get_slot_base_override(
         self,

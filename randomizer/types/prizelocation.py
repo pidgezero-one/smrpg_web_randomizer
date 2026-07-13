@@ -1597,7 +1597,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                     direction=SOUTHWEST,
                 )
                 room._objects[start + 3] = RegularNPC(
-                    npc=STATIC_FROG_COIN_NPC,
+                    npc=EMPTY_NPC_3,
                     initiator=EventInitiator.NONE,
                     event_script=E2304_BANK_1F_RETURN_EVENT_2,
                     action_script=A0015_DO_NOTHING,
@@ -1623,6 +1623,7 @@ class TreasureChestLocation(StandardPrizeLocation):
                     slidable_along_walls=True,
                     cant_move_if_in_air=True,
                     byte7_upper2=3,
+                    cannot_clone=False
                 )
                 room._objects[start + 4] = RegularNPC(
                     npc=EXPLOSION_NPC,
@@ -3312,6 +3313,11 @@ class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            # The invisible flag rides the blank sprite, which is non-gridplane and never
+            # lands in buffered_sprite_ids. Left at auto-decide (None) it falls through to
+            # `else: set_cannot_clone(True)` in _recalculate_room_partition step 7 and takes
+            # a dedicated VRAM allocation for a sprite that draws nothing.
+            cannot_clone=False,
         )
 
     @property

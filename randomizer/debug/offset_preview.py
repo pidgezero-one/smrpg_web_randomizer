@@ -7,6 +7,7 @@ Both frontend (via JSON) and backend (at randomization time) use this.
 from __future__ import annotations
 
 import inspect
+from functools import lru_cache
 
 from randomizer.progression.prizelocations import (
     MushrooomWayBossFight,
@@ -62,6 +63,7 @@ from randomizer.progression.prizes import (
     SlotsPrize1,
     SlotsPrize2,
     SlotsPrize3,
+    InfiniteCoinsPrize,
     FirstMimicFightLauncher,
     SecondMimicFightLauncher,
     ThirdMimicFightLauncher,
@@ -137,6 +139,12 @@ BOSS_PRIZES: list[type] = [loc._originally_held for loc in BOSS_LOCATIONS]
 
 SLOTS_PRIZES: list[type] = [SlotsPrize1, SlotsPrize2, SlotsPrize3]
 
+COIN_PRIZE: type = InfiniteCoinsPrize
+
+# Number of distinct prize_offset values the debug slider exposes (0..46).
+# Must match the max_value on GenerateForm.prize_offset.
+NUM_OFFSETS: int = 47
+
 MIMIC_PRIZES: list[type] = [
     FirstMimicFightLauncher,
     SecondMimicFightLauncher,
@@ -163,11 +171,17 @@ MIMIC_OFFSET_EXCLUDES: list[type] = []
 # --- Helper Functions ---
 
 
+@lru_cache(maxsize=None)
 def _get_classes_in_definition_order(base_class: type) -> list[type]:
     """Return subclasses of base_class defined in prizelocations, in source definition order.
 
     Uses inspect.getsourcelines to sort by the line number where each class is defined,
     rather than alphabetical order (which is what inspect.getmembers returns).
+
+    Cached: inspect.getsourcelines() re-parses the whole (very large) prizelocations
+    module per class, and compute_offset_assignments() needs five of these lists per
+    call. The result depends only on module source, which is fixed at import time.
+    Callers must not mutate the returned list.
     """
     classes = []
     for _, cls in inspect.getmembers(_prizelocations_module, inspect.isclass):
@@ -251,12 +265,33 @@ def _get_eligible_mimic_chests() -> list[type]:
     return eligible
 
 
+def _get_eligible_coin_chests() -> list[type]:
+    """Return TreasureChestLocationRow subclasses eligible for InfiniteCoinsPrize.
+
+    Eligible means InfiniteCoinsPrize is NOT in the class's _blacklist. Unlike the
+    slots list this is NOT deduplicated by room set: only one coin chest is placed
+    per offset, so two eligible chests in the same room can't collide, and keeping
+    both means every non-banned chest is reachable as the offset sweeps.
+    Classes are returned in source definition order from prizelocations.py.
+    """
+    eligible: list[type] = []
+    for cls in _get_classes_in_definition_order(TreasureChestLocationRow):
+        blacklist = cls._blacklist or []
+        coins_blocked = any(
+            isinstance(b, type) and issubclass(COIN_PRIZE, b) for b in blacklist
+        )
+        if coins_blocked:
+            continue
+        eligible.append(cls)
+    return eligible
+
+
 def _get_invisible_flag_locations() -> list[type]:
     """Return all InvisibleFlagLocation subclasses in definition order from prizelocations.py.
 
     Classes are returned in source definition order from prizelocations.py.
     """
-    return _get_classes_in_definition_order(InvisibleFlagLocation)
+    return list(_get_classes_in_definition_order(InvisibleFlagLocation))
 
 
 def _get_boss_star_piece_locations() -> list[type]:
@@ -321,7 +356,7 @@ def get_ordered_lists() -> dict:
     """Return a dict with ordered lists of class name strings.
 
     Keys: boss_locations, boss_prizes, eligible_chests, eligible_mimics,
-    mimic_prizes, invisible_flags, flag_rooms
+    mimic_prizes, eligible_coin_chests, coin_prize, invisible_flags, flag_rooms
     """
     from randomizer.types.flags import TotalStarPieces
 
@@ -333,6 +368,8 @@ def get_ordered_lists() -> dict:
         "eligible_chests": [cls.__name__ for cls in _get_eligible_chest_rooms()],
         "eligible_mimics": [cls.__name__ for cls in _get_eligible_mimic_chests()],
         "mimic_prizes": [cls.__name__ for cls in MIMIC_PRIZES],
+        "eligible_coin_chests": [cls.__name__ for cls in _get_eligible_coin_chests()],
+        "coin_prize": COIN_PRIZE.__name__,
         "invisible_flags": [cls.__name__ for cls in invisible_flags],
         "flag_rooms": [
             sorted(list(getattr(cls, "_rooms", None) or [])) for cls in invisible_flags
@@ -372,11 +409,13 @@ def compute_offset_assignments(
         - bosses: list of (location_name, prize_name) tuples
         - slots: list of 3 (chest_name, slots_prize_name) tuples
         - mimics: list of 3 (chest_name, mimic_prize_name) tuples
+        - coins: list of 1 (chest_name, InfiniteCoinsPrize) tuple
         - flags: list of 3 flag_name strings
         - star_pieces: list of (star_piece_location_name, star_piece_prize_name) tuples
         - boss_overrides: dict of {location_name: prize_class} for backend
         - slot_overrides: list of (chest_class, slots_prize_class) for backend
         - mimic_overrides: list of (chest_class, mimic_prize_class) for backend
+        - coin_overrides: list of 1 (chest_class, InfiniteCoinsPrize) for backend
         - flag_classes: list of 3 flag location classes for backend
         - star_piece_overrides: list of (star_piece_location_class, star_piece_prize_class) for backend
     """
@@ -384,6 +423,7 @@ def compute_offset_assignments(
         mimic_offset = offset
     eligible_chests = _get_eligible_chest_rooms()
     mimic_chests = _get_eligible_mimic_chests()
+    coin_chests = _get_eligible_coin_chests()
     invisible_flags = _get_invisible_flag_locations()
 
     # Boss assignments: location[i] gets prize[(i + offset) % num_prizes]
@@ -426,6 +466,26 @@ def compute_offset_assignments(
             picked += 1
         idx += 1
 
+    # Coin assignment: one chest holds InfiniteCoinsPrize. There are far more
+    # coin-eligible chests than offsets, so a stride of 1 would only ever probe the
+    # first NUM_OFFSETS entries (all early-game) and collapse several offsets onto
+    # the same chest. Spread the picks evenly over the whole list instead, which
+    # gives a distinct, well-distributed chest per offset. Chests already taken by a
+    # slot or mimic prize are skipped — a chest can only hold one prize.
+    taken_chest_classes = slot_classes | {chest_cls for chest_cls, _ in mimic_overrides}
+    num_coin_chests = len(coin_chests)
+    coin_assignments: list[tuple[str, str]] = []
+    coin_overrides: list[tuple[type, type]] = []
+    if num_coin_chests > 0:
+        coin_start = (offset * num_coin_chests // NUM_OFFSETS) % num_coin_chests
+        for w in range(num_coin_chests):
+            chest = coin_chests[(coin_start + w) % num_coin_chests]
+            if chest in taken_chest_classes:
+                continue
+            coin_assignments.append((chest.__name__, COIN_PRIZE.__name__))
+            coin_overrides.append((chest, COIN_PRIZE))
+            break
+
     # Flag assignments: pick 3 flags using a stride of num_flags // 3 starting
     # at index `offset`. This spreads the picks across the list so all flags
     # can be tested within ~num_flags / 3 offsets, and naturally avoids room
@@ -464,11 +524,13 @@ def compute_offset_assignments(
         "bosses": boss_assignments,
         "slots": slot_assignments,
         "mimics": mimic_assignments,
+        "coins": coin_assignments,
         "flags": flag_assignments,
         "star_pieces": star_piece_assignments,
         "boss_overrides": boss_overrides,
         "slot_overrides": slot_overrides,
         "mimic_overrides": mimic_overrides,
+        "coin_overrides": coin_overrides,
         "flag_classes": flag_classes,
         "star_piece_overrides": star_piece_overrides,
     }

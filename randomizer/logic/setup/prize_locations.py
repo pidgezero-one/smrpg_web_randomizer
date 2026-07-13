@@ -58,6 +58,13 @@ def _make_dummy_npc() -> RegularNPC:
     Uses RegularNPC to break clone chain grouping — the serializer groups all consecutive
     Clone objects after a non-Clone parent, so the first dummy in each batch must be a
     non-Clone to prevent grouping with incompatible preceding NPCs.
+
+    cannot_clone=False is explicit, not incidental: the EMPTY sprite is non-gridplane, so
+    it never lands in buffered_sprite_ids, and an auto-decide (None) dummy falls through to
+    `else: set_cannot_clone(True)` in _recalculate_room_partition step 7 — handing a
+    dedicated VRAM allocation to a sprite that draws nothing. Step 7 honors an explicit
+    False (`elif original_cannot_clone is False: pass`), so pinning it here keeps these
+    placeholders free in any room that gets recalculated for another reason.
     """
     return RegularNPC(
         npc=EMPTY_NPC_4,
@@ -72,6 +79,7 @@ def _make_dummy_npc() -> RegularNPC:
         slidable_along_walls=True,
         cant_move_if_in_air=True,
         byte7_upper2=3,
+        cannot_clone=False,
     )
 
 
@@ -963,7 +971,6 @@ def set_locations(world: GameWorld) -> None:
         VolcanoLampFlag,
         KeepPostObstacleBossRoomFlag,
         KeepThwompFlag,
-        FactoryCanopyFlag,
         FactoryLugnutFlag,
         FactoryTrampolineFlag,
         FactoryButtonFlag,

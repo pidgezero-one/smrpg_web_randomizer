@@ -291,10 +291,19 @@ def calc_equip_rank(item: Equipment) -> float:
     return rank
 
 
+# Coins per point of combat rank. Vanilla rank spans 0-345 and vanilla equipment
+# prices span 2-1998, so 6 keeps repriced equipment on the vanilla coin scale.
+EQUIP_PRICE_PER_RANK = 6
+
+
 def reprice_equipment_by_rank(world: GameWorld) -> None:
     """Set each equipment's price from its combat rank (buff-aware).
 
-    Called by apply_equipment_settings only in RANDOM equipment-properties mode.
+    Vanilla prices don't track power: items the game never sells carry junk
+    placeholder prices (Quartz Charm 7 coins for a strictly-better Ghost Medal),
+    and shop shuffling happily sells them at face value. Rank-based pricing puts
+    every equip on one scale.
+
     Placeholder/empty equipment slots keep their (zero) price.
     """
     from ...types.item import Weapon, Armor, Accessory
@@ -304,12 +313,22 @@ def reprice_equipment_by_rank(world: GameWorld) -> None:
         AccessoryItem,
         SpaceItem,
         SpaceItem2,
+        ExpBoosterItem,
+        CoinTrickItem,
+        ScroogeRingItem,
     )
 
     dummy_equipment = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
+    # These store a FROG COIN count in .price, not coins (the equipment members of
+    # shops.py's ORIGINAL_FROG_COIN_ITEMS). Repricing them in coins would corrupt
+    # the frog-coin conversion shuffle_shops applies when they change shop type.
+    frog_coin_priced = {ExpBoosterItem, CoinTrickItem, ScroogeRingItem}
+    skip = dummy_equipment | frog_coin_priced
+
     for item in world.items.items:
-        if isinstance(item, (Weapon, Armor, Accessory)) and type(item) not in dummy_equipment:
-            item.set_price(max(2, round(calc_equip_rank(item))))
+        if isinstance(item, (Weapon, Armor, Accessory)) and type(item) not in skip:
+            price = round(calc_equip_rank(item) * EQUIP_PRICE_PER_RANK)
+            item.set_price(min(9999, max(2, price)))
 
 
 def build_item_impact_categories(world: GameWorld) -> None:

@@ -765,6 +765,59 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         v: k for k, v in all_character_prizes.items()
     }
 
+    # Every Bowser's Keep location gates on can_pass_obstacle_courses(), which in
+    # vanilla learned-spell mode is satisfied only by recruiting a character who
+    # learns a non-elemental damage spell. No area gate is obliged to require one --
+    # set them all to "always open" and none of these characters is gate-critical, so
+    # they all land in MANDATORY_INCLUSIONS, which is filled by a *later* place()
+    # call. The Keep is then unreachable for the entire progression pass, its four
+    # boss locations can never be filled, and since boss prizes are 1:1 with boss
+    # locations exactly four boss fights are stranded on every retry. So treat the
+    # spell gate like any other gate: one of its characters is progression-required.
+    if not world.settings.isflag_enabled(
+        CharacterLearnedSpells
+    ) and not world.settings.isflag_enabled(SpellsAnywhere):
+        disabled_spells: set[type] = {
+            m.value for m in world.settings.get_flag(AvailableSpells).disabled
+        }
+        # Mirrors the vanilla branch of can_damage_enemies_with_spells().
+        nonelemental_owners: list[tuple[type[CharacterPrize], tuple[type, ...]]] = [
+            (MallowRecruitmentPrize, (StarRainSpell,)),
+            (GenoRecruitmentPrize, (GenoWhirlSpell, GenoBlastSpell)),
+            (BowserRecruitmentPrize, (PoisonGasSpell, TerrorizeSpell)),
+        ]
+        if not world.settings.isflag_enabled(InfuseSpellElements):
+            nonelemental_owners += [
+                (GenoRecruitmentPrize, (GenoBeamSpell, GenoFlashSpell)),
+                (BowserRecruitmentPrize, (CrusherSpell, BowserCrushSpell)),
+                (ToadstoolRecruitmentPrize, (PsychBombSpell,)),
+            ]
+        # Sorted so the random pick below is reproducible for a given seed.
+        qualified: list[type[CharacterPrize]] = sorted(
+            {
+                owner
+                for owner, spells in nonelemental_owners
+                if any(spell not in disabled_spells for spell in spells)
+                and prize_to_name[owner] not in excluded_char_names
+            },
+            key=lambda cls: cls.__name__,
+        )
+        if not qualified:
+            raise ValueError(
+                "No character available in this seed can damage enemies with a "
+                "non-elemental spell, so Bowser's Keep would be unreachable. Include "
+                "Mallow, Geno or Bowser (or Toadstool, when spell elements are not "
+                "infused) and leave at least one of their non-elemental damage spells "
+                "available."
+            )
+        if not progression_required_chars & set(qualified):
+            # Cached for the duration of this shuffle attempt for the same reason as
+            # _cached_char_fill below: shuffle_rules() runs once per location in the
+            # pull loop and the roster must not change between those calls.
+            if world._cached_spell_damage_char is None:
+                world._cached_spell_damage_char = random.choice(qualified)
+            progression_required_chars.add(world._cached_spell_damage_char)
+
     # Validation: Check if any progression-required character is excluded
     for prize_cls in progression_required_chars:
         char_name = prize_to_name.get(prize_cls)
@@ -1386,6 +1439,7 @@ def shuffle_prizes(world: GameWorld) -> None:
     # (retries should get a fresh roster), but stays stable across the many
     # shuffle_rules() calls within this attempt.
     world._cached_char_fill = None
+    world._cached_spell_damage_char = None
 
     rules = shuffle_rules(world)
 
@@ -1502,6 +1556,25 @@ def shuffle_prizes(world: GameWorld) -> None:
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
                     if type(item) == mimic_prize_cls:
+                        tier_list.pop(i)
+                        pulled_count -= 1
+                        removed = True
+                        break
+                if removed:
+                    break
+
+        # Coin override: [(chest_class, InfiniteCoinsPrize)] — one chest per offset.
+        for chest_cls, coin_prize_cls in offset_result["coin_overrides"]:
+            offset_reserved_chest_classes.add(chest_cls)
+            for loc in world.locations.values():
+                if isinstance(loc, chest_cls):
+                    loc.set_prize(coin_prize_cls())
+                    break
+            # Remove one instance of this prize class from the pool
+            removed = False
+            for tier_list in pool.values():
+                for i, item in enumerate(tier_list):
+                    if type(item) == coin_prize_cls:
                         tier_list.pop(i)
                         pulled_count -= 1
                         removed = True

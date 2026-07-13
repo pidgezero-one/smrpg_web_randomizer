@@ -13,9 +13,9 @@ from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 room = Room(
     partition=Partition(
-        ally_sprite_buffer_size=2,
-        allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        ally_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=False,
+        extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
                 buffer_type=BufferType.TREASURE_CHEST,
@@ -175,5 +175,5 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
     ],
-    effects_npc=EffectsNpc.SAVE_POINT_NPC1,
+    effects_npc=EffectsNpc.SAVE_POINT_NPC0,
 )

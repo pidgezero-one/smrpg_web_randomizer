@@ -124,6 +124,10 @@ script = EventScript([
 	SetBit(MAP_MUSHROOM_KINGDOM),
 	ClearBit(MINES_HENCHMAN_LEFT_DEFEATED),
 	ClearBit(MINES_HENCHMAN_RIGHT_DEFEATED),
+    # Must precede the starting-character events: a gate whose condition is
+    # "recruit X" is opened by X's recruit script, and E1252 sets the gate bits
+    # closed. If E1252 ran last it would re-close gates the starters just opened.
+    RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START, identifier="EVENT_2496_flag_setup"),
 	CharacterJoinsParty(DUMMY_0X05),
 	CharacterLeavesParty(MARIO),
 	RunEventAsSubroutine(E1220_STARTING_CHARACTER_1),
@@ -133,7 +137,6 @@ script = EventScript([
 	RunEventAsSubroutine(E1223_STARTING_CHARACTER_4),
 	RunEventAsSubroutine(E1224_STARTING_CHARACTER_5),
     RunEventAsSubroutine(E3840_STARTER_DEBUG_ITEMS),
-    RunEventAsSubroutine(E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START, identifier="EVENT_2496_flag_setup"),
 	Set7000ToPartySize(),
 	CompareVarToConst(PRIMARY_TEMP_7000, 4, identifier="party_size_switcher_4"),
 	JmpIfComparisonResultIsLesser(["EVENT_2496_j"]),

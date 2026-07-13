@@ -77,6 +77,50 @@ Multiple sites participate:
    F a no-op trampoline still dirty) is what pinned the location as the
    root cause. The per-spell FP cost renderer at $C1:635B is NOT
    modified — spell costs stay capped at 99.
+
+6. The item RESTORE_FP handler ($C2:C040) is made 8-bit-overflow safe.
+
+   Vanilla adds the item's heal amount to current FP with an 8-bit ADC,
+   never checks the carry, and clamps with a *signed* ``BMI``::
+
+       LDA $7EFA0C / CLC / ADC $FB / CMP $7EFA0D / BMI + / LDA $7EFA0D
+       STA $7EFA0C
+
+   Both shortcuts hold only while max FP and every heal amount stay <= 99
+   (so ``cur + amount <= 198`` cannot wrap, and ``|cur + amount - max|``
+   cannot exceed 127). Raising max FP to 255 breaks both:
+
+   * ``cur + 255`` (Royal Syrup) wraps to ``cur - 1``, carry is ignored,
+     and the wrapped value is stored — the heal *removes* 1 FP.
+   * whenever ``max - (cur + amount) > 127`` the signed compare takes the
+     branch backwards, so e.g. Honey Syrup at 0/255 FP restores all 255.
+
+   This is also the overworld menu's FP restore: the item menu applies
+   effects by JSL-ing into the battle engine ($C3:2C4F -> JSL $C2A012 ->
+   the byte-16 dispatch at $C2:BD45), so $C2:C040 is the only code in the
+   ROM that adds a heal amount to current FP.
+
+   Fix, in place and byte-exact (the tail from $C2:C067 keeps its vanilla
+   addresses, so $C2:C074 — the next dispatch target — is untouched)::
+
+       LDY $C6 / LDX $02,y        ; folds INY / INY / LDX $00,y, freeing 2
+       ... damage-flag writes unchanged ...
+       LDA $7EFA0C / CLC / ADC $FB
+       BCS clamp                  ; NEW: 8-bit overflow saturates to max
+       CMP $7EFA0D
+       BCC store                  ; was BMI: unsigned compare
+       clamp: LDA $7EFA0D
+       store: STA $7EFA0C
+
+   ``LDX $02,y`` reads the same effective address as the vanilla
+   ``INY / INY / LDX $00,y`` (D + 2 + Y), and Y is dead afterwards — unlike
+   RESTORE_HP, this handler does not loop over targets (FP is party-global,
+   not per-actor), so it never writes Y back to $C6.
+
+   Result is min(cur + amount, max) for every value in 0-255. The green
+   heal popup ($7E0045/$7E0046) is left alone: it shows the item's raw
+   amount, so Royal Syrup pops "255" exactly like vanilla Max Mushroom
+   (also a 255 "recover all" item) does.
 """
 
 
@@ -88,6 +132,26 @@ def get_patch() -> dict[int, bytes]:
         0xC4CC: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
         # Battle bump-max-FP handler ($C2:C14F): same fix, identical bytes.
         0x2C14F: bytes([0xB0, 0x02, 0x80, 0x02, 0xA9, 0xFF]),
+
+        # --- Item RESTORE_FP handler ($C2:C040-$C2:C066, 39 bytes) ---
+        # Overflow-safe rewrite; see item 6 in the module docstring. Ends at
+        # $C2:C066 so the popup-number tail at $C2:C067 stays byte-identical.
+        0x2C040: bytes([
+            0xA4, 0xC6,              # LDY $C6
+            0xB6, 0x02,              # LDX $02,y
+            0xBF, 0x44, 0x00, 0x7E,  # LDA $7E0044,x
+            0x29, 0xBF,              # AND #$BF
+            0x09, 0x80,              # ORA #$80
+            0x9F, 0x44, 0x00, 0x7E,  # STA $7E0044,x
+            0xAF, 0x0C, 0xFA, 0x7E,  # LDA $7EFA0C     ; cur FP
+            0x18,                    # CLC
+            0x65, 0xFB,              # ADC $FB         ; + heal amount
+            0xB0, 0x06,              # BCS $C05F       ; overflow -> clamp
+            0xCF, 0x0D, 0xFA, 0x7E,  # CMP $7EFA0D     ; vs max FP
+            0x90, 0x04,              # BCC $C063       ; under max -> keep sum
+            0xAF, 0x0D, 0xFA, 0x7E,  # LDA $7EFA0D     ; clamp to max FP
+            0x8F, 0x0C, 0xFA, 0x7E,  # STA $7EFA0C
+        ]),
 
         # --- X-menu MAIN-menu FP display ($C3:1621-$C3:163E) ---
         # 2-digit print ($C3:78D2) -> 3-digit ($C3:78EC); LDX $4630 -> $462C

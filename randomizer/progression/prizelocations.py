@@ -487,7 +487,6 @@ class MushroomWay1LowerChest(TreasureChestLocationRow1):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 1),
@@ -517,7 +516,6 @@ class MushroomWay1UpperChest(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 2),
@@ -569,7 +567,7 @@ class MushroomWay2LedgeChest(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         EXPStarPrize,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 4),
@@ -620,8 +618,8 @@ class MushroomWayRightGoomba(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
         FrogCoinPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 6),
@@ -1747,8 +1745,8 @@ class BanditsWayFlowerJumpLocation(TreasureChestLocationRow1):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
-    ]  # slots can work here graphically but this is a stupid place for it
+        SlotsPrize
+    ] 
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 29),
         # RunDialog(
@@ -1976,9 +1974,9 @@ class BanditsWayDeadEndChestLocation(TreasureChestLocationRow1):
     _world_area = WorldAreaEnum.BANDITS_WAY
     _blacklist = [
         EXPStarPrize,
-        SlotsPrize,
         SecondMimicFightLauncher,
-        ThirdMimicFightLauncher,
+        ThirdMimicFightLauncher, 
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 36),
@@ -2350,7 +2348,7 @@ class KeroSewersBeforeBelomeLowerLocation(TreasureChestLocationRow1):
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
         FrogCoinPrize,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 43),
@@ -2390,8 +2388,8 @@ class KeroSewersBeforeBelomeUpperBeforeFlipLocation(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
         InfiniteCoinsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 44),
@@ -2430,10 +2428,9 @@ class KeroSewersBeforeBelomeUpperAfterFlipLocation(
     _world_area = WorldAreaEnum.KERO_SEWERS
     _blacklist = [
         EXPStarPrize,
-        SlotsPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        InfiniteCoinsPrize
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 45),
@@ -3074,7 +3071,7 @@ class RoseTownShopRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_1
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 70),
         # RunDialog(
@@ -3099,7 +3096,7 @@ class RoseTownShopLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.ROSE_TOWN_STORE_2
     _world_area = WorldAreaEnum.ROSE_TOWN
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 69),
         # RunDialog(
@@ -3403,7 +3400,7 @@ class ForestMazeFirstRoomLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_1
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 79),
         # RunDialog(
@@ -3471,7 +3468,7 @@ class ForestMazeUndergroundWigglerChestLocation(TreasureChestLocationRow1):
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         CoinPrize,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 81),
@@ -3508,7 +3505,7 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         CoinPrize,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 82),
@@ -3546,7 +3543,7 @@ class ForestMazeUndergroundMiddleLeftChestLocation(TreasureChestLocationRow3):
         ThirdMimicFightLauncher,
         FrogCoinPrize,
         CoinPrize,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 83),
@@ -3609,7 +3606,7 @@ class ForestMazeSecretTopRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_1
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 85),
         # RunDialog(
@@ -3640,7 +3637,7 @@ class ForestMazeSecretBottomRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_2
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 86),
         # RunDialog(
@@ -3671,7 +3668,7 @@ class ForestMazeSecretTopMiddleChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_3
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 87),
         # RunDialog(
@@ -3702,7 +3699,7 @@ class ForestMazeSecretBottomMiddleChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_4
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 88),
         # RunDialog(
@@ -3733,7 +3730,7 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.FOREST_MAZE_SECRET_5
     _world_area = WorldAreaEnum.FOREST_MAZE
-    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, SecondMimicFightLauncher, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 89),
         # RunDialog(
@@ -4085,7 +4082,7 @@ class PipeVaultSlidingCoinRoomBackChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_1
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 92),
         # RunDialog(
@@ -4116,7 +4113,7 @@ class PipeVaultSlidingCoinRoomMiddleChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_9]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_2
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 93),
         # RunDialog(
@@ -4147,7 +4144,7 @@ class PipeVaultSlidingCoinRoomFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.PIPE_VAULT_SLIDE_3
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 94),
         # RunDialog(
@@ -4397,7 +4394,7 @@ class PipeVaultRisingPlatformChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_1
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 103),
         # RunDialog(
@@ -4428,7 +4425,7 @@ class PipeVaultChompweedChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.PIPE_VAULT_NIPPERS_2
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 104),
         # RunDialog(
@@ -5112,7 +5109,7 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_STAR_CHEST
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 122),
         # RunDialog(
@@ -5177,7 +5174,7 @@ class InnerMinesBoxesChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.MOLEVILLE_MINES_COINS
     _world_area = WorldAreaEnum.MOLEVILLE
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 124),
         # RunDialog(
@@ -5477,7 +5474,7 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
             ).set_pixels(7)
-        elif isinstance(self.prize, (GenoRecruitmentPrize, ToadstoolRecruitmentPrize)):
+        elif isinstance(self.prize, (GenoRecruitmentPrize, ToadstoolRecruitmentPrize, MallowRecruitmentPrize)):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
             ).set_pixels(5)
@@ -5709,7 +5706,7 @@ class BoosterPassFirstRoomLeftChestLocation(TreasureChestLocationRow1):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 132),
@@ -5739,7 +5736,7 @@ class BoosterPassFirstRoomRightChestLocation(TreasureChestLocationRow2):
         EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
-        SlotsPrize,
+        SlotsPrize
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 133),
@@ -5949,7 +5946,7 @@ class BoosterTowerChestNearThwompLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOOSTER_TOWER_THWOMP
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 140),
         # RunDialog(
@@ -9175,7 +9172,7 @@ class SeaWhirlpoolChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SEA_WHIRLPOOL_CHEST
     _world_area = WorldAreaEnum.SEA
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 217),
         # RunDialog(
@@ -9363,7 +9360,7 @@ class ShipShopChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_SHOP
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher]
+    _blacklist = [EXPStarPrize, ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 223),
         # RunDialog(
@@ -9590,7 +9587,7 @@ class EarlyInnerShipLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_1
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 228),
         # RunDialog(
@@ -9623,7 +9620,7 @@ class EarlyInnerShipRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.SUNKEN_SHIP_COINS_2
     _world_area = WorldAreaEnum.SUNKEN_SHIP
-    _blacklist = [ThirdMimicFightLauncher]
+    _blacklist = [ThirdMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 229),
         # RunDialog(
@@ -10369,7 +10366,7 @@ class LandsEndRisingPlatformChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.LANDS_END_RED_ESSENCE
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 247),
         # RunDialog(
@@ -10400,7 +10397,7 @@ class LandsEndChowPitStaticChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = []
+    _blacklist = [SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 248),
         # RunDialog(
@@ -10432,8 +10429,9 @@ class LandsEndChowPitMovingChestLocation(TreasureChestLocationRow2):
     _id = ShuffleLocationSelector.LANDS_END_CHOW_PIT_2
     _world_area = WorldAreaEnum.LANDS_END
     _blacklist = [
-        SlotsPrize
-    ]  # SlotsPrize can go here graphically, it's just too annoying to hit 4 times
+        SlotsPrize,
+        InfiniteCoinsPrize # this can go here graphically, it's just annoying
+    ] 
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 249),
         # RunDialog(
@@ -10593,7 +10591,7 @@ class LandsEndGrottoEndChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.LANDS_END_SHY_AWAY
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 254),
         # RunDialog(
@@ -10628,7 +10626,7 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_1
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [SlotsPrize]
+    _blacklist = []
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 255),
         # RunDialog(
@@ -10659,7 +10657,7 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_18]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_2
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
+    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize] # no reloadables
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 256),
         # RunDialog(
@@ -10690,7 +10688,7 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_19]
     _id = ShuffleLocationSelector.LANDS_END_STAR_CHEST_3
     _world_area = WorldAreaEnum.LANDS_END
-    _blacklist = [FirstMimicFightLauncher, SecondMimicFightLauncher] # this location doesn't allow refilling
+    _blacklist = [SlotsPrize] 
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 257),
         # RunDialog(
@@ -10814,7 +10812,7 @@ class BelomeTempleFortuneTellerLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_FORTUNE_TELLER
     _world_area = WorldAreaEnum.TEMPLE
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 260),
         # RunDialog(
@@ -12950,7 +12948,7 @@ class BeanValleyRightPipeLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_1
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 310),
         # RunDialog(
@@ -13019,7 +13017,7 @@ class BeanValleyRightPipeRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BOX_BOY_ROOM_2
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 311),
         # RunDialog(
@@ -13068,7 +13066,7 @@ class BeanValleyRightPipeAboveGroundLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_14]
     _id = ShuffleLocationSelector.BEAN_VALLEY_PIRANHA_PLANTS
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 313),
         # RunDialog(
@@ -13201,7 +13199,7 @@ class BeanstalkLowestChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BEAN_VALLEY_BEANSTALK
     _world_area = WorldAreaEnum.BEAN_VALLEY
-    _blacklist = [EXPStarPrize, SlotsPrize]
+    _blacklist = [EXPStarPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 316),
         # RunDialog(
@@ -14915,7 +14913,7 @@ class NimbusCastleBusinessCentreLiberatedChestLocation(TreasureChestLocationRow2
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.NIMBUS_CASTLE_CORNER_CHEST_AFTER_VALENTINA
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 359),
         # RunDialog(
@@ -15123,7 +15121,7 @@ class VolcanoLavaCoveLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 363),
         # RunDialog(
@@ -15154,7 +15152,7 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 364),
         # RunDialog(
@@ -15185,7 +15183,7 @@ class VolcanoEarlyProgressChestLeftLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_0]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_1
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 365),
         # RunDialog(
@@ -15216,7 +15214,7 @@ class VolcanoEarlyProgressChestRightLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BARREL_VOLCANO_BEFORE_STAR_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 366),
         # RunDialog(
@@ -15834,7 +15832,8 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    # no reloadables in bowser's keep red door rooms, too annoying for the player
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 380),
         # RunDialog(
@@ -15865,7 +15864,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 381),
         # RunDialog(
@@ -15896,7 +15895,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 382),
         # RunDialog(
@@ -15927,7 +15926,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_INVISIBLE_BRIDGE_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 383),
         # RunDialog(
@@ -16070,7 +16069,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_10]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 388),
         # RunDialog(
@@ -16101,7 +16100,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_11]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 389),
         # RunDialog(
@@ -16132,7 +16131,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_12]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 390),
         # RunDialog(
@@ -16163,7 +16162,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_MOVING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 391),
         # RunDialog(
@@ -16194,7 +16193,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ELEVATOR_PLATFORMS
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 392),
         # RunDialog(
@@ -16227,7 +16226,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 393),
         # RunDialog(
@@ -16258,7 +16257,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 394),
         # RunDialog(
@@ -16289,7 +16288,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 395),
         # RunDialog(
@@ -16320,7 +16319,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 396),
         # RunDialog(
@@ -16351,7 +16350,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_7]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_CANNONBALL_ROOM_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 397),
         # RunDialog(
@@ -16608,7 +16607,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_1]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize] # slots are ok graphically but multi-hits in this room dont work well
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 406),
         # RunDialog(
@@ -16643,7 +16642,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
     _npc_ids = [NPC_2]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 407),
         # RunDialog(
@@ -16678,7 +16677,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
     _npc_ids = [NPC_3]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 408),
         # RunDialog(
@@ -16713,7 +16712,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
     _npc_ids = [NPC_4]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 409),
         # RunDialog(
@@ -16748,7 +16747,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
     _npc_ids = [NPC_5]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 410),
         # RunDialog(
@@ -16783,7 +16782,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
     _npc_ids = [NPC_6]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_ROTATING_PLATFORMS_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, InfiniteCoinsPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 411),
         # RunDialog(
@@ -16925,7 +16924,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_1
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 413),
         # RunDialog(
@@ -16962,7 +16961,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_2
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 414),
         # RunDialog(
@@ -16999,7 +16998,7 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_3
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 415),
         # RunDialog(
@@ -17036,7 +17035,7 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_4
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 416),
         # RunDialog(
@@ -17069,7 +17068,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_5
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 417),
         # RunDialog(
@@ -17106,7 +17105,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     _npc_ids = [NPC_0, NPC_0]
     _id = ShuffleLocationSelector.BOWSERS_KEEP_DOOR_REWARD_6
     _world_area = WorldAreaEnum.BOWSERS_KEEP
-    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize]
+    _blacklist = [EXPStarPrize, FirstMimicFightLauncher, SecondMimicFightLauncher, InfiniteCoinsPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 418),
         # RunDialog(
@@ -17907,7 +17906,7 @@ class FactoryBigConveyorRoomFirstChestLocation(TreasureChestLocationRow1):
     _npc_ids = [NPC_8]
     _id = ShuffleLocationSelector.FACTORY_CONVEYOR_PLATFORMS_1
     _world_area = WorldAreaEnum.FACTORY
-    _blacklist = [EXPStarPrize]
+    _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 429),
         # RunDialog(
@@ -18461,7 +18460,7 @@ class FinalBossFight(BossFightLocation):
     _originally_held = SmithyBossFight
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FIGHT_FINAL
     _world_area = WorldAreaEnum.INNER_FACTORY
-    _rooms = [R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
+    _rooms = [R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, R509_FACTORY_GROUNDS_SMITHYS_PAD]
     _pack_id = PACK185_FINAL_BOSS
     _force_battlefield = BF44_FACTORY_GROUNDS_SMITHYS_PAD
     _post_unlocks_event_id = E1245_INNER_FACTORY_5_BOSS_UNLOCKS
@@ -18966,8 +18965,7 @@ class KeroStairsFlag(InvisibleFlagLocation):
     _x_coord = 5
     _y_coord = 41
     _world_area = WorldAreaEnum.KERO_SEWERS
-    _z_coord = 4
-    _y_shift = 8
+    _x_shift = -4
     _clue_text = " Mine's in a corner, nearby lots of\n dank stairs.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 451),
@@ -19062,8 +19060,7 @@ class TadpoleCabinetFlag(InvisibleFlagLocation):
     _y_coord = 29
     _world_area = WorldAreaEnum.TADPOLE_POND
     _z_coord = 2
-    _x_shift = 8
-    _y_shift = 8
+    _x_shift = 4
     _clue_text = "[center]Mine is in a frog cabinet.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 454),
@@ -19409,8 +19406,7 @@ class PipeVaultExteriorFlag(InvisibleFlagLocation):
     _x_coord = 17
     _y_coord = 19
     _world_area = WorldAreaEnum.PIPE_VAULT
-    _x_shift = -8
-    _y_shift = 8
+    _x_shift = -12
     _clue_text = " Mine is by a pipe in the middle of\n the road.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 465),
@@ -19534,8 +19530,7 @@ class MolevilleMountainBushFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 14
     _clue_text = " Mine's in a bush at the top of\n a mountain.[await]"
-    _x_shift = -8
-    _y_shift = -8
+    _y_shift = 8
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 469),
         # RunDialog(
@@ -19794,7 +19789,7 @@ class BoosterTowerMasherRoomFlag(InvisibleFlagLocation):
     _x_coord = 19
     _y_coord = 122
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _y_shift = 8
+    _y_shift = -8
     _clue_text = "[center]Mine's on a lightly-loaded see-saw.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 477),
@@ -19950,7 +19945,7 @@ class BoosterTowerToyBoxFlag(InvisibleFlagLocation):
     _x_coord = 7
     _y_coord = 24
     _world_area = WorldAreaEnum.BOOSTER_TOWER
-    _x_shift = 16
+    _x_shift = 8
     _clue_text = "[center]Mine is behind a toy box.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 482),
@@ -20037,10 +20032,11 @@ class MarrymoreHallwayFlag(InvisibleFlagLocation):
 class MarrymoreCurtains(InvisibleFlagLocation):
     _bias = True
     _rooms = [R012_MARRYMORE_INN_SUITE_ROOM]
-    _x_coord = 7
-    _y_coord = 52
+    _x_coord = 5
+    _y_coord = 12
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 0
+    _x_shift = -8
     _clue_text = " Mine's beneath a clock that's beside red curtains.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 1008),
@@ -20095,7 +20091,6 @@ class MarrymoreKitchenFlag(InvisibleFlagLocation):
     _y_coord = 20
     _world_area = WorldAreaEnum.MARRYMORE
     _x_shift = -8
-    _y_shift = 8
     _clue_text = " Mine is in a big cabinet full of\n dishes.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 486),
@@ -20124,7 +20119,7 @@ class MarrymoreFireplaceFlag(InvisibleFlagLocation):
     _y_coord = 33
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 2
-    _y_shift = -8
+    _x_shift = 8
     _clue_text = "[center]Mine is in an empty fireplace.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 487),
@@ -20153,6 +20148,7 @@ class MarrymoreWindowFlag(InvisibleFlagLocation):
     ]
     _x_coord = 17
     _y_coord = 15
+    _y_shift = -8
     _world_area = WorldAreaEnum.MARRYMORE
     _clue_text = " Mine is under a single stained glass window.[await]"
     _hint = [
@@ -20334,6 +20330,7 @@ class SeasideTownBucketFlag(InvisibleFlagLocation):
     _x_coord = 20
     _y_coord = 31
     _world_area = WorldAreaEnum.SEASIDE_TOWN
+    _y_shift = 8
     _z_coord = 3
     _clue_text = "[center]Mine is in a bucket between two\n[center]staircases.[await]"
     _hint = [
@@ -20824,8 +20821,8 @@ class LandsEndStalagmiteFlag(InvisibleFlagLocation):
     _y_coord = 88
     _z_coord = 4
     _world_area = WorldAreaEnum.LANDS_END
-    _x_shift = 8
-    _y_shift = 8
+    _x_shift = -8
+    _y_shift = -8
     _clue_text = (
         " Mine's on a big stalagmite\n formation in an underground cave.[await]"
     )
@@ -20982,7 +20979,7 @@ class DojoBonsaiFlag(InvisibleFlagLocation):
     _x_coord = 6
     _y_coord = 9
     _world_area = WorldAreaEnum.MONSTRO_TOWN
-    _y_shift = 8
+    _x_shift = -8
     _clue_text = "[center]Mine's underneath a bonsai tree.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 512),
@@ -21036,7 +21033,7 @@ class MonstroBatFlag(InvisibleFlagLocation):
     _y_coord = 51
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 4
-    _y_shift = 8
+    _x_shift = -8
     _clue_text = "[center]Mine's behind a wooden bat.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 514),
@@ -21092,7 +21089,7 @@ class MonstroShellFlag(InvisibleFlagLocation):
     _y_coord = 15
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _z_coord = 1
-    _y_shift = 8
+    _y_shift = -8
     _clue_text = "[center]Mine's beneath a spinning shell.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 516),
@@ -21366,7 +21363,8 @@ class NimbusBirdFlag(InvisibleFlagLocation):
     _x_coord = 28
     _y_coord = 48
     _world_area = WorldAreaEnum.NIMBUS_LAND
-    _y_shift = -8
+    _y_shift = 8
+    _x_shift = -8
     _clue_text = " Mine is under a birdcage, in a\n restricted dead-end area.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 523),
@@ -21608,7 +21606,6 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
     _y_coord = 97
     _world_area = WorldAreaEnum.BOWSERS_KEEP
     _x_shift = 8
-    _y_shift = 8
     _clue_text = "[center]Mine is between two red doors.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 526),
@@ -21635,7 +21632,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
 
 
 class KeepThwompFlag(InvisibleFlagLocation):
-    _bias = True
+    _bias = True 
     _rooms = [R449_BOWSERS_KEEP_AREA_11_THWOMPBULLET_ROOM_AFTER_MAGIKOOPAS_ROOM]
     _x_coord = 19
     _y_coord = 47
@@ -21665,42 +21662,11 @@ class KeepThwompFlag(InvisibleFlagLocation):
         )
 
 
-class FactoryCanopyFlag(InvisibleFlagLocation):
-    _bias = True
-    _rooms = [R220_SMITHY_FACTORY_AREA_02_WSAVE_POINT]
-    _x_coord = 16
-    _y_coord = 15
-    _world_area = WorldAreaEnum.FACTORY
-    _z_coord = 10
-    _y_shift = 8
-    _clue_text = "  My item's under a bolted canopy.[await]"
-    _hint = [
-        # SetVarToConst(PRIMARY_TEMP_7000, 528),
-        # RunDialog(
-            # dialog_id=DI2010_DEBUG_7000,
-            # above_object=BOWSER,
-            # closable=True,
-            # sync=False,
-            # multiline=True,
-            # use_background=True,
-        # ),
-        JmpIfBitClear(MAP_GATE, ["next"]),
-        JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
-        JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
-        Jmp(["invisible_item_hint_text"]),
-    ]
-
-    def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_monstro_town(world, inventory) and can_access_factory(
-            world, inventory
-        )
-
-
 class FactoryLugnutFlag(InvisibleFlagLocation):
     _bias = True
     _rooms = [R239_SMITHY_FACTORY_AREA_06_ULTRA_HAMMER]
     _x_coord = 23
-    _y_coord = 52
+    _y_coord = 50
     _world_area = WorldAreaEnum.FACTORY
     _z_coord = 7
     _clue_text = "    My item's underneath a lugnut.[await]"
@@ -21732,7 +21698,7 @@ class FactoryTrampolineFlag(InvisibleFlagLocation):
     _x_coord = 14
     _y_coord = 9
     _world_area = WorldAreaEnum.FACTORY
-    _y_shift = 16
+    _y_shift = 8
     _clue_text = " My item is with the world's\n loneliest trampoline.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 530),

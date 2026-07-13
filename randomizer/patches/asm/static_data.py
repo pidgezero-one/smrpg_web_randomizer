@@ -30,6 +30,8 @@ import os
 import struct
 from collections.abc import Iterator
 
+from . import dialog_font_item_punctuation
+
 _ASSET = os.path.join(os.path.dirname(__file__), "static_data.bin")
 
 # Ranges owned by a ``render()`` pass that regenerates them on EVERY build.
@@ -50,11 +52,20 @@ _ASSET = os.path.join(os.path.dirname(__file__), "static_data.bin")
 #
 # The render-disjoint extraction predated the open_mode->render() moves and
 # wrongly captured these regions; trim them out here.
+#
+# dialog_font_item_punctuation: dialogue font codes 0x7B-0x7E. The blob fills
+# them with decorative icons that nothing references, which makes item names
+# drawn with the dialogue font (battle spoils box, [0x70A7] substitution) render
+# their punctuation as icons -- "Yoshi-Ade" -> "Yoshi<snowflake>Ade". The blob's
+# records start *above* the glyph boundary, so they would win the address-ordered
+# apply; trim them so the punctuation patch owns the range outright.
 _RENDERER_OWNED = (
     (0x148000, 0x150000),
     (0x3F9C40, 0x3F9FF8),
     (0x3FDBB0, 0x3FF104),
     (0x3FFDDA, 0x3FFDDE),
+    dialog_font_item_punctuation.WIDTH_RANGE,
+    dialog_font_item_punctuation.GFX_RANGE,
 )
 
 

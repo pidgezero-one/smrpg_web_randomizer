@@ -108,9 +108,9 @@ script = EventScript([
 	Set70107015ToObjectXYZ(target=MEM_70AA),
 	PlaySound(sound=SO060_DYNAMITE_BOMB_EXPLOSION, channel=6),
 	StartLoopNTimes(8),
-	Pause(1, identifier="EVENT_1794_pause_57"),
+	Pause(1),
 	CreatePacketAt7010(packet=P032_BLUE_CLOUD, destinations=["EVENT_1794_pause_57"]),
-	Pause(5),
+	Pause(5, identifier="EVENT_1794_pause_57"),
 	AddConstToVar(TEMP_7034, 3),
 	AddConstToVar(Z_COORD_1, 64),
 	EndLoop(),
@@ -145,10 +145,10 @@ script = EventScript([
 		A_Pause(6),
 		A_VisibilityOff(),
 		A_EndLoop(),
-		A_Pause(1, identifier="EVENT_1794_action_queue_69_SUBSCRIPT_pause_11"),
+		A_Pause(1),
 		A_SetVarToConst(TEMP_7034, 65535),
 		A_CreatePacketAtObjectCoords(packet=P032_BLUE_CLOUD, target_npc=MEM_70AA, destinations=["EVENT_1794_action_queue_69_SUBSCRIPT_pause_11"]),
-		A_PlaySound(sound=SO161_GHOST, channel=4)
+		A_PlaySound(sound=SO161_GHOST, channel=4, identifier="EVENT_1794_action_queue_69_SUBSCRIPT_pause_11")
 	], identifier="EVENT_1794_action_queue_69"),
 	Return(),
 	ActionQueueSync(target=NPC_16, subscript=[

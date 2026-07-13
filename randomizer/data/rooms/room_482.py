@@ -94,8 +94,8 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.YELLOW_LETTER_NPC,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            npc=npcs.EMPTY_NPC_3,
+            initiator=EventInitiator.NONE,
             event_script=E3602_MUSHROOM_KINGDOM_RAZ_RAINI_NOTE,
             action_script=A0977_NOTE_WITHOUT_KNIFE,
             visible=True,

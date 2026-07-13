@@ -21,6 +21,12 @@ Behaviors
   selected to act (hook at $C2:972E) so the flag is per-battle, not
   per-turn.
 
+  State that has to survive from the apply-damage hook to the block
+  handlers lives in the *per-ally* struct at $7E:0024/0026/0028 (see the
+  BROOCH_*_BASE constants). It was previously held in four globals at
+  $7F:0000/0010/0020/0030, which was the source of a severe HP-corruption
+  bug: that region is the level tilemap, not free RAM.
+
 ROM hooks
 ---------
 
@@ -90,6 +96,12 @@ ALLY_1_FREE_BYTE = 0x7EFA9F
 ALLY_2_FREE_BYTE = 0x7EFB1F
 ALLY_3_FREE_BYTE = 0x7EFB9F
 
+# BROOCH_ARMED for each ally slot ($7E:FA80/$FB00/$FB80 + $26), for the
+# per-defense-turn reset in the $C2:972E hook.
+ALLY_1_ARMED = 0x7EFAA6
+ALLY_2_ARMED = 0x7EFB26
+ALLY_3_ARMED = 0x7EFBA6
+
 # These are base addresses indexed by X (X holds an ally-slot offset
 # such as $FA80 / $FB00 / $FB80). LDA $7E001E, X reads the accessory byte
 # of whichever ally slot the current target offset selects.
@@ -105,12 +117,33 @@ ALLY_F35_BASE = 0x7E0035
 ALLY_F40_BASE = 0x7E0040
 ALLY_F43_BASE = 0x7E0043
 
-# Inter-handler scratch (BW-RAM mirror, safe across the apply-damage
-# → perfect-block / timed-block sequence within a single defense turn).
-SCRATCH_HP_BEFORE = 0x7F0000
-SCRATCH_DAMAGE = 0x7F0010
-SCRATCH_BROOCH_ACTIVE_THIS_TURN = 0x7F0020
-SCRATCH_HALF_DAMAGE = 0x7F0030
+# Pre-hit HP. Vanilla saves it here itself at $C2:C56D (LDA $7E0011,X /
+# STA $7E0035,X) — which runs *after* this patch's apply-damage hook, so by
+# the time a block resolves it holds the true HP the character had before
+# the hit. Same address as ALLY_F35_BASE; named for the role we rely on.
+ALLY_PREHIT_HP_BASE = 0x7E0035
+
+# Inter-handler state, carried from the apply-damage hook to the block
+# handlers. These MUST be per-ally, not global: a group attack runs
+# apply_damage once per target, and the block handlers then run per target
+# too, so a global would let one ally's pending brooch rewrite another
+# ally's HP.
+#
+# $7E:0024-$7E:002B is genuinely unused: no opcode anywhere in the ROM
+# references those ally/enemy-struct offsets, and they sit past the end of
+# the $10-$23 window that $C2:92CB block-copies to $7F:F800.
+#
+# The previous revision of this patch kept these four words at
+# $7F:0000/0010/0020/0030 and called them free BW-RAM. They are not free —
+# they are tiles 0/8/16/24 of the level tilemap ($C9:511C writes
+# STA $7F0000,X with a base-zero index), and battle never reinitialises
+# them. The block handlers gated a direct write of $7E0011,X (HP) on those
+# words without checking the target even owned a brooch, so on any map whose
+# top-left tiles are non-zero a timed block would stamp a raw tile id over a
+# character's HP (HP := tile id, or HP := 0 = instant KO).
+BROOCH_DAMAGE_BASE = 0x7E0024    # true (unclamped) damage of the arming hit
+BROOCH_ARMED_BASE = 0x7E0026     # non-zero = brooch armed on THIS hit
+BROOCH_HALF_BASE = 0x7E0028      # scratch: half of BROOCH_DAMAGE
 
 # -----------------------------------------------------------------------
 # Spell IDs that Belome 3 nullifies (per the source patch, validated
@@ -164,6 +197,9 @@ class _Asm(Asm65816):
     def tax(self) -> None:
         self.emit(0xAA)
 
+    def txa(self) -> None:
+        self.emit(0x8A)
+
     def tay(self) -> None:
         self.emit(0xA8)
 
@@ -206,6 +242,12 @@ class _Asm(Asm65816):
     def sbc_long(self, addr: int) -> None:
         self.emit(
             0xEF,
+            addr & 0xFF, (addr >> 8) & 0xFF, (addr >> 16) & 0xFF,
+        )
+
+    def sbc_long_x(self, addr: int) -> None:
+        self.emit(
+            0xFF,
             addr & 0xFF, (addr >> 8) & 0xFF, (addr >> 16) & 0xFF,
         )
 
@@ -290,7 +332,23 @@ def _build_apply_damage(infuse_spell_elements: bool) -> bytes:
     a.bra("finish")
 
     a.label("slot_accessory_check")
-    a.tax()
+    a.tax()                                      # X = this ally's slot offset
+
+    # Disarm first, unconditionally, on every hit that targets an ally. The
+    # block handlers therefore only ever read a flag this routine has just
+    # written for this same ally on this same hit — they can never act on a
+    # value left behind by an earlier hit, an earlier battle, or a cold boot.
+    a.lda_imm16(0x0000)
+    a.sta_long_x(BROOCH_ARMED_BASE)
+
+    # $F9 bit 0 set = this is a heal, not damage. Vanilla only makes that
+    # distinction at $C2:C562, i.e. *after* this hook, so without this test
+    # a big enough heal looks like a lethal hit: it would arm the brooch and
+    # get clamped to HP-1, turning the heal into a fixed "restore to 2x-1 HP".
+    a.lda_dp(0xF9)
+    a.bit_imm16(0x0001)
+    a.bne("finish")
+
     a.sep(0x20)
     a.lda_long_x(ALLY_ACCESSORY_BASE)
     a.cmp_imm8(ENDURING_BROOCH_ITEM_ID)
@@ -314,11 +372,10 @@ def _build_apply_damage(infuse_spell_elements: bool) -> bytes:
     a.sta_long_x(ALLY_BROOCH_FLAG_BASE)         # mark used
     a.rep(0x20)
     a.lda_dp(0xC2)
-    a.sta_long(SCRATCH_DAMAGE)
+    a.sta_long_x(BROOCH_DAMAGE_BASE)            # remember the TRUE damage
     a.lda_imm16(0x0001)
-    a.sta_long(SCRATCH_BROOCH_ACTIVE_THIS_TURN)
+    a.sta_long_x(BROOCH_ARMED_BASE)
     a.lda_long_x(ALLY_HP_BASE)
-    a.sta_long(SCRATCH_HP_BEFORE)
     a.sec()
     a.sbc_imm16(0x0001)                          # damage = HP-1 → leaves 1 HP
     a.sta_dp(0xC2)
@@ -346,6 +403,10 @@ def _build_zero_out_brooch() -> bytes:
     a.sta_long(ALLY_2_FREE_BYTE)
     a.sta_long(ALLY_3_FREE_BYTE)
     a.rep(0x20)
+    a.lda_imm16(0x0000)
+    a.sta_long(ALLY_1_ARMED)
+    a.sta_long(ALLY_2_ARMED)
+    a.sta_long(ALLY_3_ARMED)
     a.lda_dp(0xBA)
     a.and_imm16(0x00FF)
     a.tay()
@@ -361,8 +422,10 @@ def _build_brooch_perfect_block() -> bytes:
     Then run the vanilla perfect-block effect.
     """
     a = _Asm(base_addr=0)
+    # X is the target's slot offset here — vanilla's own code at $C2:CA73
+    # indexes off it, so trust X rather than re-reading $CA.
     a.rep(0x20)
-    a.lda_dp(0xCA)
+    a.txa()
     a.cmp_imm16(0xFA80)
     a.beq("slot_accessory_check_perfect")
     a.cmp_imm16(0xFB00)
@@ -372,11 +435,20 @@ def _build_brooch_perfect_block() -> bytes:
     a.bra("finish_perfect")
 
     a.label("slot_accessory_check_perfect")
-    a.sep(0x20)
-    a.lda_long(SCRATCH_BROOCH_ACTIVE_THIS_TURN)
+    # Did the brooch arm on this hit, for THIS ally? Anything else means the
+    # vanilla path below is the whole story.
+    a.lda_long_x(BROOCH_ARMED_BASE)
     a.beq("finish_perfect")
+    a.lda_imm16(0x0000)
+    a.sta_long_x(BROOCH_ARMED_BASE)
+    a.sep(0x20)
     a.lda_imm8(0x00)
     a.sta_long_x(ALLY_BROOCH_FLAG_BASE)         # refund the brooch use
+
+    # No HP fix-up needed on this path. apply_damage clamped the hit to
+    # HP-1 (so HP is 1) and stored HP-1 in the damage display; the vanilla
+    # body below reloads $C2 from that display and adds it straight back,
+    # landing on the pre-hit HP — which is exactly what a perfect block owes.
 
     # Vanilla perfect-block effect (preserved verbatim from the asm
     # reference). The "brooch_bit_test" path covers a special-status
@@ -424,8 +496,10 @@ def _build_brooch_timed_block() -> bytes:
     normal half-damage. Then reset all scratch words.
     """
     a = _Asm(base_addr=0)
+    # X is the target's slot offset here (vanilla indexes off it at
+    # $C2:C9E6/$C2:CA03), so trust X rather than re-reading $CA.
     a.rep(0x20)
-    a.lda_dp(0xCA)
+    a.txa()
     a.cmp_imm16(0xFA80)
     a.beq("slot_accessory_check_timed")
     a.cmp_imm16(0xFB00)
@@ -435,44 +509,49 @@ def _build_brooch_timed_block() -> bytes:
     a.bra("apply_half_damage_normal_case")
 
     a.label("slot_accessory_check_timed")
-    a.sep(0x20)
-    a.lda_long(SCRATCH_BROOCH_ACTIVE_THIS_TURN)
+    # Did the brooch arm on this hit, for THIS ally?
+    a.lda_long_x(BROOCH_ARMED_BASE)
     a.beq("apply_half_damage_normal_case")
 
-    # Would HP - (orig_damage / 2) still be lethal?
-    a.rep(0x20)
-    a.lda_long(SCRATCH_DAMAGE)
+    # The brooch fired, so HP is currently 1 and the damage display holds
+    # the clamped HP-1 — neither is usable. Re-decide from the TRUE damage:
+    # would a timed block's half-damage still have been lethal?
+    a.lda_long_x(BROOCH_DAMAGE_BASE)
     a.lsr_a()
-    a.sta_long(SCRATCH_HALF_DAMAGE)
-    a.lda_long(SCRATCH_HP_BEFORE)
+    a.sta_long_x(BROOCH_HALF_BASE)
+    a.lda_long_x(ALLY_PREHIT_HP_BASE)
     a.sec()
-    a.sbc_long(SCRATCH_HALF_DAMAGE)
-    a.bmi("finish_timed")                       # still lethal: keep brooch armed
+    a.sbc_long_x(BROOCH_HALF_BASE)
+    a.bmi("brooch_timed_tail")                  # still lethal: keep the 1-HP save
 
-    # Half-damage non-lethal — refund brooch and apply real half-damage.
+    # Half damage is survivable, so the brooch should not have been spent.
+    # Refund it and write the outcome the player actually earned.
     a.sep(0x20)
     a.lda_imm8(0x00)
     a.sta_long_x(ALLY_BROOCH_FLAG_BASE)
     a.rep(0x20)
-    a.lda_long(SCRATCH_DAMAGE)
-    a.sta_dp(0xC2)
-    a.sta_long_x(ALLY_DAMAGE_DISPLAY_BASE)
-    a.lda_long(SCRATCH_HP_BEFORE)
+    a.lda_long_x(ALLY_PREHIT_HP_BASE)
     a.sec()
-    a.sbc_long(SCRATCH_HALF_DAMAGE)
-    a.sta_long_x(ALLY_HP_BASE)
+    a.sbc_long_x(BROOCH_HALF_BASE)
+    a.sta_long_x(ALLY_HP_BASE)                  # HP := pre-hit HP - half
+    a.lda_long_x(BROOCH_HALF_BASE)
+    a.sta_long_x(ALLY_DAMAGE_DISPLAY_BASE)      # display := half
 
+    # Both brooch outcomes leave HP and the display already final, so the
+    # vanilla tail at $C2:CA0C (HP += $C2, display -= $C2) must be a no-op.
+    a.label("brooch_timed_tail")
+    a.rep(0x20)
+    a.lda_imm16(0x0000)
+    a.sta_dp(0xC2)
+    a.sta_long_x(BROOCH_ARMED_BASE)
+    a.bra("finish_timed")
+
+    # Displaced vanilla instructions: $C2 := damage / 2.
     a.label("apply_half_damage_normal_case")
     a.rep(0x20)
     a.lda_dp(0xC2)
     a.lsr_a()
     a.sta_dp(0xC2)
-
-    a.lda_imm16(0x0000)
-    a.sta_long(SCRATCH_HP_BEFORE)
-    a.sta_long(SCRATCH_DAMAGE)
-    a.sta_long(SCRATCH_BROOCH_ACTIVE_THIS_TURN)
-    a.sta_long(SCRATCH_HALF_DAMAGE)
 
     a.label("finish_timed")
     a.rtl()

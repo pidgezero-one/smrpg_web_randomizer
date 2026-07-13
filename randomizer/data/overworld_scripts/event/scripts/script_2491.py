@@ -144,15 +144,9 @@ script = EventScript([
 	Jmp(["EVENT_2491_play_sound_95"]),
 	JmpIfVarEqualsConst(FACTORY_FALL_3, 2, ["EVENT_2491_summon_to_current_level_78"], identifier="EVENT_2491_jmp_if_var_equals_const_76"),
 	Jmp(["EVENT_2491_play_sound_95"]),
-	SummonObjectToCurrentLevel(NPC_5, identifier="EVENT_2491_summon_to_current_level_78"),
-	PlaySound(sound=SO094_FROG_COIN, channel=6),
-	ActionQueueSync(target=NPC_5, subscript=[
-		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
-		A_SetPriority(3),
-		A_SetSpriteSequence(index=0, is_sequence=True, looping=True),
-		A_Pause(32),
-		A_VisibilityOff()
-	]),
+	Set70107015ToObjectXYZ(target=NPC_5, identifier="EVENT_2491_summon_to_current_level_78"),
+	CreatePacketAt7010(packet=P064_FROG_COIN_CHEST_STILL, destinations=["EVENT_2491_fc_sound"]),
+	PlaySound(sound=SO094_FROG_COIN, channel=6, identifier="EVENT_2491_fc_sound"),
 	AddFrogCoins(1),
 	Jmp(["EVENT_2491_action_queue_109"]),
 	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_2491_play_sound_83"),

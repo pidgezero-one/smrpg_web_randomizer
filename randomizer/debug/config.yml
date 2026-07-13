@@ -41,3 +41,6 @@ items:
     RoseWayLeftIslandLocation: ExtraShinyStonePrize
     BoosterTowerPortraitPrizeLocation: MaxMushroomPrize
     MushroomWayLeftItemRemake: MarioDollPrize
+    BelomeBeforeBossLowerLeftChestLocation: SlotsPrize1
+    MonstroEntranceLocation: SlotsPrize2
+    BeanValleyFirstDeadEndLocation: SlotsPrize3

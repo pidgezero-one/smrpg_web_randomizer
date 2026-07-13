@@ -266,9 +266,7 @@ def apply_equipment_settings(world: GameWorld) -> None:
         if isinstance(item, Equipment):
             item.set_description(item.build_equipment_description())
 
-    # Reprice equipment from combat rank so stat buffs / immunities / KO protection
-    # count toward price (RANDOM mode only; vanilla and SOME keep hand-tuned prices).
-    if world.settings.is_flag_value(
-        EquipmentProperties, EquipmentPropertiesOptions.RANDOM
-    ):
-        reprice_equipment_by_rank(world)
+    # Reprice equipment from combat rank in every mode. Vanilla prices are not
+    # power-ordered, and items vanilla never sells carry junk placeholder prices
+    # that shop shuffling would otherwise honour at face value.
+    reprice_equipment_by_rank(world)

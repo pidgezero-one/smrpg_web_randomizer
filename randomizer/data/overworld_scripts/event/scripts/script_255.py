@@ -45,7 +45,7 @@ script = EventScript([
 	SetBit(EXP_STAR_BIT_6),
 	UnfreezeAllNPCs(),
 	Pause(3),
-	CreatePacketAtObjectCoords(packet=P031_LEVELUP_TEXT, target_npc=MARIO, destinations=["EVENT_255_set_bit_5"]),
+	#CreatePacketAtObjectCoords(packet=P031_LEVELUP_TEXT, target_npc=MARIO, destinations=["EVENT_255_set_bit_5"]),
 	PlaySound(sound=SO095_LEVEL_UP_WITH_STAR, channel=6),
 	SetVarToConst(TIMER_701E, 64),
 	RunBackgroundEventWithPauseReturnOnExit(event_id=E0254_EXP_STAR_HIT_SUBROUTINE, timer_var=TIMER_701E, bit_4=True, bit_5=True),

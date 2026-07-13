@@ -4,7 +4,7 @@ from __future__ import annotations
 from math import ceil
 from typing import TYPE_CHECKING
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Tile
+from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Mold, Tile
 from smrpgpatchbuilder.datatypes.levels.classes import NPC, VramStore
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import SOUTHWEST
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_0
@@ -18,6 +18,35 @@ if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
 
+def min_vram_from_mold_geometry(mold: Mold) -> int:
+    """The min_vram_size a single mold requires. Canonical VRAM sizing rule.
+
+    The engine hands a cannot_clone NPC `4 * (min_vram_size + 1)` 16x16 tile
+    slots ($C0:8EBC, where $66 is the NPC record's 3-bit vram field already
+    multiplied by 4 at $C0:8CF3). A slot holds four 8x8 subtiles, so capacity is
+    `16 * (min_vram_size + 1)` subtiles and the baseline is 16.
+
+    Count SUBTILES, not 16x16 tiles. A mold tile only carries the subtiles its
+    presence bitmask marks (ROM byte0 bits 7-4) — an absent quadrant occupies no
+    VRAM. Vanilla pins the unit exactly: sprite 48 ships as CROCO_NPC_2
+    (min_vram 0, plays only sequence 5, max 14 subtiles) and CROCO_NPC
+    (min_vram 1, plays sequences 4/6, max 18 subtiles); Yaridovich (40 subtiles)
+    ships min_vram 2. Sequence 5's mold 17 has five tiles but only 14 subtiles,
+    the same as four-tile mold 16 — counting tiles inflates it to 1 and overruns
+    room 206's cursor into the treasure-chest buffer.
+    """
+    if mold.gridplane:
+        return 0
+    subtiles = sum(
+        1
+        for tile in mold.tiles
+        if isinstance(tile, Tile)
+        for subtile in tile.subtile_bytes
+        if subtile is not None
+    )
+    return ceil(max(0, subtiles - 16) / 16)
+
+
 def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequence_id: int) -> int:
     """Compute min_vram_from_sequence for a given sprite ID and sequence.
 
@@ -26,50 +55,27 @@ def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequen
     """
     sprite = world.get_sprite(sprite_id)
     assert sequence_id < len(sprite.animation.properties.sequences)
-    min_vram = 0
-    for frame in sprite.animation.properties.sequences[sequence_id].frames:
-        mold = sprite.animation.properties.molds[frame.mold_id]
-        if mold.gridplane:
-            continue
-        # VRAM allocates per-tile, not per-truthy-subtile: a sparsely-populated
-        # tile still consumes its full 4-subtile slot. Each VRAM row holds 4
-        # tiles (16 subtiles), with 1 row baseline + min_vram_size extra rows.
-        # OLD formula counted only truthy (non-None) subtiles, which under-
-        # allocated for sprites with sparse tiles (e.g. SPR0626 BOWYER_NPC_LARGE:
-        # 16 tiles but only 45 truthy subtiles → old gave 2, real need is 3).
-        # truthy_subtiles = 0
-        # for t in mold.tiles:
-        #     if isinstance(t, Tile):
-        #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-        # min_vram = max(min_vram, ceil(max(0, truthy_subtiles - 16) / 16))
-        n_tiles = sum(1 for t in mold.tiles if isinstance(t, Tile))
-        min_vram = max(min_vram, ceil(max(0, n_tiles - 4) / 4))
-    return min_vram
+    molds = sprite.animation.properties.molds
+    return max(
+        (
+            min_vram_from_mold_geometry(molds[frame.mold_id])
+            for frame in sprite.animation.properties.sequences[sequence_id].frames
+        ),
+        default=0,
+    )
 
 
 def min_vram_from_mold_for_sprite(world: "GameWorld", sprite_id: int, mold_id: int) -> int:
     """Compute min_vram_from_mold for a given sprite ID and mold ID.
 
     Standalone version of NPC.min_vram_from_mold — works from a sprite_id
-    rather than requiring an NPC instance. Returns 0 for gridplane molds
-    or if mold_id is out of range.
+    rather than requiring an NPC instance. Returns 0 if mold_id is out of range.
     """
     sprite = world.get_sprite(sprite_id)
-    if mold_id >= len(sprite.animation.properties.molds):
+    molds = sprite.animation.properties.molds
+    if mold_id >= len(molds):
         return 0
-    mold = sprite.animation.properties.molds[mold_id]
-    if mold.gridplane:
-        return 0
-    # See note in min_vram_from_sequence_for_sprite — VRAM is per-tile, not
-    # per-truthy-subtile.
-    # OLD:
-    # truthy_subtiles = 0
-    # for t in mold.tiles:
-    #     if isinstance(t, Tile):
-    #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-    # return ceil(max(0, truthy_subtiles - 16) / 16)
-    n_tiles = sum(1 for t in mold.tiles if isinstance(t, Tile))
-    return ceil(max(0, n_tiles - 4) / 4)
+    return min_vram_from_mold_geometry(molds[mold_id])
 
 
 # Per-character protagonist sprite base IDs.

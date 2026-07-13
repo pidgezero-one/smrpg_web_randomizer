@@ -304,6 +304,10 @@ class GameWorld:
     # reward-location decisions stay consistent. Reset per attempt in shuffle_prizes.
     _cached_char_fill: list[type[CharacterPrize]] | None = None
 
+    # The character promoted to the progression tier to satisfy Bowser's Keep's
+    # non-elemental damage spell gate. Cached and reset alongside _cached_char_fill.
+    _cached_spell_damage_char: type[CharacterPrize] | None = None
+
     @property
     def overworld_character(self) -> CharacterPrize:
         if not self.settings.isflag_enabled(PlayAsStarter):
@@ -1704,6 +1708,15 @@ class GameWorld:
         # render-disjoint bytes are carried. See asm/static_data.py.
         patch.add_dict(asm.static_data.get_patch(), source="static_data")
 
+        # Dialogue font: punctuation glyphs for the codes item names use (0x7B-0x7E).
+        # Vanilla leaves them blank and static_data fills them with unused icons, so
+        # an item name drawn with the dialogue font (battle spoils box, [0x70A7])
+        # renders "Yoshi-Ade" as "Yoshi<snowflake>Ade".
+        patch.add_dict(
+            asm.dialog_font_item_punctuation.get_patch(),
+            source="dialog_font_item_punctuation",
+        )
+
         # Battle animations patch
         self._report_progress("Assembling battle animations...", progress)
         for animation_bank in self.battle_animations.values():
@@ -1871,9 +1884,13 @@ class GameWorld:
 
         # UncapMaxFP: Royal Syrup's vanilla _inflict=99 caps the heal at 99 FP
         # even though the item description reads "Recovers all Flower Pts." Bump
-        # to 255 so the heal saturates at whatever max FP the player has (the
-        # battle engine clamps at max FP, like Max Mushroom's _inflict=255 does
-        # for HP). Must run before self.items.render() below.
+        # to 255 so the heal saturates at whatever max FP the player has.
+        #
+        # This is only safe alongside the RESTORE_FP rewrite in
+        # asm/uncap_max_fp.py (item 6 in its docstring): vanilla $C2:C040 adds
+        # the heal amount to current FP with an 8-bit ADC and ignores the carry,
+        # so 255 wraps to cur - 1. Both changes are gated on UncapMaxFP; do not
+        # ship one without the other. Must run before self.items.render() below.
         if self.settings.isflag_enabled(UncapMaxFP):
             self.get_item(RoyalSyrupItem).set_inflict(255)
 
@@ -2051,6 +2068,26 @@ class GameWorld:
         patch.add_dict(asm.battle_init.get_patch(), source="battle_init")
         patch.add_dict(asm.battle_intro_hdma_fix.get_patch(), source="battle_intro_hdma_fix")
         patch.add_dict(asm.exp_star_music_sticky.get_patch(), source="exp_star_music_sticky")
+
+        # The "Victory Against Culex" fanfare is selected by a hardcoded
+        # comparison against Culex's vanilla formation ID, which our renumbering
+        # invalidates. Point it at whatever formation ends up behind the door.
+        from ..data.variables.pack_names import PACK216_MONSTRO_DOOR_BOSS
+
+        door_boss_formations = {
+            formation.formation_id
+            for formation in self.battle_packs.packs[PACK216_MONSTRO_DOOR_BOSS].formations
+        }
+        assert len(door_boss_formations) == 1, (
+            "PACK216_MONSTRO_DOOR_BOSS must hold a single formation; the victory "
+            f"music selector can only match one ID, got {door_boss_formations}"
+        )
+        door_boss_formation_id = door_boss_formations.pop()
+        assert door_boss_formation_id is not None
+        patch.add_dict(
+            asm.culex_victory_music.get_patch(door_boss_formation_id),
+            source="culex_victory_music",
+        )
 
         # Packet allocation patch — allow low-VRAM packets (those with
         # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path

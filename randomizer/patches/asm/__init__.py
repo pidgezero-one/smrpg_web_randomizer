@@ -39,6 +39,10 @@ Always-on byte patches:
       applied before the palette cosmetics.
     * :mod:`learn_special_event` — Custom "learn special ability" event command.
     * :mod:`dialogue_text_expansion` — Dialogue codes 0x18/0x19 -> bank $E4 text.
+    * :mod:`dialog_font_item_punctuation` — Give the dialogue font the ``!``
+      ``#`` ``-`` ``'`` glyphs item names encode at codes 0x7B-0x7E, so an item
+      name drawn with that font (battle spoils box, ``[0x70A7]`` substitution)
+      reads the same as it does in the menu.
     * :mod:`battle_attribute_patches` — Confuse-status mask + attribute table.
     * :mod:`menu_item_always_available` — Force a $40:30E3 menu item available.
     * :mod:`grid_menu_navigation` — 2-D grid-menu cursor rework.
@@ -61,6 +65,9 @@ Flag-gated byte patches:
     * :mod:`uncap_max_fp` — Uncap max FP from 99 to 255.
     * :mod:`unsellable_items` — Bar ``no_sell`` items from being sold or discarded.
     * :mod:`selected_music` — Battle music ID overrides.
+    * :mod:`culex_victory_music` — Point the "Victory Against Culex" fanfare at
+      whatever formation ends up behind the Monstro Town door, instead of
+      Culex's stale vanilla formation ID.
     * :mod:`hold_b` — Hold-B-to-advance dialog patch.
     * :mod:`debug_fp` — Starting FP override under debug mode.
     * :mod:`non_mario_character` — Starter / overworld / file-select
@@ -73,7 +80,9 @@ from . import (
     battlefield_underwater_palette,
     belome3_brooch,
     booster_hill_fixes,
+    culex_victory_music,
     debug_fp,
+    dialog_font_item_punctuation,
     disable_garden_intro,
     exp_star_music_sticky,
     hold_b,
@@ -112,7 +121,9 @@ __all__ = [
     "battlefield_underwater_palette",
     "belome3_brooch",
     "booster_hill_fixes",
+    "culex_victory_music",
     "debug_fp",
+    "dialog_font_item_punctuation",
     "disable_garden_intro",
     "exp_star_music_sticky",
     "hold_b",

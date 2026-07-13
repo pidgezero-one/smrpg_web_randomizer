@@ -1156,6 +1156,12 @@ COIN_SPRITE_IDS = frozenset({
 
 CHEST_SPRITE_ID = SPR0094_TREASURE_CHEST
 
+# The blank sprite. It renders nothing, so it needs neither a clone-buffer slot nor a
+# dedicated VRAM allocation — but it IS non-gridplane, and every cannot_clone/buffer
+# heuristic reads "non-gridplane" as "needs its own VRAM". The inert placeholders from
+# _pre_allocate_dummy_npcs use it in ~95 rooms, so it must be excluded explicitly.
+EMPTY_SPRITE_ID = SPR1023_EMPTY
+
 
 @dataclass
 class NPCAnalysis:
@@ -1175,6 +1181,12 @@ class NPCAnalysis:
     clone_count: int
     force_cannot_clone: bool
     bitmap_slots: int              # Extra sprite bitmap slots consumed by this parent NPC
+    # Raw room-level cannot_clone (True/False/None) before any NPC-level default or
+    # heuristic is folded in. `cannot_clone` above already merges the NPC default, so
+    # it cannot distinguish "author explicitly opted into cloning" (False) from
+    # "auto-decide" (None). Apply sites need that distinction to honor an explicit
+    # False, exactly as _recalculate_room_partition step 7 does.
+    original_cannot_clone: bool | None
 
 
 # VramStore → number of direction sequences loaded → bitmap slots consumed per parent NPC.
@@ -1355,7 +1367,16 @@ def _analyze_npc(
 
     is_gridplane, gridplane_format = _get_npc_gridplane_info(world, sprite_id)
 
-    if is_chest:
+    # The blank sprite draws nothing: it must claim no buffer slot (EMPTY_3 is excluded
+    # from _assign_buffers_v2's four_npcs/three_npcs groups) and take no dedicated VRAM.
+    # Checked before the clone_count branch below, which would otherwise hand the
+    # placeholder blocks (1 RegularNPC + 4 RegularClones) a FOUR_SPRITES_PER_ROW slot —
+    # one of only three — in every slot-eligible room.
+    is_empty = sprite_id == EMPTY_SPRITE_ID
+
+    if is_empty:
+        buffer_type = BufferType.EMPTY_3
+    elif is_chest:
         buffer_type = BufferType.TREASURE_CHEST
     elif is_coin:
         buffer_type = BufferType.COINS
@@ -1388,11 +1409,23 @@ def _analyze_npc(
     # dedicated slots and corrupts the buffer-allocation calculation.
     # Empirically verified in R232 where ~10 NPCs sharing one tilemap sprite
     # render correctly only when set to cannot_clone=False.
-    force_cannot_clone = cannot_clone or (
-        not is_gridplane
-        and not is_chest
-        and not is_coin
-        and clone_count == 0
+    #
+    # The sole-user heuristic only applies to auto-decide NPCs. A room-level
+    # cannot_clone=False is the author declaring "this must ride a clone buffer",
+    # and must not be silently promoted — mirrors _recalculate_room_partition
+    # step 7 (`elif original_cannot_clone is False: pass`). Without the `is None`
+    # guard, the inert EMPTY placeholders from _pre_allocate_dummy_npcs (sprite
+    # 1023: non-gridplane, and solitary wherever no dummy clones trail them) get
+    # dedicated VRAM for a sprite that draws nothing.
+    force_cannot_clone = (not is_empty) and (
+        cannot_clone
+        or (
+            npc_obj.cannot_clone is None
+            and not is_gridplane
+            and not is_chest
+            and not is_coin
+            and clone_count == 0
+        )
     )
 
     return NPCAnalysis(
@@ -1410,6 +1443,7 @@ def _analyze_npc(
         clone_count=clone_count,
         force_cannot_clone=force_cannot_clone,
         bitmap_slots=VRAM_STORE_BITMAP_SLOTS.get(vram_store, 1),
+        original_cannot_clone=npc_obj.cannot_clone,
     )
 
 
@@ -2245,7 +2279,14 @@ def apply_partition_analysis(
         if isinstance(obj, Clone):
             continue
 
-        if npc_analysis.cannot_clone or npc_analysis.buffer_type == BufferType.EMPTY_3:
+        if npc_analysis.original_cannot_clone is False:
+            # Room author explicitly opted this NPC INTO cloning. Honor it, same as
+            # _recalculate_room_partition step 7. Checked first because an EMPTY
+            # placeholder is non-gridplane and therefore always buffer_type EMPTY_3,
+            # which would otherwise hand it dedicated VRAM for a sprite that draws
+            # nothing.
+            pass
+        elif npc_analysis.cannot_clone or npc_analysis.buffer_type == BufferType.EMPTY_3:
             # Non-gridplane or explicitly cannot_clone: needs dedicated VRAM
             obj.set_cannot_clone(True)
         elif npc_analysis.index in buffered_indices:

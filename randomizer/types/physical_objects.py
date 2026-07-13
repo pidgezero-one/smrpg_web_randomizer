@@ -1,7 +1,6 @@
 """Various representations of an immutable object, like a mushroom, flower, shell, etc"""
 
 from dataclasses import dataclass
-from math import ceil
 from smrpgpatchbuilder.datatypes.levels.classes import NPC as NPCBase
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import (
     SOUTHEAST,
@@ -32,7 +31,6 @@ import re
 from typing import TYPE_CHECKING
 from smrpgpatchbuilder.datatypes.graphics.classes import (
     AnimationSequence,
-    Tile,
     CompleteSprite,
 )
 from ..data.sprites.sprites import sprites
@@ -587,11 +585,13 @@ class NPC:
     @property
     def min_vram_size(self) -> int:
         """The minimum number (0 to 7) of VRAM chunks the NPC's sprite can be expected to require.\n
-        Generally, this number is 0 for gridplane sprites. \n
-        For non-gridplane sprites, this number is usually total tiles divided by 4,
-        rounded down (where a tile is a group of four subtiles).\n
-        This calculation should be based on the largest mold (in terms of tiles used)
-        that you expect to see displayed from the sprite."""
+        The engine grants `4 * (min_vram_size + 1)` 16x16 tile slots, each holding four
+        8x8 subtiles — so capacity is `16 * (min_vram_size + 1)` subtiles.\n
+        Generally, this number is 0 for gridplane sprites (a gridplane mold is one
+        contiguous block of at most 16 subtiles, which is exactly the baseline).\n
+        For non-gridplane sprites it is `ceil(max(0, subtiles - 16) / 16)` over the
+        largest mold — counted in *subtiles*, not 16x16 tiles — based on the largest
+        mold you expect to see displayed from the sprite."""
         assert self.base._min_vram_size <= 7
         return self.base._min_vram_size
 
@@ -599,25 +599,18 @@ class NPC:
         self, world: "GameWorld", mold_id: int, offset: int = 0
     ) -> int:
         """Get min vram size from a certain sprite mold ID"""
+        # Deferred: utils.npcs imports this module for BossNPC.
+        from ..utils.npcs import min_vram_from_mold_geometry
+
         sprite = world.get_sprite(self.base.sprite_id + offset)
         assert mold_id < len(sprite.animation.properties.molds), (
             f"Mold {mold_id} not found in sprite {self.base.sprite_id + offset} "
             f"(base={self.base.sprite_id}, offset={offset}, "
             f"num_molds={len(sprite.animation.properties.molds)})"
         )
-        if sprite.animation.properties.molds[mold_id].gridplane:
-            return 0
-        tiles = sprite.animation.properties.molds[mold_id].tiles
-        # VRAM allocates per-tile (each VRAM row holds 4 tiles), not per-truthy-
-        # subtile. Sparse tiles still consume their full slot.
-        # OLD:
-        # truthy_subtiles = 0
-        # for t in tiles:
-        #     if isinstance(t, Tile):
-        #         truthy_subtiles += len([s for s in t.subtile_bytes if s is not None])
-        # return ceil(max(0, truthy_subtiles - 16) / 16)
-        n_tiles = sum(1 for t in tiles if isinstance(t, Tile))
-        return ceil(max(0, n_tiles - 4) / 4)
+        return min_vram_from_mold_geometry(
+            sprite.animation.properties.molds[mold_id]
+        )
 
     def min_vram_from_sequence(
         self, world: "GameWorld", sequence_id: int, offset: int = 0
