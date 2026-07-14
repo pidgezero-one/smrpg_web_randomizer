@@ -41,6 +41,6 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(BOWSER, CrusherSpell, identifier="freestanding_spell_20_character_PKT"),
-	RunDialog(dialog_id=DI1986_LEARN_SPELL_20_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1985_LEARN_SPELL_20, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

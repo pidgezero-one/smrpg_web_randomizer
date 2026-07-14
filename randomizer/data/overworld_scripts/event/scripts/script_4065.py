@@ -41,6 +41,6 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(GENO, GenoFlashSpell, identifier="freestanding_spell_17_character_PKT"),
-	RunDialog(dialog_id=DI1980_LEARN_SPELL_17_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1979_LEARN_SPELL_17, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

@@ -282,6 +282,13 @@ class GenerateView(FormView):
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
         prize_offset = data.get("prize_offset") if settings.DEBUG else None
         mimic_offset = data.get("mimic_offset") if settings.DEBUG else None
+        # Per-category switches only mean anything when an offset is set; the
+        # template submits all five alongside prize_offset.
+        offset_slots = bool(data.get("offset_slots"))
+        offset_mimics = bool(data.get("offset_mimics"))
+        offset_coins = bool(data.get("offset_coins"))
+        offset_star_pieces = bool(data.get("offset_star_pieces"))
+        offset_invisible_flags = bool(data.get("offset_invisible_flags"))
 
         try:
             # Build game world, randomize it, and generate the patch.
@@ -292,6 +299,11 @@ class GenerateView(FormView):
             s.debug_mode = debug_mode
             s.prize_offset = prize_offset
             s.mimic_offset = mimic_offset
+            s.offset_slots = offset_slots
+            s.offset_mimics = offset_mimics
+            s.offset_coins = offset_coins
+            s.offset_star_pieces = offset_star_pieces
+            s.offset_invisible_flags = offset_invisible_flags
 
             world = create(
                 seed,
@@ -416,6 +428,13 @@ class GenerateStreamView(View):
         debug_bps_patches = bool(data.get("debug_bps_patches", False)) and settings.DEBUG
         prize_offset = data.get("prize_offset") if settings.DEBUG else None
         mimic_offset = data.get("mimic_offset") if settings.DEBUG else None
+        # Per-category switches only mean anything when an offset is set; the
+        # template submits all five alongside prize_offset.
+        offset_slots = bool(data.get("offset_slots"))
+        offset_mimics = bool(data.get("offset_mimics"))
+        offset_coins = bool(data.get("offset_coins"))
+        offset_star_pieces = bool(data.get("offset_star_pieces"))
+        offset_invisible_flags = bool(data.get("offset_invisible_flags"))
 
         def generate_events() -> Iterator[bytes]:
             progress_queue: queue.Queue = queue.Queue()
@@ -434,6 +453,11 @@ class GenerateStreamView(View):
                     s.debug_mode = debug_mode
                     s.prize_offset = prize_offset
                     s.mimic_offset = mimic_offset
+                    s.offset_slots = offset_slots
+                    s.offset_mimics = offset_mimics
+                    s.offset_coins = offset_coins
+                    s.offset_star_pieces = offset_star_pieces
+                    s.offset_invisible_flags = offset_invisible_flags
 
                     # Create world with progress callback
                     world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)

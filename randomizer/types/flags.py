@@ -525,7 +525,9 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
 
 class PlayAsStarter(BooleanFlag):
     _name = "Play as starter ally everywhere"
-    _description = """If enabled, your starter ally will also be the protagonist outside of battle. This may cause some minor graphical glitches but nothing game-breaking.
+    _description = """If enabled, your starter ally will also be the protagonist outside of battle. 
+<br>
+<br> Be forewarned that this may cause cosmetic glitches, especially if you are playing as Bowser. This is a known issue with the game having limited VRAM and will not likely ever be addressed.
 <br>
 <br>If disabled, you will always play as Mario outside of battle, regardless of whether or not he is in your party."""
     _id = "protag"
@@ -1993,6 +1995,14 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
 
 
 # ✅
+class DontAutoheal(BooleanFlag):
+    _name = "Don't auto-heal after boss fights"
+    _description = """If enabled: All full heals that happen immediately after boss fights are removed."""
+    _id = "noheal"
+    _requires_all = [(BossShuffle(), True)]
+
+
+# ✅
 class KeepMinigameSpritesIntact(BooleanFlag):
     _name = "Keep some shuffled NPCs intact"
     _description = """If disabled: All sprites related to an area boss and their corresponding battles will be changed to match the shuffled positions of bosses. Note that sprite replacements will not affect gameplay, i.e. hitboxes stay the same for the Booster Hill henchmen, the Mack Skip NPCs, etc.
@@ -2804,6 +2814,7 @@ class BossPositionSubcategory(FlagCategory):
     _flags: list[type[Flag]] = [
         BossShuffle,
         BossShuffleScaleStats,
+        DontAutoheal,
         KeepMinigameSpritesIntact,
         DifferentiateRepeatedBosses,
         ShuffledBosses,

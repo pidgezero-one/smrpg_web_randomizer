@@ -10,6 +10,11 @@
     {% if show_permalink %}
         <div class="text-info">Permalink: <a id="info-permalink" href="" target="_blank">Link</a></div>
     {% endif %}
+    <div id="info-forced-overrides" class="alert alert-warning mt-2" style="display:none;">
+        <strong>Prize offset overrode some of your settings.</strong>
+        The flags above are what you asked for; these are what the seed actually used.
+        <ul id="info-forced-overrides-list" class="mb-0"></ul>
+    </div>
     <div id="spoiler-container">
         <button class="btn btn-link p-0" type="button" id="btn-download-spoiler">
             Download Spoiler Log
@@ -60,6 +65,13 @@
         $('#info-flags').html(patch.flag_string);
         $('#file-select-character').html(patch.file_select_character);
         $('#file-select-hash').html(patch.file_select_hash);
+
+        let overrides = patch.forced_overrides || [];
+        let overrideList = $('#info-forced-overrides-list').empty();
+        overrides.forEach(function (line) {
+            overrideList.append($('<li>').text(line));
+        });
+        $('#info-forced-overrides').toggle(overrides.length > 0);
 
         // Disable spoiler download in race mode
         if (patch.mode === 'race') {

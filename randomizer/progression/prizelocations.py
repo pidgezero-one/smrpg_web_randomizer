@@ -1702,7 +1702,7 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
     # Flag as checked: RARE_FROG_COIN_EXCHANGED
 
 
-class MushroomKingdomInnPurchaseLocation(NPCLocationRow1):
+class MushroomKingdomInnPurchaseLocation(NPCLocationRow1, KeyItemLocation):
     _bias = True
     _originally_held = BeetlemaniaPrize
     _rooms = [

@@ -2092,7 +2092,7 @@ class StarEggPrize(ItemPrize):
 ### Other kinds of prizes ###
 
 
-class BeetlemaniaPrize(StandardPrize):
+class BeetlemaniaPrize(KeyPrize):
     _nickname = TreasureHunterNickname(
         nickname="Video Game",
         description="It's pretty addictive.",

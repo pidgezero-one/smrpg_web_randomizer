@@ -25,22 +25,19 @@ starting_frog_coins: 999
 items:
   start:
     - DebugCandyItem
-  override:
-    # covnenience
-    StartingItem1Location: StayVoucherPrize
-    StartingItem2Location: BambinoBombPrize
-    StartingItem3Location: CastleKey1Prize
-    StartingItem4Location: CastleKey2Prize
-    BoosterPassSecondRoomFlowerLocation: ElderKeyPrize
-    MushroomKingdomFreeShopItem: ShedKeyPrize
-    MushroomKingdomChair: TempleKeyPrize
-    BoosterPassBushLocation: RoomKeyPrize
-    MarrymoreFirstSuitePrizeLocation: FertilizerPrize
-    RoseTownInnToadPrizeLocation: SeedPrize
-    RoseWayMiddleIslandLocation: BrightCardPrize
-    RoseWayLeftIslandLocation: ExtraShinyStonePrize
-    BoosterTowerPortraitPrizeLocation: MaxMushroomPrize
-    MushroomWayLeftItemRemake: MarioDollPrize
-    BelomeBeforeBossLowerLeftChestLocation: SlotsPrize1
-    MonstroEntranceLocation: SlotsPrize2
-    BeanValleyFirstDeadEndLocation: SlotsPrize3
+  # override:
+  #   # covnenience
+  #   StartingItem1Location: StayVoucherPrize
+  #   StartingItem2Location: BambinoBombPrize
+  #   StartingItem3Location: CastleKey1Prize
+  #   StartingItem4Location: CastleKey2Prize
+  #   BoosterPassSecondRoomFlowerLocation: ElderKeyPrize
+  #   MushroomKingdomFreeShopItem: ShedKeyPrize
+  #   MushroomKingdomChair: TempleKeyPrize
+  #   BoosterPassBushLocation: RoomKeyPrize
+  #   MarrymoreFirstSuitePrizeLocation: FertilizerPrize
+  #   RoseTownInnToadPrizeLocation: SeedPrize
+  #   RoseWayMiddleIslandLocation: BrightCardPrize
+  #   RoseWayLeftIslandLocation: ExtraShinyStonePrize
+  #   BoosterTowerPortraitPrizeLocation: MaxMushroomPrize
+  #   MushroomWayLeftItemRemake: MarioDollPrize

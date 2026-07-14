@@ -166,8 +166,8 @@ script = EventScript([
 		A_Pause(32),
 		A_VisibilityOff()
 	]),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E2491_heal_hp"),
+	RestoreAllFP(identifier="E2491_heal_fp"),
 	TintLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND], red=64, green=160, blue=64, speed=3, bit_15=True),
 	TintLayers(layers=[LAYER_L1, LAYER_L2, LAYER_L3, LAYER_L4, NPC_SPRITES, BACKGROUND], red=0, green=0, blue=0, speed=3, bit_15=True),
 	Jmp(["EVENT_2491_action_queue_109"]),

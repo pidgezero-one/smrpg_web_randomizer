@@ -992,8 +992,14 @@ def set_locations(world: GameWorld) -> None:
         # Check for debug override of invisible flags
         debug_invisible_flags: list[type] | None = None
         if world.settings.debug_mode:
-            # Prize offset takes precedence over config.yml for invisible flags
-            if world.settings.prize_offset is not None:
+            # Prize offset takes precedence over config.yml for invisible flags —
+            # unless the invisible flag category is switched off in the offset UI,
+            # in which case config.yml is back in charge and, failing that, the
+            # flags shuffle normally.
+            if (
+                world.settings.prize_offset is not None
+                and world.settings.offset_invisible_flags
+            ):
                 from randomizer.debug.offset_preview import compute_offset_assignments
                 offset_result = compute_offset_assignments(world.settings.prize_offset)
                 debug_invisible_flags = offset_result["flag_classes"]

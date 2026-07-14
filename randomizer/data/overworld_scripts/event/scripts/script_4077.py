@@ -142,31 +142,31 @@ script = EventScript([
 	JmpIfVarEqualsConst(ITEM_ID, BtubRingItem, ["EVENT_4077L_165_btub_ring"]),
 	JmpIfVarEqualsConst(ITEM_ID, YoshiAdeItem, ["EVENT_4077L_165_yoshi_ade"]),
 	# default 'a' article
-	RunDialog(dialog_id=DI1177_FOUND_A_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI0524_GOT_A_70A7_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# 'an' vowel article
-	RunDialog(dialog_id=DI1178_FOUND_AN_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_4077L_165_run_dialog_17"),
+	RunDialog(dialog_id=DI0065_GOT_AN_70A7_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_run_dialog_17"),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# no-article (plural) items
-	RunDialog(dialog_id=DI2016_FOUND_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_4077L_165_no_article"),
+	RunDialog(dialog_id=DI2015_GOT_70A7_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_no_article"),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# 'the' (key items)
-	RunDialog(dialog_id=DI2019_FOUND_THE_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_4077L_165_the_article"),
+	RunDialog(dialog_id=DI2018_GOT_THE_70A7_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_the_article"),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# lambs lure
-	RunDialog(dialog_id=DI2006_FOUND_A_LAMBS_LURE_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_4077L_165_lambs_lure"),
+	RunDialog(dialog_id=DI2008_GOT_A_LAMBS_LURE_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_lambs_lure"),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# btub ring
-	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_4077L_165_btub_ring"),
+	RunDialog(dialog_id=DI2009_GOT_A_BTUB_RING_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_btub_ring"),
 	AddToInventory(ITEM_ID),
 	Return(),
 	# yoshi ade (sound already fired up top)
-	RunDialog(dialog_id=DI2013_GOT_A_YOSHI_ADE_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, identifier="EVENT_4077L_165_yoshi_ade"),
+	RunDialog(dialog_id=DI2012_GOT_A_YOSHI_ADE_AWAIT_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="EVENT_4077L_165_yoshi_ade"),
 	AddToInventory(ITEM_ID),
 	Return(),
 ])

@@ -39,8 +39,8 @@ script = EventScript([
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	JmpIfBitSet(GAME_OVER, ["EVENT_3201_reset_and_choose_game_27"]),
 	SetBit(MINES_BOSS_1_DEFEATED),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E3201_heal_hp"),
+	RestoreAllFP(identifier="E3201_heal_fp"),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),

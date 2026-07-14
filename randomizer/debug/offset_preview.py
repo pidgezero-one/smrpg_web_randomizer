@@ -390,6 +390,9 @@ def compute_offset_assignments(
     offset: int,
     mimic_offset: int | None = None,
     total_star_pieces: int = 0,
+    enable_slots: bool = True,
+    enable_mimics: bool = True,
+    enable_coins: bool = True,
 ) -> dict:
     """Compute offset-based assignments for bosses, slots, mimics, flags, and star pieces.
 
@@ -403,6 +406,11 @@ def compute_offset_assignments(
         total_star_pieces: Number of star pieces to pre-place at boss-fight
             star piece locations (0..7, from the TotalStarPieces flag). 0
             disables star piece overrides.
+        enable_slots: When False, no slot machine chests are pre-set — the slot
+            prizes stay in the pool and shuffle normally. The chests they would
+            have taken are freed for the mimic and coin picks.
+        enable_mimics: When False, no mimic fight chests are pre-set.
+        enable_coins: When False, the infinite coins chest is not pre-set.
 
     Returns:
         A dict with:
@@ -440,11 +448,12 @@ def compute_offset_assignments(
     slots_start = (offset * 3) % num_chests if num_chests > 0 else 0
     slot_assignments = []
     slot_overrides = []
-    for i in range(3):
-        chest = eligible_chests[(slots_start + i) % num_chests]
-        prize = SLOTS_PRIZES[i]
-        slot_assignments.append((chest.__name__, prize.__name__))
-        slot_overrides.append((chest, prize))
+    if enable_slots:
+        for i in range(3):
+            chest = eligible_chests[(slots_start + i) % num_chests]
+            prize = SLOTS_PRIZES[i]
+            slot_assignments.append((chest.__name__, prize.__name__))
+            slot_overrides.append((chest, prize))
 
     # Mimic assignments: 3 consecutive chests starting at mimic_offset,
     # stepping by 1 (not 3) so each individual mimic fight can be dialed
@@ -455,16 +464,17 @@ def compute_offset_assignments(
     mimic_start = mimic_offset % num_mimic_chests if num_mimic_chests > 0 else 0
     mimic_assignments = []
     mimic_overrides = []
-    idx = mimic_start
-    picked = 0
-    while picked < 3 and idx < mimic_start + num_mimic_chests:
-        chest = mimic_chests[idx % num_mimic_chests]
-        if chest not in slot_classes:
-            prize = MIMIC_PRIZES[picked]
-            mimic_assignments.append((chest.__name__, prize.__name__))
-            mimic_overrides.append((chest, prize))
-            picked += 1
-        idx += 1
+    if enable_mimics:
+        idx = mimic_start
+        picked = 0
+        while picked < 3 and idx < mimic_start + num_mimic_chests:
+            chest = mimic_chests[idx % num_mimic_chests]
+            if chest not in slot_classes:
+                prize = MIMIC_PRIZES[picked]
+                mimic_assignments.append((chest.__name__, prize.__name__))
+                mimic_overrides.append((chest, prize))
+                picked += 1
+            idx += 1
 
     # Coin assignment: one chest holds InfiniteCoinsPrize. There are far more
     # coin-eligible chests than offsets, so a stride of 1 would only ever probe the
@@ -476,7 +486,7 @@ def compute_offset_assignments(
     num_coin_chests = len(coin_chests)
     coin_assignments: list[tuple[str, str]] = []
     coin_overrides: list[tuple[type, type]] = []
-    if num_coin_chests > 0:
+    if enable_coins and num_coin_chests > 0:
         coin_start = (offset * num_coin_chests // NUM_OFFSETS) % num_coin_chests
         for w in range(num_coin_chests):
             chest = coin_chests[(coin_start + w) % num_coin_chests]

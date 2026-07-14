@@ -133,8 +133,8 @@ script = EventScript([
     
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitSet(GAME_OVER, ["EVENT_287_reset_and_choose_game_0"]),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E0668_heal_hp"),
+	RestoreAllFP(identifier="E0668_heal_fp"),
 	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
 	RememberLastObject(),
 	RemoveObjectFromCurrentLevel(NPC_0),

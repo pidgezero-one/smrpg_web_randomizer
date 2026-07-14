@@ -41,6 +41,6 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(MALLOW, HPRainSpell, identifier="freestanding_spell_8_character_PKT"),
-	RunDialog(dialog_id=DI1962_LEARN_SPELL_8_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1961_LEARN_SPELL_8, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

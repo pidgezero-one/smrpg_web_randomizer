@@ -38,8 +38,8 @@ script = EventScript([
     SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	JmpIfBitSet(GAME_OVER, ["EVENT_1925_set_temp_action_script_18"]),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E1925_heal_hp"),
+	RestoreAllFP(identifier="E1925_heal_fp"),
 	SetBit(POSTGAME_TOWER_COMPLETED),
 	EnterArea(
         room_id=R199_BOOSTER_TOWER_9F_AREA_01_THREE_YELLOW_PLATFORMS_WSAVE_POINT,

@@ -16,9 +16,20 @@ class Settings:
     _debug_mode: bool = False
     _prize_offset: int | None = None
     _mimic_offset: int | None = None
+    # Per-category switches for prize offset mode (dev-only). A category turned
+    # off is left out of the offset overrides entirely and shuffles normally.
+    # Boss fights have no switch — they are always offset-driven.
+    offset_slots: bool = True
+    offset_mimics: bool = True
+    offset_coins: bool = True
+    offset_star_pieces: bool = True
+    offset_invisible_flags: bool = True
     _flags: dict[type[Flag], Flag]
     _override: dict = {}
     _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
+    # Settings that offset mode overrode behind the user's back, in plain English.
+    # Surfaced on the seed page so a POP seed's flags aren't silently a lie.
+    forced_overrides: list[str]
 
     @property
     def debug_mode(self) -> bool:
@@ -60,6 +71,7 @@ class Settings:
 
     def __init__(self) -> None:
         self._is_flag_value_cache = {}
+        self.forced_overrides = []
         self._flags = {
             ShuffleCharacters: ShuffleCharacters(),
             MaxCharacters: MaxCharacters(),
@@ -168,6 +180,7 @@ class Settings:
             ProtectSpecialItems: ProtectSpecialItems(),
             BossShuffle: BossShuffle(),
             BossShuffleScaleStats: BossShuffleScaleStats(),
+            DontAutoheal: DontAutoheal(),
             KeepMinigameSpritesIntact: KeepMinigameSpritesIntact(),
             DifferentiateRepeatedBosses: DifferentiateRepeatedBosses(),
             ShuffledBosses: ShuffledBosses(),

@@ -36,6 +36,7 @@ from ...types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import PlacementException, place, collect_accessible_items
+from ..solvability import assert_solvable, relax_deadlocked_gates
 from ...types.prize import (
     CharacterPrize,
     CoinQuantityPrize,
@@ -1390,29 +1391,61 @@ def shuffle_prizes(world: GameWorld) -> None:
     # is built, so non-shuffled vanilla mimic/slot/etc. chests become shuffled
     # and the pool builder doesn't pre-bind their originally-held prizes to them.
     if world.settings.debug_mode and world.settings.prize_offset is not None:
-        # MimicsAnywhere must be enabled BEFORE the pool builder runs so the
-        # vanilla mimic chests (e.g., KeroSewersStairRoomRightChestLocation)
-        # are treated as shuffleable. Otherwise the pool builder binds
-        # FirstMimicFightLauncher to the vanilla chest, and after our mimic
-        # override steals it, the vanilla chest is left empty.
-        world.settings._flags[MimicsAnywhere] = MimicsAnywhere(True)
-        # SlotsAnywhere/EXPStarsAnywhere/ShuffleMagikoopaChest were added in
-        # 3bbe42a6 and silently dropped by 0bda84c3 ("config fix") when the
-        # MimicsAnywhere force-enable was hoisted above the pool builder.
-        # Without them, vanilla slot/exp-star/magikoopa chests stay
-        # not-shuffleable, the pool builder pre-binds their originally_held
-        # prizes, and any duplicate of those classes ends up in LOW_PRIORITY
-        # — which is how slot/exp-star prizes silently leak into chests the
-        # offset preview never showed.
-        world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
-        world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
-        world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
+        # Any chest-targeting override (slots, mimics or coins) can land on a
+        # vanilla mimic/slot/exp-star/magikoopa chest, so all four chest-freeing
+        # flags are needed as soon as *one* of those categories is on. With all
+        # three off, leave the player's own flags alone so those chests shuffle
+        # exactly as their settings say.
+        if (
+            world.settings.offset_slots
+            or world.settings.offset_mimics
+            or world.settings.offset_coins
+        ):
+            # MimicsAnywhere must be enabled BEFORE the pool builder runs so the
+            # vanilla mimic chests (e.g., KeroSewersStairRoomRightChestLocation)
+            # are treated as shuffleable. Otherwise the pool builder binds
+            # FirstMimicFightLauncher to the vanilla chest, and after our mimic
+            # override steals it, the vanilla chest is left empty.
+            world.settings._flags[MimicsAnywhere] = MimicsAnywhere(True)
+            # SlotsAnywhere/EXPStarsAnywhere/ShuffleMagikoopaChest were added in
+            # 3bbe42a6 and silently dropped by 0bda84c3 ("config fix") when the
+            # MimicsAnywhere force-enable was hoisted above the pool builder.
+            # Without them, vanilla slot/exp-star/magikoopa chests stay
+            # not-shuffleable, the pool builder pre-binds their originally_held
+            # prizes, and any duplicate of those classes ends up in LOW_PRIORITY
+            # — which is how slot/exp-star prizes silently leak into chests the
+            # offset preview never showed.
+            world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
+            world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
+            world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
+            world.settings.forced_overrides.extend([
+                "Mimics can appear anywhere: forced ON",
+                "Slots can appear anywhere: forced ON",
+                "EXP stars can appear anywhere: forced ON",
+                "Magikoopa chest shuffled: forced ON",
+            ])
         # ShuffleStarPieces gates whether the offset's star piece overrides
         # actually flow through to placement and signal-ring patching. Without
         # it, TotalStarPieces is treated as default (6) and the UI offset
         # preview diverges from the seed's real star piece placements.
-        world.settings._flags[ShuffleStarPieces] = ShuffleStarPieces(True)
+        if world.settings.offset_star_pieces:
+            world.settings._flags[ShuffleStarPieces] = ShuffleStarPieces(True)
+            world.settings.forced_overrides.append(
+                "Shuffle star pieces: forced ON"
+            )
         world.settings._is_flag_value_cache.clear()
+
+        # Offsets override every other placement setting. The gate flags are the
+        # one place that isn't automatically true: they still evaluate against
+        # the bosses the offset just pinned, so a gate can end up demanding a
+        # boss the offset locked inside the region that gate guards. Open only
+        # the gates that actually deadlock; the rest are left as chosen.
+        # Must run before shuffle_rules(), which tiers the pool off these flags.
+        world.settings.forced_overrides.extend(relax_deadlocked_gates(world))
+
+    # If a gate cycle still seals part of the world, no seed can win. Say so now
+    # instead of burning dozens of retries and then blaming "excluded locations".
+    assert_solvable(world)
 
     pool: dict[int, list[Prize]] = {
         PROGRESSION_PRIZES: [],
@@ -1492,11 +1525,18 @@ def shuffle_prizes(world: GameWorld) -> None:
     if world.settings.debug_mode and world.settings.prize_offset is not None:
         from randomizer.debug.offset_preview import compute_offset_assignments
         from randomizer.types.flags import TotalStarPieces
-        total_sp = world.settings.get_flag(TotalStarPieces).value
+        total_sp = (
+            world.settings.get_flag(TotalStarPieces).value
+            if world.settings.offset_star_pieces
+            else 0
+        )
         offset_result = compute_offset_assignments(
             world.settings.prize_offset,
             mimic_offset=world.settings.mimic_offset,
             total_star_pieces=total_sp,
+            enable_slots=world.settings.offset_slots,
+            enable_mimics=world.settings.offset_mimics,
+            enable_coins=world.settings.offset_coins,
         )
 
         # Boss overrides: {location_class_name: prize_class}
@@ -1617,14 +1657,16 @@ def shuffle_prizes(world: GameWorld) -> None:
                 raise ValueError(f"Invalid location name in debug config: '{location_name}'")
             if prize_cls is None:
                 raise ValueError(f"Invalid prize name in debug config: '{prize_name}'")
-            # Skip boss/slot/mimic overrides if prize_offset is active (offset takes precedence)
+            # Skip boss/slot/mimic overrides if prize_offset is active (offset takes
+            # precedence). A category switched off in the offset UI is not offset-driven,
+            # so config.yml is back in charge of it.
             if world.settings.prize_offset is not None:
                 from randomizer.types.prizelocation import BossFightLocation
                 from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
                 from randomizer.types.prize import MimicFightInitiatorPrize as MimicBase
                 if (issubclass(location_cls, BossFightLocation)
-                        or issubclass(prize_cls, SlotsPrizeBase)
-                        or issubclass(prize_cls, MimicBase)):
+                        or (world.settings.offset_slots and issubclass(prize_cls, SlotsPrizeBase))
+                        or (world.settings.offset_mimics and issubclass(prize_cls, MimicBase))):
                     continue
                 # Also skip locations where the offset code already placed a
                 # slot or mimic prize — otherwise config.yml would overwrite

@@ -101,8 +101,8 @@ script = EventScript([
 	RunEventAsSubroutine(E1219_POSTGAME_MONSTRO_SEALED_BOSS_UNLOCKS),
 	Pause(15),
 	SetBit(CULEX_POSTGAME_COMPLETED),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E2074_heal_hp_1"),
+	RestoreAllFP(identifier="E2074_heal_fp_1"),
 	Jmp(["initiate_monstro_door_postgame"]),
 	
 	
@@ -176,7 +176,7 @@ script = EventScript([
 	Pause(15),
 	SetBit(MONSTRO_MIDDLE_DOOR_COMPLETED),
 	RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E2074_heal_hp_2"),
+	RestoreAllFP(identifier="E2074_heal_fp_2"),
 	Jmp(["EVENT_2074_action_queue_12"]),
 ])

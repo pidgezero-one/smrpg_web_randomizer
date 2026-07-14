@@ -45,13 +45,49 @@
         <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="prize-offset-toggle">
             <label class="form-check-label" for="prize-offset-toggle">
-                Enable fixed prize offset (disables randomization)
+                Enable fixed prize offset (pre-sets the categories below instead of randomizing them; the rest of the seed is unaffected)
             </label>
         </div>
-        <input type="hidden" name="prize_offset" id="prize-offset-hidden" value="0" disabled>
-        <input type="hidden" name="mimic_offset" id="mimic-offset-hidden" value="0" disabled>
+        <input type="hidden" class="prize-offset-field" name="prize_offset" id="prize-offset-hidden" value="0" disabled>
+        <input type="hidden" class="prize-offset-field" name="mimic_offset" id="mimic-offset-hidden" value="0" disabled>
+        <input type="hidden" class="prize-offset-field" name="offset_slots" id="offset-slots-hidden" value="true" disabled>
+        <input type="hidden" class="prize-offset-field" name="offset_mimics" id="offset-mimics-hidden" value="true" disabled>
+        <input type="hidden" class="prize-offset-field" name="offset_coins" id="offset-coins-hidden" value="true" disabled>
+        <input type="hidden" class="prize-offset-field" name="offset_star_pieces" id="offset-star-pieces-hidden" value="true" disabled>
+        <input type="hidden" class="prize-offset-field" name="offset_invisible_flags" id="offset-invisible-flags-hidden" value="true" disabled>
 
         <div id="prize-offset-controls" style="display: none;">
+            <div class="form-group">
+                <label class="mb-1">Pre-set from offset:</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input offset-category" type="checkbox" id="offset-slots"
+                               data-target="offset-slots-hidden" data-section="prize-slots-section" checked>
+                        <label class="form-check-label" for="offset-slots">Slot Machines</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input offset-category" type="checkbox" id="offset-mimics"
+                               data-target="offset-mimics-hidden" data-section="prize-mimics-section" checked>
+                        <label class="form-check-label" for="offset-mimics">Mimic Fights</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input offset-category" type="checkbox" id="offset-coins"
+                               data-target="offset-coins-hidden" data-section="prize-coins-section" checked>
+                        <label class="form-check-label" for="offset-coins">Infinite Coins</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input offset-category" type="checkbox" id="offset-star-pieces"
+                               data-target="offset-star-pieces-hidden" data-section="prize-star-pieces-section" checked>
+                        <label class="form-check-label" for="offset-star-pieces">Star Pieces</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input offset-category" type="checkbox" id="offset-invisible-flags"
+                               data-target="offset-invisible-flags-hidden" data-section="prize-flags-section" checked>
+                        <label class="form-check-label" for="offset-invisible-flags">Invisible Flags</label>
+                    </div>
+                </div>
+                <small class="text-muted">Unchecked categories are left out of the offset and shuffle normally. Boss fights are always offset-driven.</small>
+            </div>
             <div class="form-group">
                 <div class="d-flex align-items-center mb-1">
                     <label class="mr-2 mb-0">Offset:</label>
@@ -61,7 +97,7 @@
                 <input type="range" class="form-control-range" id="prize-offset-slider"
                        min="0" max="46" value="0">
             </div>
-            <div class="form-group">
+            <div class="form-group" id="mimic-offset-group">
                 <div class="d-flex align-items-center mb-1">
                     <label class="mr-2 mb-0">Mimic Offset:</label>
                     <input type="number" class="form-control form-control-sm" id="mimic-offset-number"
@@ -83,33 +119,43 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h6>Slot Machine Assignments</h6>
-                    <table class="table table-sm table-striped" id="prize-slots-table">
-                        <thead><tr><th>Slot</th><th>Chest</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                    <h6 class="mt-3">Mimic Fight Assignments</h6>
-                    <table class="table table-sm table-striped" id="prize-mimics-table">
-                        <thead><tr><th>Mimic</th><th>Chest</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                    <h6 class="mt-3">Infinite Coins Chest</h6>
-                    <table class="table table-sm table-striped" id="prize-coins-table">
-                        <thead><tr><th>Prize</th><th>Chest</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                    <small class="text-muted">Driven by the same offset. Chests that blacklist InfiniteCoinsPrize are excluded, as are chests already taken by a slot or mimic prize.</small>
-                    <h6 class="mt-3">Star Piece Assignments</h6>
-                    <table class="table table-sm table-striped" id="prize-star-pieces-table">
-                        <thead><tr><th>Star Piece</th><th>Boss Location</th><th>World Area</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                    <small class="text-muted">Driven by the "Total Star Pieces available" flag. Picks are constrained to distinct world areas per offset.</small>
-                    <h6 class="mt-3">Invisible Flag Locations</h6>
-                    <table class="table table-sm table-striped" id="prize-flags-table">
-                        <thead><tr><th>#</th><th>Flag</th></tr></thead>
-                        <tbody></tbody>
-                    </table>
+                    <div id="prize-slots-section">
+                        <h6>Slot Machine Assignments</h6>
+                        <table class="table table-sm table-striped" id="prize-slots-table">
+                            <thead><tr><th>Slot</th><th>Chest</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="prize-mimics-section">
+                        <h6 class="mt-3">Mimic Fight Assignments</h6>
+                        <table class="table table-sm table-striped" id="prize-mimics-table">
+                            <thead><tr><th>Mimic</th><th>Chest</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div id="prize-coins-section">
+                        <h6 class="mt-3">Infinite Coins Chest</h6>
+                        <table class="table table-sm table-striped" id="prize-coins-table">
+                            <thead><tr><th>Prize</th><th>Chest</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                        <small class="text-muted">Driven by the same offset. Chests that blacklist InfiniteCoinsPrize are excluded, as are chests already taken by a slot or mimic prize.</small>
+                    </div>
+                    <div id="prize-star-pieces-section">
+                        <h6 class="mt-3">Star Piece Assignments</h6>
+                        <table class="table table-sm table-striped" id="prize-star-pieces-table">
+                            <thead><tr><th>Star Piece</th><th>Boss Location</th><th>World Area</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                        <small class="text-muted">Driven by the "Total Star Pieces available" flag. Picks are constrained to distinct world areas per offset.</small>
+                    </div>
+                    <div id="prize-flags-section">
+                        <h6 class="mt-3">Invisible Flag Locations</h6>
+                        <table class="table table-sm table-striped" id="prize-flags-table">
+                            <thead><tr><th>#</th><th>Flag</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -177,6 +223,10 @@
                 return Math.min(raw, starPiecePrizes.length, starPieceLocations.length);
             }
 
+            function catEnabled(id) {
+                return $('#' + id).is(':checked');
+            }
+
             function updatePreview(offset, mimicOffset) {
                 var numBosses = bossPrizes.length;
                 var numChests = slotChests.length;
@@ -193,29 +243,33 @@
                 // Slot machine assignments
                 var slotsBody = $('#prize-slots-table tbody');
                 slotsBody.empty();
-                var slotStart = (offset * 3) % numChests;
                 var slotChosen = {};
-                for (var j = 0; j < 3; j++) {
-                    var chestIdx = (slotStart + j) % numChests;
-                    slotChosen[slotChests[chestIdx]] = true;
-                    slotsBody.append('<tr><td>SlotsPrize' + (j + 1) + '</td><td>' + slotChests[chestIdx] + '</td></tr>');
+                if (catEnabled('offset-slots')) {
+                    var slotStart = (offset * 3) % numChests;
+                    for (var j = 0; j < 3; j++) {
+                        var chestIdx = (slotStart + j) % numChests;
+                        slotChosen[slotChests[chestIdx]] = true;
+                        slotsBody.append('<tr><td>SlotsPrize' + (j + 1) + '</td><td>' + slotChests[chestIdx] + '</td></tr>');
+                    }
                 }
 
                 // Mimic fight assignments: independent mimicOffset with stride 1
                 // so each slider click advances by a single chest. Skip chests
                 // already used by slots (a single chest can't hold two prizes).
-                var numMimicChests = mimicChests.length;
                 var mimicsBody = $('#prize-mimics-table tbody');
                 mimicsBody.empty();
-                var mimicStart = mimicOffset % numMimicChests;
-                var picked = 0;
                 var takenChosen = $.extend({}, slotChosen);
-                for (var m = 0; m < numMimicChests && picked < 3; m++) {
-                    var mIdx = (mimicStart + m) % numMimicChests;
-                    if (!slotChosen[mimicChests[mIdx]]) {
-                        mimicsBody.append('<tr><td>' + mimicPrizes[picked] + '</td><td>' + mimicChests[mIdx] + '</td></tr>');
-                        takenChosen[mimicChests[mIdx]] = true;
-                        picked++;
+                if (catEnabled('offset-mimics')) {
+                    var numMimicChests = mimicChests.length;
+                    var mimicStart = mimicOffset % numMimicChests;
+                    var picked = 0;
+                    for (var m = 0; m < numMimicChests && picked < 3; m++) {
+                        var mIdx = (mimicStart + m) % numMimicChests;
+                        if (!slotChosen[mimicChests[mIdx]]) {
+                            mimicsBody.append('<tr><td>' + mimicPrizes[picked] + '</td><td>' + mimicChests[mIdx] + '</td></tr>');
+                            takenChosen[mimicChests[mIdx]] = true;
+                            picked++;
+                        }
                     }
                 }
 
@@ -225,7 +279,7 @@
                 var coinsBody = $('#prize-coins-table tbody');
                 coinsBody.empty();
                 var numCoinChests = coinChests.length;
-                if (numCoinChests > 0) {
+                if (catEnabled('offset-coins') && numCoinChests > 0) {
                     // NUM_OFFSETS = 47 (slider is 0..46). Spread picks evenly over the
                     // whole list; a stride of 1 would only probe the first 47 chests.
                     var coinStart = (Math.floor(offset * numCoinChests / 47)) % numCoinChests;
@@ -244,7 +298,7 @@
                 // compute_star_piece_assignments() in offset_preview.py.
                 var spBody = $('#prize-star-pieces-table tbody');
                 spBody.empty();
-                var totalSp = readTotalStarPieces();
+                var totalSp = catEnabled('offset-star-pieces') ? readTotalStarPieces() : 0;
                 var numSpLocs = starPieceLocations.length;
                 if (totalSp > 0 && numSpLocs > 0) {
                     var spStride = Math.max(1, Math.floor(numSpLocs / totalSp));
@@ -274,28 +328,30 @@
                 // with a flag already picked in this offset.
                 var flagsBody = $('#prize-flags-table tbody');
                 flagsBody.empty();
-                var flagStride = Math.max(1, Math.floor(numFlags / 3));
-                var flagPickedRooms = {};
-                var flagPickedIndices = {};
-                var flagPickedCount = 0;
-                for (var k = 0; k < 3; k++) {
-                    var base = (offset + k * flagStride) % numFlags;
-                    for (var w = 0; w < numFlags; w++) {
-                        var fIdx = (base + w) % numFlags;
-                        if (flagPickedIndices[fIdx]) continue;
-                        var rooms = flagRooms[fIdx];
-                        var collision = false;
-                        for (var r = 0; r < rooms.length; r++) {
-                            if (flagPickedRooms[rooms[r]]) { collision = true; break; }
+                if (catEnabled('offset-invisible-flags')) {
+                    var flagStride = Math.max(1, Math.floor(numFlags / 3));
+                    var flagPickedRooms = {};
+                    var flagPickedIndices = {};
+                    var flagPickedCount = 0;
+                    for (var k = 0; k < 3; k++) {
+                        var base = (offset + k * flagStride) % numFlags;
+                        for (var w = 0; w < numFlags; w++) {
+                            var fIdx = (base + w) % numFlags;
+                            if (flagPickedIndices[fIdx]) continue;
+                            var rooms = flagRooms[fIdx];
+                            var collision = false;
+                            for (var r = 0; r < rooms.length; r++) {
+                                if (flagPickedRooms[rooms[r]]) { collision = true; break; }
+                            }
+                            if (collision) continue;
+                            flagPickedCount++;
+                            flagsBody.append('<tr><td>' + flagPickedCount + '</td><td>' + invisibleFlags[fIdx] + '</td></tr>');
+                            flagPickedIndices[fIdx] = true;
+                            for (var r2 = 0; r2 < rooms.length; r2++) {
+                                flagPickedRooms[rooms[r2]] = true;
+                            }
+                            break;
                         }
-                        if (collision) continue;
-                        flagPickedCount++;
-                        flagsBody.append('<tr><td>' + flagPickedCount + '</td><td>' + invisibleFlags[fIdx] + '</td></tr>');
-                        flagPickedIndices[fIdx] = true;
-                        for (var r2 = 0; r2 < rooms.length; r2++) {
-                            flagPickedRooms[rooms[r2]] = true;
-                        }
-                        break;
                     }
                 }
             }
@@ -365,24 +421,43 @@
                 setMimicOffset(val);
             });
 
+            // Per-category switches: mirror the checkbox into the hidden field the
+            // form submits, hide that category's preview table, and re-render (the
+            // remaining categories shift, since they skip each other's chests).
+            $('.offset-category').change(function() {
+                var checkbox = $(this);
+                var on = checkbox.is(':checked');
+                $('#' + checkbox.data('target')).val(on ? 'true' : 'false');
+                $('#' + checkbox.data('section')).toggle(on);
+                localforage.setItem('rom.' + checkbox.attr('id'), on);
+                if (checkbox.attr('id') === 'offset-mimics') {
+                    $('#mimic-offset-group').toggle(on);
+                }
+                refreshPreview();
+            });
+
             // Toggle checkbox handler
             $('#prize-offset-toggle').change(function() {
                 var enabled = $(this).is(':checked');
                 localforage.setItem("rom.prize_offset_enabled", enabled);
+                $('#prize-offset-controls').toggle(enabled);
+                $('.prize-offset-field').prop('disabled', !enabled);
                 if (enabled) {
-                    $('#prize-offset-controls').show();
-                    $('#prize-offset-hidden').prop('disabled', false);
-                    $('#mimic-offset-hidden').prop('disabled', false);
                     refreshPreview();
-                } else {
-                    $('#prize-offset-controls').hide();
-                    $('#prize-offset-hidden').prop('disabled', true);
-                    $('#mimic-offset-hidden').prop('disabled', true);
                 }
             });
 
-            // Restore prize/mimic offset state from localStorage
-            localforage.getItem("rom.prize_offset_value").then((value) => {
+            // Restore per-category switches (default on) before the offset values, so
+            // the first render already reflects them.
+            Promise.all($('.offset-category').map(function () {
+                var checkbox = $(this);
+                return localforage.getItem('rom.' + checkbox.attr('id')).then((on) => {
+                    checkbox.prop('checked', on !== false).change();
+                });
+            }).get()).then(() => {
+                // Restore prize/mimic offset state from localStorage
+                return localforage.getItem("rom.prize_offset_value");
+            }).then((value) => {
                 if (value !== null) {
                     var val = parseInt(value, 10);
                     $('#prize-offset-slider').val(val);

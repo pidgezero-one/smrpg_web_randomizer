@@ -39,6 +39,8 @@ script = EventScript([
 	JmpIfBitClear(GAME_OVER, ["EVENT_3820_remove_from_level_4"]),
 	ResetAndChooseGame(),
 	RemoveObjectFromSpecificLevel(NPC_7, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM, identifier="EVENT_3820_remove_from_level_4"),
+	RestoreAllHP(identifier="E3820_heal_hp"),
+	RestoreAllFP(identifier="E3820_heal_fp"),
 	RemoveObjectFromCurrentLevel(NPC_7),
 	FadeInFromBlack(sync=False),
     JmpIfBitSet(CURTAIN_MINIGAME_COMPLETED, ["EVENT_3820_sp_doublecheck"]),

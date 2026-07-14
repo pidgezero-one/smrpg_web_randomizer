@@ -63,8 +63,8 @@ script = EventScript([
 	], identifier="EVENT_2066_player_challenge_aq"),
 	RunEventAsSubroutine(E0861_DOJO_1ST_BOSS_CHALLENGE_SUBROUTINE),
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E2066_heal_hp"),
+	RestoreAllFP(identifier="E2066_heal_fp"),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ResetProperties(),
 		A_FaceNortheast(),

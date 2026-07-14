@@ -41,6 +41,6 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(TOADSTOOL, TherapySpell, identifier="freestanding_spell_22_character_PKT"),
-	RunDialog(dialog_id=DI1990_LEARN_SPELL_22_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1989_LEARN_SPELL_22, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])

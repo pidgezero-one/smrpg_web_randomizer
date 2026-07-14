@@ -15,3 +15,8 @@ class GenerateForm(forms.Form):
     race_mode = forms.BooleanField(required=False, initial=False)
     prize_offset = forms.IntegerField(required=False, initial=None, min_value=0, max_value=46)
     mimic_offset = forms.IntegerField(required=False, initial=None, min_value=0, max_value=511)
+    offset_slots = forms.BooleanField(required=False, initial=True)
+    offset_mimics = forms.BooleanField(required=False, initial=True)
+    offset_coins = forms.BooleanField(required=False, initial=True)
+    offset_star_pieces = forms.BooleanField(required=False, initial=True)
+    offset_invisible_flags = forms.BooleanField(required=False, initial=True)

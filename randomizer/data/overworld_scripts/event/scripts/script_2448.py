@@ -142,8 +142,8 @@ script = EventScript([
 		A_TransferToObjectXYZ(NPC_10)
 	]),
 	FadeInFromBlack(sync=False),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E2248_heal_hp"),
+	RestoreAllFP(identifier="E2248_heal_fp"),
 	PlayMusicAtDefaultVolume(M0026_FORESTMAZE),
 	UnfreezeCamera(),
 	Set7000ToPartySize(),

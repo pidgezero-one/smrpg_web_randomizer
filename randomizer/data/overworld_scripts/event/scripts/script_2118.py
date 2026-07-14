@@ -41,6 +41,8 @@ script = EventScript([
 	ResetAndChooseGame(),
 	RemoveObjectFromSpecificLevel(NPC_1, R112_NIMBUS_CASTLE_AREA_17_RIGHT_OF_4WAY_PATH_SAVE_POINT, identifier="EVENT_2118_remove_from_level_5"),
 	RemoveObjectFromCurrentLevel(NPC_1),
+	RestoreAllHP(identifier="E2118_heal_hp"),
+	RestoreAllFP(identifier="E2118_heal_fp"),
 	FadeInFromBlack(sync=False),
 	ClearBit(STATUE_KEEPER_FIGHT_PRESENT),
 	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_2118_ret_13"]),

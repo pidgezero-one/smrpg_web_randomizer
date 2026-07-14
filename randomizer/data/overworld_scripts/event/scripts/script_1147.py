@@ -260,8 +260,8 @@ script = EventScript([
 	RunEventAsSubroutine(E1163_SEASIDE_LIBERATED_BEACH),
 	PauseScriptUntilEffectDone(),
 	SetSyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E1147_heal_hp"),
+	RestoreAllFP(identifier="E1147_heal_fp"),
 	RunEventAsSubroutine(E1206_SEASIDE_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return()

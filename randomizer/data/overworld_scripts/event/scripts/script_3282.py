@@ -77,8 +77,8 @@ script = EventScript([
 		A_FixedFCoordOff(),
 		A_FaceNorthwest()
 	]),
-	RestoreAllHP(),
-	RestoreAllFP(),
+	RestoreAllHP(identifier="E3282_heal_hp"),
+	RestoreAllFP(identifier="E3282_heal_fp"),
 	SetBit(SHIP_LIBERATED),
     RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	DarkenLayersExceptPaletteRows(fade_depth=50, duration_frames=1, preserve_rows=[NPC_PALETTE_ROW_3, NPC_PALETTE_ROW_5]),

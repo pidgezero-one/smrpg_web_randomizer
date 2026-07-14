@@ -41,6 +41,6 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(MARIO, JumpSpell, identifier="freestanding_spell_1_character_PKT"),
-	RunDialog(dialog_id=DI1948_LEARN_SPELL_1_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	RunDialog(dialog_id=DI1947_LEARN_SPELL_1, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
 	Return()
 ])
