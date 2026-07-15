@@ -47,7 +47,6 @@ script = EventScript([
 	SetBit(VOLCANO_LIBERATED),
 	RestoreAllHP(identifier="E3338_heal_hp"),
 	RestoreAllFP(identifier="E3338_heal_fp"),
-	RunEventAsSubroutine(E0208_UNLOCK_KEEP_IF_GATED_BY_VOLCANO_BOSS),
 	SetBit(STAR_PIECE_TRIGGER_EVENT),
 	RunEventAsSubroutine(E1234_VOLCANO_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),

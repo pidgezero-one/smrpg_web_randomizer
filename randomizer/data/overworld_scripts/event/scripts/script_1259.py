@@ -1,4 +1,4 @@
-# E1259_EMPTY
+# E1259_TOWER_DOLL
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	DisableObjectTrigger(MEM_70A8),
+	RemoveObjectFromCurrentLevel(MEM_70A8),
+    JmpToEvent(E0241_FREESTANDING_1_GRANT)
 ])

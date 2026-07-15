@@ -48,6 +48,26 @@ if TYPE_CHECKING:
     from ..types.prizelocation import PrizeLocation
 
 
+class SettingsRelaxed(Exception):
+    """A gate had to be forced open, so the seed must be rolled again.
+
+    The gates are not only a placement rule — ``apply_shuffler_independent_settings``
+    turns them into ROM state (the Booster Tower door's solidity/tile mods and
+    TOWER_OPENED, for one) long before the shuffler runs. Flipping a gate
+    mid-shuffle therefore only convinces *placement* that the door is open; the
+    game still wants the original key, and the seed is unbeatable. So the flag
+    is changed on the shared Settings object and the whole world is rebuilt from
+    scratch, with every settings-derived step seeing the final gate values.
+    """
+
+    def __init__(self, changes: list[str]):
+        self.changes = changes
+        super().__init__(
+            "Gates forced open to break a placement deadlock; rebuilding world: "
+            + "; ".join(changes)
+        )
+
+
 # Every area gate, paired with its gating enum. All 17 have an OPEN option.
 AREA_GATES: list[tuple[type, type]] = [
     (BanditsWayGate, BanditsWayGating),

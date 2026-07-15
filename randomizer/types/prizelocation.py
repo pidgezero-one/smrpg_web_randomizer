@@ -1526,14 +1526,14 @@ class TreasureChestLocation(StandardPrizeLocation):
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
-        if isinstance(self.prize, EXPStarPrize) and self._extra_sprite_buffer_rooms:
-            for room_id in self._extra_sprite_buffer_rooms:
-                room = world.rooms._rooms[room_id]
-                if room is not None and not room.partition.allow_extra_sprite_buffer:
-                    room.partition.set_allow_extra_sprite_buffer(True)
-                    room.partition.set_extra_sprite_buffer_size(
-                        max(1, room.partition.extra_sprite_buffer_size)
-                    )
+        # if isinstance(self.prize, EXPStarPrize) and self._extra_sprite_buffer_rooms:
+        #     for room_id in self._extra_sprite_buffer_rooms:
+        #         room = world.rooms._rooms[room_id]
+        #         if room is not None and not room.partition.allow_extra_sprite_buffer:
+        #             room.partition.set_allow_extra_sprite_buffer(True)
+        #             room.partition.set_extra_sprite_buffer_size(
+        #                 max(1, room.partition.extra_sprite_buffer_size)
+        #             )
         if isinstance(self.prize, SlotsPrize):
             world.event_scripts.get_script_by_id(self.prize.logic_event).set_contents(
                 create_slot_machine_script(self, world)

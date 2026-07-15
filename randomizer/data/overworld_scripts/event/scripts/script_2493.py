@@ -68,6 +68,8 @@ script = EventScript([
 		A_WalkSouthSteps(2),
 		A_SetWalkingSpeed(NORMAL)
 	]),
+	RestoreAllHP(identifier="E2493_heal_hp"),
+	RestoreAllFP(identifier="E2493_heal_fp"),
 	FadeInFromBlack(sync=False),
 	SetBit(MIMIC_3_CLEARED),
 	SetBit(UNKNOWN_MIMIC_BIT),

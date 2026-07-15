@@ -16,7 +16,6 @@ from ....packets import *
 from ....items import *
 
 script = ActionScript([
-    A_WalkNortheastPixels(8),
-		A_ShiftZUpPixels(4),
-		A_FaceSouthwest()
+    A_SetSpriteSequence(1, is_sequence=True, mirror_sprite=True),
+	A_ReturnQueue()
 ])

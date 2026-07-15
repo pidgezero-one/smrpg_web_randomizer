@@ -1,4 +1,4 @@
-dialog_data = [""]*185
+dialog_data = [""]*186
 dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we’re having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
@@ -379,7 +379,8 @@ dialog_data[127] = ''' You won’t have to wait for the
  There’s other ways to get in![await]'''
 dialog_data[128] = ''' It’s the bus driver’s day off today,
  so you can’t take the Royal Bus.[await]
- If you need to go to Bowser’s Keep, you can get there `BOWSERS_KEEP_CONDITION`[await]'''
+ If you need to go to Bowser’s
+ Keep, you can get there `BOWSERS_KEEP_CONDITION`[await]'''
 dialog_data[129] = ''' I heard there was a big factory
  behind it. Is that true?[await]'''
 dialog_data[130] = ''' Welcome! Come on in!
@@ -533,3 +534,4 @@ dialog_data[183] = ''' Man, did I sleep!
  Here’s your tip.[await]
  Don’t spend it all in one place![await]'''
 dialog_data[184] = '''[center]Need the “Extra Shiny Stone”\nto get in[await]'''
+dialog_data[185] = '''Have you seen any strange clouds in Land's End?[await]'''

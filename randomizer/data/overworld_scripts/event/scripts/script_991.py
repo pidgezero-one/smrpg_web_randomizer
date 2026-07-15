@@ -112,4 +112,7 @@ script = EventScript([
 	ReturnAll(),
 	RunDialog(dialog_id=DI0023_INVISIBLE_ITEM_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="invisible_item_hint_text"),
 	ReturnAll(),
+	RunDialog(dialog_id=DI4084_MOKURA_HINT, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=True, identifier="mokura_hint_text"),
+	ReturnAll(),
+    
 ])

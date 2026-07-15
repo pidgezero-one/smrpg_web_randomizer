@@ -1450,40 +1450,48 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
 
     Modes:
     - VANILLA: No stat changes
-    - MATCH: Each location's original stats apply to its current prize
-    - RANDOM: Location stats are randomly assigned to prizes (one-to-one)
+    - MATCH: Each relocated location's original stats apply to its current prize
+    - RANDOM: Relocated location stats are randomly assigned to prizes (one-to-one)
+    - GODMODE: Every boss is normalized to endgame-level stats
+
+    Note: MATCH/RANDOM only touch bosses that were shuffled to a different
+    location; GODMODE scales all boss fights, including those left in place.
     """
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.VANILLA):
         return  # No scaling needed
 
-    # Collect all boss fight locations with valid prizes
-    boss_locations: list[BossFightLocation] = []
-    for location in world.locations.values():
-        if isinstance(location, BossFightLocation):
-            if isinstance(location.prize, location._originally_held):
-                continue
-            boss_locations.append(location)
-
-    if not boss_locations:
-        return
-
-    # Calculate stats for all locations
+    # Calculate stats for every boss fight location with a valid prize.
+    # Unmoved bosses (prize still on its own location) are kept in the list;
+    # MATCH/RANDOM filter them out below, but GODMODE scales them too.
     location_stats: list[tuple[BossFightLocation, tuple[int, int, int, int, int, int, int, int, int]]] = []
-    for location in boss_locations:
+    for location in world.locations.values():
+        if not isinstance(location, BossFightLocation):
+            continue
         stats = _calculate_location_stats(location, world)
         if stats[0] > 0:  # Only include if valid stats (HP > 0)
             location_stats.append((location, stats))
 
+    if not location_stats:
+        return
+
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.MATCH):
-        # Apply each location's stats to its own prize
+        # Apply each location's stats to its current prize.
+        # Unmoved bosses already hold their correct stats, so skip them.
         for location, stats in location_stats:
+            if isinstance(location.prize, location._originally_held):
+                continue
             assert isinstance(location.prize, BossFightPrize)
             _apply_stats_to_prize(location.prize, stats, world)
 
     elif world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.RANDOM):
-        # Create random one-to-one mapping between location stats and prizes
-        prizes = [loc.prize for loc, _ in location_stats]
-        stats_list = [stats for _, stats in location_stats]
+        # Create random one-to-one mapping between location stats and prizes.
+        # Only relocated bosses participate in the shuffle.
+        moved = [
+            (loc, stats) for loc, stats in location_stats
+            if not isinstance(loc.prize, loc._originally_held)
+        ]
+        prizes = [loc.prize for loc, _ in moved]
+        stats_list = [stats for _, stats in moved]
 
         # Shuffle the stats
         random.shuffle(stats_list)
@@ -1494,7 +1502,8 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
             _apply_stats_to_prize(prize, stats, world)
 
     elif world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.GODMODE):
-        # Normalize all boss combat stats to the reference enemy's average
+        # Normalize every boss's combat stats to the reference enemy's average,
+        # including bosses left on their own location (no moved/unmoved filter).
         ref = _GODMODE_REFERENCE_ENEMY()
         culex_avg = round(statistics.mean([ref._attack, ref._defense, ref._magic_attack, ref._magic_defense]))
 

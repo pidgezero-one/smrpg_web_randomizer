@@ -45,7 +45,7 @@ script = EventScript([
 	CloseDialog(),
 	JmpToEvent(E0646_MARRYMORE_SHOP_EVENT_CONTAINER),
 	RunDialog(dialog_id=DI2508_MARRYMORE_HOTEL_ROOM_CHOICE, above_object=MEM_70A8, closable=False, sync=False, multiline=True, use_background=True, identifier="EVENT_602_run_dialog_10"),
-	JmpIfDialogOptionBOrCSelected(["EVENT_602_hotel_check_for_voucher", 'EVENT_602_run_dialog_50']),
+	JmpIfDialogOptionBOrCSelected(["EVENT_602_hotel_check_for_voucher", "mm_inkeeper_exit"]),
 	SetVarToConst(SECONDARY_TEMP_7024, 10),
 	ClearBit(UNKNOWN_7049_4),
 	RunEventAsSubroutine(E0274_CHECK_IF_HAVE_ENOUGH_COINS),

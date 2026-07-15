@@ -1,4 +1,4 @@
-dialog_data = [""]*288
+dialog_data = [""]*289
 dialog_data[0] = ''' I slept like a baby.
  Thanks![await]'''
 dialog_data[1] = ''' That card you have there...[await]
@@ -861,3 +861,4 @@ dialog_data[286] = '''
 [center]Need “Castle Key 1” to get in[await]'''
 dialog_data[287] = '''
 [center]Need “Castle Key 2” to get in[await]'''
+dialog_data[288] = ''' I'm practicing for the dance floor at the next wedding reception.'''

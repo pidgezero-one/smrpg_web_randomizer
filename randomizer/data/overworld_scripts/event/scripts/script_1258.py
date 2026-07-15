@@ -1,4 +1,4 @@
-# E1258_EMPTY
+# E1258_POST_CHAPEL_POSTGAME_UNLOCKS
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	Return()
 ])

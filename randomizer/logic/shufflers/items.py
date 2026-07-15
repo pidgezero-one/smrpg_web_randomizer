@@ -36,7 +36,6 @@ from ...types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import PlacementException, place, collect_accessible_items
-from ..solvability import assert_solvable, relax_deadlocked_gates
 from ...types.prize import (
     CharacterPrize,
     CoinQuantityPrize,
@@ -1082,7 +1081,12 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         StarPiece6,
         StarPiece7,
     ]
-    for i in range(progress_stars):
+    # Iterate over the FULL total (maxstars), not just progress_stars: the first
+    # progress_stars are progression-tier, the rest (up to TotalStarPieces) are
+    # mandatory inclusions. Bounding the loop by progress_stars made the elif dead
+    # code, so extra star pieces above StarPiecesRequired were never placed.
+    # validation.py guarantees maxstars >= progress_stars.
+    for i in range(maxstars):
         if i < progress_stars:
             progress_rules.append(stars[i])
         elif i < maxstars:
@@ -1418,34 +1422,27 @@ def shuffle_prizes(world: GameWorld) -> None:
             world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
             world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
             world.settings._flags[ShuffleMagikoopaChest] = ShuffleMagikoopaChest(True)
-            world.settings.forced_overrides.extend([
+            for _msg in (
                 "Mimics can appear anywhere: forced ON",
                 "Slots can appear anywhere: forced ON",
                 "EXP stars can appear anywhere: forced ON",
                 "Magikoopa chest shuffled: forced ON",
-            ])
+            ):
+                world.settings.force_override(_msg)
         # ShuffleStarPieces gates whether the offset's star piece overrides
         # actually flow through to placement and signal-ring patching. Without
         # it, TotalStarPieces is treated as default (6) and the UI offset
         # preview diverges from the seed's real star piece placements.
         if world.settings.offset_star_pieces:
             world.settings._flags[ShuffleStarPieces] = ShuffleStarPieces(True)
-            world.settings.forced_overrides.append(
-                "Shuffle star pieces: forced ON"
-            )
+            world.settings.force_override("Shuffle star pieces: forced ON")
         world.settings._is_flag_value_cache.clear()
 
-        # Offsets override every other placement setting. The gate flags are the
-        # one place that isn't automatically true: they still evaluate against
-        # the bosses the offset just pinned, so a gate can end up demanding a
-        # boss the offset locked inside the region that gate guards. Open only
-        # the gates that actually deadlock; the rest are left as chosen.
-        # Must run before shuffle_rules(), which tiers the pool off these flags.
-        world.settings.forced_overrides.extend(relax_deadlocked_gates(world))
-
-    # If a gate cycle still seals part of the world, no seed can win. Say so now
-    # instead of burning dozens of retries and then blaming "excluded locations".
-    assert_solvable(world)
+    # NOTE: gate relaxation deliberately does NOT happen here. Gates are baked
+    # into ROM state by apply_shuffler_independent_settings long before the
+    # shuffler runs, so they must be settled before that — see
+    # GameWorld._shuffle_items, which calls relax_deadlocked_gates() and rebuilds
+    # the world if anything changed.
 
     pool: dict[int, list[Prize]] = {
         PROGRESSION_PRIZES: [],
@@ -2111,3 +2108,5 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
             script.insert_before_nth_command(
                 0, JmpIfBitClear(l.prize._hint, [f"EVENT_{event}_play_sound"])
             )
+    else:
+        world.event_scripts.delete_command_by_identifier("star_hill_set_checked_with_sr")

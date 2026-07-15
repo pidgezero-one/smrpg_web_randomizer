@@ -1995,9 +1995,23 @@ class BossShuffleScaleStats(SelectOneFlag[BossScaleOptions]):
 
 
 # ✅
-class DontAutoheal(BooleanFlag):
-    _name = "Don't auto-heal after boss fights"
-    _description = """If enabled: All full heals that happen immediately after boss fights are removed."""
+class DontAutohealOptions(CategorizationOption):
+    """Enumeration for post-fight healing behaviour"""
+
+    ALL = "Heal after every boss fight"
+    VANILLA = "Keep vanilla post-fight heals"
+    NONE = "No post-fight heals"
+
+
+class DontAutoheal(SelectOneFlag[DontAutohealOptions]):
+    _name = "Post-fight boss healing"
+    _description = """<b>Heal after every boss fight</b>: Every boss fight, including mimics and failed slot machines, will fully heal you after battle.
+<br>
+<br><b>Keep vanilla post-fight heals</b>: Post-fight full heals are unchanged from the original game.
+<br>
+<br><b>No post-fight heals</b>: No boss fights of any type will be followed by a full heal."""
+    choices = [o for o in DontAutohealOptions]
+    _default = DontAutohealOptions.VANILLA
     _id = "noheal"
     _requires_all = [(BossShuffle(), True)]
 

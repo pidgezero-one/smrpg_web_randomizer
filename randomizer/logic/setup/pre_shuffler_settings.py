@@ -74,7 +74,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
 )
 from smrpgpatchbuilder.datatypes.levels.classes import EventInitiator
 
-from ...types.flags import AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, DontAutoheal, EnemySpells, ShuffleCookies, ShuffleMarioDoll
+from ...types.flags import AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, DontAutoheal, DontAutohealOptions, EnemySpells, ShuffleCookies, ShuffleMarioDoll
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -578,8 +578,25 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
 
     # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
 
-    if world.settings.isflag_enabled(DontAutoheal):
-        heals = [
+    heal_mode = world.settings.get_flag(DontAutoheal).selected
+
+    # Full heals the randomizer adds that the original game does NOT have.
+    # VANILLA and NONE strip these back out; ALL keeps them.
+    added_heals = [
+        "E1669_heal_hp",
+        "E1669_heal_fp",
+        "E1845_heal_hp",
+        "E1845_heal_fp",
+        "E2493_heal_hp",
+        "E2493_heal_fp",
+        "E3124_heal_hp",
+        "E3124_heal_fp",
+        "E3126_heal_hp",
+        "E3126_heal_fp",
+    ]
+
+    # Full heals the original game already performs after these boss fights.
+    vanilla_heals = [
             "E0373_heal_hp",
             "E0373_heal_fp",
             "E0593_heal_hp",
@@ -675,8 +692,15 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
             "E3797_heal_hp",
             "E3797_heal_fp",
         ]
-        for h in heals:
-            world.event_scripts.delete_command_by_identifier(h)
+
+    if heal_mode is DontAutohealOptions.NONE:
+        to_delete = vanilla_heals + added_heals
+    elif heal_mode is DontAutohealOptions.VANILLA:
+        to_delete = added_heals
+    else:  # ALL — keep every post-fight heal
+        to_delete = []
+    for h in to_delete:
+        world.event_scripts.delete_command_by_identifier(h)
 
     # Apply debug starting items if debug mode is enabled
     from .debug import apply_debug_start_items

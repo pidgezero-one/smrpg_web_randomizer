@@ -47,34 +47,48 @@ def create(
         debug_bps_patches: If True, generate separate BPS patches for each render
             stage (only works in debug/development environment).
     """
-    return GameWorld(
-        seed,
-        VERSION,
-        settings,
-        deepcopy(ally_collection),
-        {
-            0x02: deepcopy(bank02),
-            0x35: deepcopy(bank35),
-            0x3A: deepcopy(bank3A),
-        },
-        deepcopy(battle_dialog_collection),
-        deepcopy(dialog_collection),
-        deepcopy(ENEMIES),
-        deepcopy(enemy_attack_collection),
-        deepcopy(ITEMS),
-        deepcopy(monster_scripts),
-        deepcopy(events),
-        deepcopy(actions),
-        deepcopy(ALL_PACKETS),
-        deepcopy(pack_collection),
-        deepcopy(room_collection),
-        deepcopy(shop_collection),
-        deepcopy(ALL_SPELLS),
-        deepcopy(sprites),
-        deepcopy(world_map_location_collection),
-        deepcopy(ALL_EVENT_PALETTES),
-        deepcopy(ALL_SPRITE_PALETTES),
-        progress_callback=progress_callback,
-        debug_bps_patches=debug_bps_patches,
-    )
+    from .logic.solvability import SettingsRelaxed
+
+    def build() -> GameWorld:
+        return GameWorld(
+            seed,
+            VERSION,
+            settings,
+            deepcopy(ally_collection),
+            {
+                0x02: deepcopy(bank02),
+                0x35: deepcopy(bank35),
+                0x3A: deepcopy(bank3A),
+            },
+            deepcopy(battle_dialog_collection),
+            deepcopy(dialog_collection),
+            deepcopy(ENEMIES),
+            deepcopy(enemy_attack_collection),
+            deepcopy(ITEMS),
+            deepcopy(monster_scripts),
+            deepcopy(events),
+            deepcopy(actions),
+            deepcopy(ALL_PACKETS),
+            deepcopy(pack_collection),
+            deepcopy(room_collection),
+            deepcopy(shop_collection),
+            deepcopy(ALL_SPELLS),
+            deepcopy(sprites),
+            deepcopy(world_map_location_collection),
+            deepcopy(ALL_EVENT_PALETTES),
+            deepcopy(ALL_SPRITE_PALETTES),
+            progress_callback=progress_callback,
+            debug_bps_patches=debug_bps_patches,
+        )
+
+    try:
+        return build()
+    except SettingsRelaxed:
+        # A gate was forced open to break an offset-induced deadlock. The flag
+        # now lives on the shared `settings` object, so building again from
+        # scratch makes every settings-derived step — including the pre-shuffler
+        # pass that writes the door's ROM state — see the corrected value. The
+        # rebuild cannot relax anything further (the gates it would open are
+        # already open), so one retry is enough.
+        return build()
 

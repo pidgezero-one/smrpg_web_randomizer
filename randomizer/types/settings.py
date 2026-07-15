@@ -219,6 +219,15 @@ class Settings:
         """All settings flags."""
         return self._flags
 
+    def force_override(self, message: str) -> None:
+        """Record a setting that generation changed behind the user's back.
+
+        Deduplicated: shuffling retries and the world rebuild both re-run the
+        code that records these, and the seed page should list each change once.
+        """
+        if message not in self.forced_overrides:
+            self.forced_overrides.append(message)
+
     def get_flag(self, flag_type: type[FlagT]) -> FlagT:
         """Get a flag instance with proper typing."""
         return cast(FlagT, self._flags[flag_type])

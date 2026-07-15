@@ -338,6 +338,7 @@ class GenerateView(FormView):
             ),
             "race_mode": race_mode,
             "spoiler": world.spoiler if not race_mode else {},
+            "forced_overrides": world.settings.forced_overrides,
         }
 
         # Save patch to the database (don't need to save EU since it's the same as US).

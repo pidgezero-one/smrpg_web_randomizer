@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    CopyVarToVar(MARRYMORE_SUITE_LEGAL_COUNT, PRIMARY_TEMP_7000),
     CompareVarToConst(PRIMARY_TEMP_7000, 5, identifier="suite_threshold_3_hint"),
     JmpIfComparisonResultIsLesser(["marrymore_hotel_hint_text"]),
     Return(),

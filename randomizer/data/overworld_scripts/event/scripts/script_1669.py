@@ -44,6 +44,8 @@ script = EventScript([
 	SetBit(TEMP_707C_6),
 	SetBit(TEMP_707C_7),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	RestoreAllHP(identifier="E1669_heal_hp"),
+	RestoreAllFP(identifier="E1669_heal_fp"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(1),
 		A_JumpToHeight(height=0, silent=True)

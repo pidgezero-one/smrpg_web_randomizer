@@ -61,6 +61,8 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 513),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	JmpIfBitSet(GAME_OVER, ["EVENT_3126_reset_and_choose_game_35"]),
+	RestoreAllHP(identifier="E3126_heal_hp"),
+	RestoreAllFP(identifier="E3126_heal_fp"),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ToggleSubroutineSlots(mask=0x04),

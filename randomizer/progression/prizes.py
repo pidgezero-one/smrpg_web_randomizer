@@ -491,7 +491,7 @@ class CymbalsPrize(ItemPrize):
         nickname="Percussion Plate", description="I bet it could get pretty loud."
     )
     _model = MusicObject
-    _packet_data = (SPR0195_FLOWER, 9)
+    _packet_data = (SPR0195_FLOWER, 7)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
 
@@ -717,7 +717,7 @@ class SonicCymbalPrize(ItemPrize):
         description="This could catch monsters\n off-guard.",
     )
     _model = MusicObject
-    _packet_data = (SPR0195_FLOWER, 9)
+    _packet_data = (SPR0195_FLOWER, 7)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
 
@@ -2046,7 +2046,7 @@ class ProgressiveFireworksPrize(ProgressiveItemPrize, KeyPrize):
         return EventScript([JmpToEvent(E0217_HILL_FIREWORKS)])
 
 
-class StayVoucherPrize(ItemPrize):
+class StayVoucherPrize(ItemPrize, KeyPrize):
     item = StayVoucherItem
     _nickname = TreasureHunterNickname(
         nickname="Special Ticket",

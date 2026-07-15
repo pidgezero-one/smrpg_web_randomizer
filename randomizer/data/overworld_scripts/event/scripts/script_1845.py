@@ -44,6 +44,8 @@ script = EventScript([
 	SetVarToConst(PRIMARY_TEMP_7000, 519),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+	RestoreAllHP(identifier="E1845_heal_hp"),
+	RestoreAllFP(identifier="E1845_heal_fp"),
 	JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["EVENT_1845_ret_14"], identifier="EVENT_1845_jmp_if_bit_set_10"),
 	SetBit(LANDS_END_CLOUD_STAR_PIECE),
 	RunEventAsSubroutine(E1210_CLOUD_BOSS_UNLOCKS),

@@ -6874,6 +6874,25 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)
 
+    def grant(self) -> EventScript:
+        # The shuffled prize is bonked off the curtain rod during a scripted sequence,
+        # not walked onto at leisure, so its "got item" box must wait for A ([await]),
+        # like the ship-puzzle/altar packets — not auto-terminate like an ordinary
+        # freestanding pickup. Reuse packet_grant, whose variants are exactly the
+        # [await] copies of every standing grant.
+        #
+        # packet_grant also strips the persistent presence write, but that write is
+        # redundant here: the room-192 loader (E1359) gates NPC_5's respawn on
+        # CURTAIN_MINIGAME_COMPLETED (set unconditionally on curtain-game win, E1368),
+        # so NPC_5 stays gone on re-entry regardless. The variants keep the object-local
+        # despawn (visibility off) that hides it for the current visit.
+        if self.prize is None:
+            return EventScript([Return()])
+        packet_grant = self.prize.packet_grant
+        if packet_grant is None:
+            return EventScript([Return()])
+        return packet_grant
+
     # Flag as checked: NPC 5 removed from room 192
 
 
@@ -8521,7 +8540,7 @@ class MarrymoreBossFightRemake(BossFightLocation):
     _default_battlefield = BF35_MARRYMORE_CHAPEL_SANCTUARY
     _remake_only = True
     _pack_id = PACK078_CHAPEL_POSTGAME
-    _post_unlocks_event_id = E1204_CHAPEL_BOSS_UNLOCKS
+    _post_unlocks_event_id = E1258_POST_CHAPEL_POSTGAME_UNLOCKS
 
     _npc_slots = [
         BossFightLocationNPC(
@@ -10729,6 +10748,7 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
             # use_background=True,
         # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
+        JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
         JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["next"]),
         Jmp(["lands_end_hint_text"]),
     ]
@@ -10796,7 +10816,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
         # ),
         # can appear in first room
         JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["next"]),
-        Jmp(["lands_end_hint_text"]),
+        Jmp(["mokura_hint_text"]),
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
@@ -11121,6 +11141,10 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 269),
@@ -11159,6 +11183,10 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 270),
@@ -11197,6 +11225,10 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 271),
@@ -11235,6 +11267,10 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 272),
@@ -11273,6 +11309,10 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 273),
@@ -11311,6 +11351,10 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 274),
@@ -11349,6 +11393,10 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 275),
@@ -11387,6 +11435,10 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 276),
@@ -11425,6 +11477,10 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 277),
@@ -11463,6 +11519,10 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 278),
@@ -11501,6 +11561,10 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 279),
@@ -11539,6 +11603,10 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 280),
@@ -11577,6 +11645,10 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 281),
@@ -11615,6 +11687,10 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 282),
@@ -11653,6 +11729,10 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
         DefaultItem,
+        FrogCoinItemObject,
+        FlowerItemObject,
+        RecoveryMushroomObject,
+        BigCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 283),
@@ -18140,7 +18220,7 @@ class InnerFactoryFirstFight(BossFightLocation):
 class InnerFactoryFirstFightStarPiece(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R469_FACTORY_GROUNDS_AREA_01]
+    _rooms = [R406_FACTORY_GROUNDS_AREA_01_WITH_TOAD]
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_1
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = InnerFactoryFirstFight

@@ -46,7 +46,12 @@ from uuid import uuid4
 def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld) -> list[UsableEventScriptCommand]:
     output: list[UsableEventScriptCommand] = [Return()]
 
+    # Local import: types.flags -> types.prizelocation -> this module, so a
+    # top-level import would be circular.
+    from ...types.flags import DontAutoheal, DontAutohealOptions
+
     assert world._slot_dummy_indices is not None
+    heal = world.settings.is_flag_value(DontAutoheal, DontAutohealOptions.ALL)
     for room_id in location._rooms:
         room = world.rooms._rooms[room_id]
         if room is None:
@@ -54,7 +59,7 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
         assert isinstance(location.prize, SlotsPrize)
 
         slot_start = world._slot_dummy_indices[room_id]
-        slot_machine_script_commands = create_slot_machine_script_for_one_room(room, location.prize.override_id, slot_start)
+        slot_machine_script_commands = create_slot_machine_script_for_one_room(room, location.prize.override_id, slot_start, heal)
         identifier = slot_machine_script_commands[0].identifier.label
         output.insert(0, JmpIfVarEqualsConst(PRIMARY_TEMP_7000, room_id, [identifier]))
         output.extend(slot_machine_script_commands)
@@ -62,7 +67,7 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
 
     return output
 
-def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id: int, slot_start_idx: int) -> list[UsableEventScriptCommand]:
+def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id: int, slot_start_idx: int, heal = False) -> list[UsableEventScriptCommand]:
     npcs = [
         AreaObject(0x14 + slot_start_idx + x) for x in range(5)
     ]
@@ -224,6 +229,8 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
         RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	    JmpIfBitSet(GAME_OVER, [f"{uniq}_reset_and_choose_game_3"]),
 	    JmpIfBitSet(RUN_AWAY, [f"gen_{uniq}_remove_from_current_level_107"]),
+        *([RestoreAllHP(identifier=f"gen_{uniq}_heal_hp"),
+           RestoreAllFP(identifier=f"gen_{uniq}_heal_fp")] if heal else []),
         JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, [f"gen_{uniq}_remove_from_current_level_107"]),
         SetVarToConst(PRIMARY_TEMP_7000, 514),
         RunEventAsSubroutine(E0171_MIMIC_3_GRANT_STAR_PIECE_CONTAINER),

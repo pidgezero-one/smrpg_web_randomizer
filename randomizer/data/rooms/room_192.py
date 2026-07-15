@@ -236,7 +236,7 @@ room = Room(
         RegularNPC( # 5
             npc=npcs.MARIO_DOLL_UNAFFECTED_BY_MAIN_CHARACTER_PALETTE_NPC,
             initiator=EventInitiator.NONE,
-            event_script=E0241_FREESTANDING_1_GRANT,
+            event_script=E1259_TOWER_DOLL,
             action_script=A0000_DO_NOTHING,
             visible=True,
             x=3,

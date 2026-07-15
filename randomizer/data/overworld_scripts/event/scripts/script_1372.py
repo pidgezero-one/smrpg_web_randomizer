@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	RunEventAsSubroutine(E0179_NPC_QUEST_2_CONTAINER),
+	RunEventAsSubroutine(E0183_NPC_QUEST_6_CONTAINER),
 	ActionQueueAsync(target=NPC_3, subscript=[
         A_SequenceLoopingOn(),
         A_ClearSolidityBits(bit_4=True, cant_walk_through=True),

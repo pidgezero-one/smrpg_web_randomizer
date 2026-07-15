@@ -1368,12 +1368,35 @@ class GameWorld:
             json.dump(self.spoiler, f, indent=2, default=str)
 
     def _shuffle_items(self):
+        from ..logic.solvability import (
+            SettingsRelaxed,
+            assert_solvable,
+            relax_deadlocked_gates,
+        )
+
         self._report_progress("Shuffling checks...", 10)
 
         # determine which checks exist in this seed
         # this doesn't mean which ones are shuffled, it means which ones can be accessed at all
         # exclusions would be things like remake checks, surplus invisible item checks, super jump prizes when super jump not usable
         set_locations(self)
+
+        # Offsets override every other placement setting, but the gate flags
+        # still evaluate against the bosses the offset pinned — so a gate can
+        # demand a boss the offset locked inside the region that gate guards.
+        # Open only the gates that actually deadlock, then bail out: the gates
+        # were already turned into ROM state by apply_shuffler_independent_settings,
+        # so the world has to be rebuilt for the change to reach the game and not
+        # just the placer. create() catches this and rebuilds once.
+        changes = relax_deadlocked_gates(self)
+        if changes:
+            for message in changes:
+                self.settings.force_override(message)
+            raise SettingsRelaxed(changes)
+
+        # If a gate cycle still seals part of the world, no seed can win. Say so
+        # now instead of burning retries and then blaming "excluded locations".
+        assert_solvable(self)
 
         # shuffle according to settings
         shuffle_prizes(self)
