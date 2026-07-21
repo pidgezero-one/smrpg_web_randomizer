@@ -30,6 +30,7 @@ from randomizer.logic.credits_palette_fix import (
 )
 
 from .flags import *
+from .check_flags import *  # EnabledRegularChecks, EnabledBossChecks, ShuffledBosses
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.types import (
     AnimationScriptBank,
 )

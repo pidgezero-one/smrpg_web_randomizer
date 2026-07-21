@@ -328,100 +328,88 @@ from ..data.spells.spells import (
 from ..data.variables.overworld_sfx_names import *
 from ..data.physical_objects.items import *
 
-# Note: Gating flags are imported lazily in _get_gating_flags() to avoid circular import
-# (flags.py → prizelocations.py → prizes.py → flags.py)
+from ..types.flags import (
+    BanditsWayGating,
+    BanditsWayGate,
+    KeroSewersGate,
+    KeroSewersGating,
+    BoosterTowerGate,
+    BoosterTowerGating,
+    PipeVaultGate,
+    PipeVaultGating,
+    Moleville1Gate,
+    Moleville1Gating,
+    ForestMazeGate,
+    ForestMazeGating,
+    BoosterHillGate,
+    BoosterHillGating,
+    MarrymoreGate,
+    MarrymoreGating,
+    YaridovichGate,
+    YaridovichGating,
+    SeaGate,
+    SeaGating,
+    LandsEndGate,
+    LandsEndGating,
+    BelomeTempleGate,
+    BelomeTempleGating,
+    MonstroTownGate,
+    MonstroTownGating,
+    NimbusGate,
+    NimbusGating,
+    BarrelVolcanoGate,
+    BarrelVolcanoGating,
+    BowsersKeepGate,
+    BowsersKeepGating,
+    FactoryGate,
+    FactoryGating,
+    WinCondition,
+    WinConditions,
+)
 
-_gating_flags_cache: dict | None = None
-
-
-def _get_gating_flags():
-    """Lazily import and cache gating flags to avoid circular import."""
-    global _gating_flags_cache
-    if _gating_flags_cache is None:
-        from ..types.flags import (
-            BanditsWayGating,
-            BanditsWayGate,
-            KeroSewersGate,
-            KeroSewersGating,
-            BoosterTowerGate,
-            BoosterTowerGating,
-            PipeVaultGate,
-            PipeVaultGating,
-            Moleville1Gate,
-            Moleville1Gating,
-            ForestMazeGate,
-            ForestMazeGating,
-            BoosterHillGate,
-            BoosterHillGating,
-            MarrymoreGate,
-            MarrymoreGating,
-            YaridovichGate,
-            YaridovichGating,
-            SeaGate,
-            SeaGating,
-            LandsEndGate,
-            LandsEndGating,
-            BelomeTempleGate,
-            BelomeTempleGating,
-            MonstroTownGate,
-            MonstroTownGating,
-            NimbusGate,
-            NimbusGating,
-            BarrelVolcanoGate,
-            BarrelVolcanoGating,
-            BowsersKeepGate,
-            BowsersKeepGating,
-            FactoryGate,
-            FactoryGating,
-            WinCondition,
-            WinConditions
-        )
-
-        _gating_flags_cache = {
-            "BanditsWayGating": BanditsWayGating,
-            "BanditsWayGate": BanditsWayGate,
-            "KeroSewersGate": KeroSewersGate,
-            "KeroSewersGating": KeroSewersGating,
-            "BoosterTowerGate": BoosterTowerGate,
-            "BoosterTowerGating": BoosterTowerGating,
-            "PipeVaultGate": PipeVaultGate,
-            "PipeVaultGating": PipeVaultGating,
-            "Moleville1Gate": Moleville1Gate,
-            "Moleville1Gating": Moleville1Gating,
-            "ForestMazeGate": ForestMazeGate,
-            "ForestMazeGating": ForestMazeGating,
-            "BoosterHillGate": BoosterHillGate,
-            "BoosterHillGating": BoosterHillGating,
-            "MarrymoreGate": MarrymoreGate,
-            "MarrymoreGating": MarrymoreGating,
-            "YaridovichGate": YaridovichGate,
-            "YaridovichGating": YaridovichGating,
-            "SeaGate": SeaGate,
-            "SeaGating": SeaGating,
-            "LandsEndGate": LandsEndGate,
-            "LandsEndGating": LandsEndGating,
-            "BelomeTempleGate": BelomeTempleGate,
-            "BelomeTempleGating": BelomeTempleGating,
-            "MonstroTownGate": MonstroTownGate,
-            "MonstroTownGating": MonstroTownGating,
-            "NimbusGate": NimbusGate,
-            "NimbusGating": NimbusGating,
-            "BarrelVolcanoGate": BarrelVolcanoGate,
-            "BarrelVolcanoGating": BarrelVolcanoGating,
-            "BowsersKeepGate": BowsersKeepGate,
-            "BowsersKeepGating": BowsersKeepGating,
-            "FactoryGate": FactoryGate,
-            "FactoryGating": FactoryGating,
-            "WinCondition": WinCondition,
-            "WinConditions": WinConditions
-        }
-    return _gating_flags_cache
+_GATING_FLAGS = {
+    "BanditsWayGating": BanditsWayGating,
+    "BanditsWayGate": BanditsWayGate,
+    "KeroSewersGate": KeroSewersGate,
+    "KeroSewersGating": KeroSewersGating,
+    "BoosterTowerGate": BoosterTowerGate,
+    "BoosterTowerGating": BoosterTowerGating,
+    "PipeVaultGate": PipeVaultGate,
+    "PipeVaultGating": PipeVaultGating,
+    "Moleville1Gate": Moleville1Gate,
+    "Moleville1Gating": Moleville1Gating,
+    "ForestMazeGate": ForestMazeGate,
+    "ForestMazeGating": ForestMazeGating,
+    "BoosterHillGate": BoosterHillGate,
+    "BoosterHillGating": BoosterHillGating,
+    "MarrymoreGate": MarrymoreGate,
+    "MarrymoreGating": MarrymoreGating,
+    "YaridovichGate": YaridovichGate,
+    "YaridovichGating": YaridovichGating,
+    "SeaGate": SeaGate,
+    "SeaGating": SeaGating,
+    "LandsEndGate": LandsEndGate,
+    "LandsEndGating": LandsEndGating,
+    "BelomeTempleGate": BelomeTempleGate,
+    "BelomeTempleGating": BelomeTempleGating,
+    "MonstroTownGate": MonstroTownGate,
+    "MonstroTownGating": MonstroTownGating,
+    "NimbusGate": NimbusGate,
+    "NimbusGating": NimbusGating,
+    "BarrelVolcanoGate": BarrelVolcanoGate,
+    "BarrelVolcanoGating": BarrelVolcanoGating,
+    "BowsersKeepGate": BowsersKeepGate,
+    "BowsersKeepGating": BowsersKeepGating,
+    "FactoryGate": FactoryGate,
+    "FactoryGating": FactoryGating,
+    "WinCondition": WinCondition,
+    "WinConditions": WinConditions,
+}
 
 
-# Convenience function to get a specific flag
 def _gf(name: str):
     """Get a gating flag by name."""
-    return _get_gating_flags()[name]
+    return _GATING_FLAGS[name]
 
 
 if TYPE_CHECKING:

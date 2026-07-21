@@ -2742,7 +2742,7 @@ class Bundt2SmallObject(BossNPC):
     """Small Bundt 2 object."""
 
     _base = BUNDT_2_SMALL_NPC
-    _eye_height = 3
+    _eye_height = 13
     _evil_palette = [
         0xFFFFFF,
         0xF8B8B8,

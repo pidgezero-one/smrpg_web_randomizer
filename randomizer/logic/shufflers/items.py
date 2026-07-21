@@ -71,6 +71,11 @@ from ...progression.prizelocations import (
     MonstroFirstSuperJumpRewardLocation,
     MonstroSecondSuperJumpRewardLocation,
 )
+from ...types.check_flags import (
+    ShuffledBosses,
+    EnabledRegularChecks,
+    EnabledBossChecks,
+)
 from ...types.flags import (
     ReplaceItems,
     SeeYa,
@@ -96,9 +101,6 @@ from ...types.flags import (
     ShuffleStarPieces,
     TotalStarPieces,
     BossShuffle,
-    ShuffledBosses,
-    EnabledRegularChecks,
-    EnabledBossChecks,
     EXPStarsAnywhere,
     MimicsAnywhere,
     SlotsAnywhere,

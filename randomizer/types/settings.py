@@ -1,6 +1,8 @@
 from __future__ import annotations
 from typing import Any, cast, TypeVar
 from .flags import *
+from .check_flags import *  # EnabledRegularChecks, EnabledBossChecks, ShuffledBosses
+from .flag_categories import *  # FlagCategory, all *Category classes, CATEGORIES, PRESETS
 
 
 class RandomizerSettingsException(Exception):
@@ -213,6 +215,9 @@ class Settings:
             RemoveFlashes: RemoveFlashes(),
             HoldB: HoldB(),
         }
+        # Reverse map for id-based lookup (get_flag_by_id) — lets modules query a
+        # flag without importing its class, avoiding import cycles.
+        self._flags_by_id: dict[str, Flag] = {f.id: f for f in self._flags.values()}
 
     @property
     def flags(self) -> dict[type[Flag], Flag]:
@@ -231,6 +236,15 @@ class Settings:
     def get_flag(self, flag_type: type[FlagT]) -> FlagT:
         """Get a flag instance with proper typing."""
         return cast(FlagT, self._flags[flag_type])
+
+    def get_flag_by_id(self, flag_id: str) -> Flag:
+        """Get a flag instance by its string id (e.g. "chests", "bosses").
+
+        Used where importing the flag class would create an import cycle — e.g.
+        prizelocation.py querying the check-flags that are built from its own
+        location classes.
+        """
+        return self._flags_by_id[flag_id]
     
     def is_flag_value(self, flag_class: type[FlagT], value: Any) -> bool:
         """Check if a setting is set to the given value. Results are cached."""

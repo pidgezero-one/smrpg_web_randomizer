@@ -31,7 +31,8 @@ from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView
 
-from randomizer.types.flags import CATEGORIES, PRESETS, FlagError
+from randomizer.types.flags import FlagError
+from randomizer.types.flag_categories import CATEGORIES, PRESETS
 from randomizer.types.patch import PatchJSONEncoder
 
 from .models import Seed, Patch
