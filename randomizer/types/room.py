@@ -17,6 +17,13 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
 )
 from .ally import SpriteAnimationState
 from .physical_objects import NPC
+from ..utils.npcs import (
+            PROTAGONIST_BASE_SPRITE_ID,
+            PROTAGONIST_SPRITE_RANGE,
+            get_protagonist_sprite,
+            min_vram_from_sequence_for_sprite,
+            min_vram_from_mold_for_sprite,
+        )
 
 # Backwards compatibility alias - deprecated, use SpriteAnimationState directly
 ExtraSpriteActions = SpriteAnimationState
@@ -94,13 +101,6 @@ class Room(RoomBase):
         # 7 sprites in that range (offsets 0-6) actually belong to the protagonist
         # — offsets >= 7 reference unrelated NPC sprites and shouldn't contribute
         # to partition sizing. See `utils/npcs.py:get_protagonist_sprite`.
-        from ..utils.npcs import (
-            PROTAGONIST_BASE_SPRITE_ID,
-            PROTAGONIST_SPRITE_RANGE,
-            get_protagonist_sprite,
-            min_vram_from_sequence_for_sprite,
-            min_vram_from_mold_for_sprite,
-        )
         if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
             return None
         protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]

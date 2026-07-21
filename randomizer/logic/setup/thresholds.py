@@ -7,6 +7,16 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     CompareVarToConst,
     JmpIfBitClear,
 )
+from ...types.flags import (
+        SuitePrize1Threshold, SuitePrize2Threshold, SuitePrize3Threshold,
+        SuitePrize4Threshold, SuitePrize5Threshold, SuitePrize6Threshold,
+        SuperJump1Threshold, SuperJump2Threshold,
+        KnifeGuyPrizeThreshold, KnifeGuyFixedPrizeThreshold,
+        GrateGuyPrizeThreshold, BowserDoorRequirements,
+        StarPiecesRequired, FixKnifeGuy,
+    )
+from ...data.variables.variable_names import KNIFE_GUY_SECOND_PRIZE_AWARDED
+from ...data.variables.event_script_names import E0949_FROGFUCIUS_HINT_TREASURE_CHESTS
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -23,16 +33,6 @@ def apply_threshold_settings(world: GameWorld) -> None:
     - Bowser door requirements
     - Star pieces required for boss access
     """
-    from ...types.flags import (
-        SuitePrize1Threshold, SuitePrize2Threshold, SuitePrize3Threshold,
-        SuitePrize4Threshold, SuitePrize5Threshold, SuitePrize6Threshold,
-        SuperJump1Threshold, SuperJump2Threshold,
-        KnifeGuyPrizeThreshold, KnifeGuyFixedPrizeThreshold,
-        GrateGuyPrizeThreshold, BowserDoorRequirements,
-        StarPiecesRequired, FixKnifeGuy,
-    )
-    from ...data.variables.variable_names import KNIFE_GUY_SECOND_PRIZE_AWARDED
-    from ...data.variables.event_script_names import E0949_FROGFUCIUS_HINT_TREASURE_CHESTS
 
     # Suite prize thresholds
     cast(

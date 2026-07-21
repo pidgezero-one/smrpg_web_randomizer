@@ -81,6 +81,7 @@ from randomizer.types.prizelocation import (
     StarPieceLocation,
 )
 from randomizer.types.prize import SlotsPrize
+from randomizer.types.flags import TotalStarPieces
 
 # --- Ordered Lists ---
 
@@ -358,7 +359,6 @@ def get_ordered_lists() -> dict:
     Keys: boss_locations, boss_prizes, eligible_chests, eligible_mimics,
     mimic_prizes, eligible_coin_chests, coin_prize, invisible_flags, flag_rooms
     """
-    from randomizer.types.flags import TotalStarPieces
 
     invisible_flags = _get_invisible_flag_locations()
     star_piece_locs = _get_boss_star_piece_locations()

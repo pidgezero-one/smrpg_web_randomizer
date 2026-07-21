@@ -23,6 +23,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
+from collections import Counter
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -139,7 +140,6 @@ def analyze_formation(world: GameWorld, formation: Formation) -> FormationVRAMAn
     has_hidden = any(m.hidden_at_start for m in members)
 
     # Group by enemy type to find unique sprites
-    from collections import Counter
     type_counts = Counter(m.enemy for m in members)
 
     unique_sprites: list[EnemySpriteInfo] = []

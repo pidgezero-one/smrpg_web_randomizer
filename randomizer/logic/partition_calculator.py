@@ -41,6 +41,29 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_0,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+from ..progression.prizelocations import InnerMinesBossFight
+from ..utils.npcs import min_vram_from_sequence_for_sprite
+from ..types.prize import BossFightPrize
+from ..types.prizelocation import BossFightLocation
+from collections import Counter
+from ..types.room import Room as ExtRoomForPins
+from ..types.room import Room as ExtRoom
+from ..data.rooms.npcs import FLOWER_NPC_2, EXPLOSION_NPC
+from .renders import (
+        _ENDING_CHARACTER_2_NPC_FILLS,
+        _ENDING_CHARACTER_3_NPC_FILLS,
+        _ENDING_CHARACTER_3_DOLL_FILLS,
+        _ENDING_CHARACTER_4_NPC_FILLS,
+        _ENDING_CHARACTER_5_NPC_FILLS,
+    )
+from ..types.room import Room
+from ..utils.npcs import (
+        PROTAGONIST_BASE_SPRITE_ID,
+        PROTAGONIST_SPRITE_RANGE,
+        get_protagonist_sprite,
+        min_vram_from_sequence_for_sprite,
+        min_vram_from_mold_for_sprite,
+    )
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -132,7 +155,6 @@ def _get_animation_vram_overrides() -> list[AnimationVramOverride]:
 
     Imports are deferred to avoid circular dependencies with prizelocation modules.
     """
-    from ..progression.prizelocations import InnerMinesBossFight
 
     return [
         AnimationVramOverride(
@@ -151,9 +173,6 @@ def _apply_animation_vram_overrides(world: GameWorld, changed_rooms: set[int]) -
     model's animation sequence and compute the min_vram requirement.
     Must run BEFORE partition recalculation.
     """
-    from ..utils.npcs import min_vram_from_sequence_for_sprite
-    from ..types.prize import BossFightPrize
-    from ..types.prizelocation import BossFightLocation
 
     overrides = _get_animation_vram_overrides()
 
@@ -249,7 +268,6 @@ def _size_dedicated_min_vram(
     if is_gridplane:
         return
 
-    from ..utils.npcs import min_vram_from_sequence_for_sprite
 
     current_min = (
         obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
@@ -367,7 +385,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     #     caused the whole sprite group to be dropped from buffer eligibility,
     #     demoting every NPC sharing that sprite to cannot_clone=True even
     #     though only the override-NPC needed it.)
-    from collections import Counter
     sprite_to_type: dict[int, BufferType] = {}  # sprite_id → needed buffer type
     sprite_counts: Counter[int] = Counter()  # auto-decide + explicit-False NPCs counted
     sprite_first_appearance: dict[int, int] = {}  # sprite_id → first obj_index
@@ -469,7 +486,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # matches its vanilla sprite, force that sprite into the pinned slot
     # before bottom-packing runs.  These overrides are explicit room author
     # choices and take precedence over the bottom-packing default.
-    from ..types.room import Room as ExtRoomForPins
     if isinstance(room, ExtRoomForPins) and room.vanilla_sprite_buffer_pins:
         assert world._vanilla_room_states is not None
         vanilla_state_for_pins = world._vanilla_room_states.get(room_id)
@@ -609,7 +625,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     #    + min_vram_size (cheaper than inflating a whole buffer)
     # 3. Shared sprite (count>1) with extra animations → keep in buffer,
     #    increase main_buffer_space (more efficient than N dedicated allocations)
-    from ..types.room import Room as ExtRoom
     if isinstance(room, ExtRoom) and room.npc_expected_animations:
         from ..utils.npcs import min_vram_from_sequence_for_sprite
 
@@ -826,7 +841,6 @@ def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
     Only these rooms need partition recalculation — other rooms with NPC
     changes (character recruitment, credits, etc.) have stable partitions.
     """
-    from ..types.prizelocation import BossFightLocation
 
     rooms: set[int] = set()
     for location in world.locations.values():
@@ -853,7 +867,6 @@ def _detect_slot_machine_rooms(world: GameWorld) -> set[int]:
     (flower, frog coin, explosion). These rooms need partition recalculation
     even though they aren't boss/henchman rooms.
     """
-    from ..data.rooms.npcs import FLOWER_NPC_2, EXPLOSION_NPC
     slot_sprite_ids = {FLOWER_NPC_2.sprite_id, EXPLOSION_NPC.sprite_id}
 
     rooms: set[int] = set()
@@ -880,13 +893,6 @@ def _detect_ending_character_rooms() -> set[int]:
     recalculated post-shuffle to size min_vram_size for whichever sprite actually
     landed there.
     """
-    from .renders import (
-        _ENDING_CHARACTER_2_NPC_FILLS,
-        _ENDING_CHARACTER_3_NPC_FILLS,
-        _ENDING_CHARACTER_3_DOLL_FILLS,
-        _ENDING_CHARACTER_4_NPC_FILLS,
-        _ENDING_CHARACTER_5_NPC_FILLS,
-    )
     rooms: set[int] = set()
     for fills in (
         _ENDING_CHARACTER_2_NPC_FILLS,
@@ -1760,7 +1766,6 @@ def _calculate_ally_buffer_size(
         Ally buffer size (1-3). Returns 1 if protagonist is None or no
         extra sprite actions require larger buffer.
     """
-    from ..types.room import Room
 
     if protagonist is None:
         return 1
@@ -1780,13 +1785,6 @@ def _calculate_ally_buffer_size(
     # See PROTAGONIST_BASE_SPRITE_ID for the rationale (Mario protagonist = sprite 0,
     # non-Mario = sprite 31 post-remap; character_model.base points at non-protagonist
     # placeholder sprites and is wrong for VRAM partition calculations).
-    from ..utils.npcs import (
-        PROTAGONIST_BASE_SPRITE_ID,
-        PROTAGONIST_SPRITE_RANGE,
-        get_protagonist_sprite,
-        min_vram_from_sequence_for_sprite,
-        min_vram_from_mold_for_sprite,
-    )
     if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
         return 1
     protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]
@@ -2094,7 +2092,6 @@ def analyze_room_partition(
     Returns:
         PartitionAnalysis with optimal settings and diagnostic info.
     """
-    from ..types.room import Room
 
     room = world.rooms._rooms[room_id]
     assert room is not None, f"Room {room_id} not found"

@@ -27,15 +27,8 @@ from smrpgpatchbuilder.datatypes.minecart import (
 )
 from smrpgpatchbuilder.datatypes.minecart.constants import BLOCK_BASE, WINDOW_SIZE
 from ...data.minigames.moleville_track import Maze
-
-if TYPE_CHECKING:
-    from ...types.gameworld import GameWorld
-
-
-def randomize_tadpole_pond(world: GameWorld) -> None:
-    """Randomize the Melody Bay song minigame."""
-    from ...data.minigames.melody_bay import all_songs
-    from ...data.variables.event_script_names import (
+from ...data.minigames.melody_bay import all_songs
+from ...data.variables.event_script_names import (
         E1082_MELODY_BAY_SONG_1_INPUT,
         E1079_MELODY_BAY_SONG_1_VALIDATOR,
         E1083_MELODY_BAY_SONG_2_INPUT,
@@ -46,12 +39,40 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
         E2061_MONSTRO_TOWN_STAR,
         E1088_MELODY_BAY_THIRD_SONG_HINT,
     )
-    from ...data.variables.dialog_names import (
+from ...data.variables.dialog_names import (
         DI2718_SONG_1_SCROLL_HINT,
         DI2664_TADPOLE_SONG_1_HINT,
         DI2665_TADPOLE_SONG_2_HINT,
         DI1615_MOLEVILLE_BLUES_8,
     )
+from ...data.minigames.ship_password import (
+        pool as password_pool,
+        suggest_letter_bank,
+        box_dialog_ids,
+        recitation_ids,
+        hint_authors,
+    )
+from ...data.variables.event_script_names import E3411_SHIP_PASSWORD_CORRECTNESS_CHECK
+from ...data.variables.dialog_names import (
+        DI1664_TROOPA_PUZZLE_HINT,
+        DI1665_TRAMPOLINE_PUZZLE_HINT,
+        DI1666_MAZE_PUZZLE_HINT,
+        DI1667_SNAKE_PUZZLE_HINT,
+        DI1668_CANNONBALL_PUZZLE_HINT,
+        DI1669_BARREL_PUZZLE_HINT,
+        DI1673_SHIP_ENTRANCE_NOTE,
+        DI1674_SHIP_SAVEROOM_NOTE,
+        DI1675_SHIP_GREAPER_1_NOTE,
+        DI1676_SHIP_GREAPER_2_NOTE,
+        DI1656_SLEEPING_DRY_BONES,
+    )
+
+if TYPE_CHECKING:
+    from ...types.gameworld import GameWorld
+
+
+def randomize_tadpole_pond(world: GameWorld) -> None:
+    """Randomize the Melody Bay song minigame."""
 
     selection = random.sample(all_songs, 3)
     world.event_scripts.get_script_by_id(E1082_MELODY_BAY_SONG_1_INPUT).set_contents(
@@ -135,27 +156,6 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
 
 def randomize_password(world: GameWorld) -> None:
     """Randomize the ship password minigame."""
-    from ...data.minigames.ship_password import (
-        pool as password_pool,
-        suggest_letter_bank,
-        box_dialog_ids,
-        recitation_ids,
-        hint_authors,
-    )
-    from ...data.variables.event_script_names import E3411_SHIP_PASSWORD_CORRECTNESS_CHECK
-    from ...data.variables.dialog_names import (
-        DI1664_TROOPA_PUZZLE_HINT,
-        DI1665_TRAMPOLINE_PUZZLE_HINT,
-        DI1666_MAZE_PUZZLE_HINT,
-        DI1667_SNAKE_PUZZLE_HINT,
-        DI1668_CANNONBALL_PUZZLE_HINT,
-        DI1669_BARREL_PUZZLE_HINT,
-        DI1673_SHIP_ENTRANCE_NOTE,
-        DI1674_SHIP_SAVEROOM_NOTE,
-        DI1675_SHIP_GREAPER_1_NOTE,
-        DI1676_SHIP_GREAPER_2_NOTE,
-        DI1656_SLEEPING_DRY_BONES,
-    )
 
     password = random.choice(password_pool)
     world.password = password.word

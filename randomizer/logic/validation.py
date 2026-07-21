@@ -7,6 +7,35 @@ be caught early to provide clear error messages to the user.
 
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from ..types.flags import (
+        ShuffleCharacters,
+        AvailableCharacters,
+        MaxCharacters,
+        StartingCharacters,
+        BanditsWayGate, BanditsWayGating,
+        KeroSewersGate, KeroSewersGating,
+        PipeVaultGate, PipeVaultGating,
+        Moleville1Gate, Moleville1Gating,
+        BoosterTowerGate, BoosterTowerGating,
+        SeaGate, SeaGating,
+    )
+from ..types.flags import (
+        ShuffleStarPieces,
+        TotalStarPieces,
+        StarPiecesRequired,
+        SeaGate, SeaGating,
+        LandsEndGate, LandsEndGating,
+        BowsersKeepGate, BowsersKeepGating,
+        FactoryGate, FactoryGating,
+    )
+from ..types.flags import (
+        ExperienceNoRegular,
+        ExperienceNoBosses,
+        EXPChallenge,
+        EXPChallengeOptions,
+        BossShuffleScaleStats,
+        BossScaleOptions
+    )
 
 if TYPE_CHECKING:
     from ..types.settings import Settings
@@ -41,18 +70,6 @@ def _validate_character_requirements(settings: Settings) -> None:
     - Characters explicitly set as starting characters are not disabled
     - Total required unique characters does not exceed max characters
     """
-    from ..types.flags import (
-        ShuffleCharacters,
-        AvailableCharacters,
-        MaxCharacters,
-        StartingCharacters,
-        BanditsWayGate, BanditsWayGating,
-        KeroSewersGate, KeroSewersGating,
-        PipeVaultGate, PipeVaultGating,
-        Moleville1Gate, Moleville1Gating,
-        BoosterTowerGate, BoosterTowerGating,
-        SeaGate, SeaGating,
-    )
 
     # Only validate if character shuffle is enabled
     if not settings.isflag_enabled(ShuffleCharacters):
@@ -149,15 +166,6 @@ def _validate_star_piece_requirements(settings: Settings) -> None:
     - TotalStarPieces is at least 5 if LandsEndGate is STAR_5
     - TotalStarPieces is at least 6 if BowsersKeepGate or FactoryGate is STAR_6
     """
-    from ..types.flags import (
-        ShuffleStarPieces,
-        TotalStarPieces,
-        StarPiecesRequired,
-        SeaGate, SeaGating,
-        LandsEndGate, LandsEndGating,
-        BowsersKeepGate, BowsersKeepGating,
-        FactoryGate, FactoryGating,
-    )
 
     # Get star piece settings
     total_stars = settings.get_flag(TotalStarPieces).value
@@ -213,14 +221,6 @@ def _validate_exp_sources(settings: Settings) -> None:
     - Remove EXP from boss encounters is enabled
     - EXP Star Behaviour is set to NONE
     """
-    from ..types.flags import (
-        ExperienceNoRegular,
-        ExperienceNoBosses,
-        EXPChallenge,
-        EXPChallengeOptions,
-        BossShuffleScaleStats,
-        BossScaleOptions
-    )
 
     no_regular_exp = settings.isflag_enabled(ExperienceNoRegular)
     no_boss_exp = settings.isflag_enabled(ExperienceNoBosses)

@@ -3,6 +3,7 @@ from typing import Any, cast, TypeVar
 from .flags import *
 from .check_flags import *  # EnabledRegularChecks, EnabledBossChecks, ShuffledBosses
 from .flag_categories import *  # FlagCategory, all *Category classes, CATEGORIES, PRESETS
+import re
 
 
 class RandomizerSettingsException(Exception):
@@ -632,7 +633,6 @@ class Settings:
 
         Format: CategoryId(flag_id|flag_id:value|...) CategoryId(...)
         """
-        import re
 
         # Reset all flags to defaults first
         for flag in self._flags.values():

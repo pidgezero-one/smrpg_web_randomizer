@@ -169,6 +169,54 @@ from ..data.enemies.enemies import DODOEnemy, SHELLYEnemy, RIGHTEYEEnemy
 
 PrizeLocationT = TypeVar("PrizeLocationT", bound=PrizeLocation)
 from .settings import Settings
+from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
+            TOTAL_FORMATIONS,
+        )
+from smrpgpatchbuilder.datatypes.levels.classes import ChestNPC, ChestClone
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
+            AreaObject,
+        )
+from ..data.variables.shop_names import (
+            SH00_MUSHROOM_KINGDOM,
+            SH01_ROSE_TOWN_ITEM,
+            SH02_ROSE_TOWN_ARMOR,
+            SH03_FROG_DISCIPLE,
+            SH04_MOLEVILLE,
+            SH05_MARRYMORE,
+            SH06_FROG_COIN_EMPORIUM,
+            SH07_SEA_AND_SHIP_SHAMAN,
+            SH08_SEASIDE_TOWN_MINION,
+            SH09_JUICE_BAR_BASE,
+            SH10_JUICE_BAR_ALTO,
+            SH11_JUICE_BAR_TENOR,
+            SH12_JUICE_BAR_SOPRANO,
+            SH13_SEASIDE_WEAPON,
+            SH14_SEASIDE_ARMOR,
+            SH15_SEASIDE_ACCESSORY,
+            SH16_SEASIDE_HEALTH_FOOD,
+            SH17_MONSTRO,
+            SH18_VOLCANO_ITEM,
+            SH19_VOLCANO_ARMOR,
+            SH20_GOOMBETTE,
+            SH21_NIMBUS_LAND,
+            SH22_KEEP_1,
+            SH23_KEEP_2,
+            SH24_FACTORY_TOAD,
+        )
+from .flags import CategorizationFlagWithOrdinance
+from ..logic.placement import PlacementException
+from ..logic.setup.debug import apply_debug_max_stats
+from ..logic.solvability import (
+            SettingsRelaxed,
+            assert_solvable,
+            relax_deadlocked_gates,
+        )
+from ..data.variables.pack_names import (
+            PACK055_MONSTRO_DOOR_POSTGAME,
+            PACK216_MONSTRO_DOOR_BOSS,
+        )
+from ..data.packets.packets import Packet
 
 if TYPE_CHECKING:
     from randomizer.logic.partition_calculator import VanillaRoomState
@@ -552,9 +600,6 @@ class GameWorld:
         Raises:
             ValueError: If all 512 formation IDs have been exhausted.
         """
-        from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
-            TOTAL_FORMATIONS,
-        )
 
         if self._next_formation_id is None:
             max_id = 0
@@ -689,8 +734,6 @@ class GameWorld:
             - room_bit_offsets: {room_id: cumulative_bit_offset}
             - room_chest_counts: {room_id: chest_object_count}
         """
-        from smrpgpatchbuilder.datatypes.levels.classes import ChestNPC, ChestClone
-        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 
         FXPAK_BASE = 0xE03D80
         NPC_AREA_OBJECT_START = 0x14  # AreaObject(0x14) = object index 0
@@ -754,9 +797,6 @@ class GameWorld:
             {location_class_name: (fxpak_addr, bit_index, set_when_checked)}
             where set_when_checked=False (bit CLEAR = check done).
         """
-        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
-            AreaObject,
-        )
 
         FXPAK_BASE = 0xE02D20
         NPC_AREA_OBJECT_START = 0x14
@@ -883,33 +923,6 @@ class GameWorld:
 
     def _get_shops_json(self) -> dict[str, list[str]]:
         """Get JSON representation of all shops with their item names."""
-        from ..data.variables.shop_names import (
-            SH00_MUSHROOM_KINGDOM,
-            SH01_ROSE_TOWN_ITEM,
-            SH02_ROSE_TOWN_ARMOR,
-            SH03_FROG_DISCIPLE,
-            SH04_MOLEVILLE,
-            SH05_MARRYMORE,
-            SH06_FROG_COIN_EMPORIUM,
-            SH07_SEA_AND_SHIP_SHAMAN,
-            SH08_SEASIDE_TOWN_MINION,
-            SH09_JUICE_BAR_BASE,
-            SH10_JUICE_BAR_ALTO,
-            SH11_JUICE_BAR_TENOR,
-            SH12_JUICE_BAR_SOPRANO,
-            SH13_SEASIDE_WEAPON,
-            SH14_SEASIDE_ARMOR,
-            SH15_SEASIDE_ACCESSORY,
-            SH16_SEASIDE_HEALTH_FOOD,
-            SH17_MONSTRO,
-            SH18_VOLCANO_ITEM,
-            SH19_VOLCANO_ARMOR,
-            SH20_GOOMBETTE,
-            SH21_NIMBUS_LAND,
-            SH22_KEEP_1,
-            SH23_KEEP_2,
-            SH24_FACTORY_TOAD,
-        )
 
         shop_names = {
             SH00_MUSHROOM_KINGDOM: "Mushroom Kingdom",
@@ -1000,7 +1013,6 @@ class GameWorld:
 
     def _get_settings_json(self) -> dict[str, Any]:
         """Get JSON representation of all settings with their names and values."""
-        from .flags import CategorizationFlagWithOrdinance
 
         def get_option_display_name(opt: Any) -> str:
             """Get a human-readable display name for an option."""
@@ -1237,7 +1249,6 @@ class GameWorld:
 
         # Build item to prize mapping (used for random prize substitution)
         self._build_item_to_prize_mapping()
-        from ..logic.placement import PlacementException
 
         # Track failure counts to detect unsolvable settings
         # Key = number of unplaced items, Value = count of times this failure occurred
@@ -1363,7 +1374,6 @@ class GameWorld:
 
         # Apply debug mode max stats again after all character randomization
         # (ensures debug stats override everything)
-        from ..logic.setup.debug import apply_debug_max_stats
 
         apply_debug_max_stats(self)
 
@@ -1387,11 +1397,6 @@ class GameWorld:
             json.dump(self.spoiler, f, indent=2, default=str)
 
     def _shuffle_items(self):
-        from ..logic.solvability import (
-            SettingsRelaxed,
-            assert_solvable,
-            relax_deadlocked_gates,
-        )
 
         self._report_progress("Shuffling checks...", 10)
 
@@ -1433,7 +1438,6 @@ class GameWorld:
         apply_shuffler_results_to_game_data(self)
 
         # Apply debug mode overrides (must be after apply_shuffler_results_to_game_data)
-        from ..logic.setup.debug import apply_debug_max_stats
 
         apply_debug_max_stats(self)
 
@@ -2115,10 +2119,6 @@ class GameWorld:
         # comparison against Culex's vanilla formation ID, which our renumbering
         # invalidates. Point it at whatever formations end up behind the Monstro
         # Town doors — the story boss and the postgame Culex 3D rematch.
-        from ..data.variables.pack_names import (
-            PACK055_MONSTRO_DOOR_POSTGAME,
-            PACK216_MONSTRO_DOOR_BOSS,
-        )
 
         culex_music_formation_ids: list[int] = []
         for door_pack_id in (PACK216_MONSTRO_DOOR_BOSS, PACK055_MONSTRO_DOOR_POSTGAME):
@@ -2141,7 +2141,6 @@ class GameWorld:
         # Packet allocation patch — allow low-VRAM packets (those with
         # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path
         # instead of the bitmap allocator.
-        from ..data.packets.packets import Packet
         npc_slot_packet_ids: set[int] = {
             packet.packet_id
             for packet in self.packets.packets

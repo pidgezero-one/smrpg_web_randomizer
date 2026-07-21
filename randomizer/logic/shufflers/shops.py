@@ -7,29 +7,10 @@ from typing import TYPE_CHECKING, cast
 from ...data.variables.dialog_names import *
 from ...types.item import Item
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import SetVarToConst
-
-if TYPE_CHECKING:
-    from ...types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.items.classes import Item as BaseItem
-
-
-def exclude_seeya_from_frog_disciple(world: GameWorld) -> None:
-    """Remove SeeYaItem from the Frog Disciple shop when SeeYa flag is enabled and shops aren't shuffled.
-
-    The player already receives the item at game start, so it shouldn't also appear in the shop.
-    """
-    from ...data.items.items import SeeYaItem
-    from ...data.shops.shops import SH03_FROG_DISCIPLE
-
-    shop = world.shops.shops[SH03_FROG_DISCIPLE]
-    current_items = [item for item in (shop.items or []) if item is not None and item != SeeYaItem]
-    shop.set_items(current_items)
-
-
-def shuffle_shops(world: GameWorld) -> None:
-    """Shuffle the contents of all shops based on settings."""
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
-    from ...data.items.items import (
+from ...data.items.items import SeeYaItem
+from ...data.shops.shops import SH03_FROG_DISCIPLE
+from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
+from ...data.items.items import (
         GoodieBagItem,
         PickMeUpItem,
         MushroomItem,
@@ -80,7 +61,7 @@ def shuffle_shops(world: GameWorld) -> None:
         FlowerBoxItem,
         FlowerJarItem,
     )
-    from ...types.flags import (
+from ...types.flags import (
         ShopQuality,
         ShopQualities,
         BiasShopShuffle,
@@ -100,7 +81,7 @@ def shuffle_shops(world: GameWorld) -> None:
         FireworksOptions,
         NoStarEgg,
     )
-    from ...data.shops.shops import (
+from ...data.shops.shops import (
         SH03_FROG_DISCIPLE,
         SH06_FROG_COIN_EMPORIUM,
         SH07_SEA_AND_SHIP_SHAMAN,
@@ -122,13 +103,32 @@ def shuffle_shops(world: GameWorld) -> None:
         SH23_KEEP_2,
         SH24_FACTORY_TOAD,
     )
-    from ...progression.prizelocations import (
+from ...progression.prizelocations import (
         FrogDiscipleLocation1,
         FrogDiscipleLocation2,
         FrogDiscipleLocation3,
         FrogDiscipleLocation4,
         FrogDiscipleLocation5,
     )
+
+if TYPE_CHECKING:
+    from ...types.gameworld import GameWorld
+    from smrpgpatchbuilder.datatypes.items.classes import Item as BaseItem
+
+
+def exclude_seeya_from_frog_disciple(world: GameWorld) -> None:
+    """Remove SeeYaItem from the Frog Disciple shop when SeeYa flag is enabled and shops aren't shuffled.
+
+    The player already receives the item at game start, so it shouldn't also appear in the shop.
+    """
+
+    shop = world.shops.shops[SH03_FROG_DISCIPLE]
+    current_items = [item for item in (shop.items or []) if item is not None and item != SeeYaItem]
+    shop.set_items(current_items)
+
+
+def shuffle_shops(world: GameWorld) -> None:
+    """Shuffle the contents of all shops based on settings."""
 
     quality = world.settings.get_flag(ShopQuality).selected
     bias_enabled = world.settings.isflag_enabled(BiasShopShuffle)

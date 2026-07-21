@@ -17,6 +17,36 @@ from ...data.variables.battle_sfx_names import (
     S0100_ELECTROSHOCK_SPARKS,
     S0103_CRYSTAL_HITS,
 )
+from ...types.flags import (
+        InfuseSpellElements, CharacterSpellElements,
+        EquipmentProperties, EquipmentPropertiesOptions,
+        IgnoreNamesakeProperties, EquipmentCharacters, EquipmentCharactersOptions,
+    )
+from ...data.spells.spells import (
+        GenoBeamSpell, GenoFlashSpell, PsychBombSpell, CrusherSpell, BowserCrushSpell,
+        JumpSpell, SuperJumpSpell, UltraJumpSpell,
+        FireOrbSpell, SuperFlameSpell, UltraFlameSpell,
+    )
+from ...data.items.items import (
+        # Armor sets
+        ShirtItem, PantsItem, ThickShirtItem, ThickPantsItem,
+        MegaShirtItem, MegaPantsItem, MegaCapeItem,
+        HappyShirtItem, HappyPantsItem, HappyCapeItem, HappyShellItem,
+        PolkaDressItem, CourageShellItem,
+        SailorShirtItem, SailorPantsItem, SailorCapeItem, NauticaDressItem,
+        FuzzyShirtItem, FuzzyPantsItem, FuzzyCapeItem, FuzzyDressItem,
+        FireShirtItem, FirePantsItem, FireCapeItem, FireShellItem, FireDressItem,
+        HeroShirtItem, PrincePantsItem, RoyalDressItem, HealShellItem, StarCapeItem,
+        # Weapons
+        FroggieStickItem, RibbitStickItem, ParasolItem,
+        # Accessories
+        WakeUpPinItem, AntidotePinItem, TrueformPinItem, FearlessPinItem,
+    )
+from ..shufflers.equipment import (
+        randomize_equipment_properties,
+        randomize_equipment_characters,
+        reprice_equipment_by_rank,
+    )
 
 JUMP_HIT_SOUND_BY_ELEMENT = {
     Element.FIRE: S0032_FIRE_BURN,
@@ -63,36 +93,6 @@ def apply_equipment_settings(world: GameWorld) -> None:
     - Namesake property enforcement (pins, etc.)
     - Equipment character restrictions
     """
-    from ...types.flags import (
-        InfuseSpellElements, CharacterSpellElements,
-        EquipmentProperties, EquipmentPropertiesOptions,
-        IgnoreNamesakeProperties, EquipmentCharacters, EquipmentCharactersOptions,
-    )
-    from ...data.spells.spells import (
-        GenoBeamSpell, GenoFlashSpell, PsychBombSpell, CrusherSpell, BowserCrushSpell,
-        JumpSpell, SuperJumpSpell, UltraJumpSpell,
-        FireOrbSpell, SuperFlameSpell, UltraFlameSpell,
-    )
-    from ...data.items.items import (
-        # Armor sets
-        ShirtItem, PantsItem, ThickShirtItem, ThickPantsItem,
-        MegaShirtItem, MegaPantsItem, MegaCapeItem,
-        HappyShirtItem, HappyPantsItem, HappyCapeItem, HappyShellItem,
-        PolkaDressItem, CourageShellItem,
-        SailorShirtItem, SailorPantsItem, SailorCapeItem, NauticaDressItem,
-        FuzzyShirtItem, FuzzyPantsItem, FuzzyCapeItem, FuzzyDressItem,
-        FireShirtItem, FirePantsItem, FireCapeItem, FireShellItem, FireDressItem,
-        HeroShirtItem, PrincePantsItem, RoyalDressItem, HealShellItem, StarCapeItem,
-        # Weapons
-        FroggieStickItem, RibbitStickItem, ParasolItem,
-        # Accessories
-        WakeUpPinItem, AntidotePinItem, TrueformPinItem, FearlessPinItem,
-    )
-    from ..shufflers.equipment import (
-        randomize_equipment_properties,
-        randomize_equipment_characters,
-        reprice_equipment_by_rank,
-    )
 
     # Spell element infusion
     if world.settings.isflag_enabled(InfuseSpellElements):

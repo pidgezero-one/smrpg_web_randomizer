@@ -327,6 +327,83 @@ from ...data.spells.spells import (
     ComeBackSpell,
     PsychBombSpell,
 )
+from ...progression.prizelocations import (
+        Mimic1BossFight,
+        Mimic1DropRewardLocation,
+        Mimic1StarPiece,
+        Mimic1ReloadRewardLocation,
+        Mimic2BossFight,
+        Mimic2DropRewardLocation,
+        Mimic2StarPiece,
+        Mimic2ReloadRewardLocation,
+        Mimic3BossFight,
+        Mimic3StarPiece,
+    )
+from ...progression.prizes import (
+        FirstMimicFightLauncher,
+        SecondMimicFightLauncher,
+        ThirdMimicFightLauncher,
+    )
+from ...types.flags import SpellsAnywhere
+from ...types.prize import SpellPrize
+from ..placement import collect_accessible_items
+from ...types.prize import KeyPrize
+from ..solvability import (
+        SettingsRelaxed,
+        assert_key_pool_balanced,
+        assert_key_pool_placeable,
+        relax_key_pool_deadlock,
+    )
+from ...types.flags import WinCondition, WinConditions
+from ...progression.prizes import SmithyBossFight
+from ...data.physical_objects.items import (
+        YellowSpellObject,
+        FireSpellObject,
+        BlueSpellObject,
+        GreenSpellObject,
+        GraySpellObject,
+    )
+from ...data.variables.sprite_names import (
+        SPR0214_RED_BALL,
+        SPR0215_BLUE_BALL,
+        SPR0217_GREEN_BALL,
+        SPR0218_YELLOW_BALL,
+        SPR0224_GRAY_BALL,
+    )
+from smrpgpatchbuilder.datatypes.spells.enums import Element
+from ..placement import diagnose_empty_locations
+from randomizer.debug import load_debug_config, get_location_class
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+        DisableObjectTriggerInSpecificLevel,
+        JmpIfBitClear,
+    )
+from ...types.flags import (
+        AnnoyingChests,
+        EquipmentProperties,
+        EquipmentPropertiesOptions,
+        StarPieceHints,
+    )
+from ...types.prizelocation import (
+        TreasureChestLocation,
+        StandardPrizeLocation,
+        RiverLocation,
+        StandingLocation,
+        SIGNAL_RING_EVENT_DICT,
+    )
+from ...types.prize import ItemPrize, CoinPrize, StarPiecePrize
+from ...progression.prizes import YouMissed, Coins10Prize
+from ...data.items.items import (
+        MushroomItem,
+        HoneySyrupItem,
+        AbleJuiceItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        FroggieDrinkItem,
+        WiltShroomItem,
+        RottenMushItem,
+        MoldyMushItem,
+        MushroomItem2,
+    )
 
 
 if TYPE_CHECKING:
@@ -339,25 +416,6 @@ def _on_item_placed(
     world: GameWorld, item: Prize, placed_location: PrizeLocation
 ) -> None:
     """Callback to handle placement events like Mimic world area updates and spell count tracking."""
-    from ...progression.prizelocations import (
-        Mimic1BossFight,
-        Mimic1DropRewardLocation,
-        Mimic1StarPiece,
-        Mimic1ReloadRewardLocation,
-        Mimic2BossFight,
-        Mimic2DropRewardLocation,
-        Mimic2StarPiece,
-        Mimic2ReloadRewardLocation,
-        Mimic3BossFight,
-        Mimic3StarPiece,
-    )
-    from ...progression.prizes import (
-        FirstMimicFightLauncher,
-        SecondMimicFightLauncher,
-        ThirdMimicFightLauncher,
-    )
-    from ...types.flags import SpellsAnywhere
-    from ...types.prize import SpellPrize
 
     # Update spell assignment count when a spell is actually placed
     # (the character was assigned in can_accept, but count is tracked here)
@@ -422,7 +480,6 @@ def _dump_placement_failure(
 
     Returns the path to the written file.
     """
-    from ..placement import collect_accessible_items
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_dir = os.path.join(
@@ -1822,13 +1879,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     # Key-item pool health. Key items (KeyItemsAnywhere off) may only go in
     # key-item locations, 1:1. Guard the count invariant, then — under POP —
     # open gates if boss pinning islanded some key slots (see solvability.py).
-    from ...types.prize import KeyPrize
-    from ..solvability import (
-        SettingsRelaxed,
-        assert_key_pool_balanced,
-        assert_key_pool_placeable,
-        relax_key_pool_deadlock,
-    )
     all_pool = [p for prizes in pool.values() for p in prizes]
     key_pool = [p for p in all_pool if isinstance(p, KeyPrize)]
     non_key_pool = [p for p in all_pool if not isinstance(p, KeyPrize)]
@@ -1853,8 +1903,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     # for him, that pass raises PlacementException and _shuffle_items re-rolls.
     # (Only fires when Smithy is actually in the boss pool, i.e. BossShuffle is on;
     # otherwise he keeps his vanilla location and this is a no-op.)
-    from ...types.flags import WinCondition, WinConditions
-    from ...progression.prizes import SmithyBossFight
 
     deferred_smithy: Prize | None = None
     if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
@@ -1974,22 +2022,6 @@ def assign_spell_prize_models(world: GameWorld) -> None:
 
     Must run after spell elements are finalized and after prizes are shuffled into locations.
     """
-    from ...types.prize import SpellPrize
-    from ...data.physical_objects.items import (
-        YellowSpellObject,
-        FireSpellObject,
-        BlueSpellObject,
-        GreenSpellObject,
-        GraySpellObject,
-    )
-    from ...data.variables.sprite_names import (
-        SPR0214_RED_BALL,
-        SPR0215_BLUE_BALL,
-        SPR0217_GREEN_BALL,
-        SPR0218_YELLOW_BALL,
-        SPR0224_GRAY_BALL,
-    )
-    from smrpgpatchbuilder.datatypes.spells.enums import Element
 
     # Iterate through all locations to find spell prizes
     for location in world.locations.values():
@@ -2028,14 +2060,12 @@ def apply_debug_overrides(world: GameWorld) -> None:
     overridden locations are excluded from the pool and don't cause duplicates.
     This function only handles diagnostics.
     """
-    from ..placement import diagnose_empty_locations
 
     if not world.settings.debug_mode:
         return
 
     # Overrides are now applied pre-shuffle in shuffle_prizes().
     # Just track which locations were overridden for diagnostics.
-    from randomizer.debug import load_debug_config, get_location_class
     config = load_debug_config()
     overrides = config.get("items", {}).get("override", {})
     debug_locations: set[type[PrizeLocation]] = set()
@@ -2056,37 +2086,6 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
     3. Fills or disables empty treasure chests based on settings
     4. Replaces low-impact items with coin prizes at half their price
     """
-    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-        DisableObjectTriggerInSpecificLevel,
-        JmpIfBitClear,
-    )
-    from ...types.flags import (
-        AnnoyingChests,
-        EquipmentProperties,
-        EquipmentPropertiesOptions,
-        StarPieceHints,
-    )
-    from ...types.prizelocation import (
-        TreasureChestLocation,
-        StandardPrizeLocation,
-        RiverLocation,
-        StandingLocation,
-        SIGNAL_RING_EVENT_DICT,
-    )
-    from ...types.prize import ItemPrize, CoinPrize, StarPiecePrize
-    from ...progression.prizes import YouMissed, Coins10Prize
-    from ...data.items.items import (
-        MushroomItem,
-        HoneySyrupItem,
-        AbleJuiceItem,
-        YoshiCookieItem,
-        PureWaterItem,
-        FroggieDrinkItem,
-        WiltShroomItem,
-        RottenMushItem,
-        MoldyMushItem,
-        MushroomItem2,
-    )
 
     # Apply debug overrides (replaces shuffled prizes at configured locations)
     apply_debug_overrides(world)

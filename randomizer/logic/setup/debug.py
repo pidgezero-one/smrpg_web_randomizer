@@ -3,6 +3,16 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from randomizer.data.variables.variable_names import PRIMARY_TEMP_7000
+from randomizer.debug import load_debug_config, get_item_class
+from randomizer.data.variables.event_script_names import E3840_STARTER_DEBUG_ITEMS
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
+        AddToInventory, AddCoins, AddFrogCoins, Return, SetVarToConst
+    )
+from randomizer.data.items.items import SafetyRingItem, SignalRingItem
+from randomizer.progression.prizelocations import StartingCharacter1
+from randomizer.types.prize import CharacterPrize
+from smrpgpatchbuilder.datatypes.items.enums import EffectType
+from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -18,11 +28,6 @@ def apply_debug_start_items(world: GameWorld) -> None:
     if not world.settings.debug_mode:
         return
 
-    from randomizer.debug import load_debug_config, get_item_class
-    from randomizer.data.variables.event_script_names import E3840_STARTER_DEBUG_ITEMS
-    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.commands import (
-        AddToInventory, AddCoins, AddFrogCoins, Return, SetVarToConst
-    )
 
     commands = []
 
@@ -62,11 +67,6 @@ def apply_debug_max_stats(world: GameWorld) -> None:
     if not world.settings.debug_mode:
         return
 
-    from randomizer.data.items.items import SafetyRingItem, SignalRingItem
-    from randomizer.progression.prizelocations import StartingCharacter1
-    from randomizer.types.prize import CharacterPrize
-    from smrpgpatchbuilder.datatypes.items.enums import EffectType
-    from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 
     # Reshape Signal Ring to mirror Safety Ring's protective stats while
     # retaining its signature +10 speed bonus.

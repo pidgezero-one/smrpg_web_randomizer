@@ -1,0 +1,77 @@
+from .booster_tower_balcony_boss_fight import BoosterTowerBalconyBossFight
+from .booster_tower_balcony_star_piece import BoosterTowerBalconyStarPiece
+from .booster_tower_checkerboard_bottom_item_location import BoosterTowerCheckerboardBottomItemLocation
+from .booster_tower_checkerboard_coin1_location import BoosterTowerCheckerboardCoin1Location
+from .booster_tower_checkerboard_coin2_location import BoosterTowerCheckerboardCoin2Location
+from .booster_tower_checkerboard_coin3_location import BoosterTowerCheckerboardCoin3Location
+from .booster_tower_checkerboard_coin4_location import BoosterTowerCheckerboardCoin4Location
+from .booster_tower_checkerboard_coin5_location import BoosterTowerCheckerboardCoin5Location
+from .booster_tower_checkerboard_coin6_location import BoosterTowerCheckerboardCoin6Location
+from .booster_tower_checkerboard_coin7_location import BoosterTowerCheckerboardCoin7Location
+from .booster_tower_checkerboard_coin8_location import BoosterTowerCheckerboardCoin8Location
+from .booster_tower_checkerboard_coin9_location import BoosterTowerCheckerboardCoin9Location
+from .booster_tower_checkerboard_leftmost_item_location import BoosterTowerCheckerboardLeftmostItemLocation
+from .booster_tower_checkerboard_rightmost_item_location import BoosterTowerCheckerboardRightmostItemLocation
+from .booster_tower_checkerboard_top_item_location import BoosterTowerCheckerboardTopItemLocation
+from .booster_tower_checkerboard_upper_right_item_location import BoosterTowerCheckerboardUpperRightItemLocation
+from .booster_tower_chest_near_thwomp_location import BoosterTowerChestNearThwompLocation
+from .booster_tower_curtain_game_prize_location import BoosterTowerCurtainGamePrizeLocation
+from .booster_tower_elder_key_item_location import BoosterTowerElderKeyItemLocation
+from .booster_tower_falling_chest_location import BoosterTowerFallingChestLocation
+from .booster_tower_indoor_boss_fight import BoosterTowerIndoorBossFight
+from .booster_tower_indoor_boss_fight_remake import BoosterTowerIndoorBossFightRemake
+from .booster_tower_indoor_star_piece import BoosterTowerIndoorStarPiece
+from .booster_tower_indoor_star_piece_remake import BoosterTowerIndoorStarPieceRemake
+from .booster_tower_knife_guy2_prize_location import BoosterTowerKnifeGuy2PrizeLocation
+from .booster_tower_knife_guy_prize_location import BoosterTowerKnifeGuyPrizeLocation
+from .booster_tower_mario_doll_location import BoosterTowerMarioDollLocation
+from .booster_tower_parachute_room_chest_location import BoosterTowerParachuteRoomChestLocation
+from .booster_tower_parachute_room_crevice_location import BoosterTowerParachuteRoomCreviceLocation
+from .booster_tower_portrait_prize_location import BoosterTowerPortraitPrizeLocation
+from .booster_tower_remake_boss_fight_prize_location import BoosterTowerRemakeBossFightPrizeLocation
+from .booster_tower_room_key_chest_location import BoosterTowerRoomKeyChestLocation
+from .booster_tower_spookum_stairs_location import BoosterTowerSpookumStairsLocation
+from .booster_tower_top_floor_corner_chest_location import BoosterTowerTopFloorCornerChestLocation
+from .booster_tower_top_floor_lower_chest_location import BoosterTowerTopFloorLowerChestLocation
+from .booster_tower_top_floor_upper_chest_location import BoosterTowerTopFloorUpperChestLocation
+from .booster_tower_train_room_crevice_location import BoosterTowerTrainRoomCreviceLocation
+
+__all__ = [
+    "BoosterTowerBalconyBossFight",
+    "BoosterTowerBalconyStarPiece",
+    "BoosterTowerCheckerboardBottomItemLocation",
+    "BoosterTowerCheckerboardCoin1Location",
+    "BoosterTowerCheckerboardCoin2Location",
+    "BoosterTowerCheckerboardCoin3Location",
+    "BoosterTowerCheckerboardCoin4Location",
+    "BoosterTowerCheckerboardCoin5Location",
+    "BoosterTowerCheckerboardCoin6Location",
+    "BoosterTowerCheckerboardCoin7Location",
+    "BoosterTowerCheckerboardCoin8Location",
+    "BoosterTowerCheckerboardCoin9Location",
+    "BoosterTowerCheckerboardLeftmostItemLocation",
+    "BoosterTowerCheckerboardRightmostItemLocation",
+    "BoosterTowerCheckerboardTopItemLocation",
+    "BoosterTowerCheckerboardUpperRightItemLocation",
+    "BoosterTowerChestNearThwompLocation",
+    "BoosterTowerCurtainGamePrizeLocation",
+    "BoosterTowerElderKeyItemLocation",
+    "BoosterTowerFallingChestLocation",
+    "BoosterTowerIndoorBossFight",
+    "BoosterTowerIndoorBossFightRemake",
+    "BoosterTowerIndoorStarPiece",
+    "BoosterTowerIndoorStarPieceRemake",
+    "BoosterTowerKnifeGuy2PrizeLocation",
+    "BoosterTowerKnifeGuyPrizeLocation",
+    "BoosterTowerMarioDollLocation",
+    "BoosterTowerParachuteRoomChestLocation",
+    "BoosterTowerParachuteRoomCreviceLocation",
+    "BoosterTowerPortraitPrizeLocation",
+    "BoosterTowerRemakeBossFightPrizeLocation",
+    "BoosterTowerRoomKeyChestLocation",
+    "BoosterTowerSpookumStairsLocation",
+    "BoosterTowerTopFloorCornerChestLocation",
+    "BoosterTowerTopFloorLowerChestLocation",
+    "BoosterTowerTopFloorUpperChestLocation",
+    "BoosterTowerTrainRoomCreviceLocation",
+]

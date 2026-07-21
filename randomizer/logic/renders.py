@@ -159,6 +159,26 @@ from ..utils.snippets.es_non_smithy_final_boss import (
     es_non_smithy_3794,
 )
 from ..types.ally import Ally, SpriteAnimationState
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
+        UsableActionScriptCommand,
+    )
+from ..data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1
+from ..data.variables.event_script_names import (
+        E3885_END_GAME,
+        E3950_POST_FINAL_BOSS_INIT,
+        E3951_STAR_PIECE_CREDITS_INIT,
+    )
+from ..data.overworld_scripts.event.scripts import (
+        script_3885,
+        script_3950,
+        script_3951,
+    )
+from ..progression.prizes import (
+        PandoriteBossFight,
+        HidonBossFight,
+        BoxBoyBossFight,
+        ChesterBossFight,
+    )
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -362,9 +382,6 @@ def render_booster_tower_indoor_boss(
     )
     assert entrance is not None and entrance.sequence_setter_event_id is not None
     ev = world.event_scripts.get_script_by_id(entrance.sequence_setter_event_id)
-    from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (
-        UsableActionScriptCommand,
-    )
 
     as_contents: list[UsableActionScriptCommand] = [
         A_FixedFCoordOn(),
@@ -1155,7 +1172,6 @@ def _make_protagonist_sprite_31_variant(
     Pass `directions` (e.g. VramStore.DIR4_ALL_DIRECTIONS) to also override
     the VRAM-store directions; defaults to copying base's existing value.
     """
-    from ..data.variables.sprite_names import SPR0031_ALT_PROTAGONIST_1
     return NPCBase(
         sprite_id=SPR0031_ALT_PROTAGONIST_1,
         shadow_size=base.shadow_size,
@@ -1311,16 +1327,6 @@ def _apply_ending_cutscene_assignments(
     R292_FOREST_MIN_VRAM_BUMP = True
     # =========================================================================
 
-    from ..data.variables.event_script_names import (
-        E3885_END_GAME,
-        E3950_POST_FINAL_BOSS_INIT,
-        E3951_STAR_PIECE_CREDITS_INIT,
-    )
-    from ..data.overworld_scripts.event.scripts import (
-        script_3885,
-        script_3950,
-        script_3951,
-    )
 
     rooms = (
         (
@@ -2607,12 +2613,6 @@ def render_dojo_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
     """Apply animation changes for Dojo first fight."""
     m = prize.smallest_npc()
     # Check if prize is a mimic-type boss
-    from ..progression.prizes import (
-        PandoriteBossFight,
-        HidonBossFight,
-        BoxBoyBossFight,
-        ChesterBossFight,
-    )
     duration = 45
     
 
@@ -2667,12 +2667,6 @@ def render_dojo_fight(
 ) -> None:
     """Apply animation changes for a generic Dojo fight."""
     m = prize.smallest_npc()
-    from ..progression.prizes import (
-        PandoriteBossFight,
-        HidonBossFight,
-        BoxBoyBossFight,
-        ChesterBossFight,
-    )
 
     duration = 45
     if isinstance(

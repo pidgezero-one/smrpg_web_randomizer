@@ -8,6 +8,35 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     JmpToEvent,
     RunBackgroundEvent
 )
+from ...types.flags import (
+        QuizShuffle, QuizIncludeNonSmrpg,
+        BallSolitaireShuffle, MagicButtonShuffle,
+        SkipMinecart, RandomTadpolePondSong, RandomSunkenShipPassword,
+        BowserDoorShuffle, BetterTips, RedBarrels
+    )
+from ...data.minigames.quiz_questions import (
+        get_quiz_questions,
+        option_1_correct,
+        option_2_correct,
+        option_3_correct,
+    )
+from ...data.minigames.puzzle_games import (
+        BallSolitaireGame,
+        MagicButtonsGame,
+        randomize_ball_solitaire,
+        randomize_magic_buttons,
+    )
+from ...data.minigames.bowser_doors import randomize_bowser_doors
+from ..shufflers.minigames import randomize_tadpole_pond, randomize_password
+from ...data.variables.event_script_names import (
+        E0021_FOREST_MAZE_MUSHROOM_GRANT,
+        E0022_BETTER_TIP_GRANTER,
+        E0023_MUSHROOM_SELECTION,
+        E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1,
+        E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER,
+        E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE,
+        E3509_BOOSTER_HILL_BARREL_SUMMONER_WITH_RED
+    )
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -26,35 +55,6 @@ def apply_minigame_settings(world: GameWorld) -> None:
     - Bowser door shuffle
     - Better tips (improved random rewards)
     """
-    from ...types.flags import (
-        QuizShuffle, QuizIncludeNonSmrpg,
-        BallSolitaireShuffle, MagicButtonShuffle,
-        SkipMinecart, RandomTadpolePondSong, RandomSunkenShipPassword,
-        BowserDoorShuffle, BetterTips, RedBarrels
-    )
-    from ...data.minigames.quiz_questions import (
-        get_quiz_questions,
-        option_1_correct,
-        option_2_correct,
-        option_3_correct,
-    )
-    from ...data.minigames.puzzle_games import (
-        BallSolitaireGame,
-        MagicButtonsGame,
-        randomize_ball_solitaire,
-        randomize_magic_buttons,
-    )
-    from ...data.minigames.bowser_doors import randomize_bowser_doors
-    from ..shufflers.minigames import randomize_tadpole_pond, randomize_password
-    from ...data.variables.event_script_names import (
-        E0021_FOREST_MAZE_MUSHROOM_GRANT,
-        E0022_BETTER_TIP_GRANTER,
-        E0023_MUSHROOM_SELECTION,
-        E0622_MARRYMORE_INN_ELDERLY_GUEST_TIP_SUBROUTINE_1,
-        E2649_CASINO_GRATE_GUY_RANDOM_PRIZE_GRANTER,
-        E2670_TOWER_KNIFE_GUY_CONSOLATION_PRIZE,
-        E3509_BOOSTER_HILL_BARREL_SUMMONER_WITH_RED
-    )
 
     # Quiz shuffle
     if world.settings.isflag_enabled(QuizShuffle):

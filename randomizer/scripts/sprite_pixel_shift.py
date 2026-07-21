@@ -17,6 +17,8 @@ to target specific mold indices (comma-separated) instead of all molds.
 
 from __future__ import annotations
 from typing import TYPE_CHECKING
+import copy
+import importlib
 
 if TYPE_CHECKING:
     from smrpgpatchbuilder.datatypes.graphics.classes import Mold
@@ -288,8 +290,6 @@ def print_shifted_sprite(sprite_id: int, dx: int, dy: int, mold_ids: set[int] | 
         dy: Pixels to shift down (positive) or up (negative)
         mold_ids: If provided, only shift molds with these indices. If None, shift all.
     """
-    import copy
-    import importlib
 
     # Try to import the sprite module
     module_name = f"randomizer.data.sprites.objects.sprite_{sprite_id}"
@@ -339,8 +339,6 @@ def visualize_mold(sprite_id: int, mold_index: int, dx: int = 0, dy: int = 0) ->
         dx: Pixels to shift right
         dy: Pixels to shift down
     """
-    import copy
-    import importlib
 
     module_name = f"randomizer.data.sprites.objects.sprite_{sprite_id}"
     try:

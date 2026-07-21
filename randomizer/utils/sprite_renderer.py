@@ -9,6 +9,7 @@ This module provides functionality to:
 
 from PIL import Image
 from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Mold, Tile
+from randomizer.data.sprites import sprites
 
 
 def decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
@@ -288,7 +289,6 @@ def generate_ally_palette_preview(
         mold_index: Which mold to render (default: 0)
         scale: Scale factor (default: 4)
     """
-    from randomizer.data.sprites import sprites
 
     # Get the sprite object
     sprite_module = getattr(sprites, f'sprite_{sprite_id}')

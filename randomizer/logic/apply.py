@@ -203,6 +203,82 @@ from ..data.sprites.subs.geno.sprite_988 import sprite as GENO_988
 from ..data.sprites.subs.geno.sprite_989 import sprite as GENO_989
 from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow_script, mallow_self_script, geno_script, geno_self_script, bowser_script, bowser_self_script, toadstool_script, toadstool_self_script
 from .renders import apply_ending_characters
+from smrpgpatchbuilder.datatypes.levels.classes import BufferType
+from ..data.rooms.npcs import FROG_COIN_NPC, STATIC_FROG_COIN_NPC
+from ..data.variables.action_script_names import A0511_PIPE_VAULT_3_CHEST_ROOM_COIN
+from ..types.prize import FrogCoinPrize
+from ..types.flags import MimicsAnywhere, SlotsAnywhere
+from ..data.variables.pack_names import (
+        PACK156_SEWER_CHEST_FIGHT,
+        PACK157_SHIP_CHEST_FIGHT,
+        PACK158_VALLEY_CHEST_FIGHT,
+        PACK160_SLOTS_CHEST_FIGHT,
+    )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DarkenLayersExceptPaletteRows
+import copy
+import math
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+        JmpIfBitSet,
+        JmpToEvent,
+        RunDialog,
+        Return as ReturnCmd,
+    )
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
+        EventScriptCommandWithJmps,
+    )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER
+from ..data.variables.dialog_names import DI2758_FROGFUCIUS_DEFAULT_STUFF
+from ..data.variables.variable_names import INFINITE_COINS_FOUND
+from ..progression.prizelocations import (
+        MonstroFirstSuperJumpRewardLocation,
+        MonstroSecondSuperJumpRewardLocation,
+        InnerMinesPostgameStarPiece,
+        InnerMinesPostgameDrop,
+        BoosterTowerIndoorStarPieceRemake,
+        BoosterTowerRemakeBossFightPrizeLocation,
+        MarrymoreBossFightStarPieceRemake,
+        MarrymoreBossFightRemakeItemDrop,
+        ShipPostgameFightItemDrop,
+        ShipPostgameStarPiece,
+        TempleBossFightStarPiecePostgame,
+        TemplePostgameFightItemDrop,
+        DojoFifthFightStarPiece,
+        MonstroDojoPostgameClearRewardLocation,
+        MonstroSealedDoorStarPiecePostgame,
+        MonstroSealedDoorClearRewardLocationPostgame,
+        MushroomKingdomInnPurchaseLocation,
+        MarrymoreFirstSuitePrizeLocation,
+        MarrymoreSecondSuitePrizeLocation,
+        MarrymoreThirdSuitePrizeLocation,
+        MarrymoreFourthSuitePrizeLocation,
+        MarrymoreFifthSuitePrizeLocation,
+        MarrymoreSixthSuitePrizeLocation,
+        MarrymoreBigTipLocation,
+        TreasureShopItem1,
+        TreasureShopItem2,
+        TreasureShopItem3,
+        FireworksShopItemLocation,
+        LandsEndFirstPurchasableChestLocation,
+        LandsEndSecondPurchasableChestLocation,
+        FrogDiscipleLocation1,
+        FrogDiscipleLocation2,
+        FrogDiscipleLocation3,
+        FrogDiscipleLocation4,
+        FrogDiscipleLocation5,
+    )
+from ..progression.prizes import InfiniteCoinsPrize, StarPiece7
+from ..types.prizelocation import (
+        KeyItemLocation,
+        StarPieceLocation as StarPieceLocationType,
+        CharacterRecruitmentLocation as CharRecruitLocationType,
+        InvisibleFlagLocation,
+    )
+from ..types.flags import (
+        KeyItemsAnywhere,
+        StarPieceAvailability,
+        ShuffleStarPieces,
+    )
+from ..logic.shufflers.items import should_shuffle
 
 
 def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
@@ -726,10 +802,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
 
     # Update freestanding frog coin NPCs in rooms with Coins partition
     # to use the animated frog coin NPC and spinning action script
-    from smrpgpatchbuilder.datatypes.levels.classes import BufferType
-    from ..data.rooms.npcs import FROG_COIN_NPC, STATIC_FROG_COIN_NPC
-    from ..data.variables.action_script_names import A0511_PIPE_VAULT_3_CHEST_ROOM_COIN
-    from ..types.prize import FrogCoinPrize
     for location in world.locations.values():
         if not isinstance(location, (StandingLocation, RiverLocation)):
             continue
@@ -770,13 +842,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # the formation in the 80% flee-success bucket (vs 50% with only can_run_away
     # cleared). Must run after the loop above, which otherwise resets
     # can_run_away to location.allow_run_away (False for mimic locations).
-    from ..types.flags import MimicsAnywhere, SlotsAnywhere
-    from ..data.variables.pack_names import (
-        PACK156_SEWER_CHEST_FIGHT,
-        PACK157_SHIP_CHEST_FIGHT,
-        PACK158_VALLEY_CHEST_FIGHT,
-        PACK160_SLOTS_CHEST_FIGHT,
-    )
     if world.settings.isflag_enabled(MimicsAnywhere):
         for pack_id in (PACK156_SEWER_CHEST_FIGHT, PACK157_SHIP_CHEST_FIGHT, PACK158_VALLEY_CHEST_FIGHT):
             for formation in world.battle_packs._packs[pack_id].formations:
@@ -1022,7 +1087,6 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # un-darkened too because the palette colors match. For Mario starter, the
     # recruit-slot version (Toadstool at NPC_PALETTE_ROW_1) is the marrymore
     # character, who should also stay un-darkened during this scene.
-    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import DarkenLayersExceptPaletteRows
     overworld_ally = world.overworld_character.ally
     if overworld_ally.index == 0:  # Mario protagonist
         ending_darken_preserve = [MARIO_PALETTE, NPC_PALETTE_ROW_1]
@@ -1528,70 +1592,6 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
 
 def apply_hint_text(world: GameWorld) -> None:
     """Assemble all location hints and split across three event scripts."""
-    import copy
-    import math
-    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-        JmpIfBitSet,
-        JmpToEvent,
-        RunDialog,
-        Return as ReturnCmd,
-    )
-    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
-        EventScriptCommandWithJmps,
-    )
-    from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import BOWSER
-    from ..data.variables.dialog_names import DI2758_FROGFUCIUS_DEFAULT_STUFF
-    from ..data.variables.variable_names import INFINITE_COINS_FOUND
-    from ..progression.prizelocations import (
-        MonstroFirstSuperJumpRewardLocation,
-        MonstroSecondSuperJumpRewardLocation,
-        InnerMinesPostgameStarPiece,
-        InnerMinesPostgameDrop,
-        BoosterTowerIndoorStarPieceRemake,
-        BoosterTowerRemakeBossFightPrizeLocation,
-        MarrymoreBossFightStarPieceRemake,
-        MarrymoreBossFightRemakeItemDrop,
-        ShipPostgameFightItemDrop,
-        ShipPostgameStarPiece,
-        TempleBossFightStarPiecePostgame,
-        TemplePostgameFightItemDrop,
-        DojoFifthFightStarPiece,
-        MonstroDojoPostgameClearRewardLocation,
-        MonstroSealedDoorStarPiecePostgame,
-        MonstroSealedDoorClearRewardLocationPostgame,
-        MushroomKingdomInnPurchaseLocation,
-        MarrymoreFirstSuitePrizeLocation,
-        MarrymoreSecondSuitePrizeLocation,
-        MarrymoreThirdSuitePrizeLocation,
-        MarrymoreFourthSuitePrizeLocation,
-        MarrymoreFifthSuitePrizeLocation,
-        MarrymoreSixthSuitePrizeLocation,
-        MarrymoreBigTipLocation,
-        TreasureShopItem1,
-        TreasureShopItem2,
-        TreasureShopItem3,
-        FireworksShopItemLocation,
-        LandsEndFirstPurchasableChestLocation,
-        LandsEndSecondPurchasableChestLocation,
-        FrogDiscipleLocation1,
-        FrogDiscipleLocation2,
-        FrogDiscipleLocation3,
-        FrogDiscipleLocation4,
-        FrogDiscipleLocation5,
-    )
-    from ..progression.prizes import InfiniteCoinsPrize, StarPiece7
-    from ..types.prizelocation import (
-        KeyItemLocation,
-        StarPieceLocation as StarPieceLocationType,
-        CharacterRecruitmentLocation as CharRecruitLocationType,
-        InvisibleFlagLocation,
-    )
-    from ..types.flags import (
-        KeyItemsAnywhere,
-        StarPieceAvailability,
-        ShuffleStarPieces,
-    )
-    from ..logic.shufflers.items import should_shuffle
 
     # Collect hints in world.locations order, skipping empty hints
     super_jump_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []

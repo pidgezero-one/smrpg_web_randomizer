@@ -1530,7 +1530,7 @@ class BossFightLocationHenchmanNPC:
     _pack_id: int | None = None
     _room_ids: list[int]
     _npc_ids: list[AreaObject]
-    _skip_swap_if_flag: list[type | str] | None = None
+    _skip_swap_if_flag: list[type["BooleanFlag"]] | None = None
     _remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER
     _container_event: int
 
@@ -1547,7 +1547,7 @@ class BossFightLocationHenchmanNPC:
         return self._pack_id
 
     @property
-    def skip_swap_if_flag(self) -> list[type | str] | None:
+    def skip_swap_if_flag(self) -> list[type["BooleanFlag"]] | None:
         return self._skip_swap_if_flag
 
     @property
@@ -1563,7 +1563,7 @@ class BossFightLocationHenchmanNPC:
         room_ids: list[int],
         npc_ids: list[AreaObject],
         pack_id: int | None = None,
-        skip_swap_if_flag: type | str | list[type | str] | None = None,
+        skip_swap_if_flag: type["BooleanFlag"] | list[type["BooleanFlag"]] | None = None,
         remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
         container_event: int | None = None,
     ):
@@ -1587,20 +1587,12 @@ class BossFightLocationHenchmanNPC:
         else:
             self._skip_swap_if_flag = [skip_swap_if_flag]
 
-    def _resolve_flag(self, flag: type | str) -> type:
-        """Resolve a flag class or string name to the actual flag class."""
-        if isinstance(flag, str):
-            from ..types import flags
-
-            return getattr(flags, flag)
-        return flag
-
     def should_skip_swap(self, world: GameWorld) -> bool:
         """Check if this slot should skip NPC/pack swapping based on enabled flags."""
         if self._skip_swap_if_flag is None:
             return False
         return any(
-            world.settings.isflag_enabled(self._resolve_flag(flag))
+            world.settings.isflag_enabled(flag)
             for flag in self._skip_swap_if_flag
         )
 
@@ -1618,9 +1610,7 @@ class BossFightLocationNPC:
     _min_vram_size_override: SlotCapOverride = None
     _min_vram_from_seq0_override: SlotCapOverride = None
     _sequence_setter_event_id: int | None = None
-    _skip_swap_if_flag: (
-        list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]] | None
-    ) = None
+    _skip_swap_if_flag: list[type["BooleanFlag"]] | None = None
 
     @property
     def room_id(self) -> int:
@@ -1652,21 +1642,19 @@ class BossFightLocationNPC:
     @property
     def skip_swap_if_flag(
         self,
-    ) -> list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]] | None:
+    ) -> list[type["BooleanFlag"]] | None:
         return self._skip_swap_if_flag
 
     def should_skip_swap(self, world: "GameWorld") -> bool:
         """Keep the original room NPC (skip the boss-model swap) when any listed
         flag is enabled — mirrors BossFightLocationHenchmanNPC.should_skip_swap.
 
-        Each entry is a flag class, or a zero-arg callable returning one. The
-        callable form lets a slot defined at class-body time defer the flag
-        reference past the flags<->prizelocations circular import.
+        Each entry is a flag class.
         """
         if self._skip_swap_if_flag is None:
             return False
         return any(
-            world.settings.isflag_enabled(flag if isinstance(flag, type) else flag())
+            world.settings.isflag_enabled(flag)
             for flag in self._skip_swap_if_flag
         )
 
@@ -1739,10 +1727,7 @@ class BossFightLocationNPC:
         min_vram_size_override: SlotCapOverride = None,
         min_vram_from_seq0_override: SlotCapOverride = None,
         skip_swap_if_flag: (
-            type["BooleanFlag"]
-            | Callable[[], type["BooleanFlag"]]
-            | list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]]
-            | None
+            type["BooleanFlag"] | list[type["BooleanFlag"]] | None
         ) = None,
     ):
         self._room_id = room_id
@@ -2982,10 +2967,6 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
 
 class RiverLocationRow(PrizeRow, RiverLocation):
     pass
-
-
-class RiverLocationRow1(RiverLocationRow):
-    _container_event: int = E0253_NPC_QUEST_1_GRANT
 
 
 class RiverLocationRow2(RiverLocationRow):

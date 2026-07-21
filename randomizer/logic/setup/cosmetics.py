@@ -24,6 +24,38 @@ from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     DefineObjectQueue,
 )
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments import NO_COLOUR
+from ...types.flags import (
+        CanonNames, Peach, RemakeNames, RemoveFlashes, Remake,
+        ChangeNames, BossShuffleMusic, ShuffledMusic, MarioPaletteChoice,
+        MallowPaletteChoice, GenoPaletteChoice, ToadstoolPaletteChoice, BowserPaletteChoice,
+    )
+from ...data.enemies.enemies import (
+        KAMEKEnemy, BIRDETTAEnemy,
+        MARIOCLONEEnemy, MARIOCLONESEnemy,
+        TOADSTOOL2Enemy, TOADSTOOL3Enemy,
+        BOWSERCLONEEnemy, BOWSERCOPYSEnemy,
+        GENOCLONEEnemy, GENOCLONESEnemy,
+        MALLOWCLONEEnemy, MALLOWCOPYSEnemy,
+        PUNCHINELLOEnemy, JOHNNYEnemy, BOOSTEREnemy, BUNDTEnemy,
+    )
+from ...data.allies.palettes.mario import all_palettes as MARIO_PALETTES
+from ...data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
+from ...data.allies.palettes.geno import all_palettes as GENO_PALETTES
+from ...data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
+from ...data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
+from ...data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
+from ...data.variables.battle_effect_names import EF0025_PSYCH_BOMB_BG
+from ...types.enemy import Enemy
+from ...types.item import Item
+from ...types.spell import Spell
+from ...types.attack import EnemyAttack
+from ...types.prizelocation import BossFightLocation
+from ...data.variables.dialog_names import (
+        DI3847_ROOM_SERVICE_MENU,
+        DI1217_SWAP_SHOP_OVER_100_POINTS,
+        DI1175_SWAP_SHOP_INSTRUCTIONS,
+    )
+from randomizer.types.prizelocation import SpellSlotLocation
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -60,32 +92,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     Note: Cosmetics are re-seeded with current timestamp so they vary
     between generations with the same seed.
     """
-    from ...types.flags import (
-        CanonNames, Peach, RemakeNames, RemoveFlashes, Remake,
-        ChangeNames, BossShuffleMusic, ShuffledMusic, MarioPaletteChoice,
-        MallowPaletteChoice, GenoPaletteChoice, ToadstoolPaletteChoice, BowserPaletteChoice,
-    )
-    from ...data.enemies.enemies import (
-        KAMEKEnemy, BIRDETTAEnemy,
-        MARIOCLONEEnemy, MARIOCLONESEnemy,
-        TOADSTOOL2Enemy, TOADSTOOL3Enemy,
-        BOWSERCLONEEnemy, BOWSERCOPYSEnemy,
-        GENOCLONEEnemy, GENOCLONESEnemy,
-        MALLOWCLONEEnemy, MALLOWCOPYSEnemy,
-        PUNCHINELLOEnemy, JOHNNYEnemy, BOOSTEREnemy, BUNDTEnemy,
-    )
-    from ...data.allies.palettes.mario import all_palettes as MARIO_PALETTES
-    from ...data.allies.palettes.mallow import all_palettes as MALLOW_PALETTES
-    from ...data.allies.palettes.geno import all_palettes as GENO_PALETTES
-    from ...data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
-    from ...data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
-    from ...data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
-    from ...data.variables.battle_effect_names import EF0025_PSYCH_BOMB_BG
-    from ...types.enemy import Enemy
-    from ...types.item import Item
-    from ...types.spell import Spell
-    from ...types.attack import EnemyAttack
-    from ...types.prizelocation import BossFightLocation
 
     # Re-seed for cosmetics (so they vary between generations with same seed)
     # Use os.urandom for maximum entropy instead of timestamp
@@ -369,11 +375,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.update_dialog(dialog_id, wish)
 
     # Room service and bomb shop dialog text (depends on RemakeNames setting)
-    from ...data.variables.dialog_names import (
-        DI3847_ROOM_SERVICE_MENU,
-        DI1217_SWAP_SHOP_OVER_100_POINTS,
-        DI1175_SWAP_SHOP_INSTRUCTIONS,
-    )
 
     use_remake = world.settings.isflag_enabled(RemakeNames)
 
@@ -550,7 +551,6 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
   [select] (Pass)[await]''')
         
     # Apply spell shuffler results to dialogs and chest packets, but use the character names and spell names as per cosmetics settings
-    from randomizer.types.prizelocation import SpellSlotLocation
     for location in world.locations.values():
         p = location.prize
         if isinstance(p, SpellPrize):

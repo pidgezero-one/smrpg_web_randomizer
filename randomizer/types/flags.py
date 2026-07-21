@@ -488,7 +488,6 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
 
         Returns a list of Ally instances in the order they should be assigned.
         """
-        from ..data.allies.allies import ally_collection
 
         # Get all available allies
         available_allies = list(ally_collection._allies)

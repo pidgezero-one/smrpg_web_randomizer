@@ -20,6 +20,7 @@ from .prizelocation import (
     StandingLocation,
 )
 from .prize import CoinPrize, FrogCoinPrize
+import re
 
 if TYPE_CHECKING:
     ShuffledBossEnumType = Enum
@@ -30,7 +31,6 @@ else:
 def _location_class_to_attr_name(cls: type[PrizeLocation]) -> str:
     """Convert a PrizeLocation class to an attribute name for the enum."""
     # Use the class name, converting CamelCase to Snake_Case
-    import re
 
     name = cls.__name__
     name = re.sub(r"([a-z])([A-Z])", r"\1_\2", name)
@@ -127,7 +127,6 @@ def _ensure_shuffled_boss_enum_populated() -> None:
         return
     _shuffled_boss_enum_populated = True
 
-    from ..progression import prizelocations
 
     members = {}
     for cls in vars(prizelocations).values():
@@ -154,7 +153,6 @@ def _boss_class_to_attr_name(boss_class: type) -> str:
         KnifeGuyGrateGuyBossFight -> Knife_Guy_Grate_Guy
         Culex3DBossFight -> Culex_3D
     """
-    import re
 
     name = boss_class.__name__
     # Remove BossFight/Fight suffix

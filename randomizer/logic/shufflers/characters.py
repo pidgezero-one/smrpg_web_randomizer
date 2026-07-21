@@ -4,6 +4,17 @@ import random
 from typing import TYPE_CHECKING
 
 from ..utils import mutate_normal
+from smrpgpatchbuilder.datatypes.allies.ally import LevelUp
+from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
+from ...data.spells.spells import (
+        GenoBoostSpell,
+        TherapySpell,
+        GroupHugSpell,
+        HPRainSpell,
+        PsychopathSpell,
+        SleepyTimeSpell,
+        MuteSpell,
+    )
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -11,7 +22,6 @@ if TYPE_CHECKING:
 
 def randomize_character_stats(world: GameWorld) -> None:
     """Randomize character stats, level-up bonuses, and stat growths."""
-    from smrpgpatchbuilder.datatypes.allies.ally import LevelUp
 
     LEVEL_STATS = [
         "hp_plus",
@@ -137,16 +147,6 @@ def randomize_levelup_xps(world: GameWorld) -> None:
 
 def randomize_character_spell_stats(world: GameWorld) -> None:
     """Randomize character spell stats (FP cost, power, hit rate)."""
-    from smrpgpatchbuilder.datatypes.spells.classes import CharacterSpell
-    from ...data.spells.spells import (
-        GenoBoostSpell,
-        TherapySpell,
-        GroupHugSpell,
-        HPRainSpell,
-        PsychopathSpell,
-        SleepyTimeSpell,
-        MuteSpell,
-    )
 
     # Spells that should not have their power randomized
     NO_POWER_SHUFFLE = (GenoBoostSpell, SleepyTimeSpell, MuteSpell, PsychopathSpell)

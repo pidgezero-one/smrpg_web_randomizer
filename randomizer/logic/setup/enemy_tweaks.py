@@ -14,24 +14,7 @@ from smrpgpatchbuilder.datatypes.monster_scripts.commands import (
 from smrpgpatchbuilder.datatypes.monster_scripts.arguments import MONSTER_1_SET
 from smrpgpatchbuilder.datatypes.spells.enums import Status
 from ...data.variables.pack_names import *
-
-if TYPE_CHECKING:
-    from ...types.gameworld import GameWorld
-
-
-# Enemy type lists for OHKO immunity and experience settings
-SIDEKICK_ENEMIES: list[type] = []
-BOSS_ENEMIES: list[type] = []
-
-
-def _get_enemy_lists():
-    """Lazily initialize enemy type lists."""
-    global SIDEKICK_ENEMIES, BOSS_ENEMIES
-
-    if SIDEKICK_ENEMIES:
-        return SIDEKICK_ENEMIES, BOSS_ENEMIES
-
-    from ...data.enemies.enemies import (
+from ...data.enemies.enemies import (
         # Sidekicks
         AEROEnemy, BODYGUARDEnemy, GOOMBETTEEnemy, FAUTSOEnemy, BAHAMUTTEnemy, BAHAMUTTEnemy2,
         KINGBOMBEnemy, JINXCLONEEnemy, MARIOCLONEEnemy, MARIOCLONESEnemy,
@@ -62,6 +45,50 @@ def _get_enemy_lists():
         SMITHY2Enemy, SMITHYBodyEnemy, SMITHYChestEnemy, SMITHYMageEnemy,
         SMITHYSafeEnemy2, SMITHYTankEnemy, SMELTEREnemy,
     )
+from ...types.flags import ExperienceNoBosses, ExperienceNoRegular
+from ...types.flags import (
+        PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
+        NoOHKO, EnemySpells, Punchinello2BobombDifficulty,
+        Punchinello2BobombDifficultyOptions,
+    )
+from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import (
+        JmpIfAMEM8BitLessThanConst,
+    )
+from ...data.items.items import MushroomItem2, CarboCookieItem
+from ...data.enemies.enemies import KINGBOMBEnemy
+from ...data.variables.battle_variable_names import BV7EE000
+from ...data.spells.spells import (
+        DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
+        FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
+        ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell,
+        DarkStarSpell, RecoverSpell, MegaRecoverSpell, FlameWallSpell,
+        StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
+        MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
+        PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
+        MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
+        SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
+        EnemySpell, EscapeSpell, Engine023Spell
+    )
+from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
+        DoNothing,
+    )
+
+if TYPE_CHECKING:
+    from ...types.gameworld import GameWorld
+
+
+# Enemy type lists for OHKO immunity and experience settings
+SIDEKICK_ENEMIES: list[type] = []
+BOSS_ENEMIES: list[type] = []
+
+
+def _get_enemy_lists():
+    """Lazily initialize enemy type lists."""
+    global SIDEKICK_ENEMIES, BOSS_ENEMIES
+
+    if SIDEKICK_ENEMIES:
+        return SIDEKICK_ENEMIES, BOSS_ENEMIES
+
 
     SIDEKICK_ENEMIES = [
         BODYGUARDEnemy, GOOMBETTEEnemy, FAUTSOEnemy, BAHAMUTTEnemy, BAHAMUTTEnemy2,
@@ -105,7 +132,6 @@ def apply_experience_zero_settings(world: GameWorld) -> None:
     This must run AFTER all enemy stat randomization/scaling to ensure
     the 0 XP setting takes precedence over any randomization.
     """
-    from ...types.flags import ExperienceNoBosses, ExperienceNoRegular
 
     sidekicks, bosses = _get_enemy_lists()
 
@@ -137,32 +163,6 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
     Note: Experience zero settings are handled separately by apply_experience_zero_settings()
     which must run after all enemy stat randomization.
     """
-    from ...types.flags import (
-        PoisonMushroom, UncapSuperJumps, NoGenoWhirlExor, FixMagikoopa,
-        NoOHKO, EnemySpells, Punchinello2BobombDifficulty,
-        Punchinello2BobombDifficultyOptions,
-    )
-    from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import (
-        JmpIfAMEM8BitLessThanConst,
-    )
-    from ...data.items.items import MushroomItem2, CarboCookieItem
-    from ...data.enemies.enemies import KINGBOMBEnemy
-    from ...data.variables.battle_variable_names import BV7EE000
-    from ...data.spells.spells import (
-        DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
-        FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
-        ElectroshockSpell, BlastSpell, StormSpell, IceRockSpell,
-        DarkStarSpell, RecoverSpell, MegaRecoverSpell, FlameWallSpell,
-        StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
-        MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
-        PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
-        MeteorSwarmSpell, WeirdMushroomSpell, BreakerBeamSpell, ShredderSpell,
-        SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell, BigBangSpell,
-        EnemySpell, EscapeSpell, Engine023Spell
-    )
-    from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import (
-        DoNothing,
-    )
 
     sidekicks, _ = _get_enemy_lists()
 

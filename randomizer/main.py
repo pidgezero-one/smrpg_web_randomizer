@@ -24,6 +24,7 @@ from .data.sprites.sprites import sprites
 from .data.world_map_locations.world_map_locations import world_map_location_collection
 from .data.palettes.event_palettes import ALL_EVENT_PALETTES
 from .data.palettes.sprite_palettes import ALL_SPRITE_PALETTES
+from .logic.solvability import SettingsRelaxed
 
 # Current version number
 VERSION = '9.0.0'
@@ -47,7 +48,6 @@ def create(
         debug_bps_patches: If True, generate separate BPS patches for each render
             stage (only works in debug/development environment).
     """
-    from .logic.solvability import SettingsRelaxed
 
     def build() -> GameWorld:
         return GameWorld(

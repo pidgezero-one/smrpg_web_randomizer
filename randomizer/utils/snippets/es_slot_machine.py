@@ -40,6 +40,7 @@ from ...data.packets import *
 
 from smrpgpatchbuilder.datatypes.levels.classes import Room
 from uuid import uuid4
+from ...types.flags import DontAutoheal, DontAutohealOptions
 
     
 
@@ -48,7 +49,6 @@ def create_slot_machine_script(location: TreasureChestLocation, world: GameWorld
 
     # Local import: types.flags -> types.prizelocation -> this module, so a
     # top-level import would be circular.
-    from ...types.flags import DontAutoheal, DontAutohealOptions
 
     assert world._slot_dummy_indices is not None
     heal = world.settings.is_flag_value(DontAutoheal, DontAutohealOptions.ALL)

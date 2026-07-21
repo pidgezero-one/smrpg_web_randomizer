@@ -75,14 +75,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
 from smrpgpatchbuilder.datatypes.levels.classes import EventInitiator
 
 from ...types.flags import AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, DontAutoheal, DontAutohealOptions, EnemySpells, ShuffleCookies, ShuffleMarioDoll
-
-if TYPE_CHECKING:
-    from ...types.gameworld import GameWorld
-
-
-def apply_shuffler_independent_settings(world: GameWorld) -> None:
-    """Apply settings to the world that don't require any input from the shuffler results."""
-    from ...types.flags import (
+from ...types.flags import (
         WinCondition,
         WinConditions,
         FastTravel,
@@ -127,7 +120,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         FactoryGate,
         FactoryGating,
     )
-    from ...data.variables.variable_names import (
+from ...data.variables.variable_names import (
         SMITHY_BOSS_HUNT_WIN_CONDITION,
         WIN_CONDITION_STAR_PIECES,
         WIN_CONDITION_MONSTRO_DOOR,
@@ -172,19 +165,27 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         PAINT_GATING,
         COOKIES_SHUFFLED
     )
-    from ...data.variables.room_names import (
+from ...data.variables.room_names import (
         R333_KERO_SEWERS_ENTRANCE,
         R202_BOOSTER_TOWER_ENTRANCE,
         R427_BELOME_TEMPLE_AREA_10_PIPE_TO_MONSTRO_TOWN,
         R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE,
     )
-    from ...data.variables.event_script_names import (
+from ...data.variables.event_script_names import (
         E1254_UNLOCK_SEWER_BY_RFC,
         E1255_UNLOCK_FOREST_BY_PIE,
         E1256_UNLOCK_MOLEVILLE_IF_GATED_BY_BOSHI,
         E1329_HILL_UNLOCKS,
         E1169_OPEN_LANDS_END_IF_GATED_BY_ELDER,
     )
+from .debug import apply_debug_start_items
+
+if TYPE_CHECKING:
+    from ...types.gameworld import GameWorld
+
+
+def apply_shuffler_independent_settings(world: GameWorld) -> None:
+    """Apply settings to the world that don't require any input from the shuffler results."""
 
     if world.settings.debug_mode:
         world.event_2496_startup += [SetBit(MAP_CASINO)]
@@ -702,6 +703,5 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_scripts.delete_command_by_identifier(h)
 
     # Apply debug starting items if debug mode is enabled
-    from .debug import apply_debug_start_items
 
     apply_debug_start_items(world)
