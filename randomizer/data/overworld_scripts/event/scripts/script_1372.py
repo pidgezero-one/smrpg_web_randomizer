@@ -47,6 +47,7 @@ script = EventScript([
         A_WalkSouthwestSteps(3),
     ]),
     RemoveObjectFromCurrentLevel(NPC_3),
+    RemoveObjectFromSpecificLevel(NPC_3, R189_MARIOS_PIPEHOUSE),
     SetBit(VOUCHER_CHECK_DONE),
     Return()
 ])

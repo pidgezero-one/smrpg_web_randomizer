@@ -573,7 +573,6 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         _curtain_npc = world.get_room(
             R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM
         ).get_npc_by_target_id(NPC_5)
-        _curtain_npc.set_event_script(E0241_FREESTANDING_1_GRANT)
         _curtain_npc.set_initiator(EventInitiator.ANYTHING_EXCEPT_PRESS_A)
 
     # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3

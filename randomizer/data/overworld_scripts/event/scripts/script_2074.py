@@ -87,7 +87,6 @@ script = EventScript([
 	], identifier="initiate_monstro_door_postgame"),
 	JmpIfBitSet(CULEX_POSTGAME_COMPLETED, ["EVENT_2074_apply_solidity_mod_170"]),
     EnterArea(room_id=R324_MONSTRO_TOWN_OUTSIDE, face_direction=SOUTHWEST, x=11, y=63, z=4),
-	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2),
 	Jmp(["EVENT_2048_set_bit_0"]),
 	ApplySolidityModToLevel(permanent=False, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0, identifier="EVENT_2074_apply_solidity_mod_170"),
 	ApplyTileModToLevel(use_alternate=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=33),
@@ -101,6 +100,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1219_POSTGAME_MONSTRO_SEALED_BOSS_UNLOCKS),
 	Pause(15),
 	SetBit(CULEX_POSTGAME_COMPLETED),
+	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT_2),
 	RestoreAllHP(identifier="E2074_heal_hp_1"),
 	RestoreAllFP(identifier="E2074_heal_fp_1"),
 	Jmp(["initiate_monstro_door_postgame"]),
@@ -114,7 +114,7 @@ script = EventScript([
 	RunEventAsSubroutine(E0816_MONSTRO_SUPERBOSS_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False, duration=70),
 	Pause(60),
-	ActionQueueAsync(target=NPC_1, subscript=[
+	ActionQueueAsync(target=NPC_0, subscript=[
         A_SetSpriteSequence(0, looping=True, is_sequence=True),
 		A_SequenceLoopingOn()
 	], identifier="sealed_boss_1_seq_loop_on"),
@@ -155,7 +155,6 @@ script = EventScript([
 	], identifier="EVENT_2074_action_queue_12"),
 	JmpIfBitSet(MONSTRO_MIDDLE_DOOR_COMPLETED, ["EVENT_2074_apply_solidity_mod_17"]),
 	EnterArea(room_id=R324_MONSTRO_TOWN_OUTSIDE, face_direction=SOUTHWEST, x=11, y=63, z=4),
-	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	Jmp(["EVENT_2048_set_bit_0"]),
     ApplySolidityModToLevel(permanent=False, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0, identifier="EVENT_2074_apply_solidity_mod_17"),
 	JmpIfBitSet(STAY_VOUCHER_USED, ["monstro_resummon_npc_2"]), # don't remove culex's door if postgame voucher is used
@@ -175,7 +174,7 @@ script = EventScript([
 	RunEventAsSubroutine(E1218_MONSTRO_SEALED_BOSS_UNLOCKS),
 	Pause(15),
 	SetBit(MONSTRO_MIDDLE_DOOR_COMPLETED),
-	RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
+	SetBit(STAR_PIECE_GRANT_DIRECTIONAL_BIT),
 	RestoreAllHP(identifier="E2074_heal_hp_2"),
 	RestoreAllFP(identifier="E2074_heal_fp_2"),
 	Jmp(["EVENT_2074_action_queue_12"]),

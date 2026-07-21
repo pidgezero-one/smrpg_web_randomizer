@@ -19,7 +19,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 )
 
 from ..types.logic import Inventory
-from ..types.prize import Prize
+from ..types.prize import Prize, damaging_spell_prizes
 from ..types.prizelocation import (
     AllyNPCSub,
     BossFightLocationHenchmanNPC,
@@ -71,6 +71,7 @@ from ..types.prizelocation import (
     WorldAreaEnum,
     KeyItemLocation,
     MimicFightLocation,
+    vanilla_spell_owner,
 )
 from ..types.packet_type import PacketType
 from ..data.variables.room_names import *
@@ -193,6 +194,7 @@ def _get_late_flags():
         BucketWarp,
         CasinoWarp,
         FixKnifeGuy,
+        KeepMinigameSpritesIntact,
         SkipBossFights,
         StarPiecesRequired,
         SuitePrize1Threshold,
@@ -208,6 +210,7 @@ def _get_late_flags():
         "BucketWarp": BucketWarp,
         "CasinoWarp": CasinoWarp,
         "FixKnifeGuy": FixKnifeGuy,
+        "KeepMinigameSpritesIntact": KeepMinigameSpritesIntact,
         "SkipBossFights": SkipBossFights,
         "StarPiecesRequired": StarPiecesRequired,
         "SuitePrize1Threshold": SuitePrize1Threshold,
@@ -1251,7 +1254,7 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_chapel(world, inventory) and inventory.has_item(WalletPrize)
+        return can_clear_chapel(world, inventory) and inventory.has_item(WalletPrize)
 
     # Flag as checked: SECOND_WALLET_PRIZE_RECEIVED
 
@@ -1475,7 +1478,7 @@ class MushroomKingdomBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.INVASION_BOSS_FIGHT
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
     _pack_id = PACK179_MUSHROOM_KINGDOM_BOSS
-    _post_unlocks_event_id = E1195_BANDITS_WAY_BOSS_UNLOCKS
+    _post_unlocks_event_id = E1196_MUSHROOM_KINGDOM_BOSS_UNLOCKS
     _henchman_can_run_away = False
 
     _npc_slots = [
@@ -2008,7 +2011,7 @@ class BanditsWayBossFight(BossFightLocation):
     _id = ShuffleLocationSelector.BANDITS_WAY_BOSS_FIGHT
     _world_area = WorldAreaEnum.BANDITS_WAY
     _pack_id = PACK163_BANDITS_WAY_BOSS
-    _post_unlocks_event_id = E1196_MUSHROOM_KINGDOM_BOSS_UNLOCKS
+    _post_unlocks_event_id = E1195_BANDITS_WAY_BOSS_UNLOCKS
 
     _npc_slots = [
         BossFightLocationNPC(
@@ -2290,9 +2293,9 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         # Mimic rewards don't need room-specific chest disable commands
-        if self.prize is None:
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
             return EventScript([Return()])
         return EventScript(
             [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
@@ -4631,6 +4634,11 @@ class TreasureShopItem1(TreasureShopLocation, NPCLocationRow1):
         return can_clear_mines(world, inventory)
 
     def render(self, world: GameWorld):
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+            world.update_dialog(
+                DI2911_TREASURE_SELLER_ITEM_1, f" Item #1: A “Mystery Box”!\n It might be something good. Or, it\n might be empty.[await][page]\n I'll sell it to you for 100 coins.\n  [select] (It's a deal)\n  [select] (I'll pass)[await]"
+            )
+            return super().render(world)
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
         if not isinstance(self.prize, self.originally_held):
@@ -4670,6 +4678,11 @@ class TreasureShopItem2(TreasureShopLocation, NPCLocationRow2):
         )
 
     def render(self, world: GameWorld):
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+            world.update_dialog(
+                DI2908_TREASURE_SELLER_ITEM_2, f" Item #2: A “Mystery Box”.\n It might be something good. Or, it\n might be empty.[await][page]\n It's yours for 200 coins.\n  [select] (Okay)\n  [select] (No thanks)[await]"
+            )
+            return super().render(world)
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
         if not isinstance(self.prize, self.originally_held):
@@ -4707,6 +4720,11 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
         return can_clear_mines(world, inventory) and can_clear_volcano(world, inventory)
 
     def render(self, world: GameWorld):
+        if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
+            world.update_dialog(
+                DI2908_TREASURE_SELLER_ITEM_2, f" Item #3: A “Mystery Box”.\n It might be something good. Or, it\n might be empty.[await][page]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"
+            )
+            return super().render(world)
         assert isinstance(self.prize, StandardPrize)
         assert self.originally_held is not None
         if not isinstance(self.prize, self.originally_held):
@@ -6874,7 +6892,7 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         # The shuffled prize is bonked off the curtain rod during a scripted sequence,
         # not walked onto at leisure, so its "got item" box must wait for A ([await]),
         # like the ship-puzzle/altar packets — not auto-terminate like an ordinary
@@ -7055,11 +7073,10 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             )
 
             # Check if character henchman slots are assigned (KeepMinigameSpritesIntact not set)
-            from ..types.flags import KeepMinigameSpritesIntact
-
-            character_henchmen_assigned = not world.settings.isflag_enabled(
-                KeepMinigameSpritesIntact
-            ) and (
+            keep_minigame_sprites = world.settings.isflag_enabled(
+                _get_flag("KeepMinigameSpritesIntact")
+            )
+            character_henchmen_assigned = not keep_minigame_sprites and (
                 (
                     self.prize.character_henchmen is not None
                     and len(self.prize.character_henchmen) >= 3
@@ -7098,7 +7115,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
 
             # Only if mook henchman slot is assigned
             mook_henchmen_assigned = (
-                not world.settings.isflag_enabled(KeepMinigameSpritesIntact)
+                not keep_minigame_sprites
                 and self.prize.mook_henchmen is not None
                 and len(self.prize.mook_henchmen) > 0
             )
@@ -9853,9 +9870,9 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         # Mimic rewards don't need room-specific chest disable commands
-        if self.prize is None:
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
             return EventScript([Return()])
         return EventScript(
             [] if self.prize.chest_grant is None else self.prize.chest_grant.contents
@@ -10093,6 +10110,14 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_ship(world, inventory)
 
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_scripts.delete_command_by_identifier("floating_chest_in_sunken_ship")
+        return op
+
+
+
     # flag as checked: npc 4 in room 24 has its object trigger disabled.
 
 
@@ -10185,6 +10210,18 @@ class ShipFinalBossFight(BossFightLocation):
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED,
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED,
     ]
+
+    @property
+    def eligible_mook_henchmen(self) -> list[BossFightHenchman] | None:
+        pool = super().eligible_mook_henchmen
+        if pool is None or not isinstance(self.prize, Belome2BossFight):
+            return pool
+        # Belome 2's Bowser clone sprite doesn't fit the ship henchman rooms.
+        return [
+            h
+            for h in pool
+            if h.model not in (BowsercloneHenchman, BowsercloneHenchman_2)
+        ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (
@@ -10696,6 +10733,12 @@ class LandsEndFirstPurchasableChestLocation(TreasureChestLocationRow1):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
+        
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_scripts.replace_command_by_identifier("floating_chest_1_lands_end_underground", SetBit(LANDS_END_CHEST_1_USED))
+        return op
 
     # flag as checked: npc 18 in room 262 has its object trigger disabled.
 
@@ -10727,6 +10770,12 @@ class LandsEndSecondPurchasableChestLocation(TreasureChestLocationRow2):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)
+        
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_scripts.replace_command_by_identifier("floating_chest_2_lands_end_underground", SetBit(LANDS_END_CHEST_2_USED))
+        return op
 
     # flag as checked: npc 19 in room 262 has its object trigger disabled.
 
@@ -11142,9 +11191,14 @@ class BelomeTempleTreasuryUpperCornerLeftItemLocation(StandingLocationRow1):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 269),
@@ -11184,9 +11238,14 @@ class BelomeTempleTreasuryUpperCornerLowerLeftItemLocation(StandingLocationRow2)
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 270),
@@ -11226,9 +11285,14 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 271),
@@ -11268,9 +11332,14 @@ class BelomeTempleTreasuryTopmostItemLocation(StandingLocationRow4):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 272),
@@ -11310,9 +11379,14 @@ class BelomeTempleTreasuryMidLeftItemLocation(StandingLocationRow5):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 273),
@@ -11352,9 +11426,14 @@ class BelomeTempleTreasuryAlmostTopItemLocation(StandingLocationRow6):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 274),
@@ -11394,9 +11473,14 @@ class BelomeTempleTreasuryAlmostLeftmostItemLocation(StandingLocationRow7):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 275),
@@ -11436,9 +11520,14 @@ class BelomeTempleTreasuryOuterUpperRightItemLocation(StandingLocationRow8):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 276),
@@ -11478,9 +11567,14 @@ class BelomeTempleTreasuryInnerUpperRightItemLocation(StandingLocationRow9):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 277),
@@ -11520,9 +11614,14 @@ class BelomeTempleTreasuryLowestItemsRightLocation(StandingLocationRow10):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 278),
@@ -11562,9 +11661,14 @@ class BelomeTempleTreasuryLowerOuterBottomRightItemLocation(StandingLocationRow1
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 279),
@@ -11604,9 +11708,14 @@ class BelomeTempleTreasuryRightmostItemLocation(StandingLocationRow12):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 280),
@@ -11646,9 +11755,14 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 281),
@@ -11688,9 +11802,14 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 282),
@@ -11730,9 +11849,14 @@ class BelomeTempleTreasuryUpperOuterBottomRightItemLocation(StandingLocationRow1
     _model_allowlist = [
         DefaultItem,
         FrogCoinItemObject,
+        FrogCoinObject,
+        SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
         BigCoinObject,
+        FlowerObject,
+        SmallCoinItemObject,
+        SmallCoinObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 283),
@@ -11869,7 +11993,7 @@ class TempleBossFightPostgame(BossFightLocation):
 class TempleBossFightStarPiecePostgame(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _rooms = [R293_BELOME_3_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME
     _world_area = WorldAreaEnum.TEMPLE
     _override_id = 523
@@ -11913,7 +12037,7 @@ class TempleBossFightStarPiecePostgame(StarPieceLocation):
 class TemplePostgameFightItemDrop(NPCLocationRow1):
     _bias = True
     _originally_held = SageStickPrize
-    _rooms = [R268_BELOME_TEMPLE_AREA_08_BELOMES_ROOM]
+    _rooms = [R293_BELOME_3_ROOM]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_BOSS_POSTGAME_DROP
     _world_area = WorldAreaEnum.TEMPLE
     _remake_only = True
@@ -12043,7 +12167,7 @@ class DojoFirstFight(BossFightLocation):
         #     use_background=True,
         # ),
         JmpIfBitSet(DOJO_BOSS_1_DEFEATED, ["next"]),
-        Jmp(["monstro_town_hint_text"]),
+        JmpIfBitSet(MAP_MONSTRO_TOWN, ["monstro_town_hint_text"]),
     ]
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
@@ -12604,7 +12728,7 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
 class MonstroSealedDoorClearRewardLocation(NPCLocationRow1):
     _bias = True
     _originally_held = QuartzCharmPrize
-    _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
+    _rooms = [R351_CULEXS_ROOM]
     _id = ShuffleLocationSelector.CULEX_REWARD
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _monstro_shuffle = True
@@ -13965,6 +14089,17 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     # flag as checked: STATUE_GAME_DONE
 
 
+def _keep_minigame_sprites_intact_flag() -> type[BooleanFlag]:
+    """Zero-arg factory so a class-body slot can defer this late flag.
+
+    KeepMinigameSpritesIntact is defined after the flags<->prizelocations
+    circular import, so it's resolved through the shared `_get_flag()` late-flag
+    resolver (call-time, when flags is fully loaded) rather than a bare
+    module-level reference.
+    """
+    return _get_flag("KeepMinigameSpritesIntact")
+
+
 class StatueRoomBossFight(BossFightLocation):
     _bias = True
     _originally_held = DodoBossFight
@@ -13993,6 +14128,7 @@ class StatueRoomBossFight(BossFightLocation):
             R110_NIMBUS_CASTLE_AREA_18_DODOS_STATUEPOLISHING_ROOM,
             NPC_3,
             sequence_setter_event_id=E0795_ENDING_CREDITS_CHAPEL_SHUFFLED_NPC_ANIMATION_LOADER,
+            skip_swap_if_flag=_keep_minigame_sprites_intact_flag,
         ),
         BossFightLocationNPC(
             R437_NIMBUS_CASTLE_PATH_AFTER_THRONE_ROOM_3RD,
@@ -14020,7 +14156,6 @@ class StatueRoomBossFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        from ..types.flags import KeepMinigameSpritesIntact
 
         assert self._npc_slots is not None
         statue_slot = next(
@@ -14039,7 +14174,7 @@ class StatueRoomBossFight(BossFightLocation):
         render_statue_room_boss(
             world,
             self.prize,
-            world.settings.isflag_enabled(KeepMinigameSpritesIntact),
+            world.settings.isflag_enabled(_get_flag("KeepMinigameSpritesIntact")),
             chosen_npc_model=chosen,
         )
         return op
@@ -15078,7 +15213,7 @@ class NimbusLandRightSideLocation(KeyItemLocation, NPCLocationRow1):
         JmpIfObjectNotInSpecificLevel(
             NPC_6,
             R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
-            ["nimbus_castle_hint_text"],
+            ["nimbus_land_hint_text"],
             identifier="nimbus_ck_dummy2_7",
         ),
         StoreItemAmountTo7000(CastleKey2Item),
@@ -15129,7 +15264,7 @@ class NimbusLandCrocoItemLocation(StandingLocationRow1):
         JmpIfObjectNotInSpecificLevel(
             NPC_6,
             R409_NIMBUS_CASTLE_AREA_09_BIRDOS_ROOM,
-            ["nimbus_castle_hint_text"],
+            ["nimbus_land_hint_text"],
             identifier="nimbus_ck_dummy2_8",
         ),
         StoreItemAmountTo7000(CastleKey2Item),
@@ -15830,7 +15965,7 @@ class KeepDarkRoomChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R453_BOWSERS_KEEP_AREA_05_DARK_TUNNEL_AFTER_THRONE_ROOM, ["next"]
         ),
@@ -15861,7 +15996,7 @@ class KeepFirstCrocoShopLeftChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
         ),
@@ -15892,7 +16027,7 @@ class KeepFirstCrocoShopRightChestLocation(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1, R451_BOWSERS_KEEP_AREA_07_150_COINS_AND_A_MUSHROOM, ["next"]
         ),
@@ -15924,7 +16059,7 @@ class KeepInvisibleBridgeFrontChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
         ),
@@ -15955,7 +16090,7 @@ class KeepInvisibleBridgeRightChestLocation(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
         ),
@@ -15986,7 +16121,7 @@ class KeepInvisibleBridgeLeftChestLocation(TreasureChestLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
         ),
@@ -16017,7 +16152,7 @@ class KeepInvisibleBridgeBackChestLocation(TreasureChestLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]
         ),
@@ -16047,7 +16182,7 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16075,7 +16210,7 @@ class KeepInvisibleBridgeCoin2Location(StandingLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16103,7 +16238,7 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16131,7 +16266,7 @@ class KeepInvisibleBridgeCoin4Location(StandingLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16160,7 +16295,7 @@ class KeepXYPlatformsBackLeftChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_10, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
         ),
@@ -16191,7 +16326,7 @@ class KeepXYPlatformsFrontLeftChestLocation(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_11, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
         ),
@@ -16222,7 +16357,7 @@ class KeepXYPlatformsFrontRightChestLocation(TreasureChestLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_12, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
         ),
@@ -16253,7 +16388,7 @@ class KeepXYPlatformsBackRightChestLocation(TreasureChestLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_13, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, ["next"]
         ),
@@ -16284,7 +16419,7 @@ class KeepElevatorRoomChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_8,
             R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS,
@@ -16317,7 +16452,7 @@ class KeepCannonballRoomFrontRightChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
         ),
@@ -16348,7 +16483,7 @@ class KeepCannonballRoomBackChestLocation(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
         ),
@@ -16379,7 +16514,7 @@ class KeepCannonballFrontLeftChestLocation(TreasureChestLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
         ),
@@ -16410,7 +16545,7 @@ class KeepCannonballMidRightChestLocation(TreasureChestLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
         ),
@@ -16441,7 +16576,7 @@ class KeepCannonballMidLeftChestLocation(TreasureChestLocationRow5):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_7, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]
         ),
@@ -16471,7 +16606,7 @@ class KeepCannonballCoin1Location(StandingLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_8, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16499,7 +16634,7 @@ class KeepCannonballCoin2Location(StandingLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_9, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16527,7 +16662,7 @@ class KeepCannonballCoin3Location(StandingLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_10, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16555,7 +16690,7 @@ class KeepCannonballCoin4Location(StandingLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_11, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16583,7 +16718,7 @@ class KeepCannonballCoin5Location(StandingLocationRow5):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_12, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16611,7 +16746,7 @@ class KeepCannonballCoin6Location(StandingLocationRow6):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_13, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16639,7 +16774,7 @@ class KeepCannonballCoin7Location(StandingLocationRow7):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_14, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16667,7 +16802,7 @@ class KeepCannonballCoin8Location(StandingLocationRow8):
             # multiline=True,
             # use_background=True,
         # ),
-        # JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        # JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         # JmpIfObjectNotInSpecificLevel(NPC_15, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, ["next"]),
         # Jmp(["keep_obstacle_hint_text"])
     ]
@@ -16698,7 +16833,7 @@ class KeepRotatingPlatformsFrontChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_1,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16733,7 +16868,7 @@ class KeepRotatingPlatformsFrontMidLeftChestLocation(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_2,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16768,7 +16903,7 @@ class KeepRotatingPlatformsBackMidRightChestLocation(TreasureChestLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_3,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16803,7 +16938,7 @@ class KeepRotatingPlatformsFrontMidRightChestLocation(TreasureChestLocationRow4)
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_4,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16838,7 +16973,7 @@ class KeepRotatingPlatformsBackMidLeftChestLocation(TreasureChestLocationRow5):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_5,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16873,7 +17008,7 @@ class KeepRotatingPlatformsBackChestLocation(TreasureChestLocationRow6):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_6,
             R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS,
@@ -16981,7 +17116,7 @@ class ObstacleCourseFinalFightStarPiece(StarPieceLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BATTLE_DOOR_BOSS_BIT, ["next"]),
         Jmp(["keep_obstacle_hint_text"]),
     ]
@@ -17015,7 +17150,7 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_1_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17027,6 +17162,12 @@ class KeepDoorRewardChest1Location(TreasureChestLocationRow1):
             else True
         )
         return can_pass_obstacle_courses(world, inventory) and boss_condition
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_1_PRIZE_RETRIEVED)]
+        return op
 
     # flag as checked: BK_OBSTACLE_1_PRIZE_RETRIEVED
 
@@ -17052,7 +17193,7 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_2_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17064,6 +17205,12 @@ class KeepDoorRewardChest2Location(TreasureChestLocationRow2):
             else True
         )
         return can_pass_obstacle_courses(world, inventory) and boss_condition
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_2_PRIZE_RETRIEVED)]
+        return op
 
     # flag as checked: BK_OBSTACLE_2_PRIZE_RETRIEVED
 
@@ -17089,10 +17236,16 @@ class KeepDoorRewardChest3Location(TreasureChestLocationRow3):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_3_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_3_PRIZE_RETRIEVED)]
+        return op
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = (
@@ -17126,10 +17279,16 @@ class KeepDoorRewardChest4Location(TreasureChestLocationRow4):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_4_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_4_PRIZE_RETRIEVED)]
+        return op
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         boss_condition = not_earlygame(world, inventory)
@@ -17159,7 +17318,7 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_5_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17171,6 +17330,12 @@ class KeepDoorRewardChest5Location(TreasureChestLocationRow5):
             else True
         )
         return can_pass_obstacle_courses(world, inventory) and boss_condition
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_5_PRIZE_RETRIEVED)]
+        return op
 
     # flag as checked: BK_OBSTACLE_5_PRIZE_RETRIEVED
 
@@ -17196,7 +17361,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(BK_OBSTACLE_6_PRIZE_RETRIEVED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17208,6 +17373,12 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
             else True
         )
         return can_pass_obstacle_courses(world, inventory) and boss_condition
+    
+    def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
+        op = super().render(world)
+        if self.prize is None and not world.settings.isflag_enabled(AnnoyingChests):
+            world.event_2496_startup += [SetBit(BK_OBSTACLE_6_PRIZE_RETRIEVED)]
+        return op
 
     # flag as checked: BK_OBSTACLE_6_PRIZE_RETRIEVED
 
@@ -17473,7 +17644,7 @@ class KeepAfterObstaclesStarPiece(StarPieceLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_1_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17504,7 +17675,7 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfObjectTriggerDisabledInSpecificLevel(
             NPC_0, R266_BOWSERS_KEEP_AREA_10_MAGIKOOPAS_ROOM, ["next"]
         ),
@@ -17618,7 +17789,7 @@ class KeepChandelierStarPiece(StarPieceLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_2_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -17705,7 +17876,7 @@ class KeepFinalStarPiece(StarPieceLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitSet(KEEP_BOSS_3_DEFEATED, ["next"]),
         Jmp(["bowsers_keep_hint_text"]),
     ]
@@ -18660,12 +18831,11 @@ class FinalBossFightStarPiece(StarPieceLocation):
     _bias = True
     _originally_held = StarPiece7
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
-    _world_area = WorldAreaEnum.BOWSERS_KEEP
+    _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = FinalBossFight
     _rooms = [
         R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
         R108_MOLEVILLE_OUTSIDE,
-        R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 439),
@@ -21697,7 +21867,7 @@ class KeepPostObstacleBossRoomFlag(InvisibleFlagLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -21728,7 +21898,7 @@ class KeepThwompFlag(InvisibleFlagLocation):
             # multiline=True,
             # use_background=True,
         # ),
-        JmpIfBitClear(MAP_DIRECTIONAL_BOWSERS_KEEP_VISTA_HILL, ["next"]),
+        JmpIfBitSet(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, ["next"]),
         JmpIfBitClear(INVISIBLE_ITEMS_SUMMONED, ["next"]),
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["invisible_item_hint_text"]),
@@ -22058,7 +22228,7 @@ def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         return inventory.has_item(BundtBossFight)
     if world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
-        return can_access_chapel(world, inventory) and not_earlygame(world, inventory)
+        return can_clear_chapel(world, inventory) and not_earlygame(world, inventory)
     return True
 
 
@@ -22302,63 +22472,30 @@ def can_access_invisible_flags(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bool:
-    """If true, the player is expected to be able to damage enemies with a non-elemental spell."""
+    """If true, the player is expected to be able to damage enemies with a spell.
+
+    Any damaging spell counts, whatever its element. FORMLESS transforms into
+    Mokura off a counter on ``IfTargetedByCommand([COMMAND_SPECIAL])`` (monster
+    script 147), which no element can dodge, and Mokura merely resists (not
+    nullifies) Thunder and Jump.
+    """
+    pool = damaging_spell_prizes()
     if not world.settings.isflag_enabled(
         CharacterLearnedSpells
     ) and not world.settings.isflag_enabled(SpellsAnywhere):
         # Spells aren't shuffled, so check if the player has recruited a character
-        # whose vanilla spells include a non-elemental damage spell that isn't disabled.
+        # whose vanilla spells include a damage spell that isn't disabled.
         disabled_spells: set[type] = {
             m.value for m in world.settings.get_flag(AvailableSpells).disabled
         }
-
-        def spell_available(*spell_classes: type) -> bool:
-            return any(s not in disabled_spells for s in spell_classes)
-
-        if inventory.has_item(MallowRecruitmentPrize) and spell_available(
-            StarRainSpell
-        ):
-            return True
-        if inventory.has_item(GenoRecruitmentPrize) and spell_available(
-            GenoWhirlSpell, GenoBlastSpell
-        ):
-            return True
-        if inventory.has_item(BowserRecruitmentPrize) and spell_available(
-            PoisonGasSpell, TerrorizeSpell
-        ):
-            return True
-        if not world.settings.isflag_enabled(InfuseSpellElements):
-            if inventory.has_item(GenoRecruitmentPrize) and spell_available(
-                GenoBeamSpell, GenoFlashSpell
-            ):
-                return True
-            if inventory.has_item(BowserRecruitmentPrize) and spell_available(
-                CrusherSpell, BowserCrushSpell
-            ):
-                return True
-            if inventory.has_item(ToadstoolRecruitmentPrize) and spell_available(
-                PsychBombSpell
-            ):
+        for spell_prize in pool:
+            if spell_prize._spell in disabled_spells:
+                continue
+            owner = vanilla_spell_owner(spell_prize)
+            if owner is not None and inventory.has_item(owner):
                 return True
         return False
-    pool = [
-        StarRainSpellPrize,
-        GenoWhirlSpellPrize,
-        GenoFlashSpellPrize,
-        TerrorizeSpellPrize,
-        PoisonGasSpellPrize,
-    ]
-    if not world.settings.isflag_enabled(InfuseSpellElements):
-        pool.extend(
-            [
-                GenoBeamSpellPrize,
-                GenoBlastSpellPrize,
-                CrusherSpellPrize,
-                BowserCrushSpellPrize,
-                PsychBombSpellPrize,
-            ]
-        )
-    return inventory.has_one_of(pool)
+    return inventory.has_one_of(list(pool))
 
 
 def is_all_starting_chars_set(world: GameWorld, inventory: Inventory | None = None):

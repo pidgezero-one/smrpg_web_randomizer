@@ -37,6 +37,7 @@ script = EventScript([
 	JmpIfMarioInAir(["EVENT_3584_ret_0"]),
 	EnterArea(room_id=R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE, face_direction=NORTHEAST, x=24, y=25, z=0),
 	UnknownCommand(bytearray([0xFD, 0x49])),
+    RunEventAsSubroutine(E1260_NIMBUS_ENTRANCE_LOADER_SUBROUTINE),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetWalkingSpeed(FAST),
 		A_JumpToHeight(132),

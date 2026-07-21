@@ -36,6 +36,7 @@ from ...types.gameworld import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import PlacementException, place, collect_accessible_items
+from ...types.logic import Inventory
 from ...types.prize import (
     CharacterPrize,
     CoinQuantityPrize,
@@ -71,7 +72,6 @@ from ...progression.prizelocations import (
     MonstroSecondSuperJumpRewardLocation,
 )
 from ...types.flags import (
-    InfuseSpellElements,
     ReplaceItems,
     SeeYa,
     ShopQualities,
@@ -164,6 +164,7 @@ from ...types.prize import (
     SpellPrize,
     StarPiecePrize,
     BossFightPrize,
+    damaging_spell_prizes,
 )
 from ...progression.prizelocations import (
     StartingCharacter1,
@@ -608,15 +609,37 @@ def select_spells(
             and vanilla_spell_owner(loc.originally_held) in selected_roster
         ]
 
-    selected_spells = []
+    # Cached for the duration of this shuffle attempt: shuffle_rules() calls this
+    # once per location, and re-rolling the pick on every call would hand each
+    # call a different spell pool (and so a different tier assignment).
+    if world._cached_spells is not None:
+        return world._cached_spells
+
+    forced_spells: list[type[Prize]] = []
     if SuperJumpSpellPrize in available_spells:
-        selected_spells.append(SuperJumpSpellPrize)
+        forced_spells.append(SuperJumpSpellPrize)
     max_characters = world.settings.get_flag(MaxCharacters).value
-    target_spell_count = min(27, 6 * max_characters) - len(selected_spells)
-    remaining_spells = [a for a in available_spells if a not in selected_spells]
-    # Select random spells up to target count (or all available if fewer)
-    random.shuffle(remaining_spells)
-    selected_spells.extend(remaining_spells[:target_spell_count])
+    target_spell_count = min(27, 6 * max_characters) - len(forced_spells)
+    remaining_spells = [a for a in available_spells if a not in forced_spells]
+
+    # Mokura's transform needs one damaging spell somewhere in the seed. When the
+    # settings leave any damaging spell available, re-roll until the random pick
+    # actually lands one -- otherwise a roster small enough to only take a few
+    # spells (MaxCharacters 1 takes six) can draw all-utility by chance. If the
+    # settings exclude every damaging spell there is nothing to re-roll toward;
+    # shuffle_rules() raises on that below.
+    damaging_is_available = any(
+        issubclass(sp, SpellPrize) and sp.deals_damage() for sp in available_spells
+    )
+    while True:
+        random.shuffle(remaining_spells)
+        selected_spells = forced_spells + remaining_spells[:target_spell_count]
+        if not damaging_is_available or any(
+            issubclass(sp, SpellPrize) and sp.deals_damage() for sp in selected_spells
+        ):
+            break
+
+    world._cached_spells = selected_spells
     return selected_spells
 
 
@@ -767,7 +790,7 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
 
     # Every Bowser's Keep location gates on can_pass_obstacle_courses(), which in
     # vanilla learned-spell mode is satisfied only by recruiting a character who
-    # learns a non-elemental damage spell. No area gate is obliged to require one --
+    # learns a damage spell. No area gate is obliged to require one --
     # set them all to "always open" and none of these characters is gate-critical, so
     # they all land in MANDATORY_INCLUSIONS, which is filled by a *later* place()
     # call. The Keep is then unreachable for the entire progression pass, its four
@@ -780,24 +803,16 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         disabled_spells: set[type] = {
             m.value for m in world.settings.get_flag(AvailableSpells).disabled
         }
-        # Mirrors the vanilla branch of can_damage_enemies_with_spells().
-        nonelemental_owners: list[tuple[type[CharacterPrize], tuple[type, ...]]] = [
-            (MallowRecruitmentPrize, (StarRainSpell,)),
-            (GenoRecruitmentPrize, (GenoWhirlSpell, GenoBlastSpell)),
-            (BowserRecruitmentPrize, (PoisonGasSpell, TerrorizeSpell)),
-        ]
-        if not world.settings.isflag_enabled(InfuseSpellElements):
-            nonelemental_owners += [
-                (GenoRecruitmentPrize, (GenoBeamSpell, GenoFlashSpell)),
-                (BowserRecruitmentPrize, (CrusherSpell, BowserCrushSpell)),
-                (ToadstoolRecruitmentPrize, (PsychBombSpell,)),
-            ]
+        # Mirrors the vanilla branch of can_damage_enemies_with_spells(): every
+        # character who learns at least one still-available damage spell.
         # Sorted so the random pick below is reproducible for a given seed.
         qualified: list[type[CharacterPrize]] = sorted(
             {
                 owner
-                for owner, spells in nonelemental_owners
-                if any(spell not in disabled_spells for spell in spells)
+                for spell_prize in damaging_spell_prizes()
+                if spell_prize._spell not in disabled_spells
+                for owner in [vanilla_spell_owner(spell_prize)]
+                if owner is not None
                 and prize_to_name[owner] not in excluded_char_names
             },
             key=lambda cls: cls.__name__,
@@ -805,10 +820,8 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         if not qualified:
             raise ValueError(
                 "No character available in this seed can damage enemies with a "
-                "non-elemental spell, so Bowser's Keep would be unreachable. Include "
-                "Mallow, Geno or Bowser (or Toadstool, when spell elements are not "
-                "infused) and leave at least one of their non-elemental damage spells "
-                "available."
+                "spell, so Bowser's Keep would be unreachable. Include a character "
+                "and leave at least one of their damaging spells available."
             )
         if not progression_required_chars & set(qualified):
             # Cached for the duration of this shuffle attempt for the same reason as
@@ -889,69 +902,31 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     # --- Spells, derived from the final roster ------------------------------
     selected_spells = select_spells(world, selected_roster)
 
-    non_elemental_spell_prizes: list[type[Prize]] = [
-        prize
-        for prize in [
-            StarRainSpellPrize,
-            GenoWhirlSpellPrize,
-            GenoBlastSpellPrize,
-            TerrorizeSpellPrize,
-            PoisonGasSpellPrize,
-        ]
-        if prize in selected_spells
+    selected_damaging_spells: list[type[SpellPrize]] = [
+        prize for prize in damaging_spell_prizes() if prize in selected_spells
     ]
-    if not world.settings.isflag_enabled(InfuseSpellElements):
-        non_elemental_spell_prizes.extend(
-            [
-                prize
-                for prize in [
-                    GenoBeamSpellPrize,
-                    GenoFlashSpellPrize,
-                    CrusherSpellPrize,
-                    BowserCrushSpellPrize,
-                    PsychBombSpellPrize,
-                ]
-                if prize in selected_spells
-            ]
-        )
-    if len(non_elemental_spell_prizes) == 0:
+    if len(selected_damaging_spells) == 0:
         raise ValueError(
-            "No non-elemental spells are available to assign to progress rules. At least one non-elemental spell must be included in the seed for progression purposes."
+            "No damaging spells are available to assign to progress rules. At least "
+            "one spell that damages enemies must be included in the seed for "
+            "progression purposes."
         )
 
-    # Map non-elemental spells to their owning character, used to bias the
-    # progression non-elemental selection toward explicit starters.
-    spell_to_character: dict[type[Prize], type[CharacterPrize]] = {
-        StarRainSpellPrize: MallowRecruitmentPrize,
-        GenoWhirlSpellPrize: GenoRecruitmentPrize,
-        GenoBlastSpellPrize: GenoRecruitmentPrize,
-        TerrorizeSpellPrize: BowserRecruitmentPrize,
-        PoisonGasSpellPrize: BowserRecruitmentPrize,
-        GenoBeamSpellPrize: GenoRecruitmentPrize,
-        GenoFlashSpellPrize: GenoRecruitmentPrize,
-        CrusherSpellPrize: BowserRecruitmentPrize,
-        BowserCrushSpellPrize: BowserRecruitmentPrize,
-        PsychBombSpellPrize: ToadstoolRecruitmentPrize,
-    }
-
-    # Place up to 2 non-elemental spells in the progression tier so
-    # MokuraBossFight (and similar) can be placed (they require a non-elemental
-    # spell to be accessible). These come from selected_spells, which is already
+    # Place up to 2 damaging spells in the progression tier so MokuraBossFight
+    # (and similar) can be placed (they require a damaging spell to be
+    # accessible). These come from selected_spells, which is already
     # roster-derived, so their owners are guaranteed to be in the seed. Prefer
     # explicit-starter-owned spells.
     preferred_spells = [
-        s for s in non_elemental_spell_prizes
-        if spell_to_character.get(s) in explicit_starter_prizes
+        s
+        for s in selected_damaging_spells
+        if vanilla_spell_owner(s) in explicit_starter_prizes
     ]
-    other_spells = [
-        s for s in non_elemental_spell_prizes if s not in preferred_spells
-    ]
+    other_spells = [s for s in selected_damaging_spells if s not in preferred_spells]
     random.shuffle(preferred_spells)
     random.shuffle(other_spells)
-    ordered_non_elementals = preferred_spells + other_spells
-    progression_nonelementals = ordered_non_elementals[
-        : min(2, len(ordered_non_elementals))
-    ]
+    ordered_damaging = preferred_spells + other_spells
+    progression_damaging_spells = ordered_damaging[: min(2, len(ordered_damaging))]
 
     # Assign selected spells to tiers. Super Jump is intentionally NOT forced
     # into the progression tier: it gates only its own two Monstro reward
@@ -959,7 +934,7 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     # is a later, non-progression recruit. As a mandatory inclusion, place()'s
     # character-first ordering guarantees Mario is recruited before it is placed.
     for spell in selected_spells:
-        if spell in progression_nonelementals:
+        if spell in progression_damaging_spells:
             progress_rules.append(spell)
         else:
             should_otherwise_include_rules.append(spell)
@@ -1186,6 +1161,38 @@ def should_shuffle(location: PrizeLocation, world: GameWorld) -> bool:
     return True
 
 
+def _maybe_replace_bad_item_with_coin(prize: "Prize", world: GameWorld) -> "Prize":
+    """Swap the worst consumables for coins worth their price when ReplaceItems
+    is on. Independent of ShuffleItems: a vanilla-placed chest item is eligible
+    too. Non-item prizes (bosses, characters, key items, good items) pass through.
+    """
+    if not (
+        world.settings.isflag_enabled(ReplaceItems) and isinstance(prize, ItemPrize)
+    ):
+        return prize
+    item = prize.item
+    if issubclass(
+        item,
+        (
+            MushroomItem,
+            HoneySyrupItem,
+            AbleJuiceItem,
+            YoshiCookieItem,
+            PureWaterItem,
+            FroggieDrinkItem,
+            WiltShroomItem,
+            RottenMushItem,
+            MoldyMushItem,
+        ),
+    ) or (
+        issubclass(item, MushroomItem2)
+        and Status.INVINCIBLE
+        not in world.get_item(MushroomItem2).status_immunities
+    ):
+        return CoinPrize(world.get_item(item).price)
+    return prize
+
+
 def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
     # empty locations don't return anything
     if location.originally_held is None:
@@ -1211,7 +1218,7 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
         return None
     if issubclass(
         location.originally_held, RegularFireworksPrize
-    ) and not world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA):
+    ) and world.settings.is_flag_value(FireworksSetting, FireworksOptions.PROGRESSIVE):
         return ProgressiveFireworksPrize()
     if issubclass(
         location.originally_held, StarEggPrize
@@ -1251,29 +1258,7 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
         else:
             prize = RandomPrizeSubstitute().generate(world, location)
 
-        if world.settings.isflag_enabled(ReplaceItems) and isinstance(
-            prize, ItemPrize
-        ):
-            item = prize.item
-            if issubclass(
-                item,
-                (
-                    MushroomItem,
-                    HoneySyrupItem,
-                    AbleJuiceItem,
-                    YoshiCookieItem,
-                    PureWaterItem,
-                    FroggieDrinkItem,
-                    WiltShroomItem,
-                    RottenMushItem,
-                    MoldyMushItem,
-                ),
-            ) or (
-                issubclass(item, MushroomItem2)
-                and Status.INVINCIBLE
-                not in world.get_item(MushroomItem2).status_immunities
-            ):
-                prize = CoinPrize(world.get_item(item).price)
+        prize = _maybe_replace_bad_item_with_coin(prize, world)
         return prize
 
     return location.originally_held()
@@ -1470,6 +1455,7 @@ def shuffle_prizes(world: GameWorld) -> None:
     # shuffle_rules() calls within this attempt.
     world._cached_char_fill = None
     world._cached_spell_damage_char = None
+    world._cached_spells = None
 
     rules = shuffle_rules(world)
 
@@ -1770,7 +1756,17 @@ def shuffle_prizes(world: GameWorld) -> None:
                     for p in tier
                 )
                 if prize_exists_in_pool:
-                    loc.set_prize(loc.originally_held())
+                    prize = loc.originally_held()
+                    # ReplaceItems runs even without item shuffle: swap the worst
+                    # consumables for coins wherever a coin can actually be held
+                    # (chests, most NPC/event spots). A location that can't grant
+                    # a coin — e.g. StartingItem — keeps its item.
+                    swapped = _maybe_replace_bad_item_with_coin(prize, world)
+                    if swapped is not prize and not loc.can_accept(
+                        swapped, Inventory(), world
+                    ):
+                        swapped = prize
+                    loc.set_prize(swapped)
                     remove_prize_from_pool(pool, loc.originally_held, world)
 
     # Shuffle the prize pools
@@ -1821,6 +1817,53 @@ def shuffle_prizes(world: GameWorld) -> None:
     shuffle_filter = lambda loc: should_shuffle(loc, world)
     priority_classes = _build_priority_classes(world)
 
+    # Key-item pool health. Key items (KeyItemsAnywhere off) may only go in
+    # key-item locations, 1:1. Guard the count invariant, then — under POP —
+    # open gates if boss pinning islanded some key slots (see solvability.py).
+    from ...types.prize import KeyPrize
+    from ..solvability import (
+        SettingsRelaxed,
+        assert_key_pool_balanced,
+        assert_key_pool_placeable,
+        relax_key_pool_deadlock,
+    )
+    all_pool = [p for prizes in pool.values() for p in prizes]
+    key_pool = [p for p in all_pool if isinstance(p, KeyPrize)]
+    non_key_pool = [p for p in all_pool if not isinstance(p, KeyPrize)]
+    assert_key_pool_balanced(world, key_pool)
+    key_gate_changes = relax_key_pool_deadlock(world, key_pool, non_key_pool)
+    if key_gate_changes:
+        for message in key_gate_changes:
+            world.settings.force_override(message)
+        # Gates are baked into ROM by the pre-shuffler, so rebuild the world for
+        # the change to reach the game and not just placement (see _shuffle_items).
+        raise SettingsRelaxed(key_gate_changes)
+    assert_key_pool_placeable(world, key_pool, non_key_pool)
+
+    # Win condition "Beat Smithy": defeating Smithy ends the game the instant it
+    # happens, so nothing is ever gated behind him. Pull his fight out of the pool
+    # and place it in its own pass AFTER every accessibility-relevant prize (below,
+    # just before the LOW_PRIORITY filler pass that unlocks nothing). Every other
+    # location is therefore filled and proven reachable without beating Smithy, so
+    # his slot can block nothing. Placement is 1:1 boss-prize -> boss-location and
+    # BossFightLocation rejects non-boss prizes, so the leftover boss slot stays
+    # reserved until the dedicated pass. If an attempt leaves only a stranding slot
+    # for him, that pass raises PlacementException and _shuffle_items re-rolls.
+    # (Only fires when Smithy is actually in the boss pool, i.e. BossShuffle is on;
+    # otherwise he keeps his vanilla location and this is a no-op.)
+    from ...types.flags import WinCondition, WinConditions
+    from ...progression.prizes import SmithyBossFight
+
+    deferred_smithy: Prize | None = None
+    if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
+        for tier_list in pool.values():
+            for i, item in enumerate(tier_list):
+                if isinstance(item, SmithyBossFight):
+                    deferred_smithy = tier_list.pop(i)
+                    break
+            if deferred_smithy is not None:
+                break
+
     try:
         place(
             world,
@@ -1865,6 +1908,17 @@ def shuffle_prizes(world: GameWorld) -> None:
             force_frog_disciple=True,
             location_filter=shuffle_filter,
         )
+        # Dead last among everything that affects accessibility: the Smithy fight
+        # (WinCondition == SMITHY). Runs before LOW_PRIORITY so the reserved boss
+        # slot is filled before that pass's overflow check, and because LOW_PRIORITY
+        # is pure filler that unlocks nothing.
+        if deferred_smithy is not None:
+            place(
+                world,
+                [deferred_smithy],
+                on_placed=lambda i, l: _on_item_placed(world, i, l),
+                location_filter=shuffle_filter,
+            )
         place(
             world,
             pool[LOW_PRIORITY],

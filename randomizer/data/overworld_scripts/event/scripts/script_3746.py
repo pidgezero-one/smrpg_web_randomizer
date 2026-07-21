@@ -37,6 +37,7 @@ script = EventScript([
 	JmpIfBitSet(DIRECTIONAL_7049_0, ["EVENT_3746_run_event_as_subroutine_9"]),
 	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE),
 	EnterArea(room_id=R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE, face_direction=SOUTHWEST, x=28, y=17, z=0),
+    RunEventAsSubroutine(E1260_NIMBUS_ENTRANCE_LOADER_SUBROUTINE),
 	FadeInFromBlack(sync=True),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_FloatingOff(),

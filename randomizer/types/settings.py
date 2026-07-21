@@ -447,6 +447,27 @@ class Settings:
 
         return None
 
+    @staticmethod
+    def default_value_string(flag: Flag) -> str:
+        """Render a flag's DEFAULT value the way it appears in the flag string.
+
+        Mirrors the value portion of _encode_single_flag, but for the default
+        and without the at-default short-circuit. A boolean has no value in the
+        flag string (its presence means enabled), so it renders as "true".
+        Used for the setting tooltips on the randomize page.
+        """
+        if isinstance(flag, BooleanFlag):
+            return "true" if flag.default else "false"
+        if isinstance(flag, RangeFlag):
+            return str(flag.default)
+        if isinstance(flag, SelectOneFlag):
+            return flag.default.name.lower()
+        if isinstance(flag, CategorizationFlagWithOrdinance):
+            return Settings._encode_ordinance_hash(type(flag)())
+        if isinstance(flag, CategorizationFlag):
+            return Settings._encode_categorization_hash(type(flag)())
+        return ""
+
     def _get_all_subcategories(
         self, exclude_cosmetic: bool = False
     ) -> list[type[FlagCategory]]:

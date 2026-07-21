@@ -693,7 +693,7 @@ class AvailableSpells(CategorizationFlag[LearnableSpellEnum]):
 <br>
 <br>Excluded spells are not replaced in allies' learnsets by other spells, so some allies will learn less than six total.
 <br>
-<br>Note: You must include at least one of Geno Whirl, Star Rain, Terrorize, or Poison Gas to ensure you can transform Mokura regardless of your other settings."""
+<br>Note: You must leave at least one spell that damages enemies available, so that Mokura can be transformed. Any damaging spell works regardless of its element."""
     _default = {o: True for o in LearnableSpellEnum.__members__.values()}
     _id = "avail_spells"
 
@@ -841,7 +841,10 @@ class ShuffleHillFlowers(BooleanFlag):
 <br>
 <br>There are no missable flowers on Booster Hill in the randomizer. You can return to the hill as many times as you like to collect any you missed the first time."""
     _id = "hill"
-    _requires_all = [(ShuffleItems(), True)]
+    _requires_all = [
+        (ShuffleItems(), True),
+        (ItemQuality(), [o for o in ItemQualityOptions if o != ItemQualityOptions.COMPLETELY_EMPTY]),
+    ]
 
 
 # ✅
@@ -999,7 +1002,6 @@ class Remake(BooleanFlag):
 <br>Defeating all seven bosses that have a postgame re-fight will unlock a check in Mario's Pad that normally contains the Stay Voucher (shuffled as a key item check)."""
     _id = "postgame"
     _remake = False
-    _requires_all = [(ShuffleItems(), True)]
 
 
 # ******** Progression Gating
@@ -1892,7 +1894,7 @@ class ShopQuality(SelectOneFlag[ShopQualities]):
 <br>
 <br><b>Random items</b>: Any item can appear in a shop, but not all items will appear in shops. Optionally, you can favour low-impact items (i.e. mid mushrooms) to prevent this feature from making the game too easy. Items which are meant to only be obtained once (Lucky Jewel, Mystery Egg, Star Egg, etc) will never appear in shops.
 <br>
-<br><b>All items</b>: Every non-key item in the game will appear in at least one shop. The Star Egg will not be purchaseable if "No Star Egg" is enabled.
+<br><b>All items</b>: Every non-key item in the game will appear in at least one shop, except for items excluded by T(noegg), T(restrict_monstro), and S(nosell).
 <br>
 <br><b>Completely empty</b>: All shops will just sell the Goodie Bag."""
     choices = [o for o in ShopQualities]
@@ -2211,12 +2213,13 @@ class Punchinello2BobombDifficulty(SelectOneFlag[Punchinello2BobombDifficultyOpt
 # ✅
 class SkipBossFights(BooleanFlag):
     _name = "Allow alternate boss fight win conditions"
-    _description = """If the relevant boss has a star piece, the following actions will be valid to obtain the star piece: 
+    _description = """The following actions will be valid to skip a boss fight and still achieve its unlocks and/or star pieces: 
 <ul>
 <li> Perform Mack Skip</li>
 <li> Win the Booster Tower curtain game</li>
 <li> Win the Nimbus Castle statue game</li>
 <li> Defeat the third mimic by failing a slot machine chest</li>
+<li> Knock out the statue room boss (in the hallway) or the Land's End cloud with an EXP star</li>
 </ul>"""
     _id = "skips"
 

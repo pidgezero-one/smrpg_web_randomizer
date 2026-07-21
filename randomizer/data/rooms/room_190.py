@@ -479,7 +479,7 @@ room = Room(
         ),
         RegularNPC(  # 10
             npc=npcs.EMPTY_NPC_3,
-            initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
+            initiator=EventInitiator.TOUCH_ANY_SIDE,
             event_script=E0300_GENERIC_NO_HELP_MESSAGE,
             action_script=A0015_DO_NOTHING,
             visible=True,

@@ -34,5 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpToEvent(E0375_TALK_TO_CHANCELLOR_AFTER_MUSHROOM_KINGDOM_BOSS)
+    JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["no_mack_skip"]),
+	JmpToEvent(E0375_TALK_TO_CHANCELLOR_AFTER_MUSHROOM_KINGDOM_BOSS),
+    Return(identifier="no_mack_skip")
 ])

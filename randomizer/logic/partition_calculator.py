@@ -1811,9 +1811,9 @@ def _calculate_ally_buffer_size(
         sid = protagonist_base + offset
         try:
             if is_mold:
-                v = min_vram_from_mold_for_sprite(world, sid, prop_id)
+                v = min_vram_from_mold_for_sprite(world, sid, prop_id, player_sprite=True)
             else:
-                v = min_vram_from_sequence_for_sprite(world, sid, prop_id)
+                v = min_vram_from_sequence_for_sprite(world, sid, prop_id, player_sprite=True)
             vram_values.append(v)
         except (IndexError, AssertionError):
             pass
@@ -2137,13 +2137,13 @@ def analyze_room_partition(
                     offset, prop_id, is_mold = sprites_dict[state]
                     if is_mold:
                         try:
-                            v = npc.min_vram_from_mold(world, prop_id, offset)
+                            v = npc.min_vram_from_mold(world, prop_id, offset, player_sprite=True)
                             vram_values.append(v)
                         except (IndexError, AssertionError):
                             pass
                     else:
                         try:
-                            v = npc.min_vram_from_sequence(world, prop_id, offset)
+                            v = npc.min_vram_from_sequence(world, prop_id, offset, player_sprite=True)
                             vram_values.append(v)
                         except (IndexError, AssertionError):
                             pass
@@ -2156,13 +2156,13 @@ def analyze_room_partition(
                         offset, prop_id, is_mold = sprites_dict[state]
                         if is_mold:
                             try:
-                                v = npc.min_vram_from_mold(world, prop_id, offset)
+                                v = npc.min_vram_from_mold(world, prop_id, offset, player_sprite=True)
                                 vram_values.append(v)
                             except (IndexError, AssertionError):
                                 pass
                         else:
                             try:
-                                v = npc.min_vram_from_sequence(world, prop_id, offset)
+                                v = npc.min_vram_from_sequence(world, prop_id, offset, player_sprite=True)
                                 vram_values.append(v)
                             except (IndexError, AssertionError):
                                 pass

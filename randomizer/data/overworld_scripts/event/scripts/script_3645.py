@@ -36,6 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	SetBit(DIRECTIONAL_7049_0),
 	EnterArea(room_id=R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE, face_direction=SOUTH, x=24, y=18, z=2),
+    RunEventAsSubroutine(E1260_NIMBUS_ENTRANCE_LOADER_SUBROUTINE),
 	JmpToEvent(E0282_UNKNOWN_PIPE_VAULT),
 	Return()
 ])

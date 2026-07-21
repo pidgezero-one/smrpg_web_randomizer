@@ -37,6 +37,7 @@ script = EventScript([
 	SetBit(DIRECTIONAL_7049_0),
 	EnableControls([]),
 	EnterArea(room_id=R369_NIMBUS_LAND_ENTRANCE_WWARP_TRAMPOLINE, face_direction=SOUTH, x=28, y=27, z=2),
+    RunEventAsSubroutine(E1260_NIMBUS_ENTRANCE_LOADER_SUBROUTINE),
 	RunEventAsSubroutine(E0282_UNKNOWN_PIPE_VAULT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
 	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_3864_ret_7"]),

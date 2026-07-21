@@ -104,7 +104,7 @@ script = EventScript([
 		A_Pause(2),
 		A_TurnClockwise45DegreesNTimes(255)
 	]),
-	SetSyncActionScript(NPC_4, A0014_FLOATING_CHEST),
+	SetSyncActionScript(NPC_4, A0014_FLOATING_CHEST, identifier="floating_chest_in_sunken_ship"),
 	JmpIfBitSet(UNKNOWN_FIRST_PRE_BOSS_SUNKEN_SHIP_ROOM_7058_5, ["EVENT_3280_run_event_as_subroutine_23"]),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_Pause(4),

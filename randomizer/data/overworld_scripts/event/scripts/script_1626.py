@@ -44,7 +44,7 @@ script = EventScript([
     Jmp(["EVENT_1626_store_item_amount_7000_6"]),
     SetBit(COOKIE_TRADER_CHECKED, identifier="EVENT_1626_purtend_store_check_allowed"),
 	RunDialog(dialog_id=DI1148_FREE_ITEM, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
-    RunEventAsSubroutine(E0180_NPC_QUEST_3_CONTAINER),
+    RunEventAsSubroutine(E0181_NPC_QUEST_4_CONTAINER),
     Return(),
 	CopyVarToVar(from_var=ACTIVE_NPC, to_var=PRIMARY_TEMP_7000, identifier="EVENT_1626_store_item_amount_7000_6"),
 	CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=TEMP_70AE),

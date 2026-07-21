@@ -128,7 +128,7 @@ class Room(RoomBase):
                 continue
             sid = protagonist_base + offset
             try:
-                v = min_vram_from_sequence_for_sprite(world, sid, seq_id)
+                v = min_vram_from_sequence_for_sprite(world, sid, seq_id, player_sprite=True)
             except (IndexError, AssertionError):
                 continue
             labelled_values.append((v, f"default {label} (sprite {sid})"))
@@ -149,11 +149,11 @@ class Room(RoomBase):
             props = sprite.animation.properties
             if is_mold:
                 if prop_id < len(props.molds):
-                    v = min_vram_from_mold_for_sprite(world, sid, prop_id)
+                    v = min_vram_from_mold_for_sprite(world, sid, prop_id, player_sprite=True)
                     labelled_values.append((v, f"extra {state.name} mold {prop_id} sprite {sid}"))
             else:
                 if prop_id < len(props.sequences):
-                    v = min_vram_from_sequence_for_sprite(world, sid, prop_id)
+                    v = min_vram_from_sequence_for_sprite(world, sid, prop_id, player_sprite=True)
                     labelled_values.append((v, f"extra {state.name} seq {prop_id} sprite {sid}"))
 
         if not labelled_values:

@@ -596,9 +596,15 @@ class NPC:
         return self.base._min_vram_size
 
     def min_vram_from_mold(
-        self, world: "GameWorld", mold_id: int, offset: int = 0
+        self, world: "GameWorld", mold_id: int, offset: int = 0,
+        player_sprite: bool = False,
     ) -> int:
-        """Get min vram size from a certain sprite mold ID"""
+        """Get min vram size from a certain sprite mold ID.
+
+        Pass `player_sprite=True` when sizing the protagonist's ally buffer — the
+        VramStore 7 path uploads whole 16x16 tiles, so sparse ones aren't packed.
+        See utils.npcs.min_vram_from_mold_geometry.
+        """
         # Deferred: utils.npcs imports this module for BossNPC.
         from ..utils.npcs import min_vram_from_mold_geometry
 
@@ -609,20 +615,24 @@ class NPC:
             f"num_molds={len(sprite.animation.properties.molds)})"
         )
         return min_vram_from_mold_geometry(
-            sprite.animation.properties.molds[mold_id]
+            sprite.animation.properties.molds[mold_id], player_sprite
         )
 
     def min_vram_from_sequence(
-        self, world: "GameWorld", sequence_id: int, offset: int = 0
+        self, world: "GameWorld", sequence_id: int, offset: int = 0,
+        player_sprite: bool = False,
     ) -> int:
-        """Get min vram size from a certain sprite sequence ID"""
+        """Get min vram size from a certain sprite sequence ID.
+
+        Pass `player_sprite=True` when sizing the protagonist's ally buffer.
+        """
         sprite = world.get_sprite(self.base.sprite_id + offset)
         assert sequence_id < len(sprite.animation.properties.sequences)
         min_vram = 0
         frames = sprite.animation.properties.sequences[sequence_id].frames
         for frame in frames:
             min_vram = max(
-                min_vram, self.min_vram_from_mold(world, frame.mold_id, offset)
+                min_vram, self.min_vram_from_mold(world, frame.mold_id, offset, player_sprite)
             )
         return min_vram
 

@@ -13,7 +13,8 @@ from randomizer.types.flags import (
     KeyItemsAnywhere,
     StarPieceAvailability,
     SeeYa,
-    ShuffleShops
+    ShuffleShops,
+    ShuffleItems,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     CompareVarToConst,
@@ -647,8 +648,18 @@ def set_locations(world: GameWorld) -> None:
         FinalBossFight: FinalBossFight(),
     }
 
-    if not (world.settings.isflag_enabled(SeeYa) and not world.settings.isflag_enabled(ShuffleShops)):
-        # If the user wants to start with See Ya but not shuffle shops, it will be pre-bought from the frog disciple.
+    # SeeYa removes SeeYaPrize (Frog Disciple 1's item). The shop only shrinks to
+    # 4 items when it is NOT fully shuffled: if BOTH shops and items are shuffled
+    # the pool has a surplus, so the 5th slot fills normally and all 5 locations
+    # must stay. Only drop FrogDiscipleLocation1 when SeeYa is on and the shop is
+    # effectively unshuffled (shops off OR items off). This predicate MUST match
+    # the FROG_DISCIPLE_ITEM_5_PURCHASED sale-bit condition in gameworld.py — a
+    # 4-item shop with the bit unset opens a glitched empty menu.
+    frog_shop_reduced = world.settings.isflag_enabled(SeeYa) and not (
+        world.settings.isflag_enabled(ShuffleShops)
+        and world.settings.isflag_enabled(ShuffleItems)
+    )
+    if not frog_shop_reduced:
         world.locations[FrogDiscipleLocation1] = FrogDiscipleLocation1()
 
 

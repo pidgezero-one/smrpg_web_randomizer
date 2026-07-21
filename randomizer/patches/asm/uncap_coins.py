@@ -3,10 +3,11 @@ widen the X-menu coin display to 4 digits to match.
 
 Reproduces the legacy ``open_mode.json`` coin-cap + coin-display edits so the
 JSON entries can be retired. Always applied (the legacy base patch raised the
-cap and widened the display unconditionally for every seed). Bytes are
-identical to the JSON entries — this is a pure relocation for traceability,
-verified IDENTICAL with ``manage.py diff_open_mode --module
-randomizer.patches.asm.uncap_coins``.
+cap and widened the display unconditionally for every seed). All bytes match
+the JSON entries EXCEPT storage site 4 (the Moleville minecart cash-out),
+which the JSON never touched — so ``diff_open_mode`` reports that one clamp as
+an intentional extra edit. Everything else is a pure relocation for
+traceability.
 
 This is the coin analogue of :mod:`uncap_max_fp`, which bundles the FP cap with
 its display widening the same way.
@@ -34,6 +35,13 @@ and a vanilla disassembly of ``/mnt/d/smrpg.sfc``:
    ``BMI`` variant).  ``E7 03 30 03 A9 E7 03`` -> ``0F 27 30 03 A9 0F 27``
 3. ``$C3:3F03`` (file ``0x33F03``) — X-menu add (delta = ``$0947``; vanilla
    ``CMP #$03E8``).  ``E8 03 90 03 A9 E7 03`` -> ``0F 27 90 03 A9 0F 27``
+4. ``$C3:AE73`` (file ``0x3AE74``) — Moleville Mountain minecart cash-out
+   (delta = ``$0A0B``, the ride's collected-coin counter: ``STZ`` at start
+   ``$C3:93BD``, ``INC`` per pickup ``$C3:B432``, ``LDA`` + clamp-add here).
+   Vanilla ``CMP #$03E8`` like the X-menu site:
+   ``E8 03 90 03 A9 E7 03`` -> ``0F 27 90 03 A9 0F 27``.  This site was NOT in
+   the legacy ``open_mode.json`` clamp set, so vanilla/legacy both reset any
+   >999 total down to 999 after the ride — a real bug, fixed here.
 
 DISPLAY — X-menu coin field widened (one extra digit)
 -----------------------------------------------------
@@ -64,6 +72,9 @@ def get_patch() -> dict[int, bytes]:
         0x29319: bytes([0x0F, 0x27, 0x30, 0x03, 0xA9, 0x0F, 0x27]),
         # $C3:3F03 — X-menu add-coins clamp (vanilla CMP #$03E8)
         0x33F03: bytes([0x0F, 0x27, 0x90, 0x03, 0xA9, 0x0F, 0x27]),
+        # $C3:AE73 — Moleville minecart cash-out clamp (vanilla CMP #$03E8);
+        # not in legacy open_mode.json, so it reset >999 totals to 999.
+        0x3AE74: bytes([0x0F, 0x27, 0x90, 0x03, 0xA9, 0x0F, 0x27]),
 
         # === Display: X-menu coin field widened by one digit ===
         # LDX #$4316 / STX $62 / JSR $7902 / LDX #$4316

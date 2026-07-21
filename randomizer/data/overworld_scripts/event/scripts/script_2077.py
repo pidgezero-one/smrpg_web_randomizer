@@ -162,7 +162,6 @@ script = EventScript([
 	SetSyncActionScript(NPC_1, A1006_DOJO_PERMA_JUMP),
 	ApplyTileModToLevel(use_alternate=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=32),
 	SetBit(DOJO_BOSS_4_DEFEATED),
-    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),
 	RunEventAsSubroutine(E1216_DOJO_4_BOSS_UNLOCKS),
 	SetVarToConst(PRIMARY_TEMP_7000, 517),

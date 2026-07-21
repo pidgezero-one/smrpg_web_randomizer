@@ -96,5 +96,6 @@ script = MonsterScript([
 	StartCounterCommands(),
 	IfHPBelow(0),
 	RunObjectSequence(3),
-	RemoveTarget(SELF)
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript()
 ])

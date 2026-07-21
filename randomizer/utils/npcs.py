@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
 
-def min_vram_from_mold_geometry(mold: Mold) -> int:
+def min_vram_from_mold_geometry(mold: Mold, player_sprite: bool = False) -> int:
     """The min_vram_size a single mold requires. Canonical VRAM sizing rule.
 
     The engine hands a cannot_clone NPC `4 * (min_vram_size + 1)` 16x16 tile
@@ -26,56 +26,73 @@ def min_vram_from_mold_geometry(mold: Mold) -> int:
     multiplied by 4 at $C0:8CF3). A slot holds four 8x8 subtiles, so capacity is
     `16 * (min_vram_size + 1)` subtiles and the baseline is 16.
 
-    Count SUBTILES, not 16x16 tiles. A mold tile only carries the subtiles its
-    presence bitmask marks (ROM byte0 bits 7-4) — an absent quadrant occupies no
-    VRAM. Vanilla pins the unit exactly: sprite 48 ships as CROCO_NPC_2
-    (min_vram 0, plays only sequence 5, max 14 subtiles) and CROCO_NPC
-    (min_vram 1, plays sequences 4/6, max 18 subtiles); Yaridovich (40 subtiles)
-    ships min_vram 2. Sequence 5's mold 17 has five tiles but only 14 subtiles,
-    the same as four-tile mold 16 — counting tiles inflates it to 1 and overruns
-    room 206's cursor into the treasure-chest buffer.
+    Two render paths pack that capacity differently, so `player_sprite` selects
+    the unit:
+
+    - NPC clone/dedicated path (default): packs only the subtiles a tile actually
+      carries. A mold tile's presence bitmask (ROM byte0 bits 7-4) marks which of
+      its four 8x8 quadrants exist; absent ones occupy no VRAM. Vanilla pins this:
+      sprite 48 ships as CROCO_NPC_2 (min_vram 0, plays only sequence 5, max 14
+      subtiles) and CROCO_NPC (min_vram 1, sequences 4/6, max 18 subtiles);
+      Yaridovich (40 subtiles) ships min_vram 2. Sequence 5's mold 17 has five
+      tiles but only 14 subtiles — counting tiles inflates it to 1 and overruns
+      room 206's cursor into the treasure-chest buffer.
+
+    - Protagonist path (`player_sprite=True`): the active character renders through
+      VramStore 7's SA-1 bulk-DMA path, which uploads whole 16x16 tiles — every
+      tile reserves all four quadrants whether or not they're populated. Peach's
+      DOWN_PIPE pose (sprite 964 mold 30) is 7 tiles but only 14 present subtiles;
+      packed it would read as 0, but in-game it overflows a size-1 ally buffer and
+      the save-point NPC overwrites her. 7 tiles reserve 28 subtiles -> 2 units.
     """
     if mold.gridplane:
         return 0
-    subtiles = sum(
-        1
-        for tile in mold.tiles
-        if isinstance(tile, Tile)
-        for subtile in tile.subtile_bytes
-        if subtile is not None
-    )
-    return ceil(max(0, subtiles - 16) / 16)
+    tiles = [tile for tile in mold.tiles if isinstance(tile, Tile)]
+    if player_sprite:
+        reserved = 4 * len(tiles)
+    else:
+        reserved = sum(
+            1 for tile in tiles for subtile in tile.subtile_bytes if subtile is not None
+        )
+    return ceil(max(0, reserved - 16) / 16)
 
 
-def min_vram_from_sequence_for_sprite(world: "GameWorld", sprite_id: int, sequence_id: int) -> int:
+def min_vram_from_sequence_for_sprite(
+    world: "GameWorld", sprite_id: int, sequence_id: int, player_sprite: bool = False
+) -> int:
     """Compute min_vram_from_sequence for a given sprite ID and sequence.
 
     This is a standalone version of NPC.min_vram_from_sequence that works
-    from a sprite_id rather than requiring an NPC instance.
+    from a sprite_id rather than requiring an NPC instance. Pass
+    `player_sprite=True` when sizing the protagonist's ally buffer — see
+    min_vram_from_mold_geometry.
     """
     sprite = world.get_sprite(sprite_id)
     assert sequence_id < len(sprite.animation.properties.sequences)
     molds = sprite.animation.properties.molds
     return max(
         (
-            min_vram_from_mold_geometry(molds[frame.mold_id])
+            min_vram_from_mold_geometry(molds[frame.mold_id], player_sprite)
             for frame in sprite.animation.properties.sequences[sequence_id].frames
         ),
         default=0,
     )
 
 
-def min_vram_from_mold_for_sprite(world: "GameWorld", sprite_id: int, mold_id: int) -> int:
+def min_vram_from_mold_for_sprite(
+    world: "GameWorld", sprite_id: int, mold_id: int, player_sprite: bool = False
+) -> int:
     """Compute min_vram_from_mold for a given sprite ID and mold ID.
 
     Standalone version of NPC.min_vram_from_mold — works from a sprite_id
     rather than requiring an NPC instance. Returns 0 if mold_id is out of range.
+    Pass `player_sprite=True` when sizing the protagonist's ally buffer.
     """
     sprite = world.get_sprite(sprite_id)
     molds = sprite.animation.properties.molds
     if mold_id >= len(molds):
         return 0
-    return min_vram_from_mold_geometry(molds[mold_id])
+    return min_vram_from_mold_geometry(molds[mold_id], player_sprite)
 
 
 # Per-character protagonist sprite base IDs.

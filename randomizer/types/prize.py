@@ -25,6 +25,7 @@ from ..data.physical_objects.items import (
 )
 
 from smrpgpatchbuilder.datatypes.items.classes import Item
+from smrpgpatchbuilder.datatypes.spells.enums import SpellType
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (
     EventScript,
 )
@@ -558,6 +559,27 @@ class SpellPrize(Prize):
     packet_replacement_ids: list[str]
     _fortune_type: FortuneEnum = FortuneEnum.SPELL
 
+    @classmethod
+    def deals_damage(cls) -> bool:
+        """True if this spell can actually damage an enemy.
+
+        Element is deliberately not considered. FORMLESS's transform into Mokura
+        is a counter on ``IfTargetedByCommand([COMMAND_SPECIAL])`` (monster script
+        147), so it fires for any spell regardless of element; Mokura itself only
+        *resists* Thunder/Jump and has 20 evade, so no element is a dead end.
+
+        Reads the vanilla class attributes on purpose. InfuseSpellElements and
+        CharacterSpellElements mutate the per-world spell *instances* via
+        ``world.get_spell(...)``, so this stays a fixed property of the spell and
+        does not depend on setup order.
+        """
+        spell = cls._spell
+        return (
+            spell._spell_type is SpellType.DAMAGE
+            and spell._target_enemies
+            and spell._power > 0
+        )
+
     def set_model(self, model: type[ItemNPC]) -> None:
         self._model = model
 
@@ -603,6 +625,18 @@ class SpellPrize(Prize):
     @property
     def hill_grant(self) -> EventScript:
         return EventScript([JmpToEvent(self._hill_grant_event_id)])
+
+
+def damaging_spell_prizes() -> list[type[SpellPrize]]:
+    """Every spell prize whose spell can damage an enemy, in a stable order.
+
+    Element is irrelevant here -- see SpellPrize.deals_damage(). Sorted by spell
+    index so the order never depends on class-definition or import order.
+    """
+    return sorted(
+        (p for p in SpellPrize.__subclasses__() if p.deals_damage()),
+        key=lambda p: p._spell._index,
+    )
 
 
 class BossFightHenchman:

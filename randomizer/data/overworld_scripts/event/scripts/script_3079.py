@@ -42,14 +42,31 @@ script = EventScript([
 	RunLevelupBonusSequence(),
 	FadeInFromBlack(sync=False),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B], identifier="EVENT_3079_enable_controls_7"),
-	JmpIfBitClear(DODO_PRESENT_IN_NIMBUS_HALL, ["EVENT_3079_jmp_to_event_15"]),
-	ClearBit(DODO_PRESENT_IN_NIMBUS_HALL),
 	JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_3079_jmp_to_event_15"]),
-	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["EVENT_3079_jmp_to_event_15"]),
+    
+	JmpIfBitClear(DODO_KOED_BY_EXP_STAR, ["second_exp_star_piece_check"]),
+	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["second_exp_star_piece_check"]),
 	SetBit(STATUE_KEEPER_STAR_PIECE),
 	RunEventAsSubroutine(E1230_STATUE_BOSS_UNLOCKS),
+	ClearBit(DODO_KOED_BY_EXP_STAR),
+	ClearBit(MOKURA_KOED_BY_EXP_STAR),
 	SetVarToConst(PRIMARY_TEMP_7000, 520),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
-	JmpToEvent(E3400_RESTART_MUSIC_AFTER_STAR_PIECE_SEQUENCE, identifier="EVENT_3079_jmp_to_event_15"),
+    
+	JmpIfBitClear(MOKURA_KOED_BY_EXP_STAR, ["EVENT_3079_jmp_to_event_15"], identifier="second_exp_star_piece_check"),
+	JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["EVENT_3079_jmp_to_event_15"]),
+	SetBit(LANDS_END_CLOUD_STAR_PIECE),
+	RunEventAsSubroutine(E1210_CLOUD_BOSS_UNLOCKS),
+	ClearBit(DODO_KOED_BY_EXP_STAR),
+	ClearBit(MOKURA_KOED_BY_EXP_STAR),
+	SetVarToConst(PRIMARY_TEMP_7000, 519),
+	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
+    
+
+	ClearBit(DODO_KOED_BY_EXP_STAR, identifier="EVENT_3079_jmp_to_event_15"),
+	ClearBit(MOKURA_KOED_BY_EXP_STAR),
+	JmpToEvent(E3400_RESTART_MUSIC_AFTER_STAR_PIECE_SEQUENCE),
+
+
 	Return()
 ])

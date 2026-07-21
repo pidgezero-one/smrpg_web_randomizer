@@ -34,7 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	DisableObjectTrigger(MEM_70A8),
-	RemoveObjectFromCurrentLevel(MEM_70A8),
+	DisableObjectTrigger(NPC_5),
+	DisableObjectTriggerInSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM),
+	RemoveObjectFromCurrentLevel(NPC_5),
+    RemoveObjectFromSpecificLevel(NPC_5, R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM),
     JmpToEvent(E0241_FREESTANDING_1_GRANT)
 ])

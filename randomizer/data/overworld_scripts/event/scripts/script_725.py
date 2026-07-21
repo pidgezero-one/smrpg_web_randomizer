@@ -35,7 +35,6 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ActionQueueAsync(target=NPC_0, subscript=[
-		A_SequenceLoopingOn(),
         A_FixedFCoordOn(),
 		A_WalkSouthPixels(4),
 		A_WalkEastPixels(8),

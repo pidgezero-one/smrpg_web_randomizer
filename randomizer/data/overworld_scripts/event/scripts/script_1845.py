@@ -35,8 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitClear(TEMP_7076_0, ["EVENT_1845_disable_trigger_3"]),
-	RunEventAsSubroutine(E0255_EXP_STAR_HIT),
-	Jmp(["EVENT_1845_jmp_if_bit_set_10"]),
+	JmpIfBitSet(LANDS_END_CLOUD_STAR_PIECE, ["exp_star_hit_LANDS_END_cloud"]),
+	SetBit(MOKURA_KOED_BY_EXP_STAR),
+	JmpToEvent(E0255_EXP_STAR_HIT, identifier="exp_star_hit_LANDS_END_cloud"),
 	DisableObjectTrigger(MEM_70A8, identifier="EVENT_1845_disable_trigger_3"),
 	ClearBit(TEMP_707C_5),
 	ClearBit(TEMP_707C_6),

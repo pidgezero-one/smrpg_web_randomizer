@@ -1,8 +1,9 @@
 {# Recursive template to show flag UI elements on randomize page. #}
 {# Split these into their own elements when we know how they're gonna work #}
+{% load flag_tags %}
 
 {% if flag.type == "boolean" %}
-    <div class="flag-container flag-container-checkbox {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">
+    <div class="flag-container flag-container-checkbox {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag|flag_tooltip:subcategory.id }}">
         <div class="form-check form-switch">
             <input type="checkbox" class="form-check-input flag-form-input flag-form-input-checkbox flag-{{ subcategory.id }}-{{ flag.id }}"
                 id="{{ subcategory.id }}.{{ flag.id }}" 
@@ -12,7 +13,7 @@
         </div>
     </div>
 {% elif flag.type == "number" %}
-    <div class="flag-container flag-container-number {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">
+    <div class="flag-container flag-container-number {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag|flag_tooltip:subcategory.id }}">
         <label for="{{ subcategory.id }}.{{ flag.id }}" >{{ flag.name }}:</label>
         <input type="number" class="flag-form-input form-control flag-form-input-number flag-{{ subcategory.id }}-{{ flag.id }}"
                 id="{{ subcategory.id }}.{{ flag.id }}"
@@ -22,7 +23,7 @@
                 name="{{ subcategory.id }}.{{ flag.id }}">
     </div>
 {% elif flag.type == "select_one" %}
-    <div class="flag-container flag-container-select {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">
+    <div class="flag-container flag-container-select {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag|flag_tooltip:subcategory.id }}">
         <div style="display: flex; gap: 0.5rem; align-items: flex-start;">
             <div style="flex: 1; min-width: 0;">
                 <label for="{{ subcategory.id }}.{{ flag.id }}" >{{ flag.name }}:</label><br/>
@@ -48,7 +49,7 @@
     </div>
 {% elif flag.type == "categorization" %}
     <div class="flag-container flag-container-list {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}"  id="{{ subcategory.id }}.{{ flag.id }}.container">
-        <label data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">{{ flag.name }}</label>
+        <label data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag|flag_tooltip:subcategory.id }}">{{ flag.name }}</label>
         <div class="multiselect-button-container">
             <button type="button" class="btn btn-light multiselect-select-all">Select All</button>
             <div class="separator">
@@ -73,7 +74,7 @@
     </div>
 {% elif flag.type == "categorization_with_ordinance" %}
     <div class="flag-container flag-container-ordinance {% for mode in flag.modes %} flag-{{ mode }}{% endfor %}" id="{{ subcategory.id }}.{{ flag.id }}.container">
-        <label data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag.description }}">{{ flag.name }}</label>
+        <label data-bs-toggle="tooltip" data-bs-placement="auto" data-bs-html="true" title="{{ flag|flag_tooltip:subcategory.id }}">{{ flag.name }}</label>
         <div class="ordinance-option-container" id="{{ subcategory.id }}.{{ flag.id }}">
             {% for choice in flag.options_dict %}
             <div class="ordinance-option form-check">

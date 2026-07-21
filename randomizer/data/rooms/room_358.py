@@ -129,7 +129,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 2
             npc=npcs.STATIC_FROG_COIN_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
@@ -156,7 +157,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            cannot_clone=True),
         RegularNPC( # 3
             npc=npcs.FALLING_STEPPING_BRIDGE_BLOCK_NPC_3,
             initiator=EventInitiator.JUMP_ON,

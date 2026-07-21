@@ -305,8 +305,13 @@ class GameWorld:
     _cached_char_fill: list[type[CharacterPrize]] | None = None
 
     # The character promoted to the progression tier to satisfy Bowser's Keep's
-    # non-elemental damage spell gate. Cached and reset alongside _cached_char_fill.
+    # damage spell gate. Cached and reset alongside _cached_char_fill.
     _cached_spell_damage_char: type[CharacterPrize] | None = None
+
+    # Cached spell pool for the current shuffle attempt. Same reason as
+    # _cached_char_fill: select_spells() picks at random, and re-rolling it on
+    # every shuffle_rules() call desyncs the tier assignment between calls.
+    _cached_spells: list[type[Prize]] | None = None
 
     @property
     def overworld_character(self) -> CharacterPrize:
@@ -1177,11 +1182,24 @@ class GameWorld:
             self.event_2496_startup += [
                 SetBit(PROGRESSIVE_FIREWORKS_ENABLED),
             ]
+        elif self.settings.is_flag_value(FireworksSetting, FireworksOptions.SHUFFLE_ONE):
+            self.event_2496_startup += [
+                SetBit(SHUFFLE_ONE_FIREWORKS_ENABLED),
+            ]
         if self.settings.isflag_enabled(SeeYa):
             self.event_2496_startup += [
                 AddToInventory(SeeYaItem),
             ]
-            if not self.settings.isflag_enabled(ShuffleShops):
+            # Pre-set the 5th Frog Disciple sale bit whenever SeeYa shrinks the
+            # shop to 4 items — i.e. any time it is NOT fully shuffled (shops off
+            # OR items off). If both are shuffled the shop keeps 5 items and the
+            # bit must stay clear. This MUST match the FrogDiscipleLocation1
+            # removal predicate in prize_locations.py; a 4-item shop with the bit
+            # unset leaves an empty 5th slot that opens a glitched menu.
+            if not (
+                self.settings.isflag_enabled(ShuffleShops)
+                and self.settings.isflag_enabled(ShuffleItems)
+            ):
                 self.event_2496_startup += [
                     SetBit(FROG_DISCIPLE_ITEM_5_PURCHASED),
                 ]
@@ -2094,21 +2112,28 @@ class GameWorld:
 
         # The "Victory Against Culex" fanfare is selected by a hardcoded
         # comparison against Culex's vanilla formation ID, which our renumbering
-        # invalidates. Point it at whatever formation ends up behind the door.
-        from ..data.variables.pack_names import PACK216_MONSTRO_DOOR_BOSS
-
-        door_boss_formations = {
-            formation.formation_id
-            for formation in self.battle_packs.packs[PACK216_MONSTRO_DOOR_BOSS].formations
-        }
-        assert len(door_boss_formations) == 1, (
-            "PACK216_MONSTRO_DOOR_BOSS must hold a single formation; the victory "
-            f"music selector can only match one ID, got {door_boss_formations}"
+        # invalidates. Point it at whatever formations end up behind the Monstro
+        # Town doors — the story boss and the postgame Culex 3D rematch.
+        from ..data.variables.pack_names import (
+            PACK055_MONSTRO_DOOR_POSTGAME,
+            PACK216_MONSTRO_DOOR_BOSS,
         )
-        door_boss_formation_id = door_boss_formations.pop()
-        assert door_boss_formation_id is not None
+
+        culex_music_formation_ids: list[int] = []
+        for door_pack_id in (PACK216_MONSTRO_DOOR_BOSS, PACK055_MONSTRO_DOOR_POSTGAME):
+            door_formations = {
+                formation.formation_id
+                for formation in self.battle_packs.packs[door_pack_id].formations
+            }
+            assert len(door_formations) == 1, (
+                f"pack {door_pack_id} must hold a single formation for the victory "
+                f"music selector, got {door_formations}"
+            )
+            door_formation_id = door_formations.pop()
+            assert door_formation_id is not None
+            culex_music_formation_ids.append(door_formation_id)
         patch.add_dict(
-            asm.culex_victory_music.get_patch(door_boss_formation_id),
+            asm.culex_victory_music.get_patch(culex_music_formation_ids),
             source="culex_victory_music",
         )
 

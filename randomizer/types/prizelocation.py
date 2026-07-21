@@ -17,8 +17,8 @@ from randomizer.progression.prizes import (
     ThirdMimicFightLauncher,
 )
 
-
 from .prize import (
+    FPFlowerPrize,
     MimicFightInitiatorPrize,
     Prize,
     EXPStarPrize,
@@ -140,6 +140,7 @@ if TYPE_CHECKING:
     from ..progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
     from ..types.physical_objects import ItemNPC, BossNPC, HenchmanNPC
+    from ..types.flags import BooleanFlag
 
 # Module-level cache for lazy imports to avoid repeated import overhead in hot paths
 # These are populated on first access to avoid circular import issues
@@ -338,6 +339,10 @@ def _get_cached_import(name: str) -> type:
             from .flags import FactoryGating
 
             _lazy_import_cache[name] = FactoryGating
+        elif name == "AnnoyingChests":
+            from .flags import AnnoyingChests
+
+            _lazy_import_cache[name] = AnnoyingChests
         # Boss fight classes for BossFightLocation.can_accept
         elif name == "HammerBrosFight":
             from ..progression.prizes import HammerBrosFight
@@ -482,7 +487,7 @@ class ShuffleLocationSelector(CategorizationOption):
     KERO_SEWERS_BOSS = "Kero Sewers boss"
     KERO_SEWERS_STAR_PIECE = "Kero Sewers boss Star Piece"
     MIDAS_RIVER_FIRST_TIME = "Midas River first play reward"
-    MIDAS_RIVER_LEFT_CAVE = "Midas River bottom left tunnel freestanding frog coin"
+    MIDAS_RIVER_LEFT_CAVE = "Midas River upper left tunnel freestanding frog coin"
     MIDAS_RIVER_BOTTOM_LEFT_CAVE = (
         "Midas River bottom left tunnel freestanding frog coin"
     )
@@ -1281,8 +1286,11 @@ class PrizeLocation(Generic[TOriginallyHeld]):
         if isinstance(prize, StarPiecePrize) and world.settings.isflag_enabled(
             DisperseStarPieces
         ):
-            # one star piece per OW area
-            for l in world.star_piece_locations:
+            # one star piece per OW region. Scan ALL locations, not just
+            # world.star_piece_locations: StarPieceAvailability (stars_anywhere)
+            # lets pieces land in standard chest/event locations that aren't in
+            # that list, and those must still count toward the per-region limit.
+            for l in world.locations.values():
                 if l is not self and isinstance(l.prize, StarPiecePrize):
                     if l.overworld_map_region == self.overworld_map_region:
                         return False
@@ -1408,7 +1416,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return True
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         return EventScript([Return()])
 
     @property
@@ -1484,9 +1492,11 @@ class TreasureChestLocation(StandardPrizeLocation):
             and super().can_accept(prize, inventory, world)
         )
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         from randomizer.progression.prizelocations import (
             KeroSewersBeforeBelomeUpperBeforeFlipLocation,
+            Mimic1ReloadRewardLocation,
+            Mimic2ReloadRewardLocation,
         )
 
         if self.prize is None:
@@ -1515,12 +1525,16 @@ class TreasureChestLocation(StandardPrizeLocation):
                 *[SetBit(bit) for bit in (self.set_extra_bits_when_opened or [])]
             ] 
             
+        # Account for mimic chests needing to be opened twice, but only when the reload
+        # check actually holds a prize - if it's empty, disable the chest on the first open.
+        # world is None only from structural tests: keep the two-open behaviour there.
+        AnnoyingChestsEnabled = _get_cached_import("AnnoyingChests")
         if isinstance(self.prize, (FirstMimicFightLauncher)):
-            # Account for mimic chests needing to be opened twice
-            extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]))
+            if world is None or (world.locations[Mimic1ReloadRewardLocation].prize is not None) and not world.settings.isflag_enabled(AnnoyingChestsEnabled):
+                extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]))
         elif isinstance(self.prize, (SecondMimicFightLauncher)):
-            # Account for mimic chests needing to be opened twice
-            extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]))
+            if world is None or (world.locations[Mimic2ReloadRewardLocation].prize is not None) and not world.settings.isflag_enabled(AnnoyingChestsEnabled):
+                extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]))
 
         itemgrant = extra_itemgrant + itemgrant
         return EventScript(itemgrant)
@@ -1666,7 +1680,7 @@ class StandingLocation(StandardPrizeLocation):
             and super().can_accept(prize, inventory, world)
         )
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         if self.prize.standing_grant is None:
@@ -1682,7 +1696,7 @@ class EventLocation(StandardPrizeLocation):
             and super().can_accept(prize, inventory, world)
         )
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         if self.prize.npc_grant is None:
@@ -1698,7 +1712,7 @@ class RiverLocation(StandardPrizeLocation):
             and super().can_accept(prize, inventory, world)
         )
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         if self.prize.river_grant is None:
@@ -1808,6 +1822,9 @@ class BossFightLocationNPC:
     _min_vram_size_override: SlotCapOverride = None
     _min_vram_from_seq0_override: SlotCapOverride = None
     _sequence_setter_event_id: int | None = None
+    _skip_swap_if_flag: (
+        list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]] | None
+    ) = None
 
     @property
     def room_id(self) -> int:
@@ -1835,6 +1852,27 @@ class BossFightLocationNPC:
     @property
     def sequence_setter_event_id(self) -> int | None:
         return self._sequence_setter_event_id
+
+    @property
+    def skip_swap_if_flag(
+        self,
+    ) -> list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]] | None:
+        return self._skip_swap_if_flag
+
+    def should_skip_swap(self, world: "GameWorld") -> bool:
+        """Keep the original room NPC (skip the boss-model swap) when any listed
+        flag is enabled — mirrors BossFightLocationHenchmanNPC.should_skip_swap.
+
+        Each entry is a flag class, or a zero-arg callable returning one. The
+        callable form lets a slot defined at class-body time defer the flag
+        reference past the flags<->prizelocations circular import.
+        """
+        if self._skip_swap_if_flag is None:
+            return False
+        return any(
+            world.settings.isflag_enabled(flag if isinstance(flag, type) else flag())
+            for flag in self._skip_swap_if_flag
+        )
 
     @staticmethod
     def _resolve(override: SlotCapOverride, world: "GameWorld") -> int | None:
@@ -1904,6 +1942,12 @@ class BossFightLocationNPC:
         sequence_setter_event_id: int | None = None,
         min_vram_size_override: SlotCapOverride = None,
         min_vram_from_seq0_override: SlotCapOverride = None,
+        skip_swap_if_flag: (
+            type["BooleanFlag"]
+            | Callable[[], type["BooleanFlag"]]
+            | list[type["BooleanFlag"] | Callable[[], type["BooleanFlag"]]]
+            | None
+        ) = None,
     ):
         self._room_id = room_id
         self._npc_id = npc_id
@@ -1911,6 +1955,12 @@ class BossFightLocationNPC:
         self._min_vram_size_override = min_vram_size_override
         self._min_vram_from_seq0_override = min_vram_from_seq0_override
         self._sequence_setter_event_id = sequence_setter_event_id
+        if skip_swap_if_flag is None:
+            self._skip_swap_if_flag = None
+        elif isinstance(skip_swap_if_flag, list):
+            self._skip_swap_if_flag = skip_swap_if_flag
+        else:
+            self._skip_swap_if_flag = [skip_swap_if_flag]
 
 
 class BossFightLocation(PrizeLocation):
@@ -2037,6 +2087,16 @@ class BossFightLocation(PrizeLocation):
         return self._mook_henchman_slots
 
     @property
+    def eligible_mook_henchmen(self) -> list[BossFightHenchman] | None:
+        """Mook henchmen this location may put in its `_mook_henchman_slots`.
+
+        Defaults to the prize's full list. Locations override to drop models
+        their henchman rooms can't render.
+        """
+        assert isinstance(self.prize, BossFightPrize)
+        return self.prize.mook_henchmen
+
+    @property
     def tiny_henchman_slots(self) -> list[BossFightLocationHenchmanNPC] | None:
         return self._tiny_henchman_slots
 
@@ -2107,14 +2167,15 @@ class BossFightLocation(PrizeLocation):
         )
 
         # Assign mook henchmen
-        if self.mook_henchman_slots and self.prize.mook_henchmen:
+        mook_pool = self.eligible_mook_henchmen
+        if self.mook_henchman_slots and mook_pool:
             # Filter out slots that should skip swapping
             active_mook_slots = [
                 s for s in self.mook_henchman_slots if not s.should_skip_swap(world)
             ]
             if active_mook_slots:
                 mooks = random.choices(
-                    self.prize.mook_henchmen, k=len(active_mook_slots)
+                    mook_pool, k=len(active_mook_slots)
                 )
                 henchmen_assignments.extend(zip(active_mook_slots, mooks))
                 for slot, henchman in zip(active_mook_slots, mooks):
@@ -2125,9 +2186,7 @@ class BossFightLocation(PrizeLocation):
                         formation_size = 1
                     members: list[type[Enemy]] = [
                         h.monster
-                        for h in random.choices(
-                            self.prize.mook_henchmen, k=int(formation_size)
-                        )
+                        for h in random.choices(mook_pool, k=int(formation_size))
                         if h.monster is not None
                     ]
                     if henchman.monster is not None:
@@ -2480,6 +2539,10 @@ class BossFightLocation(PrizeLocation):
         # Set NPC slots with boss models (using VRAM-based selection)
         if self.npc_slots is not None and not prize_matches_original:
             for slot in self.npc_slots:
+                if slot.should_skip_swap(world):
+                    # Leave the original room NPC in place (e.g. keep the large
+                    # Dodo minigame sprite when KeepMinigameSpritesIntact is on).
+                    continue
                 room = world.rooms._rooms[slot.room_id]
                 assert room is not None, f"Room {slot.room_id} not found"
                 try:
@@ -2872,7 +2935,7 @@ class PrizeRow(PrizeLocation):
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
-        grant = self.grant()
+        grant = self.grant(world)
         assert (
             len(grant.contents) > 0
         ), "Prize grant scripts must have at least one command"
@@ -3052,6 +3115,8 @@ class PacketLocation(StandingLocationRow):
         # packet there is only a picture). A location whose prize is actually delivered by
         # the dynamically-spawned packet object must subclass PacketLocationRow1, which
         # routes grant -> packet_grant (object-local despawn) and runs the guard.
+        if self.prize is None:
+            self.set_prize(FPFlowerPrize())
         assert self.prize is not None and self.prize.model is not None
         for packet_id in [self._packet_id, *self._extra_packet_ids]:
             p = world.packets.packets[packet_id]
@@ -3074,7 +3139,7 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
     # object, so its grant must be the object-local (FD-F2-free) packet_grant and the
     # presence-write guard applies. (A bare PacketLocation mixed into an NPCLocation is a
     # cosmetic sprite repoint only and keeps that location's npc_grant.)
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         packet_grant = self.prize.packet_grant
@@ -3103,7 +3168,7 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
             return False
 
         seen: set[int] = set()
-        stack: list[EventScript | None] = [self.grant()]
+        stack: list[EventScript | None] = [self.grant(world)]
         while stack:
             script = stack.pop()
             if script is None:
@@ -3152,7 +3217,7 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
             and super().can_accept(prize, inventory, world)
         )
 
-    def grant(self) -> EventScript:
+    def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         if self.prize.hill_grant is None:
@@ -3163,7 +3228,7 @@ class BoosterHillLocation(PrizeRow, StandardPrizeLocation):
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         identifier = str(uuid4())
-        grant = self.grant()
+        grant = self.grant(world)
         assert (
             len(grant.contents) > 0
         ), "Prize grant scripts must have at least one command"

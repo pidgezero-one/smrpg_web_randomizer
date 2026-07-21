@@ -36,8 +36,9 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	FreezeAllNPCsUntilReturn(),
 	JmpIfBitClear(TEMP_7076_0, ["EVENT_1669_set_var_to_const_4"]),
-	SetBit(DODO_PRESENT_IN_NIMBUS_HALL),
-	JmpToEvent(E0255_EXP_STAR_HIT),
+	JmpIfBitSet(STATUE_KEEPER_STAR_PIECE, ["exp_star_hit_dodo_hallway"]),
+	SetBit(DODO_KOED_BY_EXP_STAR),
+	JmpToEvent(E0255_EXP_STAR_HIT, identifier="exp_star_hit_dodo_hallway"),
 	SetVarToConst(PRIMARY_TEMP_7000, 520, identifier="EVENT_1669_set_var_to_const_4"),
 	RunEventAsSubroutine(E0353_BOSS_BATTLE),
 	ClearBit(TEMP_707C_5),

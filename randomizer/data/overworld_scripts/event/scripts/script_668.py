@@ -163,7 +163,6 @@ script = EventScript([
 	FadeInFromBlack(sync=False),
 	ClearBit(TEMP_704C_0),
 	SetBit(MARRYMORE_LIBERATED),
-    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	SetBit(MAP_STAR_HILL),
 	SetBit(TEMP_7042_1),
 	ClearBit(TEMP_7042_0),

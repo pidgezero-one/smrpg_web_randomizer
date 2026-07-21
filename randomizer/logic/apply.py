@@ -1559,21 +1559,70 @@ def apply_hint_text(world: GameWorld) -> None:
         MonstroDojoPostgameClearRewardLocation,
         MonstroSealedDoorStarPiecePostgame,
         MonstroSealedDoorClearRewardLocationPostgame,
+        MushroomKingdomInnPurchaseLocation,
+        MarrymoreFirstSuitePrizeLocation,
+        MarrymoreSecondSuitePrizeLocation,
+        MarrymoreThirdSuitePrizeLocation,
+        MarrymoreFourthSuitePrizeLocation,
+        MarrymoreFifthSuitePrizeLocation,
+        MarrymoreSixthSuitePrizeLocation,
+        MarrymoreBigTipLocation,
+        TreasureShopItem1,
+        TreasureShopItem2,
+        TreasureShopItem3,
+        FireworksShopItemLocation,
+        LandsEndFirstPurchasableChestLocation,
+        LandsEndSecondPurchasableChestLocation,
+        FrogDiscipleLocation1,
+        FrogDiscipleLocation2,
+        FrogDiscipleLocation3,
+        FrogDiscipleLocation4,
+        FrogDiscipleLocation5,
     )
-    from ..progression.prizes import InfiniteCoinsPrize
+    from ..progression.prizes import InfiniteCoinsPrize, StarPiece7
     from ..types.prizelocation import (
         KeyItemLocation,
         StarPieceLocation as StarPieceLocationType,
         CharacterRecruitmentLocation as CharRecruitLocationType,
         InvisibleFlagLocation,
     )
-    from ..types.flags import KeyItemsAnywhere, StarPieceAvailability
+    from ..types.flags import (
+        KeyItemsAnywhere,
+        StarPieceAvailability,
+        ShuffleStarPieces,
+    )
     from ..logic.shufflers.items import should_shuffle
 
     # Collect hints in world.locations order, skipping empty hints
     super_jump_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
     postgame_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+    invisible_flag_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+    expensive_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
     regular_hints: list[tuple[type, list[UsableEventScriptCommand]]] = []
+
+    # Locations that need large coin payments to obtain. Hinted after all regular
+    # locations, but before the invisible-flag / postgame / super-jump groups.
+    expensive_loc_types = (
+        MushroomKingdomInnPurchaseLocation,
+        MarrymoreFirstSuitePrizeLocation,
+        MarrymoreSecondSuitePrizeLocation,
+        MarrymoreThirdSuitePrizeLocation,
+        MarrymoreFourthSuitePrizeLocation,
+        MarrymoreFifthSuitePrizeLocation,
+        MarrymoreSixthSuitePrizeLocation,
+        MarrymoreBigTipLocation,
+        TreasureShopItem1,
+        TreasureShopItem2,
+        TreasureShopItem3,
+        FireworksShopItemLocation,
+        LandsEndFirstPurchasableChestLocation,
+        LandsEndSecondPurchasableChestLocation,
+        FrogDiscipleLocation1,
+        FrogDiscipleLocation2,
+        FrogDiscipleLocation3,
+        FrogDiscipleLocation4,
+        FrogDiscipleLocation5,
+    )
 
     # Postgame locations go last, but before the super jump locations
     postgame_loc_types = (
@@ -1607,8 +1656,26 @@ def apply_hint_text(world: GameWorld) -> None:
         # Exclude locations disabled by game settings.
         # InvisibleFlagLocation hints always emit: the Musty Fears items exist in
         # every seed regardless of ShuffleItems, so exempt them from the shuffle gate.
-        if not should_shuffle(location, world) and not isinstance(
-            location, InvisibleFlagLocation
+        #
+        # When star pieces aren't randomized (rstars off), should_shuffle drops every
+        # StarPieceLocation, but the seven vanilla holders still contain a star piece
+        # in that seed and should be hinted. originally_held is non-None for exactly
+        # those seven (StarPiece1..7). The factory piece (StarPiece7) is skipped when
+        # the factory boss is the win condition, since it is only collected as the
+        # game ends.
+        sp_vanilla_holder = (
+            not world.settings.isflag_enabled(ShuffleStarPieces)
+            and isinstance(location, StarPieceLocationType)
+            and location.originally_held is not None
+            and not (
+                issubclass(location.originally_held, StarPiece7)
+                and world.settings.is_flag_value(WinCondition, WinConditions.FACTORY)
+            )
+        )
+        if (
+            not should_shuffle(location, world)
+            and not isinstance(location, InvisibleFlagLocation)
+            and not sp_vanilla_holder
         ):
             continue
 
@@ -1638,8 +1705,10 @@ def apply_hint_text(world: GameWorld) -> None:
                 JmpIfBitSet(location.bit, ["next"]),
             )
 
-        # Super jump locations go last; postgame locations go after regular
-        # hints but before super jump
+        # Ordering, earliest to latest: regular hints, then the large-payment
+        # ("expensive") locations, then invisible flags, then postgame, then super
+        # jump. The last four are all deferred so their hints don't crowd out the
+        # locations a player can reach and afford earlier.
         if loc_type in (
             MonstroFirstSuperJumpRewardLocation,
             MonstroSecondSuperJumpRewardLocation,
@@ -1647,11 +1716,20 @@ def apply_hint_text(world: GameWorld) -> None:
             super_jump_hints.append((loc_type, hint_commands))
         elif loc_type in postgame_loc_types:
             postgame_hints.append((loc_type, hint_commands))
+        elif isinstance(location, InvisibleFlagLocation):
+            invisible_flag_hints.append((loc_type, hint_commands))
+        elif loc_type in expensive_loc_types:
+            expensive_hints.append((loc_type, hint_commands))
         else:
             regular_hints.append((loc_type, hint_commands))
 
-    # Combine: regular hints, then postgame hints, then super jump hints at the end
-    all_hints = regular_hints + postgame_hints + super_jump_hints
+    all_hints = (
+        regular_hints
+        + expensive_hints
+        + invisible_flag_hints
+        + postgame_hints
+        + super_jump_hints
+    )
 
     if not all_hints:
         return

@@ -72,6 +72,13 @@ def shuffle_shops(world: GameWorld) -> None:
         ShinyStoneItem,
         CarboCookieItem,
         StarEggItem,
+        # Special non-key items that live outside the impact tiers (ALL mode)
+        LuckyJewelItem,
+        MysteryEggItem,
+        LambsLureItem,
+        SheepAttackItem,
+        FlowerBoxItem,
+        FlowerJarItem,
     )
     from ...types.flags import (
         ShopQuality,
@@ -532,6 +539,19 @@ def shuffle_shops(world: GameWorld) -> None:
             + low_equip + high_equip + highest_equip
         )
 
+        # ALL mode promises "every non-key item in the game will appear in at
+        # least one shop". The impact-tier pools were only ever built for the
+        # random-quality modes and omit the special/reusable non-key items, so
+        # add them explicitly. Debug Candy (debug-only, statically no_sell) and
+        # the Waste Basket (junk, 65535 price) stay out; the fireworks trio and
+        # Star Egg are handled by all_excluded below.
+        ALL_MODE_SPECIAL_ITEMS = [
+            StarEggItem, SeeYaItem, EarlierTimesItem, GoodieBagItem,
+            LuckyJewelItem, MysteryEggItem, LambsLureItem, SheepAttackItem,
+            FlowerBoxItem, FlowerJarItem,
+        ]
+        all_pool_items.update(ALL_MODE_SPECIAL_ITEMS)
+
         # Items already placed in Frog Coin Emporium or juice bars count as placed
         items_already_placed: set[type[BaseItem]] = set()
         for shop in world.shops.shops:
@@ -555,6 +575,11 @@ def shuffle_shops(world: GameWorld) -> None:
                 continue
             item_inst = world.items.get_by_type(item_type)
             if item_inst and item_inst.price == 0:
+                continue
+            # Protected items carry the no_sell bit (ProtectSpecialItems /
+            # statically, like Debug Candy). Selling is how you shed duplicates,
+            # so a buyable-but-unsellable item is a trap — bar them from shops.
+            if item_inst and item_inst.no_sell:
                 continue
             guarantee_items.append(item_type)
 

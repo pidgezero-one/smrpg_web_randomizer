@@ -43,5 +43,9 @@ script = EventScript([
     JmpIfBitClear(DOJO_BOSS_4_DEFEATED, ["voucher_subroutine_exit"]),
     JmpIfBitClear(SHIP_LIBERATED, ["voucher_subroutine_exit"]),
     SummonObjectToSpecificLevel(NPC_3, R189_MARIOS_PIPEHOUSE),
-    Return(identifier="voucher_subroutine_exit")
+    SummonObjectToCurrentLevel(NPC_3),
+    Return(),
+    RemoveObjectFromCurrentLevel(NPC_3, identifier="voucher_subroutine_exit"),
+    RemoveObjectFromSpecificLevel(NPC_3, R189_MARIOS_PIPEHOUSE),
+    Return(),
 ])

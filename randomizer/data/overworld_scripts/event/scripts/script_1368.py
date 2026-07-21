@@ -360,7 +360,6 @@ script = EventScript([
 	UnfreezeCamera(),
 	JmpIfBitClear(ALTERNATE_STAR_PIECE_WIN_CONDITION, ["EVENT_1368_summon_to_level_94"]),
 	SetBit(TOWER_BOSS_1_STAR_PIECE),
-    RunEventAsSubroutine(E0225_CHECK_VOUCHER_UNLOCK),
 	RunEventAsSubroutine(E1201_TOWER_CURTAIN_BOSS_UNLOCKS),
 	JmpToEvent(E0168_BOSS_GRANT_STAR_PIECE_CONTAINER),
 	Return(identifier="EVENT_1368_summon_to_level_94"),

@@ -705,7 +705,7 @@ class StarGunPrize(ItemPrize):
         nickname="Celestial Launcher",
         description="I bet you could do some real damage\n with this.",
     )
-    _model = GunObject
+    _model = TinyStarObject
     _packet_data = (SPR0226_TINY_STAR, 0)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
@@ -763,7 +763,7 @@ class Stella023Prize(ItemPrize):
     )
     remake_only = True
     _monstro_shuffle = True
-    _model = TinyStarObject
+    _model = GunObject
     _packet_data = (SPR0226_TINY_STAR, 0)
     _fortune_type: FortuneEnum = FortuneEnum.WEAPON
 
@@ -3003,44 +3003,6 @@ class GroupHugSpellPrize(SpellPrize):
 
 class MuteSpellPrize(SpellPrize):
     _spell = MuteSpell
-    _chest_event_id = E0924_CHEST_SPELL_24
-    _npc_grant_event_id = E0974_NPC_SPELL_24
-    _standing_grant_event_id = E1018_FREESTANDING_SPELL_24
-    _river_grant_event_id = E1044_HILL_RIVER_SPELL_24
-    _hill_grant_event_id = E1044_HILL_RIVER_SPELL_24
-    character_replacement_ids = [
-        "spell_24_character",
-        "freestanding_spell_24_character",
-        "hill_river_spell_24_character",
-        "npc_spell_24_character",
-    ]
-    packet_replacement_ids = ["spell_24_elemental_packet"]
-    _dialog_id = DI1997_LEARN_SPELL_26
-    _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
-    _placement_id = 24
-
-
-class SleepyTimeSpellPrize(SpellPrize):
-    _spell = SleepyTimeSpell
-    _chest_event_id = E0925_CHEST_SPELL_25
-    _npc_grant_event_id = E0975_NPC_SPELL_25
-    _standing_grant_event_id = E1019_FREESTANDING_SPELL_25
-    _river_grant_event_id = E1045_HILL_RIVER_SPELL_25
-    _hill_grant_event_id = E1045_HILL_RIVER_SPELL_25
-    character_replacement_ids = [
-        "spell_25_character",
-        "freestanding_spell_25_character",
-        "hill_river_spell_25_character",
-        "npc_spell_25_character",
-    ]
-    packet_replacement_ids = ["spell_25_elemental_packet"]
-    _dialog_id = DI1993_LEARN_SPELL_24
-    _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
-    _placement_id = 25
-
-
-class ComeBackSpellPrize(SpellPrize):
-    _spell = ComeBackSpell
     _chest_event_id = E0926_CHEST_SPELL_26
     _npc_grant_event_id = E0976_NPC_SPELL_26
     _standing_grant_event_id = E1020_FREESTANDING_SPELL_26
@@ -3053,9 +3015,47 @@ class ComeBackSpellPrize(SpellPrize):
         "npc_spell_26_character",
     ]
     packet_replacement_ids = ["spell_26_elemental_packet"]
+    _dialog_id = DI1997_LEARN_SPELL_26
+    _autoterm_dialog_id = DI1998_LEARN_SPELL_26_AUTOTERM
+    _placement_id = 26
+
+
+class SleepyTimeSpellPrize(SpellPrize):
+    _spell = SleepyTimeSpell
+    _chest_event_id = E0924_CHEST_SPELL_24
+    _npc_grant_event_id = E0974_NPC_SPELL_24
+    _standing_grant_event_id = E1018_FREESTANDING_SPELL_24
+    _river_grant_event_id = E1044_HILL_RIVER_SPELL_24
+    _hill_grant_event_id = E1044_HILL_RIVER_SPELL_24
+    character_replacement_ids = [
+        "spell_24_character",
+        "freestanding_spell_24_character",
+        "hill_river_spell_24_character",
+        "npc_spell_24_character",
+    ]
+    packet_replacement_ids = ["spell_24_elemental_packet"]
+    _dialog_id = DI1993_LEARN_SPELL_24
+    _autoterm_dialog_id = DI1994_LEARN_SPELL_24_AUTOTERM
+    _placement_id = 24
+
+
+class ComeBackSpellPrize(SpellPrize):
+    _spell = ComeBackSpell
+    _chest_event_id = E0925_CHEST_SPELL_25
+    _npc_grant_event_id = E0975_NPC_SPELL_25
+    _standing_grant_event_id = E1019_FREESTANDING_SPELL_25
+    _river_grant_event_id = E1045_HILL_RIVER_SPELL_25
+    _hill_grant_event_id = E1045_HILL_RIVER_SPELL_25
+    character_replacement_ids = [
+        "spell_25_character",
+        "freestanding_spell_25_character",
+        "hill_river_spell_25_character",
+        "npc_spell_25_character",
+    ]
+    packet_replacement_ids = ["spell_25_elemental_packet"]
     _dialog_id = DI1995_LEARN_SPELL_25
     _autoterm_dialog_id = DI1996_LEARN_SPELL_25_AUTOTERM
-    _placement_id = 26
+    _placement_id = 25
 
 
 class PsychBombSpellPrize(SpellPrize):
@@ -5195,7 +5195,7 @@ class DodoBossFight(BossFightPrize):
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Dodo...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "[center]\n••••••[await]",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
-        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """\n[center]••••••[delay_30][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It’s really weird.\n I never hear the guy next door.[await]\n Maybe he can’t talk.[await][page]\n I’d like to go over and introduce\n myself sometime, but the door\n won’t open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "[center]\n••••••[await]",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "[center]\n••••••[await]",
@@ -6601,6 +6601,12 @@ class Booster2BossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Booster's frenemies."
     _name = "Booster"
     _scaling_excluded_enemies = [BOOSTERDUMMY]
+    _hp_slice_excluded_enemies = [
+        BOOSTERDUMMY,
+        SNIFIT2Enemy,
+        SNIFIT2Enemy,
+        SNIFIT2Enemy
+    ]
 
     _npc_models = [Booster2SmallObject]
     _statue_npc = BoosterStatueObject

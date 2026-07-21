@@ -294,3 +294,225 @@ def assert_solvable(world: GameWorld) -> None:
         f"is a closed cycle, not bad luck, and retrying cannot help. "
         f"Sealed: {shown}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Key-item pool placeability
+#
+# With KeyItemsAnywhere off, a KeyPrize can only live in a KeyItemLocation, and
+# the design is 1:1 — one key item per key location. sealed_locations() can't
+# see a shortfall here: key slots are can-be-empty, so it never flags them, and
+# its all-items-in-hand optimism hands the player the island's keys for free.
+# These helpers reason about the key pool specifically.
+# ---------------------------------------------------------------------------
+
+
+def _reach_inventory(world: GameWorld, seed_items: list[Prize]) -> Inventory:
+    """Reachability fixpoint seeded with ``seed_items``: also collects every
+    already-placed prize (offset-pinned bosses, static fills) from locations
+    that become reachable. Mirrors collect_accessible_items but with a seed."""
+    acc = Inventory(list(seed_items))
+    checked: set[PrizeLocation] = set()
+    progress = True
+    while progress:
+        progress = False
+        for loc in world.locations.values():
+            if loc in checked:
+                continue
+            if loc.has_item and loc.can_access(acc, world):
+                acc.append(loc.prize)
+                checked.add(loc)
+                progress = True
+    return acc
+
+
+def unplaceable_key_items(
+    world: GameWorld,
+    key_pool: list[Prize],
+    non_key_pool: list[Prize],
+) -> tuple[int, list[str], list[str]]:
+    """Deterministic, non-mutating assumed fill of the key-item pool only.
+
+    Returns ``(count, leftover_item_names, unreachable_location_names)``. A slot
+    is reachable for item X assuming the player holds every OTHER unplaced key
+    item, all non-key pool items, and the keys already committed here — plus
+    whatever pre-placed bosses those unlock. Most-constrained-first ordering
+    (place the item with the fewest options next) makes this near-complete
+    without backtracking; because opening a gate only ever adds reachability,
+    a zero result under some gate config is monotone in that config.
+    """
+    from .shufflers.items import should_shuffle
+    from ..types.prizelocation import KeyItemLocation
+
+    key_locs = [
+        l for l in world.locations.values()
+        if isinstance(l, KeyItemLocation) and should_shuffle(l, world) and not l.has_item
+    ]
+    remaining = list(key_pool)
+    occupied: set[PrizeLocation] = set()
+    committed: list[Prize] = []
+
+    while remaining:
+        best: tuple[int, int, list[PrizeLocation]] | None = None
+        seen_types: set[type] = set()
+        for idx, item in enumerate(remaining):
+            if type(item) in seen_types:
+                continue
+            seen_types.add(type(item))
+            others = remaining[:idx] + remaining[idx + 1:]
+            inv = _reach_inventory(world, non_key_pool + others + committed)
+            slots = [
+                l for l in key_locs
+                if l not in occupied
+                and l.can_access(inv, world)
+                and l.can_accept(item, inv, world)
+            ]
+            if slots and (best is None or len(slots) < best[0]):
+                best = (len(slots), idx, slots)
+        if best is None:
+            leftover = sorted(type(p).__name__ for p in remaining)
+            unreached = sorted(
+                type(l).__name__ for l in key_locs if l not in occupied
+            )
+            return len(remaining), leftover, unreached
+        _, idx, slots = best
+        occupied.add(slots[0])
+        committed.append(remaining.pop(idx))
+    return 0, [], []
+
+
+def assert_key_pool_balanced(
+    world: GameWorld,
+    key_pool: list[Prize],
+) -> None:
+    """Guard the 1:1 design invariant: never more key items than key slots.
+
+    A homeless key item (more KeyPrize items than shuffle-target KeyItemLocations)
+    means a flag combination removed a location without removing its item, or
+    added an item without a home. Fewer items than slots is fine — the surplus
+    slots hold filler — so this only fires on the genuinely-broken direction.
+    """
+    from .shufflers.items import should_shuffle
+    from ..types.prizelocation import KeyItemLocation
+    from ..types.gameworld import WorldBuildingException
+
+    key_locs = [
+        l for l in world.locations.values()
+        if isinstance(l, KeyItemLocation) and should_shuffle(l, world)
+    ]
+    if len(key_pool) <= len(key_locs):
+        return
+
+    items = sorted(type(p).__name__ for p in key_pool)
+    locs = sorted(f"{type(l).__name__} (home of {l.originally_held.__name__})"
+                  if l.originally_held else type(l).__name__
+                  for l in key_locs)
+    raise WorldBuildingException(
+        f"Key-item pool is misconfigured: {len(key_pool)} key items but only "
+        f"{len(key_locs)} key-item locations to hold them. A key item can only "
+        f"live in a key-item location, so at least "
+        f"{len(key_pool) - len(key_locs)} of them have no home. This is a data "
+        f"bug (a flag removed a location without removing its item, or vice "
+        f"versa), not bad luck.\n"
+        f"KEY ITEMS ({len(items)}):\n  " + "\n  ".join(items) + "\n"
+        f"KEY LOCATIONS ({len(locs)}):\n  " + "\n  ".join(locs)
+    )
+
+
+def relax_key_pool_deadlock(
+    world: GameWorld,
+    key_pool: list[Prize],
+    non_key_pool: list[Prize],
+) -> list[str]:
+    """Open area gates until the key-item pool can be placed (POP only).
+
+    The offset pins bosses so that a cluster of key slots sits behind gates that
+    can only be opened by keys living in that same cluster — the key pool can't
+    bootstrap. Offsets override placement settings, so the gates give way.
+    Greedy: open the single gate that reduces the unplaceable count most, repeat.
+    If no single gate helps but the pool still doesn't fit (AND-chained regions),
+    fall back to opening every remaining gate — proven to make it placeable.
+    Mutates the settings' gate flags and returns a description of each open.
+    """
+    if not (world.settings.debug_mode and world.settings.prize_offset is not None):
+        return []
+
+    changes: list[str] = []
+
+    def unplaceable() -> int:
+        return unplaceable_key_items(world, key_pool, non_key_pool)[0]
+
+    while unplaceable() > 0:
+        best: tuple[int, type, type, object] | None = None
+        for gate_cls, gating in AREA_GATES:
+            flag = world.settings.get_flag(gate_cls)
+            was = flag.selected
+            if was == gating.OPEN:
+                continue
+            flag.select(gating.OPEN)
+            world.settings._is_flag_value_cache.clear()
+            remaining = unplaceable()
+            flag.select(was)
+            world.settings._is_flag_value_cache.clear()
+            if best is None or remaining < best[0]:
+                best = (remaining, gate_cls, gating, was)
+
+        if best is not None and best[0] < unplaceable():
+            _, gate_cls, gating, was = best
+            world.settings.get_flag(gate_cls).select(gating.OPEN)
+            world.settings._is_flag_value_cache.clear()
+            changes.append(
+                f"{_gate_label(gate_cls, world)}: "
+                f"{getattr(was, 'value', was)} -> Always open "
+                f"(offset pinned key items behind this gate)"
+            )
+            continue
+
+        # No single gate helps (AND-chained regions) but the pool still doesn't
+        # fit. Open everything still closed — guaranteed placeable — and stop.
+        opened_any = False
+        for gate_cls, gating in AREA_GATES:
+            flag = world.settings.get_flag(gate_cls)
+            if flag.selected == gating.OPEN:
+                continue
+            was = flag.selected
+            flag.select(gating.OPEN)
+            changes.append(
+                f"{_gate_label(gate_cls, world)}: "
+                f"{getattr(was, 'value', was)} -> Always open "
+                f"(offset pinned key items behind a chain of gates)"
+            )
+            opened_any = True
+        world.settings._is_flag_value_cache.clear()
+        if not opened_any:
+            break
+
+    return changes
+
+
+def assert_key_pool_placeable(
+    world: GameWorld,
+    key_pool: list[Prize],
+    non_key_pool: list[Prize],
+) -> None:
+    """Fail fast if the key-item pool still can't be placed after relaxation.
+
+    Only reached when opening every gate did not help — so it is a genuine
+    dead end, not a gate cycle. Lists both sides so the disparity is findable.
+    """
+    from ..types.gameworld import WorldBuildingException
+
+    count, leftover, unreachable = unplaceable_key_items(
+        world, key_pool, non_key_pool
+    )
+    if count == 0:
+        return
+
+    raise WorldBuildingException(
+        f"{count} key item(s) cannot be placed: they may only go in key-item "
+        f"locations, and that many key-item locations can never be reached in "
+        f"any order, even with every area gate open. Retrying cannot help.\n"
+        f"UNPLACEABLE KEY ITEMS ({len(leftover)}):\n  " + "\n  ".join(leftover) + "\n"
+        f"UNREACHABLE KEY LOCATIONS ({len(unreachable)}):\n  "
+        + "\n  ".join(unreachable)
+    )

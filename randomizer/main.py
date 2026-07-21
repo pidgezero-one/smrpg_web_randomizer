@@ -81,14 +81,18 @@ def create(
             debug_bps_patches=debug_bps_patches,
         )
 
-    try:
-        return build()
-    except SettingsRelaxed:
-        # A gate was forced open to break an offset-induced deadlock. The flag
-        # now lives on the shared `settings` object, so building again from
-        # scratch makes every settings-derived step — including the pre-shuffler
-        # pass that writes the door's ROM state — see the corrected value. The
-        # rebuild cannot relax anything further (the gates it would open are
-        # already open), so one retry is enough.
-        return build()
+    # A gate may be forced open to break an offset-induced deadlock. The flag
+    # then lives on the shared `settings` object, so building again from scratch
+    # makes every settings-derived step — including the pre-shuffler pass that
+    # writes the door's ROM state — see the corrected value. Relaxation happens
+    # in two stages (region seals in _shuffle_items, then key-pool islands in
+    # shuffle_prizes), so more than one rebuild can be needed; loop until it
+    # builds clean. Each round opens at least one gate, and there are only 17,
+    # so the bound is generous and purely a runaway guard.
+    for _ in range(20):
+        try:
+            return build()
+        except SettingsRelaxed:
+            continue
+    return build()
 

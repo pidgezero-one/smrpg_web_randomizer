@@ -620,7 +620,7 @@ script = AnimationScriptBlock(expected_size=3221, expected_beginning=0x351493, s
 	RunSubroutine(["command_0x35240C"]),
 	ReturnSubroutine(),
     # 55
-	SetAMEM16BitToAbsolute7E(0x62, 0x7E0072, identifier="ATKMATKneg5Attack"),
+	SetAMEM16BitToRAMRelative7E(0x62, 0x7E0072, identifier="ATKMATKneg5Attack"),
     DecAMEM16BitByConst(0x62, 5),
     SetRAMRelative7EToAMEM16Bit(0x7E0072, 0x62),
     SetAMEM16BitToRAMRelative7E(0x66, 0x7E0076),
@@ -939,13 +939,15 @@ script = AnimationScriptBlock(expected_size=3221, expected_beginning=0x351493, s
 	RunSubroutine(["command_0x3523C4"]),
 	RunSubroutine(["command_0x357CC3"]),
 	ReturnSubroutine(),
-    # CULEX TURNS - invisible "pass turn" that triggers Culex's dialogue/phase.
-    # Must terminate like a real attack (cleanup + AttackTimerBegins) or the engine
-    # renders leftover effect state (showed as Mega Drain). Former $7FFFA0 turn-counter
-    # removed: nothing read it and its $7EE006 source is battle scratch clobbered by
-    # SetVarBits/IfVarBitsSet.
-    RunSubroutine(["command_0x3577F2"], identifier="CULEXTURNSAttack"),
-    AttackTimerBegins(),
+    SetAMEM8BitToRAMRelative7E(0x60, BV7EE006_ATTACK_PHASE_COUNTER, identifier="CULEXTURNSAttack"),
+    JmpIfAMEM8BitEqualsConst(0x60, 0, ["CULEXTURNSAttack_sub"]),
+    SetAMEM16BitTo7F(0x64, 0x7FFFA0),
+    IncAMEM8Bit(0x64),
+    Pause1Frame(),
+    Set7FToAMEM8Bit(0x7FFFA0, 0x64),
+    ReturnSubroutine(),
+    SetAMEM8BitToConst(0x60, 0, identifier="CULEXTURNSAttack_sub"),
+    Set7FToAMEM8Bit(0x7FFFA0, 0x60),
     ReturnSubroutine(),
 	DisplayMessageAtOMEM60As(ATTACK_NAME, identifier="FearRouletteAttack"),
 	SetAMEM8BitToAbsolute7E(0x6E, BV7EE00E),

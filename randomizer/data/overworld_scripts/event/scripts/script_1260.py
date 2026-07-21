@@ -1,4 +1,4 @@
-# E1260_EMPTY
+# E1260_NIMBUS_ENTRANCE_LOADER_SUBROUTINE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,14 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+    JmpIfBitSet(NIMBUS_MAINLAND_UNLOCKED, ["EVENT_1260_s"]),
+    SummonObjectToCurrentLevel(NPC_2),
+	ActionQueueAsync(target=NPC_2, subscript=[
+		A_WalkNorthwestPixels(8),
+		A_ShiftZUpPixels(4),
+		A_FaceSouthwest()
+	]), 
+    Jmp(["EVENT_1260_fade_in"]),
+    RemoveObjectFromCurrentLevel(NPC_2, identifier="EVENT_1260_s"),
+    Return(identifier="EVENT_1260_fade_in")
 ])
