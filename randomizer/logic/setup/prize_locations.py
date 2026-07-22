@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 from randomizer.progression.prizelocations import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
+    NPC_10, NPC_11, NPC_19,
+)
 from randomizer.types.flags import (
     WinCondition, WinConditions,
     AvailableCharacters, AvailableSpells,
@@ -663,11 +666,11 @@ def set_locations(world: GameWorld) -> None:
         world.locations[FrogDiscipleLocation1] = FrogDiscipleLocation1()
 
 
-    # Only include FinalBossFightStarPiece if win condition is not FACTORY
-    # (when FACTORY is the win condition, defeating the final boss ends the game
-    # so there's no opportunity to collect the star piece)
-    if not world.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
-        world.locations[FinalBossFightStarPiece] = FinalBossFightStarPiece()
+    # Always register FinalBossFightStarPiece so its vanilla StarPiece7 seeds the pool
+    # in every win condition. Under FACTORY the location is source-only: its can_accept
+    # rejects all prizes (defeating the final boss ends the game, so a star piece placed
+    # here could never be collected), and StarPiece7 gets shuffled to a collectible spot.
+    world.locations[FinalBossFightStarPiece] = FinalBossFightStarPiece()
 
     # Add spell slot locations for all included characters
     # (needed for vanilla placement, CharacterLearnedSpells shuffling, or SpellsAnywhere pooling)

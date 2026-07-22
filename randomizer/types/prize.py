@@ -39,7 +39,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     Return,
     SetBit,
 )
-from ..data.variables.event_script_names import E3092_STAR_PIECE_GRANT
 from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
     ITEM_ID,
@@ -57,6 +56,7 @@ from ..types.ally import Ally
 from ..data.variables.overworld_sfx_names import SO081_STAR
 from ..types.enemy import Enemy
 from ..data.variables.overworld_sfx_names import *
+from .flags import ItemQuality, ItemQualityOptions, BiasItemShuffle
 
 if TYPE_CHECKING:
     from .gameworld import GameWorld
@@ -405,7 +405,9 @@ class StarPiecePrize(StandardPrize):
 
     @property
     def postfight_star_piece_grant(self) -> EventScript:
-        return EventScript([SetBit(self._hint), JmpToEvent(E3092_STAR_PIECE_GRANT)])
+        # Per-prize prefix only; StarPieceLocation.render appends the shared
+        # JmpToEvent(E3092_STAR_PIECE_GRANT) hub jump.
+        return EventScript([SetBit(self._hint)])
 
 
 class FPFlowerPrize(Prize):
@@ -1239,7 +1241,6 @@ class CoinQuantityPrize(CoinPrize):
 class RandomPrizeSubstitute(Prize):
     def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
         # Lazy imports to avoid circular imports
-        from .flags import ItemQuality, ItemQualityOptions, BiasItemShuffle
         from ..progression.prizes import (
             RecoveryMushroomPrize,
             FrogCoin1Prize,

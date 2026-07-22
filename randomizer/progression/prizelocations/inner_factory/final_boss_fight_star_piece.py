@@ -11,6 +11,7 @@ from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
 from randomizer.progression.prizelocations.access import (can_access_inner_factory_final_boss, not_earlygame)
 from randomizer.progression.prizelocations.inner_factory.final_boss_fight import (FinalBossFight)
 from randomizer.types.logic import (Inventory)
+from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_14)
 if TYPE_CHECKING:
@@ -59,6 +60,14 @@ class FinalBossFightStarPiece(StarPieceLocation):
         StoreItemAmountTo7000(ShinyStoneItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
     ]
+
+    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+        # Under FACTORY win, defeating the final boss ends the game, so a star piece placed
+        # here could never be collected. Stay source-only: reject every placement (the
+        # vanilla StarPiece7 still seeds the pool via pull_prize and lands elsewhere).
+        if world.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
+            return False
+        return super().can_accept(prize, inventory, world)
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

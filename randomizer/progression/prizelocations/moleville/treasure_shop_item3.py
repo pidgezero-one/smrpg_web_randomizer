@@ -42,7 +42,7 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
     def render(self, world: GameWorld):
         if world.settings.is_flag_value(ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY):
             world.update_dialog(
-                DI2908_TREASURE_SELLER_ITEM_2, f" Item #3: A “Mystery Box”.\n It might be something good. Or, it\n might be empty.[await][page]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"
+                DI2914_TREASURE_SELLER_ITEM_3, f" Item #3: A “Mystery Box”.\n It might be something good. Or, it\n might be empty.[await][page]\n I'll sell it for 300 coins.\n  [select] (I'll take it)\n  [select] (No thanks)[await]"
             )
             return super().render(world)
         assert isinstance(self.prize, StandardPrize)

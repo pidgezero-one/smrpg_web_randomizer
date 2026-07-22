@@ -588,6 +588,7 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
+            vram_size=0
         ),
         RegularClone(  # 8
             npc=npcs.SMALL_COIN_NPC,
@@ -599,6 +600,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 9
             npc=npcs.SMALL_COIN_NPC,
@@ -610,6 +612,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 10
             npc=npcs.SMALL_COIN_NPC,
@@ -621,6 +624,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 11
             npc=npcs.SMALL_COIN_NPC,
@@ -632,6 +636,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 12
             npc=npcs.SMALL_COIN_NPC,
@@ -643,6 +648,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 13
             npc=npcs.SMALL_COIN_NPC,
@@ -654,6 +660,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 14
             npc=npcs.SMALL_COIN_NPC,
@@ -665,6 +672,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
         RegularClone(  # 15
             npc=npcs.SMALL_COIN_NPC,
@@ -676,6 +684,7 @@ room = Room(
             z=0,
             z_half=True,
             direction=SOUTHWEST,
+            vram_size=0
         ),
     ],
 )

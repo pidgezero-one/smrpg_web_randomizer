@@ -1,4 +1,4 @@
-# E3070_EMPTY
+# E3070_YOU_MISSED_MASHER_CHEST
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,16 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+	PlaySound(sound=SO005_BLOCK_SWITCH, channel=6),
+	RunDialog(dialog_id=DI3321_YOU_MISSED, above_object=BOWSER, closable=True, sync=False, multiline=True, use_background=False),
+	SetSyncActionScript(SCREEN_FOCUS, A0391_CAMERA_SHAKE),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_FaceSouthwest(),
+		A_SetSpriteSequence(index=1, sprite_offset=3, is_sequence=True, looping=True),
+		A_PlaySound(sound=SO022_CLOSE_DOOR, channel=4)
+	]),
+	Pause(40),
+	SetAsyncActionScript(MARIO, A0384_PLAYER_LOOK_DOWN_SHAKE_HEAD),
+	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
+	Return()
 ])

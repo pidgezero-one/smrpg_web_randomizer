@@ -534,4 +534,4 @@ dialog_data[183] = ''' Man, did I sleep!
  Here’s your tip.[await]
  Don’t spend it all in one place![await]'''
 dialog_data[184] = '''[center]Need the “Extra Shiny Stone”\nto get in[await]'''
-dialog_data[185] = '''Have you seen any strange clouds in Land's End?[await]'''
+dialog_data[185] = ''' Have you seen any strange clouds in Land's End?[await]'''

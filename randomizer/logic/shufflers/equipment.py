@@ -7,6 +7,56 @@ from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBu
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.party_character import PartyCharacter
 
 from ..utils import mutate_normal
+from ...types.item import Weapon, Armor, Accessory
+from ...types.flags import EquipmentCharactersOptions
+from ...data.items.items import (
+        WeaponItem,
+        ArmorItem,
+        AccessoryItem,
+        SpaceItem,
+        SpaceItem2,
+        ExpBoosterItem,
+        CoinTrickItem,
+        ScroogeRingItem,
+    )
+from ...data.items.items import (
+        PickMeUpItem,
+        MushroomItem,
+        HoneySyrupItem,
+        AbleJuiceItem,
+        BracerItem,
+        EnergizerItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        SleepyBombItem,
+        BadMushroomItem,
+        FlowerTabItem,
+        FroggieDrinkItem,
+        MukuCookieItem,
+        FreshenUpItem,
+        FrightBombItem,
+        WiltShroomItem,
+        RottenMushItem,
+        MoldyMushItem,
+        MushroomItem2,
+        MidMushroomItem,
+        MaxMushroomItem,
+        MapleSyrupItem,
+        RoyalSyrupItem,
+        YoshiAdeItem,
+        FireBombItem,
+        IceBombItem,
+        YoshiCandyItem,
+        ElixirItem,
+        MegalixirItem,
+        CrystallineItem,
+        PowerBlastItem,
+        RedEssenceItem,
+        KerokeroColaItem,
+        RockCandyItem,
+    )
+from ...types.flags import NoPickMeUps, RestrictSpecialEquips, Remake
+from ...types.prize import ItemPrize
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
@@ -15,7 +65,6 @@ if TYPE_CHECKING:
 
 def randomize_equipment_properties(world: GameWorld) -> None:
     """Randomize equipment stats and buffs (excluding character allowances)."""
-    from ...types.item import Weapon, Armor, Accessory
 
     EQUIP_STATS = ["speed", "attack", "defense", "magic_attack", "magic_defense"]
     PRIMARY_STATS_BY_TYPE = {
@@ -211,8 +260,6 @@ def randomize_equipment_characters(
     setting,  # EquipmentCharactersOptions
 ) -> None:
     """Randomize which characters can equip each piece of equipment."""
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
-    from ...types.flags import EquipmentCharactersOptions
 
     ALL_CHARS = [
         PartyCharacter(i) for i in range(5)
@@ -264,7 +311,6 @@ def _randomize_single_equip_chars(
 
 def calc_equip_rank(item: Equipment) -> float:
     """Rank an equipment item by combat value (stats, immunities, buffs, KO)."""
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon
 
     variance = int(item.variance) if isinstance(item, Weapon) else 0
     attack = item.attack
@@ -306,17 +352,6 @@ def reprice_equipment_by_rank(world: GameWorld) -> None:
 
     Placeholder/empty equipment slots keep their (zero) price.
     """
-    from ...types.item import Weapon, Armor, Accessory
-    from ...data.items.items import (
-        WeaponItem,
-        ArmorItem,
-        AccessoryItem,
-        SpaceItem,
-        SpaceItem2,
-        ExpBoosterItem,
-        CoinTrickItem,
-        ScroogeRingItem,
-    )
 
     dummy_equipment = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
     # These store a FROG COIN count in .price, not coins (the equipment members of
@@ -337,44 +372,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
     Categorizes consumables and equipment into low/high/highest impact tiers.
     Equipment is ranked based on stats, immunities, and special properties.
     """
-    from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
-    from ...data.items.items import (
-        PickMeUpItem,
-        MushroomItem,
-        HoneySyrupItem,
-        AbleJuiceItem,
-        BracerItem,
-        EnergizerItem,
-        YoshiCookieItem,
-        PureWaterItem,
-        SleepyBombItem,
-        BadMushroomItem,
-        FlowerTabItem,
-        FroggieDrinkItem,
-        MukuCookieItem,
-        FreshenUpItem,
-        FrightBombItem,
-        WiltShroomItem,
-        RottenMushItem,
-        MoldyMushItem,
-        MushroomItem2,
-        MidMushroomItem,
-        MaxMushroomItem,
-        MapleSyrupItem,
-        RoyalSyrupItem,
-        YoshiAdeItem,
-        FireBombItem,
-        IceBombItem,
-        YoshiCandyItem,
-        ElixirItem,
-        MegalixirItem,
-        CrystallineItem,
-        PowerBlastItem,
-        RedEssenceItem,
-        KerokeroColaItem,
-        RockCandyItem,
-    )
-    from ...types.flags import NoPickMeUps, RestrictSpecialEquips, Remake
 
     no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
 
@@ -436,7 +433,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
     high_cutoff = int(total_equip * 0.5)
 
     from ...types.gameworld import GameWorld as GW
-    from ...data.items.items import WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2
     dummy_weapons: set[type] = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
 
     world.highest_impact_equip = [
@@ -486,7 +482,6 @@ def build_item_to_prize_mapping(world: GameWorld) -> None:
     Iterates through all ItemPrize subclasses and creates a reverse mapping
     from their `item` attribute to the prize class itself.
     """
-    from ...types.prize import ItemPrize
 
     world.item_to_prize = {}
 

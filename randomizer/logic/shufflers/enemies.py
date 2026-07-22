@@ -69,6 +69,30 @@ from randomizer.data.enemies.enemies import (
 )
 
 from ..utils import mutate_normal
+from randomizer.types.spell import EnemySpell
+from randomizer.data.enemies.enemies import (
+        SMITHY2Enemy,
+        SMITHYTankEnemy,
+        SMITHYSafeEnemy2,
+        SMITHYMageEnemy,
+        SMITHYChestEnemy,
+        STRONGBOBOMB1Enemy,
+        STRONGBOBOMB2Enemy,
+        STRONGBOBOMB3Enemy,
+        STRONGBOBOMB4Enemy,
+        BOOSTERDUMMY,
+    )
+from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
+from randomizer.types.enemy import Enemy as CustomEnemy
+from randomizer.logic.setup.enemy_tweaks import _get_enemy_lists
+from randomizer.logic.scanline_calculator import (
+        get_scanline_footprint,
+        find_valid_coordinates,
+    )
+from randomizer.types.prize import BossFightPrize
+from randomizer.logic.scanline_calculator import clear_footprint_cache
+from randomizer.logic.battle_vram_calculator import VANILLA_MAX_NONBOSS_UNIQUE_VRAM
+from randomizer.types.flags import EXPMultiplier, EXPMultiplierOptions
 
 if TYPE_CHECKING:
     from smrpgpatchbuilder.datatypes.items.classes import RegularItem
@@ -77,7 +101,6 @@ if TYPE_CHECKING:
 
 def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
     """Randomize enemy spell and attack stats and effects."""
-    from randomizer.types.spell import EnemySpell
 
     # Status effects that can be randomly assigned (excluding berserk for safety)
     safe_statuses = [
@@ -141,25 +164,10 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
 
 def randomize_enemy_stats(world: GameWorld) -> None:
     """Randomize enemy stats based on EnemyStats flag setting."""
-    from randomizer.data.enemies.enemies import (
-        SMITHY2Enemy,
-        SMITHYTankEnemy,
-        SMITHYSafeEnemy2,
-        SMITHYMageEnemy,
-        SMITHYChestEnemy,
-        STRONGBOBOMB1Enemy,
-        STRONGBOBOMB2Enemy,
-        STRONGBOBOMB3Enemy,
-        STRONGBOBOMB4Enemy,
-        BOOSTERDUMMY,
-    )
     strong_bobomb_types = (
         STRONGBOBOMB1Enemy, STRONGBOBOMB2Enemy,
         STRONGBOBOMB3Enemy, STRONGBOBOMB4Enemy,
     )
-    from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
-    from randomizer.types.enemy import Enemy as CustomEnemy
-    from randomizer.logic.setup.enemy_tweaks import _get_enemy_lists
 
     all_enemies = list(world.enemies.enemies)
 
@@ -472,10 +480,6 @@ def generate_formation_coordinates(
         A list of (x, y) coordinate tuples or None for enemies that can't fit.
     """
     # Lazy import to avoid circular dependency
-    from randomizer.logic.scanline_calculator import (
-        get_scanline_footprint,
-        find_valid_coordinates,
-    )
 
     if not enemy_types:
         return []
@@ -784,9 +788,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
       always included in the resulting formation, even when they fall outside
       the stat-similarity candidate pool.
     """
-    from randomizer.types.prize import BossFightPrize
     from randomizer.types.prizelocation import BossFightLocation
-    from randomizer.logic.scanline_calculator import clear_footprint_cache
 
     clear_footprint_cache()
 
@@ -896,7 +898,6 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     # Maximum unique VRAM size for a formation.
     # Duplicate enemies share sprite VRAM, so only unique sprites count.
     # 14336 = vanilla ceiling for non-boss formations (old value 8192 was too low).
-    from randomizer.logic.battle_vram_calculator import VANILLA_MAX_NONBOSS_UNIQUE_VRAM
     MAX_VRAM_SIZE = VANILLA_MAX_NONBOSS_UNIQUE_VRAM
 
     for pack_id, pack in enumerate(world.battle_packs.packs):
@@ -1056,7 +1057,6 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
 def apply_exp_multiplier(world: GameWorld) -> None:
     """Apply EXP multiplier to all enemies based on settings."""
-    from randomizer.types.flags import EXPMultiplier, EXPMultiplierOptions
 
     exp_setting = world.settings.get_flag(EXPMultiplier).selected
 

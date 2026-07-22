@@ -190,19 +190,23 @@ def _get_classes_in_definition_order(base_class: type) -> list[type]:
             continue
         if not issubclass(cls, base_class):
             continue
-        # Skip abstract row classes re-exported from types.prizelocation
-        # (e.g. TreasureChestLocationRow1..6) — they have no _rooms of their own
-        # and must not be treated as concrete placement targets.
-        if cls.__module__ != _prizelocations_module.__name__:
+        # Keep only classes defined inside the prizelocations package — its __init__
+        # or any region submodule (e.g. ...prizelocations.bandits_way.xxx). Abstract row
+        # bases re-exported from types.prizelocation (e.g. TreasureChestLocationRow1..6)
+        # live in another package and must not be treated as concrete placement targets.
+        pkg = _prizelocations_module.__name__
+        if cls.__module__ != pkg and not cls.__module__.startswith(pkg + "."):
             continue
         try:
             _, lineno = inspect.getsourcelines(cls)
         except (OSError, TypeError):
             lineno = float("inf")
-        classes.append((lineno, cls))
+        # Classes now live across region submodules, so a bare line number would
+        # interleave files. Group by module, then order within each file.
+        classes.append((cls.__module__, lineno, cls))
 
-    classes.sort(key=lambda pair: pair[0])
-    return [cls for _, cls in classes]
+    classes.sort(key=lambda t: (t[0], t[1]))
+    return [cls for _, _, cls in classes]
 
 
 def _get_eligible_chest_rooms() -> list[type]:

@@ -378,6 +378,10 @@ class ArchipelagoObject(ItemNPC):
     _base = AP_BASE
     _chest_event_id: int = E2365_AP_PACKET
 
+class EmptyObject(ItemNPC):
+    _base = EMPTY_NPC_3
+    _chest_event_id: int = E3070_YOU_MISSED_MASHER_CHEST
+
 
 # possibilities for more models
 # urchin

@@ -256,6 +256,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
             cannot_clone=True,
+            vram_size=1
         ),
         RegularClone(  # 8
             npc=npcs.POUNDETTE_NPC_2,
@@ -268,6 +269,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
+            vram_size=1
         ),
         RegularClone(  # 9
             npc=npcs.POUNDETTE_NPC_2,
@@ -280,6 +282,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
+            vram_size=1
         ),
         RegularNPC(  # 10
             npc=npcs.FACTORY_DIRECTOR_RED_NPC,
@@ -312,4 +315,9 @@ room = Room(
             cannot_clone=True),
     ],
     effects_npc=EffectsNpc.UNKNOWN_1E,
+    npc_expected_animations={
+        7: ["factory_pierce"],
+        8: ["factory_pierce"],
+        9: ["factory_pierce"],
+    },
 )

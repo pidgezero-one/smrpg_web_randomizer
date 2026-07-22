@@ -41,6 +41,8 @@ from ..types.flags import (
     BowsersKeepGate, BowsersKeepGating,
     FactoryGate, FactoryGating,
 )
+from ..types.prize import BossFightPrize, CharacterPrize
+from ..types.prizelocation import KeyItemLocation
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -191,7 +193,6 @@ def sealed_locations(
     # Only boss and character prizes are unique enough to reason about safely:
     # an item class pinned in one location may still have a free copy in the
     # pool, and treating it as unobtainable would give false positives.
-    from ..types.prize import BossFightPrize, CharacterPrize
 
     pinned_classes = tuple(
         cls for cls in set(pinned.values())
@@ -342,7 +343,6 @@ def unplaceable_key_items(
     a zero result under some gate config is monotone in that config.
     """
     from .shufflers.items import should_shuffle
-    from ..types.prizelocation import KeyItemLocation
 
     key_locs = [
         l for l in world.locations.values()
@@ -393,7 +393,6 @@ def assert_key_pool_balanced(
     slots hold filler — so this only fires on the genuinely-broken direction.
     """
     from .shufflers.items import should_shuffle
-    from ..types.prizelocation import KeyItemLocation
     from ..types.gameworld import WorldBuildingException
 
     key_locs = [

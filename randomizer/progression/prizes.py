@@ -366,6 +366,19 @@ from ..types.flags import (
     WinCondition,
     WinConditions,
 )
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
+            NPC_0,
+            NPC_6,
+            NPC_9,
+            NPC_10,
+        )
+from ..data.rooms.npcs import MAGIKOOPA_NPC_2, MAGIKOOPA_NPC_3
+from ..data.variables.room_names import (
+            R432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE,
+            R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR,
+            R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI,
+            R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
+        )
 
 _GATING_FLAGS = {
     "BanditsWayGating": BanditsWayGating,
@@ -2321,10 +2334,17 @@ class RecoveryMushroomPrize(StandardPrize):
 
 
 class YouMissed(StandardPrize):
+    _model = EmptyObject
+    # BoosterTowerFallingChestLocation flips this so the prize's chest_grant jumps to the
+    # masher-chest variant; every other holder (annoying empty chests) keeps E3081.
+    _masher_chest: bool = False
+    _fortune_type: FortuneEnum = FortuneEnum.YIKES
+
     @property
     def chest_grant(self) -> EventScript:
+        if self._masher_chest:
+            return EventScript([JmpToEvent(E3070_YOU_MISSED_MASHER_CHEST)])
         return EventScript([JmpToEvent(E3081_YOU_MISSED)])
-    _fortune_type: FortuneEnum = FortuneEnum.YIKES
 
 
 class Nothing(YouMissed):
@@ -5182,7 +5202,7 @@ class DodoBossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: "[center]\n••••••[await]",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Dodo...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "[center]\n••••••[await]",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: """[delay_60][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """\n[center]••••••[delay_30][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
         DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """\n[center]••••••[delay_30][await]\n  [select] (I’m here for a fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It’s really weird.\n I never hear the guy next door.[await]\n Maybe he can’t talk.[await][page]\n I’d like to go over and introduce\n myself sometime, but the door\n won’t open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "[center]\n••••••[await]",
@@ -5828,19 +5848,6 @@ class KamekBossFight(BossFightPrize):
         model classes unmutated so other rooms that rely on the original bases
         keep working.
         """
-        from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
-            NPC_0,
-            NPC_6,
-            NPC_9,
-            NPC_10,
-        )
-        from ..data.rooms.npcs import MAGIKOOPA_NPC_2, MAGIKOOPA_NPC_3
-        from ..data.variables.room_names import (
-            R432_ENDING_CREDITS_JOHNNY_LOOKING_OUT_AT_SUNSET_ON_BEACH_SHORE,
-            R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR,
-            R505_ENDING_CREDITS_YOSTER_ISLE_CROCO_RACING_YOSHI,
-            R506_ENDING_CREDITS_MARRYMORE_CHAPEL_BOOSTER_WEDDING_VALENTINA,
-        )
         from .prizelocations import (
             BanditsWayBossFight,
             BoosterTowerIndoorBossFight,

@@ -211,6 +211,19 @@ from ..progression.prizes import (
     GreaperFlagPrize,
     BigBooFlagPrize,
 )
+from ..data.variables.event_script_names import (
+            E1189_HENCHMAN_BATTLE_PACK_SELECTOR,
+        )
+from ..utils.npcs import min_vram_from_sequence_for_sprite
+from .prize import BossFightPrize
+from smrpgpatchbuilder.datatypes.levels.classes import (
+            BattlePackNPC,
+            BattlePackClone,
+        )
+from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
+from randomizer.types.flags import MimicsAnywhere
+from randomizer.types.flags import SpellsAnywhere
+from randomizer.types.flags import ItemQuality, ItemQualityOptions
 
 
 class ShuffleLocationSelector(CategorizationOption):
@@ -1326,10 +1339,10 @@ class TreasureChestLocation(StandardPrizeLocation):
         # check actually holds a prize - if it's empty, disable the chest on the first open.
         # world is None only from structural tests: keep the two-open behaviour there.
         if isinstance(self.prize, (FirstMimicFightLauncher)):
-            if world is None or (world.locations[Mimic1ReloadRewardLocation].prize is not None) and not world.settings.isflag_enabled(AnnoyingChests):
+            if not ((world is None or (world.locations[Mimic1ReloadRewardLocation].prize is None)) and not world.settings.isflag_enabled(AnnoyingChests)):
                 extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_1_CLEARED, [itemgrant[0].identifier.label]))
         elif isinstance(self.prize, (SecondMimicFightLauncher)):
-            if world is None or (world.locations[Mimic2ReloadRewardLocation].prize is not None) and not world.settings.isflag_enabled(AnnoyingChests):
+            if not ((world is None or (world.locations[Mimic2ReloadRewardLocation].prize is None)) and not world.settings.isflag_enabled(AnnoyingChests)):
                 extra_itemgrant.insert(0, JmpIfBitClear(MIMIC_2_CLEARED, [itemgrant[0].identifier.label]))
 
         itemgrant = extra_itemgrant + itemgrant
@@ -1567,9 +1580,6 @@ class BossFightLocationHenchmanNPC:
         remove_if_not_filled: RemoveIfNotFilled = RemoveIfNotFilled.NEVER,
         container_event: int | None = None,
     ):
-        from ..data.variables.event_script_names import (
-            E1189_HENCHMAN_BATTLE_PACK_SELECTOR,
-        )
 
         self._room_ids = room_ids
         self._npc_ids = npc_ids
@@ -1710,7 +1720,6 @@ class BossFightLocationNPC:
         if ov is not None:
             return ov
 
-        from ..utils.npcs import min_vram_from_sequence_for_sprite
 
         room = world.rooms._rooms[self._room_id]
         assert room is not None
@@ -1819,7 +1828,6 @@ class BossFightLocation(PrizeLocation):
         cached = self.get_chosen_npc_model_for_room(slot.room_id)
         if cached is not None:
             return cached
-        from .prize import BossFightPrize
         assert isinstance(self.prize, BossFightPrize)
         forced = self.prize.get_forced_npc_model_for_location(self)
         if forced is not None:
@@ -1922,10 +1930,6 @@ class BossFightLocation(PrizeLocation):
           event script battle pack selectors (non-BattlePackNPC objects).
         - list of (slot, henchman) tuples for all assigned henchmen.
         """
-        from smrpgpatchbuilder.datatypes.levels.classes import (
-            BattlePackNPC,
-            BattlePackClone,
-        )
 
         assert isinstance(self.prize, BossFightPrize)
 
@@ -2149,7 +2153,6 @@ class BossFightLocation(PrizeLocation):
         Returns a list of (container_event, room_id, pack_id) tuples for henchmen
         that need event script battle pack selectors (non-BattlePackNPC objects).
         """
-        from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
 
         event_script_battle_packs: list[tuple[int, int, int]] = []
 
@@ -2254,7 +2257,6 @@ class BossFightLocation(PrizeLocation):
         assert isinstance(self.prize, BossFightPrize)
         pack = world.battle_packs._packs[self._pack_id]
         run_away = self.allow_run_away
-        from randomizer.types.flags import MimicsAnywhere
 
         if world.settings.isflag_enabled(MimicsAnywhere) and (
             isinstance(self.prize, MimicFightInitiatorPrize)
@@ -2680,7 +2682,6 @@ class SpellSlotLocation(PrizeLocation):
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         # When SpellsAnywhere is enabled, spell slots are only sources (for pulling prizes)
         # not destinations - spells go into the general pool instead
-        from randomizer.types.flags import SpellsAnywhere
 
         if world.settings.isflag_enabled(SpellsAnywhere):
             return False
@@ -2696,7 +2697,6 @@ class PrizeRow(PrizeLocation):
     _container_event: int
 
     def can_be_empty(self, world: GameWorld) -> bool:
-        from randomizer.types.flags import ItemQuality, ItemQualityOptions
 
         if world.settings.is_flag_value(
             ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
