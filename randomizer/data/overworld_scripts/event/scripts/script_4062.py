@@ -41,6 +41,9 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(GENO, GenoBeamSpell, identifier="freestanding_spell_13_character_PKT"),
-	RunDialog(dialog_id=DI1971_LEARN_SPELL_13, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
+	JmpIfBitClear(SHIP_PACKET_AUTOTERM_DIALOG, ["e4062_await"]),
+	RunDialog(dialog_id=DI1972_LEARN_SPELL_13_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return(),
+	RunDialog(dialog_id=DI1971_LEARN_SPELL_13, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="e4062_await"),
 	Return()
 ])

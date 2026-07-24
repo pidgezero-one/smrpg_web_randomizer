@@ -448,6 +448,12 @@ TEMP_7042_2 = Flag(0x7042, 2)
 TEMP_7042_3 = Flag(0x7042, 3)
 TEMP_7042_4 = Flag(0x7042, 4)
 TEMP_7042_5 = Flag(0x7042, 5)
+# Alias of TEMP_7042_5: set by the 5 auto-terminating Sunken Ship packet grants so the
+# shared freestanding grant variants (E4050-E4091) pick the [end] dialog twin instead of
+# [await]. Cleared at the top of E0241 on every collection (see script_241), so it never
+# outlives a single grant. Chosen because no 7042 bit is touched anywhere in the packet
+# grant call graph and bit 5 is unused by any Sunken Ship room event.
+SHIP_PACKET_AUTOTERM_DIALOG = Flag(0x7042, 5)
 TEMP_7042_6 = Flag(0x7042, 6)
 TEMP_7042_7 = Flag(0x7042, 7)
 TEMP_7043_0 = Flag(0x7043, 0)

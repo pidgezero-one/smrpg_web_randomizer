@@ -41,6 +41,9 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(TOADSTOOL, ComeBackSpell, identifier="freestanding_spell_25_character_PKT"),
-	RunDialog(dialog_id=DI1995_LEARN_SPELL_25, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
+	JmpIfBitClear(SHIP_PACKET_AUTOTERM_DIALOG, ["e4073_await"]),
+	RunDialog(dialog_id=DI1996_LEARN_SPELL_25_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return(),
+	RunDialog(dialog_id=DI1995_LEARN_SPELL_25, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="e4073_await"),
 	Return()
 ])

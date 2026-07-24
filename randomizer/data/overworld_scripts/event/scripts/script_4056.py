@@ -41,6 +41,9 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(MALLOW, ThunderboltSpell, identifier="freestanding_spell_7_character_PKT"),
-	RunDialog(dialog_id=DI1959_LEARN_SPELL_7, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
+	JmpIfBitClear(SHIP_PACKET_AUTOTERM_DIALOG, ["e4056_await"]),
+	RunDialog(dialog_id=DI1960_LEARN_SPELL_7_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return(),
+	RunDialog(dialog_id=DI1959_LEARN_SPELL_7, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="e4056_await"),
 	Return()
 ])

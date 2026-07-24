@@ -125,6 +125,7 @@ from ..data.variables.variable_names import (
     INVISIBLE_FLAG_1_FOUND,
     INVISIBLE_FLAG_2_FOUND,
     INVISIBLE_FLAG_3_FOUND,
+    SHIP_PACKET_AUTOTERM_DIALOG,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
 from ..data.physical_objects.items import DefaultItem
@@ -2912,12 +2913,26 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
     # object, so its grant must be the object-local (FD-F2-free) packet_grant and the
     # presence-write guard applies. (A bare PacketLocation mixed into an NPCLocation is a
     # cosmetic sprite repoint only and keeps that location's npc_grant.)
+
+    # When True, the grant sets SHIP_PACKET_AUTOTERM_DIALOG so the shared freestanding
+    # grant variants (E4050-E4091) show the auto-terminating [end] dialog twin rather than
+    # the [await] one. Correct only where the player collects the packet while running past
+    # it and can't stop to press A. Default False: a standing packet must wait for input.
+    _autoterminate_packet: bool = False
+
     def grant(self, world: GameWorld | None = None) -> EventScript:
         if self.prize is None:
             return EventScript([Return()])
         packet_grant = self.prize.packet_grant
         if packet_grant is None:
             return EventScript([Return()])
+        if self._autoterminate_packet:
+            # E0241 clears this at the top of every collection, so the bit is scoped to
+            # exactly this grant. Prepending makes SetBit the grant's first command, which
+            # PrizeRow.render renames to the room dispatch target — execution enters here.
+            return EventScript(
+                [SetBit(SHIP_PACKET_AUTOTERM_DIALOG), *packet_grant.contents]
+            )
         return packet_grant
 
     def _assert_packet_grant_safe(self, world: GameWorld) -> None:

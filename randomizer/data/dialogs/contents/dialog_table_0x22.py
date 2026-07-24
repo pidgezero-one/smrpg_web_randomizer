@@ -134,7 +134,8 @@ dialog_data[58] = ''' I heard that monsters can
  If you find any equipment that has
  an “AX” symbol in the description,
  you can protect yourself with it.[await]'''
-dialog_data[59] = ''' But I wanna play outside!![await]'''
+dialog_data[59] = '''
+[center]But I wanna play outside!![await]'''
 dialog_data[60] = ''' Hey, what do you think you’re
  doing?! There’s no special items
  up there! Get back down here![await]'''
@@ -394,7 +395,7 @@ dialog_data[147] = '''[page]
 dialog_data[148] = '''            Got [0x7000] Cookie(s)![await]'''
 dialog_data[149] = '''[page]
 YOSHI:
-          I’ll try my very best![await]'''
+[center](I’ll try my very best!)[await]'''
 dialog_data[150] = '''[page]
 BOSHI: (Let’s race again
  sometime, all right?)[await]'''
@@ -410,23 +411,23 @@ dialog_data[153] = ''' Are you leaving now?[await]
  [select]  (You bet)[await]'''
 dialog_data[154] = ''' Please make yourself at home.[await]'''
 dialog_data[155] = '''
-         Please enjoy your stay.[await]'''
+[center]Please enjoy your stay.[await]'''
 dialog_data[156] = '''[page]
 
-             Enjoy your stay.[await]'''
+[center]Enjoy your stay.[await]'''
 dialog_data[157] = '''
-      Hello. How may I help you?[await]'''
+[center]Hello. How may I help you?[await]'''
 dialog_data[158] = ''' Tip 10 coins?[await]
  [select]  (Sure, why not?)
  [select]  (No way)[await]'''
 dialog_data[159] = '''   You’re a little short of coins...[await]'''
 dialog_data[160] = ''' THANK YOU very much, `MAIN_CHARACTER_HONORIFIC`!
  Please enjoy your stay here.[await]'''
-dialog_data[161] = '''        You have paid for only
-           one night’s stay.[await][page]
-       If you stay longer, you’ll
-     have to pay for it, or work
-      to make up the difference.[await]'''
+dialog_data[161] = '''[center]You have paid for only
+one night’s stay.[await][page]
+If you stay longer, you’ll
+have to pay for it, or work
+to make up the difference.[await]'''
 dialog_data[162] = ''' Would you like to stay longer?[await]
  [select]  (Yes)
  [select]  (I’ll pass)[await]'''
@@ -452,16 +453,16 @@ dialog_data[170] = ''' I’ll have you work even if it
 dialog_data[171] = ''' Bellhop! Escort this guest
  over to our suite![await]'''
 dialog_data[172] = '''
-      Remember to do a good job.[await]'''
+[center]Remember to do a good job.[await]'''
 dialog_data[173] = '''
-            Please calm down.[await]'''
+[center]Please calm down.[await]'''
 dialog_data[174] = ''' Please escort our guest
  immediately![await]'''
 dialog_data[175] = '''
-        Please see our guest out.[await]'''
+[center]Please see our guest out.[await]'''
 dialog_data[176] = ''' Thanks a lot.[await]'''
 dialog_data[177] = '''
-    You’re not off the hook, yet![await]'''
+[center]You’re not off the hook, yet![await]'''
 dialog_data[178] = ''' Good job.
  Now don’t you EVER spend another
  night here without any money![await]'''

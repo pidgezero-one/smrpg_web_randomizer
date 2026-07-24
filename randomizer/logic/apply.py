@@ -73,6 +73,7 @@ from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
     GAME_OVER,
     PRIMARY_TEMP_7000,
+    SHIP_PACKET_AUTOTERM_DIALOG,
     SMITHY_BOSS_HUNT_WIN_CONDITION,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT,
     STAR_PIECE_GRANT_DIRECTIONAL_BIT_2,
@@ -729,6 +730,12 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             )
         if E0241_FREESTANDING_1_GRANT >= key >= E0227_FREESTANDING_15_GRANT:
             contents.insert(0, Set7000ToCurrentLevel())
+            # Normalize the ship-packet auto-terminate signal before every freestanding
+            # grant. The 5 auto-terminating Sunken Ship packets set it in their grant tail
+            # (in `execution` below); clearing here guarantees it never leaks past one
+            # collection, including on grant paths that show no "Got ..." dialog (star
+            # piece, coins, flower) and so never clear it themselves.
+            contents.insert(0, ClearBit(SHIP_PACKET_AUTOTERM_DIALOG))
         contents.extend([*decision, Return(), *execution])
         event_script.set_contents(contents)
 

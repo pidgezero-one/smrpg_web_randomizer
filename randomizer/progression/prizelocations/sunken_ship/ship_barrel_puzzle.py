@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
 
 class ShipBarrelPuzzle(PacketLocationRow1):
+    _autoterminate_packet = True
     _bias = True
     _originally_held = RecoveryMushroomPrize
     _replace = "spawn_ship_barrel_item"

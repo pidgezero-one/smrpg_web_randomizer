@@ -17,6 +17,7 @@ if TYPE_CHECKING:
 
 
 class ShipTrampolinePuzzle(PacketLocationRow1):
+    _autoterminate_packet = True
     _bias = True
     _originally_held = FPFlowerPrize
     _replace = "spawn_ship_trampoline_item"

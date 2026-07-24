@@ -41,6 +41,9 @@ script = EventScript([
 		A_PlaySound(sound=SO085_FLOWER, channel=4),
 	]),
 	LearnSpell(MALLOW, PsychopathSpell, identifier="freestanding_spell_9_character_PKT"),
-	RunDialog(dialog_id=DI1963_LEARN_SPELL_9, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
+	JmpIfBitClear(SHIP_PACKET_AUTOTERM_DIALOG, ["e4058_await"]),
+	RunDialog(dialog_id=DI1964_LEARN_SPELL_9_AUTOTERM, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	Return(),
+	RunDialog(dialog_id=DI1963_LEARN_SPELL_9, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False, identifier="e4058_await"),
 	Return()
 ])

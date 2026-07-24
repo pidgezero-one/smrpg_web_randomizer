@@ -40,8 +40,11 @@ script = EventScript([
 		A_VisibilityOff(),
 	]),
 	PlaySound(sound=SO085_FLOWER, channel=6),
-	RunDialog(dialog_id=DI2096_GOT_SHOES, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False),
-	Inc(WEDDING_GEAR_COUNTER),
+	JmpIfBitClear(SHIP_PACKET_AUTOTERM_DIALOG, ["e4086_await"]),
+	RunDialog(dialog_id=DI3060_SHOES_AUTOTERM, above_object=BOWSER, closable=False, sync=True, multiline=False, use_background=False),
+	Jmp(["e4086_tail"]),
+	RunDialog(dialog_id=DI2096_GOT_SHOES, above_object=BOWSER, closable=True, sync=False, multiline=False, use_background=False, identifier="e4086_await"),
+	Inc(WEDDING_GEAR_COUNTER, identifier="e4086_tail"),
 	AddToInventory(ShoesItem),
 	Return()
 ])

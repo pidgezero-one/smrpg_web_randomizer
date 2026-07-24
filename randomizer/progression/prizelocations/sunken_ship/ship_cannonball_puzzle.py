@@ -16,6 +16,7 @@ if TYPE_CHECKING:
 
 
 class ShipCannonballPuzzle(PacketLocationRow1):
+    _autoterminate_packet = True
     _bias = True
     _originally_held = MushroomPrize
     _replace = "spawn_ship_cannonball_item"
