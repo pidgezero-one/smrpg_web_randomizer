@@ -2332,7 +2332,8 @@ class BlooberObject(BossNPC):
     """Bloober object."""
 
     _base = BLOOBER_NPC
-    _eye_height = 10
+    _eye_height = 7
+    _tower_entrance_horizontal_shift = 2
     _recoil = 2
     _tower_crying = 0
     _bandits_way_distracted = 0

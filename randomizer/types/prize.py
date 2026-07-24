@@ -20,7 +20,8 @@ from ..data.physical_objects.items import (
     DefaultItem,
     TinyStarObject,
     FlowerObject,
-    BigCoinObject,
+    CoinStillObject,
+    SmallCoinStillObject,
     FrogCoinObject,
 )
 
@@ -1125,7 +1126,7 @@ class ArchipelagoPrize(StandardPrize):
 
 
 class CoinPrize(StandardPrize):
-    _model = BigCoinObject
+    _model = CoinStillObject
     _amount: int
     _nickname = TreasureHunterNickname(
         nickname="Gold Coin",
@@ -1138,6 +1139,12 @@ class CoinPrize(StandardPrize):
         if self.amount >= 10:
             return (SPR0235_STATIC_COIN, 0)
         return (SPR0193_SMALL_COIN, 0)
+    
+    @property
+    def model(self) -> tuple[int, int]:
+        if self.amount >= 10:
+            return CoinStillObject
+        return SmallCoinStillObject
 
     @property
     def chest_grant(self) -> EventScript:

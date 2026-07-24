@@ -93,11 +93,14 @@ CARD_BASE = _item_npc_base(SPR0206_CARD)
 BANANA_BASE = _item_npc_base(SPR0222_BANANA_PEEL)
 BERRY_BASE = _item_npc_base(SPR0253_BERRY, y_shift=1)
 BIG_COIN_BASE = _item_npc_base(SPR0192_COIN, height=6, y_shift=5, min_vram_size=1)
+BIG_COIN_STILL_BASE = _item_npc_base(SPR0235_STATIC_COIN)
+SMALL_COIN_STILL_BASE = _item_npc_base(SPR0236_COIN_STATIC_SMALL)
 BEETLE_BASE = _item_npc_base(SPR0255_BEETLE, y_shift=1)
 FLOWER_BASE = _item_npc_base(SPR0636_SMALL_FLOWER_STANDALONE, y_shift=1)
 RECOVERY_MUSHROOM_BASE = _item_npc_base(SPR0637_RECOVERY_MUSHROOM_STANDALONE, y_shift=1)
 FROG_COIN_BASE = _item_npc_base(SPR0194_FROG_COIN, height=6, y_shift=5, min_vram_size=1)
 FROG_COIN_STILL_BASE = _item_npc_base(SPR0234_STATIC_FROG_COIN)
+SMALL_FROG_COIN_STILL_BASE = _item_npc_base(SPR0238_STATIC_FROG_COIN_SMALL)
 GLOVE_BASE = _item_npc_base(SPR0208_GLOVE)
 CRYSTAL_BASE = _item_npc_base(SPR0209_SHINY_STONE)
 RED_ORB_BASE = _item_npc_base(SPR0214_RED_BALL)
@@ -4526,6 +4529,26 @@ SMALL_COIN_NPC = NPC(
     show_shadow=True,
     directions=VramStore.DIR2_SWSE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+SMALL_COIN_NPC_STATIC = NPC(
+    sprite_id=SPR0236_COIN_STATIC_SMALL,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=1,
+    obtuse_axis=1,
+    height=1,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR2_SWSE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,

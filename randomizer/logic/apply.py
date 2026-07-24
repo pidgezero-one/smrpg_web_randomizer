@@ -153,6 +153,7 @@ from ..progression.prizes import (
 
 from ..data.rooms.npcs import EMPTY_NPC
 from ..data.physical_objects.items import DefaultItem
+from ..data.physical_objects.items import FrogCoinObject, FrogCoinAnimatedObject
 from ..data.sprites.subs.bowser.sprite_96 import sprite as BOWSER_96
 from ..data.sprites.subs.bowser.sprite_132 import sprite as BOWSER_132
 from ..data.sprites.subs.bowser.sprite_135 import sprite as BOWSER_135
@@ -564,10 +565,27 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     npc = cast(AreaObject, n)
                     room = world.rooms._rooms[room_id_int]
                     assert room is not None, f"Room {room_id_int} not found"
+                    # Vanilla guard: if the placed prize is the location's own
+                    # original prize, leave the room's NPC untouched so its
+                    # sprite isn't swapped for a different-looking model (e.g. a
+                    # vanilla SMALL_COIN_NPC -> SMALL_COIN_STILL_BASE).
+                    if place.originally_held is not None and isinstance(
+                        place.prize, place.originally_held
+                    ):
+                        continue
                     if place.prize is not None and place.prize.model is not None:
                         prize_model = place.prize.model
                         if place._model_allowlist is not None and not issubclass(prize_model, tuple(place._model_allowlist)):
                             prize_model = DefaultItem
+                        # Frog coins: swap the (allowlist-approved) static frog
+                        # coin for the animated FROG_COIN_BASE variant only when
+                        # the room has a Coins partition in buffer C, which the
+                        # animation needs. Rendering detail; keeps DefaultItem if
+                        # the allowlist rejected the frog coin above.
+                        if isinstance(place.prize, FrogCoinPrize) and prize_model is FrogCoinObject:
+                            buffers = room.partition.buffers if room.partition is not None else []
+                            if len(buffers) >= 3 and buffers[2].buffer_type == BufferType.COINS:
+                                prize_model = FrogCoinAnimatedObject
                         model = prize_model().base
                     else:
                         model = EMPTY_NPC
@@ -800,32 +818,10 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # sprite data from world.sprites for VRAM calculations, and the per-character
     # protagonist sprites aren't written to slots 31-37 until after this point.
 
-    # Update freestanding frog coin NPCs in rooms with Coins partition
-    # to use the animated frog coin NPC and spinning action script
-    for location in world.locations.values():
-        if not isinstance(location, (StandingLocation, RiverLocation)):
-            continue
-        if location.originally_held is None or not issubclass(location.originally_held, FrogCoinPrize):
-            continue
-        # Check if any room containing this prize has a Coins partition buffer
-        for room_id in location._rooms:
-            # Skip room 41 (Booster Tower minesweeper room) - has coins partition but
-            # frog coin NPC there uses a different animation system
-            if room_id == R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS:
-                continue
-            room = world.rooms._rooms[room_id]
-            if room is None or room.partition is None:
-                continue
-            has_coins_buffer = any(
-                buf.buffer_type == BufferType.COINS for buf in room.partition.buffers
-            )
-            if has_coins_buffer:
-                # Update all NPCs for this location in this room
-                for npc_id in location._npc_ids:
-                    npc_obj = room.get_npc_by_target_id(npc_id)
-                    if npc_obj is not None and npc_obj._npc == STATIC_FROG_COIN_NPC:
-                        npc_obj._npc = FROG_COIN_NPC
-                        npc_obj.set_action_script(A0511_PIPE_VAULT_3_CHEST_ROOM_COIN)
+    # (Freestanding frog-coin animation is now handled per-placement in the
+    # StandingLocation render above: a non-vanilla frog coin uses the animated
+    # FROG_COIN_BASE model when its room has a Coins buffer in slot C, else the
+    # static FrogCoinObject. Vanilla frog coins keep their room-data NPC.)
 
     # Set can_run_away for each boss fight location's formation
     # This must happen after all renders to ensure the correct formation is used

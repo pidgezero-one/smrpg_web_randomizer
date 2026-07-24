@@ -328,6 +328,21 @@ class FrogCoinObject(ItemNPC):
     _base = FROG_COIN_STILL_BASE
     _chest_event_id: int = E3084_FROG_COIN_CHEST_QUICK_HIT
 
+class FrogCoinAnimatedObject(ItemNPC):
+    # Animated frog coin (SPR0194 via FROG_COIN_BASE). The animation needs a
+    # Coins partition buffer to render, so this is only used in rooms that have
+    # one in buffer C; elsewhere FrogCoinObject (static SPR0234) is used.
+    _base = FROG_COIN_BASE
+    _chest_event_id: int = E3084_FROG_COIN_CHEST_QUICK_HIT
+
+class CoinStillObject(ItemNPC):
+    _base = BIG_COIN_STILL_BASE
+    _chest_event_id: int = E3080_COIN_CHEST_QUICK_HIT
+    
+class SmallCoinStillObject(ItemNPC):
+    _base = SMALL_COIN_STILL_BASE
+    _chest_event_id: int = E3080_COIN_CHEST_QUICK_HIT
+
 
 class GloveObject(ItemNPC):
     _base = GLOVE_BASE

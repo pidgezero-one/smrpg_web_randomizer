@@ -70,7 +70,7 @@ script = EventScript([
 		A_WalkSouthwestSteps(2),
 		A_SetSpriteSequence(index=2, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="factory_2nd_boss_look_up_2"),
 		A_WalkNorthwestSteps(2),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True)
 	], identifier="factory_2nd_boss_look_up_aq_2"),
 	ActionQueueSync(target=NPC_12, subscript=[
 		A_OverwriteSolidity(),
@@ -119,7 +119,7 @@ script = EventScript([
 		A_FaceSoutheast()
 	]),
 	ActionQueueAsync(target=NPC_15, subscript=[
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
 	]),
 	ActionQueueSync(target=NPC_12, subscript=[
 		A_Walk1StepSoutheast(),
@@ -142,7 +142,7 @@ script = EventScript([
 		A_SetSpriteSequence(index=2, is_mold=True, is_sequence=True, looping=True, identifier="factory_2nd_boss_look_up_3"),
 		A_Walk1StepNortheast(),
 		A_WalkNortheastPixels(8),
-		A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True)
+		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
 	], identifier="factory_2nd_boss_look_up_aq_3"),
 	ActionQueueSync(target=NPC_15, subscript=[
 		A_SetWalkingSpeed(FAST),

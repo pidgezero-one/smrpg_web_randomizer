@@ -85,7 +85,7 @@ room = Room(
     ],
     objects=[
         RegularNPC(  # 0
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0015_DO_NOTHING,
@@ -113,7 +113,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularClone(  # 1
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             event_script=E0240_FREESTANDING_2_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -124,7 +124,7 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 2
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             event_script=E0239_FREESTANDING_3_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -135,7 +135,7 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 3
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC_2,
             event_script=E0238_FREESTANDING_4_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,

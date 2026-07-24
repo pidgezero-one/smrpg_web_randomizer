@@ -17,7 +17,7 @@ from ....items import *
 
 script = ActionScript([
 	A_SetWalkingSpeed(SLOW),
-	A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	A_FaceSoutheast(),
 	A_WalkToXYCoords(x=16, y=94),
 	A_ShiftToXYCoords(x=8, y=35),
 	A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES),

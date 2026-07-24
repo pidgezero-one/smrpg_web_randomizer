@@ -102,6 +102,9 @@ from ..data.variables.action_script_names import (
     A0576_CURTAIN_GAME_OPEN_CURTAIN,
     A0577_CURTAIN_GAME_OPEN_CURTAIN,
     A0845_ACTIVATE_PIRANHA_PLANT_IN_PIPE,
+    A0954_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
+    A0955_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
+    A0956_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
     A0962_FACTORY_3RD_BOSS_LEFT_HAMMER,
     A0963_FACTORY_3RD_BOSS_MID_HAMMER,
     A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER,
@@ -142,7 +145,7 @@ from ..data.rooms.npcs import (
     MARIO_WALKING_DOWN_LEFT_NPC,
     TOADSTOOL_DOLL_NPC,
 )
-from ..types.physical_objects import BossNPC, SpriteAnimation
+from ..types.physical_objects import BossNPC, HenchmanNPC, SpriteAnimation
 from ..types.prize import BossFightHenchman, BossFightPrize, CharacterPrize
 from ..types.prizelocation import AllyNPCSub, BossFightLocationNPC
 from ..utils.npcs import is_swse_only
@@ -3404,3 +3407,35 @@ def render_final_boss_fight(
     obj = room.get_npc_by_target_id(NPC_8)
     obj.set_z(0)
     obj.set_action_script(A0015_DO_NOTHING)
+
+
+def render_final_boss_conveyor_lackeys(
+    world: GameWorld,
+    model: type[HenchmanNPC],
+) -> None:
+    """Strip the northeast turns from the Gun Yolk room conveyor lackey scripts
+    when the henchman model that landed there has no north-facing sequence.
+
+    Sprites limited to SW/SE would draw their south molds while walking away
+    from the camera, so the turns are dropped and facing is pinned instead.
+    """
+    m = model()
+    spr = world.sprites.sprites[m.base.sprite_id]
+    assert spr is not None
+    if not (is_swse_only(spr) or m.base.directions == VramStore.DIR2_SWSE):
+        return
+
+    world.action_scripts.delete_command_by_identifier(
+        "as_955_factory_lackey_faces_north"
+    )
+    world.action_scripts.delete_command_by_identifier(
+        "as_955_factory_lackey_faces_north_2"
+    )
+    for script_id in [
+        A0955_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
+        A0956_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
+        A0954_FACTORY_2ND_ROOM_CONVEYOR_ENEMIES,
+    ]:
+        world.get_action_script(script_id).insert_before_nth_command(
+            0, A_FixedFCoordOn()
+        )

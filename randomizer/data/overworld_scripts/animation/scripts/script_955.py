@@ -17,13 +17,13 @@ from ....items import *
 
 script = ActionScript([
 	A_SetWalkingSpeed(SLOW),
-	A_SetSpriteSequence(index=3, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+    A_FaceNortheast(identifier="as_955_factory_lackey_faces_north"),
 	A_WalkToXYCoords(x=7, y=75),
 	A_WalkNortheastPixels(11),
 	A_ToggleSubroutineSlots(mask=0x03),
 	A_SetSubroutineXTargets(slot_26_x=0x01C0, slot_27_x=0x02A0),
 	A_Pause(5),
-	A_SetSpriteSequence(index=0, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+	A_FaceSoutheast(),
 	A_Pause(3),
 	A_KillAllSubroutineSlots(),
 	A_WalkSoutheastSteps(16),

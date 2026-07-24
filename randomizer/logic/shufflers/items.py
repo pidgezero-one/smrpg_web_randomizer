@@ -345,6 +345,7 @@ from ...progression.prizes import (
         ThirdMimicFightLauncher,
     )
 from ...types.flags import SpellsAnywhere
+from ...types.flags import KeyItemsAnywhere
 from ...types.prize import SpellPrize
 from ..placement import collect_accessible_items
 from ...types.prize import KeyPrize
@@ -1876,21 +1877,27 @@ def shuffle_prizes(world: GameWorld) -> None:
     shuffle_filter = lambda loc: should_shuffle(loc, world)
     priority_classes = _build_priority_classes(world)
 
-    # Key-item pool health. Key items (KeyItemsAnywhere off) may only go in
-    # key-item locations, 1:1. Guard the count invariant, then — under POP —
+    # Key-item pool health. With KeyItemsAnywhere off, key items may only go in
+    # key-item locations, 1:1, so guard the count invariant, then — under POP —
     # open gates if boss pinning islanded some key slots (see solvability.py).
-    all_pool = [p for prizes in pool.values() for p in prizes]
-    key_pool = [p for p in all_pool if isinstance(p, KeyPrize)]
-    non_key_pool = [p for p in all_pool if not isinstance(p, KeyPrize)]
-    assert_key_pool_balanced(world, key_pool)
-    key_gate_changes = relax_key_pool_deadlock(world, key_pool, non_key_pool)
-    if key_gate_changes:
-        for message in key_gate_changes:
-            world.settings.force_override(message)
-        # Gates are baked into ROM by the pre-shuffler, so rebuild the world for
-        # the change to reach the game and not just placement (see _shuffle_items).
-        raise SettingsRelaxed(key_gate_changes)
-    assert_key_pool_placeable(world, key_pool, non_key_pool)
+    # With KeyItemsAnywhere on, key items are ordinary items placed by the
+    # general fill into any location, so the key-slot accounting is meaningless
+    # and would false-positive whenever a key location gets filled by non-key
+    # filler (e.g. a debug override) — skip the whole guard.
+    if not world.settings.isflag_enabled(KeyItemsAnywhere):
+        all_pool = [p for prizes in pool.values() for p in prizes]
+        key_pool = [p for p in all_pool if isinstance(p, KeyPrize)]
+        non_key_pool = [p for p in all_pool if not isinstance(p, KeyPrize)]
+        assert_key_pool_balanced(world, key_pool)
+        key_gate_changes = relax_key_pool_deadlock(world, key_pool, non_key_pool)
+        if key_gate_changes:
+            for message in key_gate_changes:
+                world.settings.force_override(message)
+            # Gates are baked into ROM by the pre-shuffler, so rebuild the world
+            # for the change to reach the game and not just placement (see
+            # _shuffle_items).
+            raise SettingsRelaxed(key_gate_changes)
+        assert_key_pool_placeable(world, key_pool, non_key_pool)
 
     # Win condition "Beat Smithy": defeating Smithy ends the game the instant it
     # happens, so nothing is ever gated behind him. Pull his fight out of the pool

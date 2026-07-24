@@ -120,7 +120,8 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3),
+            byte7_upper2=3,
+            vram_size=0),
         RegularClone( # 1
             npc=npcs.SPOOKUM_NPC,
             event_script=E1328_TOWER_EXTERIOR_LOADER,
@@ -130,7 +131,8 @@ room = Room(
             y=21,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            vram_size=0),
         RegularClone( # 2
             npc=npcs.SPOOKUM_NPC,
             event_script=E1328_TOWER_EXTERIOR_LOADER,
@@ -140,7 +142,8 @@ room = Room(
             y=23,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            vram_size=0),
         RegularClone( # 3
             npc=npcs.SPOOKUM_NPC,
             event_script=E1328_TOWER_EXTERIOR_LOADER,
@@ -150,7 +153,8 @@ room = Room(
             y=25,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            vram_size=0),
         RegularClone( # 4
             npc=npcs.SPOOKUM_NPC,
             event_script=E1328_TOWER_EXTERIOR_LOADER,
@@ -160,7 +164,8 @@ room = Room(
             y=27,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            vram_size=0),
         RegularClone( # 5
             npc=npcs.SPOOKUM_NPC,
             event_script=E1328_TOWER_EXTERIOR_LOADER,
@@ -170,7 +175,8 @@ room = Room(
             y=29,
             z=0,
             z_half=True,
-            direction=SOUTHWEST),
+            direction=SOUTHWEST,
+            vram_size=0),
         RegularNPC( # 6
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,

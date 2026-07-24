@@ -46,7 +46,7 @@ script = EventScript([
 	]),
     EnableControlsUntilReturn([]),
     Pause(30),
-    ActionQueueSync(NPC_2, [
+    ActionQueueSync(NPC_1, [
         A_SetSequenceSpeed(NORMAL),
         A_SetSpriteSequence(index=10, looping=False, mirror_sprite=True, is_sequence=True, identifier="keep_boss_1_heal"),
 		A_Pause(80, identifier="keep_boss_1_heal_length"),

@@ -5503,8 +5503,8 @@ class CzarDragonBossFight(BossFightPrize):
         DI2847_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "[center]\n••••••[await]",
         DI2848_OCCUPIED_SEASIDE_HENCHMAN_SHED_GUARD: "[center]\n••••••[await]",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "[center]\nCZAR DRAGON: BLAAARRRGGGG[await]",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: "[center]\nCZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
-        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: "[center]\nCZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: "\n[center]CZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: "\n[center]CZAR DRAGON: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
         DI3338_MONSTRO_SUPERBOSS_HINT: " It’s really weird.\n Sometimes I hear the guy next door.[await][page]\n He’s always yelling about\n BLARRRRG-this and\n BLAHGAHRGGH-that.[await][page]\n Sometimes I’d like to ask him what\n he’s babbling about, but the door\n won’t open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "[center]\nCZAR DRAGON: BLAAARRRGGGG[await]",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "[center]\nCZAR DRAGON: BLAAARRRGGGG[await]",
@@ -5525,8 +5525,8 @@ class CzarDragonBossFight(BossFightPrize):
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Blargg.[await]""",
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """[center]\nBLARGG: BLAAARRRGGGG[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: "[center]\nBLARGG: BLAAARRRGGGG[await]",
-        DI3057_MONSTRO_SUPERBOSS_PROMPT: "[center]\nBLARGG: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
-        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: "[center]\nBLARGG: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: "\n[center]BLARGG: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: "\n[center]BLARGG: BLAAARRRGGGG\n  [select] (I agree, let’s fight)\n  [select] (Uh...)[await]",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: "[center]\nBLARGG: BLAAARRRGGGG[await]",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: "[center]\nBLARGG: BLAAARRRGGGG[await]",
     }
@@ -6132,6 +6132,8 @@ class CloakerDominoBossFight(BossFightPrize):
     _seaside_letter_name_if_final_boss = "Domino's snakes."
 
     _gender = ("they", "them", "their", "theirs", "themselves")
+    _marrymore_name = "Domino"
+    _marrymore_single_gender = ("he", "him", "his", "his", "himself")
 
     _npc_models = [DominoLargeObject, DominoSmallObject]
     _statue_npc = DominoStatueObject

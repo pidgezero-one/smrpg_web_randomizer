@@ -32,10 +32,10 @@ class BelomeTempleTreasuryUpperCornerTopItemLocation(StandingLocationRow3):
         SmallFrogCoinObject,
         FlowerItemObject,
         RecoveryMushroomObject,
-        BigCoinObject,
+        CoinStillObject,
         FlowerObject,
         SmallCoinItemObject,
-        SmallCoinObject,
+        SmallCoinStillObject,
     ]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 271),

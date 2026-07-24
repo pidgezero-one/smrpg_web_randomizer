@@ -34,6 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	JmpIfObjectInSpecificLevel(NPC_0, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM, ["E3198_do_nothing"]),
+	JmpIfBitSet(RUNAWAY_MINECART_ITEM_OBTAINED, ["E3198_do_nothing"]),
 	PauseScriptIfMenuOpen(identifier="EVENT_3198_pause_script_if_menu_open_0"),
 	DisableObjectTrigger(NPC_1),
 	SetBit(TEMP_7044_7),
@@ -164,5 +166,5 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_0, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
 	RemoveObjectFromSpecificLevel(NPC_1, R285_MOLEVILLE_MINES_AREA_13_LONG_MINECART_TRACKS_ROOM),
 	RemoveObjectFromSpecificLevel(NPC_0, R287_MOLEVILLE_MINES_AREA_14_2LEVEL_ROOM_FROM_LONG_MINECART_TRACKS_ROOM),
-	Return()
+	Return(identifier="E3198_do_nothing")
 ])

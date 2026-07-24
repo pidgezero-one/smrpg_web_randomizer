@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.renders import (render_final_boss_fight)
+from randomizer.logic.renders import (render_final_boss_conveyor_lackeys, render_final_boss_fight)
 from randomizer.progression.prizelocations.access import (can_access_inner_factory_final_boss, can_damage_enemies_with_spells)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
@@ -131,9 +131,13 @@ class FinalBossFight(BossFightLocation):
     ]:
         op = super().render(world)
         assert isinstance(self.prize, BossFightPrize)
-        # Replace event scripts for non-Smithy boss in Smithy's location
         if not isinstance(self.prize, SmithyBossFight):
             render_final_boss_fight(world, self.prize)
+        mook = self.get_chosen_henchman_model_for_slot(
+            R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM, NPC_7
+        )
+        if mook is not None:
+            render_final_boss_conveyor_lackeys(world, mook)
         return op
 
 

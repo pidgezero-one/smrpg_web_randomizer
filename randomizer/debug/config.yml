@@ -26,6 +26,11 @@ items:
   start:
     - DebugCandyItem
   # override:
+  #   BoosterTowerCheckerboardBottomItemLocation: MaxMushroomPrize
+  #   BoosterTowerCheckerboardLeftmostItemLocation: MapleSyrupPrize
+  #   BoosterTowerCheckerboardRightmostItemLocation: PickMeUpPrize
+  #   BoosterTowerCheckerboardTopItemLocation: EnergizerPrize
+  #   BoosterTowerCheckerboardUpperRightItemLocation: RoomKeyPrize
   #   # covnenience
   #   StartingItem1Location: StayVoucherPrize
   #   StartingItem2Location: BambinoBombPrize
