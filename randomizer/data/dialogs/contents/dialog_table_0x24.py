@@ -178,11 +178,11 @@ dialog_data[59] = '''GARDENER: Gals don’t care for
  tightwads, you know![await]'''
 dialog_data[60] = '''
 
-   I wish for everyone to be happy.[await]'''
+[center]I wish for everyone to be happy.[await]'''
 dialog_data[61] = '''DEALER: 
-         I will draw one card.[await]'''
+[center]I will draw one card.[await]'''
 dialog_data[62] = '''DEALER: 
-        I’ll play with this hand.[await]'''
+[center]I’ll play with this hand.[await]'''
 dialog_data[63] = '''DEALER: 
 [center]Draw or stay, `MAIN_CHARACTER_NAME`?[await]'''
 dialog_data[64] = '''            Your total is [0x7000].
@@ -191,9 +191,9 @@ dialog_data[64] = '''            Your total is [0x7000].
 dialog_data[65] = '''DEALER: 
  I will first deal you two cards.[await]'''
 dialog_data[66] = '''            You got a(n) [0x7000].[await]'''
-dialog_data[67] = '''      Oh no! You went over 21.[await]'''
+dialog_data[67] = '''[center]Oh no! You went over 21.[await]'''
 dialog_data[68] = '''DEALER:
-      Please show me your hand.[await]'''
+[center]Please show me your hand.[await]'''
 dialog_data[69] = '''DEALER: 
                 I have [0x7000].[await]'''
 dialog_data[70] = '''DEALER: 
@@ -209,9 +209,9 @@ dialog_data[74] = '''DEALER: It’s a tie.[await]
 dialog_data[75] = '''DEALER: No Frog Coins?[await]
  Sorry, you can’t play then.[await]'''
 dialog_data[76] = '''DEALER: 
-            Your first card.[await]'''
+[center]Your first card.[await]'''
 dialog_data[77] = '''DEALER: 
-          Your second card.[await]'''
+[center]Your second card.[await]'''
 dialog_data[78] = '''DEALER: 
  Welcome to the Blackjack table.[await]
  Play a round with me, `MAIN_CHARACTER_HONORIFIC`?
@@ -259,19 +259,19 @@ dialog_data[93] = '''DEALER: Do you want to continue?
   [select] (Yes)
   [select] (No)[await]'''
 dialog_data[94] = '''           [delay]You [delay]missed![delay_40][end]'''
-dialog_data[95] = '''          Talk to the flower[await]
-     and the star gate will open.[await]'''
-dialog_data[96] = '''             To Marrymore[await]'''
-dialog_data[97] = '''              To Star Hill[await]'''
+dialog_data[95] = '''[center]Talk to the flower[await]
+and the star gate will open.[await]'''
+dialog_data[96] = '''[center]To Marrymore[await]'''
+dialog_data[97] = '''[center]To Star Hill[await]'''
 dialog_data[98] = '''
 
-    Can’t wait to start a family.[await]'''
+[center]Can’t wait to start a family.[await]'''
 dialog_data[99] = '''
 
-         I hope my baby’s cute![await]'''
+[center]I hope my baby’s cute![await]'''
 dialog_data[100] = '''
 
-      May Mallow fix the Road![await]'''
+[center]May Mallow fix the Road![await]'''
 dialog_data[101] = '''\n[center]Need the “Shiny Stone” to get in[await]'''
 dialog_data[102] = ''' It’s really weird.
  Sometimes I hear the guy next door.[await][page]
@@ -399,16 +399,16 @@ dialog_data[132] = '''[page]
  Seems like you don’t have
  enough money. Come back again.[await]'''
 dialog_data[133] = '''
-              Oh, shut up.[await]'''
+[center]Oh, shut up.[await]'''
 dialog_data[134] = '''
-         Don’t talk to me now.[await]'''
+[center]Don’t talk to me now.[await]'''
 dialog_data[135] = ''' You want this?
  It’s only 500 coins.[await]
  [select]  (Well, sure!)
  [select]  (No)[await]'''
 dialog_data[136] = '''[page]
 
-         You need more coinage.[await]'''
+[center]You need more coinage.[await]'''
 dialog_data[137] = ''' Want me to teach you?[await]
  [select]  (Yes, please)
  [select]  (I already know)[await]'''
@@ -434,11 +434,11 @@ dialog_data[140] = ''' The world around us is always
  journey that seem useless, someone
  may be seeking them in the future.[await]'''
 dialog_data[141] = '''GREAPER:
-       Nice, you found my item![await]'''
+[center]Nice, you found my item![await]'''
 dialog_data[142] = '''DRY BONES:
-       Cool, you found my item.[await]'''
+[center]Cool, you found my item.[await]'''
 dialog_data[143] = '''THE BIG BOO:
-      ’Grats, you found my item![await]'''
+[center]’Grats, you found my item![await]'''
 dialog_data[144] = ''' Looks like you found our missing
  keys! Nice work![await]'''
 dialog_data[145] = ''' Do you mind staying around a bit
@@ -476,20 +476,20 @@ dialog_data[156] = '''CHANCELLOR:
 [center]We’re counting on you, `MAIN_CHARACTER_NAME`![await]'''
 dialog_data[157] = ''' Boing, boing, boing! I’m trying really hard, so `MAIN_CHARACTER_NAME`, you have to try hard, too![await]'''
 dialog_data[158] = '''
-       I’m with you all the way![await]'''
+[center]I’m with you all the way![await]'''
 dialog_data[159] = '''[page]
 
-       “How to climb the vines”[await][page]
+[center]“How to climb the vines”[await][page]
  The vines are positioned from
  the bottom left to the top right.[await][page]
  When you jump, you will be able to
  disengage yourself from the vine.[await]
  Nimbus Dept. of Transportation[await]'''
-dialog_data[160] = '''                   Huh?[delay_10]
-   There is a note in the pocket...[await][page]
-                 It reads:[await]
-           [delay]“GARY WAS HERE!
-            [delay]ASH IS A LOSER!”[await]'''
+dialog_data[160] = '''[center]Huh?[delay_10]
+There is a note in the pocket...[await][page]
+It reads:[await]
+[delay]“GARY WAS HERE!
+[delay]ASH IS A LOSER!”[await]'''
 dialog_data[161] = ''' If you see Samus, tell her I need her
  to find my cane.[await]'''
 dialog_data[162] = '''[page]
@@ -505,8 +505,8 @@ dialog_data[165] = ''' Our guest is resting.
 dialog_data[166] = ''' If you see Link, tell him I need him
  to find my Gravity Suit.[await]'''
 dialog_data[167] = '''
-                Got a Coin![await]'''
-dialog_data[168] = '''                Got a Coin![end]'''
+[center]Got a Coin![await]'''
+dialog_data[168] = '''[center]Got a Coin![end]'''
 dialog_data[169] = '''Got a Coin![end]'''
 dialog_data[170] = '''
               Got [0x7000] Coins![await]'''
@@ -514,7 +514,7 @@ dialog_data[171] = '''              Got [0x7000] Coins![end]'''
 dialog_data[172] = '''Got [0x7000] Coins![end]'''
 dialog_data[173] = '''
             Got a Frog Coin![await]'''
-dialog_data[174] = '''            Got a Frog Coin![end]'''
+dialog_data[174] = '''[center]Got a Frog Coin![end]'''
 dialog_data[175] = '''Got a Frog Coin![end]'''
 dialog_data[176] = '''
           Got [0x7000] Frog Coins![await]'''
@@ -533,5 +533,5 @@ dialog_data[183] = ''' Man, did I sleep!
  Thanks for the service.
  Here’s your tip.[await]
  Don’t spend it all in one place![await]'''
-dialog_data[184] = '''[center]Need the “Extra Shiny Stone”\nto get in[await]'''
+dialog_data[184] = '''[center]Need the “Extra Shiny Stone”[await]\nto get in[await]'''
 dialog_data[185] = ''' Have you seen any strange clouds in Land's End?[await]'''

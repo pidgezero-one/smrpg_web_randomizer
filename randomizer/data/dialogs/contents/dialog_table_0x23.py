@@ -647,13 +647,13 @@ dialog_data[217] = ''' I recommend exploring the obstacle
  courses deep in Bowser’s Keep.[await]'''
 dialog_data[218] = '''         Need the key to get in[await]'''
 dialog_data[219] = '''
-     Need the “Shed Key” to get in[await]'''
-dialog_data[220] = '''               It’s locked[await]'''
-dialog_data[221] = '''      Tried saying the password:[delay]
+[center]Need the “Shed Key” to get in[await]'''
+dialog_data[220] = '''[center]It’s locked[await]'''
+dialog_data[221] = '''[center]Tried saying the password:[delay]
               [filename][await]'''
-dialog_data[222] = '''                  No luck...[delay]
-    Booster changed the password.[delay]
-                 Oh, well...[await]'''
+dialog_data[222] = '''[center]No luck...[delay]
+[center]Booster changed the password.[delay]
+[center]Oh, well...[await]'''
 dialog_data[223] = '''      Take a look at Booster’s
    family portraits in order from
      the oldest to the youngest.[await]'''
