@@ -130,7 +130,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 4
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC,
             initiator=EventInitiator.NONE,
             event_script=E1551_BANK_1F_RETURN_EVENT,
             action_script=A0161_SEQUENCE_LOOPING_OFF,

@@ -24,7 +24,7 @@ sprite = CompleteSprite(
                             bytearray(b'\x00\x00\x00\xc0\x00\xe0\xe0\x10H\xe8\x80X\xf8\xf0\x00\xc0\x80\x00\x80\x00\x80\x00\x00\x00\x10\x00 \x00\x00\x00\xe0\xc0'),
                             bytearray(b'\xf9\xfd\x03\x0f\x03\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfd\n\x0fp\x03\x1c\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
                             bytearray(b'\x80\xc0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc0\x80\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=122),
                     ]
                 ),
                 Mold(2, gridplane=False,
@@ -79,9 +79,9 @@ sprite = CompleteSprite(
                 ),
                 AnimationSequence(
                     frames=[
-                        AnimationSequenceFrame(duration=2, mold_id=2),
-                        AnimationSequenceFrame(duration=2, mold_id=3),
-                        AnimationSequenceFrame(duration=2, mold_id=4),
+                        AnimationSequenceFrame(duration=6, mold_id=2),
+                        AnimationSequenceFrame(duration=4, mold_id=3),
+                        AnimationSequenceFrame(duration=6, mold_id=4),
                     ]
                 ),
             ]

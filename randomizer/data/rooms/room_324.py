@@ -173,7 +173,7 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E2056_MONSTRO_LEDGE_ITEM,
             action_script=A0015_DO_NOTHING,

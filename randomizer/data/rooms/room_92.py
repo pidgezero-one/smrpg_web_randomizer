@@ -177,7 +177,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
         RegularNPC( # 5
-            npc=npcs.FLOWER_NPC_2,
+            npc=npcs.FLOWER_NPC,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
@@ -205,7 +205,7 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=False,),
         RegularClone( # 6
-            npc=npcs.FLOWER_NPC_2,
+            npc=npcs.FLOWER_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
             visible=False,
@@ -216,7 +216,7 @@ room = Room(
             direction=SOUTHWEST,
             cannot_clone=False,),
         RegularClone( # 7
-            npc=npcs.FLOWER_NPC_2,
+            npc=npcs.FLOWER_NPC,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0015_DO_NOTHING,
             visible=False,

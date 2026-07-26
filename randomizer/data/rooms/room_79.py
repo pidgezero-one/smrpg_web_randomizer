@@ -213,7 +213,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST),
         RegularNPC( # 7
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC,
             initiator=EventInitiator.DO_ANYTHING,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0015_DO_NOTHING,
@@ -243,7 +243,7 @@ room = Room(
             show_shadow=True
             ),
         RegularClone( # 8
-            npc=npcs.BIG_FLOWER_NPC,
+            npc=npcs.FLOWER_NPC,
             event_script=E0240_FREESTANDING_2_GRANT,
             action_script=A0015_DO_NOTHING,
             visible=True,
