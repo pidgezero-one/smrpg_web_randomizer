@@ -12,7 +12,7 @@ from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
 from randomizer.progression.prizelocations.access import (can_access_lands_end)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StandingLocationRow14, WorldAreaEnum)
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_14)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_13)
 if TYPE_CHECKING:
     from randomizer.types.gameworld import (GameWorld)
 
@@ -21,7 +21,7 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
     _bias = True
     _originally_held = RoyalSyrupPrize
     _rooms = [R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM]
-    _npc_ids = [NPC_14]
+    _npc_ids = [NPC_13]
     _id = ShuffleLocationSelector.BELOME_TEMPLE_TREASURE_1
     _world_area = WorldAreaEnum.TEMPLE
     _model_allowlist = [
@@ -48,7 +48,7 @@ class BelomeTempleTreasuryLowestItemsLeftLocation(StandingLocationRow14):
         # ),
         JmpIfBitSet(LANDS_END_GATED, ["next"]),
         JmpIfObjectNotInSpecificLevel(
-            NPC_14, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
+            NPC_13, R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, ["next"]
         ),
         JmpIfBitSet(TEMPLE_KEY_USED, ["belome_temple_hint_text"]),
         StoreItemAmountTo7000(TempleKeyItem),

@@ -15,7 +15,7 @@ room = Room(
     partition=Partition(
         ally_sprite_buffer_size=2,
         allow_extra_sprite_buffer=True,
-        extra_sprite_buffer_size=1,
+        extra_sprite_buffer_size=0,
         buffers = [
             Buffer(
                 buffer_type=BufferType.EMPTY_3,

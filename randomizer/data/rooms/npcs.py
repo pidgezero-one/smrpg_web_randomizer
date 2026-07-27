@@ -100,6 +100,30 @@ FLOWER_BASE = _item_npc_base(SPR0636_SMALL_FLOWER_STANDALONE, y_shift=1)
 RECOVERY_MUSHROOM_BASE = _item_npc_base(SPR0637_RECOVERY_MUSHROOM_STANDALONE, y_shift=1)
 FROG_COIN_BASE = _item_npc_base(SPR0194_FROG_COIN, height=6, y_shift=5, min_vram_size=1)
 FROG_COIN_STILL_BASE = _item_npc_base(SPR0234_STATIC_FROG_COIN)
+# One sprite for every freestanding prize in a room, so they all share a single
+# dedicated VRAM allocation instead of one per item type. SPR0846 carries all five
+# graphics as molds; callers pick one with A_SetSpriteSequence(is_mold=True) after
+# the standard room loader has created the object.
+#
+# Palette is SPAL008 (gold). Frog coins are the same tiles in green, which lives at
+# palette 8+2 = SPAL010, and objects reach it with A_IncPaletteRowBy(2). That command
+# shifts the object's CGRAM ROW index -- it does not load a palette by ID -- so the
+# extra rows have to be resident already: source offset 1 puts palette 9 at row +1
+# and palette 10 at row +2, which is exactly where the +2 bump lands.
+# ponytail: one NPC record for the whole sprite, so every prize shares these hitbox
+# values. Split it only if some item needs a different height/shadow.
+SHARED_ITEM_BASE = NPC(
+    sprite_id=SPR0846_SHARED_FREESTANDING_ITEMS,
+    show_shadow=False,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=3,
+    obtuse_axis=3,
+    height=7,
+    y_shift=1,
+    min_vram_size=0,
+    extra_palette_source_offset=1,
+    extra_palette_row_count=2,
+)
 SMALL_FROG_COIN_STILL_BASE = _item_npc_base(SPR0238_STATIC_FROG_COIN_SMALL)
 GLOVE_BASE = _item_npc_base(SPR0208_GLOVE)
 CRYSTAL_BASE = _item_npc_base(SPR0209_SHINY_STONE)
@@ -138,6 +162,7 @@ MARIO_WALKING_DOWN_LEFT_NPC = NPC(
     byte5_bit7=False,
     byte6_bit2=False,
 )
+
 MARIO_CLONE_WALKING_DOWN_LEFT_NPC = NPC(
     sprite_id=SPR0409_MARIO_CLONE,
     shadow_size=ShadowSize.OVAL_MED,
@@ -6112,6 +6137,27 @@ CROOK_NPC = NPC(
     byte6_bit2=False,
 )
 
+CROOK_NPC_0 = NPC(
+    sprite_id=SPR0261_CROOK,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=6,
+    obtuse_axis=6,
+    height=7,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 GOOMBA_NPC_2 = NPC(
     sprite_id=SPR0262_GOOMBA,
     shadow_size=ShadowSize.OVAL_MED,
@@ -6238,6 +6284,27 @@ BANDANA_RED_NPC = NPC(
     byte6_bit2=False,
 )
 
+BANDANA_RED_NPC_0 = NPC(
+    sprite_id=SPR0267_BANDANA_RED,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=10,
+    y_shift=2,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 LAKITU_NPC_3 = NPC(
     sprite_id=SPR0268_LAKITU,
     shadow_size=ShadowSize.OVAL_MED,
@@ -6269,6 +6336,27 @@ BIRDY_NPC_2 = NPC(
     show_shadow=True,
     directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+BIRDY_NPC_0 = NPC(
+    sprite_id=SPR0269_BIRDY,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=5,
+    obtuse_axis=5,
+    height=10,
+    y_shift=1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -6542,6 +6630,28 @@ SPOOKUM_NPC = NPC(
     show_shadow=True,
     directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+
+SPOOKUM_NPC_0 = NPC(
+    sprite_id=SPR0282_SPOOKUM,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=10,
+    y_shift=2,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -7582,6 +7692,27 @@ BANDANA_BLUE_NPC = NPC(
     byte6_bit2=False,
 )
 
+BANDANA_BLUE_NPC_0 = NPC(
+    sprite_id=SPR0331_BANDANA_BLUE,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=10,
+    y_shift=2,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 SHOGUN_NPC_2 = NPC(
     sprite_id=SPR0298_SHOGUN,
     shadow_size=ShadowSize.OVAL_MED,
@@ -7969,6 +8100,27 @@ GOOMBETTE_LOWER_NPC = NPC(
     show_shadow=True,
     directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=False,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+GOOMBETTE_LOWER_NPC_0 = NPC(
+    sprite_id=SPR0960_GOOMBETTE_LOWER,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=2,
+    obtuse_axis=2,
+    height=2,
+    y_shift=0,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -8810,6 +8962,27 @@ TORTE_NPC = NPC(
     show_shadow=False,
     directions=VramStore.DIR0_SWSE_NWNE,
     min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
+TORTE_NPC_0 = NPC(
+    sprite_id=SPR0398_TORTE,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=2,
+    obtuse_axis=2,
+    height=11,
+    y_shift=0,
+    show_shadow=False,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
     priority_0=False,
     priority_1=False,
     priority_2=True,
@@ -10172,7 +10345,11 @@ GOLDEN_BELOME_NPC = NPC(
     y_shift=2,
     show_shadow=False,
     directions=VramStore.DIR2_SWSE,
-    min_vram_size=5,
+    # Vanilla ships 5, but every one of sprite 147's 23 molds is 23-24 tiles and
+    # needs exactly 4 -- animation is irrelevant, the mold size is what binds. The
+    # dedicated allocator hands out 4*(min_vram+1) slots ($C0:8EBC), so 5 costs 24
+    # slots where 20 will do. Used only by room 422, so lowering it is contained.
+    min_vram_size=4,
     priority_0=False,
     priority_1=False,
     priority_2=True,

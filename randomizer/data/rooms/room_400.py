@@ -190,5 +190,8 @@ room = Room(
         SpriteAnimationState.RECOIL,
         SpriteAnimationState.WOBBLE,
     ],
+    npc_expected_animations={
+        0: "chandelier_challenge"
+    },
     effects_npc=EffectsNpc.FLASHING_CHANDELIER,
 )

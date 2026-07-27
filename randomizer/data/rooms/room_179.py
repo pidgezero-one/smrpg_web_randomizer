@@ -83,6 +83,17 @@ room = Room(
             initiator=EventInitiator.PRESS_A_FROM_FRONT,
             event_script=E3229_SHIP_CLONE_TRANSFORM,
             action_script=A0015_DO_NOTHING,
+            # The mirror clone copies the player's facing, so it needs all 8
+            # directions. Redundant for the vanilla NPC record (already DIR7),
+            # but load-bearing on non-Mario seeds: apply.py swaps this slot to
+            # ALLY_CLONE_NPC, which defaults to DIR0 (4 directions) because it
+            # is shared with the stationary recruitment NPCs.
+            directions=VramStore.DIR7_ALL_DIRECTIONS,
+            # Pin the clone's VRAM to the vanilla Mario clone's allocation.
+            # ALLY_CLONE_NPC declares min_vram_size=0 (correct for the
+            # stationary recruitment NPCs it is shared with), which would
+            # under-allocate the mirror clone on non-Mario seeds.
+            vram_size=2,
             visible=True,
             x=15,
             y=125,
@@ -105,9 +116,11 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            acute_axis=UInt4(7),
-            obtuse_axis=UInt4(7),
-            height=UInt8(13),
+            # Collision box from the vanilla MARIO_WALKING_DOWN_LEFT_NPC_2
+            # record, applied to whichever character clones into this slot.
+            acute_axis=UInt4(5),
+            obtuse_axis=UInt4(4),
+            height=UInt8(12),
         ),
         RegularNPC( # 1
             npc=npcs.GREAPER_NPC,

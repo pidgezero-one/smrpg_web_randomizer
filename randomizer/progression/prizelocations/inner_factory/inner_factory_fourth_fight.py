@@ -8,6 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.logic.renders import (render_inner_factory_fourth_fight)
+from randomizer.data.rooms.npcs import (EMPTY_NPC_3)
 from randomizer.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
@@ -58,6 +59,32 @@ class InnerFactoryFourthFight(BossFightLocation):
         if not isinstance(self.prize, GunyolkBossFight):
             render_inner_factory_fourth_fight(world)
         return op
+
+    def _on_henchmen_assigned(
+        self,
+        world: GameWorld,
+        henchmen_assignments: list[
+            tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
+        ],
+    ) -> None:
+        # Base class only calls this when the prize isn't GunyolkBossFight.
+        # Room 470's NPCs 0-6 are Gunyolk-specific set dressing that render()
+        # hides anyway, so blank them regardless of whether the incoming boss
+        # supplied henchmen — otherwise an unrendered henchman model stays
+        # loaded in those slots and gets budgeted VRAM.
+        if self._character_henchman_slots is None:
+            return
+        for slot in self._character_henchman_slots:
+            for room_id, npc_id in zip(slot.room_ids, slot.npc_ids):
+                room = world.rooms._rooms[room_id]
+                assert room is not None, f"Room {room_id} not found"
+                obj = room.get_npc_by_target_id(npc_id)
+                assert obj is not None, f"NPC {npc_id} not found in room {room_id}"
+                obj._npc = EMPTY_NPC_3
+                if self._chosen_henchman_models_by_room_npc is not None:
+                    self._chosen_henchman_models_by_room_npc.pop(
+                        (room_id, int(npc_id)), None
+                    )
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

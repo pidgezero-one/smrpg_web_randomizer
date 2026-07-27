@@ -42,13 +42,38 @@ room = Room(
         allow_extra_sprite_buffer=True,
         extra_sprite_buffer_size=0,
         buffers=[
+            # Buffer A carries SPR0846 (the shared freestanding-item sprite). It is
+            # gridplane format 0, so FOUR_SPRITES_PER_ROW.
+            #
+            # Space is BYTES_0: main_buffer_space is for NON-gridplane molds on an
+            # otherwise-gridplane sprite, and all six of SPR0846's molds are gridplane.
+            # Sizing it for the molds (tried 1280, then 1792) is wrong and actively
+            # harmful -- it pushes Belome's dedicated base up until it straddles the
+            # realign boundary and lands on the item tiles.
+            #
+            # This buffer is the whole point. $C0:8EBC allocates 4 slots PER OBJECT,
+            # not per sprite_id, and room 422 has 17 objects against a 48-slot region
+            # -- measured overrun of 28 slots, which is what silently clobbers the
+            # protagonist's shadow (min_vram_size=0 makes $C0:8ED0 skip the bounds
+            # check). Riding a clone buffer collapses the sixteen same-sprite objects
+            # into one shared region instead of sixteen private ones.
+            # Buffer A stays EMPTY. $C0:8EBC picks its realign boundary from $01D5,
+            # which is $41 when buffer A is active and $61 when it is empty -- i.e.
+            # boundary $20 (32 slots) vs $30 (48). Putting the items in A halved the
+            # room's headroom and Belome (cannot_clone, 20 slots) got realigned on top
+            # of the item tiles. Buffer B carries them instead; A must stay EMPTY_3.
             Buffer(
                 buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
+            # Buffer B carries SPR0846, the shared freestanding-item sprite (gridplane,
+            # so it can ride a buffer at all). This is what collapses the sixteen
+            # same-sprite objects into ONE shared region -- $C0:8EBC allocates 4 slots
+            # PER OBJECT, and 17 objects against a 48-slot region is what overran the
+            # protagonist's shadow.
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -85,9 +110,9 @@ room = Room(
     ],
     objects=[
         RegularNPC(  # 0
-            npc=npcs.FLOWER_NPC,
+            npc=npcs.SHARED_ITEM_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0241_FREESTANDING_1_GRANT,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=2,
@@ -113,8 +138,8 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularClone(  # 1
-            npc=npcs.FLOWER_NPC,
-            event_script=E0240_FREESTANDING_2_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=3,
@@ -124,8 +149,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 2
-            npc=npcs.FLOWER_NPC,
-            event_script=E0239_FREESTANDING_3_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=4,
@@ -135,8 +160,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 3
-            npc=npcs.FLOWER_NPC,
-            event_script=E0238_FREESTANDING_4_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=6,
@@ -145,10 +170,9 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
         ),
-        RegularNPC(  # 4
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0237_FREESTANDING_5_GRANT,
+        RegularClone(  # 4
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=4,
@@ -156,26 +180,10 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=True,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3,
         ),
         RegularClone(  # 5
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0236_FREESTANDING_6_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=5,
@@ -185,8 +193,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 6
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0235_FREESTANDING_7_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=3,
@@ -196,8 +204,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 7
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0234_FREESTANDING_8_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=7,
@@ -207,8 +215,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 8
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0233_FREESTANDING_9_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=6,
@@ -218,8 +226,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 9
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0232_FREESTANDING_10_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=4,
@@ -229,8 +237,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 10
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0231_FREESTANDING_11_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=6,
@@ -240,8 +248,8 @@ room = Room(
             direction=SOUTHWEST,
         ),
         RegularClone(  # 11
-            npc=npcs.STATIC_FROG_COIN_NPC,
-            event_script=E0230_FREESTANDING_12_GRANT,
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=9,
@@ -250,39 +258,9 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
         ),
-        RegularNPC(  # 12
-            npc=npcs.KEY_BASE,
-            initiator=EventInitiator.NONE,
-            event_script=E0229_FREESTANDING_13_GRANT,
-            action_script=A0015_DO_NOTHING,
-            visible=False,
-            x=0,
-            y=0,
-            z=0,
-            z_half=False,
-            direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=False,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3,
-            cannot_clone=True
-        ),
-        RegularNPC(  # 13
-            npc=npcs.ITEM_BAG_NPC,
-            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
-            event_script=E0229_FREESTANDING_13_GRANT,
+        RegularClone(  # 12
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=2,
@@ -290,26 +268,10 @@ room = Room(
             z=0,
             z_half=False,
             direction=SOUTHWEST,
-            face_on_trigger=False,
-            cant_enter_doors=False,
-            byte2_bit5=False,
-            set_sequence_playback=False,
-            cant_float=False,
-            cant_walk_up_stairs=False,
-            cant_walk_under=False,
-            cant_pass_walls=False,
-            cant_jump_through=True,
-            cant_pass_npcs=False,
-            byte3_bit5=False,
-            cant_walk_through=True,
-            byte3_bit7=False,
-            slidable_along_walls=True,
-            cant_move_if_in_air=True,
-            byte7_upper2=3,
         ),
-        RegularClone(  # 14
-            npc=npcs.ITEM_BAG_NPC,
-            event_script=E0228_FREESTANDING_14_GRANT,
+        RegularClone(  # 13
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=3,
@@ -318,13 +280,24 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
         ),
-        RegularClone(  # 15
-            npc=npcs.ITEM_BAG_NPC,
-            event_script=E0227_FREESTANDING_15_GRANT,
+        RegularClone(  # 14
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
             action_script=A0015_DO_NOTHING,
             visible=True,
             x=7,
             y=120,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 15
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=False,
+            x=0,
+            y=0,
             z=0,
             z_half=False,
             direction=SOUTHWEST,

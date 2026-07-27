@@ -12,7 +12,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import 
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-    ActionQueueSync,
     JmpIfBitClear,
     Return,
     SetVarToConst,
@@ -26,10 +25,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     ApplyTileModToLevel,
     RemoveObjectFromSpecificLevel,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
-    A_ObjectMemorySetBit,
-    A_UnknownCommand,
-)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import NPC_3
 from ..data.variables.variable_names import *
 from ..data.variables.overworld_sfx_names import *
@@ -39,7 +34,6 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     GENO,
     BOWSER,
     TOADSTOOL,
-    MEM_70A8,
 )
 from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     FormationMember,
@@ -2317,18 +2311,13 @@ class RecoveryMushroomPrize(StandardPrize):
 
     @property
     def standing_grant(self) -> EventScript:
-        return EventScript([
-            ActionQueueSync(target=MEM_70A8, subscript=[
-                A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),
-                A_UnknownCommand(bytearray([0xFD, 0xF2])),
-            ]),
-            JmpToEvent(E2822_ASYNC_NO_ANIMATION_MUSHROOM),
-        ])
+        # No action queue in front of the jump: a sync queue blocks the main event thread
+        # for a couple of frames (player input locked) and E2822's
+        # RemoveObjectFromCurrentLevel already despawns the NPC in-frame.
+        return EventScript([JmpToEvent(E2822_ASYNC_NO_ANIMATION_MUSHROOM)])
 
     @property
     def packet_grant(self) -> EventScript:
-        # standing_grant has an INLINE FD F2 (presence write) before jumping to E2822,
-        # so the base map-derive (which only repoints the jump) can't make it packet-safe.
         # E4091 already does the object-local hide + heal, so just jump straight to it.
         return EventScript([JmpToEvent(E4091_ASYNC_NO_ANIMATION_MUSHROOM_PACKET)])
 

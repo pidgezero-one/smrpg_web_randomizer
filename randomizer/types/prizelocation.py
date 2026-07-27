@@ -1289,6 +1289,10 @@ class FrogDiscipleLocation(PrizeLocation):
 
 class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
+    # Rooms *besides* `_rooms` that must be able to allocate packet sprites when
+    # this location holds an EXP star — e.g. the room you land in after grabbing
+    # it, since the star outlives the room transition. `render()` always covers
+    # `_rooms` itself, so only list the extras.
     _extra_sprite_buffer_rooms: list[int] = []
     _set_extra_bits_when_opened: list[Flag] | None = None
 
@@ -1350,14 +1354,26 @@ class TreasureChestLocation(StandardPrizeLocation):
         return EventScript(itemgrant)
 
     def render(self, world: GameWorld) -> None:
-        # if isinstance(self.prize, EXPStarPrize) and self._extra_sprite_buffer_rooms:
-        #     for room_id in self._extra_sprite_buffer_rooms:
-        #         room = world.rooms._rooms[room_id]
-        #         if room is not None and not room.partition.allow_extra_sprite_buffer:
-        #             room.partition.set_allow_extra_sprite_buffer(True)
-        #             room.partition.set_extra_sprite_buffer_size(
-        #                 max(1, room.partition.extra_sprite_buffer_size)
-        #             )
+        if isinstance(self.prize, EXPStarPrize):
+            # The EXP star's sparkles (P022/P023) are packets on the bitmap
+            # path, which is dead unless the room sets allow_extra_sprite_buffer
+            # ($C0:9052 zeroes the allocator's capacity when it's off). 80 rooms
+            # lost vanilla's flag when chest items moved to the NPC-slot path,
+            # which is why stars stopped sparkling in most of them. Turn it back
+            # on per seed, only where a star actually landed, so a room that
+            # didn't get one pays no VRAM.
+            #
+            # extra_sprite_buffer_size is left alone: capacity is (size+1)*4
+            # units and each sparkle needs 1, so the size=0 floor already holds
+            # 4 — the level the retry loop in A0446 settles at when the buffer
+            # is small.
+            for room_id in [*self._rooms, *self._extra_sprite_buffer_rooms]:
+                room = world.rooms._rooms[room_id]
+                assert room is not None, f"{type(self).__name__} references missing room {room_id}"
+                assert room.partition is not None, (
+                    f"room {room_id} holds an EXP star chest but has no partition"
+                )
+                room.partition.set_allow_extra_sprite_buffer(True)
         if isinstance(self.prize, SlotsPrize):
             world.event_scripts.get_script_by_id(self.prize.logic_event).set_contents(
                 create_slot_machine_script(self, world)

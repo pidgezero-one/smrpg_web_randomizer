@@ -29,7 +29,7 @@ class ShysterHenchman(HenchmanNPC):
 class CrookHenchman(HenchmanNPC):
     """Crook henchman NPC for boss fights."""
 
-    _base = CROOK_NPC
+    _base = CROOK_NPC_0
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 3
@@ -76,7 +76,7 @@ class MicrobombHenchman(HenchmanNPC):
 class SpookumHenchman(HenchmanNPC):
     """Spookum henchman NPC for boss fights."""
 
-    _base = SPOOKUM_NPC
+    _base = SPOOKUM_NPC_0
     _recoil = 2
     _tower_crying = 4
     _bandits_way_distracted = 4
@@ -123,7 +123,7 @@ class SnifitHenchman(HenchmanNPC):
 class TorteHenchman(HenchmanNPC):
     """Torte henchman NPC for boss fights."""
 
-    _base = TORTE_NPC
+    _base = TORTE_NPC_0
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 3
@@ -175,7 +175,7 @@ class TinyBlooberHenchman(HenchmanNPC):
 class GoombetteLowerHenchman(HenchmanNPC):
     """Goombette henchman NPC for boss fights."""
 
-    _base = GOOMBETTE_LOWER_NPC
+    _base = GOOMBETTE_LOWER_NPC_0
     _recoil = 2
     _tower_crying = 2
     _bandits_way_distracted = 2
@@ -198,7 +198,7 @@ class GoombetteLowerHenchman(HenchmanNPC):
 class BandanaBlueHenchman(HenchmanNPC):
     """Bandana Blue henchman NPC for boss fights."""
 
-    _base = BANDANA_BLUE_NPC
+    _base = BANDANA_BLUE_NPC_0
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 4
@@ -219,7 +219,7 @@ class BandanaBlueHenchman(HenchmanNPC):
 class BandanaRedHenchman(HenchmanNPC):
     """Bandana Red henchman NPC for boss fights."""
 
-    _base = BANDANA_RED_NPC
+    _base = BANDANA_RED_NPC_0
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 4
@@ -491,7 +491,7 @@ class BluebirdHenchman(HenchmanNPC):
 class BirdyHenchman(HenchmanNPC):
     """Birdy henchman NPC for boss fights."""
 
-    _base = BIRDY_NPC_2
+    _base = BIRDY_NPC_0
     _recoil = 2
     _mines_punch = 3
     _tower_bullet = 4

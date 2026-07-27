@@ -1516,6 +1516,9 @@ def shuffle_prizes(world: GameWorld) -> None:
     world._cached_char_fill = None
     world._cached_spell_damage_char = None
     world._cached_spells = None
+    # Fresh least-used ledger per attempt, so a retry re-deals the substitute
+    # fill instead of inheriting the previous attempt's usage counts.
+    world.substitute_draw_counts = {}
 
     rules = shuffle_rules(world)
 

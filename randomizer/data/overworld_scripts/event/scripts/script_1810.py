@@ -34,6 +34,11 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	# apply.py prepends the freestanding-prize mold queues ABOVE this line, so they
+	# run on both branches and, crucially, before E0015 -- E0015 command 12 is
+	# FadeInFromBlack, so anything queued after it is set while the room is already
+	# on screen and races the player getting control. The queues are blocking for
+	# that reason: the fade waits until every mold has switched.
 	JmpIfBitSet(TEMPLE_KEY_USED, ["EVENT_1810_jmp_to_event_2"]),
 	ApplySolidityModToLevel(permanent=True, room_id=R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM, mod_id=1),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER, identifier="EVENT_1810_jmp_to_event_2")

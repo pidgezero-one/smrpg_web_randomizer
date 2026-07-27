@@ -1246,6 +1246,26 @@ class CoinQuantityPrize(CoinPrize):
 # This gets placed in a location where item quality != original_pool
 # and will be used to generate an item on the fly
 class RandomPrizeSubstitute(Prize):
+    def _draw(
+        self, world: GameWorld, pool: Sequence[type[ItemPrize]]
+    ) -> type[ItemPrize]:
+        """Pick from the least-used classes in ``pool``, then record the pick.
+
+        Plain ``random.choice`` samples with replacement, so a ~158-draw fill over
+        a ~120-class pool leaves roughly 18 classes with 3+ copies and a quarter of
+        the pool unused. Dealing from the least-used tranche spreads the fill: every
+        class appears once before any appears twice.
+        """
+        # ponytail: strict least-used deal — no repeats until the pool exhausts.
+        # Loosen to `count <= least + 1` if seeds read too uniform.
+        counts = world.substitute_draw_counts
+        least = min(counts.get(prize_cls, 0) for prize_cls in pool)
+        chosen = random.choice(
+            [prize_cls for prize_cls in pool if counts.get(prize_cls, 0) == least]
+        )
+        counts[chosen] = counts.get(chosen, 0) + 1
+        return chosen
+
     def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
         # Lazy imports to avoid circular imports
         from ..progression.prizes import (
@@ -1284,8 +1304,7 @@ class RandomPrizeSubstitute(Prize):
                 )
             pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
             pool = [prize for prize in pool if prize is not None]
-            chosen_item = random.choice(pool)
-            return chosen_item() 
+            return self._draw(world, pool)()
         elif world.settings.is_flag_value(
             ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
         ):
@@ -1314,8 +1333,7 @@ class RandomPrizeSubstitute(Prize):
                     pool = world.highest_impact_items + world.highest_impact_equip
             pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
             pool = [prize for prize in pool if prize is not None]
-            chosen_item = random.choice(pool)
-            return chosen_item() 
+            return self._draw(world, pool)()
         elif world.settings.is_flag_value(
             ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
         ):

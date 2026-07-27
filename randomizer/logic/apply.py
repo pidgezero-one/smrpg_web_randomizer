@@ -33,10 +33,14 @@ from ..types.prizelocation import (
     ROOM_TO_BATTLEFIELD
 )
 from ..types.flags import AvailableCharacters, BossShuffleScaleStats, BossScaleOptions, BoosterTowerGate, BoosterTowerGating, CharacterLearnedSpells, DifferentiateRepeatedBosses, PlayAsStarter, SpellsAnywhere, WinCondition, WinConditions
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.types.classes import (
+    UsableActionScriptCommand,
+)
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     UsableEventScriptCommand,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    ActionQueueAsync,
     ActionQueueSync,
     FadeInFromColour,
     JmpIfBitClear,
@@ -58,6 +62,8 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
     EnterArea
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_IncPaletteRowBy,
+    A_SequencePlaybackOn,
     A_SetSpriteSequence,
     A_SetWalkingSpeed,
     A_TransferXYZFPixels,
@@ -207,6 +213,18 @@ from ..utils.tower_access_scripts import mario_script, mario_self_script, mallow
 from .renders import apply_ending_characters
 from smrpgpatchbuilder.datatypes.levels.classes import BufferType
 from ..data.rooms.npcs import FROG_COIN_NPC, STATIC_FROG_COIN_NPC
+from ..data.rooms.npcs import SHARED_ITEM_BASE
+from ..data.physical_objects.items import (
+    CoinStillObject,
+    FlowerItemObject,
+    FlowerObject,
+    FrogCoinItemObject,
+    RecoveryMushroomObject,
+    SmallCoinItemObject,
+    SmallCoinStillObject,
+    SmallFrogCoinObject,
+)
+from ..types.physical_objects import ItemNPC
 from ..data.variables.action_script_names import A0511_PIPE_VAULT_3_CHEST_ROOM_COIN
 from ..types.prize import FrogCoinPrize
 from ..types.flags import MimicsAnywhere, SlotsAnywhere
@@ -281,6 +299,31 @@ from ..types.flags import (
         ShuffleStarPieces,
     )
 from ..logic.shufflers.items import should_shuffle
+
+# Belome's treasury holds fifteen freestanding prizes in one room. Every model its
+# allowlist admits is a non-gridplane sprite, so each distinct sprite_id costs its
+# own dedicated VRAM allocation from the $6D cursor. Put every prize on ONE sprite
+# (SPR0846, which carries all five graphics as molds) so the whole room spends a
+# single allocation, and pick the graphic per object at load time.
+_SHARED_MOLD_ROOM = R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM
+_SHARED_MOLDS: dict[type[ItemNPC], int] = {
+    FlowerObject: 0,
+    FlowerItemObject: 0,
+    RecoveryMushroomObject: 1,
+    DefaultItem: 2,
+    CoinStillObject: 3,
+    FrogCoinObject: 3,
+    SmallCoinStillObject: 4,
+    SmallCoinItemObject: 4,
+    FrogCoinItemObject: 4,
+    SmallFrogCoinObject: 4,
+}
+# Frog coins are the coin molds recoloured: same tiles, palette 8+2 = SPAL010.
+# A_IncPaletteRowBy(2) moves the object to the CGRAM row holding it -- see
+# SHARED_ITEM_BASE, which loads the extra rows that makes that row real.
+_SHARED_FROG_COIN_MODELS = (FrogCoinObject, FrogCoinItemObject, SmallFrogCoinObject)
+_SHARED_FROG_COIN_PALETTE_ROWS = 2
+
 
 
 def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
@@ -486,6 +529,8 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
             source_palette_id = world.get_sprite(source_id).palette_id
             world.get_sprite(target_id).palette_id = source_palette_id
 
+    shared_mold_queue: list[tuple[AreaObject, int, int]] = []
+
     for place in world.locations.values():
         # Construct prize granter hub events
         # skip frog disciple locations, they're set in shop shuffler
@@ -566,6 +611,30 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
                     npc = cast(AreaObject, n)
                     room = world.rooms._rooms[room_id_int]
                     assert room is not None, f"Room {room_id_int} not found"
+                    if room_id_int == _SHARED_MOLD_ROOM and place.prize is not None:
+                        # Shared-mold room: render every prize from SPR0195/SPR0846
+                        # and pick the graphic with a mold instead of a sprite_id.
+                        # The vanilla guard below is deliberately skipped here --
+                        # keeping a location's original NPC would reintroduce the
+                        # very sprite_id this exists to remove, and the shared molds
+                        # reproduce the same graphic anyway.
+                        prize_model = place.prize.model
+                        if prize_model is None or (
+                            place._model_allowlist is not None
+                            and not issubclass(prize_model, tuple(place._model_allowlist))
+                        ):
+                            prize_model = DefaultItem
+                        mold = _SHARED_MOLDS.get(prize_model, _SHARED_MOLDS[DefaultItem])
+                        room_obj = room.get_npc_by_target_id(npc)
+                        assert room_obj is not None, f"NPC {npc} not found in room {room_id_int}"
+                        cast(BaseRoomObject, room_obj)._npc = SHARED_ITEM_BASE
+                        palette_rows = (
+                            _SHARED_FROG_COIN_PALETTE_ROWS
+                            if issubclass(prize_model, _SHARED_FROG_COIN_MODELS)
+                            else 0
+                        )
+                        shared_mold_queue.append((npc, mold, palette_rows))
+                        continue
                     # Vanilla guard: if the placed prize is the location's own
                     # original prize, leave the room's NPC untouched so its
                     # sprite isn't swapped for a different-looking model (e.g. a
@@ -623,6 +692,43 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         elif isinstance(place, CharacterRecruitmentLocation):
             # this takes care of everything for character gating and recruitment
             place.render(world)
+
+    # Point each shared-mold prize at its graphic. This goes in the room's entrance
+    # event so it re-runs every time the player walks back in.
+    #
+    # Two things here are load-bearing, and both were learned the hard way:
+    #
+    # 1. The queues go at the TOP, above E1810's own JmpIfBitSet, so they run on
+    #    both branches and before the tail JmpToEvent(E0015). E0015 command 12 is
+    #    FadeInFromBlack -- queue a mold after that and it is applied to a room the
+    #    player can already see, racing them for control. Only some land, and how
+    #    many varies with the queue lengths a given seed happens to produce.
+    # 2. They are ActionQueueSync (blocking), not Async. Async issues all fifteen
+    #    and falls straight through to the fade, so the molds lose the race and
+    #    every object shows its default mold 0. Blocking makes the fade wait until
+    #    every mold has switched -- which is the whole point of running before it.
+    #
+    # Inserted in reverse so that repeated insertion at index 0 leaves the queue in
+    # its original order.
+    if shared_mold_queue:
+        loader = world.get_event_script(E1810_TEMPLE_VAULT_LOADER)
+        for target, mold, palette_rows in reversed(shared_mold_queue):
+            # Sequence, not mold. SPR0846 carries one single-frame sequence per mold,
+            # so sequence N shows mold N. A mold is a one-shot write that later
+            # sprite init can clobber; a sequence is persistent state the engine
+            # re-applies, so it should survive whatever is resetting the later
+            # objects. Playback has to be ON or the sequence never gets applied --
+            # which is also why the old A_SequencePlaybackOff is gone.
+            subscript: list[UsableActionScriptCommand] = [
+                A_SequencePlaybackOn(),
+                A_SetSpriteSequence(index=mold, is_mold=False, looping=True),
+            ]
+            if palette_rows:
+                # Recolour the coin molds green for frog coins.
+                subscript.append(A_IncPaletteRowBy(palette_rows))
+            loader.insert_before_nth_command(
+                0, ActionQueueSync(target=target, subscript=subscript)
+            )
 
     # Render the four ending-cutscene character slots. Each named recruitment
     # location maps to a render_ending_character_N function; empty named slots

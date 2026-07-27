@@ -362,6 +362,12 @@ class GameWorld:
     # every shuffle_rules() call desyncs the tier assignment between calls.
     _cached_spells: list[type[Prize]] | None = None
 
+    # How many times each prize class has been handed out by
+    # RandomPrizeSubstitute this shuffle attempt. Drawing from the least-used
+    # classes keeps a ~158-draw fill from dumping three copies of the same
+    # weapon into one seed. Reset per attempt in shuffle_prizes.
+    substitute_draw_counts: dict[type[ItemPrize], int]
+
     @property
     def overworld_character(self) -> CharacterPrize:
         if not self.settings.isflag_enabled(PlayAsStarter):
@@ -1249,6 +1255,7 @@ class GameWorld:
 
         # Build item to prize mapping (used for random prize substitution)
         self._build_item_to_prize_mapping()
+        self.substitute_draw_counts = {}
 
         # Track failure counts to detect unsolvable settings
         # Key = number of unplaced items, Value = count of times this failure occurred

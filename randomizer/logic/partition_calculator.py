@@ -922,15 +922,27 @@ _NEVER_RECALCULATE_PARTITION_ROOMS: set[int] = {
 }
 
 
+# Rooms where apply.py swaps an NPC to the alternate-protagonist model
+# (ALLY_CLONE_NPC, sprite 31) on non-Mario seeds. The vanilla partition is
+# sized for Mario's sprite 0 (gridplane format 1 => FOUR_SPRITES_PER_ROW);
+# Mallow and Bowser are format 2/3 and need THREE_SPRITES_PER_ROW, so these
+# rooms must go through recalculation. Booster Tower's entrance does the same
+# swap but already qualifies as a boss room.
+_PROTAGONIST_CLONE_ROOMS: set[int] = {
+    R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM,
+}
+
+
 def update_changed_room_partitions(world: GameWorld) -> None:
     """Recalculate partitions for rooms where NPC models changed.
 
     Recalculates boss/henchman rooms where sprites changed, slot machine rooms,
-    and ending-cutscene rooms (whose NPC slots get sprite-substituted post-shuffle).
+    ending-cutscene rooms (whose NPC slots get sprite-substituted post-shuffle),
+    and protagonist-clone rooms.
 
     Call order:
     1. Detect changed rooms via snapshot diff
-    2. Filter to boss/henchman rooms + slot machine rooms + ending-character rooms
+    2. Filter to boss/henchman + slot machine + ending-character + protagonist-clone rooms
     3. Apply animation VRAM overrides (min_vram_size pre-pass)
     4. Recalculate partition for each changed room
     """
@@ -942,6 +954,7 @@ def update_changed_room_partitions(world: GameWorld) -> None:
         (all_changed & boss_rooms)
         | (all_changed & slot_rooms)
         | (all_changed & ending_rooms)
+        | (all_changed & _PROTAGONIST_CLONE_ROOMS)
     )
     changed_rooms -= _NEVER_RECALCULATE_PARTITION_ROOMS
 

@@ -65,7 +65,11 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=True),
+            cannot_clone=True,
+            acute_axis=UInt4(1),
+            obtuse_axis=UInt4(1),
+            height=UInt8(1),
+        ),
         RegularNPC( # 1
             npc=npcs.SNIFIT_NPC_2,
             initiator=EventInitiator.NONE,
@@ -190,7 +194,11 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=True),
+            cannot_clone=True,
+            acute_axis=UInt4(1),
+            obtuse_axis=UInt4(1),
+            height=UInt8(1)
+        ),
         RegularNPC( # 10
             npc=npcs.BOOSTER_NPC,
             initiator=EventInitiator.NONE,
@@ -218,6 +226,10 @@ room = Room(
             slidable_along_walls=True,
             cant_move_if_in_air=True,
             byte7_upper2=3,
-            cannot_clone=True),
+            cannot_clone=True,
+            acute_axis=UInt4(1),
+            obtuse_axis=UInt4(1),
+            height=UInt8(1)
+        ),
     ]
 )
