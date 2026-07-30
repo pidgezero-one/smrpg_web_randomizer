@@ -95,6 +95,7 @@ script = EventScript([
 		A_FaceNorthwest(),
 		A_SetWalkingSpeed(NORMAL)
 	]),
+	JmpIfBitSet(FACTORY_BOSS_DEFEATED, ["EVENT_2603_fade_in_from_black_async_36"]),
 	RunEventAsSubroutine(E1969_CHECK_IF_STAR_PIECES_FOR_FACTORY_BOSS_COLLECTED),
 	JmpIfComparisonResultIsLesser(["EVENT_2603_fade_in_from_black_async_36"]),
 	SummonObjectToSpecificLevel(NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM),

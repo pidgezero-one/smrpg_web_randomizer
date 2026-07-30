@@ -72,13 +72,20 @@ class InnerMinesCharacter(CharacterRecruitmentLocation):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
             ).set_pixels(7)
-        elif isinstance(self.prize, (GenoRecruitmentPrize, ToadstoolRecruitmentPrize, MallowRecruitmentPrize)):
+        elif isinstance(self.prize, (GenoRecruitmentPrize, ToadstoolRecruitmentPrize)):
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
             ).set_pixels(5)
             world.event_scripts.get_subscript_command_by_identifier(
                 "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
             ).set_pixels(6)
+        elif isinstance(self.prize, MallowRecruitmentPrize):
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_y", A_WalkNorthPixels
+            ).set_pixels(6)
+            world.event_scripts.get_subscript_command_by_identifier(
+                "mines_character_reposition", "mines_character_reposition_x", A_WalkEastPixels
+            ).set_pixels(7)
         elif self.prize is None:
             pass
         else:

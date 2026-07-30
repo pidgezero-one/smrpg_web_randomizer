@@ -105,7 +105,7 @@ script = EventScript([
 		A_SetSubroutineXTargets(slot_26_x=0x001C, slot_27_x=0x0000),
 		A_ShiftZUpSteps(6),
 		A_KillAllSubroutineSlots(),
-		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="climb_mold_1"),
 		A_Pause(16),
 		A_SetSpriteSequence(index=4, sprite_offset=1, is_sequence=True, looping=True),
 		A_FaceNortheast(),
@@ -113,7 +113,7 @@ script = EventScript([
 		A_WalkNortheastSteps(2),
 		A_OverwriteSolidity(cant_pass_walls=True, bit_4=True, cant_pass_npcs=True, cant_walk_through=True, bit_7=True),
 		A_WalkNortheastPixels(8)
-	]),
+	], identifier="climb_mold_aq_1"),
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	UnfreezeCamera(),
 	Return(),
@@ -138,9 +138,9 @@ script = EventScript([
 		A_SetSubroutineXTargets(slot_26_x=0xFFE3, slot_27_x=0x0000),
 		A_ShiftZDownSteps(7),
 		A_KillAllSubroutineSlots(),
-		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True, identifier="climb_mold_2"),
 		A_Pause(16)
-	]),
+	], identifier="climb_mold_aq_2"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True, mirror_sprite=True),
 		A_PlaySound(sound=SO004_JUMP, channel=4),

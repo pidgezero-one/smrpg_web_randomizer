@@ -120,7 +120,7 @@ script = EventScript([
 	FreezeCamera(),
 	Pause(16),
 	ActionQueueAsync(target=MARIO, subscript=[
-		A_SetSpriteSequence(index=13, sprite_offset=6, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=15, sprite_offset=6, is_sequence=True, looping=True),
 		A_Pause(16)
 	]),
 	ActionQueueSync(target=NPC_13, subscript=[

@@ -148,6 +148,11 @@ class KeepAfterObstaclesBossFight(BossFightLocation):
                 world.action_scripts.get_command_by_identifier(
                     "keep_battle_room_summon", A_SetSpriteSequence
                 ).set_index(m.animations.keep_summon.sequence_id)
+                world.event_scripts.get_subscript_command_by_identifier(
+                    "keep_boss_1_heal_aq",
+                    "keep_boss_1_heal", 
+                    A_SetSpriteSequence
+                ).set_index(m.animations.keep_summon.sequence_id)
                 world.event_scripts.get_command_by_identifier(
                     "EVENT_941_pause_0", Pause
                 ).set_length(

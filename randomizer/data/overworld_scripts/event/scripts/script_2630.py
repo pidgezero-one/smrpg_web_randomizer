@@ -167,8 +167,8 @@ script = EventScript([
 		A_Pause(16),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(16),
-		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="neutral_blackjack_1")
+	], identifier="neutral_blackjack_aq_1"),
 	SetVarToRandom(PRIMARY_TEMP_7000, 12),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2630_inc_148"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_2630_inc_145"]),
@@ -240,8 +240,8 @@ script = EventScript([
 		A_Pause(16),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(16),
-		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True)
-	]),
+		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="neutral_blackjack_2")
+	], identifier="neutral_blackjack_aq_2"),
 	SetVarToRandom(PRIMARY_TEMP_7000, 12),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2630_inc_211"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["EVENT_2630_inc_206"]),
@@ -476,7 +476,7 @@ script = EventScript([
 		A_Pause(16),
 		A_PlaySound(sound=SO152_SLIP_HIT, channel=4),
 		A_Pause(24),
-		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True)
+		A_SetSpriteSequence(index=24, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="neutral_blackjack_3")
 	], identifier="EVENT_2630_action_queue_365"),
 	SetVarToRandom(PRIMARY_TEMP_7000, 12),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["EVENT_2630_jmp_if_var_equals_const_457"]),

@@ -28,6 +28,9 @@ from randomizer.utils.tower_access_scripts import AddToInventory
 from randomizer.logic.credits_palette_fix import (
     shift_palette_row_masks_for_ally_buffer_growth as _shift_palette_row_masks_for_ally_buffer_growth,
 )
+from randomizer.logic.green_switch_glow import (
+    get_patch as _green_switch_glow_patch,
+)
 
 from .flags import *
 from .check_flags import *  # EnabledRegularChecks, EnabledBossChecks, ShuffledBosses
@@ -1833,6 +1836,11 @@ class GameWorld:
                 r.update_partition_by_protagonist(self)
 
         _shift_palette_row_masks_for_ally_buffer_growth(self)
+
+        # Overworld glow effects hardcode the CGRAM palette row they animate, so
+        # re-aim them once partitions are final and room objects reflect the
+        # shuffle. See logic/green_switch_glow.py.
+        patch.add_dict(_green_switch_glow_patch(self), source="green_switch_glow")
 
         # Event scripts patch
         # NOTE: render() returns pointer_table + script_content combined,

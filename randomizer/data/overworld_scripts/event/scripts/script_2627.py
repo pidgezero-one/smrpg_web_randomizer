@@ -47,6 +47,7 @@ script = EventScript([
 	]),
 	ActionQueueSync(target=NPC_10, subscript=[
 		A_SetWalkingSpeed(FAST),
+        A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True),
 		A_WalkSoutheastSteps(7)
 	]),
 	Pause(32),

@@ -40,6 +40,8 @@ script = EventScript([
 	FadeOutMusicToVolume(duration=1, volume=127),
 	JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["EVENT_723_run_event_as_subroutine_20"]),
     JmpIfBitSet(KINGDOM_BOUNCER_FREED, ["EVENT_723_run_event_as_subroutine_20"]),
+    RemoveObjectFromCurrentLevel(NPC_9),
+    RemoveObjectFromSpecificLevel(NPC_9, R191_MUSHROOM_KINGDOM_OUTSIDE),
     ActionQueueAsync(NPC_9, subscript=[
         A_VisibilityOff(),
 	]),

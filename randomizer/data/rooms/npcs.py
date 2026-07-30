@@ -4795,7 +4795,7 @@ EXPLOSION_NPC = NPC(
 )
 
 MOKURA_S_CLOUD_BLUE_NPC = NPC(
-    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    sprite_id=SPR0808_MOKURA_CLOUD_RECENTRED,
     shadow_size=ShadowSize.OVAL_SMALL,
     acute_axis=1,
     obtuse_axis=1,
@@ -12927,11 +12927,11 @@ YARIDOVICH_NPC = NPC(
 )
 
 MOKURA_S_CLOUD_BLUE_NPC_2 = NPC(
-    sprite_id=SPR0201_MOKURA_S_CLOUD_BLUE,
+    sprite_id=SPR0808_MOKURA_CLOUD_RECENTRED,
     shadow_size=ShadowSize.OVAL_SMALL,
-    acute_axis=1,
-    obtuse_axis=1,
-    height=1,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=4,
     y_shift=1,
     show_shadow=False,
     directions=VramStore.DIR2_SWSE,

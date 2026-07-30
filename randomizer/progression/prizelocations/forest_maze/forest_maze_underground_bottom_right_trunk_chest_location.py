@@ -24,6 +24,7 @@ class ForestMazeUndergroundBottomRightTrunkChestLocation(TreasureChestLocationRo
     _id = ShuffleLocationSelector.FOREST_MAZE_UNDERGROUND_2
     _world_area = WorldAreaEnum.FOREST_MAZE
     _blacklist = [
+        EXPStarPrize,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
         FrogCoinPrize,

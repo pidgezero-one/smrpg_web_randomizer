@@ -63,7 +63,7 @@ script = EventScript([
 		A_Pause(31),
 		A_KillAllSubroutineSlots(),
 		A_ShadowOn(),
-		A_SetSpriteSequence(index=13, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=15, sprite_offset=6, is_sequence=True, looping=True),
 		A_Pause(24)
 	]),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[

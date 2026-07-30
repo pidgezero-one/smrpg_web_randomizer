@@ -46,7 +46,7 @@ script = EventScript([
 	ApplyTileModToLevel(use_alternate=True, room_id=R108_MOLEVILLE_OUTSIDE, mod_id=0),
 	JmpIfBitSet(MINECART_CRASH_CUTSCENE_CLEARED, ["EVENT_1649_clear_bit_25"], identifier="EVENT_1649_jmp_if_bit_set_11"),
 	JmpIfBitClear(BUCKET_WARP_DIRECTIONAL_BIT, ["EVENT_1649_fade_in_from_black_async_1"]),
-    	ActionQueueAsync(target=MARIO, subscript=[
+    ActionQueueAsync(target=MARIO, subscript=[
 		A_VisibilityOff()
 	]),
 	FadeInFromBlack(sync=False, identifier="EVENT_1649_fade_in_from_black_async_1"),
@@ -56,16 +56,18 @@ script = EventScript([
 	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
 	Pause(24),
 	UnfreezeCamera(),
-	ClearBit(BUCKET_WARP_DIRECTIONAL_BIT),
-	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1649_jmp_to_event_23"], identifier="EVENT_1649_fade_in_from_black_async_16"),
+	JmpIfBitClear(SIGNAL_RING_DIRECTIONAL_BIT, ["EVENT_1649_check_for_bucket_starpiece"], identifier="EVENT_1649_fade_in_from_black_async_16"),
     ClearBit(SIGNAL_RING_DIRECTIONAL_BIT),
 	RunEventAsSubroutine(E3588_SIGNAL_RING_ACTIVATOR),
-	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1649_jmp_to_event_23"]),
+	JmpIfBitClear(SIGNAL_RING_BIT, ["EVENT_1649_check_for_bucket_starpiece"]),
 	RunEventAsSubroutine(E3897_MOLEVILLE_STAR_PIECE_SIGNAL),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_1649_ret_24"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	JmpIfBitClear(BUCKET_WARP_DIRECTIONAL_BIT, ["EVENT_1649_ret_24"], identifier="EVENT_1649_check_for_bucket_starpiece"),
+    ClearBit(BUCKET_WARP_DIRECTIONAL_BIT),
+	SetVarToConst(PRIMARY_TEMP_7000, 533),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE, identifier="EVENT_1649_jmp_to_event_23"),
 	Return(identifier="EVENT_1649_ret_24"),
+    
 	ClearBit(MINECART_CRASH_CUTSCENE_CLEARED, identifier="EVENT_1649_clear_bit_25"),
 	JmpIfBitSet(OPTIONAL_MINECART_CLEARED, ["EVENT_1649_fade_out_music_to_volume_48"]),
 	RemoveObjectFromCurrentLevel(NPC_0),

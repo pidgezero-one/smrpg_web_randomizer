@@ -2748,7 +2748,7 @@ class MushroomItem2(RegularItem):
     _text_shop_menu = "Mushroom........"
 
     _item_id: int = 175
-    _description: str = " Recoers 30 HP,\n but..."
+    _description: str = " Recovers 30 HP,\n but..."
     _inflict: int = 30
     _price: int = 4
     _effect_type = EffectType.INFLICTION

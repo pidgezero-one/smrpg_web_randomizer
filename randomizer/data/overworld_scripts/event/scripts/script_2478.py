@@ -83,9 +83,9 @@ script = EventScript([
 		A_SetSubroutineXTargets(slot_26_x=0xFFE3, slot_27_x=0x0000),
 		A_ShiftZDownSteps(8),
 		A_KillAllSubroutineSlots(),
-		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True),
+		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="climb_mold_4"),
 		A_Pause(16)
-	]),
+	], identifier="climb_mold_aq_4"),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
 		A_FaceSouthwest(),

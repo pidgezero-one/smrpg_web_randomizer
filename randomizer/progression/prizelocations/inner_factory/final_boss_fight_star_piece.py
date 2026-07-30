@@ -24,6 +24,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.INNER_FACTORY_BOSS_FINAL
     _world_area = WorldAreaEnum.INNER_FACTORY
     _parent = FinalBossFight
+    _override_id = 533
     _rooms = [
         R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM,
         R108_MOLEVILLE_OUTSIDE,

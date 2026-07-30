@@ -235,5 +235,8 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
             cannot_clone=True),
-    ]
+    ],
+    npc_expected_animations={
+        0: ["keep_summon"],
+    }
 )

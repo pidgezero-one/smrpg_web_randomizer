@@ -663,6 +663,19 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=2, mold_id=29),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=13),
+                    ]
+                ),
             ]
         )
     ),

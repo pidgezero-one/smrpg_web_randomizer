@@ -845,6 +845,21 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         contents.extend([*decision, Return(), *execution])
         event_script.set_contents(contents)
 
+        # Point big-coin grants at the room-aware wrapper. E0005 falls straight through
+        # to E3146 for every room except 422, whose prizes share gridplane SPR0846 --
+        # E3146 sets sequence 2, which is the item bag on that sprite. These containers
+        # are shared across NINETEEN rooms, so the room test has to live inside E0005;
+        # rewriting them to a 422-specific script strips the collect animation from the
+        # other eighteen.
+        if E0241_FREESTANDING_1_GRANT >= key >= E0227_FREESTANDING_15_GRANT:
+            for cmd in event_script.contents:
+                if (
+                    isinstance(cmd, JmpToEvent)
+                    and cmd.destination == E3146_FREESTANDING_BIG_COIN
+                ):
+                    cmd.set_destination(E0005_FREESTANDING_BIG_COIN_ROOM_AWARE)
+
+
 
 
     # Booster Tower gating animation
@@ -1175,6 +1190,13 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("keep_fall_thinking_aq", "keep_fall_thinking", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.THINKING)[1])
         world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_sprite_offset(ally._sprites_primary.get(SpriteAnimationState.ARMS_RAISED)[0])
         world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.ARMS_RAISED)[1])
+        world.event_scripts.get_subscript_command_by_identifier("climb_mold_aq_1", "climb_mold_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.CLIMB_MOLD_2)[1])
+        world.event_scripts.get_subscript_command_by_identifier("climb_mold_aq_2", "climb_mold_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.CLIMB_MOLD_2)[1])
+        world.event_scripts.get_subscript_command_by_identifier("climb_mold_aq_3", "climb_mold_3", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.CLIMB_MOLD_2)[1])
+        world.event_scripts.get_subscript_command_by_identifier("climb_mold_aq_4", "climb_mold_4", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.CLIMB_MOLD_2)[1])
+        world.event_scripts.get_subscript_command_by_identifier("neutral_blackjack_aq_1", "neutral_blackjack_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
+        world.event_scripts.get_subscript_command_by_identifier("neutral_blackjack_aq_2", "neutral_blackjack_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
+        world.event_scripts.get_subscript_command_by_identifier("EVENT_2630_action_queue_365", "neutral_blackjack_3", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
         # bandits way anim — `ally.index` is sprite/area-object order
         # (Geno = 3), but Set7000ToIDOfMemberInSlot reports the party roster
         # in menu order (Geno = 2). Convert so the script's protagonist check

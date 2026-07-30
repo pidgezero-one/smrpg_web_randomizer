@@ -2672,6 +2672,15 @@ sprite = CompleteSprite(
                         AnimationSequenceFrame(duration=32, mold_id=28),
                     ]
                 ),
+                AnimationSequence(
+                    frames=[
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=13),
+                    ]
+                ),
             ])),
     palette_id=SPAL697_MALLOW_WALKING_DOWN_LEFT,
     palette_offset=0,

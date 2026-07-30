@@ -34,7 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_2651_jmp_to_event_4"], identifier="enable_boss_access_2"),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	CompareVarToConst(PRIMARY_TEMP_7000, 6, identifier="enable_boss_access_2"),
+    JmpIfComparisonResultIsGreaterOrEqual(["EVENT_2651_jmp_to_event_4"]),
 	SetBit(BUCKET_WARP_BIT),
 	EnterArea(room_id=R069_MIDAS_RIVER_WATERFALL, face_direction=SOUTH, x=9, y=108, z=0, run_entrance_event=True),
 	Return(),

@@ -3400,6 +3400,12 @@ class MackBossFight(BossFightPrize):
     _statue_npc = MackStatueObject
 
     _mook_henchmen = [BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman)]
+    _character_henchmen = [
+        BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman),
+        BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman),
+        BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman),
+        BossFightHenchman(monster=BODYGUARDEnemy, model=ShysterHenchman),
+    ]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """MACK: Party’s over. I’m going to\n sleep.[await]""",
@@ -4051,6 +4057,10 @@ class BundtBossFight(BossFightPrize):
     _gender = ("it", "it", "its", "its", "itself")
 
     _mook_henchmen = [
+        BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
+    ]
+    _character_henchmen = [
+        BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
         BossFightHenchman(monster=TORTEEnemy, model=TorteHenchman),
     ]
 
@@ -4727,7 +4737,7 @@ class JaggerBossFight(BossFightPrize):
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """JAGGER: Hey, thanks for getting\n all of this gear! Why don’t you go\n grab the last few things in here?[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Jagger’s busy right now, so he\n can’t play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Jagger.[await]""",
-        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """\nJAGGER: Hi, `MAIN_CHARACTER_NAME`![await]""",
+        DI2830_SEASIDE_BOSS_WELCOMES_YOU: """JAGGER:\n[center]Hi, `MAIN_CHARACTER_NAME`![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Jagger...\n in his house. He is...the most\n respected person here.[await]""",
         DI3057_MONSTRO_SUPERBOSS_PROMPT: """ Hello. May I help you?[await]\n  [select] (Let’s fight)\n  [select] (Uh...)[await]""",
         DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ Hello. May I help you?[await]\n  [select] (Let’s fight)\n  [select] (Uh...)[await]""",
@@ -4933,15 +4943,15 @@ class CulexBossFight(BossFightPrize):
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You’re pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I’ll let you through to Culex’s place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That’s AMAZING!\n No one’s EVER whipped CULEX!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """CULEX: This world truly is\n uninhabitable for me and my kind...[await]""",
-        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CULEX: Greetings. It is good to\n make your acquaintance once\n again.[await]""",
-        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter In expected when I came to visit this\n world.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CULEX: Greetings.[delay] It is good to make your acquaintance once again.[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter I expected when I came to visit this world.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ How droll, my crystals shattered.[await]\n I’ve only Bacchus Wine remaining.[await]""",
         DI2023_SHIP_BOSS_2_DRINK: """ How droll, my crystals shattered.[await]\n I’ve only Bacchus Wine remaining.[await]""",
-        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """WATER CRYSTAL: I guess this is as\n close as I’ll get to being returned\n to Mysidia.[await]""",
+        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """WATER CRYSTAL: I guess this is as\n close as I’ll get to being returned\n to Mysidia.[await]""",
         DI1786_LETTER_FROM_SHIP_BOSS: """\n Greetings, honored Warrior.[await][page]\n I have witnessed you do battle with `SEASIDE_BOSS`. I am impressed, but not surprised.[await]\n In my travels of your world, I saw `VOLCANO_BOSS_DESCRIPTION` near the volcano.[await]\n The crystals revealed they are `FINAL_BOSS_NAME`[await]\n I know not your path to victory, but challenge awaits you there.[await]\n I must return to the sea, lest the fragile water crystal shatter.[await][page]\n\n                       Fight with honor,\n                                     Culex[await]""",
-        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]""",
-        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """FIRE CRYSTAL: Of course I’m\n miserable! We’re UNDERWATER![await]""",
-        DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """WIND CRYSTAL: Culex is nice and\n all, but I miss Yang sometimes.[await]""",
+        DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """EARTH CRYSTAL: I thought the\n Dark Elf was a bit strange, until\n we came to this world.[await]\n You truly have some characters\n here![await]""",
+        DI1792_SHIP_BOSS_SIDEKICK_IN_ROOM_3: """FIRE CRYSTAL: Of course I’m\n miserable! We’re UNDERWATER![await]""",
+        DI1785_SHIP_BOSS_SIDEKICK_IN_ROOM_1: """WIND CRYSTAL: Culex is nice and\n all, but I miss Yang sometimes.[await]""",
         DI2061_HEAD_CHEF: """FIRE CRYSTAL: We needed a lot of\n heat to bake a cake of this size.[await]""",
         DI2180_CHAPEL_NPC: """ Reverend Culex must have gotten\n lost on his way here.""",
         DI2062_APPRENTICE_CHEF: """WATER CRYSTAL: We must shape\n this confection to resemble Culex.[await]""",
@@ -5126,7 +5136,7 @@ class MegasmilaxBossFight(BossFightPrize):
         DI2572_TOWER_HENCHMAN_2: """SNIFSTER 2: Please refrain\n from bothering Megasmilax.[await]""",
     }
     _dialog_replacements_if_mandatory_fights_changed = {
-        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """SMILAX: Go on ahead to visit\n Megasmilax. But be warned, he’s\n pretty tough when he’s hydrated.[await]""",
+        DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """SMILAX: Go on ahead to visit\n Megasmilax. But be warned, she’s\n pretty tough when she’s hydrated.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """SMILAX: Wow, you won![await][pause] Shy Away\n must have watered you more than\n he watered Megasmilax.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SMILAX: Hello there. Are you the\n gardener?[await][page]\n No?[await][pause] Well, [delay]we didn’t call for a\n plumber today... [await][pause]]I better get you\n outta here![await]""",
         DI2572_TOWER_HENCHMAN_2: """SMILAX: If you didn’t come back\n here to water us, you’d better get\n outta here.[await]""",
@@ -5767,6 +5777,8 @@ class KamekBossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """MAGIKOOPA:\n[center]There’s nothing..to see..here![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Magikoopa...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """[center]\nMAGIKOOPA: OH, MY!![await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ MAGIKOOPA: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ MAGIKOOPA: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3338_MONSTRO_SUPERBOSS_HINT: """ It’s really weird.\n Sometimes I hear the guy next door.[await][page]\n He’s always mumbling about\n Yoshi-this and Bowser-that.[await][page]\n Sometimes I’d like to ask him what\n he’s babbling about, but the door\n won’t open without a Shiny Stone.[await][page]\n `FIREWORKS_CLAUSE`[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """MAGIKOOPA:\n[center]Oh, dear... What to do...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """MAGIKOOPA:\n[center]Oh, dear... What to do...[await]""",
@@ -5786,6 +5798,8 @@ class KamekBossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """WIZAKOOPA:\n[center]There’s nothing..to see..here![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Wizakoopa...\n in his house. He is...the most\n respected person here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """[center]\nWIZAKOOPA: OH, MY!![await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ WIZAKOOPA: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ WIZAKOOPA: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """WIZAKOOPA:\n[center]Oh, dear... What to do...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """WIZAKOOPA:\n[center]Oh, dear... What to do...[await]""",
     }
@@ -5805,6 +5819,8 @@ class KamekBossFight(BossFightPrize):
         DI2830_SEASIDE_BOSS_WELCOMES_YOU: """KAMEK:\n[center]There’s nothing..to see..here![await]""",
         DI2838_OCCUPIED_SEASIDE_HENCHMAN_BOSS_NAME: """ You will find Kamek... in his house.\n He is...the most respected person\n here.[await]""",
         DI3044_DOJO_BOSS_1_AFTER_DEFEAT: """[center]\nKAMEK: OH, MY!![await]""",
+        DI3057_MONSTRO_SUPERBOSS_PROMPT: """ KAMEK: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
+        DI3058_MONSTRO_POSTGAME_SUPERBOSS_PROMPT: """ KAMEK: Yes?[await]\n  [select] (I want to fight)\n  [select] (Uh...)[await]""",
         DI3352_DOJO_BOSS_1_FULLY_DEFEATED: """[center]\nKAMEK: Oh, dear... What to do...[await]""",
         DI3353_DOJO_BOSS_2_FULLY_DEFEATED: """[center]\nKAMEK: Oh, dear... What to do...[await]""",
     }
@@ -6181,6 +6197,10 @@ class ClerkBossFight(BossFightPrize):
     _mook_henchmen = [
         BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MadMalletHenchman),
     ]
+    _character_henchmen = [
+        BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MadMalletHenchman),
+        BossFightHenchman(monster=MADMALLETEnemyHenchman, model=MadMalletHenchman),
+    ]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CLERK: I’m going to sleep for 10\n years.[await]""",
@@ -6255,6 +6275,11 @@ class ManagerBossFight(BossFightPrize):
     _statue_npc = ShovelKnightStatueObject
 
     _mook_henchmen = [
+        BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
+    ]
+    _character_henchmen = [
+        BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
+        BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
         BossFightHenchman(monster=POUNDEREnemyHenchman, model=PounderHenchman),
     ]
 
@@ -6332,6 +6357,12 @@ class DirectorBossFight(BossFightPrize):
     _statue_npc = ShovelKnightStatueObject
 
     _mook_henchmen = [
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
+    ]
+    _character_henchmen = [
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
+        BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
         BossFightHenchman(monster=POUNDETTEEnemyHenchman, model=PoundetteHenchman),
     ]
 
@@ -6866,8 +6897,8 @@ class Culex3DBossFight(BossFightPrize):
         DI1694_FINAL_SHIP_HENCHMEN_DEFEATED: """PIRATE: You’re pretty tough, `MAIN_CHARACTER_MOLE_GREETING`. All right. I’ll let you through to Culex’s place.[await]""",
         DI1695_FINAL_SHIP_HENCHMEN_AFTER_BOSS_DEFEATED: """PIRATE: That’s AMAZING!\n No one’s EVER whipped CULEX!![await]""",
         DI1778_SHIP_BOSS_AFTER_DEFEAT_BEFORE_LEAVING: """CULEX: This world truly is\n uninhabitable for me and my kind...[await]""",
-        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CULEX: Greetings. It is good to\n make your acquaintance once\n again.[await]""",
-        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter In expected when I came to visit this\n world.[await]""",
+        DI1779_SHIP_BOSS_AFTER_DEFEAT_MUCH_LATER: """CULEX: Greetings.[delay] It is good to make your acquaintance once again.[await]""",
+        DI1781_SHIP_BOSS_JUMP_ON_HEAD: """CULEX: This is not the encounter I expected when I came to visit this world.[await]""",
         DI1782_SHIP_BOSS_DRINK: """ How droll, my crystals shattered.[await]\n I’ve only Bacchus Wine remaining.[await]""",
         DI2023_SHIP_BOSS_2_DRINK: """ How droll, my crystals shattered.[await]\n I’ve only Bacchus Wine remaining.[await]""",
         DI1784_SHIP_BOSS_SIDEKICK_IN_ROOM_2: """ Hop on the trampoline in the next\n room. It’ll take ya outside.\n Go on, now. Give it a try![await]""",

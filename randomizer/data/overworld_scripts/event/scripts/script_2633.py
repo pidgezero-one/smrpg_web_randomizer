@@ -87,7 +87,8 @@ script = EventScript([
 	]),
     ClearBit(CASINO_WARP_DIRECTIONAL_BIT),
 	JmpIfBitClear(STAR_PIECE_GRANT_DIRECTIONAL_BIT, ["EVENT_2633_ret_16"]),
-	SetVarToConst(PRIMARY_TEMP_7000, 523),
+	SetVarToConst(PRIMARY_TEMP_7000, 533),
+	RunEventAsSubroutine(E1245_INNER_FACTORY_5_BOSS_UNLOCKS),
 	JmpToEvent(E0167_BOSS_GRANT_STAR_PIECE),
 	Return(identifier="EVENT_2633_ret_16")
 ])

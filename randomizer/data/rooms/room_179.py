@@ -23,13 +23,17 @@ room = Room(
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
+            # Greaper (sprite 276) and the J puzzle block (sprite 104) are both
+            # gridplane format 3. Vanilla ROM partition 58 is `b1 82 80 80` =
+            # CHEST / THREE / THREE; the FOUR + EMPTY_3 this file used to carry
+            # did not match either the ROM or the room's own sprites.
             Buffer(
-                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             ),
             Buffer(
-                buffer_type=BufferType.EMPTY_3,
+                buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True
             )
@@ -89,11 +93,20 @@ room = Room(
             # ALLY_CLONE_NPC, which defaults to DIR0 (4 directions) because it
             # is shared with the stationary recruitment NPCs.
             directions=VramStore.DIR7_ALL_DIRECTIONS,
-            # Pin the clone's VRAM to the vanilla Mario clone's allocation.
-            # ALLY_CLONE_NPC declares min_vram_size=0 (correct for the
-            # stationary recruitment NPCs it is shared with), which would
-            # under-allocate the mirror clone on non-Mario seeds.
+            # Everything below pins this slot to the vanilla Mario clone's NPC
+            # record (ROM 0x1DB800 + 6*7 = `00 5c 80 a0 45 2c 00`), because
+            # apply.py swaps the record to ALLY_CLONE_NPC on non-Mario seeds and
+            # that record is tuned for the stationary recruitment NPCs it is
+            # shared with. cannot_clone is the load-bearing one: an 8-direction
+            # DIR7 player sprite needs its own dedicated VRAM allocation and
+            # cannot fit in a clone buffer.
+            cannot_clone=True,
             vram_size=2,
+            y_shift=0,
+            show_shadow=True,
+            byte5_bit6=False,
+            byte5_bit7=False,
+            byte6_bit2=False,
             visible=True,
             x=15,
             y=125,
