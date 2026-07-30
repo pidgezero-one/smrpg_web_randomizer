@@ -624,6 +624,8 @@ sprite_id, which is what this pass arranges. It runs before Step 3 of
 _recalculate_room_partition, because Step 3 is where "one buffer per unique
 sprite ID" is decided.
 """
+import copy
+
 import pytest
 
 from randomizer import main
@@ -642,72 +644,100 @@ def world():
     return main.create(1, Settings())
 
 
-def _effective_sprite(obj):
-    sprite_id = obj.sprite_id
-    return obj._npc.sprite_id if sprite_id is None else sprite_id
+def _sprite_of(obj):
+    """A room object's effective sprite is its NPC record's sprite_id.
+
+    Room objects have no per-object sprite override: `RegularNPC` exposes no
+    `sprite_id` attribute at all, `BaseRoomObject._sprite_id` is written by
+    `set_sprite_id` and read by nothing, and both `_get_npc_signature` and
+    `_render_npc` key on the record. Merging therefore swaps the record.
+    """
+    return int(obj._npc.sprite_id)
 
 
-def test_pure_duplicate_is_rewritten_to_canonical(world):
-    """Object carrying a PURE source sprite ends up on the canonical sprite."""
+@pytest.fixture
+def restore_npcs(world):
+    """Restore every object's NPC record. Records are shared across rooms, so a
+    leaked mutation corrupts unrelated rooms -- see the room 41 landmine."""
     room = world.rooms._rooms[ROOM_ID]
+    saved = [obj._npc for obj in room.objects]
+    yield room
+    for obj, npc in zip(room.objects, saved):
+        obj._npc = npc
+
+
+def _record_with_sprite(npc, sprite_id):
+    """A copy of `npc` pointing at `sprite_id`, leaving the shared original alone."""
+    record = copy.copy(npc)
+    record.set_sprite_id(sprite_id)
+    return record
+
+
+def test_pure_duplicate_is_rewritten_to_canonical(world, restore_npcs):
+    """An object whose record carries a PURE source sprite ends up on the canonical."""
+    room = restore_npcs
     source, canonical = next(iter(PURE.items()))
 
     obj = room.objects[0]
-    original = obj.sprite_id
-    obj.set_sprite_id(source)
-    try:
-        _merge_palette_swaps(world, ROOM_ID)
-        assert _effective_sprite(obj) == canonical
-    finally:
-        obj.set_sprite_id(original)
+    obj._npc = _record_with_sprite(obj._npc, source)
+
+    _merge_palette_swaps(world, ROOM_ID)
+
+    assert _sprite_of(obj) == canonical
 
 
-def test_pure_merge_emits_no_row_bumps(world):
+def test_pure_merge_emits_no_row_bumps(world, restore_npcs):
     """Pure duplicates share palette_offset, so nothing needs A_IncPaletteRowBy."""
-    room = world.rooms._rooms[ROOM_ID]
+    room = restore_npcs
     source, _ = next(iter(PURE.items()))
 
     obj = room.objects[0]
-    original = obj.sprite_id
-    obj.set_sprite_id(source)
-    try:
-        assert _merge_palette_swaps(world, ROOM_ID) == []
-    finally:
-        obj.set_sprite_id(original)
+    obj._npc = _record_with_sprite(obj._npc, source)
+
+    assert _merge_palette_swaps(world, ROOM_ID) == []
 
 
-def test_merge_reduces_distinct_sprite_count(world):
-    """Two objects on the two halves of a PURE class collapse to one sprite."""
-    room = world.rooms._rooms[ROOM_ID]
-    source, canonical = next(iter(PURE.items()))
-
-    obj_a, obj_b = room.objects[0], room.objects[1]
-    saved = (obj_a.sprite_id, obj_b.sprite_id)
-    obj_a.set_sprite_id(canonical)
-    obj_b.set_sprite_id(source)
-    try:
-        _merge_palette_swaps(world, ROOM_ID)
-        assert _effective_sprite(obj_a) == _effective_sprite(obj_b) == canonical
-    finally:
-        obj_a.set_sprite_id(saved[0])
-        obj_b.set_sprite_id(saved[1])
-
-
-def test_merge_is_idempotent(world):
-    """Running twice must not change anything the second time."""
-    room = world.rooms._rooms[ROOM_ID]
+def test_merge_does_not_mutate_the_shared_record(world, restore_npcs):
+    """The pass must copy, never mutate in place -- NPC records are global."""
+    room = restore_npcs
     source, canonical = next(iter(PURE.items()))
 
     obj = room.objects[0]
-    original = obj.sprite_id
-    obj.set_sprite_id(source)
-    try:
-        _merge_palette_swaps(world, ROOM_ID)
-        first = _effective_sprite(obj)
-        assert _merge_palette_swaps(world, ROOM_ID) == []
-        assert _effective_sprite(obj) == first == canonical
-    finally:
-        obj.set_sprite_id(original)
+    shared = _record_with_sprite(obj._npc, source)
+    obj._npc = shared
+
+    _merge_palette_swaps(world, ROOM_ID)
+
+    assert int(shared.sprite_id) == source, "the pass mutated the record in place"
+    assert obj._npc is not shared
+
+
+def test_merge_reduces_distinct_sprite_count(world, restore_npcs):
+    """Two objects on the two halves of a PURE class collapse to one sprite."""
+    room = restore_npcs
+    source, canonical = next(iter(PURE.items()))
+
+    obj_a, obj_b = room.objects[0], room.objects[1]
+    obj_a._npc = _record_with_sprite(obj_a._npc, canonical)
+    obj_b._npc = _record_with_sprite(obj_b._npc, source)
+
+    _merge_palette_swaps(world, ROOM_ID)
+
+    assert _sprite_of(obj_a) == _sprite_of(obj_b) == canonical
+
+
+def test_merge_is_idempotent(world, restore_npcs):
+    """Running twice must not change anything the second time."""
+    room = restore_npcs
+    source, canonical = next(iter(PURE.items()))
+
+    obj = room.objects[0]
+    obj._npc = _record_with_sprite(obj._npc, source)
+
+    _merge_palette_swaps(world, ROOM_ID)
+    first = _sprite_of(obj)
+    assert _merge_palette_swaps(world, ROOM_ID) == []
+    assert _sprite_of(obj) == first == canonical
 
 
 def test_recalculate_still_succeeds_with_merge_in_place(world):
@@ -729,7 +759,28 @@ In `randomizer/logic/partition_calculator.py`, add near the other module-level
 helpers:
 
 ```python
+import copy
+
 from ..data.sprites.palette_swap_classes import PURE
+
+
+def _canonical_record(npc: NPC, canonical_sprite_id: int) -> NPC:
+    """A copy of `npc` pointing at `canonical_sprite_id`.
+
+    Room objects have no usable per-object sprite override -- `RegularNPC`
+    exposes no `sprite_id` attribute, `BaseRoomObject._sprite_id` is written by
+    `set_sprite_id` and read by nothing, and both `_get_npc_signature` and
+    `_render_npc` key on the record. So merging swaps the record instead.
+
+    This MUST copy rather than mutate: NPC records are shared across rooms, and
+    mutating one in place corrupts every other room using it. Two objects merged
+    onto the same canonical produce records with identical signatures, so
+    `_get_npc_signature` dedups them into a single NPC-table entry and they share
+    one clone buffer -- which is the whole point.
+    """
+    record = copy.copy(npc)
+    record.set_sprite_id(canonical_sprite_id)
+    return record
 
 
 def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]]:
@@ -751,11 +802,9 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
     assert room is not None
 
     for obj in room.objects:
-        override = obj.sprite_id
-        current = obj._npc.sprite_id if override is None else override
-        canonical = PURE.get(int(current))
+        canonical = PURE.get(int(obj._npc.sprite_id))
         if canonical is not None:
-            obj.set_sprite_id(canonical)
+            obj._npc = _canonical_record(obj._npc, canonical)
 
     return []
 ```
@@ -1130,6 +1179,17 @@ ambiguity, settling it at generation time rather than at seed time."
 ### Task 7: Tier 2 merge — offset-shifted sprites
 
 **Blocked by Task 5.**
+
+> **Amended 2026-07-30.** The code below still uses `obj.set_sprite_id(...)` and
+> reads `obj.sprite_id`. Neither works: room objects expose no `sprite_id`
+> attribute, `BaseRoomObject._sprite_id` is written by `set_sprite_id` and read by
+> nothing, and both `_get_npc_signature` and `_render_npc` key on the NPC record.
+> Rewrite every such call to the record-swap form Task 4 established —
+> `obj._npc = _canonical_record(obj._npc, canonical)` for writes and
+> `int(obj._npc.sprite_id)` for reads — and reuse Task 4's `_canonical_record`
+> helper rather than defining a second one. The residency setters
+> (`set_extra_palette_source_offset`, `set_extra_palette_row_count`) are genuine
+> per-object overrides and are unaffected.
 
 **Files:**
 - Modify: `randomizer/logic/partition_calculator.py` (extend `_merge_palette_swaps`, add `_emit_palette_bumps`)
