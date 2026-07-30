@@ -40,16 +40,18 @@ from smrpgpatchbuilder.datatypes.levels.classes import EffectsNpc
 
 from ..data.variables.sprite_names import SPR0102_SAVE_POINT, SPR0109_GREEN_SWITCH
 from ..types.room import Room
-from ..utils.npcs import PROTAGONIST_BASE_SPRITE_ID
+from .palette_rows import (
+    PROTAGONIST_PALETTE_ROW,
+    npc_palette_rows,
+    protagonist_palette_id,
+)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
 
-PROTAGONIST_PALETTE_ROW = 8
 FIRST_NPC_PALETTE_ROW = 9
 MAX_OBJ_PALETTE_ROW = 15
-EMPTY_SPRITE_ID = 1023  # draws nothing and takes no palette row (see room 227)
 
 # room id -> (the `effects_npc` that room is expected to hold, records to aim).
 # Each record is (ROM address of the record's row byte, the record's high nibble,
@@ -70,38 +72,6 @@ GLOW_RECORDS: dict[int, tuple[EffectsNpc, tuple[tuple[int, int, int], ...]]] = {
     465: (EffectsNpc.UNKNOWN_20, ((0x1D9EAB, 0xA0, SPR0109_GREEN_SWITCH),)),
     470: (EffectsNpc.UNKNOWN_1D, ((0x1D9E9C, 0xA0, SPR0109_GREEN_SWITCH),)),
 }
-
-
-def protagonist_palette_id(world: GameWorld) -> int | None:
-    """The palette id the protagonist's row holds, or None if it can't be resolved."""
-    ally_index = world.overworld_character.ally.index
-    if ally_index not in PROTAGONIST_BASE_SPRITE_ID:
-        return None
-    return world.get_sprite(PROTAGONIST_BASE_SPRITE_ID[ally_index]).palette_id
-
-
-def npc_palette_rows(world: GameWorld, room: Room) -> dict[int, int]:
-    """CGRAM row each distinct NPC palette id occupies in `room`."""
-    partition = room.partition
-    assert partition is not None, "room has no partition"
-
-    protagonist_palette = protagonist_palette_id(world)
-    rows: dict[int, int] = {}
-    row = PROTAGONIST_PALETTE_ROW + partition.ally_sprite_buffer_size
-    for obj in room.objects:
-        sprite_id = int(obj._npc.sprite_id)
-        if sprite_id == EMPTY_SPRITE_ID:
-            continue
-        palette = world.get_sprite(sprite_id).palette_id
-        if palette == protagonist_palette or palette in rows:
-            # Already resident — the protagonist's row, or a row this palette
-            # was given by an earlier object.
-            continue
-        override = obj.extra_palette_row_count
-        extra = obj._npc.extra_palette_row_count if override is None else override
-        rows[palette] = row
-        row += 1 + extra
-    return rows
 
 
 def get_patch(world: GameWorld) -> dict[int, bytes]:
