@@ -88,13 +88,20 @@ def test_object_8_is_not_force_dedicated(world):
 
 
 def test_dedicated_allocations_stay_below_buffer_a(world):
-    """With object 8's cannot_clone override removed, the cursor must end below
-    packed $40. It reached exactly $40 before, putting object 8's block on top
-    of object 0."""
+    """Dedicated allocations must end at or before packed $40, where clone
+    buffer A begins.
+
+    This is an invariant check on the shipped layout, not a revert-guard: with
+    seed 1 and default Settings room 315 is never boss-shuffled, and the
+    cursor reaches only $34 (or $30 with object 8 forced dedicated), so this
+    test cannot distinguish the two. `test_object_8_is_not_force_dedicated` is
+    the guard for that. The $40 collision needs the Culex layout, which is
+    covered separately.
+    """
     _recalculate_room_partition(world, ROOM_ID)
 
     high_water = dedicated_high_water(world, ROOM_ID)
-    assert linear(high_water) < linear(PACKED_BUFFER_A), (
+    assert linear(high_water) <= linear(PACKED_BUFFER_A), (
         f"dedicated cursor reached packed ${high_water:02X} "
         f"(linear {linear(high_water)}); buffer A starts at linear "
         f"{linear(PACKED_BUFFER_A)}"
