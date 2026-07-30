@@ -406,9 +406,11 @@ class Command(BaseCommand):
 - [ ] **Step 4: Generate the table**
 
 Run: `patchvenv/bin/python manage.py palette_swap_classes`
-Expected: `wrote randomizer/data/sprites/palette_swap_classes.py: 32 pure, 165 shifted`
+Expected: `wrote randomizer/data/sprites/palette_swap_classes.py: 42 pure, 155 shifted`
 
-If the counts differ from 32 and 165, sprite data has changed since the design was written. Do not adjust the generator to force the old numbers — update the expected counts here and note the change in the commit message.
+These are **per-member** counts: each non-canonical sprite is classified against its own canonical's offset, so a class holding both matching and differing offsets contributes members to both tables. The design document's "26 classes / 32 ids" and "99 classes / 165 ids" are a **class-level** tally of the same 197 ids — 9 mixed classes contribute 10 members to `PURE` and 17 to `SHIFTED`, which is exactly the difference (`42 - 10 = 32`, `155 + 10 = 165`). The Bandana class `[267, 331, 380]` is one of them: 380 lands in `PURE`, 331 in `SHIFTED`. Class count is 125 under either tally.
+
+If the counts differ from 42 and 155, sprite data really has changed. Do not adjust the generator to force the old numbers — update the expected counts here and note the change in the commit message.
 
 - [ ] **Step 5: Run tests to verify they pass**
 

@@ -64,6 +64,13 @@ sprites that have real graphics and a `palette_id` other than `SPAL000_NOTHING`
 Bandanas straddle both: `[267, 331, 380]` at offsets `[0, 1, 0]`. 380 is a free
 duplicate of 267; 331 needs a bump of +1.
 
+The counts above are a **class-level** tally, which lumps every member of a mixed
+class into whichever bucket the class falls in. Classified **per member** — which is
+what the generated table does, and what the merge pass needs — the same 197 ids split
+**42 pure / 155 shifted**. The gap is the 9 mixed classes, contributing 10 pure
+members and 17 shifted ones. Both readings describe identical data; quote the
+per-member figures when talking about the table.
+
 The unfiltered numbers (129 classes / 349 removable) are wrong — they collapse
 the empty protagonist-remap slots (sprites 31-37, 847-927, 997-1023, all
 `SPAL000_NOTHING`) into one 119-member false class. The filter is load-bearing.
