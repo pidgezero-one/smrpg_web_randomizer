@@ -10,7 +10,6 @@ $40. A cursor that walks past $40 silently allocates on top of buffer A.
 import pytest
 
 from randomizer import main
-from randomizer.data.rooms import npcs
 from randomizer.logic.partition_calculator import _recalculate_room_partition
 from randomizer.types.gameworld import Settings
 from smrpgpatchbuilder.datatypes.levels.classes import BufferType
@@ -89,18 +88,13 @@ def test_object_8_is_not_force_dedicated(world):
 
 
 def test_dedicated_allocations_stay_below_buffer_a(world):
-    """With object 8 sharing sprite 263's buffer, the cursor must end below
+    """With object 8's cannot_clone override removed, the cursor must end below
     packed $40. It reached exactly $40 before, putting object 8's block on top
     of object 0."""
-    room = world.rooms._rooms[ROOM_ID]
-    room.objects[8]._npc = npcs.PIRANHA_PLANT_NPC_2
-    room.objects[8].set_cannot_clone(None)
-    room.objects[8].set_min_vram_size(None)
-
     _recalculate_room_partition(world, ROOM_ID)
 
     high_water = dedicated_high_water(world, ROOM_ID)
-    assert linear(high_water) <= linear(PACKED_BUFFER_A), (
+    assert linear(high_water) < linear(PACKED_BUFFER_A), (
         f"dedicated cursor reached packed ${high_water:02X} "
         f"(linear {linear(high_water)}); buffer A starts at linear "
         f"{linear(PACKED_BUFFER_A)}"
