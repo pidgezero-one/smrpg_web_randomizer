@@ -21,6 +21,7 @@ Buffer types:
 
 from __future__ import annotations
 
+import copy
 from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
@@ -49,6 +50,7 @@ from collections import Counter
 from ..types.room import Room as ExtRoomForPins
 from ..types.room import Room as ExtRoom
 from ..data.rooms.npcs import FLOWER_NPC_2, EXPLOSION_NPC
+from ..data.sprites.palette_swap_classes import PURE
 from .renders import (
         _ENDING_CHARACTER_2_NPC_FILLS,
         _ENDING_CHARACTER_3_NPC_FILLS,
@@ -67,7 +69,7 @@ from ..utils.npcs import (
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, RoomObject
+    from smrpgpatchbuilder.datatypes.levels.classes import BaseRoomObject, NPC, RoomObject
     from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite
 
 
@@ -289,6 +291,51 @@ def _size_dedicated_min_vram(
         obj.set_min_vram_size(max_vram)
 
 
+def _canonical_record(npc: NPC, canonical_sprite_id: int) -> NPC:
+    """A copy of `npc` pointing at `canonical_sprite_id`.
+
+    Room objects have no usable per-object sprite override -- `RegularNPC`
+    exposes no `sprite_id` attribute, `BaseRoomObject._sprite_id` is written by
+    `set_sprite_id` and read by nothing, and both `_get_npc_signature` and
+    `_render_npc` key on the record. So merging swaps the record instead.
+
+    This MUST copy rather than mutate: NPC records are shared across rooms, and
+    mutating one in place corrupts every other room using it. Two objects merged
+    onto the same canonical produce records with identical signatures, so
+    `_get_npc_signature` dedups them into a single NPC-table entry and they share
+    one clone buffer -- which is the whole point.
+    """
+    record = copy.copy(npc)
+    record.set_sprite_id(canonical_sprite_id)
+    return record
+
+
+def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]]:
+    """Collapse palette-swap-equivalent sprites in `room_id` onto one sprite_id.
+
+    A VRAM clone buffer holds exactly one sprite_id and a room has three, so two
+    sprites with byte-identical tile data still cost two buffers until they share
+    an id. This rewrites the duplicates to the class's canonical sprite.
+
+    Returns [(obj_index, row_bump)] for objects that additionally need an
+    A_IncPaletteRowBy queued into the room's sprite-loader stub. Pure duplicates
+    share palette_offset and never need one, so this returns [] until offset-
+    shifted merging lands.
+
+    Must run before Step 3 of _recalculate_room_partition, which is where one
+    buffer per unique sprite id is decided.
+    """
+    room = world.rooms._rooms[room_id]
+    assert room is not None
+
+    for obj in room.objects:
+        canonical = PURE.get(int(obj._npc.sprite_id))
+        if canonical is not None:
+            obj._npc = _canonical_record(obj._npc, canonical)
+
+    return []
+
+
 def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     """Recompute buffer layout and cannot_clone for a room after NPC shuffling.
 
@@ -315,6 +362,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     room = world.rooms._rooms[room_id]
     assert room is not None
     assert room.partition is not None
+
+    # Collapse palette-swap-equivalent sprites before anything counts distinct
+    # sprite ids. Step 3 assigns one buffer per unique sprite id, so merging
+    # after that point buys nothing.
+    _merge_palette_swaps(world, room_id)
 
     existing = room.partition
 
