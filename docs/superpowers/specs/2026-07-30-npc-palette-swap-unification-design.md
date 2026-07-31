@@ -160,7 +160,12 @@ unique sprite ID" is decided, so merging earlier is what actually buys the buffe
 
 Per room, per class with two or more distinct sprite ids present:
 
-1. Rewrite each member object to the canonical sprite.
+1. Rewrite each member object to the canonical sprite by swapping its NPC
+   record (`obj._npc = _canonical_record(obj._npc, canonical)`). Room objects
+   expose no usable per-object `sprite_id` override: `BaseRoomObject._sprite_id`
+   is written by `set_sprite_id` and read by nothing, and both
+   `_get_npc_signature` and `_render_npc` key on the record. The copy is
+   mandatory -- records are shared across rooms.
 2. Let `offs` be the pack offsets needed. On the **first object in room order
    carrying that `palette_id`**, set `extra_palette_source_offset = min(offs)` and
    `extra_palette_row_count = max(offs) - min(offs)`. That object is whichever one
@@ -182,13 +187,17 @@ to acquire a second consumer.
 
 ## Bounds
 
-Each is a skip with a log line, never a silent truncation:
+**Nothing below blocks a merge** (human ruling 2026-07-30). The VRAM saving is
+the point; a wrong palette row is a cosmetic degradation vanilla itself ships --
+rooms 5 and 7 coexist two palette offsets with `extra_palette_row_count=0`. Each
+bound is a degradation with a log line, never a silent truncation:
 
 | Bound | Behaviour |
 |---|---|
-| `extra_palette_row_count` is 2 bits | class may only merge members spanning <= 3 pack rows; `[82..88]` (offsets 0-6) merges as subsets |
-| Row budget | skip the merge if total rows would exceed 15 |
-| No reachable stub | tier 2 unavailable in that room; tier 1 still applies |
+| `extra_palette_row_count` is 2 bits | declare at most 3 extra rows; members past that render in the canonical palette |
+| Row budget | declare only rows that fit under row 15; merge proceeds regardless |
+| Bump count | emit bumps; log any dropped to a per-room cap |
+| No reachable stub | bumps dropped, sprite_id merge still applies, colours degrade |
 | Stub map ambiguous | build-time error |
 | Table drift | test failure, not seed failure |
 

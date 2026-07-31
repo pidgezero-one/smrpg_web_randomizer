@@ -1148,16 +1148,11 @@ ambiguity, settling it at generation time rather than at seed time."
 ### Task 7: Tier 2 merge — offset-shifted sprites
 
 
-> **Amended 2026-07-30.** The code below still uses `obj.set_sprite_id(...)` and
-> reads `obj.sprite_id`. Neither works: room objects expose no `sprite_id`
-> attribute, `BaseRoomObject._sprite_id` is written by `set_sprite_id` and read by
-> nothing, and both `_get_npc_signature` and `_render_npc` key on the NPC record.
-> Rewrite every such call to the record-swap form Task 4 established —
-> `obj._npc = _canonical_record(obj._npc, canonical)` for writes and
-> `int(obj._npc.sprite_id)` for reads — and reuse Task 4's `_canonical_record`
-> helper rather than defining a second one. The residency setters
-> (`set_extra_palette_source_offset`, `set_extra_palette_row_count`) are genuine
-> per-object overrides and are unaffected.
+> **Amended 2026-07-30.** Rewritten for the record-swap API (room objects expose
+> no usable `sprite_id` override) and for the degrade-don't-skip ruling. Reuse
+> Task 4's `_canonical_record`; do not define a second one. The residency setters
+> `set_extra_palette_source_offset` / `set_extra_palette_row_count` are genuine
+> per-object overrides and are used as-is.
 
 **Files:**
 - Modify: `randomizer/logic/partition_calculator.py` (extend `_merge_palette_swaps`, add `_emit_palette_bumps`)
@@ -1200,9 +1195,8 @@ def world():
     return main.create(1, Settings())
 
 
-def _effective_sprite(obj):
-    sprite_id = obj.sprite_id
-    return obj._npc.sprite_id if sprite_id is None else sprite_id
+def _sprite_of(obj):
+    return int(obj._npc.sprite_id)
 
 
 @pytest.fixture
@@ -1210,28 +1204,28 @@ def room(world):
     """Restore every object override this module touches."""
     r = world.rooms._rooms[ROOM_ID]
     saved = [
-        (o.sprite_id, o.extra_palette_source_offset, o.extra_palette_row_count)
+        (o._npc, o.extra_palette_source_offset, o.extra_palette_row_count)
         for o in r.objects
     ]
     yield r
-    for obj, (sprite, source, count) in zip(r.objects, saved):
-        obj.set_sprite_id(sprite)
+    for obj, (npc, source, count) in zip(r.objects, saved):
+        obj._npc = npc
         obj.set_extra_palette_source_offset(source)
         obj.set_extra_palette_row_count(count)
 
 
 def test_shifted_source_is_rewritten_to_canonical(world, room):
-    room.objects[0].set_sprite_id(BANDANA_RED)
-    room.objects[1].set_sprite_id(BANDANA_BLUE)
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BANDANA_RED)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BANDANA_BLUE)
 
     _merge_palette_swaps(world, ROOM_ID)
 
-    assert _effective_sprite(room.objects[1]) == BANDANA_RED
+    assert _sprite_of(room.objects[1]) == BANDANA_RED
 
 
 def test_shifted_merge_returns_a_bump_for_the_shifted_object(world, room):
-    room.objects[0].set_sprite_id(BANDANA_RED)
-    room.objects[1].set_sprite_id(BANDANA_BLUE)
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BANDANA_RED)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BANDANA_BLUE)
 
     bumps = _merge_palette_swaps(world, ROOM_ID)
 
@@ -1242,8 +1236,8 @@ def test_shifted_merge_returns_a_bump_for_the_shifted_object(world, room):
 def test_residency_lands_on_the_first_object_with_that_palette(world, room):
     """Object 0 carries the palette first, so the row count belongs to it --
     declaring it on object 1 would be silently ignored by npc_palette_rows."""
-    room.objects[0].set_sprite_id(BANDANA_RED)
-    room.objects[1].set_sprite_id(BANDANA_BLUE)
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BANDANA_RED)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BANDANA_BLUE)
 
     _merge_palette_swaps(world, ROOM_ID)
 
@@ -1260,12 +1254,12 @@ def test_merge_skipped_when_span_exceeds_residency_field(world, room):
     source = wide[0]
     canonical, _ = SHIFTED[source]
 
-    room.objects[0].set_sprite_id(canonical)
-    room.objects[1].set_sprite_id(source)
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, canonical)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, source)
 
     _merge_palette_swaps(world, ROOM_ID)
 
-    assert _effective_sprite(room.objects[1]) == source, "should have been skipped"
+    assert _sprite_of(room.objects[1]) == source, "should have been skipped"
 
 
 def test_no_bump_when_room_has_no_stub(world, room):
@@ -1282,15 +1276,15 @@ def test_no_bump_when_room_has_no_stub(world, room):
         pytest.skip("every room with objects has a stub")
     target = unstubbed[0]
     other = world.rooms._rooms[target]
-    saved = [o.sprite_id for o in other.objects]
+    saved = [o._npc for o in other.objects]
     try:
-        other.objects[0].set_sprite_id(BANDANA_RED)
-        other.objects[1].set_sprite_id(BANDANA_BLUE)
+        other.objects[0]._npc = _record_with_sprite(other.objects[0]._npc, BANDANA_RED)
+        other.objects[1]._npc = _record_with_sprite(other.objects[1]._npc, BANDANA_BLUE)
         bumps = _merge_palette_swaps(world, target)
         assert bumps == []
     finally:
-        for obj, sprite in zip(other.objects, saved):
-            obj.set_sprite_id(sprite)
+        for obj, npc in zip(other.objects, saved):
+            obj._npc = npc
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
@@ -1308,8 +1302,8 @@ from ..data.rooms.sprite_loader_events import ROOM_SPRITE_LOADER
 from ..data.sprites.palette_swap_classes import PURE, SHIFTED
 from .palette_rows import rows_remaining
 
-# extra_palette_row_count is 2 bits, so a merged class may span at most 3 extra
-# CGRAM rows beyond its lowest pack offset.
+# extra_palette_row_count is a 2-bit field, so at most 3 extra CGRAM rows can be
+# declared for one palette.
 _MAX_PACK_SPAN = 3
 
 
@@ -1323,31 +1317,28 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
     Returns [(obj_index, row_bump)] for objects needing A_IncPaletteRowBy queued
     into the room's sprite-loader stub.
 
+    The merge ALWAYS happens (human ruling 2026-07-30). Saving the buffer is the
+    point; an NPC rendering in the canonical palette is a cosmetic degradation
+    that vanilla itself ships -- rooms 5 and 7 coexist two palette offsets with
+    extra_palette_row_count=0. Residency is declared only as far as it fits, and
+    never blocks a merge.
+
     Must run before Step 3 of _recalculate_room_partition, which is where one
     buffer per unique sprite id is decided.
     """
     room = world.rooms._rooms[room_id]
     assert room is not None
 
-    def effective(obj) -> int:
-        override = obj.sprite_id
-        return int(obj._npc.sprite_id if override is None else override)
-
     # Tier 1: pure duplicates. No palette work, no stub needed.
     for obj in room.objects:
-        canonical = PURE.get(effective(obj))
+        canonical = PURE.get(int(obj._npc.sprite_id))
         if canonical is not None:
-            obj.set_sprite_id(canonical)
-
-    # Tier 2 needs somewhere to put the row bumps.
-    if room_id not in ROOM_SPRITE_LOADER:
-        return []
+            obj._npc = _canonical_record(obj._npc, canonical)
 
     # Group the offset-shifted candidates by canonical sprite.
     by_canonical: dict[int, list[tuple[int, int]]] = {}
     for index, obj in enumerate(room.objects):
-        sprite = effective(obj)
-        entry = SHIFTED.get(sprite)
+        entry = SHIFTED.get(int(obj._npc.sprite_id))
         if entry is None:
             continue
         canonical, offset = entry
@@ -1358,41 +1349,50 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
         offsets = [offset for _, offset in members]
         # The canonical sprite itself sits at its own pack offset; include it so
         # residency covers every row the merged group renders from.
-        canonical_offset = world.get_sprite(canonical).palette_offset
-        present = any(effective(o) == canonical for o in room.objects)
-        if present:
-            offsets.append(canonical_offset)
+        if any(int(o._npc.sprite_id) == canonical for o in room.objects):
+            offsets.append(world.get_sprite(canonical).palette_offset)
         low, high = min(offsets), max(offsets)
         span = high - low
-        if span > _MAX_PACK_SPAN:
-            logging.info(
-                "room %d: skipping palette merge onto sprite %d, pack span %d "
-                "exceeds the %d-row residency field",
-                room_id, canonical, span, _MAX_PACK_SPAN,
-            )
-            continue
-        if span > rows_remaining(world, room):
-            logging.info(
-                "room %d: skipping palette merge onto sprite %d, needs %d extra "
-                "CGRAM rows but only %d remain",
-                room_id, canonical, span, rows_remaining(world, room),
-            )
-            continue
 
         palette = world.get_sprite(canonical).palette_id
         for index, offset in members:
-            room.objects[index].set_sprite_id(canonical)
+            room.objects[index]._npc = _canonical_record(
+                room.objects[index]._npc, canonical
+            )
             if offset > low:
                 bumps.append((index, offset - low))
+
+        # Declare as much residency as the field and the row budget allow.
+        # Members past that render in the canonical palette.
+        free = max(0, rows_remaining(world, room))
+        declared = min(span, _MAX_PACK_SPAN, free)
+        if declared < span:
+            logging.info(
+                "room %d: merged onto sprite %d with %d of %d extra CGRAM rows "
+                "(2-bit field caps at %d, %d free) -- members beyond that render "
+                "in the canonical palette",
+                room_id, canonical, declared, span, _MAX_PACK_SPAN, free,
+            )
 
         # Residency belongs to the FIRST object carrying this palette, because
         # npc_palette_rows skips later objects with `if palette in rows: continue`.
         for obj in room.objects:
-            if world.get_sprite(effective(obj)).palette_id != palette:
+            if world.get_sprite(int(obj._npc.sprite_id)).palette_id != palette:
                 continue
             obj.set_extra_palette_source_offset(low)
-            obj.set_extra_palette_row_count(span)
+            obj.set_extra_palette_row_count(declared)
             break
+
+    # Bumps need somewhere to run. Without a stub the sprite_id merge still
+    # stands and the VRAM is still saved; only the recolour is lost.
+    if room_id not in ROOM_SPRITE_LOADER:
+        if bumps:
+            logging.info(
+                "room %d: no sprite-loader stub, dropping %d palette row bump(s) "
+                "-- those objects render in the canonical palette",
+                room_id, len(bumps),
+            )
+        return []
 
     return bumps
 ```
