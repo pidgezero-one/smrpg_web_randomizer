@@ -9,6 +9,18 @@ from each room's entrance_event and take the stub reachable in the fewest hops.
 Anything still ambiguous raises, so it is settled by hand at generation time
 rather than silently at seed time.
 
+Edge detection follows two kinds of evidence: a direct call to another event
+(RunEventAsSubroutine/JmpToEvent/RunEventAtReturn), and a cross-script label
+reference (a destination list naming a label defined in a different script's
+text, e.g. script_1145.py jumping to "EVENT_1146_action_queue_0", a label
+script_1146.py itself defines). The second kind is gated: an
+`identifier="EVENT_N_..."` tag can be misnamed relative to its own script by
+copy-paste (see script_3797.py's stray identifier="EVENT_2064_action_queue_11",
+which embeds the Dojo's script number but is never jumped to by anything) --
+trusting every such string equally would let a future copy-paste bug silently
+substitute a wrong nearest stub, with no tie and no ValueError. See _LABEL and
+_label_registries.
+
 Run: patchvenv/bin/python manage.py sprite_loader_events
 """
 import collections
@@ -23,7 +35,13 @@ ROOM_DIR = pathlib.Path("randomizer/data/rooms")
 OUTPUT = pathlib.Path("randomizer/data/rooms/sprite_loader_events.py")
 
 _CALL = re.compile(r"(?:RunEventAsSubroutine|JmpToEvent|RunEventAtReturn)\((E\d+_\w+)")
-_LABEL = re.compile(r'"EVENT_(\d+)_')
+
+# Matches every EVENT_<script>_<name> label string in a script's text, whether
+# it is a definition (an `identifier="..."` tag, group 1 present) or a
+# reference (a destination-list entry such as Jmp([...]) or
+# JmpIfBitSet(..., [...]), group 1 absent -- anything not immediately preceded
+# by `identifier=`).
+_LABEL = re.compile(r'(identifier=)?"(EVENT_(\d+)_\w+)"')
 
 # Rooms where the nearest-caller BFS finds two (or more) stubs tied at the same
 # distance. Resolved by hand and consulted before the BFS runs so the tie is
@@ -144,7 +162,39 @@ def _load():
     return name_to_id, stub_ids, scripts
 
 
-def _edges(script_id: int, name_to_id, scripts) -> set[int]:
+def _label_registries(scripts: dict[int, str]) -> tuple[dict[str, list[int]], set[str]]:
+    """Corpus-wide bookkeeping used to validate mismatched _LABEL edges.
+
+    defined_in: label string -> ids of every script whose text defines it via
+    `identifier="..."`. A label is only safe to use as a cross-script edge
+    target when this list has exactly one entry -- if it is defined nowhere,
+    or in more than one place, which script it actually names is unknown or
+    ambiguous.
+
+    referenced: every label that appears at least once as a destination-list
+    entry (not immediately preceded by `identifier=`) anywhere in the corpus.
+    A label absent from this set is never actually jumped to by anything --
+    a decorative tag, not evidence of control flow reaching that script.
+    """
+    defined_in: dict[str, list[int]] = collections.defaultdict(list)
+    referenced: set[str] = set()
+    for script_id, text in scripts.items():
+        for m in _LABEL.finditer(text):
+            label = m.group(2)
+            if m.group(1) is not None:
+                defined_in[label].append(script_id)
+            else:
+                referenced.add(label)
+    return dict(defined_in), referenced
+
+
+def _edges(
+    script_id: int,
+    name_to_id,
+    scripts,
+    defined_in: dict[str, list[int]],
+    referenced: set[str],
+) -> set[int]:
     text = scripts.get(script_id, "")
     out = set()
     for m in _CALL.finditer(text):
@@ -152,13 +202,29 @@ def _edges(script_id: int, name_to_id, scripts) -> set[int]:
         if target is not None:
             out.add(target)
     for m in _LABEL.finditer(text):
-        out.add(int(m.group(1)))
+        digits = int(m.group(3))
+        if digits == script_id:
+            # Self-match: the label names the script it was found in. BFS
+            # already has this node in `seen`, so adding it is a no-op.
+            out.add(digits)
+            continue
+        # Mismatched: the label names a script other than the one its text
+        # was found in. Only trust that as a real cross-script edge if the
+        # label is unambiguous (defined exactly once, corpus-wide) AND is
+        # actually used as a jump destination somewhere -- otherwise it is
+        # indistinguishable from a copy-pasted identifier= tag that never
+        # gets jumped to.
+        label = m.group(2)
+        definitions = defined_in.get(label, [])
+        if len(definitions) == 1 and label in referenced:
+            out.add(definitions[0])
     return out
 
 
 def build_map() -> dict[int, int]:
     """room_id -> stub event id, resolved by nearest caller."""
     name_to_id, stub_ids, scripts = _load()
+    defined_in, referenced = _label_registries(scripts)
 
     result: dict[int, int] = {}
     for path in sorted(ROOM_DIR.glob("room_*.py")):
@@ -189,7 +255,7 @@ def build_map() -> dict[int, int]:
             if node in stub_ids:
                 depth_of_hit = depth[node]
                 nearest.append(node)
-            for nxt in _edges(node, name_to_id, scripts):
+            for nxt in _edges(node, name_to_id, scripts, defined_in, referenced):
                 if nxt not in seen:
                     seen.add(nxt)
                     depth[nxt] = depth[node] + 1

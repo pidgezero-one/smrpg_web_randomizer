@@ -44,3 +44,11 @@ def test_every_mapped_stub_is_empty():
         assert commands == ["Return"], (
             f"room {room_id} stub E{event_id:04d} is not empty: {commands}"
         )
+
+
+def test_load_bearing_label_edges_survive():
+    """154 and 315 resolve only via a cross-script label whose identifier names a
+    different script. script_3797.py shows the same shape can be decorative, so
+    the edge rule must accept these two and reject that one."""
+    assert ROOM_SPRITE_LOADER[154] == 790
+    assert ROOM_SPRITE_LOADER[315] == 802
