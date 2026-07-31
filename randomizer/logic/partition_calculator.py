@@ -22,6 +22,7 @@ Buffer types:
 from __future__ import annotations
 
 import copy
+import logging
 from typing import TYPE_CHECKING
 from dataclasses import dataclass, field
 
@@ -40,8 +41,15 @@ from smrpgpatchbuilder.datatypes.levels.classes import (
 from ..types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_0,
+    AREAOBJECT_FROM_NPC_ID as AREA_OBJECTS,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
+    ActionQueueSync,
+)
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
+    A_IncPaletteRowBy,
+)
 from ..progression.prizelocations import InnerMinesBossFight
 from ..utils.npcs import min_vram_from_sequence_for_sprite
 from ..types.prize import BossFightPrize
@@ -50,7 +58,9 @@ from collections import Counter
 from ..types.room import Room as ExtRoomForPins
 from ..types.room import Room as ExtRoom
 from ..data.rooms.npcs import FLOWER_NPC_2, EXPLOSION_NPC
-from ..data.sprites.palette_swap_classes import PURE
+from ..data.rooms.sprite_loader_events import ROOM_SPRITE_LOADER
+from ..data.sprites.palette_swap_classes import PURE, SHIFTED
+from .palette_rows import rows_remaining
 from .renders import (
         _ENDING_CHARACTER_2_NPC_FILLS,
         _ENDING_CHARACTER_3_NPC_FILLS,
@@ -310,17 +320,26 @@ def _canonical_record(npc: NPC, canonical_sprite_id: int) -> NPC:
     return record
 
 
+# extra_palette_row_count is a 2-bit field, so at most 3 extra CGRAM rows can be
+# declared for one palette.
+_MAX_PACK_SPAN = 3
+
+
 def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]]:
     """Collapse palette-swap-equivalent sprites in `room_id` onto one sprite_id.
 
     A VRAM clone buffer holds exactly one sprite_id and a room has three, so two
     sprites with byte-identical tile data still cost two buffers until they share
-    an id. This rewrites the duplicates to the class's canonical sprite.
+    an id.
 
-    Returns [(obj_index, row_bump)] for objects that additionally need an
-    A_IncPaletteRowBy queued into the room's sprite-loader stub. Pure duplicates
-    share palette_offset and never need one, so this returns [] until offset-
-    shifted merging lands.
+    Returns [(obj_index, row_bump)] for objects needing A_IncPaletteRowBy queued
+    into the room's sprite-loader stub.
+
+    The merge ALWAYS happens (human ruling 2026-07-30). Saving the buffer is the
+    point; an NPC rendering in the canonical palette is a cosmetic degradation
+    that vanilla itself ships -- rooms 5 and 7 coexist two palette offsets with
+    extra_palette_row_count=0. Residency is declared only as far as it fits, and
+    never blocks a merge.
 
     Must run before Step 3 of _recalculate_room_partition, which is where one
     buffer per unique sprite id is decided.
@@ -328,12 +347,97 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
     room = world.rooms._rooms[room_id]
     assert room is not None
 
+    # Tier 1: pure duplicates. No palette work, no stub needed.
     for obj in room.objects:
         canonical = PURE.get(int(obj._npc.sprite_id))
         if canonical is not None:
             obj._npc = _canonical_record(obj._npc, canonical)
 
-    return []
+    # Group the offset-shifted candidates by canonical sprite.
+    by_canonical: dict[int, list[tuple[int, int]]] = {}
+    for index, obj in enumerate(room.objects):
+        entry = SHIFTED.get(int(obj._npc.sprite_id))
+        if entry is None:
+            continue
+        canonical, offset = entry
+        by_canonical.setdefault(canonical, []).append((index, offset))
+
+    bumps: list[tuple[int, int]] = []
+    for canonical, members in by_canonical.items():
+        offsets = [offset for _, offset in members]
+        # The canonical sprite itself sits at its own pack offset; include it so
+        # residency covers every row the merged group renders from.
+        if any(int(o._npc.sprite_id) == canonical for o in room.objects):
+            offsets.append(world.get_sprite(canonical).palette_offset)
+        low, high = min(offsets), max(offsets)
+        span = high - low
+
+        palette = world.get_sprite(canonical).palette_id
+        for index, offset in members:
+            room.objects[index]._npc = _canonical_record(
+                room.objects[index]._npc, canonical
+            )
+            if offset > low:
+                bumps.append((index, offset - low))
+
+        # Declare as much residency as the field and the row budget allow.
+        # Members past that render in the canonical palette.
+        free = max(0, rows_remaining(world, room))
+        declared = min(span, _MAX_PACK_SPAN, free)
+        if declared < span:
+            logging.info(
+                "room %d: merged onto sprite %d with %d of %d extra CGRAM rows "
+                "(2-bit field caps at %d, %d free) -- members beyond that render "
+                "in the canonical palette",
+                room_id, canonical, declared, span, _MAX_PACK_SPAN, free,
+            )
+
+        # Residency belongs to the FIRST object carrying this palette, because
+        # npc_palette_rows skips later objects with `if palette in rows: continue`.
+        for obj in room.objects:
+            if world.get_sprite(int(obj._npc.sprite_id)).palette_id != palette:
+                continue
+            obj.set_extra_palette_source_offset(low)
+            obj.set_extra_palette_row_count(declared)
+            break
+
+    # Bumps need somewhere to run. Without a stub the sprite_id merge still
+    # stands and the VRAM is still saved; only the recolour is lost.
+    if room_id not in ROOM_SPRITE_LOADER:
+        if bumps:
+            logging.info(
+                "room %d: no sprite-loader stub, dropping %d palette row bump(s) "
+                "-- those objects render in the canonical palette",
+                room_id, len(bumps),
+            )
+        return []
+
+    return bumps
+
+
+def _emit_palette_bumps(
+    world: GameWorld, room_id: int, bumps: list[tuple[int, int]]
+) -> int:
+    """Queue A_IncPaletteRowBy for each merged object in the room's stub.
+
+    The stub is an empty *_SHUFFLED_NPC_ANIMATION_LOADER already invoked from the
+    room's loader as a subroutine, so the queue runs before the fade without any
+    of the E0015 tail-jump ordering hazards. Queues are Sync, matching the room
+    422 precedent -- Async loses the race against FadeInFromBlack.
+    """
+    if not bumps:
+        return 0
+    event_id = ROOM_SPRITE_LOADER[room_id]
+    script = world.get_event_script(event_id)
+    for index, delta in bumps:
+        script.insert_before_nth_command(
+            0,
+            ActionQueueSync(
+                target=AREA_OBJECTS[index],
+                subscript=[A_IncPaletteRowBy(delta)],
+            ),
+        )
+    return len(bumps)
 
 
 def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
@@ -366,7 +470,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # Collapse palette-swap-equivalent sprites before anything counts distinct
     # sprite ids. Step 3 assigns one buffer per unique sprite id, so merging
     # after that point buys nothing.
-    _merge_palette_swaps(world, room_id)
+    _emit_palette_bumps(world, room_id, _merge_palette_swaps(world, room_id))
 
     existing = room.partition
 
