@@ -857,77 +857,46 @@ No palette work needed for this tier."
 
 ---
 
-### Task 5: VERIFICATION GATE — settle two runtime unknowns
+### Task 5: RESOLVED — no verification gate required
 
-**This task produces a written answer, not code. Tasks 6, 7 and 8 are blocked on it.**
-Tasks 1-4 are already shipped and do not depend on it.
+This was a bsnes gate. It is closed: both questions were answered from vanilla
+data, and the human partner has ruled on how to act on them. **Tasks 6-8 are not
+blocked.** No work is required in this task; it is retained for the record.
 
-Two things must be observed rather than inferred. Both need the user at a
-bsnes-plus v05 session or an in-game check; an agentic worker cannot complete this
-task alone and must hand it back.
+**Q1 — does an extra `palette_offset` cost a CGRAM row?** Yes, and vanilla already
+ships rooms that decline to pay for it:
 
-**Question 1 — does a merged offset-shifted sprite need an extra CGRAM row?**
-
-`npc_palette_rows` keys rows on `palette_id` alone. Every member of a palette-swap
-class shares its `palette_id` by construction, so the helper says they already
-share one row. But before merging, sprite 267 and sprite 331 visibly render in
-different colours, which a single shared row cannot explain unless
-`sprite.palette_offset` re-aims the upload per sprite.
-
-Determine: with two objects in one room on sprites 267 and 331, how many CGRAM
-rows are occupied, and does each sprite's `palette_offset` select its source row
-within the palette pack?
-
-Method: build a seed, load a room containing both, and inspect CGRAM rows 8-15 in
-bsnes-plus. **Breakpoints and memory watches on the S-CPU bus** (not the SA-1
-bus).
-
-Impact: if merging costs an extra row, Task 7's budget check is load-bearing and
-`rows_remaining` gates most merges. If it does not, merging is row-neutral and the
-check is a cheap guard.
-
-**Question 2 — does `A_IncPaletteRowBy` count against the 10-object sprite-state limit?**
-
-Per `project_room422_ten_object_sprite_state_limit`, only 10 objects in a room can
-take a mold or sequence override. It is not known whether a palette row bump is
-subject to the same cap.
-
-Method: in room 422 (Belome's treasury, 15 objects), queue `A_IncPaletteRowBy` at
-objects beyond the tenth and observe whether the bump applies.
-
-Impact: if capped, Task 7 needs a per-room bump budget alongside the row budget,
-and rooms with many merged objects must skip the excess.
-
-- [ ] **Step 1: Answer question 1 and record the result**
-
-Append the finding to
-`docs/superpowers/specs/2026-07-30-npc-palette-swap-unification-design.md` under
-the "Verification gate" section, replacing the open question with the observed
-behaviour.
-
-- [ ] **Step 2: Answer question 2 and record the result**
-
-Same file, same section.
-
-- [ ] **Step 3: Commit the findings**
-
-```bash
-git add docs/superpowers/specs/2026-07-30-npc-palette-swap-unification-design.md
-git commit -m "docs: record palette row and IncPaletteRowBy verification results"
+```
+room 34: obj0 off=1 + obj9/11/12/13 off=0   pal=674   extra_palette_row_count=1
+room  5: obj0 off=1 + obj5/obj6     off=0   pal=425   extra_palette_row_count=0
+room  7: obj1 off=2 + obj3/obj4     off=1   pal=425   extra_palette_row_count=0
 ```
 
-- [ ] **Step 4: Adjust Tasks 6-8 if either answer differs from the assumption**
+Room 34 declares the extra row on the first object carrying the palette, exactly
+as `npc_palette_rows` models. Rooms 5 and 7 do not, and ship anyway. Whether those
+NPCs look wrong in-game is unverified and would need an emulator — but it
+establishes that the row budget is a quality knob, not a correctness gate.
 
-The plan below assumes: merging an offset-shifted sprite costs **one extra CGRAM
-row** per class per room, and `A_IncPaletteRowBy` is **not** subject to the
-10-object cap. If either is wrong, update Task 7's budget logic and tests before
-implementing it.
+**Q2 — how many objects in one room would need `A_IncPaletteRowBy`?** Up to 16
+(room 262), with rooms 471 and 64 at exactly 10. So if the 10-object sprite-state
+cap from `project_room422_ten_object_sprite_state_limit` applies to palette bumps,
+crowded rooms will lose some.
+
+**Ruling (human partner, 2026-07-30): merge anyway and accept degraded palettes.**
+Always merge; declare residency when it fits; emit bumps and log any that exceed a
+cap. Worst case is an NPC rendering in the canonical colour in a crowded room —
+the same trade vanilla already makes. Task 7 therefore has **no hard budget
+gates**.
+
+**Q3 — does a non-Mario protagonist's sprite 31, post-remap, carry that
+character's `*_WALKING_DOWN_LEFT` palette?** Still open, but it gates only the
+unplanned Belome 2 protagonist-clone follow-up, not Tasks 6-8. Answerable
+headlessly with a forced non-Mario starter; no emulator needed.
 
 ---
 
 ### Task 6: Generate the room-to-stub map
 
-**Blocked by Task 5.**
 
 96 event scripts named `*_SHUFFLED_NPC_ANIMATION_LOADER` exist. All 96 are empty
 (`Return()` only) and all 96 are already invoked from their room's loader chain,
@@ -1178,7 +1147,6 @@ ambiguity, settling it at generation time rather than at seed time."
 
 ### Task 7: Tier 2 merge — offset-shifted sprites
 
-**Blocked by Task 5.**
 
 > **Amended 2026-07-30.** The code below still uses `obj.set_sprite_id(...)` and
 > reads `obj.sprite_id`. Neither works: room objects expose no `sprite_id`
@@ -1501,7 +1469,6 @@ the room has no stub."
 
 ### Task 8: Integration — room 315 Culex regression and full smoke
 
-**Blocked by Task 5.**
 
 **Files:**
 - Test: `.claude/tests/test_room315_culex_merge.py`
