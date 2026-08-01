@@ -1,6 +1,6 @@
 # SPR0512_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL293_ABXY_ACTION_BUTTON_SELECTION_IN_BATTLE
 sprite = CompleteSprite(
     animation=AnimationPack(164, length=295, unknown=0x0002,

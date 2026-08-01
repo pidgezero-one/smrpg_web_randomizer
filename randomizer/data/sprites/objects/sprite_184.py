@@ -1,6 +1,6 @@
 # SPR0184_KID_RED_STRIPED_HAT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL640_TOAD
 sprite = CompleteSprite(
     animation=AnimationPack(304, length=150, unknown=0x0002,

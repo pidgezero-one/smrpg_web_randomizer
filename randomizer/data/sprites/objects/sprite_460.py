@@ -1,6 +1,6 @@
 # SPR0460_MEGASMILAX
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL024_PIRANHA_PLANT
 sprite = CompleteSprite(
     animation=AnimationPack(88, length=425, unknown=0x0002,

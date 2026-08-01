@@ -1,6 +1,6 @@
 # SPR0435_JAGGER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL563_TERRAPIN
 sprite = CompleteSprite(
     animation=AnimationPack(1, length=969, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0454_DING_A_LING
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL600_DING_A_LING
 sprite = CompleteSprite(
     animation=AnimationPack(108, length=1434, unknown=0x0002,

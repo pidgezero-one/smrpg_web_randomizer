@@ -1,6 +1,6 @@
 # SPR0484_AXEM_PINK
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL263_MACHINE_MADE_AXEM_PINK
 sprite = CompleteSprite(
     animation=AnimationPack(145, length=997, unknown=0x0002,

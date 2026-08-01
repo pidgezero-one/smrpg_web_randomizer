@@ -1,6 +1,6 @@
 # SPR0549_SPORE_PINK_GREEN
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL411_SPORE_PINK_GREEN
 sprite = CompleteSprite(
     animation=AnimationPack(237, length=228, unknown=0x0002,

@@ -1,4 +1,4 @@
-# E1980_EMPTY
+# E1980_SUMMON_FINAL_BOSS_BUTTON_IF_INNER_FACTORY_4_HAS_FINAL_STAR_PIECE
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,9 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	
+    CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 5, ["EV1980_ret"], identifier="enable_boss_access_3_backup"),
+    SummonObjectToSpecificLevel(NPC_14, R470_FACTORY_GROUNDS_AREA_04_GUN_YOLKS_ROOM),
+    SummonObjectToCurrentLevel(NPC_14),
+    Return(identifier="EV1980_ret")
 ])

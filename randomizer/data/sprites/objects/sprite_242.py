@@ -1,6 +1,6 @@
 # SPR0242_WHITE_GAS_CLOUD
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL397_WHITE_GAS_CLOUD
 sprite = CompleteSprite(
     animation=AnimationPack(230, length=337, unknown=0x0002,

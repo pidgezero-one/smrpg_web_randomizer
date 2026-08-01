@@ -1,6 +1,6 @@
 # SPR0933_NIMBUS_BUSMAN_LAKITU_FROGFUCIUS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL717_NIMBUS_BUSMAN_LAKITU_FROGFUCIUS
 sprite = CompleteSprite(
     animation=AnimationPack(418, length=121, unknown=0x0002,

@@ -74,7 +74,11 @@ script = EventScript([
 	RunEventAsSubroutine(E0354_BOSS_BATTLE_CONTAINER),
 	JmpIfBitClear(GAME_OVER, ["EVENT_2209_fade_in_from_black_async_10"]),
 	ResetAndChooseGame(),
-	FadeInFromBlack(sync=False, identifier="EVENT_2209_fade_in_from_black_async_10"),
+	ActionQueueAsync(target=NPC_1, subscript=[
+		A_TransferToXYZF(25, 101, 0, EAST),
+        A_FaceSouthwest(),
+	], identifier="EVENT_2209_fade_in_from_black_async_10"),
+	FadeInFromBlack(sync=False),
 	PlayMusicAtDefaultVolume(M0051_MONSTROTOWN),
 	PaletteSetMorphs(palette_type=FADE_TO, duration=12, palette_set=EPAL0138_KAMEK_BLUE, row=NPC_PALETTE_ROW_2, identifier="kamek_palette"),
 	RunEventAsSubroutine(E0942_KEEP_FIRST_BOSS_SUMMON_CHEST),

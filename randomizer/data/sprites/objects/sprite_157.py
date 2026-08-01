@@ -1,6 +1,6 @@
 # SPR0157_SMITHY_S_HAMMER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL620_SMITHY_S_HAMMER
 sprite = CompleteSprite(
     animation=AnimationPack(162, length=462, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0402_MACHINE_MADE_DRILL_BIT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL230_MACHINE_MADE_DRILL_BIT
 sprite = CompleteSprite(
     animation=AnimationPack(123, length=682, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0558_THROWN_SHURIKEN
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL381_THROWN_SHURIKEN
 sprite = CompleteSprite(
     animation=AnimationPack(219, length=55, unknown=0x0002,

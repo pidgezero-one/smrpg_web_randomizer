@@ -1,6 +1,6 @@
 # SPR0075_NIMBUSITE_BLUE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL519_NIMBUSITE_BLUE
 sprite = CompleteSprite(
     animation=AnimationPack(320, length=150, unknown=0x0002,

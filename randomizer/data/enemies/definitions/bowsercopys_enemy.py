@@ -1,0 +1,45 @@
+from randomizer.data.items.items import (MushroomItem)
+from randomizer.types.enemy import (Enemy)
+from smrpgpatchbuilder.datatypes.enemies.enums import (
+    ApproachSound,
+    CoinSprite,
+    EntranceStyle,
+    FlowerBonusType,
+    HitSound,
+)
+from smrpgpatchbuilder.datatypes.spells.enums import (Element, Status)
+
+
+class BOWSERCOPYSEnemy(Enemy):
+    """BOWSER COPY S enemy class"""
+    _monster_id: int = 125
+    _name: str = "BOWSER COPY S"
+
+    _hp: int = 600
+    _fp: int = 100
+    _attack: int = 230
+    _defense: int = 180
+    _magic_attack: int = 142
+    _magic_defense: int = 30
+    _speed: int = 12
+    _evade: int = 0
+    _magic_evade: int = 0
+    _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR]
+    _weaknesses: list[Element] = [Element.ICE]
+    _resistances: list[Element] = [Element.FIRE, Element.JUMP]
+    _xp: int = 99
+    _coins: int = 0
+    _yoshi_cookie_item = MushroomItem
+    _flower_bonus_type: FlowerBonusType = FlowerBonusType.ATTACK_UP
+    _sound_on_hit: HitSound = HitSound.CLAW
+    _sound_on_approach: ApproachSound = ApproachSound.NONE
+    _coin_sprite: CoinSprite = CoinSprite.NONE
+    _entrance_style: EntranceStyle = EntranceStyle.SPREAD_OUT_FROM_BACK
+    _cursor_x: int = 2
+    _cursor_y: int = 4
+    _ohko_immune: bool = True
+    _disable_auto_death: bool = True
+    _psychopath_message: str = "What a rrrrrrollicking good time![await]"
+
+
+__all__ = ["BOWSERCOPYSEnemy"]

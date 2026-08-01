@@ -1,6 +1,6 @@
 # SPR0740_BUNDT_2_SMALL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL589_BUNDT_2
 sprite = CompleteSprite(
     animation=AnimationPack(99, length=80, unknown=0x0000,

@@ -1,6 +1,6 @@
 # SPR0948_JOHNNY_MATES
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL742_JOHNNY_MATES
 sprite = CompleteSprite(
     animation=AnimationPack(433, length=213, unknown=0x0002,

@@ -1,16 +1,7 @@
 # SPR0012_TOADSTOOL_NONPROTAGONIST_6
 
 from randomizer.data.variables.sprite_palette_names import SPAL659_TOADSTOOL_SLAP_ATTACK
-from smrpgpatchbuilder.datatypes.graphics.classes import (
-    CompleteSprite,
-    AnimationPack,
-    AnimationPackProperties,
-    AnimationSequence,
-    AnimationSequenceFrame,
-    Mold,
-    Tile,
-    Clone,
-)
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 
 sprite = CompleteSprite(
     animation=AnimationPack(

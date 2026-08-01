@@ -1,6 +1,6 @@
 # SPR0700_KING_BOMB_SUB
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL236_KING_BOMB
 sprite = CompleteSprite(
     animation=AnimationPack(126, length=352, unknown=0x0002,

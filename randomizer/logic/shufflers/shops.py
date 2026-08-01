@@ -1,6 +1,7 @@
 """Shop shuffling logic."""
 
 from __future__ import annotations
+from ...types.prize import ItemPrize
 import random
 from typing import TYPE_CHECKING, cast
 
@@ -103,7 +104,7 @@ from ...data.shops.shops import (
         SH23_KEEP_2,
         SH24_FACTORY_TOAD,
     )
-from ...progression.prizelocations import (
+from randomizer.logic.progression.prizelocations import (
         FrogDiscipleLocation1,
         FrogDiscipleLocation2,
         FrogDiscipleLocation3,
@@ -174,7 +175,6 @@ def shuffle_shops(world: GameWorld) -> None:
         loc = world.locations.get(loc_type)
         if loc and loc.prize:
             # Get the item type from the prize
-            from ...types.prize import ItemPrize
 
             if isinstance(loc.prize, ItemPrize):
                 prize_item = loc.prize.item

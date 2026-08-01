@@ -1,6 +1,6 @@
 # SPR0550_BOLT_HARDWARE_WISE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL413_BOLT_HARDWARE_WISE
 sprite = CompleteSprite(
     animation=AnimationPack(238, length=52, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0820_MAGIKOOPA_S_TRIANGLE_CIRCLE_X_CAST_MAGIC
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL313_MAGIKOOPA_S_TRIANGLE_CIRCLE_X_CAST_MAGIC
 sprite = CompleteSprite(
     animation=AnimationPack(180, length=253, unknown=0x0002,

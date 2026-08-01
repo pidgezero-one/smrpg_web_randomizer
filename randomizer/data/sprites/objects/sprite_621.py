@@ -1,6 +1,6 @@
 # SPR0621_OLD_CLASSIC_MARIO
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL477_OLD_CLASSIC_MARIO
 sprite = CompleteSprite(
     animation=AnimationPack(360, length=164, unknown=0x0002,

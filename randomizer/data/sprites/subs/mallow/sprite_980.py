@@ -1,6 +1,6 @@
 # SPR0980_MALLOW_PUNCH
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL702_MALLOW_PUNCH
 sprite = CompleteSprite(
     animation=AnimationPack(263, length=1099, unknown=0x0002,

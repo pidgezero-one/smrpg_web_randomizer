@@ -1,6 +1,6 @@
 # SPR0800_BLUE_GREEN_BUBBLES_CIRCLES
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL307_BLUE_GREEN_BUBBLES_CIRCLES
 sprite = CompleteSprite(
     animation=AnimationPack(173, length=359, unknown=0x0002,

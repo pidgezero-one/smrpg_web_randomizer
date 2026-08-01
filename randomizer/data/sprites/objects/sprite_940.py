@@ -1,6 +1,6 @@
 # SPR0940_BOWSER_IN_HELICOPTER_CHASING
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL731_BOWSER_IN_HELICOPTER_CHASING
 sprite = CompleteSprite(
     animation=AnimationPack(425, length=285, unknown=0x0002,

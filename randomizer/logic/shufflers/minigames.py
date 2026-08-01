@@ -28,17 +28,7 @@ from smrpgpatchbuilder.datatypes.minecart import (
 from smrpgpatchbuilder.datatypes.minecart.constants import BLOCK_BASE, WINDOW_SIZE
 from ...data.minigames.moleville_track import Maze
 from ...data.minigames.melody_bay import all_songs
-from ...data.variables.event_script_names import (
-        E1082_MELODY_BAY_SONG_1_INPUT,
-        E1079_MELODY_BAY_SONG_1_VALIDATOR,
-        E1083_MELODY_BAY_SONG_2_INPUT,
-        E1080_MELODY_BAY_SONG_2_VALIDATOR,
-        E1084_MELODY_BAY_SONG_3_INPUT,
-        E1081_MELODY_BAY_SONG_3_VALIDATOR,
-        E3132_MOLEVILLE_MINERS_SONG,
-        E2061_MONSTRO_TOWN_STAR,
-        E1088_MELODY_BAY_THIRD_SONG_HINT,
-    )
+from ...data.variables.event_script_names import (E1082_MELODY_BAY_SONG_1_INPUT, E1079_MELODY_BAY_SONG_1_VALIDATOR, E1083_MELODY_BAY_SONG_2_INPUT, E1080_MELODY_BAY_SONG_2_VALIDATOR, E1084_MELODY_BAY_SONG_3_INPUT, E1081_MELODY_BAY_SONG_3_VALIDATOR, E3132_MOLEVILLE_MINERS_SONG, E1088_MELODY_BAY_THIRD_SONG_HINT)
 from ...data.variables.dialog_names import (
         DI2718_SONG_1_SCROLL_HINT,
         DI2664_TADPOLE_SONG_1_HINT,

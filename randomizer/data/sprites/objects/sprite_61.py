@@ -1,6 +1,6 @@
 # SPR0061_BIG_THWOMP
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL572_THWOMP
 sprite = CompleteSprite(
     animation=AnimationPack(91, length=203, unknown=0x0002,

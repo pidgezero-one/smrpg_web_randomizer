@@ -1,6 +1,6 @@
 # SPR0058_FROGFUCIUS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL424_FROGFUCIUS
 sprite = CompleteSprite(
     animation=AnimationPack(299, length=158, unknown=0x0002,

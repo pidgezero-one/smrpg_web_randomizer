@@ -1,6 +1,6 @@
 # SPR0053_KING_NIMBUS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL513_KING_NIMBUS
 sprite = CompleteSprite(
     animation=AnimationPack(292, length=152, unknown=0x0002,

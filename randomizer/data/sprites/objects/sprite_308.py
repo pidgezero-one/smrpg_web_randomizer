@@ -1,6 +1,6 @@
 # SPR0308_BOOMER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL161_BOOMER_RED
 sprite = CompleteSprite(
     animation=AnimationPack(57, length=1506, unknown=0x0002,

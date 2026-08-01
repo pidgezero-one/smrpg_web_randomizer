@@ -1,6 +1,6 @@
 # SPR0628_LINK_SLEEPING_IN_ROSE_TOWN_INN
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL633_LINK_SLEEPING_IN_ROSE_TOWN_INN
 sprite = CompleteSprite(
     animation=AnimationPack(408, length=71, unknown=0x0002,

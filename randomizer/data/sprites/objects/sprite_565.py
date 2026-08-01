@@ -1,6 +1,6 @@
 # SPR0565_GENO_FLASH_SQUINTING_EYES
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL383_GENO_FLASH_SQUINTING_EYES
 sprite = CompleteSprite(
     animation=AnimationPack(221, length=92, unknown=0x0002,

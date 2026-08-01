@@ -1,10 +1,9 @@
 # R125_PIPE_VAULT_AREA_04_LINE_OF_COINS_2_HIDDEN_TREASURES
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, Event, RegularNPC, ChestNPC, RegularClone)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
-from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *

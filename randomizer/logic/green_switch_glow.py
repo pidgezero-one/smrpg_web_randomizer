@@ -40,11 +40,7 @@ from smrpgpatchbuilder.datatypes.levels.classes import EffectsNpc
 
 from ..data.variables.sprite_names import SPR0102_SAVE_POINT, SPR0109_GREEN_SWITCH
 from ..types.room import Room
-from .palette_rows import (
-    PROTAGONIST_PALETTE_ROW,
-    npc_palette_rows,
-    protagonist_palette_id,
-)
+from .palette_rows import (npc_palette_rows)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld

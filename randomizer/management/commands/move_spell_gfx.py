@@ -1,9 +1,5 @@
 from django.core.management.base import BaseCommand
-from randomizer.data import graphics_bowser as graphics
-from randomizer.management.disassembler_common import shortify, bit, dbyte, hbyte, named, con, byte, byte_int, short, short_int, build_table, use_table_name, get_flag_string, flags, con_int, flags_short, writeline, bit_bool_from_num
-from randomizer.helpers.npcmodeltables import sprite_name_table
 
-import copy
 
 class AnimationBank:
     start = 0

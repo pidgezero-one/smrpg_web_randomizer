@@ -9,7 +9,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import NPC_12
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import B
 
 from randomizer.data.variables.dialog_names import DI2010_DEBUG_7000
-from randomizer.progression.prizes import (
+from randomizer.logic.progression.prizes import (
     BoomerBossFight,
     FirstMimicFightLauncher,
     InfiniteCoinsPrize,
@@ -35,7 +35,7 @@ from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
     Formation,
     FormationMember,
 )
-from ..utils.snippets.es_slot_machine import create_slot_machine_script
+from ..utils.event_script_snippets.es_slot_machine import create_slot_machine_script
 from ..utils.npcs import set_npc_direction_if_swse_only
 from ..logic.shufflers.enemies import generate_formation_coordinates
 
@@ -136,7 +136,7 @@ from ..types.physical_objects import PixelShift
 if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
-    from ..progression.prizes import SmithyBossFight
+    from randomizer.logic.progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
     from ..types.physical_objects import ItemNPC, BossNPC, HenchmanNPC
     from ..types.flags import BooleanFlag
@@ -186,7 +186,7 @@ from .flags import (
     FactoryGating,
     AnnoyingChests,
 )
-from ..progression.prizes import (
+from randomizer.logic.progression.prizes import (
     SmithyBossFight,
     MimicFightInitiatorPrize,
     RegularFireworksPrize,
@@ -225,6 +225,8 @@ from smrpgpatchbuilder.datatypes.levels.classes import BattlePackNPC
 from randomizer.types.flags import MimicsAnywhere
 from randomizer.types.flags import SpellsAnywhere
 from randomizer.types.flags import ItemQuality, ItemQualityOptions
+from randomizer.types.flags import (CharacterLearnedSpells, SlotsAnywhere)
+import random as _random
 
 
 class ShuffleLocationSelector(CategorizationOption):
@@ -947,14 +949,14 @@ def vanilla_spell_owner(spell_prize: type[SpellPrize]) -> type[CharacterPrize] |
     """
     global _VANILLA_SPELL_OWNER_MAP
     if _VANILLA_SPELL_OWNER_MAP is None:
-        from ..progression.prizes import (
+        from randomizer.logic.progression.prizes import (
             MarioRecruitmentPrize,
             ToadstoolRecruitmentPrize,
             BowserRecruitmentPrize,
             GenoRecruitmentPrize,
             MallowRecruitmentPrize,
         )
-        from ..progression.prizelocations import (
+        from randomizer.logic.progression.prizelocations import (
             MarioSpell1, MarioSpell2, MarioSpell3, MarioSpell4, MarioSpell5, MarioSpell6,
             ToadstoolSpell1, ToadstoolSpell2, ToadstoolSpell3, ToadstoolSpell4, ToadstoolSpell5, ToadstoolSpell6,
             BowserSpell1, BowserSpell2, BowserSpell3, BowserSpell4, BowserSpell5, BowserSpell6,
@@ -1129,8 +1131,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                         if r in self._rooms:
                             return False
         if isinstance(prize, SpellPrize):
-            from randomizer.types.flags import SpellsAnywhere
-
+    
             if world.settings.isflag_enabled(SpellsAnywhere):
                 # Dynamic assignment mode: assign a character BEFORE placement
                 # Get all recruited character types from inventory
@@ -1147,25 +1148,13 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                 # Fallback: if no characters in inventory, check character locations directly
                 # This handles edge cases where inventory might not include characters yet
                 if not recruited_chars:
-                    from ..progression.prizelocations import (
-                        StartingCharacter1,
-                        StartingCharacter2,
-                        StartingCharacter3,
-                        StartingCharacter4,
-                        StartingCharacter5,
-                    )
-
-                    # Check starting character locations
-                    for loc_cls in [
-                        StartingCharacter1,
-                        StartingCharacter2,
-                        StartingCharacter3,
-                        StartingCharacter4,
-                        StartingCharacter5,
-                    ]:
-                        loc = world.locations.get(loc_cls)
+                    # Match by BASE class rather than importing the five concrete
+                    # StartingCharacter locations -- that import is what forced a
+                    # deferred import here. Order is irrelevant: recruited_chars is
+                    # passed through set() immediately below.
+                    for loc in world.locations.values():
                         if (
-                            loc
+                            isinstance(loc, StartingCharacterLocation)
                             and loc.has_item
                             and isinstance(loc.prize, CharacterPrize)
                         ):
@@ -1203,12 +1192,10 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                 # when actually placed, because can_accept is called multiple times
                 # (once per potential location).
                 if prize.character is None:
-                    from randomizer.types.flags import CharacterLearnedSpells
-
+            
                     if world.settings.isflag_enabled(CharacterLearnedSpells):
                         # Learned spells are randomized: distribute spells across
                         # the recruited characters that still have room.
-                        import random as _random
 
                         selected_char = _random.choice(available_chars)
                         prize.set_character(selected_char)
@@ -1308,7 +1295,7 @@ class TreasureChestLocation(StandardPrizeLocation):
         )
 
     def grant(self, world: GameWorld | None = None) -> EventScript:
-        from randomizer.progression.prizelocations import (
+        from randomizer.logic.progression.prizelocations import (
             KeroSewersBeforeBelomeUpperBeforeFlipLocation,
             Mimic1ReloadRewardLocation,
             Mimic2ReloadRewardLocation,
@@ -2310,8 +2297,7 @@ class BossFightLocation(PrizeLocation):
         # If this location has a separate slots pack, mirror the formation to it
         if self._slots_pack_id is not None:
             slots_pack = world.battle_packs._packs[self._slots_pack_id]
-            from randomizer.types.flags import SlotsAnywhere
-
+    
             slots_run_away = world.settings.isflag_enabled(SlotsAnywhere)
             for f in slots_pack.formations:
                 if self.prize.formation is not None:
@@ -2439,7 +2425,7 @@ class BossFightLocation(PrizeLocation):
         effective_battlefields: list[Battlefield] | None = None
         if isinstance(self, MimicFightLocation):
             # Lazy import to avoid circular dependency
-            from randomizer.progression.prizelocations import (
+            from randomizer.logic.progression.prizelocations import (
                 Mimic1BossFight,
                 Mimic2BossFight,
                 Mimic3BossFight,

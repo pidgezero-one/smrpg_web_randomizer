@@ -1,6 +1,6 @@
 # SPR0063_VALENTINA_STATUE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL417_VALENTINA_STATUE
 sprite = CompleteSprite(
     animation=AnimationPack(301, length=112, unknown=0x0002,

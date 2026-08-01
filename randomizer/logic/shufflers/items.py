@@ -1,13 +1,16 @@
 """Item and prize shuffling logic."""
 
 from __future__ import annotations
+from randomizer.debug.offset_preview import compute_offset_assignments
+from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
+from randomizer.types.prize import MimicFightInitiatorPrize as MimicBase
 import os
 import random
 from copy import copy
 from datetime import datetime
-from typing import TYPE_CHECKING, cast
+from typing import (TYPE_CHECKING)
 
-from randomizer.types.item import Equipment
 from smrpgpatchbuilder.datatypes.spells.enums import Status, Element
 
 from ...data.items import (
@@ -32,21 +35,14 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_7,
 )
 
-from ...types.gameworld import CookiesPrize, MarioDollPrize
+from randomizer.logic.progression.prizes import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
 
 from ..placement import PlacementException, place, collect_accessible_items
 from ...types.logic import Inventory
-from ...types.prize import (
-    CharacterPrize,
-    CoinQuantityPrize,
-    ItemPrize,
-    RandomPrizeSubstitute,
-    CoinPrize,
-    FPFlowerPrize,
-    FrogCoinPrize,
-)
-from ...progression.prizes import (
+from ...types.prize import (CharacterPrize, ItemPrize, CoinPrize, FPFlowerPrize)
+from ...logic.progression.prize_substitute import RandomPrizeSubstitute
+from randomizer.logic.progression.prizes import (
     BanditsWayStarPrize,
     BowserRecruitmentPrize,
     FryingPanPrize,
@@ -65,17 +61,7 @@ from ...progression.prizes import (
     LandsEndStar3Prize,
     ToadstoolRecruitmentPrize,
 )
-from ...progression.prizelocations import (
-    MushroomKingdomInnPurchaseLocation,
-    ShipCoinSnakePuzzleLocation,
-    MonstroFirstSuperJumpRewardLocation,
-    MonstroSecondSuperJumpRewardLocation,
-)
-from ...types.check_flags import (
-    ShuffledBosses,
-    EnabledRegularChecks,
-    EnabledBossChecks,
-)
+from randomizer.logic.progression.prizelocations import (MushroomKingdomInnPurchaseLocation, MonstroFirstSuperJumpRewardLocation, MonstroSecondSuperJumpRewardLocation)
 from ...types.flags import (
     ReplaceItems,
     SeeYa,
@@ -84,7 +70,6 @@ from ...types.flags import (
     ShuffleHillFlowers,
     ShuffleItems,
     ShuffleShops,
-    Remake,
     RestrictSpecialEquips,
     SuperJump2Threshold,
     NoStarEgg,
@@ -107,9 +92,7 @@ from ...types.flags import (
     ShuffleBeetlemania,
     ShuffleMagikoopaChest,
     ShuffleWeddingGear,
-    ShuffleCoins,
     SpellsAnywhere,
-    # Gating flags for character requirement validation
     BanditsWayGate,
     BanditsWayGating,
     KeroSewersGate,
@@ -126,8 +109,6 @@ from ...types.flags import (
     SeaGating,
     LandsEndGate,
     LandsEndGating,
-    BelomeTempleGate,
-    BelomeTempleGating,
     MonstroTownGate,
     MonstroTownGating,
     NimbusGate,
@@ -168,14 +149,14 @@ from ...types.prize import (
     BossFightPrize,
     damaging_spell_prizes,
 )
-from ...progression.prizelocations import (
+from randomizer.logic.progression.prizelocations import (
     StartingCharacter1,
     StartingCharacter2,
     StartingCharacter3,
     StartingCharacter4,
     StartingCharacter5,
 )
-from ...progression.prizes import (
+from randomizer.logic.progression.prizes import (
     # Key items
     RareFrogCoinPrize,
     WalletPrize,
@@ -327,7 +308,7 @@ from ...data.spells.spells import (
     ComeBackSpell,
     PsychBombSpell,
 )
-from ...progression.prizelocations import (
+from randomizer.logic.progression.prizelocations import (
         Mimic1BossFight,
         Mimic1DropRewardLocation,
         Mimic1StarPiece,
@@ -339,7 +320,7 @@ from ...progression.prizelocations import (
         Mimic3BossFight,
         Mimic3StarPiece,
     )
-from ...progression.prizes import (
+from randomizer.logic.progression.prizes import (
         FirstMimicFightLauncher,
         SecondMimicFightLauncher,
         ThirdMimicFightLauncher,
@@ -356,7 +337,7 @@ from ..solvability import (
         relax_key_pool_deadlock,
     )
 from ...types.flags import WinCondition, WinConditions
-from ...progression.prizes import SmithyBossFight
+from randomizer.logic.progression.prizes import SmithyBossFight
 from ...data.physical_objects.items import (
         YellowSpellObject,
         FireSpellObject,
@@ -392,7 +373,7 @@ from ...types.prizelocation import (
         SIGNAL_RING_EVENT_DICT,
     )
 from ...types.prize import ItemPrize, CoinPrize, StarPiecePrize
-from ...progression.prizes import YouMissed, Coins10Prize
+from randomizer.logic.progression.prizes import YouMissed, Coins10Prize
 from ...data.items.items import (
         MushroomItem,
         HoneySyrupItem,
@@ -1569,8 +1550,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     # (Flag overrides for this mode were already applied at the top of shuffle_prizes
     # so the pool builder treats mimic/slot/etc. vanilla chests as shuffleable.)
     if world.settings.debug_mode and world.settings.prize_offset is not None:
-        from randomizer.debug.offset_preview import compute_offset_assignments
-        from randomizer.types.flags import TotalStarPieces
         total_sp = (
             world.settings.get_flag(TotalStarPieces).value
             if world.settings.offset_star_pieces
@@ -1693,7 +1672,6 @@ def shuffle_prizes(world: GameWorld) -> None:
     # This happens after pool building so all prizes are in the pool normally.
     # The shuffler will see these locations as already occupied and skip them.
     if world.settings.debug_mode:
-        from randomizer.debug import load_debug_config, get_prize_class, get_location_class
         config = load_debug_config()
         overrides = config.get("items", {}).get("override", {})
         for location_name, prize_name in overrides.items():
@@ -1707,9 +1685,6 @@ def shuffle_prizes(world: GameWorld) -> None:
             # precedence). A category switched off in the offset UI is not offset-driven,
             # so config.yml is back in charge of it.
             if world.settings.prize_offset is not None:
-                from randomizer.types.prizelocation import BossFightLocation
-                from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
-                from randomizer.types.prize import MimicFightInitiatorPrize as MimicBase
                 if (issubclass(location_cls, BossFightLocation)
                         or (world.settings.offset_slots and issubclass(prize_cls, SlotsPrizeBase))
                         or (world.settings.offset_mimics and issubclass(prize_cls, MimicBase))):

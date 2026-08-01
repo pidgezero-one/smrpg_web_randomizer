@@ -1,4 +1,5 @@
 """Various representations of an immutable object, like a mushroom, flower, shell, etc"""
+from ..utils.npcs import min_vram_from_mold_geometry
 
 from dataclasses import dataclass
 from smrpgpatchbuilder.datatypes.levels.classes import NPC as NPCBase
@@ -24,15 +25,10 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.comma
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (
     ActionSubcriptCommandPrototype,
 )
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.packet import Packet
 from ..data.variables.event_script_names import *
 from ..data.variables.packet_names import *
 import re
 from typing import TYPE_CHECKING
-from smrpgpatchbuilder.datatypes.graphics.classes import (
-    AnimationSequence,
-    CompleteSprite,
-)
 from ..data.sprites.sprites import sprites
 
 if TYPE_CHECKING:
@@ -606,7 +602,6 @@ class NPC:
         See utils.npcs.min_vram_from_mold_geometry.
         """
         # Deferred: utils.npcs imports this module for BossNPC.
-        from ..utils.npcs import min_vram_from_mold_geometry
 
         sprite = world.get_sprite(self.base.sprite_id + offset)
         assert mold_id < len(sprite.animation.properties.molds), (

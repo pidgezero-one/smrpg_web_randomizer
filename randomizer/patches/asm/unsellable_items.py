@@ -5,7 +5,7 @@ Item stat byte 0 bit 6 (``0x40``) is unused by vanilla: no code reads it and
 teaches three menu code paths to honour it.
 
 Applied unconditionally. Which items carry the bit is decided per seed by
-``logic.setup.item_protection`` from the ``ProtectSpecialItems`` flag (plus
+``logic.pre_shuffle.item_protection`` from the ``ProtectSpecialItems`` flag (plus
 Debug Candy, always). With no item flagged, all three hooks behave exactly as
 vanilla did, so there is nothing to gate.
 

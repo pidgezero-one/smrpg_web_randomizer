@@ -22,7 +22,7 @@
 # only works because the NPC record loads the extra rows -- see SHARED_ITEM_BASE in
 # rooms/npcs.py (extra_palette_source_offset=1, extra_palette_row_count=2).
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL008_MIMIC_FACE_STANDALONE
 sprite = CompleteSprite(
     animation=AnimationPack(0, length=0, unknown=0x0002,

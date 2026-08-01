@@ -1,6 +1,6 @@
 # SPR0097_TOADSTOOL_S_PARACHUTE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL491_TOADSTOOL_S_PARACHUTE
 sprite = CompleteSprite(
     animation=AnimationPack(367, length=40, unknown=0x0002,

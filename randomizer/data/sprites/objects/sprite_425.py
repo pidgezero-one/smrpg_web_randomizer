@@ -1,6 +1,6 @@
 # SPR0425_MACHINE_MADE_AXEM_YELLOW
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL267_MACHINE_MADE_AXEM_YELLOW
 sprite = CompleteSprite(
     animation=AnimationPack(146, length=940, unknown=0x0002,

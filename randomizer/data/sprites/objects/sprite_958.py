@@ -1,6 +1,6 @@
 # SPR0958_TINY_GLOWING_PIXEL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL765_TINY_GLOWING_PIXEL
 sprite = CompleteSprite(
     animation=AnimationPack(443, length=135, unknown=0x0002,

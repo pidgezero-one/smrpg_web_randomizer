@@ -1,6 +1,6 @@
 # SPR0946_MACK_YARIDOVICH_BOWYER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL738_MACK_YARIDOVICH_BOWYER
 sprite = CompleteSprite(
     animation=AnimationPack(431, length=258, unknown=0x0002,

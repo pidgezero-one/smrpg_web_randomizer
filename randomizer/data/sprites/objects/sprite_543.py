@@ -1,6 +1,6 @@
 # SPR0543_PURPLE_PETAL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL347_PURPLE_PETAL
 sprite = CompleteSprite(
     animation=AnimationPack(199, length=260, unknown=0x0002,

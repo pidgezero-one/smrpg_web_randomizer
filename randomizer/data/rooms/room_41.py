@@ -1,34 +1,8 @@
 # R041_BOOSTER_TOWER_8F_AREA_01_MINESWEEPER_ROOM_WCOINS_AND_HIDDEN_FIREBALLS
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    ObjectType,
-    EventInitiator,
-    PostBattleBehaviour,
-    Direction,
-    EdgeDirection,
-    ExitType,
-    BufferType,
-    BufferSpace,
-    VramStore,
-    ShadowSize,
-    Buffer,
-    Partition,
-    DestinationProps,
-    RoomExit,
-    MapExit,
-    Event,
-    BattlePackNPC,
-    RegularNPC,
-    ChestNPC,
-    BattlePackClone,
-    RegularClone,
-    ChestClone,
-    EffectsNpc
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, Event, RegularNPC, RegularClone)
 from ...types.room import Room
-from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
-from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -365,7 +339,7 @@ room = Room(
     ],
     objects=[
         RegularNPC(  # 0
-            npc=npcs.SMALL_FROG_COIN_NPC,
+            npc=npcs.SMALL_FROG_COIN_STILL_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0000_DO_NOTHING,
@@ -393,7 +367,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 1
-            npc=npcs.SMALL_FROG_COIN_NPC,
+            npc=npcs.SMALL_FROG_COIN_STILL_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0240_FREESTANDING_2_GRANT,
             action_script=A0000_DO_NOTHING,
@@ -421,7 +395,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 2
-            npc=npcs.SMALL_FROG_COIN_NPC,
+            npc=npcs.SMALL_FROG_COIN_STILL_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0239_FREESTANDING_3_GRANT,
             action_script=A0000_DO_NOTHING,
@@ -449,7 +423,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 3
-            npc=npcs.SMALL_FROG_COIN_NPC,
+            npc=npcs.SMALL_FROG_COIN_STILL_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0238_FREESTANDING_4_GRANT,
             action_script=A0000_DO_NOTHING,
@@ -505,7 +479,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularNPC(  # 5
-            npc=npcs.FLOWER_NPC,
+            npc=npcs.KEY_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0228_FREESTANDING_14_GRANT,
             action_script=A0015_DO_NOTHING,

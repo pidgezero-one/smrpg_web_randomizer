@@ -1817,6 +1817,8 @@ script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, s
 	ReturnSubroutine(),
 
 	RunSubroutine(["command_0x3A7531"], identifier="punchinello_2_outsourced"),
+    ClearAMEM8Bit(0x60),  # $7FFFB0 can arrive stale-100 from a prior battle's weapon hit
+    Set7FToAMEM8Bit(0x7FFFB0, 0x60),
     UseSpriteQueue(field_object=1, destinations=["punchinello_2_sprq"], bit_2=True, bit_4=True),
     UseSpriteQueue(field_object=2, destinations=["punchinello_2_sprq4"], bit_2=True, bit_4=True),
     UseSpriteQueue(field_object=3, destinations=["punchinello_2_sprq7"], bit_2=True, bit_4=True),

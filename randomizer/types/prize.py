@@ -3,18 +3,7 @@ import random
 from copy import deepcopy
 from typing import TYPE_CHECKING, Sequence, TypeVar
 
-from ..data.variables.sprite_names import (
-    SPR0192_COIN,
-    SPR0193_SMALL_COIN,
-    SPR0194_FROG_COIN,
-    SPR0195_FLOWER,
-    SPR0211_SMALL_FROG_COIN,
-    SPR0226_TINY_STAR,
-    SPR0234_STATIC_FROG_COIN,
-    SPR0235_STATIC_COIN,
-    SPR0236_COIN_STATIC_SMALL,
-    SPR0238_STATIC_FROG_COIN_SMALL,
-)
+from ..data.variables.sprite_names import (SPR0193_SMALL_COIN, SPR0195_FLOWER, SPR0226_TINY_STAR, SPR0234_STATIC_FROG_COIN, SPR0235_STATIC_COIN, SPR0238_STATIC_FROG_COIN_SMALL)
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC, StatueNPC
 from ..data.physical_objects.items import (
     DefaultItem,
@@ -295,7 +284,6 @@ class SpecialItemPrizeType(StrEnum):
     KEY = "key"
     SPECIAL_EQUIP_TIER_1 = "special_equip_tier_1"
     SPECIAL_EQUIP_TIER_2 = "special_equip_tier_2"
-
 
 
 class ItemPrize(StandardPrize):
@@ -1245,105 +1233,3 @@ class CoinQuantityPrize(CoinPrize):
 
 # This gets placed in a location where item quality != original_pool
 # and will be used to generate an item on the fly
-class RandomPrizeSubstitute(Prize):
-    def _draw(
-        self, world: GameWorld, pool: Sequence[type[ItemPrize]]
-    ) -> type[ItemPrize]:
-        """Pick from the least-used classes in ``pool``, then record the pick.
-
-        Plain ``random.choice`` samples with replacement, so a ~158-draw fill over
-        a ~120-class pool leaves roughly 18 classes with 3+ copies and a quarter of
-        the pool unused. Dealing from the least-used tranche spreads the fill: every
-        class appears once before any appears twice.
-        """
-        # ponytail: strict least-used deal — no repeats until the pool exhausts.
-        # Loosen to `count <= least + 1` if seeds read too uniform.
-        counts = world.substitute_draw_counts
-        least = min(counts.get(prize_cls, 0) for prize_cls in pool)
-        chosen = random.choice(
-            [prize_cls for prize_cls in pool if counts.get(prize_cls, 0) == least]
-        )
-        counts[chosen] = counts.get(chosen, 0) + 1
-        return chosen
-
-    def generate(self, world: GameWorld, location: PrizeLocation) -> Prize:
-        # Lazy imports to avoid circular imports
-        from ..progression.prizes import (
-            RecoveryMushroomPrize,
-            FrogCoin1Prize,
-            Coins10Prize,
-        )
-
-        pool: list[type] = []
-        if world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.COMPLETELY_RANDOM
-        ):
-            if world.settings.isflag_enabled(BiasItemShuffle):
-                if location._bias:
-                    pool = (
-                        world.high_impact_items
-                        + world.highest_impact_items
-                        + world.high_impact_equip
-                        + world.highest_impact_equip
-                    )
-                else:
-                    pool = (
-                        world.low_impact_items
-                        + world.high_impact_items
-                        + world.low_impact_equip
-                        + world.high_impact_equip
-                    )
-            else:
-                pool = (
-                    world.low_impact_items
-                    + world.high_impact_items
-                    + world.highest_impact_items
-                    + world.low_impact_equip
-                    + world.high_impact_equip
-                    + world.highest_impact_equip
-                )
-            pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
-            pool = [prize for prize in pool if prize is not None]
-            return self._draw(world, pool)()
-        elif world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.MOSTLY_RANDOM
-        ):
-            roll = random.randint(1, 100)
-            if world.settings.isflag_enabled(BiasItemShuffle):
-                if location._bias:
-                    if roll <= 40:
-                        pool = world.high_impact_items + world.high_impact_equip
-                    elif roll <= 95:
-                        pool = world.low_impact_items + world.low_impact_equip
-                    else:
-                        pool = world.highest_impact_items + world.highest_impact_equip
-                else:
-                    if roll <= 75:
-                        pool = world.low_impact_items + world.low_impact_equip
-                    elif roll <= 99:
-                        pool = world.high_impact_items + world.high_impact_equip
-                    else:
-                        pool = world.highest_impact_items + world.highest_impact_equip
-            else:
-                if roll <= 65:
-                    pool = world.low_impact_items + world.low_impact_equip
-                elif roll <= 95:
-                    pool = world.high_impact_items + world.high_impact_equip
-                else:
-                    pool = world.highest_impact_items + world.highest_impact_equip
-            pool = [world.item_to_prize.get(pool_item) for pool_item in pool]
-            pool = [prize for prize in pool if prize is not None]
-            return self._draw(world, pool)()
-        elif world.settings.is_flag_value(
-            ItemQuality, ItemQualityOptions.COMPLETELY_EMPTY
-        ):
-            return EmptyPrize()
-        else:
-            return random.choice(
-                [
-                    FPFlowerPrize,
-                    RecoveryMushroomPrize,
-                    FrogCoin1Prize,
-                    Coins10Prize,
-                ]
-            )()

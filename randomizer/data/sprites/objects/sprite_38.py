@@ -1,6 +1,6 @@
 # SPR0038_RED_MUSHROOM
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL503_RED_MUSHROOM
 sprite = CompleteSprite(
     animation=AnimationPack(272, length=458, unknown=0x0002,

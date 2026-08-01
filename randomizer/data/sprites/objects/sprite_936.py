@@ -1,6 +1,6 @@
 # SPR0936_MOLE_MINERS_STAR
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL723_MOLE_MINERS_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(421, length=142, unknown=0x0002,

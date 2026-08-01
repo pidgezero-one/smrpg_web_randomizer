@@ -1,6 +1,6 @@
 # SPR0606_DODO_AS_PARSON
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL584_FEATHER
 sprite = CompleteSprite(
     animation=AnimationPack(105, length=253, unknown=0x0002,

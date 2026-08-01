@@ -1,10 +1,8 @@
 # R288_MOLEVILLE_MINES_AREA_16_LARGE_SAVEPOINT_ROOM_WFOUR_BOBOMBS
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, PostBattleBehaviour, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, EffectsNpc)
 from ...types.room import Room
-from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
-from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *

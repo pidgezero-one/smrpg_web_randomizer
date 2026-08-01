@@ -1,6 +1,6 @@
 # SPR0508_CLOAKER_2
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL594_CLOAKER_ST_TIME
 sprite = CompleteSprite(
     animation=AnimationPack(134, length=1358, unknown=0x0002,

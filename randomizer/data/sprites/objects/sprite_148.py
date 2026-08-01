@@ -1,6 +1,6 @@
 # SPR0148_BIRDY_STATUE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL040_BIRDY_STATUE
 sprite = CompleteSprite(
     animation=AnimationPack(14, length=754, unknown=0x0002,

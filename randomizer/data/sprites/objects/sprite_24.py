@@ -1,16 +1,7 @@
 # SPR0024_MALLOW_NONPROTAGONIST_6
 
 from randomizer.data.variables.sprite_palette_names import SPAL702_MALLOW_PUNCH
-from smrpgpatchbuilder.datatypes.graphics.classes import (
-    CompleteSprite,
-    AnimationPack,
-    AnimationPackProperties,
-    AnimationSequence,
-    AnimationSequenceFrame,
-    Mold,
-    Tile,
-    Clone,
-)
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 
 sprite = CompleteSprite(
     animation=AnimationPack(

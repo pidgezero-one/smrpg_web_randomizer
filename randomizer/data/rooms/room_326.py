@@ -1,30 +1,6 @@
 # R326_MUSHROOM_KINGDOM_CASTLE_DURING_MACK_THRONE_ROOM
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    ObjectType,
-    EventInitiator,
-    PostBattleBehaviour,
-    Direction,
-    EdgeDirection,
-    ExitType,
-    BufferType,
-    BufferSpace,
-    VramStore,
-    ShadowSize,
-    Buffer,
-    Partition,
-    DestinationProps,
-    RoomExit,
-    MapExit,
-    Event,
-    BattlePackNPC,
-    RegularNPC,
-    ChestNPC,
-    BattlePackClone,
-    RegularClone,
-    ChestClone,
-    EffectsNpc
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, Event, RegularNPC, RegularClone)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *

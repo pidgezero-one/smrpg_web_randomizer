@@ -27,10 +27,7 @@ from collections import Counter
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (
-        Formation,
-        FormationPack,
-    )
+    from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (Formation)
 
 # Based on vanilla analysis: max unique VRAM across all formations
 VANILLA_MAX_UNIQUE_VRAM = 24576

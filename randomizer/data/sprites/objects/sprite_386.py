@@ -1,6 +1,6 @@
 # SPR0386_PIRANHA_PLANT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL024_PIRANHA_PLANT
 sprite = CompleteSprite(
     animation=AnimationPack(8, length=516, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0258_SKY_TROOPA
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL566_COMMANDER_TROOPA
 sprite = CompleteSprite(
     animation=AnimationPack(4, length=649, unknown=0x0002,

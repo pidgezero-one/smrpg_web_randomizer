@@ -53,13 +53,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import *
-from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (
-    ByteVar,
-    Flag,
-    ShortVar,
-    AreaObject,
-    
-)
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import (Flag, ShortVar, AreaObject)
 from randomizer.data.variables.overworld_sfx_names import (
     SO000_SILENCE,
     SO036_TADPOLE_POND_STAFF_DO,

@@ -1,6 +1,6 @@
 # SPR0686_MACK_SUB
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL618_MACHINE_MADE_MACK
 sprite = CompleteSprite(
     animation=AnimationPack(81, length=780, unknown=0x0002,

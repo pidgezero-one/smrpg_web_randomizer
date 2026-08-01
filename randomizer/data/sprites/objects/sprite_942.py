@@ -1,6 +1,6 @@
 # SPR0942_RED_BALLOON
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL680_RED_BALLOON
 sprite = CompleteSprite(
     animation=AnimationPack(427, length=108, unknown=0x0002,

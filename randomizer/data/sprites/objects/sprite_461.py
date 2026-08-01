@@ -1,6 +1,6 @@
 # SPR0461_BIRDETTA
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL218_BIRDETTA
 sprite = CompleteSprite(
     animation=AnimationPack(114, length=979, unknown=0x0002,

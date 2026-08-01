@@ -1,6 +1,6 @@
 # SPR0178_MARRYMORE_INN_KEEPER_BLUE_STRIPED_HAT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL425_WALLET_GUY_ALSO_CASINO_ASSISTANTS
 sprite = CompleteSprite(
     animation=AnimationPack(310, length=164, unknown=0x0002,

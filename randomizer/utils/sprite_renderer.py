@@ -12,7 +12,7 @@ from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Mold, T
 from randomizer.data.sprites import sprites
 
 
-def decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
+def _decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
     """Decode a single 8x8 SNES 4bpp subtile to palette indices.
 
     SNES 4bpp format stores 4 bits per pixel in a planar format:
@@ -56,7 +56,7 @@ def decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
     return pixels
 
 
-def render_tile_to_pixels(tile: Tile, palette_colors: list[int], gridplane: bool = True) -> list[list[tuple]]:
+def _render_tile_to_pixels(tile: Tile, palette_colors: list[int], gridplane: bool = True) -> list[list[tuple]]:
     """Render a single tile to a 2D array of RGBA colors.
 
     Args:
@@ -104,7 +104,7 @@ def render_tile_to_pixels(tile: Tile, palette_colors: list[int], gridplane: bool
         subtile_col = i % cols
 
         # Decode subtile to palette indices
-        subtile_pixels = decode_snes_4bpp_subtile(subtile_bytes)
+        subtile_pixels = _decode_snes_4bpp_subtile(subtile_bytes)
 
         # Place subtile pixels in output image
         for py in range(8):
@@ -135,7 +135,7 @@ def render_tile_to_pixels(tile: Tile, palette_colors: list[int], gridplane: bool
     return pixels
 
 
-def render_metasprite_to_image(
+def _render_metasprite_to_image(
     mold: Mold,
     palette_colors: list[int],
     scale: int = 4
@@ -170,7 +170,7 @@ def render_metasprite_to_image(
     # Render each tile and composite onto canvas
     for tile in mold.tiles:
         # Render this tile
-        pixels_2d = render_tile_to_pixels(tile, palette_colors, gridplane=False)
+        pixels_2d = _render_tile_to_pixels(tile, palette_colors, gridplane=False)
 
         # Get tile dimensions
         tile_height = len(pixels_2d)
@@ -207,7 +207,7 @@ def render_metasprite_to_image(
     return canvas
 
 
-def render_sprite_to_image(
+def _render_sprite_to_image(
     sprite: CompleteSprite,
     palette_colors: list[int],
     mold_index: int = 0,
@@ -240,7 +240,7 @@ def render_sprite_to_image(
     if mold.gridplane:
         # Gridplane: single tile arranged in a grid
         tile: Tile = mold.tiles[0]
-        pixels_2d = render_tile_to_pixels(tile, palette_colors, gridplane=True)
+        pixels_2d = _render_tile_to_pixels(tile, palette_colors, gridplane=True)
 
         # Get dimensions
         height = len(pixels_2d)
@@ -270,7 +270,7 @@ def render_sprite_to_image(
         return img
     else:
         # Metasprite: multiple tiles with X/Y positioning
-        return render_metasprite_to_image(mold, palette_colors, scale)
+        return _render_metasprite_to_image(mold, palette_colors, scale)
 
 
 def generate_ally_palette_preview(
@@ -303,7 +303,7 @@ def generate_ally_palette_preview(
         raise ValueError("Palette class must have 'colours' or 'colors' attribute")
 
     # Render to image
-    img = render_sprite_to_image(sprite, palette_colors, mold_index, scale)
+    img = _render_sprite_to_image(sprite, palette_colors, mold_index, scale)
 
     # Save
     img.save(output_path, 'PNG')

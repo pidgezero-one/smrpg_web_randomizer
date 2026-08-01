@@ -1,6 +1,6 @@
 # SPR0960_GOOMBETTE_LOWER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL109_GOOMBETTE
 sprite = CompleteSprite(
     animation=AnimationPack(268, length=285, unknown=0x0000,

@@ -1,10 +1,8 @@
 # R316_SEASIDE_TOWN_BEACH
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import ObjectType, EventInitiator, PostBattleBehaviour, Direction, EdgeDirection, ExitType, BufferType, BufferSpace, VramStore, ShadowSize, Buffer, Partition, DestinationProps, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone, EffectsNpc
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, RegularNPC)
 from ...types.room import Room
-from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
-from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *
@@ -59,7 +57,7 @@ room = Room(
     ],
     objects=[
         RegularNPC( # 0
-            npc=npcs.FLOWER_NPC,
+            npc=npcs.KEY_BASE,
             initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
             event_script=E0241_FREESTANDING_1_GRANT,
             action_script=A0015_DO_NOTHING,

@@ -1,6 +1,6 @@
 # SPR0501_AXEM_RANGERS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL280_AXEM_RANGERS
 sprite = CompleteSprite(
     animation=AnimationPack(149, length=1254, unknown=0x0002,

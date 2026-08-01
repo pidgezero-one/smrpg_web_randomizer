@@ -1,6 +1,6 @@
 # SPR0074_GIRL_MOLE_YELLOW_BOW
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL437_GIRL_MOLE_PINK_BOW
 sprite = CompleteSprite(
     animation=AnimationPack(317, length=116, unknown=0x0002,

@@ -1,35 +1,8 @@
 # R204_MUSHROOM_WAY_AREA_02
 # pyright: reportWildcardImportFromLibrary=false
-from django.db.models.expressions import F
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    ObjectType,
-    EventInitiator,
-    PostBattleBehaviour,
-    Direction,
-    EdgeDirection,
-    ExitType,
-    BufferType,
-    BufferSpace,
-    VramStore,
-    ShadowSize,
-    Buffer,
-    Partition,
-    DestinationProps,
-    RoomExit,
-    MapExit,
-    Event,
-    BattlePackNPC,
-    RegularNPC,
-    ChestNPC,
-    BattlePackClone,
-    RegularClone,
-    ChestClone,
-    EffectsNpc
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, PostBattleBehaviour, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, Event, BattlePackNPC, RegularNPC, ChestNPC, BattlePackClone, RegularClone, ChestClone)
 from ...types.room import Room
-from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
-from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 from . import npcs
 from ..variables.room_names import *
 from ..variables.overworld_area_names import *

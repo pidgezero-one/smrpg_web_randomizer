@@ -2,7 +2,6 @@ from copy import deepcopy
 from typing import Callable
 
 from .types.gameworld import GameWorld, Settings
-from .types.patch import Patch
 from .data.allies.allies import ally_collection
 from .data.battle_animation._02.export import bank as bank02
 from .data.battle_animation._35.export import bank as bank35

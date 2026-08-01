@@ -1,6 +1,6 @@
 # SPR0932_WAVING_KING_QUEEN_NIMBUS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL683_WAVING_KING_QUEEN_NIMBUS
 sprite = CompleteSprite(
     animation=AnimationPack(417, length=78, unknown=0x0002,

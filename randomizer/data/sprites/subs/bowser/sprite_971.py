@@ -1,6 +1,6 @@
 # SPR0971_BOWSER_WALKING_UP_RIGHT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL664_BOWSER_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
     animation=AnimationPack(2, length=1445, unknown=0x0002,

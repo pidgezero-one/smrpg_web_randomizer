@@ -9,7 +9,7 @@ from __future__ import annotations
 import inspect
 from functools import lru_cache
 
-from randomizer.progression.prizelocations import (
+from randomizer.logic.progression.prizelocations import (
     MushrooomWayBossFight,
     MushroomKingdomBossFight,
     BanditsWayBossFight,
@@ -58,8 +58,8 @@ from randomizer.progression.prizelocations import (
     InnerFactoryFourthFight,
     FinalBossFight,
 )
-from randomizer.progression import prizelocations as _prizelocations_module
-from randomizer.progression.prizes import (
+from randomizer.logic.progression import prizelocations as _prizelocations_module
+from randomizer.logic.progression.prizes import (
     SlotsPrize1,
     SlotsPrize2,
     SlotsPrize3,

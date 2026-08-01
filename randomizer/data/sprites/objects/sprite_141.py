@@ -1,6 +1,6 @@
 # SPR0141_GOLDEN_BULLET_BILL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL086_BULLET_BILL
 sprite = CompleteSprite(
     animation=AnimationPack(26, length=134, unknown=0x0002,

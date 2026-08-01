@@ -1,6 +1,6 @@
 # SPR0413_MALLOW_CLONE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL697_MALLOW_WALKING_DOWN_LEFT
 sprite = CompleteSprite(
     animation=AnimationPack(260, length=636, unknown=0x0002,

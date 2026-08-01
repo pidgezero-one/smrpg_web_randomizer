@@ -1,6 +1,6 @@
 # SPR0784_BONE_THROW
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL317_BONE_THROW
 sprite = CompleteSprite(
     animation=AnimationPack(184, length=74, unknown=0x0002,

@@ -7,7 +7,6 @@ This command generates preview images for all ally character palettes,
 showing what each character looks like with that palette applied.
 """
 
-import os
 from django.core.management.base import BaseCommand
 from randomizer.utils.sprite_renderer import generate_ally_palette_preview
 from randomizer.data.allies.palettes import mario, mallow, geno, bowser, toadstool

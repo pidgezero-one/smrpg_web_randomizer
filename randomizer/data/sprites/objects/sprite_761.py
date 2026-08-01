@@ -1,6 +1,6 @@
 # SPR0761_MAGIKOOPA_LARGE_BLUE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL227_MAGIKOOPA
 sprite = CompleteSprite(
     animation=AnimationPack(78, length=974, unknown=0x0002,

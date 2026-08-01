@@ -1,30 +1,6 @@
 # R054_BOOSTER_HILL_DUMMY
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    ObjectType,
-    EventInitiator,
-    PostBattleBehaviour,
-    Direction,
-    EdgeDirection,
-    ExitType,
-    BufferType,
-    BufferSpace,
-    VramStore,
-    ShadowSize,
-    Buffer,
-    Partition,
-    DestinationProps,
-    RoomExit,
-    MapExit,
-    Event,
-    BattlePackNPC,
-    RegularNPC,
-    ChestNPC,
-    BattlePackClone,
-    RegularClone,
-    ChestClone,
-    EffectsNpc
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, BufferType, BufferSpace, Buffer, Partition, RegularNPC, RegularClone, EffectsNpc)
 from ...types.room import Room
 from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *

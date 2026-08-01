@@ -1,6 +1,6 @@
 # SPR0928_MARCHING_LUIGI
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL681_MARCHING_LUIGI
 sprite = CompleteSprite(
     animation=AnimationPack(413, length=98, unknown=0x0002,

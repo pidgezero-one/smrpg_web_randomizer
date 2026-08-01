@@ -1,6 +1,6 @@
 # SPR0134_KNIFE_GUY_JUGGLER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL421_KNIFE_GUY_JUGGLER_STILL_RED_BALLS
 sprite = CompleteSprite(
     animation=AnimationPack(298, length=940, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0833_LEVEL_UP_BONUS_POW_POWER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL494_LEVEL_UP_BONUS_POW_POWER
 sprite = CompleteSprite(
     animation=AnimationPack(371, length=117, unknown=0x0002,

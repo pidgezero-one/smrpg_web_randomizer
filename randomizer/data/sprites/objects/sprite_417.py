@@ -1,6 +1,6 @@
 # SPR0417_HANGIN_XX_SHY
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL291_HANGIN_XX_SHY
 sprite = CompleteSprite(
     animation=AnimationPack(153, length=1064, unknown=0x0002,

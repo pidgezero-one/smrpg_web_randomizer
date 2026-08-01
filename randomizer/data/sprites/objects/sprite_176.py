@@ -1,6 +1,6 @@
 # SPR0176_CHOMP_FRONT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL569_CHOMP_BEHIND
 sprite = CompleteSprite(
     animation=AnimationPack(22, length=974, unknown=0x0002,

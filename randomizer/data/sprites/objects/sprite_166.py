@@ -1,6 +1,6 @@
 # SPR0166_NIMBUS_GUARD
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL517_NIMBUS_GUARD
 sprite = CompleteSprite(
     animation=AnimationPack(319, length=128, unknown=0x0002,

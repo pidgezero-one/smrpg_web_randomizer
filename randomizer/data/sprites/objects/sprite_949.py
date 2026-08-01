@@ -1,6 +1,6 @@
 # SPR0949_BLUE_RED_GREEN_TOADS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL745_BLUE_RED_GREEN_TOADS
 sprite = CompleteSprite(
     animation=AnimationPack(434, length=227, unknown=0x0002,

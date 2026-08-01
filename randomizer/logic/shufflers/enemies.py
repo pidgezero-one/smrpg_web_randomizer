@@ -15,7 +15,6 @@ from randomizer.data.enemies.enemies import (
     ALLEYRATEnemy,
     AMANITAEnemy,
     AMEBOIDEnemy,
-    BANDANAREDEnemy,
     BIRDYEnemyStatic,
     BLOOBEREnemyStatic,
     BLUEBIRDEnemyStatic,
@@ -52,10 +51,8 @@ from randomizer.data.enemies.enemies import (
     SHAMANEnemy,
     SHYAWAYEnemy,
     SHYGUYEnemyStatic,
-    SHYSTEREnemy,
     SKYTROOPAEnemy,
     SLINGSHYEnemy,
-    SNIFITEnemyStatic,
     SPARKYEnemy,
     SPIKESTEREnemy,
     SPIKEYEnemy,
@@ -84,7 +81,7 @@ from randomizer.data.enemies.enemies import (
     )
 from randomizer.types.flags import EnemyStats, EnemyStatsShuffleOptions
 from randomizer.types.enemy import Enemy as CustomEnemy
-from randomizer.logic.setup.enemy_tweaks import _get_enemy_lists
+from randomizer.logic.pre_shuffle.enemy_tweaks import _get_enemy_lists
 from randomizer.logic.scanline_calculator import (
         get_scanline_footprint,
         find_valid_coordinates,
@@ -93,6 +90,44 @@ from randomizer.types.prize import BossFightPrize
 from randomizer.logic.scanline_calculator import clear_footprint_cache
 from randomizer.logic.battle_vram_calculator import VANILLA_MAX_NONBOSS_UNIQUE_VRAM
 from randomizer.types.flags import EXPMultiplier, EXPMultiplierOptions
+from randomizer.data.items.items import (
+    AbleJuiceItem,
+    BadMushroomItem,
+    BracerItem,
+    CrystallineItem,
+    ElixirItem,
+    EnergizerItem,
+    FireBombItem,
+    FlowerBoxItem,
+    FlowerJarItem,
+    FlowerTabItem,
+    FreshenUpItem,
+    FrightBombItem,
+    FroggieDrinkItem,
+    HoneySyrupItem,
+    IceBombItem,
+    KerokeroColaItem,
+    MapleSyrupItem,
+    MaxMushroomItem,
+    MegalixirItem,
+    MidMushroomItem,
+    MoldyMushItem,
+    MukuCookieItem,
+    MushroomItem,
+    MushroomItem2,
+    PickMeUpItem,
+    PowerBlastItem,
+    PureWaterItem,
+    RedEssenceItem,
+    RockCandyItem,
+    RottenMushItem,
+    RoyalSyrupItem,
+    SleepyBombItem,
+    WiltShroomItem,
+    YoshiAdeItem,
+    YoshiCandyItem,
+    YoshiCookieItem,
+)
 
 if TYPE_CHECKING:
     from smrpgpatchbuilder.datatypes.items.classes import RegularItem
@@ -391,12 +426,50 @@ def _randomize_enemy_elements_and_statuses(enemy) -> None:
     enemy.set_flower_bonus_chance(chance)
 
 
-def randomize_enemy_drops(
-    world: GameWorld,
-    consumables_group_1: list[type[RegularItem]],
-    consumables_group_2: list[type[RegularItem]],
-) -> None:
+def randomize_enemy_drops(world: GameWorld) -> None:
     """Randomize enemy drops (coins, XP, items)."""
+    consumables_group_1 = [
+        MushroomItem,
+        HoneySyrupItem,
+        PickMeUpItem,
+        AbleJuiceItem,
+        BracerItem,
+        EnergizerItem,
+        YoshiCookieItem,
+        PureWaterItem,
+        SleepyBombItem,
+        BadMushroomItem,
+        FlowerTabItem,
+        FroggieDrinkItem,
+        MukuCookieItem,
+        FreshenUpItem,
+        FrightBombItem,
+        WiltShroomItem,
+        RottenMushItem,
+        MoldyMushItem,
+        MushroomItem2,
+    ]
+
+    consumables_group_2 = [
+        MidMushroomItem,
+        MaxMushroomItem,
+        MapleSyrupItem,
+        RoyalSyrupItem,
+        YoshiAdeItem,
+        RedEssenceItem,
+        KerokeroColaItem,
+        FireBombItem,
+        IceBombItem,
+        FlowerJarItem,
+        FlowerBoxItem,
+        YoshiCandyItem,
+        ElixirItem,
+        MegalixirItem,
+        RockCandyItem,
+        CrystallineItem,
+        PowerBlastItem,
+    ]
+
     for enemy in world.enemies.enemies:
         # Mutate coins
         enemy.set_coins(mutate_normal(int(enemy.coins), minimum=0, maximum=255))
@@ -837,7 +910,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     # so a formation belonging to a restricted pack can still be mutated while
     # shuffling a *different* pack — hence we restrict by formation_id rather
     # than pack_id.
-    from randomizer.progression.prizelocations import (
+    from randomizer.logic.progression.prizelocations import (
         MushroomKingdomBossFight,
         BoosterTowerIndoorBossFight,
         InnerFactoryFirstFight,

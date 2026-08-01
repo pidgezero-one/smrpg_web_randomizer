@@ -1,15 +1,6 @@
 # SPR0491_SMITHY_1_EXTENDED
 
-from smrpgpatchbuilder.datatypes.graphics.classes import (
-    CompleteSprite,
-    AnimationPack,
-    AnimationPackProperties,
-    AnimationSequence,
-    AnimationSequenceFrame,
-    Mold,
-    Tile,
-    Clone,
-)
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 
 sprite = CompleteSprite(
     animation=AnimationPack(

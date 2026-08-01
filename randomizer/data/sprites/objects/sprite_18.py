@@ -1,16 +1,7 @@
 # SPR0018_BOWSER_NONPROTAGONIST_6
 
 from randomizer.data.variables.sprite_palette_names import SPAL669_BOWSER_CLAW_ATTACK
-from smrpgpatchbuilder.datatypes.graphics.classes import (
-    CompleteSprite,
-    AnimationPack,
-    AnimationPackProperties,
-    AnimationSequence,
-    AnimationSequenceFrame,
-    Mold,
-    Tile,
-    Clone,
-)
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 
 sprite = CompleteSprite(
     animation=AnimationPack(259, length=708, unknown=0x0002,

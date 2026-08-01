@@ -1,32 +1,7 @@
 # R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE
 # pyright: reportWildcardImportFromLibrary=false
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    ObjectType,
-    EventInitiator,
-    PostBattleBehaviour,
-    Direction,
-    EdgeDirection,
-    ExitType,
-    BufferType,
-    BufferSpace,
-    VramStore,
-    ShadowSize,
-    Buffer,
-    Partition,
-    DestinationProps,
-    RoomExit,
-    MapExit,
-    Event,
-    BattlePackNPC,
-    RegularNPC,
-    ChestNPC,
-    BattlePackClone,
-    RegularClone,
-    ChestClone,
-    EffectsNpc
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, PostBattleBehaviour, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, MapExit, Event, BattlePackNPC, RegularNPC, RegularClone)
 from ...types.room import Room
-from ...types.ally import SpriteAnimationState
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
 from smrpgpatchbuilder.datatypes.scripts_common.classes import UInt4, UInt8
 

@@ -1,6 +1,6 @@
 # SPR0829_LEVEL_UP_BONUS_SELECTION_BOX
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL492_LEVEL_UP_BONUS_SELECTION_BOX
 sprite = CompleteSprite(
     animation=AnimationPack(374, length=68, unknown=0x0002,

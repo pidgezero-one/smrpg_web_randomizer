@@ -1,6 +1,6 @@
 # SPR0218_YELLOW_BALL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL104_YELLOW_ORB
 sprite = CompleteSprite(
     animation=AnimationPack(0, length=31, unknown=0x0002,

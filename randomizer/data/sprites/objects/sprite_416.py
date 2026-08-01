@@ -1,6 +1,6 @@
 # SPR0416_BOBOMB_S_3
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL066_BOB_OMB
 sprite = CompleteSprite(
     animation=AnimationPack(25, length=349, unknown=0x0000,

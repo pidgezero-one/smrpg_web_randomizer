@@ -1,7 +1,7 @@
 # SPR0838_FIRE_CRYSTAL_GRIDPLANE_ALT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
-from randomizer.data.variables.sprite_palette_names import SPAL454_FIRE_WATER_CRYSTAL
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
+from randomizer.data.variables.sprite_palette_names import SPAL455_FIRE_WATER_CRYSTAL
 sprite = CompleteSprite(
     animation=AnimationPack(397, length=33, unknown=0x0000,
         properties=AnimationPackProperties(vram_size=2048,
@@ -31,7 +31,7 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL454_FIRE_WATER_CRYSTAL,
+    palette_id=SPAL455_FIRE_WATER_CRYSTAL,
     palette_offset=0,
     unknown_num=0
 )

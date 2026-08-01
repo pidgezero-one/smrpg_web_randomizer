@@ -1,6 +1,6 @@
 # SPR0161_DYNA_AND_MITE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL489_DYNA_AND_MITE
 sprite = CompleteSprite(
     animation=AnimationPack(368, length=152, unknown=0x0002,

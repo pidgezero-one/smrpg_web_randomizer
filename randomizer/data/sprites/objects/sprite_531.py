@@ -1,6 +1,6 @@
 # SPR0531_BLACK_ROLLING_COAL_ROCK
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL316_BLACK_ROLLING_COAL_ROCK
 sprite = CompleteSprite(
     animation=AnimationPack(183, length=178, unknown=0x0002,

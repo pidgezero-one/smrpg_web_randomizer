@@ -1,6 +1,6 @@
 # SPR0809_BLUE_MUSIC_NOTE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL312_BLUE_MUSIC_NOTE
 sprite = CompleteSprite(
     animation=AnimationPack(179, length=64, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0571_FEAR_EXCLAMATION_POINT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL388_FEAR_EXCLAMATION_POINT
 sprite = CompleteSprite(
     animation=AnimationPack(223, length=65, unknown=0x0002,

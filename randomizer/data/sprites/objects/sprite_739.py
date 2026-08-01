@@ -1,6 +1,6 @@
 # SPR0739_JOHNNY_2_SMALL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL700_JOHNNY_2
 sprite = CompleteSprite(
     animation=AnimationPack(294, length=302, unknown=0x0002,

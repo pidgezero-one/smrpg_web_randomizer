@@ -1,6 +1,6 @@
 # SPR0812_BLUE_WATER_SURFACING_DIVING_DROPLETS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL360_BLUE_WATER_SURFACING_DIVING_DROPLETS
 sprite = CompleteSprite(
     animation=AnimationPack(206, length=147, unknown=0x0002,

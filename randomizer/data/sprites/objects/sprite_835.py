@@ -1,6 +1,6 @@
 # SPR0835_LEVEL_UP_BONUS_HP
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL496_LEVEL_UP_BONUS_HP
 sprite = CompleteSprite(
     animation=AnimationPack(373, length=107, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0725_GENO_REDEMPTION
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL295_TINY_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(166, length=293, unknown=0x0002,

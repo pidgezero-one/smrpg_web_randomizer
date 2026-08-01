@@ -20,6 +20,8 @@ Buffer types:
 """
 
 from __future__ import annotations
+from ..types.prize import CharacterPrize
+from randomizer.logic.progression.prizes import MarioRecruitmentPrize, MallowRecruitmentPrize, GenoRecruitmentPrize, BowserRecruitmentPrize, ToadstoolRecruitmentPrize
 
 import copy
 import logging
@@ -50,7 +52,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_IncPaletteRowBy,
 )
-from ..progression.prizelocations import InnerMinesBossFight
+from randomizer.logic.progression.prizelocations import InnerMinesBossFight
 from ..utils.npcs import min_vram_from_sequence_for_sprite
 from ..types.prize import BossFightPrize
 from ..types.prizelocation import BossFightLocation
@@ -364,19 +366,35 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
 
     bumps: list[tuple[int, int]] = []
     for canonical, members in by_canonical.items():
-        offsets = [offset for _, offset in members]
-        # The canonical sprite itself sits at its own pack offset; include it so
-        # residency covers every row the merged group renders from.
-        if any(int(o._npc.sprite_id) == canonical for o in room.objects):
-            offsets.append(world.get_sprite(canonical).palette_offset)
+        # Every SHIFTED source in the room, plus every object already carrying
+        # the canonical sprite, each paired with its OWN intended pack offset.
+        # Capture this before any record swapping: once a SHIFTED source's
+        # record is swapped to canonical, int(obj._npc.sprite_id) reads as
+        # canonical for it too, and it can no longer be told apart from an
+        # object that was already canonical to begin with.
+        participants: list[tuple[int, int]] = list(members)
+        for index, obj in enumerate(room.objects):
+            if int(obj._npc.sprite_id) == canonical:
+                participants.append((index, world.get_sprite(canonical).palette_offset))
+
+        offsets = [offset for _, offset in participants]
         low, high = min(offsets), max(offsets)
         span = high - low
 
         palette = world.get_sprite(canonical).palette_id
-        for index, offset in members:
+        # Swap records for the SHIFTED sources only -- objects already on the
+        # canonical sprite already hold the right record and must not be
+        # re-recorded.
+        for index, _ in members:
             room.objects[index]._npc = _canonical_record(
                 room.objects[index]._npc, canonical
             )
+
+        # Any participant whose intended offset is above low needs a runtime
+        # bump to still show its own colour -- canonical-sprite objects
+        # included, since the canonical's own native offset is not always the
+        # group minimum (e.g. spr148: canonical at offset 3, a member at 0).
+        for index, offset in participants:
             if offset > low:
                 bumps.append((index, offset - low))
 
@@ -782,7 +800,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # 3. Shared sprite (count>1) with extra animations → keep in buffer,
     #    increase main_buffer_space (more efficient than N dedicated allocations)
     if isinstance(room, ExtRoom) and room.npc_expected_animations:
-        from ..utils.npcs import min_vram_from_sequence_for_sprite
 
         for obj_idx, anim_attrs in room.npc_expected_animations.items():
             obj = room.objects[obj_idx]
@@ -807,7 +824,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
                 if anim_state is not None:
                     # Character animation — look up via CharacterPrize ally sprites
-                    from ..types.prize import CharacterPrize
                     for location in world.locations.values():
                         if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
                             continue
@@ -847,8 +863,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     # NPC class is special-cased here — every location's chosen
                     # models are eligible, and the sprite_id filter below picks
                     # whichever one actually landed in this slot.
-                    from ..types.prize import BossFightPrize
-                    from ..types.prizelocation import BossFightLocation
                     matched = False
                     for location in world.locations.values():
                         if not isinstance(location, BossFightLocation):
@@ -1900,13 +1914,6 @@ _PROTAGONIST_PRIZES: dict[str, type] = {}  # Populated lazily to avoid circular 
 def _get_protagonist_prizes() -> dict[str, type]:
     """Lazily load protagonist name → CharacterPrize mapping."""
     if not _PROTAGONIST_PRIZES:
-        from ..progression.prizes import (
-            MarioRecruitmentPrize,
-            MallowRecruitmentPrize,
-            GenoRecruitmentPrize,
-            BowserRecruitmentPrize,
-            ToadstoolRecruitmentPrize,
-        )
         _PROTAGONIST_PRIZES.update({
             "mario": MarioRecruitmentPrize,
             "mallow": MallowRecruitmentPrize,

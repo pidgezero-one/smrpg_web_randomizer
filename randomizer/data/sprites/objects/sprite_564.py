@@ -1,6 +1,6 @@
 # SPR0564_BOWSER_S_SPIKE_SHOT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL382_BOWSER_S_SPIKE_SHOT
 sprite = CompleteSprite(
     animation=AnimationPack(220, length=31, unknown=0x0002,

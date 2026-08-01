@@ -1,6 +1,6 @@
 # SPR0832_LEVEL_UP_BONUS_FLOWER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL490_LEVEL_UP_BONUS_FLOWER
 sprite = CompleteSprite(
     animation=AnimationPack(365, length=188, unknown=0x0002,

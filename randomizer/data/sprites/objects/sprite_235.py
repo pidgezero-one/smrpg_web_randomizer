@@ -1,6 +1,6 @@
 # SPR0235_STATIC_COIN
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL008_MIMIC_FACE_STANDALONE
 sprite = CompleteSprite(
     animation=AnimationPack(164, length=106, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0191_JINX_OVERWORLD_1
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL649_JINX_OVERWORLD_1
 sprite = CompleteSprite(
     animation=AnimationPack(385, length=130, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0790_PLASM_WATER_DROPLET_BLUE_GREEN
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL303_PLASM_WATER_DROPLET_BLUE_GREEN
 sprite = CompleteSprite(
     animation=AnimationPack(170, length=158, unknown=0x0002,

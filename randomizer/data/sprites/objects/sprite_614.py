@@ -1,6 +1,6 @@
 # SPR0614_BRICK_BEANSTALK_BLOCK
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL525_BRICK_BEANSTALK_BLOCK
 sprite = CompleteSprite(
     animation=AnimationPack(382, length=72, unknown=0x0002,

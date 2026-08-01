@@ -1,6 +1,6 @@
 # SPR0114_MARRYMORE_WOMAN_YELLOW
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL425_WALLET_GUY_ALSO_CASINO_ASSISTANTS
 sprite = CompleteSprite(
     animation=AnimationPack(307, length=128, unknown=0x0002,

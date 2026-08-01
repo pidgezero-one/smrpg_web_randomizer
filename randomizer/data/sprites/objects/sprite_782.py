@@ -1,6 +1,6 @@
 # SPR0782_DIAMOND_SAW_SNOWFLAKE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL344_DIAMOND_SAW_SNOWFLAKE
 sprite = CompleteSprite(
     animation=AnimationPack(196, length=171, unknown=0x0002,

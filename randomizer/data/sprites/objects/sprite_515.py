@@ -1,6 +1,6 @@
 # SPR0515_GREEN_EXPLOSION
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL333_RAINBOW_EXPLOSION
 sprite = CompleteSprite(
     animation=AnimationPack(191, length=306, unknown=0x0002,

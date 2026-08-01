@@ -1,6 +1,6 @@
 # SPR0542_BLINKING_YELLOW_LIGHT_CIRCLE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL380_BLINKING_YELLOW_LIGHT_CIRCLE
 sprite = CompleteSprite(
     animation=AnimationPack(218, length=176, unknown=0x0002,

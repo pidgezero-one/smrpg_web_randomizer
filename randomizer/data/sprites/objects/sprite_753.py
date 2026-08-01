@@ -1,7 +1,7 @@
 # SPR0753_PUNCHINELLO_POSTGAME_2
 
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL217_PUNCHINELLO_POSTGAME_2
 sprite = CompleteSprite(
     animation=AnimationPack(90, length=1459, unknown=0x0000,

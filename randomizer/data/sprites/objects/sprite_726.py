@@ -1,6 +1,6 @@
 # SPR0726_CULEX_3D_SMALL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL254_CULEX
 sprite = CompleteSprite(
     animation=AnimationPack(420, length=63, unknown=0x0000,

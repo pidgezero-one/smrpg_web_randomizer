@@ -1,6 +1,6 @@
 # SPR0137_FIREBALL_SURFACE_FROM_LAVA
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL063_FIREBALL_SURFACE_FROM_LAVA
 sprite = CompleteSprite(
     animation=AnimationPack(110, length=116, unknown=0x0002,

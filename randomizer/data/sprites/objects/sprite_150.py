@@ -1,6 +1,6 @@
 # SPR0150_MACHINE_MADE_BOWYER
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL616_MACHINE_MADE_BOWYER
 sprite = CompleteSprite(
     animation=AnimationPack(355, length=238, unknown=0x0002,

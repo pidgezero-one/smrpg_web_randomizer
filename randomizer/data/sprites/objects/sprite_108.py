@@ -1,6 +1,6 @@
 # SPR0108_FACTORY_HEX_NUT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL451_FACTORY_HEX_NUT
 sprite = CompleteSprite(
     animation=AnimationPack(340, length=119, unknown=0x0002,

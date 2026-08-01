@@ -1,3 +1,4 @@
+from randomizer.debug.offset_preview import get_ordered_lists
 import binascii
 import hashlib
 import json
@@ -9,7 +10,6 @@ import string
 import tempfile
 import shutil
 import threading
-import time
 from collections.abc import Iterator
 
 import Wii
@@ -193,7 +193,6 @@ class RandomizerView(TemplateView):
         context["flags"] = FLAGS
 
         if settings.DEBUG:
-            from randomizer.debug.offset_preview import get_ordered_lists
             context["offset_preview_data"] = json.dumps(get_ordered_lists())
 
         return context

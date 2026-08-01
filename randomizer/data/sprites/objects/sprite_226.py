@@ -1,6 +1,6 @@
 # SPR0226_TINY_STAR
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL295_TINY_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(179, length=152, unknown=0x0002,

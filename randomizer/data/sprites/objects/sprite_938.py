@@ -1,6 +1,6 @@
 # SPR0938_HAMMER_BROS_CHOMPS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL727_HAMMER_BROS_CHOMPS
 sprite = CompleteSprite(
     animation=AnimationPack(423, length=525, unknown=0x0002,

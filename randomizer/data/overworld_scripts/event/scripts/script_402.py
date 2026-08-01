@@ -49,6 +49,8 @@ script = EventScript([
 		A_TransferToXYZF(x=17, y=113, z=4, direction=EAST),
 		A_FaceSouthwest()
 	]),
+    SummonObjectToCurrentLevel(NPC_9),
+    SummonObjectToSpecificLevel(NPC_9, R191_MUSHROOM_KINGDOM_OUTSIDE),
 	StartAsyncEmbeddedActionScript(target=NPC_9, prefix=0xF1, subscript=[
         A_VisibilityOn(),
 		A_TransferToXYZF(x=17, y=114, z=4, direction=EAST),

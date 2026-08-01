@@ -1,6 +1,6 @@
 # SPR0506_STRONG_SNIFIT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL585_SPOOKUM
 sprite = CompleteSprite(
     animation=AnimationPack(76, length=733, unknown=0x0000,

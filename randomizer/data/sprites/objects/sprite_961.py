@@ -1,6 +1,6 @@
 # SPR0961_JOHNNY_2_OVERWORLD
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL414_JONATHAN_JONES
 sprite = CompleteSprite(
     animation=AnimationPack(294, length=302, unknown=0x0002,

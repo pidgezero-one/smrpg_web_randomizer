@@ -1,6 +1,6 @@
 # SPR0277_SPARKY
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL063_FIREBALL_SURFACE_FROM_LAVA
 sprite = CompleteSprite(
     animation=AnimationPack(21, length=469, unknown=0x0002,

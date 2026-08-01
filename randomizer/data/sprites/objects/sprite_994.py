@@ -1,7 +1,7 @@
 # SPR0994_MARIO_NONPROTAGONIST_5
 
 from randomizer.data.variables.sprite_palette_names import SPAL644_MARIO_ATTACK_UP_RIGHT
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 sprite = CompleteSprite(
     animation=AnimationPack(244, length=677, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,

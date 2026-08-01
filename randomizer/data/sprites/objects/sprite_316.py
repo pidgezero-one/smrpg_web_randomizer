@@ -1,6 +1,6 @@
 # SPR0316_CARROBOSCIS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL208_CARROBOSCIS
 sprite = CompleteSprite(
     animation=AnimationPack(107, length=855, unknown=0x0002,

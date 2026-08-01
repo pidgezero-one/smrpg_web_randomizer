@@ -6,7 +6,6 @@ from smrpgpatchbuilder.datatypes.items.classes import (
     Accessory as AccessoryBase)
 from smrpgpatchbuilder.datatypes.items.constants import ITEMS_BASE_ADDRESS
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
-from .physical_objects import ItemNPC
 
 # Item stat byte 0, bit 6. Unused by vanilla: no ROM code reads it, and
 # smrpgpatchbuilder neither writes nor parses it. The randomizer claims it as a

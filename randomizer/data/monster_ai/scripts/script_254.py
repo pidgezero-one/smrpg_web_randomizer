@@ -1,10 +1,8 @@
 # 254 - CANDLEEnemy
 # pyright: reportWildcardImportFromLibrary=false
 
-from randomizer.data.packs.pack_collection import FORM0137_ONE_BUNDT2_ONE_RASPBERRY2_TWO_TORTE2_ONE_CANDLE, FORM0286_ONE_BUNDT_ONE_RASPBERRY_TWO_TORTE
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
-from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import DoNothing
 from ...variables.battle_event_names import *
 from ...variables.battle_variable_names import *
 from ...items.items import *

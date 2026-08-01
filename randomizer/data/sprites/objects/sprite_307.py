@@ -1,6 +1,6 @@
 # SPR0307_GUNYOLK
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL602_GUNYOLK_TOP_SECTION
 sprite = CompleteSprite(
     animation=AnimationPack(131, length=1590, unknown=0x0002,

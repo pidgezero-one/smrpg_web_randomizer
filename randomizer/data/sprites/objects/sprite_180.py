@@ -1,6 +1,6 @@
 # SPR0180_ROSE_TOWN_WOMAN_BLUE_PINK_BRAIDS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL425_WALLET_GUY_ALSO_CASINO_ASSISTANTS
 sprite = CompleteSprite(
     animation=AnimationPack(311, length=164, unknown=0x0002,

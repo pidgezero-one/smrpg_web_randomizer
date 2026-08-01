@@ -8,13 +8,7 @@ from ..data.rooms.npcs import ALLY_CLONE_NPC
 if TYPE_CHECKING:
     from collections.abc import Sequence
     from randomizer.types.gameworld import GameWorld
-from smrpgpatchbuilder.datatypes.levels.classes import (
-    BufferSpace,
-    EffectsNpc,
-    GLOWING_SAVE_POINT_NPC_BYTES,
-    GLOWING_SAVE_POINT_NPC_INDEX,
-    Room as RoomBase,
-)
+from smrpgpatchbuilder.datatypes.levels.classes import (BufferSpace, GLOWING_SAVE_POINT_NPC_BYTES, GLOWING_SAVE_POINT_NPC_INDEX, Room as RoomBase)
 from .ally import SpriteAnimationState
 from .physical_objects import NPC
 from ..utils.npcs import (

@@ -1,6 +1,6 @@
 # SPR0085_GOLD_STAR_PIECE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL468_BLUE_STAR_PIECE
 sprite = CompleteSprite(
     animation=AnimationPack(354, length=238, unknown=0x0002,

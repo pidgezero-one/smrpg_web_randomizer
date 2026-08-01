@@ -1,6 +1,6 @@
 # SPR0155_FACTORY_CRANE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL501_FACTORY_CRANE
 sprite = CompleteSprite(
     animation=AnimationPack(398, length=195, unknown=0x0002,

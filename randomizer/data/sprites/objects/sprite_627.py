@@ -1,6 +1,6 @@
 # SPR0627_MUSHROOM_HOUSE_DECOR_MAILBOX
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL707_MUSHROOM_HOUSE_DECOR_MAILBOX
 sprite = CompleteSprite(
     animation=AnimationPack(407, length=41, unknown=0x0002,

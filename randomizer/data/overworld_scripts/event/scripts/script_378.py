@@ -49,6 +49,7 @@ script = EventScript([
 	]),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
 	StopAllBackgroundEvents(),
+    RunBackgroundEvent(event_id=E0324_KINGDOM_MAIN_HALL_FLIP_VERANDA, return_on_level_exit=True),
 	SetBit(TEMP_7049_6),
 	ActionQueueAsync(target=NPC_5, subscript=[
 		A_SetWalkingSpeed(NORMAL),

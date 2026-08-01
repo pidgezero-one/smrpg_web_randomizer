@@ -1,6 +1,6 @@
 # SPR0788_MECHA_KOOPA_BOWSER_CRUSH_EYES
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL306_MECHA_KOOPA_BOWSER_CRUSH_EYES
 sprite = CompleteSprite(
     animation=AnimationPack(172, length=272, unknown=0x0002,

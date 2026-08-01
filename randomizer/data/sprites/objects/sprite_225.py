@@ -1,6 +1,6 @@
 # SPR0225_FRYING_PAN_PACKET
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL538_FRYING_PAN
 sprite = CompleteSprite(
     animation=AnimationPack(0, length=31, unknown=0x0002,

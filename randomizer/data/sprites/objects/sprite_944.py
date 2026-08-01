@@ -1,6 +1,6 @@
 # SPR0944_SNIFITS_CHASING_BEETLE
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL487_SNIFITS_CHASING_BEETLE
 sprite = CompleteSprite(
     animation=AnimationPack(429, length=408, unknown=0x0002,

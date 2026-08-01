@@ -1,6 +1,6 @@
 # SPR0562_YELLOW_REUSABLE_ITEM_SPRITE_WITH_LETTER_I
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL364_YELLOW_REUSABLE_ITEM_SPRITE_WITH_LETTER_I
 sprite = CompleteSprite(
     animation=AnimationPack(208, length=31, unknown=0x0002,

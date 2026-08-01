@@ -1,6 +1,6 @@
 # SPR0931_WAVING_MALLOW
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL715_WAVING_MALLOW
 sprite = CompleteSprite(
     animation=AnimationPack(416, length=209, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0300_HEAVY_TROOPA
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL078_HEAVY_TROOPA
 sprite = CompleteSprite(
     animation=AnimationPack(43, length=755, unknown=0x0002,

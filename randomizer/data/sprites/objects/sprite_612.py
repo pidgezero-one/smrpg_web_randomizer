@@ -1,6 +1,6 @@
 # SPR0612_CZAR_DRAGON_BODY
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL181_ZOMBONE
 sprite = CompleteSprite(
     animation=AnimationPack(380, length=200, unknown=0x0002,

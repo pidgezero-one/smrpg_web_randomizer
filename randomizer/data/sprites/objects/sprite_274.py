@@ -1,6 +1,6 @@
 # SPR0274_THE_BIG_BOO
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL057_THE_BIG_BOO
 sprite = CompleteSprite(
     animation=AnimationPack(18, length=466, unknown=0x0002,

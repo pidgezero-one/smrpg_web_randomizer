@@ -1,6 +1,6 @@
 # SPR0188_CANNON_BALL
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL482_J_PUZZLE_BLOCK
 sprite = CompleteSprite(
     animation=AnimationPack(412, length=97, unknown=0x0002,

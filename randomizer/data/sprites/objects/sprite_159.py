@@ -1,6 +1,6 @@
 # SPR0159_POISON_TOXIC_GAS
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL539_POISON_TOXIC_GAS
 sprite = CompleteSprite(
     animation=AnimationPack(400, length=321, unknown=0x0002,

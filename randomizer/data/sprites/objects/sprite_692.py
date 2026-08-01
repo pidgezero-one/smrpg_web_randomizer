@@ -1,6 +1,6 @@
 # SPR0692_YARIDOVICH_SUB
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL185_MACHINE_MADE_YARIDOVICH_OUT_OF_BATTLE
 sprite = CompleteSprite(
     animation=AnimationPack(75, length=2725, unknown=0x0002,

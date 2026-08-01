@@ -1,6 +1,6 @@
 # SPR0160_SHELLY_BOTTOM_SECTION
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL543_SHELLY_BOTTOM_SECTION
 sprite = CompleteSprite(
     animation=AnimationPack(401, length=42, unknown=0x0002,

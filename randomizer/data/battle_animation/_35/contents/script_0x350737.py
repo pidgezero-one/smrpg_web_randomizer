@@ -260,6 +260,7 @@ script = AnimationScriptBlock(expected_size=792, expected_beginning=0x350737, sc
     SetAMEM8BitToConst(0x68  , 1),
     SetAbsolute7EToAMEM8Bit(BV7EE00C, 0x68),
     SpriteSequence(1, looping_on=True, mirror=True, identifier="object_sequence_12_for_set_0-1-2-3_bobomb_s_173_shortcut"),
+    ClearAMEM8Bit(0x64),  # consume the weapon-hit flag, else the next bobomb toggles on it
     Set7FToAMEM8Bit(0x7FFFB0, 0x64),
     SetAMEM8BitToConst(0x64, 1),
     Set7FToAMEM8Bit(BOBOMB_S_173_DIRECTION, 0x64),

@@ -1,6 +1,6 @@
 # SPR0797_SLEEPY_TIME_SHEEP_RAM
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL363_SLEEPY_TIME_SHEEP_RAM
 sprite = CompleteSprite(
     animation=AnimationPack(207, length=253, unknown=0x0002,

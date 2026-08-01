@@ -1,6 +1,6 @@
 # SPR0244_JINX_PACKET
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL581_JINX_CLONE
 sprite = CompleteSprite(
     animation=AnimationPack(66, length=193, unknown=0x0002,

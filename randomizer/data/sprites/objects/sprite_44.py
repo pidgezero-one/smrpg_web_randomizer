@@ -1,6 +1,6 @@
 # SPR0044_GENO_S_BATTLE_PORTRAIT
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL508_MARIO_S_BATTLE_PORTRAIT
 sprite = CompleteSprite(
     animation=AnimationPack(278, length=191, unknown=0x0002,

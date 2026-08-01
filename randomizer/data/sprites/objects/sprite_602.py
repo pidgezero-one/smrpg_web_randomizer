@@ -1,6 +1,6 @@
 # SPR0602_GOLD_GOOMBA
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL796_GOLD_GOOMBA
 sprite = CompleteSprite(
     animation=AnimationPack(113, length=84, unknown=0x0002,

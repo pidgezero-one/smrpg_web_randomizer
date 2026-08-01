@@ -1,6 +1,6 @@
 # SPR0527_YELLOW_MIST_STEAM_FORMS_INTO_SMALL_STAR
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL369_YELLOW_MIST_STEAM_FORMS_INTO_SMALL_STAR
 sprite = CompleteSprite(
     animation=AnimationPack(212, length=76, unknown=0x0002,

@@ -1,6 +1,6 @@
 # SPR0806_ROYAL_FLUSH_CARD
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL310_CARD
 sprite = CompleteSprite(
     animation=AnimationPack(177, length=96, unknown=0x0002,

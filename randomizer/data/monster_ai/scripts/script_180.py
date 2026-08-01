@@ -2,7 +2,6 @@
 
 from smrpgpatchbuilder.datatypes.monster_scripts import *
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import *
-from smrpgpatchbuilder.datatypes.monster_scripts.arguments.types.classes import DoNothing
 from ...variables.battle_event_names import *
 from ...variables.battle_variable_names import *
 from ...items.items import *

@@ -1,6 +1,6 @@
 # SPR0094_TREASURE_CHEST
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL440_TREASURE_CHEST
 sprite = CompleteSprite(
     animation=AnimationPack(322, length=559, unknown=0x0002,

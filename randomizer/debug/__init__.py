@@ -1,12 +1,14 @@
 """Debug configuration loader and utilities."""
+from django.utils import autoreload
+from django.utils.autoreload import autoreload_started
 
 import yaml
 from pathlib import Path
 from typing import Any
 from randomizer.data import items
-from randomizer.progression import prizes
+from randomizer.logic.progression import prizes
 from randomizer.types import prize as prize_types
-from randomizer.progression import prizelocations
+from randomizer.logic.progression import prizelocations
 
 # Register config.yml with Django's autoreloader so changes trigger a reload
 _config_path = Path(__file__).parent / "config.yml"
@@ -15,12 +17,10 @@ _config_path = Path(__file__).parent / "config.yml"
 def _register_config_watcher():
     """Register config.yml with Django's autoreloader."""
     try:
-        from django.utils import autoreload
 
         # Try to add file to existing reloader if running
         if hasattr(autoreload, 'trigger_reload'):
             # Django 2.2+: use autoreload_started signal
-            from django.utils.autoreload import autoreload_started
 
             def _watch_config_file(sender, **kwargs):
                 sender.watch_file(_config_path)
@@ -57,7 +57,7 @@ def get_item_class(name: str):
 
 
 def get_prize_class(name: str):
-    """Get prize class by exact name from randomizer.progression.prizes or randomizer.types.prize.
+    """Get prize class by exact name from randomizer.logic.progression.prizes or randomizer.types.prize.
 
     Args:
         name: Exact class name (e.g., 'CastleKey1Prize', 'FPFlowerPrize')
@@ -75,7 +75,7 @@ def get_prize_class(name: str):
 
 
 def get_location_class(name: str):
-    """Get location class by exact name from randomizer.progression.prizelocations.
+    """Get location class by exact name from randomizer.logic.progression.prizelocations.
 
     Args:
         name: Exact class name (e.g., 'MushroomWay1LowerChest')

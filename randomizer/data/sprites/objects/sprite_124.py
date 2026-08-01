@@ -1,6 +1,6 @@
 # SPR0124_GAMEBOY_KID
 
-from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile, Clone
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 from randomizer.data.variables.sprite_palette_names import SPAL500_GAMEBOY_KID
 sprite = CompleteSprite(
     animation=AnimationPack(397, length=116, unknown=0x0002,

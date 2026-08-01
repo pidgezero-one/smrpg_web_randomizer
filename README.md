@@ -42,7 +42,7 @@ Restart the container. You may need to delete site data in your browser's develo
   - You must have a vanilla SMRPG rom named "smrpg.sfc" in the root directory of the randomizer, which is also gitignored. **DO NOT EVER** git commit a rom file!
 - You can pre-assign certain items to certain locations, or put items in your starting inventory, using randomizer/debug/config.yml. This will only work if "Debug Mode" is enabled.
   - For starting inventory items, use the item class name in randomizer/data/items.py.
-  - For pre-assigning prizes to checks, use the location and prize names from randomizer/progression/prizelocations.py and randomizer/progression/prizes.py
+  - For pre-assigning prizes to checks, use the location and prize names from randomizer/progression/prizelocations/ and randomizer/progression/prizes/ (one class per file)
 - You can use [Lazy Shell](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases) and [FlexHEX](https://www.heaventools.com/download-hex-editor.htm) to debug your randomized/patched ROM. Both are compatible with Wine with a little finagling.
   - I've added a `lazyshell` directory in this repo that includes a randomizer-compatible custom build executable (aka it can read from the randomizer's adjusted sprite data ranges, moved partition banks, can understand flexibly-written battle animations, can support 256 packets and ~1400 NPCs, includes custom event script commands, knows all the sprite/packet/eventscript/actionscript names). This is moderately compatible with wine.
   - You won't be able to view battle events in Lazy Shell. This is normal, unfortunately.
@@ -83,15 +83,15 @@ The randomizer's patcher will attempt to allocate any unused space left over aft
 
 Bank 0x35 for battle animations is also tightly packed, so adding new animations is difficult due to lack of space.
 
-Some helpful scripts you can run (in the `scripts` folder):
-- `PYTHONPATH=. python scripts/analyze_repeated_sequences.py` - This will show you a list of command sequences in battle animation banks 0x35xxxx and 0x3Axxxx that are repeated in multiple places and would encode to 3 or more bytes. Consider giving the first command in one such instance a unique identifier, and replace all other instances with a `Jmp` to that identifier (which is 3 bytes). This will free up battle animation space. (If the sequence does not already end in `ReturnSubroutine` or `ReturnSpriteQueue`, you may have to extract the sequence elsewhere, end it it a return command, replace all original instances with a `Jmp` to your moved sequence, and test your ROM thoroughly to make sure it is not breaking anything. SMRPG can be volatile about nested subroutines.) Produces `repeated_sequences_report.txt`
-- `PYTHONPATH=. python scripts/show_3a_free_space.py` - This details how much space in each script within animation data bank 0x3Axxxx is actually being used by animation code. Consider moving code around between scripts to create as many large contiguous empty blocks as possible to be repurposed for sprite code.
-- `PYTHONPATH=. python scripts/find_referenced_empty_dialogs.py` - This will find dialogs that are used in event scripts but have no content. Use this to fix dialog bugs.
-- `PYTHONPATH=. python scripts/find_unreferenced_dialogs_with_content.py` - This will find dialogs that are not used anywhere but have non-empty content, and do not share data with dialogs that are used somewhere. Produces `unreferenced_dialogs.txt`
-- `PYTHONPATH=. python scripts/empty_dialog.py` - Run this against a dialog ID that you know is not used anywhere (usually the results of `find_unreferenced_dialogs_with_content.py`). It will empty the dialog's data and replace it with `[await]`. Be careful not to run it against unused dialogs that share data with used dialogs. Be careful not to delete any dialogs that are referenced by `RunDialog(dialog_id=PRIMARY_TEMP_7000)` (these are denoted by comments in `dialog_pointers.py`).
-- `PYTHONPATH=. python scripts/compress_dialogs.py --apply` - Removes every empty `[await]` dialog in your dialog table data files and shifts dialog pointers accordingly. Each `[await]` is a single byte, and this adds up when there are a lot of them, so this will condense your dialog data such that it leaves a large contiguous empty block at the end to be repurposed for sprite code. Run without `--apply` for a preview that does not change the files.
-- `PYTHONPATH=. python scripts/fix_dialog_order.py` - Dialog IDs should have their data index pointer higher or equal to the previous dialog ID. If you want to add dialogs, run this after making your additions to make sure the data stays in order.
-- `python -m randomizer.scripts.sprite_pixel_shift <sprite_id> <dx> <dy> [--molds 0,1,5]` - Shifts all pixel data in a gridplane sprite's molds by the specified offset. Outputs new subtile_bytes that can be copied into the sprite file. This is useful for when you have converted a small tilemap sprite into a gridplane but need to fix its centering within the grid. Use `--molds` with comma-separated indices to target specific molds instead of all. Use `--visualize <sprite_id> <mold_index> [dx] [dy]` to preview a specific mold before/after shifting.
+Some helpful commands you can run:
+- `python manage.py analyze_repeated_sequences` - This will show you a list of command sequences in battle animation banks 0x35xxxx and 0x3Axxxx that are repeated in multiple places and would encode to 3 or more bytes. Consider giving the first command in one such instance a unique identifier, and replace all other instances with a `Jmp` to that identifier (which is 3 bytes). This will free up battle animation space. (If the sequence does not already end in `ReturnSubroutine` or `ReturnSpriteQueue`, you may have to extract the sequence elsewhere, end it it a return command, replace all original instances with a `Jmp` to your moved sequence, and test your ROM thoroughly to make sure it is not breaking anything. SMRPG can be volatile about nested subroutines.) Produces `repeated_sequences_report.txt`
+- `python manage.py show_3a_free_space` - This details how much space in each script within animation data bank 0x3Axxxx is actually being used by animation code. Consider moving code around between scripts to create as many large contiguous empty blocks as possible to be repurposed for sprite code.
+- `python manage.py find_referenced_empty_dialogs` - This will find dialogs that are used in event scripts but have no content. Use this to fix dialog bugs.
+- `python manage.py find_unreferenced_dialogs_with_content` - This will find dialogs that are not used anywhere but have non-empty content, and do not share data with dialogs that are used somewhere. Produces `unreferenced_dialogs.txt`
+- `python manage.py empty_dialog <dialog_ids...>` - Run this against a dialog ID that you know is not used anywhere (usually the results of `find_unreferenced_dialogs_with_content`). It will empty the dialog's data and replace it with `[await]`. Be careful not to run it against unused dialogs that share data with used dialogs. Be careful not to delete any dialogs that are referenced by `RunDialog(dialog_id=PRIMARY_TEMP_7000)` (these are denoted by comments in `dialog_pointers.py`).
+- `python manage.py compress_dialogs --apply` - Removes every empty `[await]` dialog in your dialog table data files and shifts dialog pointers accordingly. Each `[await]` is a single byte, and this adds up when there are a lot of them, so this will condense your dialog data such that it leaves a large contiguous empty block at the end to be repurposed for sprite code. Run without `--apply` for a preview that does not change the files.
+- `python manage.py fix_dialog_order` - Dialog IDs should have their data index pointer higher or equal to the previous dialog ID. If you want to add dialogs, run this after making your additions to make sure the data stays in order.
+- `python manage.py sprite_pixel_shift <sprite_id> <dx> <dy> [--molds 0,1,5]` - Shifts all pixel data in a gridplane sprite's molds by the specified offset. Outputs new subtile_bytes that can be copied into the sprite file. This is useful for when you have converted a small tilemap sprite into a gridplane but need to fix its centering within the grid. Use `--molds` with comma-separated indices to target specific molds instead of all. Use `--visualize <mold_index>` to preview a specific mold before/after shifting.
 
 
 ## Adding user submissions
@@ -101,38 +101,38 @@ Make sure you've installed the GitHub CLI and authed to it.
 ### Wish Text
 
 ```bash
-python scripts/add_submission.py --type wish --issue GITHUB_ISSUE_ID
+python manage.py add_submission --type wish --issue GITHUB_ISSUE_ID
 ```
 
 ### Quiz questions (SMRPG-related)
 
 ```bash
-python scripts/add_submission.py --type quiz --issue GITHUB_ISSUE_ID
+python manage.py add_submission --type quiz --issue GITHUB_ISSUE_ID
 ```
 
 ### Quiz questions (non-SMRPG, extended pool only)
 
 ```bash
-python scripts/add_submission.py --type quiz --issue GITHUB_ISSUE_ID --non-smrpg
+python manage.py add_submission --type quiz --issue GITHUB_ISSUE_ID --non-smrpg
 ```
 
 ### Ship passwords
 ```bash
-python scripts/add_submission.py --type password --issue GITHUB_ISSUE_ID
+python manage.py add_submission --type password --issue GITHUB_ISSUE_ID
 ```
 
 ### Melody Bay songs
 ```bash
-python scripts/add_submission.py --type song --issue GITHUB_ISSUE_ID
+python manage.py add_submission --type song --issue GITHUB_ISSUE_ID
 ```
 
 ### Palettes
 ```bash
-python scripts/add_submission.py --type palette --issue GITHUB_ISSUE_ID
+python manage.py add_submission --type palette --issue GITHUB_ISSUE_ID
 ```  
 (You don't need to export screenshots of new palettes for the UI preview. Either run `python manage.py generate_palette_previews` or simply let the Github Actions CI automatically derive an image from the palette data.)
 
 ### Dry run (parse only, don't modify files)
 ```bash
-python scripts/add_submission.py --type TYPE --issue GITHUB_ISSUE_ID --dry-run
+python manage.py add_submission --type TYPE --issue GITHUB_ISSUE_ID --dry-run
 ```

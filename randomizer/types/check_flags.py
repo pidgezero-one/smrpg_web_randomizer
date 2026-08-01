@@ -11,7 +11,7 @@ from .flags import (
     SpellsAnywhere,
     BossShuffle,
 )
-from ..progression import prizelocations
+from randomizer.logic.progression import prizelocations
 from .prizelocation import (
     PrizeLocation,
     BossFightLocation,
