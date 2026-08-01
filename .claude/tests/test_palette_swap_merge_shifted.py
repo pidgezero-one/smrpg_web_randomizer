@@ -23,6 +23,12 @@ ROOM_ID = 315
 BANDANA_BLUE = 331
 BANDANA_RED = 267
 
+# Valentina's Birdy/Bluebird class: canonical 148 sits at its own native pack
+# offset 3, while shifted members 269/295 sit at 0 -- the canonical is NOT
+# always the group minimum. See SHIFTED[BIRDY_LOW_MEMBER] == (BIRDY_CANONICAL, 0).
+BIRDY_CANONICAL = 148
+BIRDY_LOW_MEMBER = 269
+
 
 @pytest.fixture(scope="module")
 def world():
@@ -84,6 +90,51 @@ def test_residency_lands_on_the_first_object_with_that_palette(world, room):
 
     assert room.objects[0].extra_palette_row_count == 1
     assert room.objects[0].extra_palette_source_offset == 0
+
+
+def test_canonical_object_above_low_gets_a_bump(world, room):
+    """The canonical sprite's own native palette_offset is not necessarily the
+    merged group's minimum. spr148 (Valentina's Birdy/Bluebird) sits at offset 3
+    while its shifted members 269/295 sit at 0 -- so an object that was ALREADY
+    on 148 before the merge still needs A_IncPaletteRowBy(3), or it renders
+    using row `low`'s colour (member 269's) instead of its own.
+
+    Regression for a bug where the bump loop walked only the SHIFTED sources
+    and silently skipped every object that was already on the canonical
+    sprite, even when that canonical's own offset was above the group's low.
+    Measured impact: 15 of 99 SHIFTED classes have canonical_offset > low,
+    including Valentina's Birdy/Bluebird (spr148) and Mack's Shysters (spr376).
+    """
+    assert SHIFTED[BIRDY_LOW_MEMBER] == (BIRDY_CANONICAL, 0)
+    canonical_offset = world.get_sprite(BIRDY_CANONICAL).palette_offset
+    assert canonical_offset > 0, "test assumes this canonical's own offset is above 0"
+
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BIRDY_CANONICAL)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BIRDY_LOW_MEMBER)
+
+    bumps = _merge_palette_swaps(world, ROOM_ID)
+
+    assert (0, canonical_offset) in bumps, (
+        f"pre-existing canonical object (index 0) must be bumped by its own "
+        f"offset ({canonical_offset}) above the group's low (0), got {bumps}"
+    )
+
+
+def test_canonical_at_minimum_offset_gets_no_bump(world, room):
+    """Non-regression: when the canonical sprite already sits at the merged
+    group's minimum offset (the common case -- e.g. the bandana class, canonical
+    267 at offset 0 with member 331 at offset 1), it needs no runtime bump.
+    Fixing the case above (canonical above low) must not start bumping every
+    canonical object unconditionally."""
+    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BANDANA_RED)
+    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BANDANA_BLUE)
+
+    bumps = _merge_palette_swaps(world, ROOM_ID)
+
+    assert not any(index == 0 for index, _ in bumps), (
+        f"canonical object (index 0) is already at the group minimum and needs "
+        f"no bump, got {bumps}"
+    )
 
 
 def test_merge_never_skipped_when_span_exceeds_residency_field(world, room):
@@ -152,32 +203,44 @@ def test_no_bump_when_room_has_no_stub(world, room):
 
 
 def test_merge_reads_post_copy_palette_ids():
-    """apply.py's sprite_palette_copies rewrites a sprite's palette_id in place
-    when DifferentiateRepeatedBosses is off (world.get_sprite(target_id).palette_id
-    = ...), which can change which CGRAM row a merged class lands on. The merge --
-    reached from apply_shuffler_results_to_game_data via
-    update_changed_room_partitions -- must read the rewritten ids, so the copy has
-    to run first in source order.
+    """sprite_palette_copies (inside build_room_granter_scripts) rewrites a
+    sprite's palette_id in place when DifferentiateRepeatedBosses is off
+    (world.get_sprite(target_id).palette_id = ...), which can change which
+    CGRAM row a merged class lands on. The merge -- reached via
+    update_changed_room_partitions -- must read the rewritten ids, so the copy
+    has to run first.
 
-    Verified 2026-07-30 by direct line inspection of apply.py: the
-    sprite_palette_copies block (~line 507) runs strictly before the
-    update_changed_room_partitions(world) call (~line 1126), both inside
-    apply_shuffler_results_to_game_data, with no branch that reorders them.
+    Post-2026-08-01 refactor: apply.py was split up.
+    apply_shuffler_results_to_game_data now lives in
+    randomizer/logic/post_shuffle/apply_shuffler_results.py as a short,
+    explicit sequence of named step calls; sprite_palette_copies moved into
+    randomizer/logic/post_shuffle/steps/build_room_granter_scripts.py
+    (confirmed by direct read: the mutation loop is unconditionally reached
+    near the top of that function, gated only by the DifferentiateRepeatedBosses
+    flag check). update_changed_room_partitions is still imported directly
+    from randomizer.logic.partition_calculator.
+
+    Verified 2026-08-01 by direct read of apply_shuffler_results_to_game_data's
+    source: it calls build_room_granter_scripts(world) then, several calls
+    later, update_changed_room_partitions(world) -- no branch reorders them.
     This test re-checks that source-order invariant so a future edit that
     breaks it fails loudly instead of silently reading stale palette ids.
     """
-    from randomizer.logic.apply import apply_shuffler_results_to_game_data
+    from randomizer.logic.post_shuffle.apply_shuffler_results import (
+        apply_shuffler_results_to_game_data,
+    )
 
     source = inspect.getsource(apply_shuffler_results_to_game_data)
-    copies_at = source.find("sprite_palette_copies")
+    copies_at = source.find("build_room_granter_scripts(world)")
     recalc_at = source.find("update_changed_room_partitions(world)")
     if copies_at == -1 or recalc_at == -1:
         pytest.skip(
-            "could not locate both sprite_palette_copies and the "
-            "update_changed_room_partitions(world) call by source inspection"
+            "could not locate both the build_room_granter_scripts call and the "
+            "update_changed_room_partitions call by source inspection"
         )
     assert copies_at < recalc_at, (
-        "sprite_palette_copies must run before update_changed_room_partitions "
-        "-- that call is what reaches _merge_palette_swaps's "
-        "world.get_sprite(...).palette_id / .palette_offset reads"
+        "build_room_granter_scripts (which runs sprite_palette_copies) must be "
+        "called before update_changed_room_partitions -- that call is what "
+        "reaches _merge_palette_swaps's world.get_sprite(...).palette_id / "
+        ".palette_offset reads"
     )
