@@ -40,7 +40,15 @@ from smrpgpatchbuilder.datatypes.levels.classes import EffectsNpc
 
 from ..data.variables.sprite_names import SPR0102_SAVE_POINT, SPR0109_GREEN_SWITCH
 from ..types.room import Room
-from .palette_rows import (npc_palette_rows)
+# Re-exported, not just used here: these moved to palette_rows but existing
+# callers (and test_green_switch_glow) still import them from this module.
+# `protagonist_palette_id` and `PROTAGONIST_PALETTE_ROW` look unused locally --
+# they are not. Removing them breaks those importers.
+from .palette_rows import (
+    PROTAGONIST_PALETTE_ROW,
+    npc_palette_rows,
+    protagonist_palette_id,
+)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
