@@ -5,9 +5,12 @@ available in the level; A_IncPaletteRowBy moves the object onto one and requires
 residency to already be set. Same pairing as room 422, where SHARED_ITEM_BASE
 loads the rows and A_IncPaletteRowBy(2) recolours the frog coins.
 
-Residency goes on the FIRST object in room order carrying that palette_id --
-npc_palette_rows skips later objects with `if palette in rows: continue`, so
-residency declared on a later merged object is silently ignored.
+Residency goes on the object BEING RECOLOURED, not on the first object carrying
+that palette -- confirmed in-game via the pink Yoshi NPC, which uses
+source_offset=1, row_count=1 for a +1 shift. The generator selects canonical by
+(palette_offset, sprite_id), so the canonical is always the class's lowest
+offset and every merge delta is >= 0 -- a canonical-sprite object never needs a
+bump or residency of its own.
 """
 import copy
 import inspect
@@ -16,18 +19,12 @@ import pytest
 
 from randomizer import main
 from randomizer.data.sprites.palette_swap_classes import SHIFTED
-from randomizer.logic.partition_calculator import _merge_palette_swaps
+from randomizer.logic.partition_calculator import _MAX_PACK_SPAN, _merge_palette_swaps
 from randomizer.types.gameworld import Settings
 
 ROOM_ID = 315
 BANDANA_BLUE = 331
 BANDANA_RED = 267
-
-# Valentina's Birdy/Bluebird class: canonical 148 sits at its own native pack
-# offset 3, while shifted members 269/295 sit at 0 -- the canonical is NOT
-# always the group minimum. See SHIFTED[BIRDY_LOW_MEMBER] == (BIRDY_CANONICAL, 0).
-BIRDY_CANONICAL = 148
-BIRDY_LOW_MEMBER = 269
 
 
 @pytest.fixture(scope="module")
@@ -80,44 +77,53 @@ def test_shifted_merge_returns_a_bump_for_the_shifted_object(world, room):
     assert not any(index == 0 for index, _ in bumps), "object 0 is already canonical"
 
 
-def test_residency_lands_on_the_first_object_with_that_palette(world, room):
-    """Object 0 carries the palette first, so the row count belongs to it --
-    declaring it on object 1 would be silently ignored by npc_palette_rows."""
+def test_residency_lands_on_the_recoloured_object(world, room):
+    """Residency (extra_palette_source_offset / extra_palette_row_count) goes on
+    the object BEING RECOLOURED, not on whichever object happens to carry the
+    palette first. Confirmed in-game via the pink Yoshi NPC, which sets
+    source_offset=1 / row_count=1 for a +1 shift. Object 0 (BANDANA_RED) is the
+    canonical here and already renders at its own native palette_offset, so it
+    needs no residency at all -- its fields must stay untouched (None)."""
+    canonical, shifted_offset = SHIFTED[BANDANA_BLUE]
+    assert canonical == BANDANA_RED
+    canonical_offset = world.get_sprite(BANDANA_RED).palette_offset
+    delta = shifted_offset - canonical_offset
+    assert delta > 0, "test assumes BANDANA_BLUE sits above BANDANA_RED's offset"
+
     room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BANDANA_RED)
     room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BANDANA_BLUE)
 
     _merge_palette_swaps(world, ROOM_ID)
 
-    assert room.objects[0].extra_palette_row_count == 1
-    assert room.objects[0].extra_palette_source_offset == 0
+    assert room.objects[1].extra_palette_source_offset == delta
+    assert room.objects[1].extra_palette_row_count == delta
+    assert room.objects[0].extra_palette_source_offset is None
+    assert room.objects[0].extra_palette_row_count is None
 
 
-def test_canonical_object_above_low_gets_a_bump(world, room):
-    """The canonical sprite's own native palette_offset is not necessarily the
-    merged group's minimum. spr148 (Valentina's Birdy/Bluebird) sits at offset 3
-    while its shifted members 269/295 sit at 0 -- so an object that was ALREADY
-    on 148 before the merge still needs A_IncPaletteRowBy(3), or it renders
-    using row `low`'s colour (member 269's) instead of its own.
+def test_canonical_offset_is_always_the_class_minimum(world):
+    """The generator selects canonical by (palette_offset, sprite_id), not by
+    sprite id alone -- palette_offset lives on the SPRITE, and an object merged
+    onto the canonical inherits it as a rendering baseline that
+    A_IncPaletteRowBy can only increase. So the canonical must be the class
+    member with the lowest palette_offset, or some other member would need a
+    negative bump to reach it.
 
-    Regression for a bug where the bump loop walked only the SHIFTED sources
-    and silently skipped every object that was already on the canonical
-    sprite, even when that canonical's own offset was above the group's low.
-    Measured impact: 15 of 99 SHIFTED classes have canonical_offset > low,
-    including Valentina's Birdy/Bluebird (spr148) and Mack's Shysters (spr376).
+    This is the invariant that makes every delta in _merge_palette_swaps'
+    participants loop non-negative, which is in turn why a canonical object
+    never needs a bump. Pin it directly against the checked-in table instead of
+    one example: prior to the generator fix, 23 of the 156 current SHIFTED
+    classes had a canonical whose own offset sat ABOVE another member's
+    (e.g. Valentina's Birdy/Bluebird, spr148 at offset 3 vs member spr269 at 0).
     """
-    assert SHIFTED[BIRDY_LOW_MEMBER] == (BIRDY_CANONICAL, 0)
-    canonical_offset = world.get_sprite(BIRDY_CANONICAL).palette_offset
-    assert canonical_offset > 0, "test assumes this canonical's own offset is above 0"
-
-    room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, BIRDY_CANONICAL)
-    room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, BIRDY_LOW_MEMBER)
-
-    bumps = _merge_palette_swaps(world, ROOM_ID)
-
-    assert (0, canonical_offset) in bumps, (
-        f"pre-existing canonical object (index 0) must be bumped by its own "
-        f"offset ({canonical_offset}) above the group's low (0), got {bumps}"
-    )
+    for source, (canonical, offset) in SHIFTED.items():
+        canonical_offset = world.get_sprite(canonical).palette_offset
+        assert canonical_offset <= offset, (
+            f"sprite {canonical} (canonical for source {source}) has "
+            f"palette_offset {canonical_offset}, which is above member "
+            f"{source}'s offset {offset} -- A_IncPaletteRowBy cannot express "
+            f"the resulting negative bump"
+        )
 
 
 def test_canonical_at_minimum_offset_gets_no_bump(world, room):
@@ -138,42 +144,53 @@ def test_canonical_at_minimum_offset_gets_no_bump(world, room):
 
 
 def test_merge_never_skipped_when_span_exceeds_residency_field(world, room):
-    """extra_palette_row_count is a 2-bit field (max 3), so a class whose source
-    sits more than 3 pack rows from its canonical cannot get full residency.
+    """extra_palette_row_count is a 2-bit field (max 3), so a class whose delta
+    from its canonical exceeds that cannot get residency at all.
 
     Per the 2026-07-30 "never skip a merge" ruling this must NOT skip the
-    sprite_id merge -- only the residency declaration is truncated (with a log
-    line), and rows beyond the truncated span render in the canonical palette
-    instead of their own. Saving the clone buffer is the point; a wrong
-    palette row is a cosmetic degradation vanilla itself ships (rooms 5 and 7
-    coexist two palette offsets with extra_palette_row_count=0).
+    sprite_id merge -- only the residency declaration (and its bump) are
+    skipped, with a log line; the object then renders in the canonical palette
+    instead of its own. Saving the clone buffer is the point; a wrong palette
+    row is a cosmetic degradation vanilla itself ships (rooms 5 and 7 coexist
+    two palette offsets with extra_palette_row_count=0).
 
-    declared <= 3 is a structural invariant of the field itself (the setter
-    asserts it). declared < offset is guaranteed by declared <= 3 < offset
-    (the `wide` filter), independent of the room's free-row budget or of
-    where the canonical's own native pack offset falls -- so this holds
-    whether the field cap or the CGRAM row budget is what actually binds.
+    Unlike a truncated-but-still-declared value, the source does a full skip:
+    `declared = min(delta, _MAX_PACK_SPAN, free)`; when `declared < delta` it
+    logs and `continue`s *before* calling set_extra_palette_source_offset /
+    set_extra_palette_row_count or appending to bumps. So the recoloured
+    object's residency fields stay None and it gets no bumps entry -- verified
+    against _merge_palette_swaps' source directly (not re-derived here).
+
+    delta is computed against the canonical's own offset (not the source's raw
+    table offset) so the ">" test is correct even for a class whose canonical
+    doesn't sit at 0 -- see test_canonical_offset_is_always_the_class_minimum,
+    which only pins canonical_offset <= offset, not canonical_offset == 0.
     """
-    wide = [s for s, (_, off) in SHIFTED.items() if off > 3]
+    wide = [
+        source for source, (canonical, offset) in SHIFTED.items()
+        if offset - world.get_sprite(canonical).palette_offset > _MAX_PACK_SPAN
+    ]
     if not wide:
-        pytest.skip("no class in the table spans more than 3 pack rows")
+        pytest.skip("no class in the table spans more than _MAX_PACK_SPAN pack rows")
     source = wide[0]
     canonical, offset = SHIFTED[source]
 
     room.objects[0]._npc = _record_with_sprite(room.objects[0]._npc, canonical)
     room.objects[1]._npc = _record_with_sprite(room.objects[1]._npc, source)
 
-    _merge_palette_swaps(world, ROOM_ID)
+    bumps = _merge_palette_swaps(world, ROOM_ID)
 
     assert _sprite_of(room.objects[1]) == canonical, (
         "the merge must happen even when residency can't fully cover the span"
     )
-    declared = room.objects[0].extra_palette_row_count
-    assert 0 <= declared <= 3, "extra_palette_row_count is a 2-bit field (max 3)"
-    assert declared < offset, (
-        f"residency (extra_palette_row_count={declared}) should be truncated, "
-        f"not cover the full {offset}-row pack offset -- the 2-bit field caps "
-        "at 3 and this class was chosen to exceed that"
+    assert room.objects[1].extra_palette_source_offset is None, (
+        "declared < delta must skip residency entirely, not truncate it"
+    )
+    assert room.objects[1].extra_palette_row_count is None, (
+        "declared < delta must skip residency entirely, not truncate it"
+    )
+    assert not any(index == 1 for index, _ in bumps), (
+        f"object 1 must not get a bump when residency can't be declared, got {bumps}"
     )
 
 

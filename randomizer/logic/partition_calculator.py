@@ -377,11 +377,13 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
             if int(obj._npc.sprite_id) == canonical:
                 participants.append((index, world.get_sprite(canonical).palette_offset))
 
-        offsets = [offset for _, offset in participants]
-        low, high = min(offsets), max(offsets)
-        span = high - low
+        # The baseline every merged object renders at is the CANONICAL sprite's
+        # own palette_offset, because palette_offset lives on the sprite, not the
+        # object -- swapping the record makes an object inherit it. The generator
+        # guarantees the canonical holds the class's lowest offset, so every
+        # delta below is >= 0 and expressible with A_IncPaletteRowBy.
+        canonical_offset = world.get_sprite(canonical).palette_offset
 
-        palette = world.get_sprite(canonical).palette_id
         # Swap records for the SHIFTED sources only -- objects already on the
         # canonical sprite already hold the right record and must not be
         # re-recorded.
@@ -390,34 +392,28 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
                 room.objects[index]._npc, canonical
             )
 
-        # Any participant whose intended offset is above low needs a runtime
-        # bump to still show its own colour -- canonical-sprite objects
-        # included, since the canonical's own native offset is not always the
-        # group minimum (e.g. spr148: canonical at offset 3, a member at 0).
-        for index, offset in participants:
-            if offset > low:
-                bumps.append((index, offset - low))
-
-        # Declare as much residency as the field and the row budget allow.
-        # Members past that render in the canonical palette.
         free = max(0, rows_remaining(world, room))
-        declared = min(span, _MAX_PACK_SPAN, free)
-        if declared < span:
-            logging.info(
-                "room %d: merged onto sprite %d with %d of %d extra CGRAM rows "
-                "(2-bit field caps at %d, %d free) -- members beyond that render "
-                "in the canonical palette",
-                room_id, canonical, declared, span, _MAX_PACK_SPAN, free,
-            )
-
-        # Residency belongs to the FIRST object carrying this palette, because
-        # npc_palette_rows skips later objects with `if palette in rows: continue`.
-        for obj in room.objects:
-            if world.get_sprite(int(obj._npc.sprite_id)).palette_id != palette:
+        for index, offset in participants:
+            delta = offset - canonical_offset
+            if delta <= 0:
+                # Already renders the canonical's palette; nothing to do.
                 continue
-            obj.set_extra_palette_source_offset(low)
+            declared = min(delta, _MAX_PACK_SPAN, free)
+            if declared < delta:
+                logging.info(
+                    "room %d obj %d: needs a +%d palette row but only %d can be "
+                    "declared (2-bit field caps at %d, %d free) -- renders in the "
+                    "canonical palette instead",
+                    room_id, index, delta, declared, _MAX_PACK_SPAN, free,
+                )
+                continue
+            # Residency goes on the object BEING RECOLOURED, not on the first
+            # object carrying the palette. Confirmed in-game via the pink Yoshi
+            # NPC, which sets source_offset=1 / row_count=1 for a +1 shift.
+            obj = room.objects[index]
+            obj.set_extra_palette_source_offset(declared)
             obj.set_extra_palette_row_count(declared)
-            break
+            bumps.append((index, declared))
 
     # Bumps need somewhere to run. Without a stub the sprite_id merge still
     # stands and the VRAM is still saved; only the recolour is lost.

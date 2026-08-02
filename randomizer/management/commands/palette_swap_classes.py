@@ -67,7 +67,14 @@ def build_tables() -> tuple[dict[int, int], dict[int, tuple[int, int]]]:
     for members in groups.values():
         if len(members) < 2:
             continue
-        members.sort()
+        # Canonical must be the member with the LOWEST palette_offset, not the
+        # lowest sprite id. palette_offset is a property of the SPRITE, so every
+        # object merged onto the canonical inherits the canonical's offset as its
+        # baseline, and A_IncPaletteRowBy can only increment. A canonical sitting
+        # above another member would need a negative bump, which cannot be
+        # expressed -- that object would render in the canonical's colour instead.
+        # Ties break on sprite id so the result stays deterministic.
+        members.sort(key=lambda sprite_id: (scanned[sprite_id][1], sprite_id))
         canonical = members[0]
         canonical_offset = scanned[canonical][1]
         for sprite_id in members[1:]:
