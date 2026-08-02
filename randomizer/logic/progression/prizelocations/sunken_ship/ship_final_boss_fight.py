@@ -104,16 +104,23 @@ class ShipFinalBossFight(BossFightLocation):
             remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
+            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM],
+            [NPC_2],
+            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
+        ),
+        # Room 315 draws henchmen 0 and 2, not 0 and 1. For a boss whose first
+        # and third henchmen are palette swaps of each other -- Culex, whose
+        # crystals are fire/water/earth/wind and whose fire and earth share tile
+        # data -- that pair collapses to a single sprite id, saving a clone
+        # buffer in a room that also hosts the seaside boss's whole retinue.
+        # Room 028 still receives all four in order, and _character_henchmen
+        # ordering is untouched, so fire+water stays first everywhere else.
+        BossFightLocationHenchmanNPC(
             [
                 R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM,
                 R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
             ],
-            [NPC_2, NPC_5],
-            remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
-        ),
-        BossFightLocationHenchmanNPC(
-            [R028_SUNKEN_SHIP_POSTKC_AREA_17_JOHNNYS_ROOM],
-            [NPC_3],
+            [NPC_3, NPC_5],
             remove_if_not_filled=RemoveIfNotFilled.IF_ANY_FILLED,
         ),
         BossFightLocationHenchmanNPC(
