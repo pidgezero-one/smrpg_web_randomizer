@@ -6,7 +6,7 @@ from copy import copy
 
 from ..types.prizelocation import FrogDiscipleLocation, StarPieceLocation
 from ..types.logic import Inventory
-from ..types.prize import StarPiecePrize, CharacterPrize
+from ..types.prize import StarPiecePrize, CharacterPrize, SpellPrize
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -129,6 +129,130 @@ def _diagnose_placement_failure(
                   f" ({len(inaccessible_accepting)} inaccessible could accept)")
 
 
+# Bounds for the last-resort stall repair below. They only cap work on a path
+# that would otherwise raise, so genuinely unsolvable input still terminates.
+_MAX_REPAIR_STALLS = 4
+_MAX_REPAIR_VALIDATIONS = 64
+
+
+def _legal_placements(world: GameWorld) -> set[PrizeLocation]:
+    """Placed locations that are currently reachable and legal for their prize.
+
+    Not every filled location qualifies: prizes seeded before ``place()`` runs
+    (vanilla holds, debug overrides) were never checked against ``can_accept``.
+    Snapshotting the set that *is* legal lets the repair below demand "no worse
+    than before" instead of "perfect", which a pre-existing violation would
+    make unachievable.
+    """
+    inventory = collect_accessible_items(world)
+    legal: set[PrizeLocation] = set()
+    for loc in world.locations.values():
+        prize = loc.prize
+        if prize is None:
+            continue
+        if loc.can_access(inventory, world) and loc.can_accept(prize, inventory, world):
+            legal.add(loc)
+    return legal
+
+
+def _still_legal(
+    world: GameWorld,
+    baseline: set[PrizeLocation],
+    moved: PrizeLocation,
+) -> bool:
+    """True if every placement in ``baseline``, plus ``moved``, is still legal."""
+    inventory = collect_accessible_items(world)
+    for loc in (*baseline, moved):
+        prize = loc.prize
+        if prize is None:
+            return False
+        if not loc.can_access(inventory, world):
+            return False
+        if not loc.can_accept(prize, inventory, world):
+            return False
+    return True
+
+
+def _repair_stall(
+    world: GameWorld,
+    pending: list[Prize],
+    candidate_locations: list[PrizeLocation],
+    on_placed: Callable[[Prize, PrizeLocation], None] | None,
+) -> bool:
+    """Free one occupied location for a stalled item by relocating its prize.
+
+    Placement is first-fit with no backtracking, so a legal assignment can be
+    unreachable purely because an earlier pick took the only location a later
+    item could have used. On a stall this tries every (stalled item, occupied
+    location, free location) triple and commits the first swap after which
+    everything that was legal before is still legal.
+
+    Returns True if an item was placed. Consumes no randomness, and leaves the
+    world byte-for-byte untouched when it returns False.
+    """
+    baseline = _legal_placements(world)
+    inventory = collect_accessible_items(world)
+    hosts = [l for l in candidate_locations if l.has_item and l in baseline]
+    frees = [
+        l for l in candidate_locations
+        if not l.has_item and l.can_access(inventory, world)
+    ]
+    if not hosts or not frees:
+        return False
+
+    validations = 0
+    for item in pending:
+        # can_accept() picks and pins a character for a spell, with an RNG roll.
+        # Keep the repair clear of both so a failed repair leaves the random
+        # stream exactly where it was.
+        if isinstance(item, SpellPrize):
+            continue
+        for host in hosts:
+            displaced = host.prize
+            if displaced is None or isinstance(displaced, SpellPrize):
+                continue
+            host.set_prize(None)
+            if not host.can_accept(item, inventory, world):
+                host.set_prize(displaced)
+                continue
+            for target in frees:
+                if target.has_item:
+                    continue
+                if not target.can_accept(displaced, inventory, world):
+                    continue
+                host.set_prize(item)
+                target.set_prize(displaced)
+                validations += 1
+                # host is in baseline, so this also re-checks it holding `item`.
+                if _still_legal(world, baseline, target):
+                    pending.remove(item)
+                    if on_placed is not None:
+                        on_placed(item, host)
+                        on_placed(displaced, target)
+                    return True
+                target.set_prize(None)
+                host.set_prize(None)
+                if validations >= _MAX_REPAIR_VALIDATIONS:
+                    host.set_prize(displaced)
+                    return False
+            host.set_prize(displaced)
+    return False
+
+
+def _try_repair(
+    world: GameWorld,
+    pending: list[Prize],
+    candidate_locations: list[PrizeLocation],
+    on_placed: Callable[[Prize, PrizeLocation], None] | None,
+) -> bool:
+    """``_repair_stall`` with the random stream pinned across the attempt."""
+    state = random.getstate()
+    try:
+        return _repair_stall(world, pending, candidate_locations, on_placed)
+    finally:
+        random.setstate(state)
+
+
 def place(
     world: GameWorld,
     to_place: list[Prize],
@@ -154,6 +278,7 @@ def place(
     pending = copy(to_place)
     iteration = 0
     placements_count = 0
+    repairs_left = _MAX_REPAIR_STALLS if world.allow_placement_repair else 0
     priority_types = tuple(priority_classes) if priority_classes else ()
 
     # Get the set of valid locations (apply filter if provided)
@@ -292,6 +417,11 @@ def place(
             break
         if len(pending) == length_at_start:
             if not can_overflow:
+                if repairs_left > 0:
+                    repairs_left -= 1
+                    if _try_repair(world, pending, candidate_locations, on_placed):
+                        placements_count += 1
+                        continue
                 _diagnose_placement_failure(world, pending, candidate_locations)
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             # Overflow is only safe once every must-fill location is filled.
@@ -303,6 +433,11 @@ def place(
                 if not l.has_item and not l.can_be_empty(world)
             ]
             if unfilled_must_fill:
+                if repairs_left > 0:
+                    repairs_left -= 1
+                    if _try_repair(world, pending, candidate_locations, on_placed):
+                        placements_count += 1
+                        continue
                 _diagnose_placement_failure(world, pending, candidate_locations)
                 raise PlacementException(len(pending), [type(p).__name__ for p in pending])
             break

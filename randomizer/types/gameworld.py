@@ -215,6 +215,12 @@ class GameWorld:
     # Populated by snapshot_vanilla_room_states() before NPC shuffling begins
     _vanilla_room_states: dict[int, "VanillaRoomState"] | None = None
 
+    # Last-resort switch for place()'s stall repair. False for every ordinary
+    # attempt, so a seed that builds today builds identically; build_world turns
+    # it on for one extra attempt after the retry budget is spent, rather than
+    # giving up on a placement a swap could still rescue.
+    allow_placement_repair: bool = False
+
     # Spell assignment tracking for SpellsAnywhere mode
     # Maps character prize type -> count of spells assigned to that character
     _spell_assignments: dict[type, int] | None = None

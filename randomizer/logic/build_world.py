@@ -217,6 +217,8 @@ def build_world(world: GameWorld) -> None:
     # Key = number of unplaced items, Value = count of times this failure occurred
     failure_counts: dict[int, int] = dict()
     MAX_FAILURES_PER_COUNT = 5
+    # Attempts spent after the stall repair is switched on (see below).
+    repair_attempts = 0
 
     # Save a snapshot of rooms before shuffling so we can restore on retry
     # (shuffle adds invisible items to rooms which would accumulate on retries)
@@ -244,16 +246,34 @@ def build_world(world: GameWorld) -> None:
             count = e.unplaced_count
             failure_counts[count] = failure_counts.get(count, 0) + 1
 
+            # Second budget: the repair is already on, so count attempts directly
+            # rather than reusing failure_counts (a repaired attempt can fail with
+            # a *new* unplaced count, which resets all(...) to False and would
+            # otherwise loop forever).
+            if world.allow_placement_repair:
+                repair_attempts += 1
+                if repair_attempts >= MAX_FAILURES_PER_COUNT:
+                    raise WorldBuildingException(
+                        f"Item placement appears unsolvable. "
+                        f"Repeated failures with the same unplaced item counts: {failure_counts}. "
+                        f"The chosen settings with excluded locations may be impossible to solve. "
+                        f"Unplaced items on last attempt: {e.unplaced_items}"
+                    )
+                continue
+
             # Check if any failure count has reached the threshold
             if failure_counts and all(
                 v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()
             ):
-                raise WorldBuildingException(
-                    f"Item placement appears unsolvable. "
-                    f"Repeated failures with the same unplaced item counts: {failure_counts}. "
-                    f"The chosen settings with excluded locations may be impossible to solve. "
-                    f"Unplaced items on last attempt: {e.unplaced_items}"
-                )
+                # Budget spent. place() is first-fit with no backtracking, so a
+                # legal assignment can be unreachable purely because an earlier
+                # pick took the only location a later item could use. Spend a
+                # second budget with the swap repair switched on before calling
+                # the settings unsolvable. The repair stays off for every attempt
+                # above it, so a seed that builds today builds identically.
+                world.allow_placement_repair = True
+                if world.settings.debug_mode:
+                    print("[DEBUG] Retry budget spent; retrying with stall repair enabled")
         except Exception:
             # Re-raise unexpected exceptions
             raise
