@@ -17,7 +17,7 @@ import pytest
 from randomizer.logic.progression.prizes import SpellPrize
 
 SCRIPT_DIR = (
-    Path(__file__).resolve().parent.parent
+    Path(__file__).resolve().parent.parent.parent
     / "randomizer" / "data" / "overworld_scripts" / "event" / "scripts"
 )
 

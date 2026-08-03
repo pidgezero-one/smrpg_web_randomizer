@@ -8,6 +8,8 @@ layers lets every import sit at module level.
 
 from __future__ import annotations
 
+import random
+
 from typing import TYPE_CHECKING
 
 from randomizer.logic.progression.prizes import (
