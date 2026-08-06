@@ -171,9 +171,12 @@ TIME_ZONE = os.environ.get("TIME_ZONE", getattr(local, "TIME_ZONE", "UTC"))
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
+
+# Django 6 flipped the implicit default to BigAutoField, which wants to ALTER the id
+# column on seed and patch. Both tables are already AutoField, so pin it and skip a
+# table rewrite we get nothing from.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
