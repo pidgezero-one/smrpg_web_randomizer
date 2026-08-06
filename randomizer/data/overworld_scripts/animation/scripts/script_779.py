@@ -1,0 +1,27 @@
+#A0779_LANDS_END_MOVING_CHEST
+# pyright: reportWildcardImportFromLibrary=false
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+from ....variables.action_script_names import *
+from ....variables.event_script_names import *
+from ....variables.overworld_sfx_names import *
+from ....variables.room_names import *
+from ....variables.variable_names import *
+from ....packets import *
+from ....items import *
+
+script = ActionScript([
+	A_SetPriority(3),
+	A_FixedFCoordOn(),
+	A_ToggleSubroutineSlots(mask=0x04),
+	A_EmbeddedAnimationRoutine(bytearray([0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x08, 0x80])),
+	A_SetWalkingSpeed(VERY_SLOW),
+	A_Walk1StepNortheast(identifier="ACTION_779_walk_1_step_northeast_5"),
+	A_Walk1StepSouthwest(),
+	A_Jmp(["ACTION_779_walk_1_step_northeast_5"])
+])

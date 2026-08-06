@@ -1,0 +1,772 @@
+ANIMATION STRING MEMORY
+-----------------------
+$40:2400-2BFF	data for objects in battle (16 objects max, 0x80 bytes each)
+		only 2460-246F can be explicitly modified
+$40:2C00-2DFF	used only during action queues (called by command 0x68)
+		
+$40:2D00-2DFF	used with effect sequences
+$40:4100-41FF	used during sprite sequences (called by command 0x00)
+
+ACTION MEMORY ($402C00,x)
+-------------------------
+action memory is only used during an action queue (triggered by the 0x68 command)
+
+$02-04	current ROM addr of action queue
+$0A,0B	RAM
+$0C,0D	OAM addr of active objects ($40:2400-247F,x)
+$0E,0F	RAM addr of active sprites ($40:4000-41FF)
+$18,19	Y shifting
+$32,33	absolute X coord
+$36,37	absolute Y coord
+$3A,3B	absolute Z coord
+$60,61	RAM addr of active target ($7E:FA80-FAFF,x)
+
+$4025E0 is the equipped weapon being used against a monster
+
+--------------------------
+ANIMATION STRING FUNCTIONS
+--------------------------
+<00>		*set and display sprite at coords from action mem $32
+   xx		;bit 0	store to VRAM
+
+   xx		;bit 3	infinite sequence playback
+		 bit 5	store sprite palette
+
+   xx xx	;sprite #
+   xx 		;sequence #
+   xx		;bit 4	playback only once
+		 bit 5
+		 bit 6	mirror sprite
+		 bit 7	invert sprite
+   xx xx	;VRAM address
+
+<01>		*store coords to action mem $32
+   xx		;bit 0	 set X coord
+		 bit 1	 set Y coord
+		 bit 2	 set Z coord
+		 bit 4-7 first pixel location
+		 	 > 00	read as absolute coords
+			 > 10	add to caster's initial coords
+			 > 20	add to target's current coords (target must be set at action mem $60,61)
+			 > 30	add to caster's current coords
+   xx xx	;X coord
+   xx xx	;Y coord
+   xx xx	;Z coord
+
+<02>		*
+
+<03>		*set current sprite
+   xx		;(see command 0x00)
+   xx		;(see command 0x00)
+   xx xx	;sprite #
+   xx		;sequence #
+
+<04>		;pause script, resume when...
+   xx		;type
+		 > 01	sprite @ initial coords
+		 > 06	sprite shift complete
+		 > 10	# of frames has passed
+   xx xx	;value
+
+<05>		*remove current sprite
+
+<06>		*
+   xx		;
+   xx xx	;
+   xx xx	;
+
+<07>		*end sub-animation script
+
+<08> 		*shift current action object by amount
+   xx		;bit 0	do Z shift
+		 bit 1	do Y shift
+		 bit 2	do X shift
+		 bit 3	(unused)
+		 bit 4	(unused)
+		 bit 5	set coords
+		 bit 6	set maximum
+		 bit 7	set unit size
+   xx xx	;unit size (if signed, shift in neg. direction)
+   xx xx	;maximum (unit size and maximum values must either be both neg. or pos.)
+   xx xx	;shift amount / xx xx = shift duration
+
+<09>		*jump to address
+   xx xx	;address
+
+<0A>		*no operation?
+
+<0B> 		*store coords to action mem $40
+   xx		;(see command 0x01)
+   xx xx	;X coord
+   xx xx	;Y coord
+   xx xx	;Z coord
+
+<0C>		;shift current sprite to coords from action mem $40
+   xx		;shift type
+		 00
+		 02	shift
+		 04	transfer
+		 06
+		 08
+   xx xx	;speed
+   xx xx	;arch height
+
+<0E>		;show object
+
+<0F>		;hide object
+
+<10>		*jump to subroutine
+   xx xx	;subroutine address
+
+<11>		;end all
+
+<12>		*
+   xx		;
+
+<14>		*
+
+<15>		*
+
+<16>		*
+
+<17>		*
+
+<18>		*if mem $0700 bits set
+   xx xx	;bits
+
+<1A>		*
+   xx		;bit 0	sprite visibility = true
+
+<1B>		*
+   xx		;bit 0	sprite visibility = false
+
+<1C>		*
+   xx		;
+
+<1E>		*
+   xx		;
+
+<1F>		*
+   xx		;
+
+------------------------
+
+THE NEXT COMMANDS ARE SIMILAR TO THE BATTLE SCRIPT "SET MEMORY" "CLEAR MEMORY" etc.
+EACH OBJECT (ie. sprites) HAS SOME MEMORY BITS IT USES TO CHECK STUFF
+
+Object memory bits can use 16 bytes (like the battlescript memory bytes 7EE000-7EE00F)
+An "object mem byte" is the byte of the 16 bytes to read/write from/to.
+
+<20> 		*store from source to action mem (8-bit)
+   xx 		;bits 0-3 action mem byte to store to
+		 bits 4-7 source type
+		 	  > 0	next two bytes in ROM
+			  > 1	mem 7E:xxxx
+			  > 2	mem 7F:xxxx
+			  > 3	action mem ($402C00,x)
+			  > 4	object mem ($404100,x)
+			  > 5	mem ($7E0000,x)
+			  > 6-F	object mem ($402400,x)
+   xx xx	;source
+
+<21> 		*store from source to object mem (16-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+
+<22> 		*store from object mem to destination (8-bit)
+   xx 		;(see command 20)
+   xx xx	;destination address
+
+<23> 		*store from object mem to destination (16-bit)
+   xx 		;(see command 20)
+   xx xx	;destination address
+
+<24>		*if value at object mem == source, jump to address (8-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<25>		*if value at object mem == source, jump to address (16-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<26>		*if value at object mem != source, jump to address (8-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<27>		*if value at object mem != source, jump to address (16-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<28>		*if value at object mem < source, jump to address (8-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<29>		*if value at object mem < source, jump to address (16-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<2A>		*if value at object mem >= source, jump to address (8-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<2B>		*if value at object mem >= source, jump to address (16-bit)
+   xx 		;(see command 20)
+   xx xx	;source value / address
+   xx xx	;address ptr
+
+<2C>		*add source to object mem (8-bit)
+   xx		;(see command 20)
+   xx xx	;source value / address
+
+<2D>		*add source to object mem (16-bit)
+   xx		;(see command 20)
+   xx xx	;source value / address
+
+<2E>		*subtract source from object mem (8-bit)
+   xx		;(see command 20)
+   xx xx	;source value / address
+
+<2F>		*subtract source from object mem (16-bit)
+   xx		;(see command 20)
+   xx xx	;source value / address
+
+----------------------------
+
+<30>		*increment object mem (8-bit)
+   xx		;bits 0-3	object mem byte to increment
+		 bits 4-7	(not used)
+
+<31>		*increment object mem (16-bit)
+   xx		;bits 0-3	object mem byte to increment
+		 bits 4-7	(not used)
+
+<32>		*decrement object mem (8-bit)
+   xx		;bits 0-3	object mem byte to decrement
+		 bits 4-7	(not used)
+
+<33>		*decrement object mem (16-bit)
+   xx		;bits 0-3	object mem byte to decrement
+		 bits 4-7	(not used)
+
+<34>		*clear object mem (8-bit)
+   xx		;bits 0-3	object mem byte to clear
+		 bits 4-7	(not used)
+
+<35>		*clear object mem (16-bit)
+   xx		;bits 0-3	object mem byte to clear
+		 bits 4-7	(not used)
+
+<36>		*set object mem bits
+   xx		;bits 0-3	object mem byte to set
+		 bits 4-7	(not used)
+   xx		;bits to set
+
+<37>		*clear object mem bits
+   xx		;bits 0-3	object mem byte to set
+		 bits 4-7	(not used)
+   xx		;bits to clear
+
+<38>		*if object mem bits set, jump to address
+   xx		;object mem byte to read
+   xx		;bits to check
+   xx xx	;jump to address ptr
+
+<39> 		*if object mem bits clear, jump to address
+   xx		;object mem byte to read
+   xx		;bits to check
+   xx xx	;jump to address ptr
+
+<3A>		*playback animation: target gets hit
+
+<3B>		*clear bit 5 of $400000,x
+
+<3C>		*
+   xx xx	;
+
+<3E>		*
+
+<3F>		*
+   xx		;
+   xx xx	;
+   xx xx	;
+
+<40>		*if object mem $402480 bits set, continue script (otherwise pause until set)
+   xx		;object mem byte
+   xx		;bits to check
+
+<41>		*if object mem $402480 bits clear, continue script (otherwise pause until clear)
+   xx		;object mem byte
+   xx		;bits to check
+
+<43>		*playback sequence for object's current sprite (set by command 03)
+   xx		;bit 0-3 sequence #
+		 bit 4	 infinite playback
+		 bit 5	 play only 1st frame?
+		 bit 6
+		 bit 7	 mirror sprite
+
+<44> 		*store target coords @ AMEM xx to AMEM $40
+   xx		;AMEM
+
+<45>		*store current target (eg. FA80) to action mem $60
+
+<46>		*
+
+<47>		*jump to address at index from object mem byte
+   xx		;object mem byte (* 2 + address = offset of pointer to script)
+   xx xx	;address
+
+<4E>		*pause script, resume when sprite sequence playback complete
+
+<4F>		*
+
+<50>		*jump to address if ???
+   xx xx	;address
+
+<51>		*jump to address if target not dead
+   xx xx	;address
+
+<52>		*jump to address if bits ???
+   xx xx	;bits
+   xx xx	;address
+
+<54>		*
+
+<55>		*
+
+<56>		*
+
+<57>		*
+
+<58>		*
+
+<59>		*set bit 0 of 400047,x
+
+<5A>		*clear bit 0 of 400047,x
+
+<5B>		*set $0700 bits
+   xx xx	;bits
+
+<5D>		*start synchronous object queue at address
+   xx		;object type
+		 bit 0	(never used)
+		 bit 1	(never used)
+		 bit 2
+		 bit 3	character slot
+		 bit 4
+		 bit 5
+		 bit 6	current target (set by BB or battlescript command E2)
+		 bit 7
+   xx		;object # (not read if bit 6 set)
+   xx xx	;queue address
+
+<5E>		*end object queue
+
+<61>		*
+
+<62>		*
+
+<63>		*show name from object mem $00
+   xx		> 00	special attack name
+   		> 01	spell name
+   		> 02	item name
+
+<64>		*start animation # at object mem $00
+   xx xx	;animation pointer address
+
+<65>
+   xx xx	;animation
+
+<66>
+   xx xx
+   xx
+
+<67>
+   xx xx
+   xx
+
+<68>		*start animation # at object mem $00
+   xx xx	;animation pointer address
+   xx		;sub-animation #
+
+<69>		*store $00:072C # to object mem $00
+		(NOTE: $00:072C is used to store values such as the casted spell, attack, etc...)
+
+<6A>		*store random # between 0 and value to action mem (8-bit)
+   xx		;mem byte to set
+   xx		;value
+
+<6B>		*store random # between 0 and value to action mem (16-bit)
+   xx		;mem byte to set
+   xx xx	;value
+
+<6C>		*
+
+<6D>		*
+
+<6E>		*
+
+<70>		*store 0x1011 to $0B1C and 0x0102 to $0B20
+
+<71>		*store 0x0011 to $0B1C and 0x0030 to $0B20
+
+<72>		*start spell effect queue, pause script until 7E:0B80 = 0
+   xx		;bit 0	infinite sequence playback
+		 bit 1	playback only 1st frame
+		 bit 2	playback only once	
+		 bit 3	
+   xx		;effect #
+
+<73>		*
+
+<74>		*pause script until bits set
+   xx xx	;0200	effect fade in finished
+		 0400	effect fade out finished (4bpp)
+		 0800	effect fade out finished (2bpp)
+
+<75>		*pause script until bits clear
+   xx xx	;(see command 74)
+
+<76>		*store 0xFFFF to 40002C,x
+
+<77>		*set object priority?
+   xx		;bit 0-3 codec type
+		 > bit 0
+		 > bit 1 = 4bpp
+		 > bit 2 = 2bpp
+		 > bit 3
+		 bit 4-7 overlap property
+		 > 0 = no transparency
+		 > 1 = overlap all
+		 > 2 = overlap none
+		 > 3 = overlap all, except ally sprites
+
+<78> 		*
+   xx		;set layer priority
+
+<79>		*
+   xx xx	;
+   xx xx	;
+   xx		;
+
+<7A>		;run dialogue
+   xx		;dialogue type
+		> 00: battle dialogue
+		> 01: psychopath message
+		> 02: spell dialogue (ex. "Hit Y repeatedly")
+   xx		;dialogue #
+
+<7B>		;pause until dialogue is closed
+
+<7E>		*fade out object
+   xx		;duration
+
+<7F>		*
+
+<80>		*glowing effect on current sprite
+   xx
+   xx
+   xx
+
+<81>		*store 0xFFFF to 40002E,x and 0x0000 to 400000,x
+
+<82>		*
+
+<83>		*
+   xx		;
+
+<84>		*
+   xx xx	;
+
+<85>		*fade effect
+   xx		;bit 0-3 function
+		 > 0 = fade out
+		 > 2 = fade in
+		 bit 4-7 object
+		 > 0
+		 > 1
+		 > 2
+   xx		;duration
+
+<86>		*shake screen
+   xx xx 	;shake object
+		 > 1 = screen
+		 > 2 = current object
+   xx 		;shake direction
+   xx 		;shake intensity
+   xx xx	;shake amount
+
+<87>		*
+
+<88>		*
+
+<89>		*
+
+<8A>		*fade in object
+   xx		;duration
+
+<8B>		*
+   xx xx	;
+   xx xx	;
+
+<8C>		*execute infliction animation?
+
+<8D>		*
+
+<8E>		*screen flash color
+   xx		;bit 0-3 color
+		 0 > (none)
+		 1 > red
+		 2 > green
+		 3 > yellow
+		 4 > blue
+		 5 > pink
+		 6 > aqua
+		 7 > white
+		 bit 4-7
+   xx		;frame duration
+
+<8F>		*screen flash color
+   xx		;bit 0-3 color (see command 8E)
+		;bit 4-7
+
+<90>		*
+
+<95>		*
+
+<96>		*display caption
+   xx		;(unused)
+   xx		;caption type
+		 00 > "ATTACK"
+		 01 > "DEFENSE"
+		 02 > "UP!"
+		 03 > "HP MAX!"
+		 04 > "ONCE"
+		 05 > "AGAIN!"
+		 06 > "LUCKY!"
+   xx		;X coord
+   xx		;Y coord
+
+<97>		*remove caption
+
+<98>		*loads monster mem $44
+
+<9B>		*
+   xx xx	;
+   xx xx	;
+
+<9C>		*screen effect
+   xx		;
+   xx		;
+   xx xx	;speed
+   xx xx	;vertical
+   xx xx	;horizontal
+
+<9D>		*
+   xx		;
+
+<9E>		*fade effect
+   xx		;type
+		> 00	fade to transparent
+		> 01	fade to black
+   xx		;
+
+<9F>		*
+
+<A0>		*run battle victory event
+
+<A2>		*
+   xx xx	;
+   xx xx	;
+
+<A3>		*screen effect (used w/Corona and Mega-Drain)
+   xx		;type
+		> 00	"Geno Flash"
+		> 01	"Snowy"
+		> 02	"Terrorize"
+		> 03	"Shocker"
+		> 05	slash (instant death)
+		> 06	screen flash white
+		> 08	"Come Back"
+		> 09	"Geno Beam"
+		> 0A	"Geno Blast"
+		> 0B	"Howl"
+		> 0C	win battle window
+		> 11	Corona effect
+		> 12	Mega-Drain effect
+
+<A4>		*
+
+<A5>		*
+
+<A6>		*
+
+<A8>		*
+   xx xx	;
+
+<AB>		*play battle sound effect (see bytes_sound.txt)
+   xx		;sound effect #
+
+<AE>		*playback sync sound
+   xx		;
+
+<B0>		*play music
+   xx		;music #
+
+<B1>		*play music at volume
+   xx		;music #
+   xx xx	;volume
+
+<B2>		*stop sound effect
+
+<B6>		*fade out current music
+   xx		;speed
+   xx		;volume
+
+THIS COMMAND HAS A DYNAMIC SIZE
+ITS SIZE IS DETERMINED BY THE NUMBER OF VALUES TO READ, SET BY A BYTE
+<BA>		*store values to mem
+   xx		;number of mem addresses to store to
+   xx xx	;value 0
+   xx xx	;value 1
+   xx xx	;etc...		
+
+<BB>		*set target
+   xx		;target (see command E2 in battlescripts for targets)
+
+<BC>		*store item to items inventory
+   xx		;item #
+   xx		;0xFF = remove, 0x00 = store
+
+<BD>		*store item to special items inventory
+   xx		;item #
+   xx		;0xFF = remove, 0x00 = store
+
+<BE>		*add value to current coins
+   xx xx	;value
+
+<BF>		*store target's Yoshi Cookie item to item inventory
+   xx		;target (see command E2 in battlescripts for targets)
+
+<C0>		*
+   xx		;
+   xx		;
+   xx		;
+   xx		;
+
+<C3>		*mask effect
+   xx		;00	...
+		;01	incline (lower-left)
+		;02	incline	(upper-right)
+		;03	circle
+		;04	dome
+		;05	4-sided polygon (sides)
+		;06	wavy circle
+		;07	cylinder
+
+<C4>		*
+
+<C5>		*store 0xFFFF to 40002A,x
+
+THIS COMMAND IS DYNAMIC
+<C6>		*store coords for mask
+   xx		;number of mem addresses to store to
+   xx xx	;NW corner X,Y coords
+   xx xx	;SW corner X,Y coords
+   xx xx	;SE corner X,Y coords
+   xx xx	;NE corner X,Y coords
+
+<C7>		*blank screen?
+   xx		;
+
+<C8>		*blank screen?
+   xx		;
+
+<C9>		*
+   xx		;
+
+<CB>		*set speed of sprite's playback
+   xx		;speed (1 = normal)
+
+<CC>		*store damage to 7E:FCDE
+
+<CD>		*
+
+<CE>		*
+   xx		;
+   xx xx	;
+   xx xx	;
+   xx xx	;address ptr
+
+<CF>		*if ABXY button not pressed after # of frames, jump to address
+   xx		;# of frames
+   xx		;
+   xx		;
+   xx xx	;address ptr
+
+<D0>		*if ABXY button not pressed after # of frames, jump to address
+   xx		;# of frames
+   xx xx	;address ptr
+
+<D1>		*
+
+<D2>		*
+   xx		;
+
+<D3> 		*
+   xx xx xx	;
+
+<D4>		*
+   xx xx xx	;
+   xx xx	;
+
+<D5>		*
+   xx		;
+   xx		;monster #
+   xx		;
+
+<D6>
+
+<D8>		*
+   xx xx	;address ptr
+
+<D9>		*display "Can't run" message
+
+<DC>		*
+
+<DD>		*
+   xx xx	;
+   xx xx	;
+   xx		;
+
+<DE>
+
+<E0>		*store item # at object mem $00 to item inventory
+
+<E1> 
+   xx xx	run battle event xx xx
+   xx		event offset addend
+
+<E2>		*
+
+<E4>		*
+
+<E5>		*
+   xx		;
+
+<E6>		*
+
+<FF>		*pause indefinitely
+
+
+BATTLE EVENTS
+-------------
+3A6004 - 3A60CF		pointer 1
+			this points to pointer 2, which points to the actual start of the data

@@ -1,0 +1,50 @@
+# E3760_NIMBUS_MEZZANINE_TRAMPOLINE_TO_WORLD_MAP
+# pyright: reportWildcardImportFromLibrary=false
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.colours import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.intro_title_text import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+from ....variables.action_script_names import *
+from ....variables.battlefield_names import *
+from ....variables.dialog_names import *
+from ....variables.event_script_names import *
+from ....variables.music_names import *
+from ....variables.overworld_area_names import *
+from ....variables.overworld_sfx_names import *
+from ....variables.pack_names import *
+from ....variables.room_names import *
+from ....variables.shop_names import *
+from ....variables.variable_names import *
+from ....items import *
+from ....packets import *
+from ....spells.spells import *
+from ....variables.event_palette_names import *
+
+script = EventScript([
+	SummonObjectToSpecificLevel(NPC_1, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_2, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_4, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_5, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_6, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_7, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_8, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_10, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_11, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	SummonObjectToSpecificLevel(NPC_12, R251_BEAN_VALLEY_PIRANHA_PIPE_AREA),
+	RunEventAsSubroutine(E0065_TRAMPOLINE_SUBROUTINE),
+	ExitToWorldMap(area=OW49_NIMBUS_LAND, bit_6=True, bit_7=True),
+	Return()
+])

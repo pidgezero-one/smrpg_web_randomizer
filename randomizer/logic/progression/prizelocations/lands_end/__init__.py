@@ -1,0 +1,89 @@
+from .belome_before_boss_lower_left_chest_location import BelomeBeforeBossLowerLeftChestLocation
+from .belome_before_boss_middle_chest_location import BelomeBeforeBossMiddleChestLocation
+from .belome_before_boss_right_chest_location import BelomeBeforeBossRightChestLocation
+from .belome_before_boss_upper_left_chest_location import BelomeBeforeBossUpperLeftChestLocation
+from .belome_temple_fortune_teller_location import BelomeTempleFortuneTellerLocation
+from .belome_temple_lmr_chest_location import BelomeTempleLMRChestLocation
+from .belome_temple_lrm_chest_location import BelomeTempleLRMChestLocation
+from .belome_temple_rlm_chest_location import BelomeTempleRLMChestLocation
+from .belome_temple_rml_chest_location import BelomeTempleRMLChestLocation
+from .belome_temple_treasury_almost_leftmost_item_location import BelomeTempleTreasuryAlmostLeftmostItemLocation
+from .belome_temple_treasury_almost_top_item_location import BelomeTempleTreasuryAlmostTopItemLocation
+from .belome_temple_treasury_bottom_left_corner_item_location import BelomeTempleTreasuryBottomLeftCornerItemLocation
+from .belome_temple_treasury_inner_upper_right_item_location import BelomeTempleTreasuryInnerUpperRightItemLocation
+from .belome_temple_treasury_lower_outer_bottom_right_item_location import BelomeTempleTreasuryLowerOuterBottomRightItemLocation
+from .belome_temple_treasury_lowest_items_left_location import BelomeTempleTreasuryLowestItemsLeftLocation
+from .belome_temple_treasury_lowest_items_right_location import BelomeTempleTreasuryLowestItemsRightLocation
+from .belome_temple_treasury_mid_left_item_location import BelomeTempleTreasuryMidLeftItemLocation
+from .belome_temple_treasury_outer_upper_right_item_location import BelomeTempleTreasuryOuterUpperRightItemLocation
+from .belome_temple_treasury_rightmost_item_location import BelomeTempleTreasuryRightmostItemLocation
+from .belome_temple_treasury_topmost_item_location import BelomeTempleTreasuryTopmostItemLocation
+from .belome_temple_treasury_upper_corner_left_item_location import BelomeTempleTreasuryUpperCornerLeftItemLocation
+from .belome_temple_treasury_upper_corner_lower_left_item_location import BelomeTempleTreasuryUpperCornerLowerLeftItemLocation
+from .belome_temple_treasury_upper_corner_top_item_location import BelomeTempleTreasuryUpperCornerTopItemLocation
+from .belome_temple_treasury_upper_outer_bottom_right_item_location import BelomeTempleTreasuryUpperOuterBottomRightItemLocation
+from .lands_end_bee_tower_chest_location import LandsEndBeeTowerChestLocation
+from .lands_end_cave_side_remake import LandsEndCaveSideRemake
+from .lands_end_chow_pit_moving_chest_location import LandsEndChowPitMovingChestLocation
+from .lands_end_chow_pit_static_chest_location import LandsEndChowPitStaticChestLocation
+from .lands_end_cloud_boss import LandsEndCloudBoss
+from .lands_end_cloud_star_piece import LandsEndCloudStarPiece
+from .lands_end_first_purchasable_chest_location import LandsEndFirstPurchasableChestLocation
+from .lands_end_grotto_corner_chest_location import LandsEndGrottoCornerChestLocation
+from .lands_end_grotto_end_chest_location import LandsEndGrottoEndChestLocation
+from .lands_end_grotto_entrance_chest_location import LandsEndGrottoEntranceChestLocation
+from .lands_end_rising_platform_chest_location import LandsEndRisingPlatformChestLocation
+from .lands_end_second_purchasable_chest_location import LandsEndSecondPurchasableChestLocation
+from .lands_end_underground_save_box_chest_location import LandsEndUndergroundSaveBoxChestLocation
+from .temple_boss_fight import TempleBossFight
+from .temple_boss_fight_postgame import TempleBossFightPostgame
+from .temple_boss_fight_star_piece import TempleBossFightStarPiece
+from .temple_boss_fight_star_piece_postgame import TempleBossFightStarPiecePostgame
+from .temple_postgame_fight_item_drop import TemplePostgameFightItemDrop
+from .troopa_climb_sub12_prize_location import TroopaClimbSub12PrizeLocation
+
+__all__ = [
+    "BelomeBeforeBossLowerLeftChestLocation",
+    "BelomeBeforeBossMiddleChestLocation",
+    "BelomeBeforeBossRightChestLocation",
+    "BelomeBeforeBossUpperLeftChestLocation",
+    "BelomeTempleFortuneTellerLocation",
+    "BelomeTempleLMRChestLocation",
+    "BelomeTempleLRMChestLocation",
+    "BelomeTempleRLMChestLocation",
+    "BelomeTempleRMLChestLocation",
+    "BelomeTempleTreasuryAlmostLeftmostItemLocation",
+    "BelomeTempleTreasuryAlmostTopItemLocation",
+    "BelomeTempleTreasuryBottomLeftCornerItemLocation",
+    "BelomeTempleTreasuryInnerUpperRightItemLocation",
+    "BelomeTempleTreasuryLowerOuterBottomRightItemLocation",
+    "BelomeTempleTreasuryLowestItemsLeftLocation",
+    "BelomeTempleTreasuryLowestItemsRightLocation",
+    "BelomeTempleTreasuryMidLeftItemLocation",
+    "BelomeTempleTreasuryOuterUpperRightItemLocation",
+    "BelomeTempleTreasuryRightmostItemLocation",
+    "BelomeTempleTreasuryTopmostItemLocation",
+    "BelomeTempleTreasuryUpperCornerLeftItemLocation",
+    "BelomeTempleTreasuryUpperCornerLowerLeftItemLocation",
+    "BelomeTempleTreasuryUpperCornerTopItemLocation",
+    "BelomeTempleTreasuryUpperOuterBottomRightItemLocation",
+    "LandsEndBeeTowerChestLocation",
+    "LandsEndCaveSideRemake",
+    "LandsEndChowPitMovingChestLocation",
+    "LandsEndChowPitStaticChestLocation",
+    "LandsEndCloudBoss",
+    "LandsEndCloudStarPiece",
+    "LandsEndFirstPurchasableChestLocation",
+    "LandsEndGrottoCornerChestLocation",
+    "LandsEndGrottoEndChestLocation",
+    "LandsEndGrottoEntranceChestLocation",
+    "LandsEndRisingPlatformChestLocation",
+    "LandsEndSecondPurchasableChestLocation",
+    "LandsEndUndergroundSaveBoxChestLocation",
+    "TempleBossFight",
+    "TempleBossFightPostgame",
+    "TempleBossFightStarPiece",
+    "TempleBossFightStarPiecePostgame",
+    "TemplePostgameFightItemDrop",
+    "TroopaClimbSub12PrizeLocation",
+]

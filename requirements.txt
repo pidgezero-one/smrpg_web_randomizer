@@ -1,0 +1,13 @@
+Django==6.0.4
+jsonfield2==4.0.0.post0
+Markdown==3.10.2
+nlzss==0.1.2
+Pillow==12.3.0
+pytest==8.3.5
+PyYAML==6.0.2
+scipy
+Wii.py==0.3
+smrpgpatchbuilder==7.1.11
+git+https://gitlab.com/pidgezero_one/python-bps.git@0.1#egg=python-bps
+gunicorn==25.1.0
+psycopg2-binary==2.9.11

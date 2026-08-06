@@ -1,0 +1,122 @@
+--------------------------------------------------
+MONSTER BATTLE SCRIPT INSTRUCTIONS $3932AA-$3959F3
+pointers: $3930AA-$3932A9
+--------------------------------------------------
+
+**           choose one attack/special
+E0 ** ** **  choose from three random attacks
+
+E2 **        targetting: **
+ 00-04  Mario - Mallow (character bytes)
+ 10     character in slot 1
+ 11     character in slot 2
+ 12     character in slot 3
+ 13     monster 1
+ 14     monster 2
+ 15     monster 3
+ 16     monster 4
+ 17     monster 5
+ 18     monster 6
+ 19     monster 7
+ 1A     monster 8
+ 1B     self
+ 1C     all allies, excluding self
+ 1D     random ally, excluding self (opponent if N/A)
+ 1E     all allies, and self
+ 1F     random ally, or self
+ 20
+ 21
+ 22
+ 23     all opponents
+ 24     at least one opponent
+ 25     random opponent
+ 26
+ 27     at least one ally
+ 28     monster 1
+ 29     monster 2
+ 2A     monster 3
+ 2B     monster 4
+ 2C     monster 5
+ 2D     monster 6
+ 2E     monster 7
+ 2F     monster 8
+
+E3 **        choose battle dialogue
+
+E5 **        choose battle scene
+E6 00 $$     increment variable $$
+E6 01 $$     decrement variable $$
+E7 00 $$ **  set variable $$ bits **
+E7 01 $$ **  clear variable $$ bits **
+E8 $$        zero out variable $$
+
+SPECIAL VARIABLES:
+variable $05 is used for the random number generator
+variable $06 is used as a counter for attack phases
+
+EA 00 00 **  target ** is removed from battle
+EA 01 00 **  target ** is called to battle
+EB 00 **     target ** becomes invincible
+EB 01 **     target ** nulls invincibility + protection
+
+protection = special defense (instant death, sheepify, cookie)
+ie. Exor is actually protected against instant death, but this function nulls it
+
+EC           exit battle
+ED **        generate random number between 00 and **
+EF **        choose one spell
+
+F0 ** ** **  choose from three random spells 
+F1 **        execute animation
+ 03    death animation; most common
+ others used for various effects on various monsters
+
+F2 00 **     monster ** becomes untargettable
+F2 01 **     monster ** becomes targettable
+ 00 self
+ 01 monster 1
+ 02 monster 2
+ etc...
+
+F3 00 **     enable command ** (01, attack, 02 special, 04 item)
+F3 01 **     disable command **
+
+F4 00 ** 00  set item inventory: 00 remove items, 01 return items 
+
+FB           nothing
+
+FC 01 ** **  if enemy has been attacked by command ** or **
+ 02  Attack
+ 03  Special
+ 04  Item
+FC 02 ** **  if enemy has been attacked by spell ** or **
+FC 03 ** **  if enemy has been affected by item ** or **
+FC 04 ** 00  if enemy has been attacked by element **
+FC 05 00 00  if enemy has been attacked
+
+FC 06 ?? **  if target: ??, HP is below (** x16)
+
+FC 07 ** **  if HP is below **
+FC 08 ?? **  if target ?? is affected by status **
+FC 09 ?? **  if target ?? is not affected by status **
+
+FC 0A ** 00  if attack phase counter at ** (after ** turns)
+
+FC 0C $$ **  if variable $$ is less than **
+FC 0D $$ **  if variable $$ is greater than or equal to **
+
+FC 10 00 **  if target ** is alive
+FC 10 01 **  if target ** is dead
+
+FC 11 $$ **  if variable $$ bits ** are set
+FC 12 $$ **  if variable $$ bits ** are clear
+
+FC 13 ** **  if monster is in formation: ** **
+
+FC 14 00 00  if only one monster alive
+
+FD           wait 1 turn
+FE           wait 1 turn, recheck ifs from beginning
+FF (1st)     end ifs and common command scripts;
+             start HP-check/counter-attack/death scripts
+FF (2nd)     end all command scripts, start over

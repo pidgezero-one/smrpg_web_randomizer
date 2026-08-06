@@ -1,0 +1,128 @@
+[00]  @Jump
+[01]  @Fire Orb
+[02]  @Super Jump
+[03]  @Super Flame
+[04]  @Ultra Jump
+[05]  @Ultra Flame
+[06]  @Therapy
+[07]  @Group Hug
+[08]  @Sleepy Time
+[09]  @Come Back
+[0A]  @Mute
+[0B]  @Psych Bomb
+[0C]  @Terrorize
+[0D]  @Poison Gas
+[0E]  @Crusher
+[0F]  @Bowser Crush  
+[10]  @Geno Beam
+[11]  @Geno Boost
+[12]  @Geno Whirl
+[13]  @Geno Blast
+[14]  @Geno Flash
+[15]  @Thunderbolt
+[16]  @HP Rain
+[17]  @Psychopath
+[18]  @Shocker
+[19]  @Snowy
+[1A]  @Star Rain
+[1B]  Dummy
+[1C]  Dummy
+[1D]  Dummy
+[1E]  Dummy
+[1F]  Dummy
+[20]  Dummy
+[21]  Dummy
+[22]  Dummy
+[23]  Dummy
+[24]  Dummy
+[25]  Dummy
+[26]  Dummy
+[27]  Dummy
+[28]  Dummy
+[29]  Dummy
+[2A]  Dummy
+[2B]  Dummy
+[2C]  Dummy
+[2D]  Dummy
+[2E]  Dummy
+[2F]  Dummy
+[30]  Dummy
+[31]  Dummy
+[32]  Dummy
+[33]  Dummy
+[34]  Dummy
+[35]  Dummy
+[36]  Dummy
+[37]  Dummy
+[38]  Dummy
+[39]  Dummy
+[3A]  Dummy
+[3B]  Dummy
+[3C]  Dummy
+[3D]  Dummy
+[3E]  Dummy
+[3F]  Dummy
+[40]  Drain
+[41]  Lightning Orb 
+[42]  Flame
+[43]  Bolt
+[44]  Crystal
+[45]  Flame Stone
+[46]  Mega Drain
+[47]  Willy Wisp
+[48]  Diamond Saw
+[49]  Electroshock  
+[4A]  Blast
+[4B]  Storm
+[4C]  Ice Rock
+[4D]  Escape
+[4E]  Dark Star
+[4F]  Recover
+[50]  Mega Recover  
+[51]  Flame Wall
+[52]  Static E!
+[53]  Sand Storm
+[54]  Blizzard
+[55]  Drain Beam
+[56]  Meteor Blast  
+[57]  Light Beam
+[58]  Water Blast
+[59]  Solidify
+[5A]  Petal Blast
+[5B]  Aurora Flash  
+[5C]  Boulder
+[5D]  Corona
+[5E]  Meteor Swarm  
+[5F]  Knock Out
+[60]  Weird Mushroom
+[61]  Breaker Beam  
+[62]  Shredder
+[63]  Sledge
+[64]  Sword Rain
+[65]  Spear Rain
+[66]  Arrow Rain
+[67]  Big Bang
+[68]  Dummy (S'crow)
+[69]  Dummy (Fear)
+[6A]  Dummy (Mute)
+[6B]  Dummy (Poison)
+[6C]  Chain Saw
+[6D]  Dummy
+[6E]  Dummy
+[6F]  Dummy
+[70]  Dummy
+[71]  Dummy
+[72]  Dummy
+[73]  Dummy
+[74]  Dummy
+[75]  Dummy
+[76]  Dummy
+[77]  Dummy
+[78]  Dummy
+[79]  Dummy
+[7A]  Dummy
+[7B]  Dummy
+[7C]  Dummy
+[7D]  Dummy
+[7E]  Dummy
+[7F]  Dummy

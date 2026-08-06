@@ -1,0 +1,1356 @@
+Load damage numerals; this example uses 1234 as damage
+
+C2/0546 AD D2 30    LDA $30D2  [$00:30D2]   A:0001 X:00D2 Y:2400 
+C2/0549 95 00       STA $00,x  [$00:00D2]   A:0201 X:00D2 Y:2400 
+C2/054B AD D4 30    LDA $30D4  [$00:30D4]   A:0201 X:00D2 Y:2400 
+C2/054E 95 02       STA $02,x  [$00:00D4]   A:0403 X:00D2 Y:2400 
+C2/0550 AD D8 30    LDA $30D8  [$00:30D8]   A:0403 X:00D2 Y:2400 
+C2/0553 95 04       STA $04,x  [$00:00D6]   A:0004 X:00D2 Y:2400 
+C2/0555 60          RTS                     A:0004 X:00D2 Y:2400 
+
+----------------------------------------------------------------
+SA-1 cpu chip; executed BEFORE C2/0546
+
+C2/0556 A9 00 00    LDA #$0000              A:0000 X:0000 Y:7460 
+C2/0559 85 D2       STA $D2    [$00:00D2]   A:0000 X:0000 Y:7460 
+C2/055B 85 D4       STA $D4    [$00:00D4]   A:0000 X:0000 Y:7460 
+C2/055D 85 D8       STA $D8    [$00:00D8]   A:0000 X:0000 Y:7460 
+C2/055F A9 01 00    LDA #$0001              A:0000 X:0000 Y:7460 
+C2/0562 8D 50 22    STA $2250  [$00:2250]   A:0001 X:0000 Y:7460 
+C2/0565 A5 D0       LDA $D0    [$00:00D0]   A:0001 X:0000 Y:7460 ;load final damage
+C2/0567 C9 E8 03    CMP #$03E8              A:04D2 X:0000 Y:7460 ;check if in 1000's
+C2/056A 30 18       BMI $18    [$0584]      A:04D2 X:0000 Y:7460 ;branch if less than 1000
+C2/056C 8D 51 22    STA $2251  [$00:2251]   A:04D2 X:0000 Y:7460 
+C2/056F A9 E8 03    LDA #$03E8              A:04D2 X:0000 Y:7460 
+C2/0572 8D 53 22    STA $2253  [$00:2253]   A:03E8 X:0000 Y:7460 
+C2/0575 A9 04 00    LDA #$0004              A:03E8 X:0000 Y:7460 ;load 4
+C2/0578 85 D8       STA $D8    [$00:00D8]   A:0004 X:0000 Y:7460 ;set numeral count as 4 (numerals)
+
+C2/057A AD 06 23    LDA $2306  [$00:2306]   A:0004 X:0000 Y:7460 
+C2/057D 85 D2       STA $D2    [$00:00D2]   A:0001 X:0000 Y:7460 
+C2/057F AD 08 23    LDA $2308  [$00:2308]   A:0001 X:0000 Y:7460 ;load lower 3 digits (234)
+C2/0582 85 D0       STA $D0    [$00:00D0]   A:00EA X:0000 Y:7460 
+C2/0584 C9 64 00    CMP #$0064              A:00EA X:0000 Y:7460 ;check if in 100's
+C2/0587 30 1C       BMI $1C    [$05A5]      A:00EA X:0000 Y:7460 ;branch if less than 100
+C2/0589 8D 51 22    STA $2251  [$00:2251]   A:00EA X:0000 Y:7460 
+C2/058C A9 64 00    LDA #$0064              A:00EA X:0000 Y:7460 
+C2/058F 8D 53 22    STA $2253  [$00:2253]   A:0064 X:0000 Y:7460 
+C2/0592 A5 D8       LDA $D8    [$00:00D8]   A:0064 X:0000 Y:7460 ;load numeral count
+C2/0594 D0 05       BNE $05    [$059B]      A:0004 X:0000 Y:7460 ;branch if not 0, otherwise set as 3
+C2/0596 A9 03 00    LDA #$0003
+C2/0599 85 D8       STA $D8    [$00:00D8]
+
+C2/059B AD 06 23    LDA $2306  [$00:2306]   A:0004 X:0000 Y:7460 
+C2/059E 85 D3       STA $D3    [$00:00D3]   A:0002 X:0000 Y:7460 
+C2/05A0 AD 08 23    LDA $2308  [$00:2308]   A:0002 X:0000 Y:7460 ;load lower 2 digits (34)
+C2/05A3 85 D0       STA $D0    [$00:00D0]   A:0022 X:0000 Y:7460 
+C2/05A5 C9 0A 00    CMP #$000A              A:0022 X:0000 Y:7460 ;check if in 10's
+C2/05A8 30 1C       BMI $1C    [$05C6]      A:0022 X:0000 Y:7460 ;branch if less than 10
+C2/05AA 8D 51 22    STA $2251  [$00:2251]   A:0022 X:0000 Y:7460 
+C2/05AD A9 0A 00    LDA #$000A              A:0022 X:0000 Y:7460 
+C2/05B0 8D 53 22    STA $2253  [$00:2253]   A:000A X:0000 Y:7460 
+C2/05B3 A5 D8       LDA $D8    [$00:00D8]   A:000A X:0000 Y:7460 ;load numeral count
+C2/05B5 D0 05       BNE $05    [$05BC]      A:0004 X:0000 Y:7460 ;branch if not 0, otherwise set as 2
+C2/05B7 A9 02 00    LDA #$0002
+C2/05BA 85 D8       STA $D8    [$00:00D8]
+
+C2/05BC AD 06 23    LDA $2306  [$00:2306]   A:0004 X:0000 Y:7460 
+C2/05BF 85 D4       STA $D4    [$00:00D4]   A:0003 X:0000 Y:7460 
+C2/05C1 AD 08 23    LDA $2308  [$00:2308]   A:0003 X:0000 Y:7460 ;load lowest digit (4)
+C2/05C4 85 D0       STA $D0    [$00:00D0]   A:0004 X:0000 Y:7460 
+C2/05C6 85 D5       STA $D5    [$00:00D5]   A:0004 X:0000 Y:7460 
+C2/05C8 A5 D8       LDA $D8    [$00:00D8]   A:0004 X:0000 Y:7460 ;load numeral count
+C2/05CA D0 05       BNE $05    [$05D1]      A:0004 X:0000 Y:7460 ;branch if not 0, otherwise set as 1
+C2/05CC A9 01 00    LDA #$0001
+C2/05CF 85 D8       STA $D8    [$00:00D8]
+
+C2/05D1 A9 04 00    LDA #$0004              A:0004 X:0000 Y:7460 ;load 4 as maximum numeral count
+C2/05D4 38          SEC                     A:0004 X:0000 Y:7460 
+C2/05D5 E5 D8       SBC $D8    [$00:00D8]   A:0004 X:0000 Y:7460 ;subtract current numeral count from 4
+C2/05D7 F0 0B       BEQ $0B    [$05E4]      A:0000 X:0000 Y:7460 ;branch if at 0
+
+C2/05D9 3A          DEC
+C2/05DA 9B          TXY
+C2/05DB AA          TAX
+C2/05DC B5 D2       LDA $D2,x  [$00:00D2]
+C2/05DE 09 FF 00    ORA #$00FF
+C2/05E1 95 D2       STA $D2,x  [$00:00D2]
+C2/05E3 BB          TYX
+
+C2/05E4 A9 01 00    LDA #$0001              A:0000 X:0000 Y:7460 
+C2/05E7 8D 60 30    STA $3060  [$00:3060]   A:0001 X:0000 Y:7460 
+C2/05EA 60          RTS                     A:0001 X:0000 Y:7460 
+C2/06A6 C2 30       REP #$30                A:0001 X:0000 Y:7460 
+C2/06A8 7A          PLY                     A:0001 X:0000 Y:7460 
+C2/06A9 FA          PLX                     A:0001 X:0000 Y:7460 
+C2/06AA 68          PLA                     A:0001 X:0000 Y:7460 
+C2/06AB 2B          PLD                     A:0000 X:0000 Y:7460 
+C2/06AC AB          PLB                     A:0000 X:0000 Y:7460 
+C2/06AD 6B          RTL                     A:0000 X:0000 Y:7460 
+
+----------------------------------------------------------------
+Set/Read Lucky Jewel counter
+
+C2/299B A6 EE       LDX $EE    [$00:00EE]   A:00F5 X:0000 Y:0002 
+C2/299D E2 20       SEP #$20                A:00F5 X:2C0F Y:0002 
+C2/299F A7 EA       LDA [$EA]  [$F5:E9F1]   A:00F5 X:2C0F Y:0002 ;load Lucky Jewel max usage
+C2/29A1 9F 60 00 40 STA $400060,x[$40:2C6F] A:000B X:2C0F Y:0002 ;store to counter
+C2/29A5 C2 20       REP #$20                A:000B X:2C0F Y:0002 
+C2/29A7 A5 60       LDA $60    [$00:0060]   A:000B X:2C0F Y:0002 
+C2/29A9 18          CLC                     A:E9EF X:2C0F Y:0002 
+C2/29AA 69 04 00    ADC #$0004              A:E9EF X:2C0F Y:0002 
+C2/29AD 85 60       STA $60    [$00:0060]   A:E9F3 X:2C0F Y:0002 
+C2/29AF 4C 4F 0C    JMP $0C4F  [$00:0C4F]   A:E9F3 X:2C0F Y:0002 
+
+C2/2C19 A6 EE       LDX $EE    [$00:00EE]   A:00F5 X:0000 Y:0002 
+C2/2C1B E2 20       SEP #$20                A:00F5 X:2C0F Y:0002 
+C2/2C1D BF 60 00 40 LDA $400060,x[$40:2C6F] A:00F5 X:2C0F Y:0002 ;load Lucky Jewel counter
+C2/2C21 C7 EA       CMP [$EA]  [$F5:E9F7]   A:0001 X:2C0F Y:0002 ;check if counter at 1
+C2/2C23 C2 20       REP #$20                A:0001 X:2C0F Y:0002 
+C2/2C25 D0 0B       BNE $0B    [$2C32]      A:0001 X:2C0F Y:0002 ;branch if not at 1
+C2/2C27 A5 60       LDA $60    [$00:0060]   A:0001 X:2C0F Y:0002 
+C2/2C29 18          CLC                     A:E9F5 X:2C0F Y:0002 
+C2/2C2A 69 06 00    ADC #$0006              A:E9F5 X:2C0F Y:0002 
+C2/2C2D 85 60       STA $60    [$00:0060]   A:E9FB X:2C0F Y:0002 
+C2/2C2F 4C 4F 0C    JMP $0C4F  [$00:0C4F]   A:E9FB X:2C0F Y:0002 
+
+----------------------------------------------------------------
+Set/Read Lamb's Lure Counter
+
+C2/2C07 A0 01 00    LDY #$0001              A:004C X:004C Y:0002 
+C2/2C0A B7 60       LDA [$60],y[$F5:E99F]   A:004C X:004C Y:0001 ;load Lamb's Lure max usage
+C2/2C0C 29 FF 00    AND #$00FF              A:530A X:004C Y:0001 
+C2/2C0F 85 E0       STA $E0    [$00:00E0]   A:000A X:004C Y:0001 
+C2/2C11 C8          INY                     A:000A X:004C Y:0001 
+C2/2C12 B7 60       LDA [$60],y[$F5:E9A0]   A:000A X:004C Y:0002 
+C2/2C14 85 E2       STA $E2    [$00:00E2]   A:0053 X:004C Y:0002 
+C2/2C16 20 B2 29    JSR $29B2  [$C2:29B2]   A:0053 X:004C Y:0002 
+
+Set/Read Mystery Egg Counter
+
+C2/2C6D A0 01 00    LDY #$0001              A:0050 X:0050 Y:0001 
+C2/2C70 B7 60       LDA [$60],y[$F5:E9AC]   A:0050 X:0050 Y:0001 
+C2/2C72 29 FF 00    AND #$00FF              A:0A0B X:0050 Y:0001 
+C2/2C75 85 E0       STA $E0    [$00:00E0]   A:000B X:0050 Y:0001 
+C2/2C77 C8          INY                     A:000B X:0050 Y:0001 
+C2/2C78 B7 60       LDA [$60],y[$F5:E9AD]   A:000B X:0050 Y:0002 
+C2/2C7A 85 E2       STA $E2    [$00:00E2]   A:000A X:0050 Y:0002 
+C2/2C7C 20 B2 29    JSR $29B2  [$C2:29B2]   A:000A X:0050 Y:0002 
+
+Check max usage for Mystery Egg/Lamb's Lure
+
+C2/2C7F A6 EE       LDX $EE    [$00:00EE]   A:00F5 X:0000 Y:0002 
+C2/2C81 E2 20       SEP #$20                A:00F5 X:2C8E Y:0002 
+C2/2C83 BF 60 00 40 LDA $400060,x[$40:2CEE] A:00F5 X:2C8E Y:0002 ;load Mystery Egg/Lamb's Lure counter
+C2/2C87 C7 EA       CMP [$EA]  [$F5:E694]   A:0008 X:2C8E Y:0002 ;compare to maximum for morph
+C2/2C89 C2 20       REP #$20                A:0008 X:2C8E Y:0002 
+C2/2C8B 30 0B       BMI $0B    [$2C98]      A:0008 X:2C8E Y:0002 ;branch if not at maximum
+C2/2C98 A0 04 00    LDY #$0004              A:0008 X:2C8E Y:0002 
+C2/2C9B B7 60       LDA [$60],y[$F5:E696]   A:0008 X:2C8E Y:0004 
+C2/2C9D 85 60       STA $60    [$00:0060]   A:E6A4 X:2C8E Y:0004 
+C2/2C9F 4C 4F 0C    JMP $0C4F  [$00:0C4F]   A:E6A4 X:2C8E Y:0004 
+
+C2/2DE9 A0 01 00    LDY #$0001              A:0060 X:0060 Y:0002 
+C2/2DEC B7 60       LDA [$60],y[$F5:E9AA]   A:0060 X:0060 Y:0001 
+C2/2DEE 29 0F 00    AND #$000F              A:280B X:0060 Y:0001 
+C2/2DF1 18          CLC                     A:000B X:0060 Y:0001 
+C2/2DF2 65 66       ADC $66    [$00:0066]   A:000B X:0060 Y:0001 
+C2/2DF4 AA          TAX                     A:2C0B X:0060 Y:0001 
+C2/2DF5 E2 20       SEP #$20                A:2C0B X:2C0B Y:0001 
+C2/2DF7 BF 60 00 40 LDA $400060,x[$40:2C6B] A:2C0B X:2C0B Y:0001 ;load Mystery Egg counter
+C2/2DFB 1A          INC A                   A:2C00 X:2C0B Y:0001 ;increment
+C2/2DFC 9F 60 00 40 STA $400060,x[$40:2C6B] A:2C01 X:2C0B Y:0001 ;store to counter
+C2/2E00 C2 20       REP #$20                A:2C01 X:2C0B Y:0001 
+C2/2E02 A5 60       LDA $60    [$00:0060]   A:2C01 X:2C0B Y:0001 
+C2/2E04 18          CLC                     A:E9A9 X:2C0B Y:0001 
+C2/2E05 69 02 00    ADC #$0002              A:E9A9 X:2C0B Y:0001 
+C2/2E08 85 60       STA $60    [$00:0060]   A:E9AB X:2C0B Y:0001 
+C2/2E0A 4C 4F 0C    JMP $0C4F  [$00:0C4F]   A:E9AB X:2C0B Y:0001 
+
+----------------------------------------------------------------
+Read button press for battle menu
+
+C2/351F AE 50 07    LDX $0750  [$00:0750]   A:0004 X:0004 Y:2100 
+C2/3522 AD 7C 0B    LDA $0B7C  [$00:0B7C]   A:0004 X:FA80 Y:2100 
+C2/3525 89 04 00    BIT #$0004              A:0000 X:FA80 Y:2100 
+C2/3528 D0 05       BNE $05    [$352F]      A:0000 X:FA80 Y:2100 
+C2/352A AD 14 30    LDA $3014  [$00:3014]   A:0000 X:FA80 Y:2100 ;load joypad register
+C2/352D D0 03       BNE $03    [$3532]      A:4000 X:FA80 Y:2100 ;branch if not zero
+
+C2/3532 89 80 00    BIT #$0080              A:4000 X:FA80 Y:2100 ;check A-button bit
+C2/3535 F0 05       BEQ $05    [$353C]      A:4000 X:FA80 Y:2100 ;branch if not set
+C2/3537 A9 02 00    LDA #$0002              A:4000 X:FA80 Y:2100 ;load 'attack' menu constant
+C2/353A 80 21       BRA $21    [$355D]      A:0002 X:FA80 Y:2100
+
+C2/353C 89 00 40    BIT #$4000              A:4000 X:FA80 Y:2100 ;check Y-button bit
+C2/353F F0 05       BEQ $05    [$3546]      A:4000 X:FA80 Y:2100 ;branch if not set
+C2/3541 A9 03 00    LDA #$0003              A:4000 X:FA80 Y:2100 ;load 'special' menu constant
+C2/3544 80 17       BRA $17    [$355D]      A:0003 X:FA80 Y:2100 
+
+C2/3546 89 40 00    BIT #$0040              A:4000 X:FA80 Y:2100 ;check X-button bit
+C2/3549 F0 05       BEQ $05    [$3546]      A:4000 X:FA80 Y:2100 ;branch if not set
+
+C2/355D 8D 2A 07    STA $072A  [$00:072A]   A:0003 X:FA80 Y:2100 ;set as current menu access
+C2/3560 AA          TAX                     A:0003 X:FA80 Y:2100 
+C2/3561 BF 91 36 C2 LDA $C23691,x[$C2:3694] A:0003 X:0003 Y:2100 ;load 4-button menu constant
+C2/3565 29 FF 00    AND #$00FF              A:0206 X:0003 Y:2100 ;isolate it
+C2/3568 85 E0       STA $E0    [$00:00E0]   A:0006 X:0003 Y:2100 
+C2/356A BB          TYX                     A:0006 X:0003 Y:2100 
+C2/356B BF 0E 00 40 LDA $40000E,x[$40:210E] A:0006 X:2100 Y:2100 
+C2/356F AA          TAX                     A:4240 X:2100 Y:2100 
+C2/3570 BF 05 00 40 LDA $400005,x[$40:4245] A:4240 X:4240 Y:2100 
+C2/3574 29 00 FF    AND #$FF00              A:0000 X:4240 Y:2100 
+C2/3577 05 E0       ORA $E0    [$00:00E0]   A:0000 X:4240 Y:2100 
+C2/3579 9F 05 00 40 STA $400005,x[$40:4245] A:0006 X:4240 Y:2100 
+C2/357D BB          TYX                     A:0006 X:4240 Y:2100 
+C2/357E A9 03 00    LDA #$0003              A:0006 X:2100 Y:2100 
+C2/3581 9F 08 00 40 STA $400008,x[$40:2108] A:0003 X:2100 Y:2100 
+C2/3585 4C 5F 0C    JMP $0C5F  [$00:0C5F]   A:0003 X:2100 Y:2100 
+
+
+
+C2/59E7 AD 50 07    LDA $0750  [$00:0750]   A:0000 X:0000 Y:2400 
+C2/59EA AA          TAX                     A:FB00 X:0000 Y:2400 
+C2/59EB BF 44 00 7E LDA $7E0044,x[$7E:FB44] A:FB00 X:FB00 Y:2400 
+C2/59EF 89 20 00    BIT #$0020              A:5530 X:FB00 Y:2400 
+C2/59F2 F0 00       BEQ $46    [$5A3A]      A:5530 X:FB00 Y:2400 
+C2/59F4 29 DF FF    AND #$FFDF              A:5530 X:FB00 Y:2400 
+C2/59F7 9F 44 00 7E STA $7E0044,x[$7E:FB44] A:5510 X:FB00 Y:2400 
+C2/59FB A9 80 00    LDA #$0080              A:5510 X:FB00 Y:2400 
+C2/59FE 85 E0       STA $E0    [$00:00E0]   A:0080 X:FB00 Y:2400 
+C2/5A00 A9 1A 00    LDA #$001A              A:0080 X:FB00 Y:2400 
+C2/5A03 85 E2       STA $E2    [$00:00E2]   A:001A X:FB00 Y:2400 
+C2/5A05 A9 00 00    LDA #$0000              A:001A X:FB00 Y:2400 
+C2/5A08 85 E4       STA $E4    [$00:00E4]   A:0000 X:FB00 Y:2400 
+C2/5A0A AF 30 A0 C2 LDA $C2A030[$C2:A030]   A:0000 X:FB00 Y:2400 
+C2/5A0E 85 EA       STA $EA    [$00:00EA]   A:E654 X:FB00 Y:2400 
+C2/5A10 A9 C2 00    LDA #$00C2              A:E654 X:FB00 Y:2400 
+C2/5A13 85 EC       STA $EC    [$00:00EC]   A:00C2 X:FB00 Y:2400 
+C2/5A15 20 30 07    JSR $0730  [$C2:0730]   A:00C2 X:FB00 Y:2400 
+
+----------------------------------------------------------------
+Load Battle Palette for Characters (SA-1)
+
+C2/8885 BF 01 00 40 LDA $400001,x[$40:4081] A:6000 X:4080 Y:001C 
+C2/8889 89 20 00    BIT #$0020              A:8132 X:4080 Y:001C 
+C2/888C D0 01       BNE $01    [$888F]      A:8132 X:4080 Y:001C 
+C2/888F 86 CE       STX $CE    [$00:00CE]   A:8132 X:4080 Y:001C 
+C2/8891 29 DF FF    AND #$FFDF              A:8132 X:4080 Y:001C 
+C2/8894 9F 01 00 40 STA $400001,x[$40:4081] A:8112 X:4080 Y:001C 
+C2/8898 89 02 00    BIT #$0002              A:8112 X:4080 Y:001C 
+C2/889B D0 2F       BNE $2F    [$88CC]      A:8112 X:4080 Y:001C 
+
+Load palette for monsters (SA-1)
+
+C2/889D BF 2D 00 40 LDA $40002D,x[$40:402D] A:8108 X:4000 Y:000C 
+C2/88A1 29 0E 00    AND #$000E              A:0020 X:4000 Y:000C 
+C2/88A4 AA          TAX                     A:0000 X:4000 Y:000C 
+C2/88A5 BF 1B 8B C2 LDA $C28B1B,x[$C2:8B1B] A:0000 X:0000 Y:000C 
+C2/88A9 AA          TAX                     A:3200 X:0000 Y:000C 
+C2/88AA A9 01 00    LDA #$0001              A:3200 X:3200 Y:000C 
+C2/88AD 95 00       STA $00,x  [$00:3200]   A:0001 X:3200 Y:000C 
+C2/88AF E8          INX                     A:0001 X:3200 Y:000C 
+C2/88B0 E8          INX                     A:0001 X:3201 Y:000C 
+C2/88B1 9B          TXY                     A:0001 X:3202 Y:000C 
+C2/88B2 A6 CE       LDX $CE    [$00:00CE]   A:0001 X:3202 Y:3202 
+C2/88B4 BF 15 00 40 LDA $400015,x[$40:4015] A:0001 X:4000 Y:3202 
+C2/88B8 29 FF 00    AND #$00FF              A:E800 X:4000 Y:3202 
+C2/88BB 18          CLC                     A:0000 X:4000 Y:3202 
+C2/88BC 7F 13 00 40 ADC $400013,x[$40:4013] A:0000 X:4000 Y:3202 
+C2/88C0 AA          TAX                     A:332A X:4000 Y:3202 
+C2/88C1 A9 1D 00    LDA #$001D              A:332A X:332A Y:3202 
+C2/88C4 8B          PHB                     A:001D X:332A Y:3202 
+C2/88C5 54          MVN 00 E5               A:001D X:332A Y:3202 ;copy monster palette to ram
+
+C2/88C8 AB          PLB                     A:FFFF X:3348 Y:3220 
+C2/88C9 A6 CE       LDX $CE    [$00:00CE]   A:FFFF X:3348 Y:3220 
+C2/88CB 60          RTS                     A:FFFF X:4000 Y:3220 
+
+C2/88CC BF 03 00 40 LDA $400003,x[$40:4083] A:8112 X:4080 Y:001C 
+C2/88D0 C9 00 01    CMP #$0100              A:0008 X:4080 Y:001C 
+C2/88D3 10 09       BPL $09    [$88DE]      A:0008 X:4080 Y:001C 
+C2/88D5 BF 15 00 40 LDA $400015,x[$40:4095] A:0008 X:4080 Y:001C ;underwater byte
+C2/88D9 29 FF 00    AND #$00FF              A:0000 X:4080 Y:001C ;isolate byte
+C2/88DC D0 05       BNE $05    [$88E3]      A:0000 X:4080 Y:001C ;branch if not at 0
+C2/88DE A9 78 00    LDA #$0078              A:0000 X:4080 Y:001C ;underwater palette pointer
+C2/88E1 80 07       BRA $07    [$88EA]      A:0078 X:4080 Y:001C 
+
+C2/88EA 85 C0       STA $C0    [$00:00C0]   A:0078 X:4080 Y:001C 
+C2/88EC BF 2D 00 40 LDA $40002D,x[$40:40AD] A:0078 X:4080 Y:001C 
+C2/88F0 29 0E 00    AND #$000E              A:0024 X:4080 Y:001C 
+C2/88F3 AA          TAX                     A:0004 X:4080 Y:001C 
+C2/88F4 BF 1B 8B C2 LDA $C28B1B,x[$C2:8B1F] A:0004 X:0004 Y:001C 
+C2/88F8 AA          TAX                     A:3240 X:0004 Y:001C 
+C2/88F9 A9 01 00    LDA #$0001              A:3240 X:3240 Y:001C 
+C2/88FC 95 00       STA $00,x  [$00:3240]   A:0001 X:3240 Y:001C 
+C2/88FE E8          INX                     A:0001 X:3240 Y:001C 
+C2/88FF E8          INX                     A:0001 X:3241 Y:001C 
+C2/8900 9B          TXY                     A:0001 X:3242 Y:001C 
+C2/8901 A6 CE       LDX $CE    [$00:00CE]   A:0001 X:3242 Y:3242 
+C2/8903 A5 C0       LDA $C0    [$00:00C0]   A:0001 X:4080 Y:3242 
+C2/8905 18          CLC                     A:0078 X:4080 Y:3242 
+C2/8906 7F 13 00 40 ADC $400013,x[$40:4093] A:0078 X:4080 Y:3242 
+C2/890A AA          TAX                     A:7D1C X:4080 Y:3242 
+C2/890B A9 1D 00    LDA #$001D              A:7D1C X:7D1C Y:3242 
+C2/890E 8B          PHB                     A:001D X:7D1C Y:3242 
+C2/890F 54          MVN 00 E5               A:001D X:7D1C Y:3242 ;copy palette
+
+===========================================================================
+C2/8EE1 AD 00 07    LDA $0700  [$00:0700]   A:0000 X:0000 Y:2680 
+C2/8EE4 89 20 00    BIT #$0020              A:F000 X:0000 Y:2680 
+C2/8EE7 F0 0D       BEQ $0D    [$8EF6]      A:F000 X:0000 Y:2680 
+C2/8EF6 AD AC FF    LDA $FFAC  [$00:FFAC]   A:F000 X:0000 Y:2680 ;load quick exit locks
+C2/8EF9 D0 34       BNE $34    [$8F2F]      A:0000 X:0000 Y:2680 
+C2/8EFB AD AE FF    LDA $FFAE  [$00:FFAE]   A:0000 X:0000 Y:2680 
+C2/8EFE D0 2F       BNE $2F    [$8F2F]      A:0000 X:0000 Y:2680 ;branch if locks set
+
+C2/8F00 AD 14 30    LDA $3014  [$00:3014]   A:0000 X:0000 Y:2680 ;load joypad register
+C2/8F03 89 00 20    BIT #$2000              A:0000 X:0000 Y:2680 ;check Select button bit
+C2/8F06 F0 27       BEQ $27    [$8F2F]      A:0000 X:0000 Y:2680 ;branch if not set
+C2/8F08 AD 10 30    LDA $3010  [$00:3010]   A:2000 X:2000 Y:2680 ;load other joypad register(s)
+C2/8F0B 89 30 00    BIT #$0030              A:2000 X:2000 Y:2680 ;check L and/or R button bit(s)
+C2/8F0E F0 0A       BEQ $0A    [$8F1A]      A:2000 X:2000 Y:2680 ;branch if neither set
+
+===========================================================================
+Load formation pack monster bytes -- EG: Formation Pack 2 - Spikey, Spikey
+
+C2/9092 9C 00 07    STZ $0700  [$00:0700]   A:0D00 X:0200 Y:0402 
+C2/9095 9C 64 0B    STZ $0B64  [$00:0B64]   A:0D00 X:0200 Y:0402 
+C2/9098 A5 4B       LDA $4B    [$00:004B]   A:0D00 X:0200 Y:0402 
+C2/909A 29 FF 00    AND #$00FF              A:0909 X:0200 Y:0402 
+C2/909D 85 4B       STA $4B    [$00:004B]   A:0009 X:0200 Y:0402 
+C2/909F EB          XBA                     A:0009 X:0200 Y:0402 
+C2/90A0 05 4B       ORA $4B    [$00:004B]   A:0900 X:0200 Y:0402 
+C2/90A2 85 4B       STA $4B    [$00:004B]   A:0909 X:0200 Y:0402 
+C2/90A4 A5 43       LDA $43    [$00:0043]   A:0909 X:0200 Y:0402 
+C2/90A6 29 00 FF    AND #$FF00              A:6400 X:0200 Y:0402 
+C2/90A9 85 43       STA $43    [$00:0043]   A:6400 X:0200 Y:0402 
+C2/90AB A5 42       LDA $42    [$00:0042]   A:6400 X:0200 Y:0402 
+C2/90AD 89 01 00    BIT #$0001              A:0000 X:0200 Y:0402 
+C2/90B0 F0 06       BEQ $06    [$90B8]      A:0000 X:0200 Y:0402 
+C2/90B8 A5 48       LDA $48    [$00:0048]   A:0000 X:0200 Y:0402 ;load formation pack byte
+C2/90BA C9 FF FF    CMP #$FFFF              A:0002 X:0200 Y:0402 ;is it a formation pack?
+C2/90BD D0 0B       BNE $0B    [$90CA]      A:0002 X:0200 Y:0402 ;branch if it is
+
+C2/90CA AF 0A 00 F9 LDA $F9000A[$F9:000A]   A:0002 X:0200 Y:0402 ;load formation pack data block ptr
+C2/90CE 85 B8       STA $B8    [$00:00B8]   A:222A X:0200 Y:0402 ;store to register
+C2/90D0 A9 F9 00    LDA #$00F9              A:222A X:0200 Y:0402 
+C2/90D3 85 BA       STA $BA    [$00:00BA]   A:00F9 X:0200 Y:0402 
+C2/90D5 A5 48       LDA $48    [$00:0048]   A:00F9 X:0200 Y:0402 ;load formation pack byte
+C2/90D7 29 FF 01    AND #$01FF              A:0002 X:0200 Y:0402 ;isolate bits 0-4 (for 9-bit formation byte)
+C2/90DA 0A          ASL A                   A:0002 X:0200 Y:0402 ;x4
+C2/90DB 0A          ASL A                   A:0004 X:0200 Y:0402 
+C2/90DC A8          TAY                     A:0008 X:0200 Y:0402 ;transfer to Y for indirect read
+C2/90DD B7 B8       LDA [$B8],y[$F9:2232]   A:0008 X:0200 Y:0008 ;load formation 1,2 from data counter
+C2/90DF 85 B0       STA $B0    [$00:00B0]   A:0504 X:0200 Y:0008 ;store to register
+C2/90E1 C8          INY                     A:0504 X:0200 Y:0008 ;increment data counter twice
+C2/90E2 C8          INY                     A:0504 X:0200 Y:0009 
+C2/90E3 B7 B8       LDA [$B8],y[$F9:2234]   A:0504 X:0200 Y:000A ;load formation 3, 9-bit flag
+C2/90E5 85 B2       STA $B2    [$00:00B2]   A:0005 X:0200 Y:000A ;store to register
+C2/90E7 A5 4A       LDA $4A    [$00:004A]   A:0005 X:0200 Y:000A ;??? indirect ptr for formation byte storage
+C2/90E9 29 FF 00    AND #$00FF              A:0900 X:0200 Y:000A ;isolate indirect ptr byte
+C2/90EC 0A          ASL A                   A:0000 X:0200 Y:000A ;double for ptr read
+C2/90ED AA          TAX                     A:0000 X:0200 Y:000A ;transfer to X to JMP indirect address
+C2/90EE 7C F1 90    JMP ($90F1,x)[$C2:90F7] A:0000 X:0000 Y:000A ;jump to byte storage function
+
+C2/90F7 A5 B0       LDA $B0    [$00:00B0]   A:0000 X:0000 Y:000A ;load formation 1
+C2/90F9 29 FF 00    AND #$00FF              A:0504 X:0000 Y:000A ;isolate formation 1 byte
+C2/90FC 85 B4       STA $B4    [$00:00B4]   A:0004 X:0000 Y:000A ;store to register
+C2/90FE A5 B3       LDA $B3    [$00:00B3]   A:0004 X:0000 Y:000A ;load 9-bit flag (flag not set this time)
+C2/9100 29 01 00    AND #$0001              A:0400 X:0000 Y:000A ;isolate 9-bit formation byte flag
+C2/9103 EB          XBA                     A:0000 X:0000 Y:000A ;flip bytes for little endian read
+C2/9104 05 B4       ORA $B4    [$00:00B4]   A:0000 X:0000 Y:000A ;set current formation bits
+C2/9106 80 23       BRA $23    [$912B]      A:0004 X:0000 Y:000A ;always branch
+
+C2/912B 8F 0E FA 7E STA $7EFA0E[$7E:FA0E]   A:0004 X:0000 Y:000A ;store as current formation
+C2/912F 60          RTS                     A:0004 X:0000 Y:000A ;end
+
+================================================================
+C2/926D A2 0E 00    LDX #$000E              A:0000 X:2000 Y:2000 
+C2/9270 BF 10 E0 7E LDA $7EE010,x[$7E:E01E] A:0000 X:000E Y:2000 ;load counter-item value
+C2/9274 9F BD F8 7F STA $7FF8BD,x[$7F:F8CB] A:0000 X:000E Y:2000 ;store as current value
+C2/9278 CA          DEX                     A:0000 X:000E Y:2000 
+C2/9279 CA          DEX                     A:0000 X:000D Y:2000 
+C2/927A 10 F4       BPL $F4    [$9270]      A:0000 X:000C Y:2000 ;move to next
+
+C2/927C E2 20       SEP #$20                A:0008 X:FFFE Y:2000 
+C2/927E AF 0C FA 7E LDA $7EFA0C[$7E:FA0C]   A:0008 X:FFFE Y:2000 ;load current battle FP
+C2/9282 8F B1 F8 7F STA $7FF8B1[$7F:F8B1]   A:0063 X:FFFE Y:2000 ;store as current FP
+C2/9286 C2 20       REP #$20                A:0063 X:FFFE Y:2000 
+C2/9288 A2 00 00    LDX #$0000              A:0063 X:FFFE Y:2000 
+C2/928B 86 B0       STX $B0    [$00:00B0]   A:0063 X:0000 Y:2000 
+C2/928D BF 27 01 C2 LDA $C20127,x[$C2:0127] A:0063 X:0000 Y:2000 
+C2/9291 AA          TAX                     A:FA80 X:0000 Y:2000 
+C2/9292 86 B2       STX $B2    [$00:00B2]   A:FA80 X:FA80 Y:2000 
+C2/9294 BF 00 00 7E LDA $7E0000,x[$7E:FA80] A:FA80 X:FA80 Y:2000 ;load mortal status
+C2/9298 29 C0 00    AND #$00C0              A:0300 X:FA80 Y:2000 ;isolate mortal bits
+C2/929B C9 80 00    CMP #$0080              A:0000 X:FA80 Y:2000 ;check if slot is occupied
+C2/929E F0 2F       BEQ $2F    [$92CF]      A:0000 X:FA80 Y:2000 ;branch if not
+C2/92A0 C9 C0 00    CMP #$00C0              A:0000 X:FA80 Y:2000 ;check if dead
+C2/92A3 D0 07       BNE $07    [$92AC]      A:0000 X:FA80 Y:2000 ;branch if not
+
+C2/92A5 A9 01 00    LDA #$0001              A:0000 X:FA80 Y:2000 
+C2/92A8 9F 11 00 7E STA $7E0011,x[$7E:FA91] A:0000 X:FA80 Y:2000 ;set current HP to 1
+
+C2/92AC BF 01 00 7E LDA $7E0001,x[$7E:FA81] A:0000 X:FA80 Y:2000 ;load character ID in slot 1
+C2/92B0 29 FF 00    AND #$00FF              A:5503 X:FA80 Y:2000 
+C2/92B3 AA          TAX                     A:0003 X:FA80 Y:2000 
+C2/92B4 BF 4C 97 C2 LDA $C2974C,x[$C2:974F] A:0003 X:0003 Y:2000 
+C2/92B8 29 FF 00    AND #$00FF              A:503C X:0003 Y:2000 
+C2/92BB 18          CLC                     A:003C X:0003 Y:2000 
+C2/92BC 69 00 F8    ADC #$F800              A:003C X:0003 Y:2000 
+C2/92BF A8          TAY                     A:F83C X:0003 Y:2000 
+C2/92C0 A5 B2       LDA $B2    [$00:00B2]   A:F83C X:0003 Y:F83C 
+C2/92C2 18          CLC                     A:FA80 X:0003 Y:F83C 
+C2/92C3 69 10 00    ADC #$0010              A:FA80 X:0003 Y:F83C 
+C2/92C6 AA          TAX                     A:FA90 X:0003 Y:F83C 
+C2/92C7 A9 13 00    LDA #$0013              A:FA90 X:FA90 Y:F83C 
+C2/92CA 8B          PHB                     A:0013 X:FA90 Y:F83C 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0013 X:FA90 Y:F83C ;copy battle stats to overworld stats
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0012 X:FA91 Y:F83D ;...
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0011 X:FA92 Y:F83E 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0010 X:FA93 Y:F83F 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000F X:FA94 Y:F840 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000E X:FA95 Y:F841 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000D X:FA96 Y:F842 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000C X:FA97 Y:F843 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000B X:FA98 Y:F844 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:000A X:FA99 Y:F845 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0009 X:FA9A Y:F846 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0008 X:FA9B Y:F847 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0007 X:FA9C Y:F848 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0006 X:FA9D Y:F849 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0005 X:FA9E Y:F84A 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0004 X:FA9F Y:F84B 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0003 X:FAA0 Y:F84C 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0002 X:FAA1 Y:F84D 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0001 X:FAA2 Y:F84E 
+C2/92CB 54 7F 7E    MVN 7F 7E               A:0000 X:FAA3 Y:F84F ;...
+C2/92CE AB          PLB                     A:FFFF X:FAA4 Y:F850 ;pull DB
+
+C2/92CF A6 B0       LDX $B0    [$00:00B0]   A:FFFF X:FBA4 Y:F814 
+C2/92D1 E8          INX                     A:FFFF X:0004 Y:F814 
+C2/92D2 E8          INX                     A:FFFF X:0005 Y:F814 
+C2/92D3 E0 05 00    CPX #$0005              A:FFFF X:0006 Y:F814 
+C2/92D6 30 B3       BMI $B3    [$928B]      A:FFFF X:0006 Y:F814 
+C2/92D8 64 B0       STZ $B0    [$00:00B0]   A:FFFF X:0006 Y:F814 
+C2/92DA A2 00 00    LDX #$0000              A:FFFF X:0006 Y:F814 
+
+C2/92DD 9B          TXY                     A:00FF X:0004 Y:0002 
+C2/92DE BF 27 01 C2 LDA $C20127,x[$C2:012B] A:00FF X:0004 Y:0004 ;load character slot
+C2/92E2 AA          TAX                     A:FB80 X:0004 Y:0004 
+C2/92E3 BF 00 00 7E LDA $7E0000,x[$7E:FB80] A:FB80 X:FB80 Y:0004 ;load mortal status
+C2/92E7 29 C0 00    AND #$00C0              A:0000 X:FB80 Y:0004 
+C2/92EA D0 0E       BNE $0E    [$92FA]      A:0000 X:FB80 Y:0004 ;branch if dead
+C2/92EC BF 1E 00 7E LDA $7E001E,x[$7E:FB9E] A:0000 X:FB80 Y:0004 ;load accessory
+C2/92F0 29 FF 00    AND #$00FF              A:00FF X:FB80 Y:0004 
+C2/92F3 C9 58 00    CMP #$0058              A:00FF X:FB80 Y:0004 ;check if Coin Trick equipped
+C2/92F6 D0 02       BNE $02    [$92FA]      A:00FF X:FB80 Y:0004 ;branch if not
+C2/92F8 E6 B0       INC $B0                 A:00FF X:FB00 Y:0004 ;set double flag
+C2/92FA BB          TYX                     A:00FF X:FB80 Y:0004 
+C2/92FB E8          INX                     A:00FF X:0004 Y:0004 
+C2/92FC E8          INX                     A:00FF X:0005 Y:0004 
+C2/92FD E0 05 00    CPX #$0005              A:00FF X:0006 Y:0004 
+C2/9300 30 DB       BMI $DB    [$92DD]      A:00FF X:0006 Y:0004 
+C2/9302 A5 B0       LDA $B0    [$00:00B0]   A:00FF X:0006 Y:0004 ;load double flag
+C2/9304 F0 09       BEQ $09    [$930F]      A:0000 X:0006 Y:0004 ;branch if not set
+
+C2/9306 AF 04 FA 7E LDA $7EFA04 [$7E:FA04]  A:0000 X:0006 Y:0004 ;load coins won
+C2/930A 0A          ASL A                   A:0000 X:0006 Y:0004 ;double
+C2/930B 8F 04 FA 7E STA $7EFA04 [$7E:FA04]  A:0000 X:0006 Y:0004 ;store as coins won
+
+C2/930F AF AF F8 7F LDA $7FF8AF[$7F:F8AF]   A:0000 X:0006 Y:0004 ;load current coins
+C2/9313 18          CLC                     A:03E7 X:0006 Y:0004 
+C2/9314 6F 04 FA 7E ADC $7EFA04[$7E:FA04]   A:03E7 X:0006 Y:0004 ;add to coins won
+C2/9318 C9 E7 03    CMP #$03E7              A:03E8 X:0006 Y:0004 ;check if overflow
+C2/931B 30 03       BMI $03    [$9320]      A:03E8 X:0006 Y:0004 ;branch if less than 999
+C2/931D A9 E7 03    LDA #$03E7              A:03E8 X:0006 Y:0004 ;truncate coins to 999
+C2/9320 8F AF F8 7F STA $7FF8AF[$7F:F8AF]   A:03E7 X:0006 Y:0004 ;store as current coins
+C2/9324 60          RTS                     A:03E7 X:0006 Y:0004
+=================================================================
+
+Load monster stats
+
+C2/93DE C2 20       REP #$20                A:FC7F X:FC00 Y:000E ;set 16-bit A
+C2/93E0 86 C0       STX $C0    [$00:00C0]   A:FC7F X:FC00 Y:000E ;store for indirect RAM reads
+C2/93E2 AF 00 00 F9 LDA $F90000[$F9:0000]   A:FC7F X:FC00 Y:000E ;load monster stat ptr data block
+C2/93E6 85 C2       STA $C2    [$00:00C2]   A:0026 X:FC00 Y:000E 
+C2/93E8 A9 F9 00    LDA #$00F9              A:0026 X:FC00 Y:000E ;load databank to read
+C2/93EB 85 C4       STA $C4    [$00:00C4]   A:00F9 X:FC00 Y:000E ;store to databank register
+C2/93ED BF 01 00 7E LDA $7E0001,x[$7E:FC01] A:00F9 X:FC00 Y:000E ;load monster 1
+C2/93F1 29 FF 00    AND #$00FF              A:5501 X:FC00 Y:000E ;isolate monster byte
+C2/93F4 0A          ASL A                   A:0001 X:FC00 Y:000E 
+C2/93F5 A8          TAY                     A:0002 X:FC00 Y:000E 
+C2/93F6 B7 C2       LDA [$C2],y[$F9:0028]   A:0002 X:FC00 Y:0002 ;read from stat ptr
+C2/93F8 85 C2       STA $C2    [$00:00C2]   A:0236 X:FC00 Y:0002 ;store to register
+C2/93FA 8A          TXA                     A:0236 X:FC00 Y:0002 
+C2/93FB 18          CLC                     A:FC00 X:FC00 Y:0002 ;clear carry flag
+C2/93FC 69 13 00    ADC #$0013              A:FC00 X:FC00 Y:0002 ;add constant to copy indirect to RAM
+C2/93FF A8          TAY                     A:FC13 X:FC00 Y:0002 
+C2/9400 A6 C2       LDX $C2    [$00:00C2]   A:FC13 X:FC00 Y:FC13 ;load offset to copy indirect from rom
+C2/9402 A9 0F 00    LDA #$000F              A:FC13 X:0236 Y:FC13 ;load number of bytes to copy +1
+C2/9405 8B          PHB                     A:000F X:0236 Y:FC13 ;push databank register for copying
+C2/9406 54 7E F9    MVN 7E F9               A:000F X:0236 Y:FC13 ;copy monster stats to RAM
+C2/9406 54 7E F9    MVN 7E F9               A:000E X:0237 Y:FC14  ...
+C2/9406 54 7E F9    MVN 7E F9               A:000D X:0238 Y:FC15  ...
+C2/9406 54 7E F9    MVN 7E F9               A:000C X:0239 Y:FC16 
+C2/9406 54 7E F9    MVN 7E F9               A:000B X:023A Y:FC17 
+C2/9406 54 7E F9    MVN 7E F9               A:000A X:023B Y:FC18 
+C2/9406 54 7E F9    MVN 7E F9               A:0009 X:023C Y:FC19 
+C2/9406 54 7E F9    MVN 7E F9               A:0008 X:023D Y:FC1A 
+C2/9406 54 7E F9    MVN 7E F9               A:0007 X:023E Y:FC1B 
+C2/9406 54 7E F9    MVN 7E F9               A:0006 X:023F Y:FC1C 
+C2/9406 54 7E F9    MVN 7E F9               A:0005 X:0240 Y:FC1D 
+C2/9406 54 7E F9    MVN 7E F9               A:0004 X:0241 Y:FC1E 
+C2/9406 54 7E F9    MVN 7E F9               A:0003 X:0242 Y:FC1F 
+C2/9406 54 7E F9    MVN 7E F9               A:0002 X:0243 Y:FC20 
+C2/9406 54 7E F9    MVN 7E F9               A:0001 X:0244 Y:FC21  ...
+C2/9406 54 7E F9    MVN 7E F9               A:0000 X:0245 Y:FC22  ...
+C2/9409 AB          PLB                     A:FFFF X:0246 Y:FC23 ;pull databank register
+
+C2/940A A6 C0       LDX $C0    [$00:00C0]   A:FFFF X:0246 Y:FC23 ;load indirect RAM address
+C2/940C BF 13 00 7E LDA $7E0013,x[$7E:FC13] A:FFFF X:FC00 Y:FC23 ;load monster 1's max HP
+C2/9410 9F 11 00 7E STA $7E0011,x[$7E:FC11] A:0014 X:FC00 Y:FC23 ;store as current HP
+C2/9414 BF 22 00 7E LDA $7E0022,x[$7E:FC22] A:0014 X:FC00 Y:FC23 ;load monster's 'entrance style' byte
+C2/9418 29 30 00    AND #$0030              A:5542 X:FC00 Y:FC23 ;isolate 'elevation' bits
+C2/941B 9F 3D 00 7E STA $7E003D,x[$7E:FC3D] A:0000 X:FC00 Y:FC23 ;store as current elevation
+C2/941F A9 FF FF    LDA #$FFFF              A:0000 X:FC00 Y:FC23 
+C2/9422 9F 3E 00 7E STA $7E003E,x[$7E:FC3E] A:FFFF X:FC00 Y:FC23 
+C2/9426 AF 1E 00 F9 LDA $F9001E[$F9:001E]   A:FFFF X:FC00 Y:FC23 
+C2/942A 85 C2       STA $C2    [$00:00C2]   A:B944 X:FC00 Y:FC23 
+C2/942C A9 F9 00    LDA #$00F9              A:B944 X:FC00 Y:FC23 
+C2/942F 85 C4       STA $C4    [$00:00C4]   A:00F9 X:FC00 Y:FC23 
+C2/9431 BF 01 00 7E LDA $7E0001,x[$7E:FC01] A:00F9 X:FC00 Y:FC23 ;load monster byte
+C2/9435 29 FF 00    AND #$00FF              A:5501 X:FC00 Y:FC23 ;isolate monster byte
+C2/9438 A8          TAY                     A:0001 X:FC00 Y:FC23 ;transfer to Y for indirect read
+C2/9439 B7 C2       LDA [$C2],y[$F9:B945]   A:0001 X:FC00 Y:0001 ;load 'target position' from monster byte
+C2/943B A8          TAY                     A:2212 X:FC00 Y:0001 
+C2/943C 29 F0 00    AND #$00F0              A:2212 X:FC00 Y:2212 
+C2/943F 4A          LSR A                   A:0010 X:FC00 Y:2212 ;isolate X coord bits
+C2/9440 85 C2       STA $C2    [$00:00C2]   A:0008 X:FC00 Y:2212 
+C2/9442 98          TYA                     A:0008 X:FC00 Y:2212 
+C2/9443 29 0F 00    AND #$000F              A:2212 X:FC00 Y:2212 ;isolate Y coord bits
+C2/9446 0A          ASL A                   A:0002 X:FC00 Y:2212 ;x8
+C2/9447 0A          ASL A                   A:0004 X:FC00 Y:2212 
+C2/9448 0A          ASL A                   A:0008 X:FC00 Y:2212 
+C2/9449 EB          XBA                     A:0010 X:FC00 Y:2212 
+C2/944A 05 C2       ORA $C2    [$00:00C2]   A:1000 X:FC00 Y:2212 ;combine X coord & Y coord bits
+C2/944C 9F 37 00 7E STA $7E0037,x[$7E:FC37] A:1008 X:FC00 Y:2212 ;store to 'target position'
+C2/9450 A9 00 00    LDA #$0000              A:1008 X:FC00 Y:2212 
+C2/9453 9F 40 00 7E STA $7E0040,x[$7E:FC40] A:0000 X:FC00 Y:2212 
+C2/9457 9F 42 00 7E STA $7E0042,x[$7E:FC42] A:0000 X:FC00 Y:2212 
+C2/945B 9F 44 00 7E STA $7E0044,x[$7E:FC44] A:0000 X:FC00 Y:2212 
+
+C2/945F E2 20       SEP #$20                A:0000 X:FC00 Y:2212 ;set 8-bit A
+C2/9461 BF 1E 00 7E LDA $7E001E,x[$7E:FC1E] A:0000 X:FC00 Y:2212 ;load special defense/attack sound(hit) byte
+C2/9465 4A          LSR A                   A:0008 X:FC00 Y:2212 ;divide by 16
+C2/9466 4A          LSR A                   A:0004 X:FC00 Y:2212 
+C2/9467 4A          LSR A                   A:0002 X:FC00 Y:2212 
+C2/9468 4A          LSR A                   A:0001 X:FC00 Y:2212 
+C2/9469 29 0F       AND #$0F                A:0000 X:FC00 Y:2212 ;isolate special defense bits
+C2/946B 9F 2F 00 7E STA $7E002F,x[$7E:FC2F] A:0000 X:FC00 Y:2212 
+C2/946F BF 22 00 7E LDA $7E0022,x[$7E:FC22] A:0000 X:FC00 Y:2212 ;load 'entrance style' byte
+C2/9473 29 0F       AND #$0F                A:0042 X:FC00 Y:2212 ;isolate entrance style bits
+C2/9475 9F 2E 00 7E STA $7E002E,x[$7E:FC2E] A:0002 X:FC00 Y:2212 ;store as entrance style
+C2/9479 BF 22 00 7E LDA $7E0022,x[$7E:FC22] A:0002 X:FC00 Y:2212 ;load 'entrance style' byte
+C2/947D 2A          ROL A                   A:0042 X:FC00 Y:2212 ;rotate left to coin animation bit
+C2/947E 2A          ROL A                   A:0085 X:FC00 Y:2212 
+C2/947F 2A          ROL A                   A:000A X:FC00 Y:2212 
+C2/9480 29 03       AND #$03                A:0015 X:FC00 Y:2212 ;isolate coin animation bit
+C2/9482 9F 2C 00 7E STA $7E002C,x[$7E:FC2C] A:0001 X:FC00 Y:2212 ;store as coin animation
+C2/9486 BF 1E 00 7E LDA $7E001E,x[$7E:FC1E] A:0001 X:FC00 Y:2212 ;load special defense
+C2/948A 29 03       AND #$03                A:0008 X:FC00 Y:2212 ;isolate 1st three bits (???)
+C2/948C 9F 41 00 7E STA $7E0041,x[$7E:FC41] A:0000 X:FC00 Y:2212 ;store to ???
+C2/9490 BF 15 00 7E LDA $7E0015,x[$7E:FC15] A:0000 X:FC00 Y:2212 ;speed
+C2/9494 9F 70 00 7E STA $7E0070,x[$7E:FC70] A:000E X:FC00 Y:2212 
+C2/9498 BF 16 00 7E LDA $7E0016,x[$7E:FC16] A:000E X:FC00 Y:2212 ;attack
+C2/949C 9F 72 00 7E STA $7E0072,x[$7E:FC72] A:0006 X:FC00 Y:2212 
+C2/94A0 BF 17 00 7E LDA $7E0017,x[$7E:FC17] A:0006 X:FC00 Y:2212 ;defense
+C2/94A4 9F 74 00 7E STA $7E0074,x[$7E:FC74] A:000B X:FC00 Y:2212 
+C2/94A8 BF 18 00 7E LDA $7E0018,x[$7E:FC18] A:000B X:FC00 Y:2212 ;magic attack
+C2/94AC 9F 76 00 7E STA $7E0076,x[$7E:FC76] A:0004 X:FC00 Y:2212 
+C2/94B0 BF 19 00 7E LDA $7E0019,x[$7E:FC19] A:0004 X:FC00 Y:2212 ;magic defense
+C2/94B4 9F 78 00 7E STA $7E0078,x[$7E:FC78] A:0002 X:FC00 Y:2212 
+C2/94B8 A9 00       LDA #$00                A:0002 X:FC00 Y:2212 
+C2/94BA 9F 71 00 7E STA $7E0071,x[$7E:FC71] A:0000 X:FC00 Y:2212 
+C2/94BE 9F 73 00 7E STA $7E0073,x[$7E:FC73] A:0000 X:FC00 Y:2212 
+C2/94C2 9F 75 00 7E STA $7E0075,x[$7E:FC75] A:0000 X:FC00 Y:2212 
+C2/94C6 9F 77 00 7E STA $7E0077,x[$7E:FC77] A:0000 X:FC00 Y:2212 
+C2/94CA 9F 79 00 7E STA $7E0079,x[$7E:FC79] A:0000 X:FC00 Y:2212 
+C2/94CE 9F 4B 00 7E STA $7E004B,x[$7E:FC4B] A:0000 X:FC00 Y:2212 
+C2/94D2 BF 1F 00 7E LDA $7E001F,x[$7E:FC1F] A:0000 X:FC00 Y:2212 ;ineffective elements
+C2/94D6 9F 4C 00 7E STA $7E004C,x[$7E:FC4C] A:0080 X:FC00 Y:2212 
+C2/94DA BF 20 00 7E LDA $7E0020,x[$7E:FC20] A:0080 X:FC00 Y:2212 ;attack sound approach
+C2/94DE 9F 4D 00 7E STA $7E004D,x[$7E:FC4D] A:0001 X:FC00 Y:2212 
+C2/94E2 BF 21 00 7E LDA $7E0021,x[$7E:FC21] A:0001 X:FC00 Y:2212 ;ineffective ailments
+C2/94E6 9F 4E 00 7E STA $7E004E,x[$7E:FC4E] A:0000 X:FC00 Y:2212 
+C2/94EA A9 00       LDA #$00                A:0000 X:FC00 Y:2212 
+C2/94EC 9F 4F 00 7E STA $7E004F,x[$7E:FC4F] A:0000 X:FC00 Y:2212 
+C2/94F0 60          RTS                     A:0000 X:FC00 Y:2212 ;end
+
+=================================================================
+
+subtract FP cost from current FP
+
+C2/AE6F A5 A2       LDA $A2    [$00:00A2]   A:4606 X:00A2 Y:033E ;load FP cost and targetting
+C2/AE71 AA          TAX                     A:4606 X:00A2 Y:033E 
+C2/AE72 EB          XBA                     A:4606 X:4606 Y:033E 
+C2/AE73 29 FF 00    AND #$00FF              A:0646 X:4606 Y:033E ;isolate targetting byte
+C2/AE76 85 A4       STA $A4    [$00:00A4]   A:0046 X:4606 Y:033E ;store as targetting
+C2/AE78 8A          TXA                     A:0046 X:4606 Y:033E 
+C2/AE79 29 FF 00    AND #$00FF              A:4606 X:4606 Y:033E ;isolate FP cost byte
+C2/AE7C 85 A2       STA $A2    [$00:00A2]   A:0006 X:4606 Y:033E ;store as FP cost
+C2/AE7E A6 54       LDX $54    [$00:0054]   A:0006 X:4606 Y:033E ;load monster slot
+C2/AE80 BF 1A 00 7E LDA $7E001A,x[$7E:FC1A] A:0006 X:FC00 Y:033E ;load current FP
+C2/AE84 29 FF 00    AND #$00FF              A:00FA X:FC00 Y:033E ;isolate
+C2/AE87 38          SEC                     A:00FA X:FC00 Y:033E 
+C2/AE88 E5 A2       SBC $A2    [$00:00A2]   A:00FA X:FC00 Y:033E ;subtract spell's FP cost
+C2/AE8A 10 0D       BPL $0D    [$AE99]      A:00F4 X:FC00 Y:033E ;branch if > 0
+
+C2/AE99 85 A2       STA $A2    [$00:00A2]   A:00F4 X:FC00 Y:033E ;store as FP modification
+C2/AE9B BF 1A 00 7E LDA $7E001A,x[$7E:FC1A] A:00F4 X:FC00 Y:033E ;load current FP
+C2/AE9F 29 00 FF    AND #$FF00              A:00FA X:FC00 Y:033E 
+C2/AEA2 05 A2       ORA $A2    [$00:00A2]   A:0000 X:FC00 Y:033E ;set FP modification bits
+C2/AEA4 9F 1A 00 7E STA $7E001A,x[$7E:FC1A] A:00F4 X:FC00 Y:033E ;store as current FP
+C2/AEA8 BF 40 00 7E LDA $7E0040,x[$7E:FC40] A:00F4 X:FC00 Y:033E 
+C2/AEAC 89 01 00    BIT #$0001              A:0200 X:FC00 Y:033E 
+C2/AEAF F0 08       BEQ $08    [$AEB9]      A:0200 X:FC00 Y:033E 
+C2/AEB9 60          RTS                     A:0200 X:FC00 Y:033E 
+
+=================================================================
+
+C2/B2FE E2 20       SEP #$20                A:0062 X:FB80 Y:0730 
+C2/B300 C5 DA       CMP $DA    [$00:00DA]   A:0062 X:FB80 Y:0730 ;compare generated number to Hit %
+C2/B302 30 03       BMI $03    [$B307]      A:0062 X:FB80 Y:0730 ;branch if in hit range
+C2/B304 A9 00       LDA #$00                A:0062 X:FB80 Y:0730 ;set 'miss' flag
+C2/B306 60          RTS                     A:0000 X:FB80 Y:0730 
+
+Therapy
+
+C2/B452 AF 12 00 FA LDA $FA0012[$FA:0012]   A:0006 X:0006 Y:00E0 
+C2/B456 85 DC       STA $DC    [$00:00DC]   A:20F1 X:0006 Y:00E0 
+C2/B458 A9 FA 00    LDA #$00FA              A:20F1 X:0006 Y:00E0 
+C2/B45B 85 DE       STA $DE    [$00:00DE]   A:00FA X:0006 Y:00E0 
+C2/B45D A5 D0       LDA $D0    [$00:00D0]   A:00FA X:0006 Y:00E0 
+C2/B45F 0A          ASL A                   A:0006 X:0006 Y:00E0 
+C2/B460 0A          ASL A                   A:000C X:0006 Y:00E0 
+C2/B461 85 DA       STA $DA    [$00:00DA]   A:0018 X:0006 Y:00E0 
+C2/B463 0A          ASL A                   A:0018 X:0006 Y:00E0 
+C2/B464 18          CLC                     A:0030 X:0006 Y:00E0 
+C2/B465 65 DA       ADC $DA    [$00:00DA]   A:0030 X:0006 Y:00E0 
+C2/B467 BB          TYX                     A:0048 X:0006 Y:00E0 
+C2/B468 A8          TAY                     A:0048 X:00E0 Y:00E0 
+C2/B469 B7 DC       LDA [$DC],y[$FA:2139]   A:0048 X:00E0 Y:0048 
+C2/B46B 95 00       STA $00,x  [$00:00E0]   A:0582 X:00E0 Y:0048 
+C2/B46D C8          INY                     A:0582 X:00E0 Y:0048 
+C2/B46E C8          INY                     A:0582 X:00E0 Y:0049 
+C2/B46F B7 DC       LDA [$DC],y[$FA:213B]   A:0582 X:00E0 Y:004A 
+C2/B471 95 02       STA $02,x  [$00:00E2]   A:4202 X:00E0 Y:004A 
+C2/B473 C8          INY                     A:4202 X:00E0 Y:004A 
+C2/B474 C8          INY                     A:4202 X:00E0 Y:004B 
+C2/B475 B7 DC       LDA [$DC],y[$FA:213D]   A:4202 X:00E0 Y:004C 
+C2/B477 95 04       STA $04,x  [$00:00E4]   A:2800 X:00E0 Y:004C 
+C2/B479 C8          INY                     A:2800 X:00E0 Y:004C 
+C2/B47A C8          INY                     A:2800 X:00E0 Y:004D 
+C2/B47B B7 DC       LDA [$DC],y[$FA:213F]   A:2800 X:00E0 Y:004E 
+C2/B47D 95 06       STA $06,x  [$00:00E6]   A:7F64 X:00E0 Y:004E 
+C2/B47F C8          INY                     A:7F64 X:00E0 Y:004E 
+C2/B480 C8          INY                     A:7F64 X:00E0 Y:004F 
+C2/B481 B7 DC       LDA [$DC],y[$FA:2141]   A:7F64 X:00E0 Y:0050 
+C2/B483 95 08       STA $08,x  [$00:00E8]   A:0000 X:00E0 Y:0050 
+C2/B485 C8          INY                     A:0000 X:00E0 Y:0050 
+C2/B486 C8          INY                     A:0000 X:00E0 Y:0051 
+C2/B487 B7 DC       LDA [$DC],y[$FA:2143]   A:0000 X:00E0 Y:0052 
+C2/B489 95 0A       STA $0A,x  [$00:00EA]   A:00FF X:00E0 Y:0052 
+C2/B48B 28          PLP                     A:00FF X:00E0 Y:0052 
+C2/B48C 60          RTS                     A:00FF X:00E0 Y:0052 
+
+----------------------------------------------------------------
+Special Attacks: test attack flag bits
+
+C2/BD69 A5 E0       LDA $E0    [$00:00E0]   A:0020 X:00E0 Y:00AE ;load attack flag
+C2/BD6B 0A          ASL A                   A:0070 X:00E0 Y:00AE 
+C2/BD6C 29 C0       AND #$C0                A:00E0 X:00E0 Y:00AE 
+C2/BD6E 05 F8       ORA $F8    [$00:00F8]   A:00C0 X:00E0 Y:00AE ;set attack type (magic, physical, etc)
+C2/BD70 85 F8       STA $F8    [$00:00F8]   A:00C1 X:00E0 Y:00AE 
+C2/BD72 A5 E0       LDA $E0    [$00:00E0]   A:00C1 X:00E0 Y:00AE ;load attack flag
+C2/BD74 89 10       BIT #$10                A:0070 X:00E0 Y:00AE ;check no damage bit
+C2/BD76 F0 04       BEQ $04    [$BD7C]      A:0070 X:00E0 Y:00AE ;branch if not set
+
+C2/BD78 A9 01       LDA #$01                A:0070 X:00E0 Y:00AE 
+C2/BD7A 14 F8       TRB $F8    [$00:00F8]   A:0001 X:00E0 Y:00AE ;clear damage bit of attack type
+
+C2/BD7C A5 E0       LDA $E0    [$00:00E0]   A:0001 X:00E0 Y:00AE ;load attack flag
+C2/BD7E 89 08       BIT #$08                A:0070 X:00E0 Y:00AE ;check 9999 damage bit
+C2/BD80 F0 06       BEQ $06    [$BD88]      A:0070 X:00E0 Y:00AE ;branch if not set
+
+C2/BD82 A9 20       LDA #$20                A:0008 X:00E0 Y:00AE 
+C2/BD84 04 F8       TSB $F8                 A:0020 X:00E0 Y:00AE ;set 9999 damage bit
+C2/BD86 04 F9       TSB $F9                 A:0020 X:00E0 Y:00AE 
+
+C2/BD88 A5 E1       LDA $E1    [$00:00E1]   A:0070 X:00E0 Y:00AE ;load hit %
+C2/BD8A 85 FA       STA $FA    [$00:00FA]   A:005A X:00E0 Y:00AE 
+C2/BD8C A5 E0       LDA $E0    [$00:00E0]   A:005A X:00E0 Y:00AE ;load attack flag
+C2/BD8E 29 07       AND #$07                A:0070 X:00E0 Y:00AE ;isolate attack level bits
+C2/BD90 85 FB       STA $FB    [$00:00FB]   A:0000 X:00E0 Y:00AE 
+C2/BD92 64 FD       STZ $FD    [$00:00FD]   A:0000 X:00E0 Y:00AE 
+C2/BD94 A4 E2       LDY $E2    [$00:00E2]   A:0000 X:00E0 Y:00AE 
+C2/BD96 84 FE       STY $FE    [$00:00FE]   A:0000 X:00E0 Y:0020 
+C2/BD98 F0 04       BEQ $04    [$BD9E]      A:0000 X:00E0 Y:0020 
+C2/BD9A A9 02       LDA #$02                A:0000 X:00E0 Y:0020 
+C2/BD9C 04 F9       TSB $F9    [$00:00F9]   A:0002 X:00E0 Y:0020 
+C2/BD9E 60          RTS                     A:0002 X:00E0 Y:0020 
+
+----------------------------------------------------------------
+
+
+C2/BDC2 A5 E0       LDA $E0    [$00:00E0]   A:00FF X:00E0 Y:0052 
+C2/BDC4 29 23       AND #$23                A:0082 X:00E0 Y:0052 
+C2/BDC6 85 F8       STA $F8    [$00:00F8]   A:0002 X:00E0 Y:0052 
+C2/BDC8 A5 EB       LDA $EB    [$00:00EB]   A:0002 X:00E0 Y:0052 
+C2/BDCA 89 04       BIT #$04                A:0000 X:00E0 Y:0052 
+C2/BDCC F0 04       BEQ $04    [$BDD2]      A:0000 X:00E0 Y:0052 
+
+C2/BDD2 A5 E1       LDA $E1    [$00:00E1]   A:0000 X:00E0 Y:0052 
+C2/BDD4 29 1F       AND #$1F                A:0005 X:00E0 Y:0052 
+C2/BDD6 09 80       ORA #$80                A:0005 X:00E0 Y:0052 
+C2/BDD8 85 F9       STA $F9    [$00:00F9]   A:0085 X:00E0 Y:0052 
+C2/BDDA A5 E6       LDA $E6    [$00:00E6]   A:0085 X:00E0 Y:0052 
+C2/BDDC 85 FA       STA $FA    [$00:00FA]   A:0064 X:00E0 Y:0052 
+C2/BDDE A5 E5       LDA $E5    [$00:00E5]   A:0064 X:00E0 Y:0052 
+C2/BDE0 85 FB       STA $FB    [$00:00FB]   A:0028 X:00E0 Y:0052 
+C2/BDE2 A5 E4       LDA $E4    [$00:00E4]   A:0028 X:00E0 Y:0052 
+C2/BDE4 85 FD       STA $FD    [$00:00FD]   A:0000 X:00E0 Y:0052 
+C2/BDE6 A5 E7       LDA $E7    [$00:00E7]   A:0000 X:00E0 Y:0052 
+C2/BDE8 29 EF       AND #$EF                A:007F X:00E0 Y:0052 
+C2/BDEA 85 FE       STA $FE    [$00:00FE]   A:006F X:00E0 Y:0052 
+C2/BDEC A5 E8       LDA $E8    [$00:00E8]   A:006F X:00E0 Y:0052 
+C2/BDEE 29 78       AND #$78                A:0000 X:00E0 Y:0052 
+C2/BDF0 85 FF       STA $FF    [$00:00FF]   A:0000 X:00E0 Y:0052 
+C2/BDF2 A5 EA       LDA $EA    [$00:00EA]   A:0000 X:00E0 Y:0052 
+C2/BDF4 85 CC       STA $CC    [$00:00CC]   A:00FF X:00E0 Y:0052 
+C2/BDF6 60          RTS                     A:00FF X:00E0 Y:0052 
+
+=================================================================
+
+C2/BE09 AE 2C 07    LDX $072C  [$00:072C]   A:04FF X:00E0 Y:0A78 
+C2/BE0C A5 E0       LDA $E0    [$00:00E0]   A:04FF X:0004 Y:0A78 
+C2/BE0E 89 20       BIT #$20                A:042B X:0004 Y:0A78 ;check reuseable bit
+C2/BE10 D0 06       BNE $06    [$BE18]      A:042B X:0004 Y:0A78 ;branch if set
+
+C2/BE12 A9 FF       LDA #$FF                A:042B X:0004 Y:0A78 ;load empty value
+C2/BE14 9F 82 F8 7F STA $7FF882,x[$7F:F886] A:042B X:0004 Y:0A78 ;store to item byte
+
+C2/BE18 A5 CD       LDA $CD    [$00:00CD]   A:042B X:0004 Y:0A78 
+C2/BE1A 8D 2C 07    STA $072C  [$00:072C]   A:0494 X:0004 Y:0A78 
+C2/BE1D 9C 2D 07    STZ $072D  [$00:072D]   A:0494 X:0004 Y:0A78 
+C2/BE20 A9 06       LDA #$06                A:0494 X:0004 Y:0A78 
+C2/BE22 85 F8       STA $F8    [$00:00F8]   A:0406 X:0004 Y:0A78 
+C2/BE24 A5 F1       LDA $F1    [$00:00F1]   A:0406 X:0004 Y:0A78 
+C2/BE26 89 04       BIT #$04                A:0404 X:0004 Y:0A78 
+C2/BE28 F0 04       BEQ $04    [$BE2E]      A:0404 X:0004 Y:0A78 
+C2/BE2A A9 40       LDA #$40                A:0404 X:0004 Y:0A78 
+C2/BE2C 04 F8       TSB $F8    [$00:00F8]   A:0440 X:0004 Y:0A78 
+C2/BE2E A5 E1       LDA $E1    [$00:00E1]   A:0440 X:0004 Y:0A78 
+C2/BE30 29 06       AND #$06                A:0400 X:0004 Y:0A78 
+C2/BE32 09 80       ORA #$80                A:0400 X:0004 Y:0A78 
+C2/BE34 85 F9       STA $F9    [$00:00F9]   A:0480 X:0004 Y:0A78 
+C2/BE36 A9 64       LDA #$64                A:0480 X:0004 Y:0A78 
+C2/BE38 85 FA       STA $FA    [$00:00FA]   A:0464 X:0004 Y:0A78 
+C2/BE3A A5 EF       LDA $EF    [$00:00EF]   A:0464 X:0004 Y:0A78 
+C2/BE3C 85 FB       STA $FB    [$00:00FB]   A:0400 X:0004 Y:0A78 
+C2/BE3E A5 E4       LDA $E4    [$00:00E4]   A:0400 X:0004 Y:0A78 
+C2/BE40 85 FD       STA $FD    [$00:00FD]   A:0400 X:0004 Y:0A78 
+C2/BE42 A5 E7       LDA $E7    [$00:00E7]   A:0400 X:0004 Y:0A78 
+C2/BE44 29 EF       AND #$EF                A:0400 X:0004 Y:0A78 
+C2/BE46 85 FE       STA $FE    [$00:00FE]   A:0400 X:0004 Y:0A78 
+C2/BE48 A5 E8       LDA $E8    [$00:00E8]   A:0400 X:0004 Y:0A78 
+C2/BE4A 29 78       AND #$78                A:0400 X:0004 Y:0A78 
+C2/BE4C 85 FF       STA $FF    [$00:00FF]   A:0400 X:0004 Y:0A78 
+C2/BE4E A5 F0       LDA $F0    [$00:00F0]   A:0400 X:0004 Y:0A78 
+C2/BE50 85 CC       STA $CC    [$00:00CC]   A:04FF X:0004 Y:0A78 
+C2/BE52 60          RTS                     A:04FF X:0004 Y:0A78 
+
+=================================================================
+
+C2/BE65 85 CE       STA $CE    [$00:00CE]   A:0001 X:FA80 Y:0730 
+C2/BE67 BF 44 00 7E LDA $7E0044,x[$7E:FAC4] A:0001 X:FA80 Y:0730 
+C2/BE6B 29 3F       AND #$3F                A:0000 X:FA80 Y:0730 
+C2/BE6D 9F 44 00 7E STA $7E0044,x[$7E:FAC4] A:0000 X:FA80 Y:0730 
+C2/BE71 A9 00       LDA #$00                A:0000 X:FA80 Y:0730 
+C2/BE73 9F 45 00 7E STA $7E0045,x[$7E:FAC5] A:0000 X:FA80 Y:0730 
+C2/BE77 9F 46 00 7E STA $7E0046,x[$7E:FAC6] A:0000 X:FA80 Y:0730 
+C2/BE7B A5 F8       LDA $F8    [$00:00F8]   A:0000 X:FA80 Y:0730 
+C2/BE7D 89 40       BIT #$40                A:0040 X:FA80 Y:0730 
+C2/BE7F F0 0A       BEQ $0A    [$BE8B]      A:0040 X:FA80 Y:0730 
+
+C2/BE81 BF 44 00 7E LDA $7E0044,x[$7E:FAC4] A:0040 X:FA80 Y:0730 
+C2/BE85 09 40       ORA #$40                A:0000 X:FA80 Y:0730 
+C2/BE87 9F 44 00 7E STA $7E0044,x[$7E:FAC4] A:0040 X:FA80 Y:0730 
+C2/BE8B 20 9E C1    JSR $C19E  [$C2:C19E]   A:0040 X:FA80 Y:0730 
+
+----------------------------------------------------------------
+check if monster dead
+
+C2/BEDE A4 C0       LDY $C0    [$00:00C0]   A:0000 X:FC00 Y:0730 ;load current HP
+C2/BEE0 D0 1A       BNE $1A    [$BEFC]      A:0000 X:FC00 Y:0000 ;branch if not 0
+C2/BEE2 A5 CE       LDA $CE    [$00:00CE]   A:0000 X:FC00 Y:0000 
+C2/BEE4 D0 0A       BNE $0A    [$BEF0]      A:0000 X:FC00 Y:0000 
+C2/BEE6 A6 CA       LDX $CA    [$00:00CA]   A:0000 X:FC00 Y:0000 
+C2/BEE8 BF 1D 00 7E LDA $7E001D,x[$7E:FC1D] A:0000 X:FC00 Y:0000 ;load special attribute
+C2/BEEC 89 01       BIT #$01                A:0000 X:FC00 Y:0000 ;check hold bit (do not remove if HP < 0)
+C2/BEEE D0 0C       BNE $0C    [$BEFC]      A:0000 X:FC00 Y:0000 ;branch if set
+C2/BEF0 20 C8 C5    JSR $C5C8  [$C2:C5C8]   A:0000 X:FC00 Y:0000 
+
+check if all monsters dead; if all dead, do not load flower bonus
+
+C2/BEF3 A5 F9       LDA $F9    [$00:00F9]   A:0003 X:0010 Y:000E ;load all mortal statuses
+C2/BEF5 89 40       BIT #$40                A:0040 X:0010 Y:000E ;check death bit
+C2/BEF7 F0 03       BEQ $03    [$BEFC]      A:0040 X:0010 Y:000E ;branch if not set
+C2/BEF9 20 A6 C6    JSR $C6A6  [$C2:C6A6]   A:0040 X:0010 Y:000E ;load flower bonus
+
+=================================================================
+
+C2/C19E A6 CA       LDX $CA    [$00:00CA]   A:0001 X:FC80 Y:0730 
+C2/C1A0 A5 FA       LDA $FA    [$00:00FA]   A:0001 X:FC80 Y:0730 ;load Hit %
+C2/C1A2 C9 64       CMP #$64                A:0063 X:FC80 Y:0730 ;check if 100%
+C2/C1A4 D0 03       BNE $03    [$C1A9]      A:0063 X:FC80 Y:0730 ;branch if not 100%
+
+C2/C1A6 A9 01       LDA #$01
+C2/C1A8 60          RTS
+
+C2/C1A9 A5 F8       LDA $F8    [$00:00F8]   A:0063 X:FC80 Y:0730 ;load attack type
+C2/C1AB 89 20       BIT #$20                A:0001 X:FC80 Y:0730 ;check morph bit
+C2/C1AD F0 0B       BEQ $0B    [$C1BA]      A:0001 X:FC80 Y:0730 ;branch if not set
+
+C2/C1AF BF 41 00 7E LDA $7E0041,x[$7E:FCC1] A:0001 X:FC80 Y:0730 ;load special defense
+C2/C1B3 89 02       BIT #$02                A:0000 X:FC80 Y:0730 ;check death protection bit
+C2/C1B5 F0 03       BEQ $03    [$C1BA]      A:0000 X:FC80 Y:0730 ;branch if not set
+
+C2/C1B7 A9 00       LDA #$00                A:0000 X:FC80 Y:0730 
+C2/C1B9 60          RTS                     A:0000 X:FC80 Y:0730 
+
+C2/C1BA A5 CE       LDA $CE    [$00:00CE]   A:0001 X:FC80 Y:0730 
+C2/C1BC D0 2A       BNE $2A    [$C1E8]      A:0000 X:FC80 Y:0730 
+C2/C1BE A5 F8       LDA $F8    [$00:00F8]   A:0000 X:FC80 Y:0730 
+C2/C1C0 89 01       BIT #$01                A:0001 X:FC80 Y:0730 ;
+C2/C1C2 F0 06       BEQ $06    [$C1CA]      A:0001 X:FC80 Y:0730 ;branch if not set
+
+C2/C1C4 BF 1B 00 7E LDA $7E001B,x[$7E:FC9B] A:0001 X:FC80 Y:0730 ;load Evade %
+C2/C1C8 80 04       BRA $04    [$C1CE]      A:0000 X:FC80 Y:0730
+ 
+C2/C1CA BF 1C 00 7E LDA $7E001C,x[$7E:FC9C] A:0000 X:FC80 Y:0730 ;load Magic Evade %
+
+C2/C1CE 85 DA       STA $DA    [$00:00DA]   A:0000 X:FC80 Y:0730 
+C2/C1D0 A9 63       LDA #$63                A:0000 X:FC80 Y:0730 
+C2/C1D2 85 DB       STA $DB    [$00:00DB]   A:0063 X:FC80 Y:0730 
+C2/C1D4 20 F2 B2    JSR $B2F2  [$C2:B2F2]   A:0063 X:FC80 Y:0730 
+=================================================================
+
+damage modifier; base damage starts with attacker's attack power
+
+C2/C266 85 D8       STA $D8    [$00:00D8]   A:003A X:FB80 Y:0730 
+C2/C268 64 D7       STZ $D7    [$00:00D7]   A:003A X:FB80 Y:0730 
+C2/C26A 64 D9       STZ $D9    [$00:00D9]   A:003A X:FB80 Y:0730 
+
+C2/C26C C2 20       REP #$20                A:003A X:FB80 Y:0730 
+C2/C26E A5 C2       LDA $C2    [$00:00C2]   A:003A X:FB80 Y:0730 ;load base damage (attack power)
+C2/C270 38          SEC                     A:013D X:FB80 Y:0730 
+C2/C271 E5 D6       SBC $D6    [$00:00D6]   A:013D X:FB80 Y:0730 ;subtract attack range value
+C2/C273 10 03       BPL $03    [$C278]      A:0115 X:FB80 Y:0730 ;branch if greater than 0
+
+C2/C278 18          CLC                     A:0115 X:FB80 Y:0730 
+C2/C279 65 D8       ADC $D8    [$00:00D8]   A:0115 X:FB80 Y:0730 ;add RNG number from attack range (00 - AR*2)
+C2/C27B 85 C2       STA $C2    [$00:00C2]   A:014F X:FB80 Y:0730 ;store as current damage
+
+C2/C27D E2 20       SEP #$20                A:014F X:FB80 Y:0730 
+C2/C27F C2 20       REP #$20                A:014F X:FB80 Y:0730 
+C2/C281 A5 C2       LDA $C2    [$00:00C2]   A:014F X:FB80 Y:0730 ;load current damage
+C2/C283 F0 0C       BEQ $0C    [$C291]      A:014F X:FB80 Y:0730 ;branch if at 0
+C2/C285 38          SEC                     A:014F X:FB80 Y:0730 
+C2/C286 E5 C4       SBC $C4    [$00:00C4]   A:014F X:FB80 Y:0730 ;subtract monster's DEF power
+C2/C288 F0 02       BEQ $02    [$C28C]      A:00CD X:FB80 Y:0730 ;branch if at 0
+C2/C28A 10 03       BPL $03    [$C28F]      A:00CD X:FB80 Y:0730 ;branch if greater than 0
+
+C2/C28F 85 C2       STA $C2    [$00:00C2]   A:00CD X:FB80 Y:0730 ;store as current damage
+C2/C291 E2 20       SEP #$20                A:00CD X:FB80 Y:0730 
+C2/C293 20 08 C3    JSR $C308  [$C2:C308]   A:00CD X:FB80 Y:0730 
+
+=================================================================
+
+C2/C55E C2 20       REP #$20                A:2740 X:FC00 Y:0730 
+C2/C560 A6 CA       LDX $CA    [$00:00CA]   A:2740 X:FC00 Y:0730 
+C2/C562 A5 F9       LDA $F9    [$00:00F9]   A:2740 X:FC00 Y:0730 
+C2/C564 89 01 00    BIT #$0001              A:6340 X:FC00 Y:0730 
+C2/C567 D0 1A       BNE $1A    [$C583]      A:6340 X:FC00 Y:0730 
+C2/C569 BF 11 00 7E LDA $7E0011,x[$7E:FC11] A:6340 X:FC00 Y:0730 ;load monster's current HP
+C2/C56D 9F 35 00 7E STA $7E0035,x[$7E:FC35] A:0320 X:FC00 Y:0730 
+C2/C571 38          SEC                     A:0320 X:FC00 Y:0730 
+C2/C572 E5 C2       SBC $C2    [$00:00C2]   A:0320 X:FC00 Y:0730 ;subtract final damage
+C2/C574 10 03       BPL $03    [$C579]      A:0253 X:FC00 Y:0730 ;branch if > 0
+
+C2/C579 9F 11 00 7E STA $7E0011,x[$7E:FC11] A:0253 X:FC00 Y:0730 ;store as current HP
+C2/C57D 85 C0       STA $C0    [$00:00C0]   A:0253 X:FC00 Y:0730 
+C2/C57F A5 C2       LDA $C2    [$00:00C2]   A:0253 X:FC00 Y:0730 ;load final damage
+C2/C581 80 23       BRA $23    [$C5A6]      A:00CD X:FC00 Y:0730 
+
+C2/C5A6 9F 45 00 7E STA $7E0045,x[$7E:FC45] A:00CD X:FC00 Y:0730 ;store as damage digits to show
+C2/C5AA A5 CE       LDA $CE    [$00:00CE]   A:00CD X:FC00 Y:0730 
+C2/C5AC 89 FF 00    BIT #$00FF              A:0100 X:FC00 Y:0730 ;check byte 2
+C2/C5AF D0 14       BNE $14    [$C5C5]      A:0100 X:FC00 Y:0730 ;branch if all bits set
+C2/C5B1 A5 C8       LDA $C8    [$00:00C8]   A:0100 X:FC00 Y:0730 
+C2/C5B3 9F 62 00 7E STA $7E0062,x[$7E:FC62] A:FB80 X:FC00 Y:0730 
+C2/C5B7 AD 2A 07    LDA $072A  [$00:072A]   A:FB80 X:FC00 Y:0730 
+C2/C5BA 9F 66 00 7E STA $7E0066,x[$7E:FC66] A:0002 X:FC00 Y:0730 
+C2/C5BE AD 2C 07    LDA $072C  [$00:072C]   A:0002 X:FC00 Y:0730 
+C2/C5C1 9F 68 00 7E STA $7E0068,x[$7E:FC68] A:0000 X:FC00 Y:0730 
+C2/C5C5 E2 20       SEP #$20                A:0000 X:FC00 Y:0730 
+C2/C5C7 60          RTS                     A:0000 X:FC00 Y:0730 
+
+=================================================================
+
+load flower bonus
+
+C2/C6A6 AD 00 07    LDA $0700  [$00:0700]   A:0040 X:0010 Y:000E 
+C2/C6A9 89 22       BIT #$22                A:0000 X:0010 Y:000E 
+C2/C6AB F0 01       BEQ $01    [$C6AE]      A:0000 X:0010 Y:000E 
+C2/C6AE A6 C8       LDX $C8    [$00:00C8]   A:0000 X:0010 Y:000E 
+C2/C6B0 BF 44 00 7E LDA $7E0044,x[$7E:FB44] A:0000 X:FB00 Y:000E 
+C2/C6B4 29 2F       AND #$2F                A:0000 X:FB00 Y:000E ;clear double-turn bit
+C2/C6B6 9F 44 00 7E STA $7E0044,x[$7E:FB44] A:0000 X:FB00 Y:000E 
+C2/C6BA A9 00       LDA #$00                A:0000 X:FB00 Y:000E 
+C2/C6BC EB          XBA                     A:0000 X:FB00 Y:000E 
+C2/C6BD A6 CA       LDX $CA    [$00:00CA]   A:0000 X:FB00 Y:000E 
+C2/C6BF BF 01 00 7E LDA $7E0001,x[$7E:FC01] A:0000 X:FC00 Y:000E ;load current monster byte
+C2/C6C3 A8          TAY                     A:0041 X:FC00 Y:000E ;set as offset pointer
+C2/C6C4 AF 22 00 F9 LDA $F90022[$F9:0022]   A:0041 X:FC00 Y:0041 
+C2/C6C8 85 D4       STA $D4    [$00:00D4]   A:0044 X:FC00 Y:0041 
+C2/C6CA AF 23 00 F9 LDA $F90023[$F9:0023]   A:0044 X:FC00 Y:0041 
+C2/C6CE 85 D5       STA $D5    [$00:00D5]   A:00BB X:FC00 Y:0041 
+C2/C6D0 A2 F9 00    LDX #$00F9              A:00BB X:FC00 Y:0041 
+C2/C6D3 86 D6       STX $D6    [$00:00D6]   A:00BB X:00F9 Y:0041 
+C2/C6D5 B7 D4       LDA [$D4],y[$F9:BB85]   A:00BB X:00F9 Y:0041 ;load flower bonus
+C2/C6D7 85 D4       STA $D4    [$00:00D4]   A:0054 X:00F9 Y:0041 
+C2/C6D9 64 D5       STZ $D5    [$00:00D5]   A:0054 X:00F9 Y:0041 
+C2/C6DB A5 D4       LDA $D4    [$00:00D4]   A:0054 X:00F9 Y:0041 
+C2/C6DD 29 F0       AND #$F0                A:0054 X:00F9 Y:0041 ;isolate odds
+C2/C6DF 4A          LSR A                   A:0050 X:00F9 Y:0041 ;move to lower nibble
+C2/C6E0 4A          LSR A                   A:0028 X:00F9 Y:0041 
+C2/C6E1 4A          LSR A                   A:0014 X:00F9 Y:0041 
+C2/C6E2 4A          LSR A                   A:000A X:00F9 Y:0041 
+C2/C6E3 AA          TAX                     A:0005 X:00F9 Y:0041 
+C2/C6E4 BF 6E C7 C2 LDA $C2C76E,x[$C2:C773] A:0005 X:0005 Y:0041 
+C2/C6E8 F0 0B       BEQ $0B    [$C6F5]      A:0032 X:0005 Y:0041 
+C2/C6EA 85 DA       STA $DA    [$00:00DA]   A:0032 X:0005 Y:0041 
+C2/C6EC A9 64       LDA #$64                A:0032 X:0005 Y:0041 
+C2/C6EE 85 DB       STA $DB    [$00:00DB]   A:0064 X:0005 Y:0041 
+C2/C6F0 20 F2 B2    JSR $B2F2  [$C2:B2F2]   A:0064 X:0005 Y:0041 ;generate random number
+
+C2/C6F3 D0 0D       BNE $0D    [$C702]      A:0001 X:0005 Y:0041 ;branch if generated number not 0
+
+C2/C702 A6 C8       LDX $C8    [$00:00C8]   A:0001 X:0005 Y:0041 
+C2/C704 BF 44 00 7E LDA $7E0044,x[$7E:FB44] A:0001 X:FB00 Y:0041 
+C2/C708 09 20       ORA #$20                A:0000 X:FB00 Y:0041 
+C2/C70A 9F 44 00 7E STA $7E0044,x[$7E:FB44] A:0020 X:FB00 Y:0041 
+C2/C70E 9B          TXY                     A:0020 X:FB00 Y:0041 
+C2/C70F A6 CA       LDX $CA    [$00:00CA]   A:0020 X:FB00 Y:FB00 
+C2/C711 A9 00       LDA #$00                A:0020 X:FC00 Y:FB00 
+C2/C713 EB          XBA                     A:0000 X:FC00 Y:FB00 
+C2/C714 A5 D4       LDA $D4    [$00:00D4]   A:0000 X:FC00 Y:FB00 ;load flower bonus
+C2/C716 29 0F       AND #$0F                A:0054 X:FC00 Y:FB00 ;isolate flower type
+C2/C718 9F 2D 00 7E STA $7E002D,x[$7E:FC2D] A:0004 X:FC00 Y:FB00 ;store flower type
+C2/C71C 0A          ASL A                   A:0004 X:FC00 Y:FB00 
+C2/C71D AA          TAX                     A:0008 X:FC00 Y:FB00 
+C2/C71E 7C 21 C7    JMP ($C721,x)[$C2:C75B] A:0008 X:0008 Y:FB00 ;jump to flower type's function
+
+flower bonus function pointers
+
+C2/C721 2D C7       ...
+C2/C723 2E C7       Attack Up
+C2/C725 3A C7       Defense Up
+C2/C727 46 C7       HP Max
+C2/C729 5B C7       Once Again
+C2/C72B 67 C7       Lucky
+
+Once Again
+
+C2/C75B BB          TYX                     A:0008 X:0008 Y:FB00 
+C2/C75C BF 44 00 7E LDA $7E0044,x[$7E:FB44] A:0008 X:FB00 Y:FB00 ;load turn
+C2/C760 09 10       ORA #$10                A:0020 X:FB00 Y:FB00 ;set bit for double-turn
+C2/C762 9F 44 00 7E STA $7E0044,x[$7E:FB44] A:0030 X:FB00 Y:FB00 
+C2/C766 60          RTS                     A:0030 X:FB00 Y:FB00 ;end
+
+-----------------------------------------------------------------
+check status ailments (this example uses slot 2)
+
+C2/C780 85 CE       STA $CE    [$00:00CE]   A:0001 X:FB00 Y:2580 
+C2/C782 BF 00 00 7E LDA $7E0000,x[$7E:FB00] A:0001 X:FB00 Y:2580 
+C2/C786 30 0D       BMI $0D    [$C795]      A:0000 X:FB00 Y:2580 
+C2/C788 BF 41 00 7E LDA $7E0041,x[$7E:FB41] A:0000 X:FB00 Y:2580 
+C2/C78C 29 FB       AND #$FB                A:0000 X:FB00 Y:2580 
+C2/C78E 9F 41 00 7E STA $7E0041,x[$7E:FB41] A:0000 X:FB00 Y:2580 
+C2/C792 20 98 C7    JSR $C798  [$C2:C798]   A:0000 X:FB00 Y:2580 
+
+C2/C798 BF 40 00 7E LDA $7E0040,x[$7E:FB40] A:0000 X:FB00 Y:2580 ;load status ailment
+C2/C79C D0 0E       BNE $0E    [$C7AC]      A:0020 X:FB00 Y:2580 ;branch if there is an ailment set
+
+C2/C7AC BF 43 00 7E LDA $7E0043,x[$7E:FB43] A:0020 X:FB00 Y:2580 
+C2/C7B0 3A          DEC A                   A:0003 X:FB00 Y:2580 
+C2/C7B1 9F 43 00 7E STA $7E0043,x[$7E:FB43] A:0002 X:FB00 Y:2580 
+C2/C7B5 10 12       BPL $12    [$C7C9]      A:0002 X:FB00 Y:2580 ;branch if greater than 0
+
+C2/C7C9 BF 40 00 7E LDA $7E0040,x[$7E:FB40] A:0002 X:FB00 Y:2580 
+C2/C7CD 89 8C       BIT #$8C                A:0020 X:FB00 Y:2580 ;check if Poison, Fear, Invincible bit set
+C2/C7CF F0 0F       BEQ $0F    [$C7E0]      A:0020 X:FB00 Y:2580 ;branch if not set
+
+C2/C7E0 89 40       BIT #$40                A:0020 X:FB00 Y:2580 ;check if Scarecrow bit set
+C2/C7E2 F0 0E       BEQ $0E    [$C7F2]      A:0020 X:FB00 Y:2580 ;branch if not set
+
+C2/C7F2 89 22       BIT #$22                A:0020 X:FB00 Y:2580 ;check if Sleep, Mushroom bit set
+C2/C7F4 F0 02       BEQ $02    [$C7F8]      A:0020 X:FB00 Y:2580 ;branch if not set
+C2/C7F6 80 12       BRA $12    [$C80A]      A:0020 X:FB00 Y:2580 ;always branch
+
+C2/C80A BF 40 00 7E LDA $7E0040,x[$7E:FB40] A:0020 X:FB00 Y:2580 ;load status ailment
+C2/C80E 89 24       BIT #$24                A:0020 X:FB00 Y:2580 ;check if Mushroom, Poison bit set
+C2/C810 D0 01       BNE $01    [$C813]      A:0020 X:FB00 Y:2580 ;branch if set
+C2/C813 BF 11 00 7E LDA $7E0011,x[$7E:FB11] A:0020 X:FB00 Y:2580 ;load current HP
+C2/C817 85 E0       STA $E0    [$00:00E0]   A:00D1 X:FB00 Y:2580 
+C2/C819 BF 12 00 7E LDA $7E0012,x[$7E:FB12] A:00D1 X:FB00 Y:2580 ;load maximum HP
+C2/C81D 85 E1       STA $E1    [$00:00E1]   A:0000 X:FB00 Y:2580 
+C2/C81F A4 E0       LDY $E0    [$00:00E0]   A:0000 X:FB00 Y:2580 
+C2/C821 8C 04 42    STY $4204  [$00:4204]   A:0000 X:FB00 Y:00D1 ;set max HP as dividend
+C2/C824 A9 0A       LDA #$0A                A:0000 X:FB00 Y:00D1 ;load constant 10
+C2/C826 8D 06 42    STA $4206  [$00:4206]   A:000A X:FB00 Y:00D1 ;set 10 as divisor
+C2/C829 20 C9 B3    JSR $B3C9  [$C2:B3C9]   A:000A X:FB00 Y:00D1 
+
+C2/B3C9 60          RTS                     A:000A X:FB00 Y:00D1 
+
+C2/C82C 20 C9 B3    JSR $B3C9  [$C2:B3C9]   A:000A X:FB00 Y:00D1 
+
+C2/B3C9 60          RTS                     A:000A X:FB00 Y:00D1 
+
+regenerate HP
+-------------
+C2/C82F AC 14 42    LDY $4214  [$00:4214]   A:000A X:FB00 Y:00D1 ;load quotient (max HP / 10)
+C2/C832 D0 03       BNE $03    [$C837]      A:000A X:FB00 Y:0014 ;branch if not 0
+
+C2/C834 A0 01 00    LDY #$0001					  ;load 1 as regeneration amount
+
+C2/C837 84 E2       STY $E2    [$00:00E2]   A:000A X:FB00 Y:0014 ;store quotient for regeneration amount
+C2/C839 BF 40 00 7E LDA $7E0040,x[$7E:FB40] A:000A X:FB00 Y:0014 ;load current ailment
+C2/C83D 89 20       BIT #$20                A:0020 X:FB00 Y:0014 ;check if Mushroom bit set
+C2/C83F D0 03       BNE $03    [$C844]      A:0020 X:FB00 Y:0014 ;branch if set
+
+C2/C841 4C 6F C8    JMP $C86F  [$C2:C86F]			  ;jump to HP degeneration routine
+
+C2/C844 C2 20       REP #$20                A:0020 X:FB00 Y:0014 ;set 16-bit A
+C2/C846 A5 E0       LDA $E0    [$00:00E0]   A:0020 X:FB00 Y:0014 ;load current HP
+C2/C848 18          CLC                     A:00D1 X:FB00 Y:0014 
+C2/C849 65 E2       ADC $E2    [$00:00E2]   A:00D1 X:FB00 Y:0014 ;add regeneration amount to current HP
+C2/C84B DF 13 00 7E CMP $7E0013,x[$7E:FB13] A:00E5 X:FB00 Y:0014 ;compare sum to maximum HP
+C2/C84F 30 04       BMI $04    [$C855]      A:00E5 X:FB00 Y:0014 ;branch if less than maximum HP
+C2/C851 BF 13 00 7E LDA $7E0013,x[$7E:FB13] A:00E5 X:FB00 Y:0014 ;load maximum HP
+C2/C855 9F 11 00 7E STA $7E0011,x[$7E:FB11] A:00D3 X:FB00 Y:0014 ;store to current HP
+C2/C859 A5 E2       LDA $E2    [$00:00E2]   A:00D3 X:FB00 Y:0014 ;load regeneration amount
+C2/C85B 09 00 80    ORA #$8000              A:0014 X:FB00 Y:0014 ;set bit 7 (heal bit)
+C2/C85E 9F 45 00 7E STA $7E0045,x[$7E:FB45] A:8014 X:FB00 Y:0014 ;store as numerals to show
+
+C2/C862 E2 20       SEP #$20                A:8014 X:FB00 Y:0014 
+C2/C864 BF 44 00 7E LDA $7E0044,x[$7E:FB44] A:8014 X:FB00 Y:0014 
+C2/C868 09 80       ORA #$80                A:8007 X:FB00 Y:0014 ;set bit 7
+C2/C86A 9F 44 00 7E STA $7E0044,x[$7E:FB44] A:8087 X:FB00 Y:0014 
+C2/C86E 60          RTS                     A:8087 X:FB00 Y:0014 ;end
+
+degenerate HP (this example uses slot 1)
+-------------
+C2/C86F C2 20       REP #$20                A:0004 X:FA80 Y:0014 ;set 16-bit A
+C2/C871 A5 E0       LDA $E0    [$00:00E0]   A:0004 X:FA80 Y:0014 ;load current HP
+C2/C873 38          SEC                     A:00CA X:FA80 Y:0014 
+C2/C874 E5 E2       SBC $E2    [$00:00E2]   A:00CA X:FA80 Y:0014 ;subtract degeneration amount from current HP
+C2/C876 F0 02       BEQ $02    [$C87A]      A:00B6 X:FA80 Y:0014 ;branch if diff = 0
+C2/C878 10 03       BPL $03    [$C87D]      A:00B6 X:FA80 Y:0014 ;branch if diff greater than 0
+
+C2/C87A A9 01 00    LDA #$0001					  ;load 1 to store to current HP
+
+C2/C87D 9F 11 00 7E STA $7E0011,x[$7E:FA91] A:00B6 X:FA80 Y:0014 ;store to current HP
+C2/C881 A5 E2       LDA $E2    [$00:00E2]   A:00B6 X:FA80 Y:0014 ;load degeneration amount
+C2/C883 9F 45 00 7E STA $7E0045,x[$7E:FAC5] A:0014 X:FA80 Y:0014 ;store as numerals to show
+
+C2/C887 E2 20       SEP #$20                A:0014 X:FA80 Y:0014 
+C2/C889 BF 44 00 7E LDA $7E0044,x[$7E:FAC4] A:0014 X:FA80 Y:0014 
+C2/C88D 09 80       ORA #$80                A:0000 X:FA80 Y:0014 ;set bit 7
+C2/C88F 9F 44 00 7E STA $7E0044,x[$7E:FAC4] A:0080 X:FA80 Y:0014 
+C2/C893 60          RTS                     A:0080 X:FA80 Y:0014 ;end
+
+timed hit calculation
+---------------------
+C2/C8E3 AD DE 30    LDA $30DE  [$00:30DE]   A:0001 X:FA80 Y:2500 ;load timed hit variable
+C2/C8E6 3A          DEC A                   A:0002 X:FA80 Y:2500 
+C2/C8E7 85 B0       STA $B0    [$00:00B0]   A:0001 X:FA80 Y:2500 
+C2/C8E9 10 01       BPL $01    [$C8EC]      A:0001 X:FA80 Y:2500 ;branch if greater than/equal to 0
+
+C2/C8EB 60          RTS                     A:FFFF X:FA80 Y:2500 ;end
+
+level 1
+-------
+C2/C8EC AE 30 07    LDX $0730  [$00:0730]   A:0001 X:FA80 Y:2500 
+C2/C8EF 86 CA       STX $CA    [$00:00CA]   A:0001 X:FC00 Y:2500 
+C2/C8F1 A9 00 01    LDA #$0100              A:0001 X:FC00 Y:2500 
+C2/C8F4 85 CE       STA $CE    [$00:00CE]   A:0100 X:FC00 Y:2500 
+C2/C8F6 BF 45 00 7E LDA $7E0045,x[$7E:FC45] A:0100 X:FC00 Y:2500 ;load base damage
+C2/C8FA 85 C2       STA $C2    [$00:00C2]   A:00A6 X:FC00 Y:2500 ;store to register
+C2/C8FC A5 B0       LDA $B0    [$00:00B0]   A:00A6 X:FC00 Y:2500 ;load timed hit variable
+C2/C8FE D0 02       BNE $02    [$C902]      A:0001 X:FC00 Y:2500 ;branch if not 0 (level 1)
+
+C2/C900 46 C2       LSR $C2    [$00:00C2]  			 ;base damage/2
+
+level 2
+-------
+C2/C902 BF 45 00 7E LDA $7E0045,x[$7E:FC45] A:0001 X:FC00 Y:2500 ;load base damage
+C2/C906 18          CLC                     A:00A6 X:FC00 Y:2500 
+C2/C907 65 C2       ADC $C2    [$00:00C2]   A:00A6 X:FC00 Y:2500 ;add modified damage to base damage
+C2/C909 9F 45 00 7E STA $7E0045,x[$7E:FC45] A:014C X:FC00 Y:2500 ;store as modified damage
+C2/C90D BF 41 00 7E LDA $7E0041,x[$7E:FC41] A:014C X:FC00 Y:2500 ;load mortal wound bit
+C2/C911 89 80 00    BIT #$0080              A:0080 X:FC00 Y:2500 ;check mortal wound bit
+C2/C914 D0 27       BNE $27    [$C93D]      A:0080 X:FC00 Y:2500 ;branch if set
+
+C2/C93D 60          RTS                     A:0080 X:FC00 Y:2500 
+
+=================================================================
+timing for physical defense
+
+C2/C952 85 CE       STA $CE    [$00:00CE]   A:0001 X:FA80 Y:2600 
+C2/C954 F0 04       BEQ $04    [$C95A]      A:0001 X:FA80 Y:2600 
+C2/C956 A5 CF       LDA $CF    [$00:00CF]   A:0001 X:FA80 Y:2600 
+C2/C958 F0 03       BEQ $03    [$C95D]      A:0000 X:FA80 Y:2600 
+
+C2/C95D C2 20       REP #$20                A:0000 X:FA80 Y:2600 ;set 16-bit A
+C2/C95F BF 44 00 7E LDA $7E0044,x[$7E:FAC4] A:0000 X:FA80 Y:2600 ;load mortal wound byte
+C2/C963 89 80 00    BIT #$0080              A:8E80 X:FA80 Y:2600 ;check mortal wound bit
+C2/C966 D0 01       BNE $01    [$C969]      A:8E80 X:FA80 Y:2600 ;branch if set
+
+C2/C968 60          RTS					  	 ;end
+
+C2/C969 AD 4C 30    LDA $304C  [$00:304C]   A:8E80 X:FA80 Y:2600 
+C2/C96C 38          SEC                     A:00AC X:FA80 Y:2600 
+C2/C96D E9 80 00    SBC #$0080              A:00AC X:FA80 Y:2600 
+C2/C970 29 FF 00    AND #$00FF              A:002C X:FA80 Y:2600 
+C2/C973 8D 4C 30    STA $304C  [$00:304C]   A:002C X:FA80 Y:2600 
+C2/C976 85 B0       STA $B0    [$00:00B0]   A:002C X:FA80 Y:2600 
+C2/C978 A9 02 00    LDA #$0002              A:002C X:FA80 Y:2600 
+C2/C97B 8D D0 30    STA $30D0  [$00:30D0]   A:0002 X:FA80 Y:2600 
+C2/C97E A9 50 00    LDA #$0050              A:0002 X:FA80 Y:2600 
+C2/C981 8D D2 30    STA $30D2  [$00:30D2]   A:0050 X:FA80 Y:2600 
+C2/C984 A9 78 00    LDA #$0078              A:0050 X:FA80 Y:2600 
+C2/C987 8D D4 30    STA $30D4  [$00:30D4]   A:0078 X:FA80 Y:2600 
+C2/C98A A9 7C 00    LDA #$007C              A:0078 X:FA80 Y:2600 
+C2/C98D 8D D6 30    STA $30D6  [$00:30D6]   A:007C X:FA80 Y:2600 
+C2/C990 A9 37 D2    LDA #$D237              A:007C X:FA80 Y:2600 
+C2/C993 8D 6E 30    STA $306E  [$00:306E]   A:D237 X:FA80 Y:2600 
+C2/C996 9C 60 30    STZ $3060  [$00:3060]   A:D237 X:FA80 Y:2600 
+C2/C999 A9 01 00    LDA #$0001              A:D237 X:FA80 Y:2600 
+C2/C99C 0C 00 30    TSB $3000  [$00:3000]   A:0001 X:FA80 Y:2600 
+C2/C99F 22 00 08 00 JSL $000800[$00:0800]   A:0001 X:FA80 Y:2600 ;wait for SA-1 timing range calculation
+***
+C2/C9A3 AD DE 30    LDA $30DE  [$00:30DE]   A:0001 X:FA80 Y:2600 ;load timing variable from SA-1 [00:00DE]
+C2/C9A6 3A          DEC A                   A:0002 X:FA80 Y:2600 
+C2/C9A7 3A          DEC A                   A:0001 X:FA80 Y:2600 
+C2/C9A8 10 03       BPL $03    [$C9AD]      A:0000 X:FA80 Y:2600 ;branch if greater than/equal to 0
+
+C2/C9AD A5 B0       LDA $B0    [$00:00B0]   A:0000 X:FA80 Y:2600 
+C2/C9AF 8D 4C 30    STA $304C  [$00:304C]   A:0068 X:FA80 Y:2600 
+C2/C9B2 A9 50 00    LDA #$0050              A:0068 X:FA80 Y:2600 ;load range A for level 1
+C2/C9B5 8D D0 30    STA $30D0  [$00:30D0]   A:0050 X:FA80 Y:2600 
+C2/C9B8 A9 60 00    LDA #$0060              A:0050 X:FA80 Y:2600 ;load range Y for level 2
+C2/C9BB 8D D2 30    STA $30D2  [$00:30D2]   A:0060 X:FA80 Y:2600 
+C2/C9BE A9 68 00    LDA #$0068              A:0060 X:FA80 Y:2600 ;load fange Z for level 2
+C2/C9C1 8D D4 30    STA $30D4  [$00:30D4]   A:0068 X:FA80 Y:2600 
+C2/C9C4 A9 78 00    LDA #$0078              A:0068 X:FA80 Y:2600 ;load range B for level 1
+C2/C9C7 8D D6 30    STA $30D6  [$00:30D6]   A:0078 X:FA80 Y:2600 
+C2/C9CA A9 37 D2    LDA #$D237              A:0078 X:FA80 Y:2600 
+C2/C9CD 8D 6E 30    STA $306E  [$00:306E]   A:D237 X:FA80 Y:2600 
+C2/C9D0 9C 60 30    STZ $3060  [$00:3060]   A:D237 X:FA80 Y:2600 
+C2/C9D3 A9 01 00    LDA #$0001              A:D237 X:FA80 Y:2600 
+C2/C9D6 0C 00 30    TSB $3000  [$00:3000]   A:0001 X:FA80 Y:2600 
+C2/C9D9 22 00 08 00 JSL $000800[$00:0800]   A:0001 X:FA80 Y:2600 ;wait for SA-1 timing range calculation
+***
+C2/C9DD AD DE 30    LDA $30DE  [$00:30DE]   A:0001 X:FA80 Y:2600 ;load timing variable
+C2/C9E0 3A          DEC A                   A:0001 X:FA80 Y:2600 
+C2/C9E1 85 B0       STA $B0    [$00:00B0]   A:0000 X:FA80 Y:2600 
+C2/C9E3 10 01       BPL $01    [$C9E6]      A:0000 X:FA80 Y:2600 ;branch if greater than/equal to 0
+C2/C9E6 BF 42 00 7E LDA $7E0042,x[$7E:FAC2] A:0000 X:FA80 Y:2600 ;load defense byte
+C2/C9EA 09 04 00    ORA #$0004              A:0000 X:FA80 Y:2600 ;set 'block' bit
+C2/C9ED 9F 42 00 7E STA $7E0042,x[$7E:FAC2] A:0004 X:FA80 Y:2600 ;store defense byte
+C2/C9F1 BF 45 00 7E LDA $7E0045,x[$7E:FAC5] A:0004 X:FA80 Y:2600 ;load base damage
+C2/C9F5 85 C2       STA $C2    [$00:00C2]   A:0001 X:FA80 Y:2600 ;store
+C2/C9F7 A5 B0       LDA $B0    [$00:00B0]   A:0001 X:FA80 Y:2600 ;load timing variable
+C2/C9F9 F0 03       BEQ $03    [$C9FE]      A:0000 X:FA80 Y:2600 ;branch if 0
+
+C2/C9FB 4C 73 CA    JMP $CA73  [$00:CA73]   			  ;jump to 0 damage routine
+
+C2/C9FE A5 C2       LDA $C2    [$00:00C2]   A:0000 X:FA80 Y:2600 ;load base damage
+C2/CA00 4A          LSR A                   A:0001 X:FA80 Y:2600 ;divide by 2, for level 1 timed defense
+C2/CA01 85 C2       STA $C2    [$00:00C2]   A:0000 X:FA80 Y:2600 ;store as modified damage
+C2/CA03 BF 41 00 7E LDA $7E0041,x[$7E:FAC1] A:0000 X:FA80 Y:2600 ;load status enhancement
+C2/CA07 89 80 00    BIT #$0080              A:0478 X:FA80 Y:2600 ;check mortal wound bit
+C2/CA0A D0 17       BNE $17    [$CA23]      A:0478 X:FA80 Y:2600 ;branch if set
+C2/CA0C BF 11 00 7E LDA $7E0011,x[$7E:FA91] A:0478 X:FA80 Y:2600 ;load (current HP - base damage)
+C2/CA10 18          CLC                     A:00CA X:FA80 Y:2600 
+C2/CA11 65 C2       ADC $C2    [$00:00C2]   A:00CA X:FA80 Y:2600 ;add back (base damage value / 2)
+C2/CA13 9F 11 00 7E STA $7E0011,x[$7E:FA91] A:00CA X:FA80 Y:2600 ;store as current HP
+C2/CA17 BF 45 00 7E LDA $7E0045,x[$7E:FAC5] A:00CA X:FA80 Y:2600 ;load numeral display address
+C2/CA1B 38          SEC                     A:0001 X:FA80 Y:2600 
+C2/CA1C E5 C2       SBC $C2    [$00:00C2]   A:0001 X:FA80 Y:2600 ;subtract modified damage
+C2/CA1E 9F 45 00 7E STA $7E0045,x[$7E:FAC5] A:0001 X:FA80 Y:2600 ;store to numeral display address
+C2/CA22 60          RTS                     A:0001 X:FA80 Y:2600 
+
+mortal infliction (modified damage: 41)
+-----------------
+C2/CA23 A9 0F 27    LDA #$270F              A:0480 X:FB00 Y:2600 ;load 9999 constant
+C2/CA26 DF 45 00 7E CMP $7E0045,x[$7E:FB45] A:270F X:FB00 Y:2600 ;compare to numeral display
+C2/CA2A D0 07       BNE $07    [$CA33]      A:270F X:FB00 Y:2600 ;branch if not 9999 damage
+
+C2/CA2C 85 C2       STA $C2					 ;store 9999 to modified damage
+C2/CA2E A9 01 00    LDA #$0001					 ;load 1
+C2/CA31 80 0C       BRA $0C	[$CA3F]				 ;always branch
+
+C2/CA33 BF 35 00 7E LDA $7E0035,x[$7E:FB35] A:270F X:FB00 Y:2600 
+C2/CA37 38          SEC                     A:0004 X:FB00 Y:2600 
+C2/CA38 E5 C2       SBC $C2    [$00:00C2]   A:0004 X:FB00 Y:2600 ;subtract modified damage
+C2/CA3A 10 03       BPL $03    [$CA3F]      A:FFDB X:FB00 Y:2600 ;branch if greater than/equal to 0
+C2/CA3C A9 00 00    LDA #$0000              A:FFDB X:FB00 Y:2600 ;load 0
+C2/CA3F 9F 11 00 7E STA $7E0011,x[$7E:FB11] A:0000 X:FB00 Y:2600 ;store to current HP
+C2/CA43 F0 27       BEQ $27    [$CA6C]      A:0000 X:FB00 Y:2600 ;branch if current HP at 0
+
+C2/CA6C A5 C2       LDA $C2    [$00:00C2]   A:0000 X:FB00 Y:2600 ;load modified damage
+C2/CA6E 9F 45 00 7E STA $7E0045,x[$7E:FB45] A:0029 X:FB00 Y:2600 ;store to numeral display address
+C2/CA72 60          RTS                     A:0029 X:FB00 Y:2600 ;end
+
+0 damage routine
+----------------
+C2/CA73 BF 41 00 7E LDA $7E0041,x[$7E:FAC1] A:0001 X:FA80 Y:2600 ;load status enhancement
+C2/CA77 89 80 00    BIT #$0080              A:0478 X:FA80 Y:2600 ;check mortal wound bit
+C2/CA7A D0 13       BNE $13    [$CA8F]      A:0478 X:FA80 Y:2600 ;branch if set
+C2/CA7C BF 11 00 7E LDA $7E0011,x[$7E:FA91] A:0478 X:FA80 Y:2600 ;load (current HP - base damage)
+C2/CA80 18          CLC                     A:00CA X:FA80 Y:2600 
+C2/CA81 65 C2       ADC $C2    [$00:00C2]   A:00CA X:FA80 Y:2600 ;add back base damage value
+C2/CA83 9F 11 00 7E STA $7E0011,x[$7E:FA91] A:00CB X:FA80 Y:2600 ;store back to current HP
+C2/CA87 A9 00 00    LDA #$0000              A:00CB X:FA80 Y:2600 ;load 0
+C2/CA8A 9F 45 00 7E STA $7E0045,x[$7E:FAC5] A:0000 X:FA80 Y:2600 ;store to numeral display address
+C2/CA8E 60          RTS                     A:0000 X:FA80 Y:2600 ;end
+
+=================================================================
+load timing for Geno Boost
+
+C2/CF35 AD DE 30    LDA $30DE  [$00:30DE]   A:0001 X:0022 Y:0002 ;load timing variable
+C2/CF38 3A          DEC A                   A:0002 X:0022 Y:0002 
+C2/CF39 85 B0       STA $B0    [$00:00B0]   A:0001 X:0022 Y:0002 
+C2/CF3B 10 01       BPL $01    [$CF3E]      A:0001 X:0022 Y:0002 ;branch if greater than 0
+
+C2/CF3D 60          RTS
+
+C2/CF3E AE 30 07    LDX $0730  [$00:0730]   A:0001 X:0022 Y:0002 ;load RAM address for slot 1
+C2/CF41 86 CA       STX $CA    [$00:00CA]   A:0001 X:FA80 Y:0002 
+C2/CF43 A9 01 01    LDA #$0101              A:0001 X:FA80 Y:0002 
+C2/CF46 85 CE       STA $CE    [$00:00CE]   A:0101 X:FA80 Y:0002 
+C2/CF48 BF 44 00 7E LDA $7E0044,x[$7E:FAC4] A:0101 X:FA80 Y:0002 
+C2/CF4C 89 80 00    BIT #$0080              A:00C0 X:FA80 Y:0002 
+C2/CF4F D0 06       BNE $06    [$CF57]      A:00C0 X:FA80 Y:0002 
+
+C2/CF57 BF 41 00 7E LDA $7E0041,x[$7E:FAC1] A:00C0 X:FA80 Y:0002 ;load spell's status enhancement byte
+C2/CF5B 09 60 00    ORA #$0060              A:0018 X:FA80 Y:0002 ;set 'defense up' bit
+C2/CF5E 9F 41 00 7E STA $7E0041,x[$7E:FAC1] A:0078 X:FA80 Y:0002 ;store as current status enhancement
+C2/CF62 60          RTS                     A:0078 X:FA80 Y:0002 ;end
+
+C2/CFAE	load 9999 for Geno Whirl
+
+=================================================================
+
+C2/DC76 AD 10 08    LDA $0810  [$00:0810]   A:0000 X:0060 Y:2700 
+C2/DC79 F0 03       BEQ $03    [$DC7E]      A:0000 X:0060 Y:2700 
+C2/DC7E A9 FF FF    LDA #$FFFF              A:0000 X:0060 Y:2700 
+C2/DC81 8D 20 08    STA $0820  [$00:0820]   A:FFFF X:0060 Y:2700 
+C2/DC84 8D 22 08    STA $0822  [$00:0822]   A:FFFF X:0060 Y:2700 
+C2/DC87 8D 24 08    STA $0824  [$00:0824]   A:FFFF X:0060 Y:2700 
+C2/DC8A 8D 26 08    STA $0826  [$00:0826]   A:FFFF X:0060 Y:2700 
+C2/DC8D 8D 28 08    STA $0828  [$00:0828]   A:FFFF X:0060 Y:2700 
+C2/DC90 AD 32 30    LDA $3032  [$00:3032]   A:FFFF X:0060 Y:2700 ;load current number of characters
+C2/DC93 29 FF 00    AND #$00FF              A:0005 X:0060 Y:2700 
+C2/DC96 8D 30 08    STA $0830  [$00:0830]   A:0005 X:0060 Y:2700 
+C2/DC99 A0 00 00    LDY #$0000              A:0005 X:0060 Y:2700 
+C2/DC9C 84 8E       STY $8E    [$00:008E]   A:0005 X:0060 Y:0000 
+C2/DC9E B9 33 30    LDA $3033,y[$00:3033]   A:0005 X:0060 Y:0000 
+C2/DCA1 29 FF 00    AND #$00FF              A:0100 X:0060 Y:0000 
+C2/DCA4 AA          TAX                     A:0000 X:0060 Y:0000 
+C2/DCA5 BF 84 DD C2 LDA $C2DD84,x[$C2:DD84] A:0000 X:0000 Y:0000 
+C2/DCA9 29 FF 00    AND #$00FF              A:1400 X:0000 Y:0000 
+C2/DCAC A6 8E       LDX $8E    [$00:008E]   A:0000 X:0000 Y:0000 
+C2/DCAE 9D 20 08    STA $0820,x[$00:0820]   A:0000 X:0000 Y:0000 
+C2/DCB1 E8          INX                     A:0000 X:0000 Y:0000 
+C2/DCB2 E8          INX                     A:0000 X:0001 Y:0000 
+C2/DCB3 86 8E       STX $8E    [$00:008E]   A:0000 X:0002 Y:0000 
+C2/DCB5 C8          INY                     A:0000 X:0002 Y:0000 
+C2/DCB6 CC 30 08    CPY $0830  [$00:0830]   A:0000 X:0002 Y:0001 
+C2/DCB9 30 E3       BMI $E3    [$DC9E]      A:0000 X:0002 Y:0001 
+
+C2/DCBB A0 00 00    LDY #$0000              A:0050 X:000A Y:0005 
+C2/DCBE B9 20 08    LDA $0820,y[$00:0820]   A:0050 X:000A Y:0000 
+C2/DCC1 C9 FF FF    CMP #$FFFF              A:0000 X:000A Y:0000 
+C2/DCC4 F0 0B       BEQ $0B    [$DCD1]      A:0000 X:000A Y:0000 
+C2/DCC6 AA          TAX                     A:0000 X:000A Y:0000 
+C2/DCC7 BF 00 F8 7F LDA $7FF800,x[$7F:F800] A:0000 X:0000 Y:0000 
+C2/DCCB 29 FF 00    AND #$00FF              A:D11E X:0000 Y:0000 
+C2/DCCE 99 10 08    STA $0810,y[$00:0810]   A:001E X:0000 Y:0000 
+C2/DCD1 C8          INY                     A:001E X:0000 Y:0000 
+C2/DCD2 C8          INY                     A:001E X:0000 Y:0001 
+C2/DCD3 C0 09 00    CPY #$0009              A:001E X:0000 Y:0002 
+C2/DCD6 30 E6       BMI $E6    [$DCBE]      A:001E X:0000 Y:0002 
+
+C2/DCD8 AF 0C 00 FA LDA $FA000C[$FA:000C]   A:001E X:0050 Y:000A 
+C2/DCDC 85 80       STA $80    [$00:0080]   A:1AFF X:0050 Y:000A 
+C2/DCDE A9 FA 00    LDA #$00FA              A:1AFF X:0050 Y:000A 
+C2/DCE1 85 82       STA $82    [$00:0082]   A:00FA X:0050 Y:000A 
+C2/DCE3 A0 00 00    LDY #$0000              A:00FA X:0050 Y:000A 
+C2/DCE6 84 70       STY $70    [$00:0070]   A:00FA X:0050 Y:0000 
+C2/DCE8 84 8E       STY $8E    [$00:008E]   A:00FA X:0050 Y:0000 
+C2/DCEA B9 33 30    LDA $3033,y[$00:3033]   A:00FA X:0050 Y:0000 
+C2/DCED 29 FF 00    AND #$00FF              A:0100 X:0050 Y:0000 
+C2/DCF0 85 8C       STA $8C    [$00:008C]   A:0000 X:0050 Y:0000 
+C2/DCF2 98          TYA                     A:0000 X:0050 Y:0000 
+C2/DCF3 0A          ASL A                   A:0000 X:0050 Y:0000 
+C2/DCF4 A8          TAY                     A:0000 X:0050 Y:0000 
+C2/DCF5 B9 20 08    LDA $0820,y[$00:0820]   A:0000 X:0050 Y:0000 
+C2/DCF8 C9 FF FF    CMP #$FFFF              A:0000 X:0050 Y:0000 
+C2/DCFB D0 03       BNE $03    [$DD00]      A:0000 X:0050 Y:0000 
+C2/DD00 85 8A       STA $8A    [$00:008A]   A:0000 X:0050 Y:0000 
+C2/DD02 AA          TAX                     A:0000 X:0050 Y:0000 
+C2/DD03 AD 32 08    LDA $0832  [$00:0832]   A:0000 X:0000 Y:0000 ;load XP won
+C2/DD06 85 7A       STA $7A    [$00:007A]   A:0004 X:0000 Y:0000 
+C2/DD08 BF 0E F8 7F LDA $7FF80E,x[$7F:F80E] A:0004 X:0000 Y:0000 ;load accessory
+C2/DD0C 29 FF 00    AND #$00FF              A:00FF X:0000 Y:0000 
+C2/DD0F C9 50 00    CMP #$0050              A:00FF X:0000 Y:0000 ;check if Exp.Booster
+C2/DD12 D0 02       BNE $02    [$DD16]      A:00FF X:0000 Y:0000 ;branch if not
+
+C2/DD14 06 7A       ASL $7A    [$00:007A]   A:0000 X:0000 Y:0000 ;double XP
+
+C2/DD16 BF 0A F8 7F LDA $7FF80A,x[$7F:F80A] A:00FF X:0000 Y:0000 ;load current XP
+C2/DD1A C9 0F 27    CMP #$270F              A:270F X:0000 Y:0000 ;check if maxed out
+C2/DD1D 30 03       BMI $03    [$DD22]      A:270F X:0000 Y:0000 ;branch if less than 9999
+C2/DD1F 4C 72 DD    JMP $DD72  [$00:DD72]   A:270F X:0000 Y:0000 
+
+C2/DD22 18          CLC                     A:0101 X:0000 Y:0000 
+C2/DD23 65 7A       ADC $7A    [$00:007A]   A:0101 X:0000 Y:0000 ;add XP won to current XP
+C2/DD25 85 72       STA $72    [$00:0072]   A:0105 X:0000 Y:0000 ;store XP sum
+C2/DD27 C9 0F 27    CMP #$270F              A:0105 X:0000 Y:0000 ;check if overflow
+C2/DD2A 30 05       BMI $05    [$DD31]      A:0105 X:0000 Y:0000 ;branch if less than 9999
+
+C2/DD31 BF 00 F8 7F LDA $7FF800,x[$7F:F800] A:0105 X:0000 Y:0000 ;load Level
+C2/DD35 29 FF 00    AND #$00FF              A:D11E X:0000 Y:0000 
+C2/DD38 3A          DEC A                   A:001E X:0000 Y:0000 
+C2/DD39 0A          ASL A                   A:001D X:0000 Y:0000 
+C2/DD3A A8          TAY                     A:003A X:0000 Y:0000 
+C2/DD3B B7 80       LDA [$80],y[$FA:1B39]   A:003A X:0000 Y:003A ;load XP needed for level up
+C2/DD3D C5 72       CMP $72    [$00:0072]   A:3205 X:0000 Y:003A ;compare to XP sum
+C2/DD3F F0 05       BEQ $05    [$DD46]      A:3205 X:0000 Y:003A ;branch if 
+C2/DD41 30 03       BMI $03    [$DD46]      A:3205 X:0000 Y:003A ;branch if needed XP less than sum
+C2/DD43 4C 6C DD    JMP $DD6C  [$00:DD6C]   A:3205 X:0000 Y:003A 

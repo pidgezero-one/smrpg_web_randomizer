@@ -1,0 +1,1512 @@
+
+
+====NOTE FROM YAKIBOMB====
+Hi,
+
+I created this document (doc_SMRPG_menu_data.txt) when I was much less experienced with ASM.
+There are many instances where I didn't know about things like 16-bit opcodes, or opcodes that jump from index,X.
+
+I hope that clears up any confusion!
+
+Thank you,
+- Yakibomb
+==========================
+
+OVERWORLD MENU TEXT POSITION TEST
+3EEF00
+Word:Level at
+DEC - 76 101 118 101 108 32 97 116
+4C 65 76 65 6C 20 61 xx
+
+$C3/6FC5 20 F9 02    JSR $02F9  [$C3:02F9]   A:0004 X:0800 Y:0000 P:envMxdIzc
+
+7E:5800-7E:5FFF	BG3 overworld menu tilemap
+7E:6000-7E:6FFF	BG1 overworld menu item list
+
+030000 - 033FFF | ASM  | Windowing Assembly
+034165 - 0341AA | TXT  | Alphanumeric Text
+035000 - 037FFF | ASM  | Windowing Assembly
+
+C31604	starting address of overworld menu frame: top menu, character stats
+C31669	X position of character objects on overworld menu: top menu
+
+C318D6	X position of cursor on overworld menu: item menu
+
+C32742	starting address of overworld menu text: item menu, item list
+C32792	starting address of overworld menu frame: item menu, item list
+C3279F	length of overworld menu frame: item menu, item list
+
+C328DE	starting address of overworld menu frame: item menu, character stats
+C3290C	X position of character objects on overworld menu: item menu
+C32968	starting address of overworld menu frame: item menu, item description
+C3296A	length of overworld menu frame: item menu, item description
+C3296C	starting address of overworld menu frame: item menu, flowers
+C3296E	length of overworld menu frame: item menu, flowers
+
+C32E1A	starting address of overworld menu frame: status menu, battle stats
+C32E20	length of overworld menu frame: status menu, battle stats
+C32E30	X position of character objects on overworld menu: status menu
+C32F96	starting address of overworld menu text: status menu, character stats
+C32FA8	length of overworld menu text: status menu, character stats
+C32FDF	starting address of overworld menu frame: status menu, character stats
+C32FF2	length of overworld menu frame: status menu, character stats
+
+C33279	starting addresses of stats
+
+C332E5	starting address of overworld menu frame: special, character stats
+C332F0	starting address of overworld menu empty space: special, item description
+C332F8	starting address of overworld menu text: special, flowers
+C3330A	X position of character objects on overworld menu: special
+C3334E	starting address of overworld menu frame: special, specials
+C33352	starting address of overworld menu frame: special, flowers
+C33356	starting address of overworld menu frame: special, special descriptions
+C3335B	starting address of overworld menu text: special, special descriptions flower used
+C33588	starting address of overworld menu text: special, special descriptions clear space
+C335EB	starting address of overworld menu text: special, flower points
+C33632	clearer
+C33665	
+C3366D	
+C33741	starting address of overworld menu text: special, specials
+
+C3618C	starting address of overworld menu frame: switch
+C361CA	X position of character objects on overworld menu: switch
+
+C36EB6   load tilemap for overworld menu
+
+C36F5C	length of overworld menu frame: item menu, character stats
+
+C3786C   load text for overworld menu
+
+
+Random codes
+C3:331B - ?? (Changed to 6 and lost the background on the Special menu)
+C3:4B67 - 8D (corrupts the first save file...)
+C3:690F+C3:6911, set both to 06 to disable the border around the text
+C3334900 - Entering the Special menu will cause a funny bug
+C3021902 - Menus flinch?
+C36BCD07 - Changes cursor graphics
+C36EA007 - Glitches border
+
+I'm currently trying to find all the data related to Overworld menus. I'll update this when I find new information.
+
+Here is what I have so far:
+
+[u]MENU DATA LOCATION[/u]
+
+[quote=giangurgolo]030000 - 033FFF | ASM  | Windowing Assembly
+034165 - 0341AA | TXT  | Alphanumeric Text
+035000 - 037FFF | ASM  | Windowing Assembly
+
+7E:5800-7E:5FFF	BG3 overworld menu tilemap
+7E:6000-7E:6FFF	BG1 overworld menu item list[/quote]
+
+[u]BASIC MENU STRUCTURE[/u]
+
+C36EFA-C36F09 - Menu graphic pointers
+
+
+[u]NOTES ABOUT THE MENU[/u]
+
+Common Instructions
+
+60 XX - New list (text)
+60 - New list (counters)
+7E - ???
+82 - Starting instruction to start using unique Menu code format
+86 62 A9 - used for counters (FP, Exp)
+C2 20 - common
+AD XX XX - common
+D0 - ??? (Special Item, 
+D1 - ??? (Special Item, 
+D4 - ??? (special, 
+DE - ??? (Sell Items/Weapons Shops,
+E2 20 - common
+E6 - ??? (Coin/Frog Coin Shops, 
+FA - ??? (Main, 
+FE - ??? (Main, 
+FF XX - New list (boxes)
+
+JSR
+20 F8 78 = JSR to display 999 and below counter
+20 02 79 = JSR to display 1000+ counter
+
+Instructions For Making Lists
+
+FOR TEXT LISTS
+Each item uses 4 bytes:
+Xpos/Ypos/Palette/Text index
+
+FOR COUNTER LISTS
+Each counter listed uses 4 bytes:
+Xpos/Ypos/Read two bytes/Counter
+
+FOR BOXES
+FF XX - New boxes + number of boxes
+Each box uses 4 bytes
+Xpos/Ypos/Length/Width
+
+FOR BOTH LISTS
+Positions coordinates (x/y)
+Y = every other line
+X = 02-FE
+If X=00, the game crashes
+X must be an EVEN NUMBER
+
+
+[u]ALL MENU DATA[/u] (So far)
+
+???
+C3:3E67: C2 20 A5 18 89 00 08
+D0 23 89 00 04
+D0 2C 89 00 02
+D0 38 89 00 01
+D0 3F A5 14 89
+80 40 D0 60 89
+40 00 D0 57 89
+00 80 D0 46
+E2 20 60
+E2 20 CE 29 09 1
+
+???
+04 45 xpos ypos
+86 62 A9
+0D (Max HP)
+
+CHARACTER BOXES
+Stat Box
+
+Character in stat box (Main menu)
+C3:2E30: 1C - xpos
+Character in stat box (Item menu)
+C3:290C: 1C - xpos
+Character in stat box (Special menu)
+C3:330B: 1C - xpos
+
+Text Alignment (slot1)
+Text Alignment (slot2)
+C3:31EE-F: 00 02 (xpos,ypos)
+Text Alignment (slot3)
+
+Character's Name
+C3:321E: 60 (Character's Name pointer)
+C3:3218-9: 0A 00 (xpos,ypos)
+
+C3:3228-9: 8A 00 (xpos,ypos)
+C3:322E: 1F ("LV")
+
+C3:323D: 10 - Current level value
+C3:3235-6: 92 00 (xpos,ypos)
+
+C3:324B: 0C ("HP")
+C3:3245-6: 0A 01 (xpos,ypos)
+
+Current HP, slash, Max HP
+C3:325A: 11 - Current HP value
+C3:3252-3: 10 01 (xpos,ypos)
+
+C3:3262-3: 16 01 (xpos,ypos)
+C3:3267-B: A9 2F 85 70 20 (2F='slash')
+
+C3:3271: 13 - Max HP value
+C3:3262-3: 16 01 (xpos,ypos)
+
+
+
+60
+B6 40 00 15
+36 41 01 70
+36 42 00 16
+B6 42 01 72
+36 43 00 17
+B6 43 01 74
+36 44 00 18
+B6 44 01 76
+36 45 00 19
+B6 45 01 78
+7B B9 10 00 3A 0A
+C2 20
+18 6F 0C 00 FA AA
+BF 00 00 FA
+85 70 E2 20
+60 A2 00 6E 86 64
+AD 25 09
+85 7E 80 0A
+A2 80 40 86 64 AD 26 09 85 7E
+A2 80 FA 86 60 64 9D 20 15 32
+C2 20 A5 60 18 69 80 00
+85 60 A5 64 18 69 00 02 85 64 E2 20 C6 7E D0 E5
+60
+20 CC 31 AD 25 09 C9 04
+B0 01 60 38 E9 03 85 7E A2 9E 42 86 64
+
+A2 00 FC 86 60 80 C8 E2
+20 A2
+C3:3218-9: 0A 00 (xpos,ypos for Character's Name)
+20 9F 64 A4 60 B9
+01 00 85 70 20 AA 32
+
+A2 8A 00 20 9F 64 A9 1F
+85 70 20 6C 78 A2
+C3:33235-6: 92 00 (xpos,ypos for Current Level)
+20 9F 64 A4 60
+B9
+C3:323D: 10 (Current Level value)
+00 85 70 20 D2 78
+
+A2 0A 01 20 9F 64 A9
+0C 85 70 20 6C 78
+A2
+C3:3252-3: 10 01 (xpos,ypos for Current HP)
+20 9F 64 A4 60
+BE
+C3:325A: 11 (Current HP value)
+00 86 70 20 F8 78
+A2
+C3:3262-3: 16 01 (xpos,ypos for Max HP)
+20 9F 64 A9 2F
+85 70 20 AB 78 A4 60
+BE
+C3:3271: 13 (Max HP value)
+00 86 70 20 F8 78
+
+60 06
+AA 40 00 13
+28 42 00 0F
+26 43 00 10
+22 44 00 11
+22 45 00 12 A2 46 00 0E A9 0A 8D 94 09 85 72 A2 06 00 86 6E 20 93 79 A9 06 8D 94 09 20 3C 7A 60 A9 0A 8D 94 09 85 72 A2 06 00 86 6E 20 93 79 A9 0A 8D 94 09 20 3C 7A 60 20 4F 04 20 2B 04 20 4B 6E 20 52 0B E2 20 20 98 73 64 9D 9C 4E 09 A9 03 8D A5 09 A2 4D 33 86 60 20 0A 6F A2 42 58 86 6E 20 52 6F 20 81 6F A2 22 5D 86 60 20 D1 69 A2 A2 44 86 62 A9 37 85 70 20 6C 78 20 CC 31 20 44 0C A2 1C 00 86 78 A2 2C 00 86 7A 20 4E 18 20 D0 0C A9 05 85 94 EE 4E 09 20 F9 02 E2 20 64 B0 64 B1 20 E3 26 B0 03 20 70 33 20 6E 35 20 19 36 20 0C 2D 20 64 2C 20 9A 0D 20 11 0E 20 C8 10 20 86 05 82 D4 FF 03 60 58 0F 0C 60 5B 0F 03 20 5C 0F 0B 02 A2 45 00 16 26 46 00 17 03 04 47 00 1C 84 47 00 1D 08 48 00 0B AD 31 09 
+
+MAIN MENU
+TEXT
+82 FA FE
+60 - New list
+C3:16E5: 03 - How many indexes are to be displayed
+C3:16E6-9: A6 45 00 37 ("Flowers")
+C3:16EA-D: A6 46 00 1B ("Coins")
+C3:16EE-F1: A6 47 00 38 ("Frog Coins")
+
+BOXES
+C3:16F2: 01 - Number of boxes
+C3:16F3-6: 24 5C 0C 0B
+C2 20 A2 0D
+
+C3:1708 - How many menu options are available (5+ only)
+C3:170D-C3:1715 - Menu options
+48 A2
+
+COUNTERS
+60 - new list
+C3:1616: A2 00 00 (Coordinates for TEXT;opcode-xpos-ypos)
+86 64 20 15 6A 20 2A 17
+C3:1621: A2 30 46 (Coordinates for Current/Max FP;opcode-xpos-ypos)
+86 62
+C3:1626-9: AF B1 F8 7F (Current FP value)
+85 70 64 9D 20 D2 78
+C3:1631-5: A9 2F 85 70 20 AB 78 (2F='slash')
+C3:1638-B: AF B2 F8 7F (Max FP value)
+85 70 20 D2 78
+C3:1641-3: A2 32 47 (Coordinates for Coins;opcode-xpos-ypos)
+86 62 C2 20
+C3:1648-B: AF AF F8 7F (Coins value)
+85 70 E2 20 20 02 79
+C3:1653-5: A2 32 48 (Coordinates for Frog Coins;opcode-xpos-ypos)
+86 62 C2 20
+C3:165A-D: AF B3 F8 7F (Frog Coins value)
+85 70 E2 20 20 02 79
+20 44 0C
+A2 1C 00 86 78 A2 2C 00 86 7A 20 4E 18 20 D0 0C
+A2 00 00 8E B7 09 A9 05 85 94 20 F9 02 20 F9 02 C2 20 64 B0 E2 20 20 E6 73 20 E4 16 20 74 17 20 A8 18 20 9A 0D 20 11 0E 
+
+ITEM MENU
+ALIGNMENT OF LIST
+C3:303E-F: 00 00 (xpos,ypos)
+
+TEXT
+C3:28FD-E: 84 46 (xpos,ypos)
+C3:2902: 37 ("Flowers")
+C3:2966: 29
+C3:2967: 02 (number of boxes)
+C3:2968-B: 42 5D 0F 06
+C3:296C-F: C2 5C 0F 03
+E2 20 AD 31 09
+
+COUNTERS
+- Current/Max FP
+C3:2CC1-2: 94 46 (xpos/ypos)
+C3:2CC3: 86 (set to 88 for sound effect)
+
+STATUS MENU
+C3:2E1A
+
+COUNTERS
+C3:30EC A9 0A - # of items on the list
+C3:30F2 BF 81 31 C3
+C3:3181-4: B6 40 00 15 - Base speed
+C3:3185-8: 36 41 01 70 - Modified speed (two bytes)
+C3:3189-C: 36 42 00 16 - Base attack
+C3:318D-90: B6 42 01 72 - Modified attack (two bytes)
+C3:31891-4: 36 43 00 17 - Base defense
+C3:3195-8: B6 43 01 74 - Modified defense (two bytes)
+C3:3199-C: 36 44 00 18 - Base Mg.attack
+C3:319D-A0: B6 44 01 76 - Modified Mg.Attack (two bytes)
+C3:31A1-4: 36 45 00 19 - Base Mg.defense
+C3:31A5-8: B6 45 01 78 - Modified Mg.defense (two bytes)
+
+C3:3142: Level cap needed to show "Next Level at" string
+
+TEXT
+C3:2E46: Pointer
+C3:3279: 06 - How many indexes are to be displayed
+C3:327A-D: AA 40 00 13 - "Speed"
+C3:327E-1: 28 42 00 0F - "Attack"
+C3:3282-5: 26 43 00 10 - "Defense"
+C3:3286-9: 22 44 00 11 - "Mg.Attack"
+C3:328A-D: 22 45 00 12 - "Mg.Defense"
+C3:328E-1: A2 46 00 0E - "Exp.Level"
+C3:3158-9: A2 47 - "Next Level at"
+C3:315D: 2D - "Next Level at"
+85 70 20 6C 78 A2 34 48 86 62 A4 66 20 A9 31
+C2 20
+85 70 20 6C 78 A4 66 A2 16 47
+85 70 20 6C 78 A2 16 48 86 62 A4 66 20 A9 31
+C2 20
+
+
+C3:3292 onward: A9 0A 8D 94 09 85 72 A2
+06 00 - controls EXP till next level counter
+ 86 6E 20 93 79 A9 06
+
+C3:383F: box..? maybe not
+
+SPECIAL MENU
+
+CURSOR FUNCTIONS (STILL UNKNOWN)
+C3:1FD1: 78 
+
+STAT BOXES
+6F A2
+C3:32E6: 42 58 (xpos,ypos)
+86 6E 20
+
+82 D4
+FF - New list
+BOXES
+C3:334D: 03 - Number of boxes
+C3:334E-51: 60 58 0F 0B
+C3:3352-5: 60 5B 0F 03
+C3:3356-9: 20 5C 0F 0B
+
+TEXT
+C3:335A: 02 (Number of listed items)
+C3:335B-E: A2 45 00 16 ("Flowers Used")
+C3:335F-2: 26 46 00 17 ("Mg.Power")
+C3:3363: 03 - New items list
+C3:3364-7: 04 47 00 1C ("learns a new")
+C3:3367-B: 84 47 00 1D ("technique at")
+C3:336C-F: 08 48 00 0B ("Level")
+AD 31 09
+
+C3:32F9-A: A2 44 (xpos, ypox)
+C3:32FB-D: 86 62 A9 (unknown, changing changes text index)
+C3:32FE: 37 ("Flowers")
+C3:32FF: 82 (unknown, changing changes text index)
+
+DESCRIPTIONS
+C3:32F1-2: 22 5D
+
+DYNAMIC TEXT
+- Ally Character's Name
+A2
+C3:35A2-3: 88 46 (xpos,ypos)
+- Flower Used+Mg.Power
+A2
+C3:364D-E: 00 00 (xpos,ypos)
+
+COUNTERS
+- Current/Max FP
+C3:35EB-C: B2 44 (xpos, ypos)
+86 62 20 FF 35 A9 01 04 94 9C A5 09 60 02 00 02 04 02
+C3:35FF-602: AF B1 F8 7F (Display Current FP) 85 70 20 D2 78
+C3:3608-E: A9 2F 85 70 20 AB 78 (Display 'slash')
+C3:360F-12: AF B2 F8 7F (Display Max FP) 85 70 20 D2 78
+60 AD 4E 09 F0 71 64 9D 9
+- Flower Used Counter
+C3:3666-7: B8 45 (xpos, ypos)
+- Mg.Attack Counter
+C3:366E-F: 36 46 (xpos, ypos)
+
+for hack
+"Flowers Used"
+C3:335B-E: 22 46 00 16
+"Mg.Power"
+C3:335F-2: A6 46 00 17
+"Flowers"
+C3:32F9-A: A2 44 (xpos, ypox)
+- Current/Max FP
+C3:35EB-C: 34 45 (xpos, ypos)
+- FP Usage Counter
+C3:3666-7: 38 45 (xpos, ypos)
+- Mg.Attack Counter
+C3:366E-F: B6 46 (xpos, ypos)
+
+SPELL LIST
+C3:3741-2: A2 40 (xpos,ypos)
+C3:3746: 06 - How many spells are listed
+
+RAM: 7E:4200+
+
+VRAM CLEARER
+Starts at $C3:3619.
+- Mg.Attack+Flower Used Counters
+C3:3633-4: A2 45 (xpos,ypos)
+
+C3:3619:
+AD 4E 09 F0 71 64 9D 9C 4E 09 AD 31 09 F0 0A 20
+A3 36 BD 40 29 C9 FF D0 15
+A2 A2 45 86 62 A9 0D
+85 70 A9 04 85 72 20 10 72 20 D6 64 80 44 48
+A2 5A 33 86
+60 - new list
+C3:364E: A2-00-00 - x/y positions for list (but I don't understand why this is?)
+86 64 20 15 6A 68 85 70 20 58 65 20 11 78
+BF-02-00-FA - Load FP used for spell
+85 70 DA
+A2-B8-45 - "Flower Used" counter x/y position
+86 62 20 D2 78
+A2 B6 46 - "Mg.Power" counter x/y position
+86 62 FA
+BF-01-00-FA - Load attack flags?
+89 10 D0 0D
+BF-05-00-FA - Load Magic Power
+F0 07 - If equal to Accumulator (which is set to 0), don't load mg.attack
+85 70 20 EC 78 80 03
+20 93 36
+A9 01 04 94 20 87 65
+60 A9 7D 85 70 A9 03 85 7E 20
+AB 78 C6 7E D0 F9 60
+AD 35 09
+EB A9 0F 20 84 04 18 6D 2A 09 AA 60 9C 87 09 A5 70 20 1F
+7A 7B AA AD 94 09 8D 66 09 85 7E BD 95 09 9D 67
+09 E8 C6 7E D0 F5 20 4C 20 A0 63 1F 20 5B 01 20
+F9 02
+60 E2 20 AF B1 F8 7F 85 6C AD 63 09 F0 05
+AD 2B 09 80 03 AD 29 09 85 70 20 75 1D 9B E2 20
+7B AA A9 06 85 7E A9 FF 9D 40 29 9E 00 2A 9E F0
+29 E8 C6 7E D0 F2 9C 2D 09 64 70
+A2 00 00 A9 04 85 7E A9 01 85 72 A9 08 85 7C B9 20 00 24 72 F0
+09 A5 70 9D 40 29 EE 2D 09 E8 E6 70 06 72 C6 7C
+D0 E8 C8 C6 7E D0 DB A2 A2 40 7B A8 A9 06
+
+$C3/3619 AD 4E 09    LDA $094E  [$7E:094E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/361C F0 71       BEQ $71    [$368F]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/361E 64 9D       STZ $9D    [$00:009D]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3620 9C 4E 09    STZ $094E  [$7E:094E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3623 AD 31 09    LDA $0931  [$7E:0931]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3626 F0 0A       BEQ $0A    [$3632]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3628 20 A3 36    JSR $36A3  [$7E:36A3]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/362B BD 40 29    LDA $2940,x[$7E:2940]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/362E C9 FF       CMP #$FF                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3630 D0 15       BNE $15    [$3647]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3632 A2 A2 45    LDX #$45A2              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3635 86 62       STX $62    [$00:0062]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3637 A9 0D       LDA #$0D                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3639 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/363B A9 04       LDA #$04                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/363D 85 72       STA $72    [$00:0072]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/363F 20 10 72    JSR $7210  [$7E:7210]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3642 20 D6 64    JSR $64D6  [$7E:64D6]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3645 80 44       BRA $44    [$368B]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3647 48          PHA                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3648 A2 5A 33    LDX #$335A              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/364B 86 60       STX $60    [$00:0060]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/364D A2 00 00    LDX #$0000              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3650 86 64       STX $64    [$00:0064]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3652 20 15 6A    JSR $6A15  [$7E:6A15]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3655 68          PLA                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3656 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3658 20 58 65    JSR $6558  [$7E:6558]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/365B 20 11 78    JSR $7811  [$7E:7811]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/365E BF 02 00 FA LDA $FA0002,x[$FA:0002] A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3662 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3664 DA          PHX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3665 A2 B8 45    LDX #$45B8              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3668 86 62       STX $62    [$00:0062]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/366A 20 D2 78    JSR $78D2  [$7E:78D2]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/366D A2 36 46    LDX #$4636              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3670 86 62       STX $62    [$00:0062]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3672 FA          PLX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3673 BF 01 00 FA LDA $FA0001,x[$FA:0001] A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3677 89 10       BIT #$10                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3679 D0 0D       BNE $0D    [$3688]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/367B BF 05 00 FA LDA $FA0005,x[$FA:0005] A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/367F F0 07       BEQ $07    [$3688]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3681 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3683 20 EC 78    JSR $78EC  [$7E:78EC]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3686 80 03       BRA $03    [$368B]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3688 20 93 36    JSR $3693  [$7E:3693]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/368B A9 01       LDA #$01                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/368D 04 94       TSB $94    [$00:0094]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/368F 20 87 65    JSR $6587  [$7E:6587]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3692 60          RTS                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3693 A9 7D       LDA #$7D                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3695 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3697 A9 03       LDA #$03                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3699 85 7E       STA $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/369B 20 AB 78    JSR $78AB  [$7E:78AB]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/369E C6 7E       DEC $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A0 D0 F9       BNE $F9    [$369B]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A2 60          RTS                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A3 AD 35 09    LDA $0935  [$7E:0935]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A6 EB          XBA                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A7 A9 0F       LDA #$0F                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36A9 20 84 04    JSR $0484  [$7E:0484]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36AC 18          CLC                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36AD 6D 2A 09    ADC $092A  [$7E:092A]   A:0000 X:0000 Y:10E3 P:envMxdIZC ; loads spells for ally
+$C3/36B0 AA          TAX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36B1 60          RTS                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36B2 9C 87 09    STZ $0987  [$7E:0987]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36B5 A5 70       LDA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36B7 20 1F 7A    JSR $7A1F  [$7E:7A1F]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36BA 7B          TDC                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36BB AA          TAX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36BC AD 94 09    LDA $0994  [$7E:0994]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36BF 8D 66 09    STA $0966  [$7E:0966]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36C2 85 7E       STA $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36C4 BD 95 09    LDA $0995,x[$7E:0995]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36C7 9D 67 09    STA $0967,x[$7E:0967]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36CA E8          INX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36CB C6 7E       DEC $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36CD D0 F5       BNE $F5    [$36C4]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36CF 20 4C 20    JSR $204C  [$7E:204C]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36D2 A0 63 1F    LDY #$1F63              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36D5 20 5B 01    JSR $015B  [$7E:015B]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36D8 20 F9 02    JSR $02F9  [$7E:02F9]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36DB 60          RTS                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36DC E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36DE AF B1 F8 7F LDA $7FF8B1[$7F:F8B1]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36E2 85 6C       STA $6C    [$00:006C]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36E4 AD 63 09    LDA $0963  [$7E:0963]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36E7 F0 05       BEQ $05    [$36EE]      A:0000 X:0000 Y:10E3 P:envMxdIZC ; goes over something
+$C3/36E9 AD 2B 09    LDA $092B  [$7E:092B]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36EC 80 03       BRA $03    [$36F1]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36EE AD 29 09    LDA $0929  [$7E:0929]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36F1 85 70       STA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36F3 20 75 1D    JSR $1D75  [$7E:1D75]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36F6 9B          TXY                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36F7 E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36F9 7B          TDC                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36FA AA          TAX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36FB A9 06       LDA #$06                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36FD 85 7E       STA $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/36FF A9 FF       LDA #$FF                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3701 9D 40 29    STA $2940,x[$7E:2940]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3704 9E 00 2A    STZ $2A00,x[$7E:2A00]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3707 9E F0 29    STZ $29F0,x[$7E:29F0]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/370A E8          INX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/370B C6 7E       DEC $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/370D D0 F2       BNE $F2    [$3701]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/370F 9C 2D 09    STZ $092D  [$7E:092D]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3712 64 70       STZ $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3714 A2 00 00    LDX #$0000              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3717 A9 04       LDA #$04                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3719 85 7E       STA $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/371B A9 01       LDA #$01                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/371D 85 72       STA $72    [$00:0072]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/371F A9 08       LDA #$08                A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3721 85 7C       STA $7C    [$00:007C]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3723 B9 20 00    LDA $0020,y[$7E:1103]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3726 24 72       BIT $72    [$00:0072]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3728 F0 09       BEQ $09    [$3733]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/372A A5 70       LDA $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/372C 9D 40 29    STA $2940,x[$7E:2940]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/372F EE 2D 09    INC $092D  [$7E:092D]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3732 E8          INX                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3733 E6 70       INC $70    [$00:0070]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3735 06 72       ASL $72    [$00:0072]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3737 C6 7C       DEC $7C    [$00:007C]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3739 D0 E8       BNE $E8    [$3723]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/373B C8          INY                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/373C C6 7E       DEC $7E    [$00:007E]   A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/373E D0 DB       BNE $DB    [$371B]      A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3740 A2 A2 40    LDX #$40A2              A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3743 7B          TDC                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3744 A8          TAY                     A:0000 X:0000 Y:10E3 P:envMxdIZC
+$C3/3745 A9 07       LDA #$07                A:0000 X:0000 Y:10E3 P:envMxdIZC
+
+
+
+A2 88 46 86 62 A9
+ 09 85 70 A9 02
+ 85 72 20 10 72
+ 7B A6 60 BD 01
+ 00 85 70 AA 7B
+ BF FA 35 C3 C2
+ 20 18 65 62 85
+ 62 E2 20 20 AA
+ 32 A2 63 33 86
+ 60 A2 00 00 86
+ 64 20 15 6A A9
+ 04 04 94 20 F9
+ 02 68 89 02 F0
+ 0E 20 DC 36 20
+ CC 31 A2 B2 44
+ 86 62 20 FF 35
+ A9 01 04 94 9C
+ A5 09 60 02 00
+ 02 04 02 AF B1
+ F8 7F 85 70 20
+ D2 78 A9 2F 85
+ 70 20 AB 78 AF
+ B2 F8 7F 85 70
+ 20 D2 78 60
+AD 4E 09
+ F0 71 64
+ 9D 9C 4E 09
+AD 31 09
+F0 0A 20
+ A3 36 BD 40 29
+ C9 FF D0 15 A2
+ A2 45 86 62 A9 0D 85 70 A9 04
+ 85 72 20 10 72 20 D6 64 80 44
+ 48 A2 5A 33 86 60 A2 00 00 86
+ 64 20 15 6A 68 85 70 20 58 65
+ 20 11 78 BF 02 00 FA 85 70 DA
+ A2 B8 45 86 62 20 D2 78 A2 36
+ 46 86 62 FA BF 01 00 FA 89 10
+ D0 0D BF 05 00 FA F0 07 85 70
+ 20 EC 78 80 03 20 93 36 A9 01
+ 04 94 20 87 65 60 A9 7D 85 70
+ A9 03 85 7E 20 AB 78 C6 7E D0
+ F9 60
+AD 35 09
+EB A9 0F 20 84
+ 04 18 6D 2A 09 AA 60 9C 87 09
+ A5 70 20 1F 7A 7B AA
+AD 94 09
+ 8D 66 09 85 7E BD 95 09 9D 67
+ 09 E8 C6 7E D0 F5 20 4C 20 A0
+ 63 1F 20 5B 01 20 F9 02 60 E2
+ 20
+AF B1 F8 7F
+ 85 6C
+AD 63 09
+ F0 05
+AD 2B 09
+ 80 03
+AD 29 09
+ 85 70 20 75 1D 9B E2 20 7B AA
+ A9 06 85 7E A9 FF 9D 40 29 9E
+ 00 2A 9E F0 29 E8 C6 7E D0 F2
+ 9C 2D 09 64 70 A2 00 00 A9 04
+ 85 7E A9 01 85 72 A9 08 85 7C
+ B9 20 00 24 72 F0 09 A5 70 9D
+ 40 29 EE 2D 09 E8 E6 70 06 72
+ C6 7C D0 E8 C8 C6 7E D0 DB A2
+ A2 40 7B A8 A9 07 85 7E 86 62
+
+ 20 A3 36 BD 40 29 C9 FF D0 15
+ A2 A2 45 86 62 A9 0D 85 70 A9
+ 04 85 72 20 10 72 20 D6 64 80
+ 44 48 A2 5A 33 86 60 A2 00 00
+ 86 64 20 15 6A 68 85 70 20 58
+ 65 20 11 78 BF 02 00 FA 85 70
+ DA A2 B8 45 86 62 20 D2 78 A2
+ 36 46 86 62 FA BF 01 00 FA 89
+ 10 D0 0D BF 05 00 FA F0 07 85
+ 70 20 EC 78 80 03 20 93 36 A9
+ 01 04 94 20 87 65 60 A9 7D 85
+ 70 A9 03 85 7E 20 AB 78 C6 7E
+ D0 F9 60
+AD 35 09
+ EB A9 0F 20
+ 84 04 18 6D 2A 09 AA 60 9C 87
+ 09 A5 70 20 1F 7A 7B AA
+AD 94 09
+
+
+EQUIP MENU
+EQUIPMENT LIST
+C3:26A5: 0F - How many equipment items listed
+C3:26F5: AD 37 09
+C3:26FC: AD 37 09
+C3:271F: AD 37 09
+C3:2726: AD 37 09
+C3:2747: AD 37 09
+C3:2796: AD 37 09
+C3:27DE: AD 37 09
+C3:282C: AD 37 09
+C3:27E7: 0F - Changes display for something
+
+TEXT
+C3:23A9: 60
+C3:23AA: 04
+C3:23AB: 00 00 00 0F
+C3:23AF: 80 00 00 10
+C3:23B3: 00 01 00 11
+C3:23B7: 80 01 00 12
+
+???
+C3:5103: 82 E0 FF
+C3:5106: 01 (number of boxes)
+C2 5C 0F 08
+AD 4E 09
+C3:5113: AD 31 09
+C3:512E: AD 31 09
+
+SPECIAL ITEM MENU
+C3:53D3: AD 2A 09
+0A 6D 29 09 AA BD 40 29 85 70 20 29 65 20 87 65
+60 A0 04 42 A2 40 29 86 64 64 9D A9 08 85 7E 5A
+84 62 B2 64 85 70 20 07 7A C2 20 A5 62 18 69 04
+00 85 62 E6 64 E2 20 B2 64 85 70 20 07 7A
+C3:5414: C2 20
+E6 64 68 18 69 80 00 A8
+E2 20
+C6 7E D0 D1
+7E D0 D1
+C3:5424: 60 - New list
+C3:5425: 02 - How many boxes need to be displayed
+
+C3:5426-9: 42 59 (58 = top of screen) 1E 0E
+C3:542A-C: D0 5C 10 06
+
+
+SWITCH MENU
+TEXT
+C3:622C: 02 - number of displayed items
+C3:622D-30: 24 47 00 14
+Xpos/Ypos/Pal/Text ("Switch")
+C3:6231-34: A6 47 00 15
+Xpos/Ypos/Pal/Text ("which two?")
+E2 20
+AD 25 09
+38 E9 04 85 60 C2 20 A5 14 89 00 08
+D0 27 89 00 04
+D0 2E 89 00 02
+D0 46 89 00 01
+D0 4D 89 80 40
+D0 6C 89 00 80
+F0 03 82 3A 01
+89 40 00 F0 03
+82 48 01 E2 20 60 E2 20
+AD 2A 09
+F0 51 CE 2A 09 80 3D E2 20 AD 29 09 D0 0A AD 2A 09 D0 40 EE 2A 09 80 2C AD 2A 09 
+
+DYNAMIC TEXT
+C3:6440-1: 84 46 (xpos,ypos)
+86 62 A9
+C3:6445: 0E - "Exp.Level"
+85 70 20 6C 78 A4 66 A2 16 47
+
+C3:645F-60: C9 1E (1E = 30, level up cap for SWITCH MENU)
+C3:6476-7: 84 47 (xpos,ypos)
+86 62 A9
+C3:647B: 2D - "Next Level at"
+85 70 20 6C 78 A2 16 48 86 62 A4 66 20 A9 31
+C2 20
+
+
+SHOP MENU
+COIN SHOP MENU
+C4 3A 20 5E 3C 20 86 05
+82 E6
+FF - New list?
+C3:397B: 05 - Number of items
+C3:397C-F: 84 40 00 4C ("Buy")
+C3:3980-3: 04 43 00 50 ("Price")
+C3:3984-7: 04 44 00 1B ("Coins")
+C3:3988B: 84 44 00 4F ("No. owned:")
+C3:398C-F: 06 48 00 20 ("Cancel w/B")
+
+C3:3990: 03 (number of boxes?)
+C3:3991-4: 42 58 0F 0F
+C3:3995-8: 02 5C 0F 08
+C3:3999-C: 60 58 0F 11
+
+FROG COIN SHOP MENU
+C3:399D: 05 (Number of items in list)
+C3:399E-A1: 84 40 00 4C ("Buy")
+C3:39A2-5: 04 43 00 50 ("Price")
+C3:39A6-9: 04 44 00 38 ("Frog Coins")
+C3:39AA-D: 84 44 00 4F ("No. owned:")
+C3:39AE-B1: 06 48 00 20 ("Cancel w/B")
+
+C3:39B2: 03 (number of boxes?)
+C3:39B3-6: 42 58 0F 0F
+C3:39B7-B: 02 5C 0F 08
+C3:39BB-E: 60 58 0F 11
+C2 20
+A5 18 89 00 08
+D0 19 89 00 04
+D0 24 A5 14 89
+80 40 D0 50 89
+00 80 D0 36 89 40 00 D0 42 E2 20 60 E2 20 CE 29 09 10 19
+AD 27 09
+
+???
+C3:39C3-CB "Game"? "Special Item"?
+C3:39DA-C "Price"?
+
+BUY ITEMS SHOP
+ C3:3B00 20 F8 78 -> 20 02 79 (updates max price to 9999)
+ C3:3B0D 20 F8 78 -> 20 02 79 (updates max coins to 9999)
+
+SELL ITEMS SHOP
+82 DE FF
+C3:3E2A: 05 - Number of items in list
+C3:3E2B-D: 84 40 00 4D ("Sell items")
+C3:3E2F-32: 04 43 00 50 ("Price")
+C3:3E33-6: 04 44 00 1B ("Coins")
+C3:3E37-A: 84 44 00 4F ("No. owned:")
+C3:3E3B-E: 06 48 00 20 ("Cancel w/B")
+
+C3:3E54: 01 - Number of boxes
+C3:3E55-8: 42 58 0F 0F
+
+SELL WEAPONS SHOP
+C3:3E3F: 05 - Number of items in list
+C3:3E40-3: 84 40 00 4E ("Sell weapons")
+C3:3E44-7: 04 43 00 50 ("Price")
+C3:3E48-B: 04 44 00 1B ("Coins")
+C3:3E4C-F: 84 44 00 4F ("No. owned:")
+C3:3E50-3: 06 48 00 20 ("Cancel w/B")
+
+C3:3E59: 02 - Number of boxes
+C3:3E5A-D: 42 58 0F 0F
+C3:3E5E-61: 02 5C 0F 08
+
+01 80 67 1F 19
+C2 20
+A5 18 89
+00 08
+D0 23 89 00 04
+D0 2C 89 00 02
+D0 38 89 00 01
+D0 3F A5 14 89
+80 40 D0 60 89
+40 00 D0 57 89 00 80 D0 46 E2 20 60 E2 20
+
+
+$C3/6FC5 20 F9 02    JSR $02F9  [$C3:02F9]   A:0004 X:0800 Y:0000 P:envMxdIzc ; clear sprites
+$C3/0153 FA          PLX                     A:0001 X:0002 Y:6606 P:envMxdIzc
+$C3/6FE2 20 F9 02    JSR $02F9  [$C3:02F9]   A:FFFF X:F4DE Y:F4E0 P:envMxdIzc ; clear sprites
+$C3/6FE5 20 36 71    JSR $7136  [$C3:7136]   A:FF01 X:F4DE Y:F4E0 P:envMxdIzc ; clear text
+$C3/0153 FA          PLX                     A:0080 X:0002 Y:7144 P:eNvMxdIzc
+$C3/180C FA          PLX                     A:0001 X:01C0 Y:0000 P:envMxdIZC
+$C3/32CB 20 52 0B    JSR $0B52  [$C3:0B52]   A:FFFF X:6DFE Y:6E00 P:envMxdIzC
+$C3/6F8F A9 80       LDA #$80                A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/7145 C2 20       REP #$20                A:003A X:0002 Y:7144 P:envMxdIzc
+$C3/0153 FA          PLX                     A:0080 X:0002 Y:7144 P:eNvMxdIzc
+$C3/0105 20 C7 02    JSR $02C7  [$C3:02C7]   A:0080 X:0008 Y:0000 P:envMxdIZc
+$C3/6F9B A9 10       LDA #$10                A:7101 X:0002 Y:0003 P:envMxdIzC
+$C3/0105 20 C7 02    JSR $02C7  [$C3:02C7]   A:0042 X:0008 Y:0000 P:envMxdIZc
+$C3/6FAC C6 7E       DEC $7E    [$00:007E]   A:0001 X:01C0 Y:0000 P:envMxdIzC
+$C3/32F0 A2 22 5D    LDX #$5D22              A:7145 X:0002 Y:0003 P:envMxdIzC
+$C3/7145 C2 20       REP #$20                A:0084 X:0002 Y:7144 P:envMxdIzC
+$C3/0153 FA          PLX                     A:0040 X:0002 Y:7144 P:envMxdIzC
+$C3/0CFF C2 20       REP #$20                A:0040 X:0004 Y:0CFE P:envMxdIzC
+$C3/0153 FA          PLX                     A:2101 X:0060 Y:0CFE P:envMxdIzC
+$C3/0105 20 C7 02    JSR $02C7  [$C3:02C7]   A:2101 X:0008 Y:0000 P:envMxdIZC
+$C3/3324 E2 20       SEP #$20                A:0C01 X:0004 Y:0002 P:envMxdIzC
+$C3/35DF 68          PLA                     A:0001 X:3370 Y:0000 P:envMxdIzc
+$C3/3335 20 19 36    JSR $3619  [$C3:3619]   A:2001 X:0009 Y:44BC P:envMxdIZc ; this is right before box coords/size attributes
+$C3/0105 20 C7 02    JSR $02C7  [$C3:02C7]   A:0001 X:0008 Y:0000 P:envMxdIZc
+$C3/066F 60          RTS                     A:0001 X:0000 Y:0E78 P:envMxdIzc
+$C3/0E2B C2 20       REP #$20                A:0001 X:0000 Y:0E78 P:envMxdIzc
+$C3/3344 20 C8 10    JSR $10C8  [$C3:10C8]   A:0FF0 X:0002 Y:0003 P:envMxdIzc
+$C3/0FF0 A5 B9       LDA $B9    [$00:00B9]   A:0044 X:0002 Y:0FEF P:envMxdIzc
+
+
+---SPECIAL MENU SUBROUTINES---
+(These are executed when selecting a new ally in Special menu)
+$C3/3335 20 19 36    JSR $3619  [$C3:3619]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3338 20 0C 2D    JSR $2D0C  [$C3:2D0C]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/333B 20 64 2C    JSR $2C64  [$C3:2C64]   A:0001 X:0000 Y:10E3 P:envMxdIzC
+$C3/333E 20 9A 0D    JSR $0D9A  [$C3:0D9A]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3341 20 11 0E    JSR $0E11  [$C3:0E11]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3344 20 C8 10    JSR $10C8  [$C3:10C8]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3347 20 86 05    JSR $0586  [$C3:0586]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/334A 82 D4 FF    BRL $FFD4  [$3321]      A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/334D 03 60       ORA $60,s  [$00:2051]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/334F 58          CLI                     A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3350 0F 0B 60 5B ORA $5B600B[$5B:600B]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3354 0F 03 20 5C ORA $5C2003[$5C:2003]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3358 0F 0B 02 A2 ORA $A2020B[$A2:020B]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/335C 45 00       EOR $00    [$00:0000]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/335E 16 26       ASL $26,x  [$00:009E]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3360 46 00       LSR $00    [$00:0000]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3362 17 03       ORA [$03],y[$00:05A7]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3364 04 47       TSB $47    [$00:0047]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3366 00 1C       BRK #$1C                A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3368 84 47       STY $47    [$00:0047]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/336A 00 1D       BRK #$1D                A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/336C 08          PHP                     A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/336D 48          PHA                     A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/336E 00 0B       BRK #$0B                A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3370 AD 31 09    LDA $0931  [$7E:0931]   A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3373 D0 34       BNE $34    [$33A9]      A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3375 C2 20       REP #$20                A:0001 X:0078 Y:0597 P:envMxdIzc
+$C3/3377 A5 18       LDA $18    [$00:0018]   A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3379 89 00 08    BIT #$0800              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/337C F0 03       BEQ $03    [$3381]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/337E 82 60 00    BRL $0060  [$33E1]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3381 89 00 04    BIT #$0400              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3384 F0 03       BEQ $03    [$3389]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3386 82 68 00    BRL $0068  [$33F1]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3389 89 00 01    BIT #$0100              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/338C F0 03       BEQ $03    [$3391]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/338E 82 88 00    BRL $0088  [$3419]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3391 89 80 40    BIT #$4080              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3394 F0 03       BEQ $03    [$3399]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3396 82 88 00    BRL $0088  [$3421]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/3399 89 00 80    BIT #$8000              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/339C F0 03       BEQ $03    [$33A1]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/339E 82 2B 01    BRL $012B  [$34CC]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/33A1 89 40 00    BIT #$0040              A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/33A4 D0 37       BNE $37    [$33DD]      A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/33A6 E2 20       SEP #$20                A:0001 X:0078 Y:0597 P:envmxdIzc
+$C3/33A8 60          RTS                     A:0001 X:0078 Y:0597 P:envMxdIzc
+
+
+(These are executed before displaying the text)
+$C3/3335 20 19 36    JSR $3619  [$C3:3619]   A:0001 X:0000 Y:10E3 P:envMxdIzC
+$C3/3338 20 0C 2D    JSR $2D0C  [$C3:2D0C]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; loads cursor
+$C3/333B 20 64 2C    JSR $2C64  [$C3:2C64]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; ???
+$C3/333E 20 9A 0D    JSR $0D9A  [$C3:0D9A]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; ???
+$C3/3341 20 11 0E    JSR $0E11  [$C3:0E11]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; loads character sprites
+$C3/3344 20 C8 10    JSR $10C8  [$C3:10C8]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; also loads characters sprites?
+$C3/3347 20 86 05    JSR $0586  [$C3:0586]   A:0001 X:0000 Y:10E3 P:envMxdIzC ; loads cursor+sprites??
+82 D4 FF - Identifies lists?
+C3:334D: 03 (Number of boxes)
+
+When grabbing Therapy
+$C3/3547 EE 63 09    INC $0963  [$7E:0963]   A:1F01 X:0002 Y:0003 P:envMxdIzc ; Copies spell's text + moves to allow for use
+$C3/3332 20 6E 35    JSR $356E  [$C3:356E]   A:1F81 X:0002 Y:0003 P:envMxdIzc ; I guess this loads the ally's spell list
+
+
+------Common menu loading instructions------
+$C3/3335 20 19 36    JSR $3619  [$C3:3619]   A:2001 X:0009 Y:44BC P:envMxdIZc - load ally's stats on left? for special menu, clear WRAM to display next Special list + loads spell desc?
+Disassembly
+$C3/3619 AD 4E 09    LDA $094E  [$00:094E]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; load spell description
+$C3/361C F0 71       BEQ $71    [$368F]      A:00A7 X:0008 Y:0000 P:envMxdIZc ; load spell description pointer
+$C3/361E 64 9D       STZ $9D    [$00:009D]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3620 9C 4E 09    STZ $094E  [$00:094E]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3623 AD 31 09    LDA $0931  [$00:0931]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; clear spell description when cursor is on an ally
+$C3/3626 F0 0A       BEQ $0A    [$3632]      A:00A7 X:0008 Y:0000 P:envMxdIZc ; jump if NOT equal
+$C3/3628 20 A3 36    JSR $36A3  [$C3:36A3]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; jump to $C3:36A3
+$C3/362B BD 40 29    LDA $2940,x[$00:2948]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; loads where spell descriptions are stored
+$C3/362E C9 FF       CMP #$FF                A:00A7 X:0008 Y:0000 P:envMxdIZc ; setting to 00 doesn't load first spell's description?
+$C3/3630 D0 15       BNE $15    [$3647]      A:00A7 X:0008 Y:0000 P:envMxdIZc ; jump to spell description subroutine?
+$C3/3632 A2 A2 45    LDX #$45A2              A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/3635 86 62       STX $62    [$00:0062]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/3637 A9 0D       LDA #$0D                A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/3639 85 70       STA $70    [$00:0070]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/363B A9 04       LDA #$04                A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/363D 85 72       STA $72    [$00:0072]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; controls menu boxes?
+$C3/363F 20 10 72    JSR $7210  [$C3:7210]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; loads sprites
+$C3/3642 20 D6 64    JSR $64D6  [$C3:64D6]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; ???
+$C3/3645 80 44       BRA $44    [$368B]      A:00A7 X:0008 Y:0000 P:envMxdIZc ; jump always
+$C3/3647 48          PHA                     A:00A7 X:0008 Y:0000 P:envMxdIZc ; *when cursor is on character, add stuff in box
+$C3/3648 A2 5A 33    LDX #$335A              A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/364B 86 60       STX $60    [$00:0060]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/364D A2 00 00    LDX #$0000              A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3650 86 64       STX $64    [$00:0064]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3652 20 15 6A    JSR $6A15  [$C3:6A15]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3655 68          PLA                     A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3656 85 70       STA $70    [$00:0070]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3658 20 58 65    JSR $6558  [$C3:6558]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/365B 20 11 78    JSR $7811  [$C3:7811]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/365E BF 02 00 FA LDA $FA0002,x[$FA:000A] A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3662 85 70       STA $70    [$00:0070]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3664 DA          PHX                     A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3665 A2 B8 45    LDX #$45B8              A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3668 86 62       STX $62    [$00:0062]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/366A 20 D2 78    JSR $78D2  [$C3:78D2]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/366D A2 36 46    LDX #$4636              A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3670 86 62       STX $62    [$00:0062]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3672 FA          PLX                     A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3673 BF 01 00 FA LDA $FA0001,x[$FA:0009] A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3677 89 10       BIT #$10                A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3679 D0 0D       BNE $0D    [$3688]      A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/367B BF 05 00 FA LDA $FA0005,x[$FA:000D] A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/367F F0 07       BEQ $07    [$3688]      A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3681 85 70       STA $70    [$00:0070]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3683 20 EC 78    JSR $78EC  [$C3:78EC]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3686 80 03       BRA $03    [$368B]      A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3688 20 93 36    JSR $3693  [$C3:3693]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+
+$C3/368B A9 01       LDA #$01                A:00A7 X:0008 Y:0000 P:envMxdIZc ; *set to 02 to remove background
+$C3/368D 04 94       TSB $94    [$00:0094]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/368F 20 87 65    JSR $6587  [$C3:6587]   A:00A7 X:0008 Y:0000 P:envMxdIZc ; executes
+$C3/3692 60          RTS                     A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3693 A9 7D       LDA #$7D                A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3695 85 70       STA $70    [$00:0070]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3697 A9 03       LDA #$03                A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/3699 85 7E       STA $7E    [$00:007E]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/369B 20 AB 78    JSR $78AB  [$C3:78AB]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/369E C6 7E       DEC $7E    [$00:007E]   A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/36A0 D0 F9       BNE $F9    [$369B]      A:00A7 X:0008 Y:0000 P:envMxdIZc
+$C3/36A2 60          RTS                     A:00A7 X:0008 Y:0000 P:envMxdIZc
+
+$C3/36A3 AD 35 09    LDA $0935  [$00:0935]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36A6 EB          XBA                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36A7 A9 0F       LDA #$0F                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36A9 20 84 04    JSR $0484  [$7F:0484]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36AC 18          CLC                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36AD 6D 2A 09    ADC $092A  [$00:092A]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36B0 AA          TAX                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/36B1 60          RTS                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+
+$C3/6587 08          PHP                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6588 E2 20       SEP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/658A AD 50 09    LDA $0950  [$00:0950]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/658D F0 76       BEQ $76    [$6605]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/658F AD 51 09    LDA $0951  [$00:0951]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6592 F0 05       BEQ $05    [$6599]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6594 CE 51 09    DEC $0951  [$00:0951]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6597 80 6C       BRA $6C    [$6605]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6599 AD 54 09    LDA $0954  [$00:0954]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/659C 85 62       STA $62    [$00:0062]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/659E AE 52 09    LDX $0952  [$00:0952]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65A1 86 60       STX $60    [$00:0060]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65A3 7B          TDC                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65A4 A7 60       LDA [$60]  [$00:EF00]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65A6 C9 20       CMP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65A8 B0 31       BCS $31    [$65DB]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65AA C9 00       CMP #$00                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65AC D0 05       BNE $05    [$65B3]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65AE 9C 50 09    STZ $0950  [$00:0950]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65B1 80 52       BRA $52    [$6605]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65B3 C9 01       CMP #$01                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65B5 D0 17       BNE $17    [$65CE]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65B7 EE 59 09    INC $0959  [$00:0959]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65BA AD 59 09    LDA $0959  [$00:0959]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65BD EB          XBA                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65BE A9 68       LDA #$68                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65C0 20 84 04    JSR $0484  [$7F:0484]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65C3 8D 57 09    STA $0957  [$00:0957]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65C6 C2 20       REP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65C8 E6 60       INC $60    [$00:0060]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65CA E2 20       SEP #$20                A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65CC 80 D5       BRA $D5    [$65A3]      A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65CE E2 20       SEP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65D0 29 03       AND #$03                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65D2 EB          XBA                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65D3 C2 20       REP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65D5 E6 60       INC $60    [$00:0060]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65D7 E2 20       SEP #$20                A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65D9 A7 60       LDA [$60]  [$00:EF00]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65DB C2 20       REP #$20                A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65DD E6 60       INC $60    [$00:0060]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65DF A6 60       LDX $60    [$00:0060]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65E1 8E 52 09    STX $0952  [$00:0952]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65E4 85 70       STA $70    [$00:0070]   A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65E6 E2 20       SEP #$20                A:FF00 X:62E0 Y:3240 P:envmxdiZc
+$C3/65E8 AE 57 09    LDX $0957  [$00:0957]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65EB 86 72       STX $72    [$00:0072]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65ED A2 00 F0    LDX #$F000              A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65F0 86 6E       STX $6E    [$00:006E]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65F2 20 81 67    JSR $6781  [$7F:6781]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65F5 A6 6E       LDX $6E    [$00:006E]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65F7 8E 55 09    STX $0955  [$00:0955]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65FA A6 72       LDX $72    [$00:0072]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65FC 8E 57 09    STX $0957  [$00:0957]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/65FF A0 8A 66    LDY #$668A              A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6602 20 5B 01    JSR $015B  [$7F:015B]   A:FF00 X:62E0 Y:3240 P:envMxdiZc
+
+$C3/6605 28          PLP                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+$C3/6606 60          RTS                     A:FF00 X:62E0 Y:3240 P:envMxdiZc
+
+$C3/3338 20 0C 2D    JSR $2D0C  [$C3:2D0C]   A:0001 X:0000 Y:0597 P:envMxdIzc - next JSR after $3335
+Disassembly
+$C3/2D0C E2 20       SEP #$20                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D0E AD 64 09    LDA $0964  [$7E:0964]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D11 F0 03       BEQ $03    [$2D16]      A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D13 82 42 00    BRL $0042  [$2D58]      A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D16 EE 2F 09    INC $092F  [$7E:092F]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D19 AD 31 09    LDA $0931  [$7E:0931]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D1C D0 14       BNE $14    [$2D32]      A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D1E 7B          TDC                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D1F AD 29 09    LDA $0929  [$7E:0929]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D22 A2 18 00    LDX #$0018              A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D25 86 70       STX $70    [$00:0070]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D27 AA          TAX                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D28 BF 59 2D C3 LDA $C32D59,x[$C3:2D59] A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D2C 85 72       STA $72    [$00:0072]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D2E 64 73       STZ $73    [$00:0073]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D30 80 15       BRA $15    [$2D47]      A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D32 A2 88 00    LDX #$0088              A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D35 86 70       STX $70    [$00:0070]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D37 AD 2A 09    LDA $092A  [$7E:092A]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D3A 1A          INC A                   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D3B EB          XBA                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D3C A9 0C       LDA #$0C                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D3E 20 84 04    JSR $0484  [$C3:0484]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D41 1A          INC A                   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D42 1A          INC A                   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D43 85 72       STA $72    [$00:0072]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D45 64 73       STZ $73    [$00:0073]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D47 C2 20       REP #$20                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D49 A5 70       LDA $70    [$00:0070]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D4B 8D 90 09    STA $0990  [$7E:0990]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D4E A5 72       LDA $72    [$00:0072]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D50 8D 92 09    STA $0992  [$7E:0992]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D53 E2 20       SEP #$20                A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D55 20 D0 18    JSR $18D0  [$C3:18D0]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D58 60          RTS                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D59 18          CLC                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D5A 48          PHA                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D5B 78          SEI                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D5C 98          TYA                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D5D A0 02 60    LDY #$6002              A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D60 7B          TDC                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D61 AA          TAX                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D62 A9 0F       LDA #$0F                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D64 85 7E       STA $7E    [$00:007E]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D66 5A          PHY                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D67 84 62       STY $62    [$00:0062]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D69 BD 40 29    LDA $2940,x[$7E:2940]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D6C 85 70       STA $70    [$00:0070]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D6E 20 9E 2D    JSR $2D9E  [$C3:2D9E]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D71 20 07 7A    JSR $7A07  [$C3:7A07]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D74 C2 20       REP #$20                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D76 A5 62       LDA $62    [$00:0062]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D78 18          CLC                     A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D79 69 06 00    ADC #$0006              A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D7C 85 62       STA $62    [$00:0062]   A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D7E E2 20       SEP #$20                A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D80 BD 4F 29    LDA $294F,x[$7E:294F]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D83 85 70       STA $70    [$00:0070]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D85 20 9E 2D    JSR $2D9E  [$C3:2D9E]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D88 20 07 7A    JSR $7A07  [$C3:7A07]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D8B E8          INX                     A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D8C C2 20       REP #$20                A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D8E 68          PLA                     A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D8F 18          CLC                     A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D90 69 80 00    ADC #$0080              A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D93 A8          TAY                     A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D94 E2 20       SEP #$20                A:0001 X:0000 Y:0597 P:envmxdIzc
+$C3/2D96 C6 7E       DEC $7E    [$00:007E]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D98 D0 CC       BNE $CC    [$2D66]      A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D9A 20 37 27    JSR $2737  [$C3:2737]   A:0001 X:0000 Y:0597 P:envMxdIzc
+$C3/2D9D 60          RTS                     A:0001 X:0000 Y:0597 P:envMxdIzc
+
+$C3/32C5 20 2B 04    JSR $042B  [$C3:042B]   A:FFFF X:5FFE Y:6000 P:envMxdIzC - clears RAM to load next menu (called twice when main menu opens from overworld)
+Disassembly
+$C3/042B 08          PHP                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/042C E2 20       SEP #$20                A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/042E 7B          TDC                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/042F AA          TAX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0430 A0 80 00    LDY #$0080              A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0433 A9 F0       LDA #$F0                A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0435 9F E1 35 40 STA $4035E1,x[$40:35E9] A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0439 E8          INX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/043A E8          INX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/043B E8          INX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/043C E8          INX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/043D 88          DEY                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/043E D0 F5       BNE $F5    [$0435]      A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0440 A0 20 00    LDY #$0020              A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0443 9F E0 35 40 STA $4035E0,x[$40:35E8] A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0447 E8          INX                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0448 88          DEY                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/0449 D0 F8       BNE $F8    [$0443]      A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/044B E6 B2       INC $B2    [$00:00B2]   A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/044D 28          PLP                     A:008F X:0008 Y:0000 P:envMxdIZc
+$C3/044E 60          RTS                     A:008F X:0008 Y:0000 P:envMxdIZc
+
+
+
+$C3/1685 20 F9 02    JSR $02F9  [$C3:02F9]   A:0C01 X:0000 Y:0002 P:envMxdIzC - clear menu sprites? also called when going to main menu
+$C3/7048 20 36 71    JSR $7136  [$C3:7136]   A:FF01 X:5FFE Y:6000 P:envMxdIzC - clear menu text?
+Disassembly
+$C3/7136 A9 80       LDA #$80                A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/7138 20 3C 71    JSR $713C  [$C3:713C]   A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/713B 60          RTS                     A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/713C 85 9F       STA $9F    [$00:009F]   A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/713E A0 45 71    LDY #$7145              A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/7141 20 5B 01    JSR $015B  [$C3:015B]   A:00EE X:0008 Y:0000 P:envMxdIZC
+$C3/7144 60          RTS                     A:00EE X:0008 Y:0000 P:envMxdIZC
+
+$C3/0105 20 C7 02    JSR $02C7  [$C3:02C7]   A:00B3 X:0008 Y:0000 P:envMxdIZc - used to stretch menu
+Disassembly
+$C3/6FAC C6 7E       DEC $7E    [$00:007E]   A:0053 X:0008 Y:0000 P:envMXdIZc
+$C3/6FAE D0 EF       BNE $EF    [$6F9F]      A:0053 X:0008 Y:0000 P:envMXdIZc
+$C3/6FB0 A9 40       LDA #$40                A:0053 X:0008 Y:0000 P:envMXdIZc
+$C3/6FB2 20 3C 71    JSR $713C  [$C3:713C]   A:0053 X:0008 Y:0000 P:envMXdIZc
+$C3/6FB5 60          RTS                     A:0053 X:0008 Y:0000 P:envMXdIZc
+
+$C3/0FF0 A5 B9       LDA $B9    [$00:00B9]   A:00C7 X:0002 Y:0FEF P:envMxdIzc - called when going to main menu/special menu
+$C3/160B 20 81 6F    JSR $6F81  [$C3:6F81]   A:5B42 X:6F06 Y:0000 P:envMxdIZc - Load next menu
+
+$C3/32F0 A2 22 5D    LDX #$5D22              A:7145 X:0002 Y:0003 P:envMxdIzC - load saved menu tileset image?
+
+$C3/28C7 20 52 0B    JSR $0B52  [$C3:0B52]   A:FFFF X:6DFE Y:6E00 P:envMxdIzC - loads check/write system for item/stats/special/equip menus
+Disassembly
+$C3/0B52 A2 00 32    LDX #$3200              A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B55 A0 08 00    LDY #$0008              A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B58 7B          TDC                     A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B59 9F 00 00 00 STA $000000,x[$00:01C0] A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B5D C2 20       REP #$20                A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B5F 8A          TXA                     A:0020 X:01C0 Y:0000 P:envmxdIZC
+$C3/0B60 18          CLC                     A:0020 X:01C0 Y:0000 P:envmxdIZC
+$C3/0B61 69 24 00    ADC #$0024              A:0020 X:01C0 Y:0000 P:envmxdIZC
+$C3/0B64 AA          TAX                     A:0020 X:01C0 Y:0000 P:envmxdIZC
+$C3/0B65 E2 20       SEP #$20                A:0020 X:01C0 Y:0000 P:envmxdIZC
+$C3/0B67 88          DEY                     A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B68 D0 EE       BNE $EE    [$0B58]      A:0020 X:01C0 Y:0000 P:envMxdIZC
+$C3/0B6A 60          RTS                     A:0020 X:01C0 Y:0000 P:envMxdIZC
+
+
+
+------Going through menus------
+$C3/16E1 82 FA FE    BRL $FEFA  [$15DE]      A:0001 X:01C0 Y:0000 P:envMxdIzC - ??? Called when going to main menu
+$C3/160E 20 CC 31    JSR $31CC  [$C3:31CC]   A:7145 X:0002 Y:0003 P:envMxdIzC - load regular menu?
+
+$C3/2506 A2 12 00    LDX #$0012              A:7386 X:0012 Y:0009 P:envMxdIZc - called at equip menu
+$C3/1D87 A9 02       LDA #$02                A:0600 X:4680 Y:0600 P:envMxdIZc - called at equip menu
+$C3/6F9B A9 10       LDA #$10                A:7101 X:0002 Y:0003 P:envMxdIzC - called when going to special/equip/item/main menu from overworld
+$C3/6F8F A9 80       LDA #$80                A:0020 X:01C0 Y:0000 P:envMxdIZC - called when going into special menu
+
+$C3/2DA5 BF 00 00 FA LDA $FA0000,x[$FA:133B] A:133B X:133B Y:6202 P:envMxdIzc
+$C3/2D71 20 07 7A    JSR $7A07  [$C3:7A07]   A:1303 X:0004 Y:6202 P:envMxdIzc
+$C3/273A 20 91 27    JSR $2791  [$C3:2791]   A:4820 X:4820 Y:0780 P:envMxdIZc - load FP?
+$C3/2CBA 20 37 27    JSR $2737  [$C3:2737]   A:5E05 X:5EE0 Y:0680 P:envMxdIzc
+$C3/2964 4C 28 29    JMP $2928  [$C3:2928]   A:2001 X:0009 Y:469E P:envMxdIZc
+
+
+$C3/2DFE 20 5F 6E    JSR $6E5F  [$C3:6E5F]   A:FFFF X:6DFE Y:6E00 P:envMxdIzC - load stats menu tileset?
+$C3/2E2D 20 44 0C    JSR $0C44  [$C3:0C44]   A:7145 X:0002 Y:0003 P:envMxdIzC - load stats menu text?
+Disassembly
+$C3/0C44 A2 00 00    LDX #$0000              A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C47 A0 10 00    LDY #$0010              A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C4A 9E 09 09    STZ $0909,x[$00:0A89]   A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C4D E8          INX                     A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C4E 88          DEY                     A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C4F D0 F9       BNE $F9    [$0C4A]      A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C51 9C 19 09    STZ $0919  [$00:0919]   A:0001 X:0180 Y:0FEF P:envMxdIZc
+$C3/0C54 60          RTS                     A:0001 X:0180 Y:0FEF P:envMxdIZc
+
+
+$C3/3341 20 11 0E    JSR $0E11  [$C3:0E11]   A:0001 X:0018 Y:0DA1 P:envMxdIzc - Special menu? spell list -> ally
+Disassembly
+$C3/0E11 9C 08 09    STZ $0908  [$7E:0908]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E14 A9 40       LDA #$40                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E16 8F 6A 30 00 STA $00306A[$00:306A]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E1A C2 20       REP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E1C A9 00 40    LDA #$4000              A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E1F 8F 68 30 00 STA $003068[$00:3068]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E23 E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E25 A0 78 0E    LDY #$0E78              A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E28 20 51 06    JSR $0651  [$7E:0651]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E2B C2 20       REP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E2D AF 70 30 00 LDA $003070[$00:3070]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E31 F0 37       BEQ $37    [$0E6A]      A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E33 8D 04 09    STA $0904  [$7E:0904]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E36 AF 72 30 00 LDA $003072[$00:3072]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E3A 8D 00 09    STA $0900  [$7E:0900]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E3D E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E3F EE 08 09    INC $0908  [$7E:0908]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E42 C2 20       REP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E44 A9 00 48    LDA #$4800              A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E47 8F 68 30 00 STA $003068[$00:3068]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E4B E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E4D A0 78 0E    LDY #$0E78              A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E50 20 51 06    JSR $0651  [$7E:0651]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E53 C2 20       REP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E55 AF 70 30 00 LDA $003070[$00:3070]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E59 F0 0F       BEQ $0F    [$0E6A]      A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E5B 8D 06 09    STA $0906  [$7E:0906]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E5E AF 72 30 00 LDA $003072[$00:3072]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E62 8D 02 09    STA $0902  [$7E:0902]   A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E65 E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envmxdIZc
+$C3/0E67 EE 08 09    INC $0908  [$7E:0908]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E6A E2 20       SEP #$20                A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E6C AD 08 09    LDA $0908  [$7E:0908]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E6F F0 06       BEQ $06    [$0E77]      A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E71 A0 F0 0F    LDY #$0FF0              A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E74 20 5B 01    JSR $015B  [$7E:015B]   A:0000 X:0000 Y:10E3 P:envMxdIZc
+$C3/0E77 60          RTS                     A:0000 X:0000 Y:10E3 P:envMxdIZc
+
+$C3/16A6 4C 85 16    JMP $1685  [$C3:1685]   A:0001 X:0026 Y:0597 P:envMxdIzc - loads for special menu
+Disassembly
+$C3/1685 20 F9 02    JSR $02F9  [$7E:02F9]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/1688 C2 20       REP #$20                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/168A 64 B0       STZ $B0    [$00:00B0]   A:0000 X:326C Y:0597 P:envmxdIZc
+$C3/168C E2 20       SEP #$20                A:0000 X:326C Y:0597 P:envmxdIZc
+$C3/168E 20 E6 73    JSR $73E6  [$7E:73E6]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/1691 20 E4 16    JSR $16E4  [$7E:16E4]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/1694 20 74 17    JSR $1774  [$7E:1774]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/1697 20 A8 18    JSR $18A8  [$7E:18A8]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/169A 20 9A 0D    JSR $0D9A  [$7E:0D9A]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/169D 20 11 0E    JSR $0E11  [$7E:0E11]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16A0 20 C8 10    JSR $10C8  [$7E:10C8]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16A3 20 86 05    JSR $0586  [$7E:0586]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16A6 4C 85 16    JMP $1685  [$7E:1685]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16A9 E2 20       SEP #$20                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16AB 20 C8 72    JSR $72C8  [$7E:72C8]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16AE 80 11       BRA $11    [$16C1]      A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16B0 E2 20       SEP #$20                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16B2 20 C8 72    JSR $72C8  [$7E:72C8]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16B5 E2 20       SEP #$20                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16B7 A9 01       LDA #$01                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16B9 85 70       STA $70    [$00:0070]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16BB 20 75 04    JSR $0475  [$7E:0475]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16BE 20 B6 6F    JSR $6FB6  [$7E:6FB6]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16C1 20 F9 02    JSR $02F9  [$7E:02F9]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16C4 A9 8F       LDA #$8F                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16C6 8F 00 21 00 STA $002100[$00:2100]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16CA A9 01       LDA #$01                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16CC 8F 00 42 00 STA $004200[$00:4200]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16D0 A9 00       LDA #$00                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16D2 8F 0C 42 00 STA $00420C[$00:420C]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16D6 82 6B E9    BRL $E96B  [$0044]      A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16D9 E2 20       SEP #$20                A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16DB 20 B6 6F    JSR $6FB6  [$7E:6FB6]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16DE 20 F9 02    JSR $02F9  [$7E:02F9]   A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16E1 82 FA FE    BRL $FEFA  [$15DE]      A:0000 X:326C Y:0597 P:envMxdIZc
+$C3/16E4 60          RTS                     A:0000 X:326C Y:0597 P:envMxdIZc
+
+$C3/3347 20 86 05    JSR $0586  [$C3:0586]   A:0021 X:0002 Y:10E3 P:envMxdIzc - Loads in special menu
+
+$C3/333B 20 64 2C    JSR $2C64  [$C3:2C64]   A:008C X:000E Y:463C P:envMxdIZc - Loads in special menu. Ally -> spell list
+
+$C3/3344 20 C8 10    JSR $10C8  [$C3:10C8]   A:0FF0 X:0002 Y:0003 P:envMxdIzc - load special menu list
+Disassembly
+$C3/10C8 C2 20       REP #$20                A:0001 X:0120 Y:0FEF P:envMXdIZc
+$C3/10CA A5 B0       LDA $B0    [$00:00B0]   A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10CC 8F B0 30 00 STA $0030B0[$00:30B0]   A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10D0 E2 20       SEP #$20                A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10D2 A0 E3       LDY #$E3                A:0001 X:0120 Y:0FEF P:envMXdIZc
+$C3/10D4 10 20       BPL $20    [$10F6]      A:0001 X:0120 Y:0FEF P:envMXdIZc
+$C3/10D6 51 06       EOR ($06),y[$00:0FEF]   A:0001 X:0120 Y:0FEF P:envMXdIZc
+$C3/10D8 C2 20       REP #$20                A:0001 X:0120 Y:0FEF P:envMXdIZc
+$C3/10DA AF B0 30 00 LDA $0030B0[$00:30B0]   A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10DE 85 B0       STA $B0    [$00:00B0]   A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10E0 E2 20       SEP #$20                A:0001 X:0120 Y:0FEF P:envmXdIZc
+$C3/10E2 60          RTS                     A:0001 X:0120 Y:0FEF P:envMXdIZc
+
+$C3/0FF0 A5 B9       LDA $B9    [$00:00B9]   A:0016 X:0002 Y:0FEF P:envMxdIzc
+$C3/334A 82 D4 FF    BRL $FFD4  [$3321]      A:0001 X:000E Y:0597 P:envMxdIzC - load spell desc text?
+
+
+$C3/2DFE 20 5F 6E    JSR $6E5F  [$C3:6E5F]   A:FFFF X:6DFE Y:6E00 P:envMxdIzC - load equip menu tileset?
+$C3/2506 A2 12 00    LDX #$0012              A:7386 X:0012 Y:0009 P:envMxdIZc - 
+$C3/1D87 A9 02       LDA #$02                A:0600 X:4680 Y:0600 P:envMxdIZc - 
+$C3/1D94 20 CE 27    JSR $27CE  [$C3:27CE]   A:6782 X:2A00 Y:6782 P:envMxdIZc - 
+$C3/1A46 4C F4 19    JMP $19F4  [$C3:19F4]   A:5E05 X:5EE2 Y:0680 P:envMxdIzc - 
+
+$C3/52D1 20 98 73    JSR $7398  [$C3:7398]   A:FFFF X:6DFE Y:6E00 P:envMxdIzC - loads special item menu
+
+$C3/19D2 A2 44 5D    LDX #$5D44              A:7145 X:0002 Y:0003 P:envMxdIzC - Loads at equip menu
+
+
+
+
+$C3/4049 20 AD 44    JSR $44AD  [$C3:44AD]   A:7145 X:0002 Y:0003 P:envMxdIzC - Load name save file menu text?
+
+
+empty - 02F9A6
+
+20 xx xx xx JSR (jump)
+BF XX XX XX LDA (load value)
+80 xx (jump to next byte)
+D0 xx (branch to xx if byte not equal)
+
+BF1B007E
+
+CODE
+Blind Status Ailment
+WHAT IT DOES:
+The player's attacks on the monster will miss 50% more of the time.
+
+C2/C1D0 4C A6 F9 ; jump to $#C2:F9A6 (empty area)
+
+AE 50 07    ; load character slot
+BF 40 00 7E ; load current character ailment
+89 08	    ; check if inflicted with Fear
+D0 05	    ; if equal, jump
+A9 63	    ; call number 99
+85 DB	    ; write to $DB
+60 	    ; return
+A9 31	    ; set to 49
+85 DB	    ; write to $DB
+60   	    ; return
+
+BF 27 01 C2 ; load character 1
+
+
+Steamed Status Ailment
+WHAT IT DOES:
+When afflicted, the player cannot control the character.
+When the character turn comes up, it will automatically use a physical attack on a random target.
+The character will always correctly time the attack. However, they will never be able to block.
+In addition, the player will slowly regenerate.
+
+AUTO-ATTACK ASM
+C2/C7C9 4C A6 F9 02
+C2/C7CD 
+
+@02F9A6:
+BF 40 00 7E ; check current ailment
+89 40	    ; check if Steamed
+D0 04	    ; if yes, branch four bytes
+4C CD C7 02 ; always branch back to status check
+
+
+387D626974
+
+FP EFFECTING ROUTINES
+Does four things:
+For item: Sets FP to 0 until next spell use
+For accessories: if 4F, jump
+For Spell Adding accessory: Sets bit to 
+
+C1/6626 20 1E 9D 
+AE 50 07	; load character data
+
+
+
+[
+C9 50 00    CMP #$004F              A:00FF X:FA80 Y:0006 ;check if Cursed Ring
+29 FF 00						 ;isolate
+D0 02       BEQ $0C    [$669B]      A:4600 X:21B1 Y:0000 ;branch if equal
+]
+
+
+BD 1F 00    LDA $001E,x[$7E:FA9E]   A:000D X:FA80 Y:0006 ;load current special value
+89 40	    CMP #$004F              A:00FF X:FA80 Y:0006 ;check if bit set
+29 FF 00						 ;isolate
+D0 0B       BEQ $0C    [$669B]      A:4600 X:21B1 Y:0000 ;branch if not equal
+
+BD 1E 00    LDA $001E,x[$7E:FA9E]   A:000D X:FA80 Y:0006 ;load equipped accessory
+C9 4F 00    CMP #$004F              A:00FF X:FA80 Y:0006 ;check if -3FP Badge
+29 FF 00						 ;isolate
+F0 02       BEQ $0C    [$669B]      A:4600 X:21B1 Y:0000 ;branch if not equal
+
+E6 94							 ;save to address to be called later
+60
+
+A5 94       LDA $94    [$00:0494]   A:4603 X:21B1 Y:0000 ;load checked saved memory
+D0 01       BEQ $0C    [$669B]      A:4600 X:21B1 Y:0000 ;branch if set (-3FP accessory)
+60
+
+C9 00
+D0 0F
+C9 01
+D0 0A
+C9 02
+D0 05
+C9 03
+D0 01
+3A
+3A
+3A
+60
+
+A5 94
+89 40	    CMP #$004F              A:00FF X:FA80 Y:0006 ;check if bit set
+F0 02
+A9 00       BIT #$01                A:4603 X:21B1 Y:0000 ;set A to 0
+60
+

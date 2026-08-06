@@ -1,0 +1,166 @@
+---------------------------
+OBJECT MAPS $148400-$14FFFF
+pointers: $148000-$1483FF
+---------------------------
+
+byte 1	object mold size property
+
+byte 2	lower bits: multiple objects
+	upper bits: offset flags
+	0x	object offset flag (default, not really set)
+	1x	treasure chest flag
+	2x	battle engagement flag
+byte 3	lower bits: extra movement speed
+	upper bits: object behavior
+	bit 3	object turns around and faces Mario when touched/engaged
+	bit 4	
+	bit 5	
+	bit 6	sets animation sequence; if not set, no animation
+	bit 7	
+byte 4	object interaction
+	bit 1	cannot move around if Z > 0
+	bit 6	sets object(s) physical field(s)
+
+byte 5	bits 0-1: object palette offset (0-3)
+byte 5,6 (12-bit)	object attribute assignment (divide by 4 = object attribute byte)
+byte 6,7 (12-bit)	movement sequence assignment (000-3FF)
+byte 8,9 (12-bit)	event byte (if byte 2 = 0x)
+			formation pack (if byte 2 = 2x)
+
+byte 9	event initiator (if byte 2 = 0x)
+	1x	press A from any side
+	2x	press A from front
+	3x	do anything EXCEPT touch any side
+	4x	press A from any side / touch any side
+	5X	press A from front / touch from front
+	6x	do anything
+	7x	hit from below
+	8X	jump on
+	9x	jump on / hit from below
+	Ax	touch any side
+	Bx	touch from front
+	Cx	do anything EXCEPT press A
+
+	treasure initiator (if byte 2 = 1x)
+	1x-Cx	same as event initiator values
+
+	battle initiator (if byte 2 = 2x)
+	bit 0	fight formation #$001 (Terrapin x1)
+	bit 1	returns after entering area again
+	bit 2	is not removed when defeated in battle
+	bit 3	returns after entering area again
+	1x-Cx	same as event initiator values
+
+byte 10	lower bits: object offset (if byte 2 = 0x)
+
+		    star XP increments (if byte 2 = 1x) (read from 0x39BC44)
+			x0  monsters give 1 XP
+			x1  monsters give 2 XP
+			x2  monsters give 5 XP
+			x3  monsters give 8 XP
+			x4  monsters give 13 XP
+			x5  monsters give 11 XP
+			x6  monsters give 0 XP
+			x7  monsters give 5 XP
+			x8  monsters give 6 XP
+			x9  monsters give 9 XP	
+
+		    movement offset (if byte 2 = 2x)
+
+	upper bits: formation pack offset (if byte 2 = 2x)
+
+		    treasure type/item (if byte 2 = 1x)
+			0x  Mushroom (restore all HP/FP)
+			1x  Invincible Star
+			2x  Flower (max FP +1)
+			3x  Frog Coin
+			default is an item byte, but usually the event script declares the item
+
+byte 11	X coordinate
+byte 12	Y coordinate
+byte 13	bits 0-4: elevation (up to 0x1F)
+	bits 5-7: radial position
+	00  right
+	20  down-right
+	40  foward
+	60  down-left
+	80  left
+	A0  up-left
+	C0  up
+	E0  up-right
+
+bytes 10-13 can be subsequently repeated (with different values) for each multiple object
+
+------------------------------
+LAND'S END UNDERGROUND, AREA 4
+$14BFC3
+------------------------------
+65		;pointer to data
+
+2F 48 40	;byte 1	sets 15 extra objects (for the Geckits)
+		;byte 2	faces Mario when touched
+		;byte 3	object interaction
+
+7B 05 F0	;object attribute: $15E ($57B / 4)
+		;movement byte: 300 (AND $F00 by $3FF)
+
+52 C0		;byte 1  formation pack assignment: $52
+		;byte 2  engage in battle
+
+80 88 12 A0	;byte 1  formation pack offset
+		 upper bits: formation pack $5A (52 + 8)
+		;byte 2  X coordinate
+		;byte 3  Y coordinate
+		;byte 4  direction/height (faces up-left)
+
+80 8C 11 60	;the other 15 Geckits' properties
+80 86 15 20
+80 89 16 A0
+80 8B 15 60
+80 8E 14 20
+80 85 19 A0
+80 88 1B 60
+80 8B 19 20
+80 8E 1B A0
+80 87 21 60
+80 8B 20 20
+80 8D 1F A0
+80 8A 24 60
+80 8C 25 20
+80 8E 23 20
+
+00 40 50
+13 14 CA	;Shaman movement/object, 0A1/413
+02 A7 
+00 83 15 60
+
+00 40 40
+93 11 CA	;Trampoline movement/object, 0A1/193
+8F 86 
+00 86 1D 60
+
+11 40 40
+DF 17 CA	;Treasure Chest (w/star) movement/object, 0A1/7DF
+01 77 
+18 82 95 63	;the two different treasure chests (1st star, 2nd star)
+19 82 95 63
+
+///////////////////////////////////////////////////////////////////////
+
+byte 1	only check bits 0-1 if bit 4 set, otherwise they are redundant
+bit 0	sprite 4 tile index +24
+bit 1	sprite 4 tile index +32
+bit 0,1 sprite 4 tile index +40
+
+bit 4	sprite 4 tile index
+bit 5	show Mario
+bit 6	show Mario
+bit 7	clears 00:01D3 (if not set, 00:01D3 bit 0 is set)
+	stores #$09 to 00:01D2 (if not set, store #$05 to 00:01D2)
+
+byte 2
+bit 0	sprite 2 tile index +170
+
+byte 3
+bit 0	sprite 2 tile index +290
+bit 1	sprite 3 tile index +56

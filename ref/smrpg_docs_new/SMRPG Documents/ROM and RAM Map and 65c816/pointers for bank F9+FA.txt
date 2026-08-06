@@ -1,0 +1,49 @@
+BANK F9
+
+00 - 26 00 Monster Stats Pointers
+02 - 26 12 (Monster) Special Attacks Stats
+04 - 2A 14 EXP, coins, items, Yoshi Cookie Pointers
+06 - 2A 1C ??? 1024 bytes
+08 - 2A 20 ??? 512 bytes
+0A - 2A 22 Formation Packs (248 packs, 4 bytes each)
+0C - 2A 2A ??? 128 bytes
+0E - AA 2A Formation Stats Special Byte, Battle Event, Music (512 formations, 3 bytes each)
+10 - AA 30 Battle Script Pointers
+12 - F4 59 (Monster) Special Attack Names
+14 - 54 65 battle dialogue pointers
+16 - D1 92 Monster names
+18 - D1 9F Psychopath message Pointers
+1A - 44 B6 Battlefield Layouts
+1C - 44 B8 ??? 256 bytes (C2/91A0)
+1E - 44 B9 targetting cursor coords
+20 - 44 BA Battlefield Sets by area map byte
+22 - 44 BB Flower Bonus
+24 - 44 BC Experience Increments for some event commands
+
+also, 39C000 is Monster Formation data (but doesn't have a poiner leading to it.)
+-----------------------------------------------------
+
+BANK FA
+
+00 - 2C 00 Characters' starting stats (16 bytes each)
+02 - E1 00 __FP Cost?
+04 - 4D 01 Item stats (256 items, 18 bytes each)
+06 - 4D 13 Character Names (5 items, 10 bytes each)
+08 - 7F 13 Spell Names (128 items, 15 bytes each)
+0A - EF 46 Equipment/Item names (256 items, 15 bytes each)
+0C - FF 1A Experience needed for level up (29 items, 2 bytes each)
+0E - 39 1B Stat modifications by level (29 items, 15 bytes each, 3 bytes per character)
+10 - EC 1C Stat Bonus modifications by level (29 items, 15 bytes each, 3 bytes per character)
+12 - F1 20 Magic Stats (128 spells, 12 bytes each)
+14 - F1 26 Battle Message pointers
+16 - 00 2A __pointers that lead to descriptions (256 pointers + 256 "02")
+18 - 80 2B Magic Spell description pointers + data
+1A - 20 2F Equipment/Item description pointers + data
+1C - F2 40 Shop Prices for Items (256 items, 2 bytes each)
+1E - F2 42 __
+20 - F5 42 Learned Spell By Level Up (starts at LV 2, 29 items, 5 bytes each)
+22 - 86 43 __
+24 - 88 43 __
+26 - 8A 43 Weapon Timing variables
+28 - 2A 44 ??? loaded at C2/96E5, C2/994A, C2/99B0
+2A - DF 44 Shop Data (16 bytes each)

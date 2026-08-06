@@ -1,0 +1,309 @@
+# R422_BELOME_TEMPLE_AREA_09_BELOMES_TREASURE_ROOM
+# pyright: reportWildcardImportFromLibrary=false
+from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, RegularNPC, RegularClone)
+from ...types.room import Room
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from . import npcs
+from ..variables.room_names import *
+from ..variables.overworld_area_names import *
+from ..variables.music_names import *
+from ..variables.event_script_names import *
+from ..variables.action_script_names import *
+
+room = Room(
+    partition=Partition(
+        ally_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=True,
+        extra_sprite_buffer_size=0,
+        buffers=[
+            # Buffer A carries SPR0846 (the shared freestanding-item sprite). It is
+            # gridplane format 0, so FOUR_SPRITES_PER_ROW.
+            #
+            # Space is BYTES_0: main_buffer_space is for NON-gridplane molds on an
+            # otherwise-gridplane sprite, and all six of SPR0846's molds are gridplane.
+            # Sizing it for the molds (tried 1280, then 1792) is wrong and actively
+            # harmful -- it pushes Belome's dedicated base up until it straddles the
+            # realign boundary and lands on the item tiles.
+            #
+            # This buffer is the whole point. $C0:8EBC allocates 4 slots PER OBJECT,
+            # not per sprite_id, and room 422 has 17 objects against a 48-slot region
+            # -- measured overrun of 28 slots, which is what silently clobbers the
+            # protagonist's shadow (min_vram_size=0 makes $C0:8ED0 skip the bounds
+            # check). Riding a clone buffer collapses the sixteen same-sprite objects
+            # into one shared region instead of sixteen private ones.
+            # Buffer A stays EMPTY. $C0:8EBC picks its realign boundary from $01D5,
+            # which is $41 when buffer A is active and $61 when it is empty -- i.e.
+            # boundary $20 (32 slots) vs $30 (48). Putting the items in A halved the
+            # room's headroom and Belome (cannot_clone, 20 slots) got realigned on top
+            # of the item tiles. Buffer B carries them instead; A must stay EMPTY_3.
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True,
+            ),
+            # Buffer B carries SPR0846, the shared freestanding-item sprite (gridplane,
+            # so it can ride a buffer at all). This is what collapses the sixteen
+            # same-sprite objects into ONE shared region -- $C0:8EBC allocates 4 slots
+            # PER OBJECT, and 17 objects against a 48-slot region is what overran the
+            # protagonist's shadow.
+            Buffer(
+                buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True,
+            ),
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True,
+            ),
+        ],
+        full_palette_buffer=True,
+    ),
+    music=M0027_DUNGEONISFULLOFMONSTERS,
+    entrance_event=E1810_TEMPLE_VAULT_LOADER,
+    exits=[
+        RoomExit(
+            x=0,
+            y=115,
+            z=0,
+            f=EdgeDirection.SOUTHEAST,
+            length=2,
+            height=0,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_2_bit_2=False,
+            destination=R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM,
+            show_message=False,
+            dst_x=23,
+            dst_y=58,
+            dst_z=0,
+            dst_z_half=False,
+            dst_f=NORTHWEST,
+            x_bit_7=False,
+        ),
+    ],
+    objects=[
+        RegularNPC(  # 0
+            npc=npcs.SHARED_ITEM_BASE,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=2,
+            y=111,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=False,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=True,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=False,
+            byte7_upper2=3,
+        ),
+        RegularClone(  # 1
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=3,
+            y=113,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 2
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=4,
+            y=110,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 3
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=6,
+            y=109,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 4
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=4,
+            y=116,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 5
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=5,
+            y=111,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 6
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=3,
+            y=120,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 7
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=7,
+            y=113,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 8
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=6,
+            y=115,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 9
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=4,
+            y=123,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 10
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=6,
+            y=122,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 11
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=9,
+            y=118,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 12
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=2,
+            y=122,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 13
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=3,
+            y=123,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 14
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=True,
+            x=7,
+            y=120,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularClone(  # 15
+            npc=npcs.SHARED_ITEM_BASE,
+            event_script=E0360_TREASURY_PRIZE,
+            action_script=A0015_DO_NOTHING,
+            visible=False,
+            x=0,
+            y=0,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+        ),
+        RegularNPC(  # 16
+            npc=npcs.GOLDEN_BELOME_NPC,
+            initiator=EventInitiator.ANYTHING_EXCEPT_PRESS_A,
+            event_script=E1592_BELOME_STATUE,
+            action_script=A0160_SEQUENCE_LOOPING_ON,
+            visible=True,
+            x=1,
+            y=117,
+            z=0,
+            z_half=False,
+            direction=SOUTHWEST,
+            face_on_trigger=False,
+            cant_enter_doors=False,
+            byte2_bit5=False,
+            set_sequence_playback=False,
+            cant_float=False,
+            cant_walk_up_stairs=False,
+            cant_walk_under=False,
+            cant_pass_walls=False,
+            cant_jump_through=False,
+            cant_pass_npcs=False,
+            byte3_bit5=False,
+            cant_walk_through=True,
+            byte3_bit7=False,
+            slidable_along_walls=True,
+            cant_move_if_in_air=False,
+            byte7_upper2=3,
+            cannot_clone=True
+        ),
+    ],
+)

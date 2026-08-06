@@ -1,0 +1,524 @@
+---------------------------------------------------------------------------------
+TILEMAPS ;value in brackets is byte used in area layout data for BGL tilemap PTR
+---------------------------------------------------------------------------------
+Decompression starts one byte after offset; 01 is the compressed block's header byte
+
+===Battlefield Tilesets===
+
+[00]	15007A	Forest Maze
+[01]	15047F	Forest Maze: Bowyer's Pad
+[02]	1507A5	Bean Valley: Beanstalks
+[03]	150C5E	Sunken Ship: King Calamari's Cellar
+[04]	151496	Sunken Ship
+[05]	1517B3	Moleville Mines
+[06]	151BAB	Moleville Mines
+[07]	151FAC	Bowser's Keep
+[08]	152383	Barrel Volcano: Czar Dragon's Pad
+[09]	15293B	Grasslands
+[0A]	152EBB	Mountains
+[0B]	15322A	Mushroom Kingdom House
+[0C]	153568	Booster Tower
+[0D]	1538F5	Mushroom Kingdom Castle
+[0E]	153C2C	Kero Sewers: Underwater
+[0F]	153ECE	--------
+[10]	1542DF	Bowser's Keep Turret: Exor
+[11]	154896	Booster Tower: Balcony
+[12]	154D5C	Smithy Factory: Count Down's Pad
+[13]	15515A	Smithy Factory
+[14]	15553B	Barrel Volcano
+[15]	155A27	Kero Sewers
+[16]	155D63	--------
+[17]	155D8F	--------
+[18]	155DBB	--------
+[19]	155DE7	--------
+[1A]	155E13	--------
+[1B]	155E3F	--------
+[1C]	155E6B	Nimbus Castle
+[1D]	156280	Nimbus Castle: Birdo's Nest
+[1E]	156725	Nimbus Land
+[1F]	156A68	Underground/Sea
+[20]	156E04	
+[21]	1573F6	Forest (unused)
+[22]	1579AA	Mushroom Kingdom: Outside
+[23]	157DD5	Bowser's Keep: Chandeliers
+[24]	158291	--------
+[25]	158352	--------
+[26]	158711	Forest Maze Path to Bowyer
+[27]	159103	Level Up Foreground
+[28]	1592E5	Level Up Background
+[29]	15994C	Grasslands Plateau
+[2A]	159E4D	Sea: Underwater (unused)
+[2B]	15A38C	Marrymore Chapel Sanctuary
+[2C]	15A674	Star Hill
+[2D]	15A8F9	Seaside Town Beach
+[2E]	15AE75	Blade: Axem Rangers
+[2F]	15B234	Smithy Factory: Domino and Cloaker's Pad
+[30]	15BA45	Belome Temple
+[31]	15BD7B	Land's End Desert
+[32]	15C24E	--------
+[33]	15C7B0	Factory Grounds: Smithy's Pad
+[34]	15CC0A	Smithy's Final Form
+[35]	15CFBA	Culex
+[36]	15D1CB	Jinx's Dojo
+[37]	15D44F	--------
+[38]	15D64B	--------
+[39]	15DD49	--------
+[3A]	15E096	--------
+[3B]	15E7D0	Factory Grounds
+[3C]	15ECB5	Bean Valley: Pipe Room
+[3D]	(no map)
+[3E]	(no map)
+[3F]	(no map)
+
+===BG Layer 3 Tilemaps===
+
+[40]	1600DA	(used for areas that don't really use any tiles for BGL 3)
+[41]	1600F6	Booster's Tower, many various areas 1 
+[42]	1601C5	Tadpole Pond, area 2 
+[43]	160263	Mushroom Kingdom Castle 
+[44]	160362	Forest Maze, most areas 
+[45]	160405	Forest Maze, area 5 and Bowyer's practice pad 
+[46]	160437	Sunken Ship, many various areas 1 
+[47]	16064B	Kero Sewers, all areas after 1 except the water switch room/Pandorite room 
+[48]	1607B0	Sunken Ship, many various areas 2 
+[49]	1608AE	Booster's Tower, many various areas 2 
+[4A]	1609B3	--------
+[4B]	160A84	Sea, shore with Sunken Ship 
+[4C]	160BB8	Midas River transaction area, Barrel Jumping river 
+[4D]	160E56	--------
+[4E]	160E81	Midas River, waterfall 
+[4F]	160EC1	--------
+[50]	160EE4	Booster Hill, Factory Grounds, Ending Credits (Bowser's Keep) 
+[51]	160F56	Sea, all areas 
+[52]	161053	Tadpole Pond, area 1 
+[53]	16114D	Nimbus Land/BV Beanstalk clouds, Ending Credits (Toadofsky's scene) 
+[54]	161264	Marrymore Chapel, main hall 
+[55]	1612B8	Mushroom Way/Bandit's Way, area 2 
+[56]	1612D4	Yo'ster Isle 
+[57]	161386	Bowser's Keep, outside (beginning of game)/Barrel Volcano map 
+[58]	161456	Mushroom Kingdom/Marrymore, outside 
+[59]	16148C	Kero Sewers area 1, Belome's Room, water switch/Pandorite rooms 
+[5A]	1615AE	Mario's Pipehouse 
+[5B]	1615E0	Mushroom Kingdom, all houses 
+[5C]	161687	Bowser's Keep (1st and 2nd time) area 4 
+[5D]	1616E4	Rose Way, area 1 
+[5E]	1617E5	Rose Town, all houses except Gardener's House; Grate Guy's Casino, inside 
+[5F]	161878	--------
+[60]	161896	Rose Way, all areas except area 1 
+[61]	1618D9	Moleville shacks 
+[62]	161967	Gardener's House; Marrymore Inn/Chapel Kitchen 
+[63]	1619E2	Marrymore Inn, Suite Room 
+[64]	161A37	Sunken Ship, very late areas 
+[65]	161C2E	Star Hill, all areas except 1 
+[66]	161D03	Vista Hill 
+[67]	161D75	Seaside Town, beach 
+[68]	161DD5	Seaside Town, all houses; Yo'ster Isle/Pipe Vault entrance 
+[69]	161E45	Toadstool kisses Mario at Marrymore
+[6A]	161EB1	--------
+[6B]	161F47	Nimbus Land, all houses 
+[6C]	162012	Monstro Town, Jinx's Dojo 
+[6D]	162060	Monstro Town, all houses 
+[6E]	1620D0	Bowser's Keep 6-doors, Action Room 1-A and 2-A 
+[6F]	1621DE	Bean Valley, all five pipe rooms 
+[70]	162258	Culex's Room 
+[71]	162325	Bowser's Keep 6-doors, Action Room 1-C and 2-C 
+[72]	162440	Bowser's Keep, tall room w/save point; Thwomp/bullet room 
+[73]	162493	Bowser's Keep, areas after area 4 and before 6-doors 
+[74]	162517	Bowser's Keep 6-doors, all Battle Rooms; Action Room 1-B and 2-B; Magikoopa's room 
+[75]	162533	Bowser's Keep 6-doors, all Puzzle Rooms 
+[76]	162577	Belome's Temple, all rooms 
+[77]	1625BF	Land's End Desert, all areas 
+[78]	162857	Bowser's Keep, 6-door room/6-door room exit 
+[79]	1628B6	Nimbus Land, hot springs 
+[7A]	1628EA	Smithy Factory, all areas 
+[7B]	162959	--------
+[7C]	1629D2	Smithy's Final Form room 
+[7D]	162AAA	black nothingness 
+[7E]	162B46	Star Hill, area 1 
+[7F]	162B7B	--------
+
+===BG Layer 1 and 2 Tilemaps===
+
+[00]	162BB3	Bowser's Keep, outside at beginning of game (BGL 2)
+[01]	162C0B	--------
+[02]	162D1F	Marrymore Inn/Chapel Kitchen; Gardener's House (BGL 1)
+[03]	16308F	Marrymore Inn/Chapel Kitchen; Gardener's House (BGL 2)
+[04]	163401	Land's End, area 1-3 (BGL 1)
+[05]	1635D2	Land's End, area 1-3 (BGL 2)
+[06]	163A83	Booster's Tower, many various areas (BGL 1)
+[07]	163DF9	Booster's Tower, many various areas (BGL 2)
+[08]	164723	--------
+[09]	164CE4	--------
+[0A]	16545A	Mushroom Kingdom, all houses (BGL 1)
+[0B]	1658E0	Mushroom Kingdom, all houses (BGL 2)
+[0C]	165D3F	Mario's Pad, outside (BGL 1)
+[0D]	165FC2	Mario's Pad, outside (BGL 2)
+[0E]	166266	Grate Guy's Casino, outside (BGL 1)
+[0F]	16664A	Grate Guy's Casino, outside (BGL 2)
+[10]	166C71	Bowser's Keep, area 1 & 2 (1st and 2nd time) (BGL 1)
+[11]	166EF1	Bowser's Keep, area 1 & 2 (1st and 2nd time) (BGL 2)
+[12]	1671EF	Forest Maze, most areas (BGL 1)
+[13]	1675B2	Forest Maze, most areas (BGL 2)
+[14]	167D04	--------
+[15]	1680A5	--------
+[16]	16847B	Rose Town and Gardener's House, outside (BGL 1)
+[17]	168849	Rose Town and Gardener's House, outside (BGL 2)
+[18]	168D12	Kero Sewers, all areas after 1 except the water switch room/Pandorite room (BGL 1)
+[19]	169170	Kero Sewers, all areas after 1 except the water switch room/Pandorite room (BGL 2)
+[1A]	169A42	--------
+[1B]	169A79	--------
+[1C]	169AB0	Tadpole Pond, area 1 (BGL 1)
+[1D]	16A009	Tadpole Pond, area 1 (BGL 2)
+[1E]	16A61F	Seaside Town, beach (BGL 1)
+[1F]	16A796	Seaside Town, beach (BGL 2)
+[20]	16AA87	Mushroom Kingdom Castle (BGL 1)
+[21]	16AECC	Mushroom Kingdom Castle (BGL 2)
+[22]	16B6E6	Sunken Ship, most areas before King Calamari (BGL 1)
+[23]	16BDE3	Sunken Ship, most areas before King Calamari (BGL 2)
+[24]	16C6BA	Forest Maze, various areas 1 (BGL 1)
+[25]	16CEE3	Forest Maze, various areas 1 (BGL 2)
+[26]	16D952	Forest Maze, area 5 and Bowyer's practice pad (BGL 1)
+[27]	16DF83	Forest Maze, area 5 and Bowyer's practice pad (BGL 2)
+[28]	16E82D	Forest Maze, area 9 (BGL 1)
+[29]	16EA95	Forest Maze, area 9 (BGL 2)
+[2A]	16EDDD	--------
+[2B]	16F0B5	--------
+[2C]	16F6E4	Sunken Ship, most areas after King Calamari (BGL 1)
+
+[2D]	17006C	Sunken Ship, most areas after King Calamari (BGL 2)
+[2E]	170860	Debug Room (BGL 1)
+[2F]	17091D	Debug Room (BGL 2)
+[30]	170BAF	Barrel Volcano, many various areas 1 and Hino Mart (BGL 1)
+[31]	1715D3	Barrel Volcano, many various areas 1 and Hino Mart (BGL 2)
+[32]	1720C9	Barrel Volcano, many various areas 2 (BGL 1)
+[33]	172A0C	Barrel Volcano, many various areas 2 (BGL 2)
+[34]	1734DF	Kero Sewers, water switch and Pandorite room (BGL 1)
+[35]	17383D	Kero Sewers, water switch and Pandorite room (BGL 2)
+[36]	173E37	Rose Town, all houses except Gardener's House (BGL 1)
+[37]	174215	Rose Town, all houses except Gardener's House (BGL 2)
+[38]	174668	Booster Pass secret (BGL 1)
+[39]	174761	Booster Pass secret (BGL 2)
+[3A]	1748C0	Booster's Tower, entrance (BGL 1)
+[3B]	174ADB	Booster's Tower, entrance (BGL 2)
+[3C]	174E7E	Sea, shore with Sunken Ship (BGL 1)
+[3D]	174F14	Sea, shore with Sunken Ship (BGL 2)
+[3E]	1752D9	Booster's Tower, many various areas 1 (BGL 1)
+[3F]	175836	Booster's Tower, many various areas 1 (BGL 2)
+[40]	176331	Mushroom Kingdom, outside (BGL 1)
+[41]	1768E4	Mushroom Kingdom, outside (BGL 2)
+[42]	177071	Bowser's Keep, outside at beginning of game (BGL 1)
+[43]	17715B	--------
+[44]	1772BE	Seaside Town, all houses (BGL 1)
+[45]	1777BA	Seaside Town, all houses (BGL 2)
+[46]	177C88	Moleville shacks (BGL 1)
+[47]	177F14	Moleville shacks (BGL 2)
+[48]	17810A	Forest Maze Area 3,7,8 and Secret (entrance) (BGL 1)
+[49]	17880E	Forest Maze Area 3,7,8 and Secret (entrance) (BGL 2)
+[4A]	178B77	Forest Maze, area 7 (BGL 1)
+[4B]	178E5A	Forest Maze, area 7 (BGL 2)
+[4C]	178FB8	Land's End Underground, area 1-3 (BGL 1)
+[4D]	17962E	Land's End Underground, area 1-3 (BGL 2)
+[4E]	179B20	Moleville Mines, most areas (BGL 1)
+[4F]	179F55	Moleville Mines, most areas (BGL 2)
+[50]	17AB82	--------
+[51]	17AE79	--------
+[52]	17B25A	--------
+[53]	17B817	--------
+[54]	17C0EF	Land's End, area 4 & 5 (BGL 1)
+[55]	17C3C6	Land's End, area 4 & 5 (BGL 2)
+[56]	17C854	Moleville Mines, later areas (BGL 1)
+[57]	17CC6D	Moleville Mines, later areas (BGL 2)
+[58]	17D698	Moleville Mines, Punchinello's Room (BGL 1)
+[59]	17D7DB	Moleville Mines, Punchinello's Room (BGL 2)
+[5A]	17DB44	--------
+[5B]	17DE79	--------
+[5C]	17E401	Mushroom Way, area 2/Bandit's Way, area 2 (BGL 1)
+[5D]	17E776	Mushroom Way, area 2/Bandit's Way, area 2 (BGL 2)
+[5E]	17ED46	Booster Hill (BGL 1)
+[5F]	17F054	Booster Hill (BGL 2)
+[60]	17F119	Tadpole Pond, area 2 (BGL 1)
+[61]	17F4BF	Tadpole Pond, area 2 (BGL 2)
+[62]	17F955	Nimbus Land/Lazy Shell/Hot Springs clouds (BGL 1)
+
+[63]	180070	Nimbus Land/Lazy Shell/Hot Springs clouds (BGL 2)
+[64]	180630	--------
+[65]	180919	--------
+[66]	180CE8	Bowser's Keep, tall room w/save point, Thwomp/bullet room (BGL 1)
+[67]	1810B2	Bowser's Keep, tall room w/save point, Thwomp/bullet room (BGL 2)
+[68]	1816A0	___forest areas (BGL 1)
+[69]	181B57	___forest areas (BGL 2)
+[6A]	182247	Midas River, transaction area and Barrel Jumping river (BGL 1)
+[6B]	182585	Midas River, transaction area and Barrel Jumping river (BGL 2)
+[6C]	182CA8	Yo'ster Isle, Pipe Vault/Kero Sewers/Yo'ster Isle pipe entrances (BGL 1)
+[6D]	18329D	Yo'ster Isle, Pipe Vault/Kero Sewers/Yo'ster Isle pipe entrances (BGL 2)
+[6E]	183912	Marrymore Inn, Suite room (BGL 1)
+[6F]	183AE9	Marrymore Inn, Suite room (BGL 2)
+[70]	183CAB	Midas River, waterfall (BGL 1)
+[71]	1843AB	Midas River, waterfall (BGL 2)
+[72]	184FE8	___underground areas (BGL 1)
+[73]	185213	___underground areas (BGL 2)
+[74]	18572E	Rose Way, all areas except area 1 (BGL 1)
+[75]	185F4A	Rose Way, all areas except area 1 (BGL 2)
+[76]	186873	--------
+[77]	186A87	--------
+[78]	186D0F	Marrymore, outside (BGL 1)
+[79]	187320	Marrymore, outside (BGL 2)
+[7A]	1879AD	Nimbus Castle, various areas 1 (BGL 1)
+[7B]	188147	Nimbus Castle, various areas 1 (BGL 2)
+[7C]	1889E0	Nimbus Castle, various areas 2 (BGL 1)
+[7D]	1890E5	Nimbus Castle, various areas 2 (BGL 2)
+[7E]	1898F6	Bowser's Keep, area 3 (1st & 2nd time) (BGL 1)
+[7F]	189B25	Bowser's Keep, area 3 (1st & 2nd time) (BGL 2)
+[80]	189E60	Sea, all areas (BGL 1)
+[81]	18A2B9	Sea, all areas (BGL 2)
+[82]	18ADBA	Pipe Vault, all areas (BGL 1)
+[83]	18B1F4	Pipe Vault, all areas (BGL 2)
+[84]	18B42F	--------
+[85]	18B52D	--------
+[86]	18B56F	Booster's Tower, balcony (BGL 1 & 2)
+[87]	18B73D	Bean Valley Beanstalks (BGL 1)
+[88]	18BAFF	Smithy Factory, various areas and Count Down's room (BGL 1)
+[89]	18BE05	Smithy Factory, various areas and Count Down's room (BGL 2)
+[8A]	18C3AB	Smithy Factory, area 2 & 3 (BGL 1)
+[8B]	18C612	Smithy Factory, area 2 & 3 (BGL 2)
+[8C]	18CA4F	Smithy Factory, area 9 10 15 & 16 (BGL 1)
+[8D]	18CDD5	Smithy Factory, area 9 10 15 & 16 (BGL 2)
+[8E]	18D360	Nimbus Land, all houses (BGL 1)
+[8F]	18D75A	Nimbus Land, all hosues (BGL 2)
+[90]	18DBB9	Star Hill, area 2-4 (BGL 1)
+[91]	18DF53	Star Hill, area 2-4 (BGL 2)
+[92]	18E66A	Bean Valley, all five pipe rooms (BGL 1)
+[93]	18E75C	Bean Valley, all five pipe rooms (BGL 2)
+[94]	18EABB	--------
+[95]	18ED54	--------
+[96]	18F2B4	Marrymore Chapel, main hall (BGL 1)
+[97]	18F33E	Marrymore Chapel, main hall (BGL 2)
+[98]	18F53F	Marrymore Chapel, sanctuary and entrance (BGL 1)
+[99]	18F799	Marrymore Chapel, sanctuary and entrance (BGL 2)
+[9A]	18FA59	Belome's Temple, all areas except Belome's room (BGL 1)
+
+[9B]	190070	Belome's Temple, all areas except Belome's room (BGL 2)
+[9C]	190826	--------
+[9D]	190A6A	--------
+[9E]	190F17	--------
+[9F]	191160	--------
+[A0]	191614	Bandit's Way, area 1 & 3 (BGL 1)
+[A1]	191CCD	Bandit's Way, area 1 & 3 (BGL 2)
+[A2]	192834	Bandit's Way, area 4 & 5 (BGL 1)
+[A3]	192E29	Bandit's Way, area 4 & 5 (BGL 2)
+[A4]	19374E	Mario's Pipehouse (BGL 1)
+[A5]	193810	Mario's Pipehouse (BGL 2)
+[A6]	1938DF	Mushroom Way, area 1 & 3 (BGL 1)
+[A7]	193E11	Mushroom Way, area 1 & 3 (BGL 2)
+[A8]	194753	--------
+[A9]	194AE0	--------
+[AA]	194CAA	Kero Sewers, area 1 (BGL 1)
+[AB]	194E16	Kero Sewers, area 1 (BGL 2)
+[AC]	1951D3	Rose Way, area 1 (BGL 1)
+[AD]	1956A7	Rose Way, area 2 (BGL 2)
+[AE]	195C48	Midas River, all tunnels (BGL 1)
+[AF]	1963EB	Midas River, all tunnels (BGL 2)
+[B0]	196E6B	Booster Pass, area 1 & 2 (BGL 1)
+[B1]	197112	Booster Pass, area 1 & 2 (BGL 2)
+[B2]	197893	Moleville, outside (BGL 1)
+[B3]	197C5F	Moleville, outside (BGL 2)
+[B4]	1983B6	Barrel Volcano, Map (BGL 1)
+[B5]	198454	Barrel Volcano, Map (BGL 2)
+[B6]	1984DD	Sunken Ship, area 11 to Johnny's room (BGL 1)
+[B7]	1989CF	Sunken Ship, area 11 to Johnny's room (BGL 2)
+[B8]	199068	Vista Hill (BGL 1)
+[B9]	1990F8	Vista Hill (BGL 2)
+[BA]	199146	Toadstool kisses Mario at Marrymore (BGL 1)
+[BB]	1991CA	Toadstool kisses Mario at Marrymore (BGL 2)
+[BC]	199226	Bean Valley, all areas before beanstalks/clouds (BGL 1)
+[BD]	1999AC	Bean Valley, all areas before beanstalks/clouds (BGL 2)
+[BE]	19A390	Bean Valley Beanstalks (BGL 2)
+[BF]	19A67D	Land's End underground area 4, secret area 1 & 2 (BGL 1)
+[C0]	19ABCE	Land's End underground area 4, secret area 1 & 2 (BGL 2)
+[C1]	19B131	Land's End Desert, all areas (BGL 1)
+[C2]	19B6E2	Land's End Desert, all areas (BGL 2)
+[C3]	19C291	Barrel Volcano, most early areas (BGL 1)
+[C4]	19C9FE	Barrel Volcano, most early areas (BGL 2)
+[C5]	19D39C	Monstro Town, Jinx's Dojo (BGL 1 & 2)
+[C6]	19D46C	Factory Grounds, area 1 & 4 (BGL 1)
+[C7]	19D845	Monstro Town, all houses (BGL 1)
+[C8]	19DAB1	Monstro Town, all houses (BGL 2)
+[C9]	19DD1F	Monstro Town, entrance/outside (BGL 1)
+[CA]	19DF0A	Monstro Town, entrance/outside (BGL 2)
+[CB]	19E4FC	Bowser's Keep 6-doors, Action room 1-A & 2-A (BGL 1)
+[CC]	19E8A7	Bowser's Keep 6-doors, Action room 1-A & 2-A (BGL 2)
+[CD]	19EDE0	Culex's Room (BGL 1)
+[CE]	19EE38	Culex's Room (BGL 2)
+[CF]	19EF1D	Bowser's Keep 6-doors, Action room 1-C & 2-C (BGL 1)
+[D0]	19F149	Bowser's Keep 6-doors, Action room 1-C & 2-C (BGL 2)
+[D1]	19F488	Bowser's Keep area 5 & 6, Croco's Shop 2 (BGL 1)
+[D2]	19F7C3	Bowser's Keep area 5 & 6, Croco's Shop 2 (BGL 2)
+
+[D3]	1A0044	Bowser's Keep 6-doors, Action room 1-B & 2-B (BGL 1)
+[D4]	1A0322	Bowser's Keep 6-doors, Action room 1-B & 2-B (BGL 2)
+[D5]	1A0843	Bowser's Keep, Magikoopa's room (BGL 1)
+[D6]	1A0B24	Bowser's Keep, Magikoopa's room (BGL 1)
+[D7]	1A0FAE	Bowser's Keep 6-doors, all 4 Battle rooms (BGL 1)
+[D8]	1A1139	Bowser's Keep 6-doors, all 4 Battle rooms (BGL 2)
+[D9]	1A1337	Bowser's Keep 6-doors, all 6 Puzzle rooms (BGL 1)
+[DA]	1A17E4	Bowser's Keep 6-doors, all 6 Puzzle rooms (BGL 2)
+[DB]	1A1FD9	Ending credits, Johnny looking at sunset on seashore rocks (BGL 1 & 2)
+[DC]	1A2073	Factory Grounds, area 1 & 4 (BGL 2)
+[DD]	1A24CA	Factory Grounds, area 2 & 3 (BGL 1)
+[DE]	1A2763	Factory Grounds, area 2 & 3 (BGL 2)
+[DF]	1A2AD4	Ending credits, Bowser's Keep repairs (BGL 1)
+[E0]	1A2BFF	Ending credits, Bowser's Keep repairs (BGL 2)
+[E1]	1A2D11	Ending credits, Toadofsky conducts choir (BGL 1)
+[E2]	1A2DAB	Ending credits, Toadofsky conducts choir (BGL 2)
+[E3]	1A2E41	Bowser's Keep, exit room after each of 6-doors rooms (BGL 1)
+[E4]	1A30A0	Bowser's Keep, exit room after each of 6-doors rooms (BGL 2)
+[E5]	1A3536	Nimbus Land, Royal bus station/entrance to Hot Springs/some clouds (BGL 1)
+[E6]	1A3721	Nimbus Land, Royal bus station/entrance to Hot Springs/some clouds (BGL 2)
+[E7]	1A38C6	Smithy Factory, area 12-14 (BGL 1)
+[E8]	1A3CDE	Smithy Factory, area 12-14 (BGL 2)
+[E9]	1A43D1	--------
+[EA]	1A44F0	Ending credits, Yo'ster Isle race (BGL 1)
+[EB]	1A459D	Ending credits, Yo'ster Isle race (BGL 2)
+[EC]	1A464A	--------
+[ED]	1A4776	black nothingness (BGL 1)
+[EE]	1A4808	black nothingness (BGL 2)
+[EF]	1A4877	Grate Guy's Casino, inside casino (BGL 1)
+[F0]	1A48F9	Grate Guy's Casino, inside casino (BGL 2)
+[F1]	1A4A2E	Star Hill, area 1 (BGL 1)
+[F2]	1A4B61	Star Hill, area 1 (BGL 2)
+[F3]	1A4D16	--------
+[F4]	1A4D4D	--------
+
+===Tilesets, BG Layer 3===
+
+[00]	3B0074	(this is used for areas that don't really use a third BGL, which is a lot of areas)
+[01]	3B00EC	Booster's Tower, all areas
+[02]	3B0147	Mushroom Kingdom Castle/Marrymore Chapel
+[03]	3B0207	Forest Maze, all surface areas
+[04]	3B0343	Sunken Ship
+[05]	3B0539	Kero Sewers
+[06]	3B05EB	--------
+[07]	3B069F	Sea, all areas/Tadpole Pond/Sunken Ship (water rooms)/Bowser's Keep (most areas)
+[08]	3B084D	Mushroom & Bandit's Way, Area 2/Midas River/Rose Way/Seaside Town Beach/Factory Grounds/Ending Credits, Bowser's Keep repairs
+[09]	3B0997	--------
+[0A]	3B09C9	Midas River, waterfall
+[0B]	3B0A09	Nimbus Land, clouds
+[0C]	3B0B08	Yo'ster Isle/Ending Credits, Yo'ster Isle race
+[0D]	3B0BEE	Bowser's Keep, outside/Barrel Volcano Map/Vista Hill/Culex's Room
+[0E]	3B0E61	Mushroom Kingdom/Marrymore, outside
+[0F]	3B0E79	Kero Sewers, water switch/Pandorite/Belome's room
+[10]	3B101A	Mario's Pipehouse/all houses in Mushroom Kingdom/Rose Town/Moleville/Marrymore/Seaside Town/Monstro Town; Yo'ster Isle/Pipe Vault/Kero Sewers pipe entrances
+[11]	3B122B	Bowser's Keep, Throne Room
+[12]	3B1281	Booster Hill
+[13]	3B1387	Star Hill
+[14]	3B13F2	Toadstool kisses Mario at Marrymore
+[15]	3B1509	Nimbus Land, all houses
+[16]	3B15CD	Bowser's Keep, most regular areas
+[17]	3B177D	Belome's Temple
+[18]	3B1838	Land's End Desert
+[19]	3B1908	--------
+[1A]	3B1B37	Smithy Factory, all areas
+[1B]	3B1BCC	--------
+[1C]	3B1C07	Smithy's Final Form, after battle (greyish palette)
+[1D]	3B1CE9	--------
+[1E]	3B1EFA	--------
+[1F]	3B210B	--------
+
+===Tilesets, BG Layer 1 & 2===
+
+[00]	3B231C	Mario's Pipehouse; all houses in Mushroom Kingdom/Rose Town/Marrymore/Seaside Town/Monstro Town (BGL 1)
+[01]	3B2D36	Mario's Pipehouse; all houses in Mushroom Kingdom/Rose Town/Marrymore/Seaside Town/Monstro Town (BGL 2)
+[02]	3B345F	--------
+[03]	3B3C3E	Bowser's Keep, all 6-door Puzzle Rooms (BGL 2)
+[04]	3B43FF	Rose Town/Seaside Town/Monstro Town/Grate Guy's Casino, outside (BGL 1)
+[05]	3B49D9	Rose Town/Seaside Town/Monstro Town/Grate Guy's Casino, outside (BGL 2)
+[06]	3B4F74	Mario's Pad; Mushroom Way, Area 1 & 3 (BGL 1)
+[07]	3B5A99	Mushroom Kingdom/Marrymore, outside (BGL 1)
+[08]	3B6309	Mushroom Kingdom/Marrymore, outside (BGL 2)
+[09]	3B6C8D	Kero Sewers/Belome's Temple (BGL 1)
+[0A]	3B781E	Kero Sewers/Belome's Temple (BGL 2)
+[0B]	3B83CB	Bowser's Keep, outside (beginning of game) (BGL 1)
+[0C]	3B8968	--------
+[0D]	3B8B75	--------
+[0E]	3B931D	Booster's Tower, Entrance (BGL 1)
+[0F]	3B9816	Booster's Tower, Entrance (BGL 2)
+[10]	3B9DE3	Bowser's Keep, all 6-door Puzzle Rooms (BGL 1)
+[11]	3BA7C3	Bowser's Castle, most regular areas (BGL 1,2)
+[12]	3BB1DE	Pipe Vault/Bean Valley, pipe rooms (BGL 1,2)
+[13]	3BBCEC	Mushroom Kingdom Castle/Marrymore Chapel, Main Hall (BGL 1)
+[14]	3BC603	Mushroom Kingdom Castle/Marrymore Chapel, Main Hall (BGL 2)
+[15]	3BCD84	Forest Maze, all surface areas (BGL 1)
+[16]	3BD8B5	Forest Maze, all surface areas (BGL 2)
+[17]	3BE49F	Sunken Ship, all areas (BGL 1)
+[18]	3BED34	Sunken Ship, all areas (BGL 2)
+[19]	3BF4E6	Moleville/Booster Pass/Land's End (BGL 1)
+
+[1A]	3C0042	Moleville/Booster Pass/Land's End (BGL 2)
+[1B]	3C052B	underground areas (BGL 1,2)
+[1C]	3C0E40	underground areas (BGL 1,2)
+[1D]	3C187E	Booster's Tower, all areas (BGL 1)
+[1E]	3C2192	Booster's Tower, all areas (BGL 2)
+[1F]	3C28D1	Seaside Town, Seashore (BGL 1)
+[20]	3C29F1	Seaside Town, Seashore (BGL 2)
+[21]	3C2FF3	grasslands areas with plateaus (BGL 1,2)
+[22]	3C3C99	Forest Maze, area 7 (BGL 1)
+[23]	3C43D2	Forest Maze, area 7 (BGL 2)
+[24]	3C48C2	Midas River/Rose Way, all areas (BGL 1)
+[25]	3C546B	Midas River/Rose Way, all areas (BGL 2)
+[26]	3C5F7C	Nimbus Land, all cloud areas (BGL 1)
+[27]	3C6792	Nimbus Land, all cloud areas (BGL 2)
+[28]	3C6E78	--------
+[29]	3C7A9C	Culex's Room (BGL 1)
+[2A]	3C7E54	Culex's Room (BGL 2)
+[2B]	3C820C	Bandit's Way - Area 1,3,4,5; Kero Sewers Entrance (BGL 1)
+[2C]	3C8D94	Bandit's Way - Area 1,3,4,5; Kero Sewers Entrance (BGL 2)
+[2D]	3C98EE	Midas River, waterfall (BGL 1)
+[2E]	3C9FC8	Midas River, waterfall (BGL 2)
+[2F]	3CAC2C	Nimbus Castle, all areas (BGL 1)
+[30]	3CB45D	Nimbus Castle, all areas (BGL 2)
+[31]	3CBC51	Yo'ster Isle (BGL 1)
+[32]	3CC64F	Yo'ster Isle (BGL 2)
+[33]	3CD0E4	Smithy Factory, all areas (BGL 1,2)
+[34]	3CDAA8	--------
+[35]	3CDCAC	--------
+[36]	3CDEA8	Smithy Factory, Count Down (BGL 1)
+[37]	3CE554	--------
+[38]	3CEBAB	Marrymore Chapel, Sanctuary (BGL 1)
+[39]	3CF118	Marrymore Chapel, Sanctuary (BGL 2)
+[3A]	3CF4BC	Bowser's Keep, some areas and all Action Rooms (BGL 1,2)
+
+[3B]	3D0044	--------
+[3C]	3D0B45	--------
+[3D]	3D14F2	Moleville Shacks (BGL 1)
+[3E]	3D1ACF	Mario's Pad/Mushroom Way, Area 1 & 3 (BGL 2)
+[3F]	3D258C	Bowser's Keep, outside (beginning of game (BGL 2)
+
+[40]	3D26B4	Bowser's Keep, Throne Room (BGL 1)
+[41]	3D2CBC	Bowser's Keep, Throne Room (BGL 2)
+[42]	3D2DB1	Bowser's Keep, most regular areas (BGL 1)
+[43]	3D3425	Bowser's Keep, most regular areas (BGL 2)
+[44]	3D3DF4	Midas River (BGL 2)
+[45]	3D44F5	Midas River, waterfall tunnels (BGL 1)
+[46]	3D4D9C	Midas River, waterfall tunnels (BGL 2)
+[47]	3D5390	Marrymore Inn, Suite (BGL 1)
+[48]	3D59F2	Barrel Volcano, Map (BGL 1)
+[49]	3D5BC2	Star Hill (BGL 1,2)
+[4A]	3D6089	Vista Hill (BGL 1,2)
+[4B]	3D6304	Toadstool kisses Mario at Marrymore (BGL 1,2)
+[4C]	3D65B1	Booster's Tower Balcony (BGL 1,2)
+[4D]	3D6AA9	Bean Valley, grasslands (BGL 1)
+[4E]	3D743A	Bean Valley, grasslands (BGL 2)
+[4F]	3D7F02	Nimbus Land, all houses (BGL 1)
+[50]	3D82B2	Nimbus Land, all houses (BGL 2)
+[51]	3D85F2	Barrel Volcano, Map (BGL 2)
+[52]	3D8806	Monstro Town, Jinx's Dojo (BGL 1,2)
+[53]	3D8ABF	Factory Grounds (BGL 1,2)
+[54]	3D9359	--------
+[55]	3D9725	Ending credits, Johnny looking at seashore rocks (BGL 1,2)
+[56]	3D9AE9	Ending credits, Bowser's Keep repairs (BGL 1,2)
+[57]	3D9E63	Ending credits, Toadofsky conducts choir (BGL 1)
+[58]	3DA15B	Ending credits, Toadofsky conducts choir (BGL 2)
+[59]	3DA4B4	--------
+[5A]	3DAAFF	Ending credits, Yo'ster Isle race (BGL 1)
+[5B]	3DAE33	Ending credits, Yo'ster Isle race (BGL 2)
+[5C]	3DB190	--------

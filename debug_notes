@@ -1,0 +1,147 @@
+- see if you can do anything about bowser colliding with the chest in bandits way 5
+	- when he is the mway party guy
+	- note: croco 2 was the boss 
+	- note 2: does he have his correct colouring here?
+	- mimic in vault needs to differentiate between mushroom kingdom states when reinstating music
+- villager replacing snifit 3 should not be trying to animate when shooting a bullet
+
+
+"seed": 3285956465,
+  "version": "9.0.0",
+  "flags": "P(rchars)     Q(perms:vanilla_accessories_all|props:random|hints)     C(exp:double|stats|charspells|spellstats|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(bw:open|ks:rfc|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|skipcart|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(enemystats:full_random|drops|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko)",
+NEW FLAGSET:
+P(rchars)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|spellelements|uncap)     X(rstars|proglogic:hard|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg|sj1:5|sj2:10)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops|enemyspells)     F(skips|nowhirl|nobigbang|noko|seeya)
+
+TODO April 19
+- dredge up old raw sprites from the previous version of the ending credits i abandoned
+- fix booster 2
+- do other bosses need fixing? jinx is probably fine, bundt is probably fine, johnny is probably fine, unsure about belome
+- room 50 still broken
+
+
+
+SMRPG_US_9.0.0_open_d9609702681ee354b56f235a10871276_1376076938_DEBUG.sfc
+1376076938
+P(rchars|max:3|avail_chars:Z|starters:4)     Q(perms:equip_all|props:some|hints)     C(stats|infuse|spellelements)     X(rstars|total_sp:7)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|cookies)     L(keys_anywhere|stars_anywhere|moveflags|postgame|chests://////////3/////////////9/7///////////////////////////////B)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(endgame:0|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|diff)     E(drops|formations|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|p2bobomb:percent_0|fixinv|seeya)
+DEBUG offset 39 & 0
+- room 88: star overwrites mario instead of geno. How to predict who it will affect?
+
+
+High priority
+- apply speeds properly to statue game aninations
+- finish testing remake weapons
+- fix culex 3d meteor
+- test if crusher is receiving palettes, shocker too
+- test if you can run away from mimic fights in mimics anywhere
+- test if mimic chest packet looks ok
+- test bundt 2. using caker beam too early?
+- test booster 2 thoroughly, make sure he doesn't continue working after KOed
+- belome 2: game crashes when making second peach clone, displays empty dialog
+- test all possible invisible flag locations
+- shuffled mario doll works, but turning that setting off is broken now - curtains pre-opened when you enter the room, and going to the door will start the minigame again
+  - can just not set RETURNED_MARIO_DOLL at start of seed, but this will break some hints
+  - locked door text does not work, likely bc the npcs arent present yet
+
+Med priority
+- Need to test all 47 boss orders
+
+Low priority
+- It would be really funny if the hurly gloves threw whoever is to your left (or to your right if you're in slot 0) and animate accordingly, and just throw a mario doll if no other party members
+
+Mushroom Way 
+
+Mushroom kingdom
+- test if signal ring now works when occupied (moved to channel 4)
+
+bandit's way
+- flower jump chest showing sleepy bomb as yellow mushroom
+
+Kero sewers
+- peach messes up palettes for npcs in any room that has water- this is because of the palette shifting that her pipe animation does, as well as the special palette treatment that water rooms get-un sure if there is a feasible fix without asm bullshit
+
+midas river
+- some of the coins in barrel section are appearing below the watr layer, but not all
+  - happens with geno as protag
+
+tadpole pond 
+
+Rose way
+
+Rose Town 
+- upper floor sonic cymbals not rendering
+
+Forest maze 
+
+Pipe vault
+
+Yoster
+- minor, but main area loads very slowly
+
+Moleville
+
+Booster Pass
+- red essence in right chest rendered as mushroom, see if the camera shift is messing with the 70a7 selector again
+- crystalline in rightmost secret room chest rendered as mushroom, same deal
+
+Booster Tower
+- bottom left shuffled item is always reloading when booster tower checkerboard room reloads
+  - only if it's a recovery mushroom, for some reason
+- top floor save chest has no shine when peach is protagonist
+
+Booster Hill
+
+Marrymore
+
+star hill
+
+Seaside Town
+
+Sea
+
+Sunken Ship
+- corner pool room item is always invisible
+- everything in the water cellar should be a coin, flower, mushroom, or item bag. everything else does not render correctly
+  - this isn't working
+- Test if clearing ship gives seaside boss access now (when that's the gating condition)
+- Test if staircase packet grants the item now instead of aborting
+
+
+Land's End
+- mouse is telling me that belome 2 unlocks the monstro pipe when monstro is always open
+
+Monstro Town
+
+Bean Valley
+- save box not glowing with peach as protag
+  - shy away is getting it
+  - why? debug in lazy shell shows that there isnt even that layer effect applied!
+  - this also breaks the clone buffers so that the smilaxes do not activate
+
+Nimbus Land
+- mallow statue in garro's house still sometimes receiving gold goomba palette (i.e. geno protag)
+- mario palette is still applying west of save room
+- not telling me i need castle key 1 to get in
+
+
+Volcano
+- need to fix the trampoline animation in the final room to only bounce as many times as there will be characters jumping on it, 1 to 5
+- defeating final boss loads a blank room, does not teleport to world map
+
+Keep
+- test if game still crashes when you defeat chester spot
+- trialhlon game: their names are appearing twice in their dialogs, test if fixed
+- Caster in battle rooms should probably be set to cannot clone, animations will run better
+- reward chest after 6 doors does not open
+- loading invisible bridge room did a hella glitchy animation and KOed me
+  - opened the middle right chest for some reason
+- bad partition in coin game room, hits too close togethr not rendering coin
+
+
+Gate
+- red essence chest in conveyor room shows as a red mushroom
+
+Inner Factory
+
+Ending
+- need a mario npc sub for when you are playing as another character
+  - would also be kinda funny if the statue in garro's house was always the mushroom way character

@@ -1,0 +1,105 @@
+WORLD MAPS
+----------
+00	Bowser's Keep, Vista Hill
+01	Mario's Pad, Mushroom Kingdom
+02	Pond, Rose Town, Forest
+03	Moleville, Booster Tower, Marrymore
+04	Seaside Town, Sea, Ship
+05	Land's End, Monstro Town, Bean Valley
+06	Land's End, Monstro Town, Bean Valley
+07	Nimbus Land, Volcano
+08	Yo'ster Isle
+
+WORLD MAP POINT BYTES
+---------------------
+00	To Mario's Pad (before)
+01	Bowser's Keep (before)
+02	To Mario's Pad
+03	Vista Hill
+04	Bowser's Keep
+05	Gate
+06	To Nimbus Land
+07	To Bowser's Keep
+08	Mario's Pad
+09	Mushroom Way
+0A	Mushroom Kingdom
+0B	Bandit's Way
+0C	Kero Sewers
+0D	To Mushroom Kingdom
+0E	Kero Sewers
+0F	Midas River
+10	Tadpole Pond
+11	Rose Way
+12	Rose Town
+13	Forest Maze
+14	Pipe Vault
+15	To Yo'ster Isle
+16	To Moleville
+17	To Pipe Vault
+18	Moleville
+19	Booster Pass
+1A	Booster Tower
+1B	Booster Hill
+1C	Marrymore
+1D	To Star Hill
+1E	To Marrymore
+1F	Star Hill
+20	Seaside Town
+21	Sea
+22	Sunken Ship
+23	To Land's End
+24	To Seaside Town
+25	Land's End
+26	Monstro Town
+27	Bean Valley
+28	Grate Guy's Casino
+29	To Nimbus Land
+2A	To Seaside Town
+2B	Land's End
+2C	Monstro Town
+2D	Bean Valley
+2E	Grate Guy's Casino
+2F	To Nimbus Land
+30	To Bean Valley
+31	Nimbus Land
+32	Barrel Volcano
+33	To Bowser's Keep
+34	Yo'ster Isle
+35	To Pipe Vault
+36	Coal Mines (Bowser's Keep)
+37	Factory (Bowser's Keep)
+
+WORLD MAP AREA BYTES
+--------------------
+00  Bowser's Keep (talk to Exor)
+01  Mario's Pad
+02  Mushroom Way
+03  Mushroom Kingdom
+04  Bandit's Way
+05  Kero Sewers
+06  Midas River
+07  Tadpole Pond
+08  Pipe Vault
+09  Rose Way
+0A  Rose Town
+0B  Forest Maze
+0C  Yo'ster Island
+0D  Moleville
+0E  Booster Pass
+0F  Booster Tower
+10  Marrymore
+11  Star Hill
+12  Seaside Town
+13  Sea
+14  Sunken Ship
+15  Land's End
+16  Monstro Town
+17  Bean Valley
+18  Nimbus Land
+19  Barrel Volcano
+1A  Vista Hill
+1B  Booster Hill
+1C  Bowser's Keep (2nd time)
+1D  Gate
+1E  Grate Guy's Casino
+1F  Debug Room

@@ -1,0 +1,148 @@
+<style>
+body {font-family: courier; font-size: 12}
+table {border-width: 1; border-color: black; border-collapse: collapse}
+td {font-family: courier; font-size: 12; vertical-align: top; border-color: black}
+</style>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<h1>SPRITE ANIMATION/MOLDING: GOOMBA</h1>
+<br>
+<b>STEP 1: calculate object pointer address of monster</b><br>
+[(monster byte) x 4] + $250400 = <font color=red size=3><b>object pointer address</b></font><br>
+[($06)          x 4] + $250400 = <font color=red size=3><b>$250418</b></font><br>
+<br>
+//////////////////////////////////////////////////////////////
+<h2>MOLDING</h2>
+<TABLE FRAME=box RULES=all CELLSPACING=0 CELLPADDING=5>
+<tr>
+<td><b>STEP 2: calculate mold pointer address<br>
+<img src="mold1_step1.gif"></td>
+<td>
+[(byte 3,4) x 3] + $252000 = mold pointer address<br>
+[$0007 x 3] + $252000 = $252015</td>
+</tr>
+
+<tr>
+<td><b>STEP 3: determine mold/sequence data addresses from mold pointer</b><br>
+<img src="mold1_step2.gif"></td>
+<td>
+mold pointer + 2 = mold data<br>
+$259CEE(PC address) + 2 = $259CF0</td>
+</tr>
+
+<tr>
+<td><b>STEP 4: determine mold set pointer address from byte 3,4</b><br>
+<img src="mold1_step3.gif"></td>
+<td>
+(byte 3,4) + mold pointer = mold set pointer address<br>
+$005B + $259CEE = $259D49</td>
+</tr>
+
+<tr>
+<td><b>STEP 5: determine mold function address from byte</b><br>
+<img src="mold1_step4.gif"></td>
+<td>
+Goomba has 26 mold assignments (2 bytes each), as seen in the selection.<br>
+<br>
+[(byte 1,2) AND $0FFF] + mold pointer = sprite GFX mold<br>
+[$8091 AND $0FFF] + $259CEE = $259D7F<br>
+<br>
+<i>bit 7 of byte 2 (80) means that it uses the gridplane format</i></td>
+</tr>
+
+<tr>
+<td><b>STEP 6: arrange 8x8 tiles into full sprite through function</b><br>
+<img src="mold1_step5.gif"></td>
+<td>
+byte 1 = mold size<br>
+00 = 24x24<br>
+<br>
+if following bits set on byte 1...<br>
+bit 4 = shift down 1 pixel<br>
+bit 5 = shift up 1 pixel<br>
+bit 6 = mirror<br>
+bit 7 = invert<br>
+
+<br>
+byte 2 through 10 = 8x8 tile pointers (see image below for elucidation)<br>
+Goomba's mold data for all molds runs to $259E9C
+</td>
+</tr>
+</table>
+<br>
+- Goomba uses the 1st, 2nd, 3rd, 7th, 8th, 9th, 17th, 18th and 19th tiles to arrange the first 24x24 mold<br>
+- 01 = 1st 8x8 tile starting at $283140, 02 = 2nd 8x8 tile starting at $283160, etc...<br>
+<br>
+<i>this image shows you how Goomba is arranged by looking at the tile gfx data in a tile editor</i><br>
+<br>
+<img src="tile_example.gif"><br>
+<br>
+the top row of Goomba can be clearly seen in the first three tiles, which is the top row as arranged in the 24x24 size format<br>
+<br>
+the second row uses the 7th, 8th, and 9th tiles as seen in the editor<br>
+<br>
+Goomba's 17th, 18th, and 19th tiles are the last row, which can be seen directly below the 7th, 8th, and 9th tiles<br>
+<br>
+<img src="goomba.gif"> <img src="goomba_hex.gif"><br>
+<br>
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+<h2>ANIMATION</h2>
+<b><font size=4>Goomba uses 5 animation sequences</font></b><br><br>
+<TABLE FRAME=box RULES=all CELLSPACING=0 CELLPADDING=5>
+<tr>
+<td><b>STEP 2: calculate mold pointer address<br>
+<img src="mold1_step1.gif"></td>
+<td>
+[(byte 3,4) x 3] + $252000 = mold pointer address<br>
+[$0007 x 3] + $252000 = $252015</td>
+</tr>
+
+<tr>
+<td><b>STEP 3: determine mold/sequence data addresses from mold pointer</b><br>
+<img src="mold1_step2.gif"></td>
+<td>
+mold pointer + 2 = mold data<br>
+$259CEE(PC address) + 2 = $259CF0</td>
+</tr>
+
+<tr>
+<td><b>STEP 4: determine animation sequence address from byte 1,2</b><br>
+<img src="mold1_step3.gif"></td>
+<td>
+(byte 1,2) + mold pointer = animation sequence pointers address<br>
+$000C + $259CEE = $259CFA</td>
+</tr>
+
+<tr>
+<td><b>STEP 5: determine sequence data address from byte</b><br>
+<img src="mold1_step4a.gif"></td>
+<td>
+Goomba has 5 sequence assignments (2 bytes each), as seen in the selection<br>
+<br>
+(byte 1,2) + mold pointer = sequence data<br>
+$0018 + $259CEE = $259D06<br>
+</tr>
+
+<tr>
+<td><b>STEP 6: sequence data</b><br>
+<img src="mold1_step5a.gif"><br>
+<br>
+<img src="goomba_ani1.gif"> <img src="goomba_ani2.gif"> <img src="goomba_ani3.gif"> <img src="goomba_ani4.gif"><br>
+<img src="goomba_ani.gif">
+</td>
+<td>
+every 2 bytes is a frame<br>
+byte 1 = frame delay<br>
+byte 2 = sprite mold to use for frame<br>
+<br>
+10 = delay 16 frames<br>
+00 = use mold 1<br>
+0A = delay 10 frames<br>
+01 = use mold 2<br>
+10 = delay 16 frames<br>
+00 = use mold 1<br>
+0A = delay 10 frames<br>
+02 = use mold 3<br>
+00 = END SEQUENCE
+</td>
+</tr>
+</table>

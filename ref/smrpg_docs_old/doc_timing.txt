@@ -1,0 +1,253 @@
+=========
+[WEAPONS]
+=========
+
+3 attack levels:
+level 0 - no timing
+level 1 - timed from range A to Y, range Z to B
+level 2 - timed from range Y to Z
+
+byte 1   level 1 range A - timing span start from frame A
+byte 2   level 2 range Y - from frame Y
+byte 3   level 2 range Z - to frame Z
+byte 4   level 1 range B - timing span end at frame B
+
+3A438A	Unarmed (Mar)	00 08 0E 16 
+3A438E	Unarmed (Toa)	00 0A 10 24 
+3A4392	Unarmed (Bow)	00 10 18 24 
+3A4396	Unarmed (Gen)	00 18 1E 38 
+3A439A	Unarmed (Mal)	00 0A 10 16 
+3A439E	Hammer		08 0E 14 26 
+3A43A2	Froggie Stick	08 12 18 24 
+3A43A6	Nok Nok Shell	14 19 1F 24 
+3A43AA	Punch Glove	04 08 0E 16 
+3A43AE	Finger Shot	08 10 16 1A 
+3A43B2	Cymbals		04 05 0B 1E 
+3A43B6	Chomp		28 32 38 3C 
+3A43BA	Masher		08 0E 14 26 
+3A43BE	Chomp Shell	28 32 38 3C 
+3A43C2	Super Hammer	08 28 2E 32 
+3A43C6	Hand Gun	08 18 1E 22 
+3A43CA	Whomp Glove	02 0A 10 16 
+3A43CE	Slap Glove	00 0A 10 24 
+3A43D2	Troopa Shell	14 19 1F 24 
+3A43D6	Parasol		05 08 0E 18 
+3A43DA	Hurly Gloves	0C 18 1E 24 
+3A43DE	Double Punch	06 1A 20 24 
+3A43E2	Ribbit Stick	08 12 18 24 
+3A43E6	Spiked Link	28 32 38 3C 
+3A43EA	Mega Glove	06 0C 12 1A 
+3A43EE	War Fan		00 02 08 16 
+3A43F2	Hand Cannon	08 2E 34 40 
+3A43F6	Sticky Glove	05 0C 12 1A 
+3A43FA	Ultra Hammer	08 0E 14 26 
+3A43FE	Super Slap	08 0A 10 24 
+3A4402	Drill Claw	00 10 18 24 
+3A4406	Star Gun	08 18 1E 22 
+3A440A	Sonic Cymbal	04 05 0B 1E 
+3A440E	Lazy Shell	14 19 1F 24 
+3A4412	Frying Pan	00 04 0A 18 
+3A4416	Hammer		08 0E 14 26 
+3A441A	Spare		0A 14 1E 28
+
+///////////////////////////////////////////////////////////////////////
+
+========
+[SPELLS]
+========
+
+===for timed hits/spells===
+Level 1 timing: triggered between ranges A & Y, and Z & B
+Level 2 timing: triggered between ranges Y - Z
+
+ranges A & B refer to Level 1 timing and yield same damage
+ranges Y - Z refer to Level 2 timing
+
+===for multiple timed hits/spells===
+Ranges are 3 bytes each; bytes 1 and 3 are identical and probably should remain so if modified
+Byte 1   button can be pressed up to X frames BEFORE hit
+Byte 3   button must be pressed less than X frames AFTER start (or previous hit for spells that hit 2+ times)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+JUMP (CE xx 00 xx xx xx)
+----
+359305   level 1 range A - 45 frames before end (frame 1 to frame 38)
+359307   level 2 range Y - frame 39
+359308   level 2 range Z - frame 44
+359309   level 1 range B - 45 frames after start (only frame 45)
+
+FIRE ORB (D0 xx, 0D xx)
+--------
+359484  range - 7 frame span between each orb
+ anything less than 3 asphyxiates the code
+359491  maximum number of orbs: 18 (0x12)
+
+SUPER JUMP (CF xx 00 xx)
+----------
+35969D  range 1 - 60 frames (jump 1)
+3596DE  range 2 - 30 frames (jump 2)
+3596E9  range 3 - 26 frames (jump 3)
+3596F4  range 4 - 22 frames (jump 4)
+3596FF  range 5 - 18 frames (jump 5)
+35970E  range 6 - 14 frames (jump 6)
+359715  range 7 - 10 frames (jump 7)
+359720  range 8 - 8 frames (jump 8)
+35972B  range 9 - 7 frames (jump 9)
+359736  range 10 - 6 frames (jump 10)
+359741  range 11 - 5 frames (jump 11)
+35974C  range 12 - 4 frames (jump 12)
+359757  range 13 - 3 frames (jump 13)
+359768  range 14 - 2 frames (jump 14-100)
+
+359763   maximum number of jumps: 100 (0x64)
+ due to it's location in the data, the processor doesn't read this value until after 14 jumps
+ have been performed; therefore the value must be above 14 (0x0E) to have any effect
+ if any value specified is above 141 (0x8D) it resets it
+
+SUPER FLAME (D0 xx, 0D xx)
+-----------
+3598D8  range - 7 frame span between each orb
+3598E5  maximum number of orbs: 20 (0x14)
+
+ULTRA JUMP (CF xx 00 xx)
+----------
+359AA6  range 1 - 60 frames (jump 1)
+359AD7  range 2 - 50 frames (jump 2)
+359AE2  range 3 - 40 frames (jump 3)
+359AED  range 4 - 30 frames (jump 4)
+359AF8  range 5 - 26 frames (jump 5)
+359B03  range 6 - 22 frames (jump 6)
+359B0E  range 7 - 18 frames (jump 7)
+359B19  range 8 - 14 frames (jump 8)
+359B24  range 9 - 10 frames (jump 9)
+359B2F  range 10 - 9 frames (jump 10)
+359B3A  range 11 - 8 frames (jump 11)
+359B45  range 12 - 7 frames (jump 12)
+359B50  range 13 - 6 frames (jump 13)
+359B5B  range 14 - 5 frames (jump 14)
+359B66  range 15 - 4 frames (jump 15)
+359B71  range 16 - 3 frames (jump 16)
+359B83  range 17 - 2 frames (jump 17-100)
+
+359B7E  maximum number of jumps (0x64)
+
+ULTRA FLAME (D0 xx)
+-----------
+359CF4  range - 7 frame span between each orb
+359D01  maximum number of orbs: 18 (0x12)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+THERAPY (CE xx 00 xx xx xx)
+-------
+359E47   level 1 range A - 30 frames before end (frame 1 to frame 24)
+359E49   level 2 range Y - frame 25
+359E4A   level 2 range Z - frame 28
+359E4B   level 1 range B - 30 frames after start (frame 29 to frame 30)
+
+GROUP HUG (CE xx 00 xx xx xx)
+---------
+359E47   level 1 range A - 30 frames before end (frame 1 to frame 24)
+359E49   level 2 range Y - frame 25
+359E4A   level 2 range Z - frame 28
+359E4B   level 1 range B - 30 frames after start (frame 29 to frame 30)
+
+SLEEPY TIME (D3 xx 00 xx)
+-----------
+35A423   max range - 120 frames after start (0x70)
+35A425   maximum number of quarter rotations: 28 (0x1C)
+
+COME BACK (CF xx 00 xx)
+---------
+35A663   level 1 range A - 30 frames before end
+35A665   level 1 range B - 30 frames after start
+
+MUTE (D3 xx 00 xx)
+----
+35A86F   max range - 120 frames after start (0x78)
+35A871   maximum number of quarter rotations: 26 (0x1A)
+
+PSYCH BOMB & BOWSER CRUSH (D2 xx)
+-------------------------
+35AA15   maximum number of button power-ups: 16 (0x10)
+(no span between button presses)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+TERRORIZE (D3 xx 00 xx)
+---------
+35ACAF   max range - 70 frames after start (0x46)
+35ACB1   maximum number of quarter rotations: 16 (0x10)
+
+L = (+1)
+L + UL [+ U] = 1 quarter rotation (+2)
+L + UL + U + UR + R = 2 quarter rotation (+3)
+L + UL + U + UR + R + DR [+ D] = 3 quarter rotation (+4)
+L + UL + U + UR + R + DR + D + DL + L = 1 full rotation (+5)
+
+Objects in brackets are optional; pressing them does not increase damage
+
+POISON GAS (D3 xx 00 xx)
+----------
+35AE3A   max range - 70 frames after start (0x46)
+35AE3C   maximum number of quarter rotations: 16 (0x10)
+
+CRUSHER (CE xx 00 xx xx xx)
+-------
+35B09A   level 1 range A - 30 frames before end (frame 1 to frame 25)
+35B09C   level 2 range Y - frame 26
+35B09D   level 2 range Z - frame 28
+35B09E   level 1 range B - 30 frames after start (frame 29 to frame 30)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+GENO BEAM, GENO BLAST, GENO FLASH (D4 xx xx xx xx)
+---------------------------------
+35B58D   level 2 range - 30 frames after initial charge (damage +50%)
+35B58E   level 3 range - 55 frames after initial charge (damage +75%)
+35B58F   level 4 range - 80 frames after initial charge (damage +100%)
+35B590   charge overflow 105 frames after initial charge (damage +0%)
+
+GENO BOOST
+----------
+35B9DB   ranges - 30 frames
+
+GENO WHIRL (CF xx 00 xx)
+----------
+35BAE2   ranges - 15 frames
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+THUNDERBOLT
+-----------
+35BEDA   ranges - 30 frames
+
+HP RAIN
+-------
+35BFC6   level 1 range A - 60 frames before end (frame 1 to frame 57)
+35BFC8   level 2 range Y - frame 58
+35BFC9   level 2 range Z - frame 59
+35BFCA   level 1 range B - 60 frames after start (only frame 60)
+(only 2 frames opportunity to trigger level 2)
+
+PSYCHOPATH
+----------
+35C15E   ranges - 30 frames
+
+SHOCKER
+-------
+35C2CA   level 1 range A - 30 frames before end (frame 1 to frame 14)
+35C2CC   level 2 range Y - frame 15
+35C2CD   level 2 range Z - frame 20
+35C2CE   level 1 range B - 30 frames after start (frame 21 to frame 30)
+
+SNOWY
+-----
+35C347   max range - 35 frames after start (0x23)
+35C349   maximum number of quarter rotations: 8
+
+STAR RAIN 
+---------
+35C3C5  range - 30 frames (all rains)
+35C407  maximum number of rains: 16 (0x10)

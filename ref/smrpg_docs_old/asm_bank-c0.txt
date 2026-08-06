@@ -1,0 +1,357 @@
+C0/0208 9C 01 30    STZ $3001  [$00:3001]   A:0080 X:4200 Y:0084 
+C0/020B A2 00 22    LDX #$2200              A:0080 X:4200 Y:0084 
+C0/020E C2 20       REP #$20                A:0080 X:2200 Y:0084 
+C0/0210 A9 A0 FF    LDA #$FFA0              A:0080 X:2200 Y:0084 ;SA-1 starting address
+C0/0213 95 03       STA $03,x  [$00:2203]   A:FFA0 X:2200 Y:0084 
+C0/0215 A9 08 00    LDA #$0008              A:FFA0 X:2200 Y:0084 
+C0/0218 95 05       STA $05,x  [$00:2205]   A:0008 X:2200 Y:0084 
+C0/021A A9 0C 00    LDA #$000C              A:0008 X:2200 Y:0084 
+C0/021D 95 07       STA $07,x  [$00:2207]   A:000C X:2200 Y:0084 
+C0/021F A9 8F 80    LDA #$808F              A:000C X:2200 Y:0084 
+C0/0222 8D 09 30    STA $3009  [$00:3009]   A:808F X:2200 Y:0084 
+C0/0225 A9 AB 80    LDA #$80AB              A:808F X:2200 Y:0084 
+C0/0228 8D 0D 30    STA $300D  [$00:300D]   A:80AB X:2200 Y:0084 
+C0/022B E2 20       SEP #$20                A:80AB X:2200 Y:0084 
+C0/022D A9 5C       LDA #$5C                A:80AB X:2200 Y:0084 
+C0/022F 8D 04 30    STA $3004  [$00:3004]   A:805C X:2200 Y:0084 
+C0/0232 8D 08 30    STA $3008  [$00:3008]   A:805C X:2200 Y:0084 
+C0/0235 8D 0C 30    STA $300C  [$00:300C]   A:805C X:2200 Y:0084 
+C0/0238 A9 C0       LDA #$C0                A:805C X:2200 Y:0084 
+C0/023A 8D 0B 30    STA $300B  [$00:300B]   A:80C0 X:2200 Y:0084 
+C0/023D 8D 0F 30    STA $300F  [$00:300F]   A:80C0 X:2200 Y:0084 
+C0/0240 74 20       STZ $20,x  [$00:2220]   A:80C0 X:2200 Y:0084 
+C0/0242 A9 01       LDA #$01                A:80C0 X:2200 Y:0084 
+C0/0244 95 21       STA $21,x  [$00:2221]   A:8001 X:2200 Y:0084 
+C0/0246 A9 02       LDA #$02                A:8001 X:2200 Y:0084 
+C0/0248 95 22       STA $22,x  [$00:2222]   A:8002 X:2200 Y:0084 
+C0/024A A9 03       LDA #$03                A:8002 X:2200 Y:0084 
+C0/024C 95 23       STA $23,x  [$00:2223]   A:8003 X:2200 Y:0084 
+C0/024E A9 01       LDA #$01                A:8003 X:2200 Y:0084 
+C0/0250 95 24       STA $24,x  [$00:2224]   A:8001 X:2200 Y:0084 
+C0/0252 74 26       STZ $26,x  [$00:2226]   A:8001 X:2200 Y:0084 
+C0/0254 A9 05       LDA #$05                A:8001 X:2200 Y:0084 
+C0/0256 95 28       STA $28,x  [$00:2228]   A:8005 X:2200 Y:0084 
+C0/0258 A9 FF       LDA #$FF                A:8005 X:2200 Y:0084 
+C0/025A 95 29       STA $29,x  [$00:2229]   A:80FF X:2200 Y:0084 
+C0/025C A9 00       LDA #$00                A:80FF X:2200 Y:0084 
+C0/025E 8D 00 22    STA $2200  [$00:2200]   A:8000 X:2200 Y:0084 
+C0/0261 60          RTS                     A:8000 X:2200 Y:0084
+
+
+check buttons to determine Mario's actions
+
+C0/14AF AD 15 01    LDA $0115  [$00:0115]   A:6400 X:6000 Y:0000 
+C0/14B2 D0 0A       BNE $0A    [$14BE]      A:6400 X:6000 Y:0000 
+C0/14B4 AD 78 01    LDA $0178  [$00:0178]   A:6400 X:6000 Y:0000 
+C0/14B7 D0 0D       BNE $0D    [$14C6]      A:6400 X:6000 Y:0000 
+C0/14B9 AD 11 01    LDA $0111  [$00:0111]   A:6400 X:6000 Y:0000 
+C0/14BC F0 08       BEQ $08    [$14C6]      A:6400 X:6000 Y:0000 
+C0/14C6 AD 12 01    LDA $0112  [$00:0112]   A:6400 X:6000 Y:0000 
+C0/14C9 2D 13 01    AND $0113  [$00:0113]   A:64FF X:6000 Y:0000 
+C0/14CC 25 11       AND $11    [$00:0011]   A:64FF X:6000 Y:0000 ;AND with button bits
+C0/14CE 85 62       STA $62    [$00:0062]   A:6480 X:6000 Y:0000 
+C0/14D0 89 40       BIT #$40                A:6480 X:6000 Y:0000 ;check Y button bit
+C0/14D2 D0 05       BNE $05    [$14D9]      A:6480 X:6000 Y:0000 ;branch if set
+C0/14D4 9C 10 01    STZ $0110  [$00:0110]   A:6480 X:6000 Y:0000 
+C0/14D7 80 05       BRA $05    [$14DE]      A:6480 X:6000 Y:0000 
+
+C0/14D9 A9 01       LDA #$01                A:0000 X:0000 Y:0000 
+C0/14DB 8D 10 01    STA $0110  [$00:0110]   A:0000 X:0000 Y:0000 ;set Y button as pressed
+
+C0/14DE AD 12 01    LDA $0112  [$00:0112]   A:6480 X:6000 Y:0000 
+C0/14E1 2D 13 01    AND $0113  [$00:0113]   A:64FF X:6000 Y:0000 
+C0/14E4 25 15       AND $15    [$00:0015]   A:64FF X:6000 Y:0000 ;isolate button bits
+C0/14E6 10 1B       BPL $1B    [$1503]      A:6480 X:6000 Y:0000 ;branch if B button not set
+
+C0/14E8 B5 0C       LDA $0C,x  [$00:600C]   A:6480 X:6000 Y:0000 
+C0/14EA 89 10       BIT #$10                A:6487 X:6000 Y:0000 ;check underwater bit
+C0/14EC D0 0D       BNE $0D    [$14FB]      A:6487 X:6000 Y:0000 ;branch if underwater
+C0/14EE 89 20       BIT #$20                A:6487 X:6000 Y:0000 
+C0/14F0 F0 04       BEQ $04    [$14F6]      A:6487 X:6000 Y:0000 
+
+C0/14F2 89 08       BIT #$08                A:0000 X:0000 Y:0000 
+C0/14F4 F0 0D       BEQ $0D    [$1503]      A:0000 X:0000 Y:0000 
+
+C0/14F6 A0 6C 00    LDY #$006C              A:6487 X:6000 Y:0000 ;load maximum height to jump
+C0/14F9 80 03       BRA $03    [$14FE]      A:6487 X:6000 Y:006C 
+
+C0/14FB A0 22 00    LDY #$0022              A:0000 X:0000 Y:0000 ;load maximum height to jump
+
+C0/14FE 84 82       STY $82    [$00:0082]   A:6487 X:6000 Y:006C ;set maximum height
+C0/1500 20 77 17    JSR $1777  [$00:1777]   A:6487 X:6000 Y:006C ;execute jump
+
+asdgasgasldg;jasg;l
+
+C0/17B6 A9 04       LDA #$04                A:00C7 X:6000 Y:006C ;load jumping sound effect
+C0/1A52 A9 5D       LDA #$5D                A:FF00 X:6360 Y:003B ;load water splash sound effect
+C0/DE90 B9 00 00    LDA $0000,y[$E0:407D]   A:0138 X:0138 Y:407D ;load lava burn surprise sound effect
+
+set speed for Mario when walking/running
+
+C0/154E A5 9B       LDA $9B    [$00:009B]   A:6300 X:6000 Y:0000 
+C0/1550 C9 FF       CMP #$FF                A:6301 X:6000 Y:0000 
+C0/1552 D0 04       BNE $04    [$1558]      A:6301 X:6000 Y:0000 
+C0/1558 9B          TXY                     A:6301 X:6000 Y:0000 
+C0/1559 B5 0C       LDA $0C,x  [$00:600C]   A:6301 X:6000 Y:6000 
+C0/155B 89 30       BIT #$30                A:6387 X:6000 Y:6000 
+C0/155D D0 51       BNE $51    [$15B0]      A:6387 X:6000 Y:6000 
+C0/155F B5 0C       LDA $0C,x  [$00:600C]   A:6387 X:6000 Y:6000 
+C0/1561 89 40       BIT #$40                A:6387 X:6000 Y:6000 
+C0/1563 D0 06       BNE $06    [$156B]      A:6387 X:6000 Y:6000 
+C0/1565 B5 0B       LDA $0B,x  [$00:600B]   A:6387 X:6000 Y:6000 
+C0/1567 89 10       BIT #$10                A:6303 X:6000 Y:6000 
+C0/1569 D0 15       BNE $15    [$1580]      A:6303 X:6000 Y:6000 
+C0/156B AD 10 01    LDA $0110  [$00:0110]   A:6303 X:6000 Y:6000 
+C0/156E F0 03       BEQ $03    [$1573]      A:6301 X:6000 Y:6000 
+C0/1570 82 85 00    BRL $0085  [$15F8]      A:6301 X:6000 Y:6000 
+
+C0/15F8 B5 07       LDA $07,x  [$00:6007]   A:6301 X:6000 Y:6000 
+C0/15FA 29 07       AND #$07                A:63C0 X:6000 Y:6000 
+C0/15FC C9 01       CMP #$01                A:6300 X:6000 Y:6000 
+C0/15FE F0 18       BEQ $18    [$1618]      A:6300 X:6000 Y:6000 
+C0/1600 C9 03       CMP #$03                A:6300 X:6000 Y:6000 
+C0/1602 F0 10       BEQ $10    [$1614]      A:6300 X:6000 Y:6000 
+C0/1604 C9 04       CMP #$04                A:6300 X:6000 Y:6000 
+C0/1606 F0 1A       BEQ $1A    [$1622]      A:6300 X:6000 Y:6000 
+C0/1608 C9 05       CMP #$05                A:6300 X:6000 Y:6000 
+C0/160A F0 10       BEQ $10    [$161C]      A:6300 X:6000 Y:6000 
+C0/160C C9 06       CMP #$06                A:6300 X:6000 Y:6000 
+C0/160E F0 10       BEQ $10    [$1620]      A:6300 X:6000 Y:6000 
+C0/1610 A9 01       LDA #$01                A:6300 X:6000 Y:6000 ;set object animation speed
+C0/1612 80 0E       BRA $0E    [$1622]      A:6301 X:6000 Y:6000 
+C0/1622 85 80       STA $80    [$00:0080]   A:6301 X:6000 Y:6000 
+C0/1624 B5 07       LDA $07,x  [$00:6007]   A:6301 X:6000 Y:6000 
+C0/1626 48          PHA                     A:63C0 X:6000 Y:6000 
+C0/1627 29 F8       AND #$F8                A:63C0 X:6000 Y:6000 
+C0/1629 05 80       ORA $80    [$00:0080]   A:63C0 X:6000 Y:6000 
+C0/162B 95 07       STA $07,x  [$00:6007]   A:63C1 X:6000 Y:6000 
+C0/162D 20 EC B7    JSR $B7EC  [$00:B7EC]   A:63C1 X:6000 Y:6000 
+
+SPRITE MAPPING
+--------------
+C0/8BB8 C8          INY                     A:6161 X:01AC Y:B89B 
+C0/8BB9 C4 6E       CPY $6E    [$00:006E]   A:6161 X:01AC Y:B89C 
+C0/8BBB F0 65       BEQ $65    [$8C22]      A:6161 X:01AC Y:B89C 
+C0/8BBD A2 A0 62    LDX #$62A0              A:6161 X:01AC Y:B89C 
+C0/8BC0 B9 00 00    LDA $0000,y[$D4:B89C]   A:6161 X:62A0 Y:B89C 
+C0/8BC3 29 30       AND #$30                A:6122 X:62A0 Y:B89C 
+C0/8BC5 85 60       STA $60    [$00:0060]   A:6120 X:62A0 Y:B89C 
+C0/8BC7 B9 00 00    LDA $0000,y[$D4:B89C]   A:6120 X:62A0 Y:B89C 
+C0/8BCA 29 0F       AND #$0F                A:6122 X:62A0 Y:B89C ;isolate multiple objects bits
+C0/8BCC 85 61       STA $61    [$00:0061]   A:6102 X:62A0 Y:B89C 
+C0/8BCE 20 48 8C    JSR $8C48  [$D4:8C48]   A:6102 X:62A0 Y:B89C 
+
+C0/8C48 A5 60       LDA $60    [$00:0060]   A:6102 X:62A0 Y:B89C ;load initiation parameter flag
+C0/8C4A C9 20       CMP #$20                A:6120 X:62A0 Y:B89C ;check if monster formation flag set
+C0/8C4C F0 0E       BEQ $0E    [$8C5C]      A:6120 X:62A0 Y:B89C ;branch if it is
+
+C0/8C4E C2 20       REP #$20                A:6100 X:62A0 Y:B89C 
+C0/8C50 B9 06 00    LDA $0006,y[$D4:B8A2]   A:6100 X:62A0 Y:B89C 
+C0/8C53 29 FF 0F    AND #$0FFF              A:6100 X:62A0 Y:B89C 
+C0/8C56 95 52       STA $52,x  [$00:62F2]   A:6100 X:62A0 Y:B89C 
+C0/8C58 E2 20       SEP #$20                A:6100 X:62A0 Y:B89C 
+C0/8C5A 80 17       BRA $17    [$8C73]      A:6100 X:62A0 Y:B89C ;skip formation code
+
+C0/8C5C C2 20       REP #$20                A:6120 X:62A0 Y:B89C 
+C0/8C5E B9 06 00    LDA $0006,y[$D4:B8A2]   A:6120 X:62A0 Y:B89C ;load formation
+C0/8C61 29 FF 01    AND #$01FF              A:C01A X:62A0 Y:B89C ;isolate formation bits
+C0/8C64 95 53       STA $53,x  [$00:62F3]   A:001A X:62A0 Y:B89C 
+C0/8C66 E2 20       SEP #$20                A:001A X:62A0 Y:B89C 
+C0/8C68 B9 07 00    LDA $0007,y[$D4:B8A3]   A:001A X:62A0 Y:B89C ;load initiation byte
+C0/8C6B 4A          LSR A                   A:00C0 X:62A0 Y:B89C 
+C0/8C6C 29 07       AND #$07                A:0060 X:62A0 Y:B89C 
+C0/8C6E 18          CLC                     A:0000 X:62A0 Y:B89C 
+C0/8C6F 69 10       ADC #$10                A:0000 X:62A0 Y:B89C 
+C0/8C71 95 52       STA $52,x  [$00:62F2]   A:0010 X:62A0 Y:B89C 
+
+C0/8C73 B9 01 00    LDA $0001,y[$D4:B89D]   A:0010 X:62A0 Y:B89C 
+C0/8C76 29 47       AND #$47                A:0040 X:62A0 Y:B89C 
+C0/8C78 95 07       STA $07,x  [$00:62A7]   A:0040 X:62A0 Y:B89C 
+C0/8C7A 29 07       AND #$07                A:0040 X:62A0 Y:B89C ;isolate extra movement speed bits
+C0/8C7C 95 06       STA $06,x  [$00:62A6]   A:0000 X:62A0 Y:B89C 
+C0/8C7E B9 01 00    LDA $0001,y[$D4:B89D]   A:0000 X:62A0 Y:B89C 
+C0/8C81 29 08       AND #$08                A:0040 X:62A0 Y:B89C ;isolate 'face when touched' bits 
+C0/8C83 0A          ASL A                   A:0000 X:62A0 Y:B89C 
+C0/8C84 09 40       ORA #$40                A:0000 X:62A0 Y:B89C 
+C0/8C86 95 08       STA $08,x  [$00:62A8]   A:0040 X:62A0 Y:B89C 
+C0/8C88 B9 01 00    LDA $0001,y[$D4:B89D]   A:0040 X:62A0 Y:B89C 
+C0/8C8B 4A          LSR A                   A:0040 X:62A0 Y:B89C 
+C0/8C8C 4A          LSR A                   A:0020 X:62A0 Y:B89C 
+C0/8C8D 29 08       AND #$08                A:0010 X:62A0 Y:B89C 
+C0/8C8F 85 80       STA $80    [$00:0080]   A:0000 X:62A0 Y:B89C 
+C0/8C91 B9 07 00    LDA $0007,y[$D4:B8A3]   A:0000 X:62A0 Y:B89C ;load initiation byte
+C0/8C94 29 F0       AND #$F0                A:00C0 X:62A0 Y:B89C ;isolate interaction field bits
+C0/8C96 05 80       ORA $80    [$00:0080]   A:00C0 X:62A0 Y:B89C 
+C0/8C98 95 59       STA $59,x  [$00:62F9]   A:00C0 X:62A0 Y:B89C 
+C0/8C9A B9 01 00    LDA $0001,y[$D4:B89D]   A:00C0 X:62A0 Y:B89C 
+C0/8C9D 29 80       AND #$80                A:0040 X:62A0 Y:B89C 
+C0/8C9F 95 0C       STA $0C,x  [$00:62AC]   A:0000 X:62A0 Y:B89C 
+C0/8CA1 B9 01 00    LDA $0001,y[$D4:B89D]   A:0000 X:62A0 Y:B89C 
+C0/8CA4 29 10       AND #$10                A:0040 X:62A0 Y:B89C 
+C0/8CA6 0A          ASL A                   A:0000 X:62A0 Y:B89C 
+C0/8CA7 0A          ASL A                   A:0000 X:62A0 Y:B89C 
+C0/8CA8 0A          ASL A                   A:0000 X:62A0 Y:B89C 
+C0/8CA9 95 09       STA $09,x  [$00:62A9]   A:0000 X:62A0 Y:B89C 
+C0/8CAB B9 03 00    LDA $0003,y[$D4:B89F]   A:0000 X:62A0 Y:B89C ;load object's low byte
+C0/8CAE 29 03       AND #$03                A:0021 X:62A0 Y:B89C ;isolate alternate palette bits
+C0/8CB0 95 0B       STA $0B,x  [$00:62AB]   A:0001 X:62A0 Y:B89C 
+C0/8CB2 B9 02 00    LDA $0002,y[$D4:B89E]   A:0001 X:62A0 Y:B89C 
+C0/8CB5 95 0A       STA $0A,x  [$00:62AA]   A:0050 X:62A0 Y:B89C 
+
+C0/8CB7 C2 20       REP #$20                A:0050 X:62A0 Y:B89C 
+C0/8CB9 B9 03 00    LDA $0003,y[$D4:B89F]   A:0050 X:62A0 Y:B89C ;load object
+C0/8CBC 4A          LSR A                   A:2421 X:62A0 Y:B89C ;shift to object byte
+C0/8CBD 4A          LSR A                   A:1210 X:62A0 Y:B89C 
+C0/8CBE 29 FF 03    AND #$03FF              A:0908 X:62A0 Y:B89C ;isolate object collection range
+C0/8CC1 85 62       STA $62    [$00:0062]   A:0108 X:62A0 Y:B89C 
+C0/8CC3 B9 04 00    LDA $0004,y[$D4:B8A0]   A:0108 X:62A0 Y:B89C ;load movement type
+C0/8CC6 4A          LSR A                   A:D924 X:62A0 Y:B89C ;shift to movement bits
+C0/8CC7 4A          LSR A                   A:6C92 X:62A0 Y:B89C 
+C0/8CC8 4A          LSR A                   A:3649 X:62A0 Y:B89C 
+C0/8CC9 4A          LSR A                   A:1B24 X:62A0 Y:B89C 
+C0/8CCA 29 FF 03    AND #$03FF              A:0D92 X:62A0 Y:B89C ;isolate movement bits
+C0/8CCD 85 64       STA $64    [$00:0064]   A:0192 X:62A0 Y:B89C 
+C0/8CCF E2 20       SEP #$20                A:0192 X:62A0 Y:B89C 
+C0/8CD1 C2 20       REP #$20                A:0192 X:62A0 Y:B89C 
+C0/8CD3 98          TYA                     A:0192 X:62A0 Y:B89C 
+C0/8CD4 18          CLC                     A:B89C X:62A0 Y:B89C 
+C0/8CD5 69 08 00    ADC #$0008              A:B89C X:62A0 Y:B89C 
+C0/8CD8 A8          TAY                     A:B8A4 X:62A0 Y:B89C 
+C0/8CD9 E2 20       SEP #$20                A:B8A4 X:62A0 Y:B8A4 
+C0/8CDB 60          RTS                     A:B8A4 X:62A0 Y:B8A4 
+
+C0/8BD1 A5 60       LDA $60    [$00:0060]   A:B8A4 X:62A0 Y:B8A4 ;load initiation parameter flag
+C0/8BD3 F0 12       BEQ $12    [$8BE7]      A:B820 X:62A0 Y:B8A4 ;branch if 0
+C0/8BD5 5A          PHY                     A:B820 X:62A0 Y:B8A4 
+C0/8BD6 C2 20       REP #$20                A:B820 X:62A0 Y:B8A4 
+C0/8BD8 A5 62       LDA $62    [$00:0062]   A:B820 X:62A0 Y:B8A4 
+C0/8BDA 0A          ASL A                   A:0108 X:62A0 Y:B8A4 
+C0/8BDB 0A          ASL A                   A:0210 X:62A0 Y:B8A4 
+C0/8BDC 0A          ASL A                   A:0420 X:62A0 Y:B8A4 
+C0/8BDD 38          SEC                     A:0840 X:62A0 Y:B8A4 
+C0/8BDE E5 62       SBC $62    [$00:0062]   A:0840 X:62A0 Y:B8A4 
+C0/8BE0 A8          TAY                     A:0738 X:62A0 Y:B8A4 
+C0/8BE1 E2 20       SEP #$20                A:0738 X:62A0 Y:0738 
+C0/8BE3 20 DC 8C    JSR $8CDC  [$D4:8CDC]   A:0738 X:62A0 Y:0738 ;load object field/sprite properties
+
+C0/8BE6 7A          PLY                     A:0101 X:62A0 Y:0738 
+C0/8BE7 A5 61       LDA $61    [$00:0061]   A:0101 X:62A0 Y:B8A4 ;load multiple object byte
+C0/8BE9 F0 1E       BEQ $1E    [$8C09]      A:0102 X:62A0 Y:B8A4 ;branch if only one object
+C0/8BEB 85 80       STA $80    [$00:0080]   A:0102 X:62A0 Y:B8A4 
+C0/8BED 64 81       STZ $81    [$00:0081]   A:0102 X:62A0 Y:B8A4 
+C0/8BEF C2 20       REP #$20                A:0102 X:62A0 Y:B8A4 
+C0/8BF1 8B          PHB                     A:0102 X:62A0 Y:B8A4 
+C0/8BF2 DA          PHX                     A:0102 X:62A0 Y:B8A4 
+C0/8BF3 5A          PHY                     A:0102 X:62A0 Y:B8A4 
+C0/8BF4 8A          TXA                     A:0102 X:62A0 Y:B8A4 
+C0/8BF5 18          CLC                     A:62A0 X:62A0 Y:B8A4 
+C0/8BF6 69 60 00    ADC #$0060              A:62A0 X:62A0 Y:B8A4 
+C0/8BF9 A8          TAY                     A:6300 X:62A0 Y:B8A4 
+C0/8BFA A9 5F 00    LDA #$005F              A:6300 X:62A0 Y:6300 
+C0/8BFD 54          MVN 00 00               A:005F X:62A0 Y:6300 ;copy object mapping stats to each multiple object
+
+C0/8C00 C6 80       DEC $80    [$00:0080]   A:FFFF X:6300 Y:6360 ;decrement multiple object counter
+C0/8C02 D0 F6       BNE $F6    [$8BFA]      A:FFFF X:6300 Y:6360 ;branch if not at last object
+
+C0/8C04 7A          PLY                     A:FFFF X:6360 Y:63C0 
+C0/8C05 FA          PLX                     A:FFFF X:6360 Y:B8A4 
+C0/8C06 AB          PLB                     A:FFFF X:62A0 Y:B8A4 
+C0/8C07 E2 20       SEP #$20                A:FFFF X:62A0 Y:B8A4 
+C0/8C09 E6 61       INC $61    [$00:0061]   A:FFFF X:62A0 Y:B8A4 
+C0/8C0B 20 A2 8D    JSR $8DA2  [$D4:8DA2]   A:FFFF X:62A0 Y:B8A4 
+C0/8DA2 A5 60       LDA $60    [$00:0060]   A:FFFF X:62A0 Y:B8A4 ;load initiation parameter flag
+C0/8DA4 F0 30       BEQ $30    [$8DD6]      A:FF20 X:62A0 Y:B8A4 ;branch if 
+C0/8DA6 C9 10       CMP #$10                A:FF20 X:62A0 Y:B8A4 
+C0/8DA8 F0 1E       BEQ $1E    [$8DC8]      A:FF20 X:62A0 Y:B8A4 
+C0/8DAA B9 00 00    LDA $0000,y[$D4:B8A4]   A:FF20 X:62A0 Y:B8A4 
+C0/8DAD 29 0F       AND #$0F                A:FF03 X:62A0 Y:B8A4 ;isolate movement bits offset
+C0/8DAF 85 80       STA $80    [$00:0080]   A:FF03 X:62A0 Y:B8A4 
+C0/8DB1 64 81       STZ $81    [$00:0081]   A:FF03 X:62A0 Y:B8A4 
+C0/8DB3 B9 00 00    LDA $0000,y[$D4:B8A4]   A:FF03 X:62A0 Y:B8A4 
+C0/8DB6 4A          LSR A                   A:FF03 X:62A0 Y:B8A4 ;shift upper bits to lower bits
+C0/8DB7 4A          LSR A                   A:FF01 X:62A0 Y:B8A4 
+C0/8DB8 4A          LSR A                   A:FF00 X:62A0 Y:B8A4 
+C0/8DB9 4A          LSR A                   A:FF00 X:62A0 Y:B8A4 
+
+C0/8DBA C2 20       REP #$20                A:FF00 X:62A0 Y:B8A4 
+C0/8DBC 29 FF 00    AND #$00FF              A:FF00 X:62A0 Y:B8A4 ;isolate lower bits
+C0/8DBF 18          CLC                     A:0000 X:62A0 Y:B8A4 
+C0/8DC0 75 53       ADC $53,x  [$00:62F3]   A:0000 X:62A0 Y:B8A4 
+C0/8DC2 95 53       STA $53,x  [$00:62F3]   A:001A X:62A0 Y:B8A4 
+C0/8DC4 E2 20       SEP #$20                A:001A X:62A0 Y:B8A4 
+C0/8DC6 80 47       BRA $47    [$8E0F]      A:001A X:62A0 Y:B8A4 
+
+C0/8DC8 B9 00 00    LDA $0000,y[$D4:B8A4]   A:FF10 X:62A0 Y:B8A4 
+C0/8DCB 85 80       STA $80    [$00:0080]   A:FF03 X:62A0 Y:B8A4 
+C0/8DCD 20 1B 9B    JSR $9B1B  [$D4:9B1B]   A:FF03 X:62A0 Y:B8A4 
+
+-----------------------------------------
+OBJECT OFFSET FLAG
+
+C0/8DD6 5A          PHY                     A:FF00 X:62A0 Y:B8A4 
+C0/8DD7 B9 00 00    LDA $0000,y[$D4:B8A4]   A:FF00 X:62A0 Y:B8A4 
+C0/8DDA C2 20       REP #$20                A:FF03 X:62A0 Y:B8A4 
+C0/8DDC 29 07 00    AND #$0007              A:FF03 X:62A0 Y:B8A4 
+C0/8DDF 18          CLC                     A:0003 X:62A0 Y:B8A4 
+C0/8DE0 65 62       ADC $62    [$00:0062]   A:0003 X:62A0 Y:B8A4 
+C0/8DE2 85 80       STA $80    [$00:0080]   A:010B X:62A0 Y:B8A4 
+C0/8DE4 0A          ASL A                   A:010B X:62A0 Y:B8A4 
+C0/8DE5 0A          ASL A                   A:0216 X:62A0 Y:B8A4 
+C0/8DE6 0A          ASL A                   A:042C X:62A0 Y:B8A4 
+C0/8DE7 38          SEC                     A:0858 X:62A0 Y:B8A4 
+C0/8DE8 E5 80       SBC $80    [$00:0080]   A:0858 X:62A0 Y:B8A4 
+C0/8DEA A8          TAY                     A:074D X:62A0 Y:B8A4 
+C0/8DEB E2 20       SEP #$20                A:074D X:62A0 Y:074D 
+C0/8DED 20 DC 8C    JSR $8CDC  [$D4:8CDC]   A:074D X:62A0 Y:074D ;load object properties
+-----------------------------------------
+
+C0/8E0F DA          PHX                     A:001A X:62A0 Y:B8A4 
+C0/8E10 C2 20       REP #$20                A:001A X:62A0 Y:B8A4 
+C0/8E12 A5 80       LDA $80    [$00:0080]   A:001A X:62A0 Y:B8A4 ;load movement bits offset
+C0/8E14 18          CLC                     A:0003 X:62A0 Y:B8A4 
+C0/8E15 65 64       ADC $64    [$00:0064]   A:0003 X:62A0 Y:B8A4 ;add to movement byte
+C0/8E17 0A          ASL A                   A:0195 X:62A0 Y:B8A4 
+C0/8E18 AA          TAX                     A:032A X:62A0 Y:B8A4 
+C0/8E19 BF 00 00 E1 LDA $E10000,x[$E1:032A] A:032A X:032A Y:B8A4 ;load movement pointer
+C0/8E1D FA          PLX                     A:499A X:032A Y:B8A4 
+C0/8E1E 95 32       STA $32,x  [$00:62D2]   A:499A X:62A0 Y:B8A4 
+C0/8E20 E2 20       SEP #$20                A:499A X:62A0 Y:B8A4 
+C0/8E22 B9 01 00    LDA $0001,y[$D4:B8A5]   A:499A X:62A0 Y:B8A4 
+C0/8E25 29 7F       AND #$7F                A:4907 X:62A0 Y:B8A4 
+C0/8E27 85 80       STA $80    [$00:0080]   A:4907 X:62A0 Y:B8A4 
+C0/8E29 B9 02 00    LDA $0002,y[$D4:B8A6]   A:4907 X:62A0 Y:B8A4 
+C0/8E2C 29 7F       AND #$7F                A:493B X:62A0 Y:B8A4 
+C0/8E2E 85 82       STA $82    [$00:0082]   A:493B X:62A0 Y:B8A4 
+C0/8E30 B9 03 00    LDA $0003,y[$D4:B8A7]   A:493B X:62A0 Y:B8A4 
+C0/8E33 29 1F       AND #$1F                A:4920 X:62A0 Y:B8A4 
+C0/8E35 95 05       STA $05,x  [$00:62A5]   A:4900 X:62A0 Y:B8A4 
+C0/8E37 B9 02 00    LDA $0002,y[$D4:B8A6]   A:4900 X:62A0 Y:B8A4 
+C0/8E3A 29 80       AND #$80                A:493B X:62A0 Y:B8A4 
+C0/8E3C 95 04       STA $04,x  [$00:62A4]   A:4900 X:62A0 Y:B8A4 
+C0/8E3E B9 03 00    LDA $0003,y[$D4:B8A7]   A:4900 X:62A0 Y:B8A4 
+C0/8E41 4A          LSR A                   A:4920 X:62A0 Y:B8A4 
+C0/8E42 4A          LSR A                   A:4910 X:62A0 Y:B8A4 
+C0/8E43 4A          LSR A                   A:4908 X:62A0 Y:B8A4 
+C0/8E44 4A          LSR A                   A:4904 X:62A0 Y:B8A4 
+C0/8E45 4A          LSR A                   A:4902 X:62A0 Y:B8A4 
+C0/8E46 15 08       ORA $08,x  [$00:62A8]   A:4901 X:62A0 Y:B8A4 
+C0/8E48 95 08       STA $08,x  [$00:62A8]   A:4941 X:62A0 Y:B8A4 
+C0/8E4A 20 E8 9A    JSR $9AE8  [$D4:9AE8]   A:4941 X:62A0 Y:B8A4
+
+
+
+THIS IS WHY THE SPARKIES ARE SO SLOW (not this, the next block):
+
+C0/B7EC B5 06       LDA $06,x  [$00:6006]   A:63C1 X:6000 Y:6000 
+C0/B7EE 20 FD B7    JSR $B7FD  [$00:B7FD]   A:6338 X:6000 Y:6000 
+C0/B7FD 29 07       AND #$07                A:6338 X:6000 Y:6000 
+C0/B7FF F0 2C       BEQ $2C    [$B82D]      A:6300 X:6000 Y:6000 
+
+C0/B82D A9 10       LDA #$10                A:6300 X:6000 Y:6000 ;set velocity/movement for object
+C0/B82F 60          RTS                     A:6310 X:6000 Y:6000 
+
+THIS IS USED BY THE SPARKIES SO CHANGING THIS WILL MESS THEM UP:
+
+C0/B7F1 95 40       STA $40,x  [$00:6040]   A:6310 X:6000 Y:6000 
+C0/B7F3 B5 07       LDA $07,x  [$00:6007]   A:6310 X:6000 Y:6000 
+C0/B7F5 20 FD B7    JSR $B7FD  [$00:B7FD]   A:63C1 X:6000 Y:6000 

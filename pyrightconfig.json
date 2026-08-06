@@ -1,0 +1,16 @@
+{
+  "venvPath": ".",
+  "venv": "patchvenv",
+  "exclude": [
+    "randomizer/management",                                                                                                                                                                                  
+    "randomizer/data/dialogs/contents",                   
+    "randomizer/data/rooms",                 
+    "randomizer/data/overworld_scripts",                                                                                                                                                                            
+    "randomizer/data/battle_scripts",
+    "randomizer/data/event_scripts",                                                                                                                                                                                
+    "randomizer/data/action_scripts",                                                                                                                                                                               
+    "**/__pycache__",                        
+    "**/.git",                                                                                                                                                                                                      
+    "patchvenv"         
+  ]
+}

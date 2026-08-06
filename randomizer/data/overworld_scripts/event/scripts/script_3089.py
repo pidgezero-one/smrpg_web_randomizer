@@ -1,0 +1,159 @@
+# E3089_GRANT_ITEM_FROM_CHEST
+# pyright: reportWildcardImportFromLibrary=false
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.colours import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.intro_title_text import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+from ....variables.action_script_names import *
+from ....variables.battlefield_names import *
+from ....variables.dialog_names import *
+from ....variables.event_script_names import *
+from ....variables.music_names import *
+from ....variables.overworld_area_names import *
+from ....variables.overworld_sfx_names import *
+from ....variables.pack_names import *
+from ....variables.room_names import *
+from ....variables.shop_names import *
+from ....variables.variable_names import *
+from ....items import *
+from ....packets import *
+from ....spells.spells import *
+from ....variables.event_palette_names import *
+
+script = EventScript([
+	# article selection (no get-sound yet)
+	JmpIfVarEqualsConst(ITEM_ID, CymbalsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, HurlyGlovesItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, PantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ThickPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, MegaPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, WorkPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, HappyPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, SailorPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, FuzzyPantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, FirePantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, PrincePantsItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ZoomShoesItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, JumpShoesItem, ["EVENT_3089_no_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, TempleKeyItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, RareFrogCoinItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, WalletItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CricketPieItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CricketJamItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CastleKey1Item, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CastleKey2Item, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, BambinoBombItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, TenorCardItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, SopranoCardItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CrystalShardItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, RoomKeyItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShedKeyItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ElderKeyItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, SeedItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, FertilizerItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, DryBonesFlagItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, GreaperFlagItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, BigBooFlagItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, FireworksItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShinyStoneItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CarboCookieItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, BrightCardItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShoesItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, BroochItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, RingItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CrownItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, GoldPaintItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, CookiesItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, MarioDollItem, ["EVENT_3089_the_article"]),
+	JmpIfVarEqualsConst(ITEM_ID, UltraHammerItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AmuletItem, ["EVENT_3089_run_dialog_16"], identifier="EVENT_3089_delete_vowel_1"),
+	JmpIfVarEqualsConst(ITEM_ID, AttackScarfItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExpBoosterItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AntidotePinItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, AbleJuiceItem, ["EVENT_3089_run_dialog_16"], identifier="EVENT_3089_delete_vowel_2"),
+	JmpIfVarEqualsConst(ITEM_ID, EnergizerItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, IceBombItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, ElixirItem, ["EVENT_3089_run_dialog_16"], identifier="EVENT_3089_delete_vowel_3"),
+	JmpIfVarEqualsConst(ITEM_ID, EarlierTimesItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, EnduringBroochItem, ["EVENT_3089_run_dialog_16"]),
+	JmpIfVarEqualsConst(ITEM_ID, LambsLureItem, ["EVENT_3089_lambs_lure"]),
+	JmpIfVarEqualsConst(ITEM_ID, BtubRingItem, ["EVENT_3089_btub_ring"]),
+	JmpIfVarEqualsConst(ITEM_ID, YoshiAdeItem, ["EVENT_3089_yoshi_ade"]),
+	# default article: dialog THEN sound
+	RunDialog(dialog_id=DI1177_FOUND_A_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True),
+	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_3089_choose_sound"]),
+	# vowel article: dialog, then fall through to sound choice
+	RunDialog(dialog_id=DI1178_FOUND_AN_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3089_run_dialog_16"),
+	AddToInventory(ITEM_ID),
+	# choose get-sound (key vs normal)
+	JmpIfVarEqualsConst(ITEM_ID, TempleKeyItem, ["chest_key_item_sound"], identifier="EVENT_3089_choose_sound"),
+	JmpIfVarEqualsConst(ITEM_ID, RareFrogCoinItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, WalletItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CricketPieItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CricketJamItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CastleKey1Item, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CastleKey2Item, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, BambinoBombItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, AltoCardItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, TenorCardItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, SopranoCardItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, ExtraShinyStoneItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CrystalShardItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, RoomKeyItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShedKeyItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, ElderKeyItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, SeedItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, FertilizerItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, DryBonesFlagItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, GreaperFlagItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, BigBooFlagItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, FireworksItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShinyStoneItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CarboCookieItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, BrightCardItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, ShoesItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, BroochItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, RingItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CrownItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, GoldPaintItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, CookiesItem, ["chest_key_item_sound"]),
+	JmpIfVarEqualsConst(ITEM_ID, MarioDollItem, ["chest_key_item_sound"]),
+	PlaySound(sound=SO014_FLOWER, channel=6),
+	Return(),
+	PlaySound(sound=SO085_FLOWER, channel=6, identifier="chest_key_item_sound"),
+	Return(),
+	# remaining articles: dialog THEN sound
+	RunDialog(dialog_id=DI2016_FOUND_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3089_no_article"),
+	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_3089_choose_sound"]),
+	RunDialog(dialog_id=DI2019_FOUND_THE_70A7_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3089_the_article"),
+	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_3089_choose_sound"]),
+	RunDialog(dialog_id=DI2006_FOUND_A_LAMBS_LURE_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3089_lambs_lure"),
+	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_3089_choose_sound"]),
+	RunDialog(dialog_id=DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, above_object=MARIO, closable=False, sync=True, multiline=False, use_background=False, bit_6=True, identifier="EVENT_3089_btub_ring"),
+	AddToInventory(ITEM_ID),
+	Jmp(["EVENT_3089_choose_sound"]),
+	# YoshiAde: sync=False, keep sound BEFORE dialog (unchanged)
+	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3089_yoshi_ade"),
+	RunDialog(dialog_id=DI2013_GOT_A_YOSHI_ADE_AUTO_TERMINATE, above_object=MARIO, closable=True, sync=False, multiline=False, use_background=False),
+	AddToInventory(ITEM_ID),
+	Return(),
+])

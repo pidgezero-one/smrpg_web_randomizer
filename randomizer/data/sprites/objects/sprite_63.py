@@ -1,0 +1,71 @@
+# SPR0063_VALENTINA_STATUE
+
+from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
+from randomizer.data.variables.sprite_palette_names import SPAL417_VALENTINA_STATUE
+sprite = CompleteSprite(
+    animation=AnimationPack(301, length=112, unknown=0x0002,
+        properties=AnimationPackProperties(vram_size=2048,
+            molds=[
+                Mold(0, gridplane=True,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=3, length=17, subtile_bytes=[
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00'),
+                            bytearray(b'\x00\x03\x03\x04\x0e\x01(\x00T#\x14\xc8m(\xc2E\x04\x00\x08\x00\x04\x00\x1b\x04\x18\x001\x02\xe3\x10\xcb0'),
+                            bytearray(b'\x94\xa0\xf0\xd6\x1c\xac\x18\xea._7W\\?%i|\x006\x08|\x06;\x04?\x847\x8e\xff\x08n\x90'),
+                            bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x00\x80\x80@\x00\x00\x00\x00\x00\x00\x00\x00\x80\x00\x00\x00\x80\x00\xc0\x00'),
+                            bytearray(b'\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'),
+                            bytearray(b'\x00\x9a=\x05]\x02C\x03g&\x03\x04\x05\x0c\x06\x02\x9ea\r\xf2W(T(h\x10\x07\x18\x0c\x03\x1e\x01'),
+                            bytearray(b'\x86\x89B\xa0TBH\r`\x86!\x14\x9d\x08pb\x88\xf0\xe5\x18\xb5\x08\x8fxT)\xf6\t\x0c\xfbf\x99'),
+                            bytearray(b'\xe0 \x80  \x00`\x00\xe0 \x90 \xa0\x80@\x80\xe0\x00\xe0\x10\xa0P\x80p\xa0P \xd0\x80`\x80@'),
+                            None,
+                            bytearray(b'<\x04)0\x01\x02\n\r\x0f\x06\x02\n\x0c\x08\n\x0c#\x00>\x00\x03\x1c\x0f\x00\t\x00\r\x00\x0f\x00\x0f\x00'),
+                            bytearray(b'3\x12(\xd0\xf0\x164\xf0\xe8\xf0\xc08,\x04((\xf6\t0\x0f6\t\xfc\x02\xe8\x04\xe8\x04\xec\x10\xe8\x10'),
+                            None,
+                            None,
+                            bytearray(b'\x05\x06\x00\x03\x02\x03\x01\x01\x0c\x00\x0f\x0f\x01\x01\x00\x00\x07\x00\x03\x04\x03\x04\x05\x02\x0c\x03\x0f\x0f\x01\x01\x00\x00'),
+                            bytearray(b'\x80\x80\x80\x00\xc0\x80p\xa0\xf0\xa0\xb0\xf0pp \xa0@ @ @0\xe0\x10\xe0\x10\xf0\x100\x90\xe0\xa0'),
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                    ]
+                ),
+                Mold(1, gridplane=True,
+                    tiles=[
+                        Tile(mirror=False, invert=False, format=3, length=17, subtile_bytes=[
+                            None,
+                            bytearray(b'\x0e\x06?\x0b|\x04\xb9\x88V1)w>Na\t\x18\x00 \x00#\x00g\x00\xef\x00\x7f\x00~\x01\x99\x06'),
+                            bytearray(b'\x00\x00\x80\x00\xc0\x00<\x8c\x10\x08\xa9n\xa6\x17\xf0\xc0\x00\x00\x80\x000\x00\xd0\x00>\xc0o\x907\xc8\xf0\x0f'),
+                            None,
+                            bytearray(b'\x00\x00\x00\x01\x01\x01\x03\x03\x02\x02\x02\x00\x01\x01\x00\x00\x01\x00\x00\x00\x02\x00\x01\x00\x02\x01\x02\x01\x03\x00\x00\x00'),
+                            bytearray(b'\xe4-A\xcc\x96\xad\x7f-\x1aW\xee\xfd\x9f@x@\x1d\x02=\x02}\x02\xfd\x02\xd7(\xfd\x02\xd1.\xc0?'),
+                            bytearray(b'\xada^2\x84d4\xfc\x18\xcc\x8c\x880\x00\xac$\xe1\x1e\xf2\x0c\xe4\x18\xfc\x00\xfc\x00\xd8$@\xbc$\xd8'),
+                            None,
+                            None,
+                            bytearray(b'??4\x1b\x01\x10\x1e\x00J6\x08a\x11\x03\x0eB?\x00?\x00?\x001\x00A\x007\x00_ N\x01'),
+                            bytearray(b'@T\xf8\xac\x0c\x8c\x08\x88\x90\x00`\xc0`\x00\xc0\x00T\xa8\xfc\x00\xdc \xd8 \x90h\xc00\x00\xe0\x00\xc0'),
+                            None,
+                            None,
+                            bytearray(b'\x08\x02\x08\x02\x02\x00\x06\x00\x05\x03\x01\x03\r\x07\x1e\x1e\x0e\x01\x0e\x01\x06\x01\x06\x01\x07\x00\x0f\x01\x1f\x01\x1e\x1e'),
+                            bytearray(b'\xc0\x00\x80\x00\xc0@\xc0@  \xe0\xe0\xc0\xc0\x00\x00\x00\xc0\x00\xc0@\x80@\x80 \xe0\xe0\xe0\xc0\xc0\x00\x00'),
+                            None,
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=0, y=0),
+                    ]
+                ),
+            ],
+            sequences=[
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=0),
+                    ]
+                ),
+                AnimationSequence(
+                    frames=[
+                        AnimationSequenceFrame(duration=2, mold_id=1),
+                    ]
+                ),
+            ]
+        )
+    ),
+    palette_id=SPAL417_VALENTINA_STATUE,
+    palette_offset=0,
+    unknown_num=0
+)

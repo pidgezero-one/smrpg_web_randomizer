@@ -1,0 +1,130 @@
+00/00 - Attack from Place
+01/01 - Standard Normal Attack
+02/02 - Big Jump Attack 1
+03/03 - Normal Attack 1
+04/04 - Ditto of #01
+05/05 - Warping Attack
+06/06 - Hopping Attack
+07/07 - No Anim Attack
+08/08 - Burrowing Attack
+09/09 - Charging Attack
+0A/10 - Flying Attack
+0B/11 - Big Jump Attack 2
+0C/12 - Teleport Attack
+0D/13 - Bouncing Attack
+0E/14 - Croco Attack
+0F/15 - Normal Attack 2
+10/16 - Spikey Needle
+11/17 - Thornet (Poison)
+12/18 - Huge spike
+13/19 - Funguspike (Mushroom)
+14/20 - Throws Knife
+15/21 - Throws Shuriken
+16/22 - Full House
+17/23 - Wild Card
+18/24 - Royal Flush
+19/25 - One Bomb
+1A/26 - Spritz Bomb
+1B/27 - Kicking Rock Throw Attack
+1C/28 - Rock Throw Attack
+1D/29 - Blaster Attack
+1E/30 - Blazer (Death)
+1F/31 - Ball of Light
+20/32 - (Mack Jump?) (Final Smithy's Machine Gun)
+21/33 - Echofinder (Mute)
+22/34 - Scarecrow Bell (Scarecrow)
+23/35 - Doom Reverb (Mute)
+24/36 - Spore Chimes (Mushroom)
+25/37 - Ink Blast
+26/38 - Gunk Ball (Mute)
+27/39 - Endobubble (Fear)
+28/40 - Bubble Attack
+29/41 - Sleep-Sauce (Sleep)
+2A/42 - Venom Drool (Poison)
+2B/43 - Mush Funk (Mushroom)
+2C/44 - S'Crow Funk (Scarecrow)
+2D/45 - Stench (Poison)
+2E/46 - Normal Hammer Throw
+2F/47 - Fear Hammer Throw (Fear)
+30/48 - Viro Plasm (Poison)
+31/49 - Psycho Plasm (Fear)
+32/50 - Small Mute Bubble (Mute)
+33/51 - Small Sleep Bubble (Sleep)
+34/52 - Pollen Nap (Sleep)
+35/53 - S'Crow Dust (Scarecrow)
+36/54 - Sporocyst (Mushroom)
+37/55 - Toxicyst (Poison)
+38/56 - Bone Throw w/ Attack Anim
+39/57 - Bone Throw w/o Attack Anim
+3A/58 - Lulla-bye (Sleep)
+3B/59 - Elegy (Mute)
+3C/60 - Backfire
+3D/61 - Va Va Voom
+3E/62 - Fun & Run
+3F/63 - Body Slam
+40/64 - Howl (Fear)
+41/65 - Scream (Fear)
+42/66 - Iron Maiden (Fear)
+43/67 - Fangs
+44/68 - Poison (Poison)
+45/69 - Carni-Kiss
+46/70 - Claw
+47/71 - Grinder
+48/72 - Dark Claw (Poison)
+49/73 - Scythe (Death)
+4A/74 - Sickle (Scarecrow)
+4B/75 - Deathsickle (Fear)
+4C/76 - Eerie Jig (Scarecrow)
+4D/77 - Somnus Waltz (Sleep)
+4E/78 - Dahlia Dance (Convert to Mushroom)
+4F/79 - Skewer
+50/80 - Pierce
+51/81 - (Tank's Bullet Bill)
+52/82 - Magnum (Final Smithy's)
+53/83 - Psyche
+54/84 - Migraine
+55/85 - Self-Destruct
+56/86 - Stronger Self-Destruct
+57/87 - Multistrike
+58/88 - Flutter Hush
+59/89 - Terrapin Attack, No Sound
+5A/90 - Mario Attack
+5B/91 - Toadstool Heart Attack
+
+5C/92 - Fear Roulette
+5D/93 - Smithy Hammer
+5E/94 - Attack from Place, walks backwards
+5F/95 - (Final Smithy's Hammer)
+60/96 - Hammer Time!
+61/97 - Valor Up
+62/98 - Terrapin Attack
+63/99 - Last Shot!, Buggy
+64/100 - Bowser Claw
+65/101 - Bowser Spike
+66/102 - Shut off A Attack (Bowyer's)
+67/103 - Shut off Y Attack (Bowyer's)
+68/104 - Shut off X Attack (Bowyer's)
+69/105 - Arrow Attack (Bowyer's)
+6A/106 - G'Night (Bowyer's)
+6B/107 - Sling Shy Attack
+6C/108 - Bounding Bounces Attack (Think Heavy Troopa)
+6D/109 - Chomp
+6E/110 - Get Tough!
+6F/111 - Mukumuku Attack
+70/112 - Missed Me! (Mukumuku's)
+71/113 - Mukumuku Chomp Attack
+72/114 - Loco Express (Booster's)
+73/115 - Trio of Eggs Attack
+74/116 - Explosive Egg Attack
+75/117 - Bomb Attack
+76/118 - Exploded in Place
+77/119 - Jinxed (Jinx's)
+78/120 - Triple Kick (Jinx's)
+79/121 - Quicksilver (Jinx's)
+7A/122 - Bombs Away (Jinx's)
+7B/123 - Vigor Up
+7C/124 - Normal Attack
+7D/125 - Silver Bullet (Death) (Jinx's)
+7E/126 - Terrapunch
+7F/127 - Scarecrow Fangs (Scarecrow)
+80/128 - Shaker (Death)

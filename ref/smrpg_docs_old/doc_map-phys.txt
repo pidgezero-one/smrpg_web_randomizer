@@ -1,0 +1,124 @@
+-------------
+PHYSICAL MAPS
+-------------
+[00]  1B00A0   Debug Room
+[01]  1B026A   (used for areas that have no tangible access; e.g - the ending credits)
+[02]  1B02A4   Kero Sewers, all areas after 1 except water switch & Pandorite room
+[03]  1B07DE   Bowser's Keep, area 1 & 2 (1st and 2nd time)
+[04]  1B09B5   --------
+[05]  1B09EF   Mushroom Kingdom Castle
+[06]  1B0ECF   --------
+[07]  1B12D3   --------
+[08]  1B1713   Gardener's House
+[09]  1B174D   Grate Guy's Casino, outside
+[0A]  1B1B82   --------
+[0B]  1B1E92   Forest Maze, area 5 and Bowyer's practice pad
+[0C]  1B21FF   Midas River, waterfall
+[0D]  1B2453   Forest Maze, area 9 (leads to 4-path maze)
+[0E]  1B257C   Rose Town and Gardener's House, outside
+[0F]  1B298C   --------
+[10]  1B2F49   Forest Maze area 2,4,6, Forest secret entrance, and 4-way path
+[11]  1B32AC   ___underground areas
+[12]  1B367B   Sunken Ship, area 1-6 and various areas
+[13]  1B3D34   Sunken Ship, various areas after King Calamari
+[14]  1B4409   Tadpole Pond, area 2
+[15]  1B45C2   --------
+[16]  1B4AAA   --------
+[17]  1B4E28   Mushroom Kingdom, outside
+[18]  1B53A2   Mushroom Kingdom, all houses
+[19]  1B578F   Bowser's Keep, area 4
+[1A]  1B583E   Booster's Tower, many various areas 2
+[1B]  1B5CEB   Booster's Tower, many various areas 1
+[1C]  1B6311   Booster's Tower, entrance
+[1D]  1B63F8   Rose Way, all areas except area 1
+[1E]  1B6905   Moleville Mines, most areas
+[1F]  1B6E5A   Moleville Mines, later areas
+[20]  1B72C2   Moleville Mines, Punchinello's room
+[21]  1B7448   Seaside Town, all houses
+[22]  1B7806   --------
+[23]  1B795B   Barrel Volcano, many various areas 1
+[24]  1B8060   Barrel Volcano, many various areas 2
+[25]  1B86C4   Mario's Pad, outside
+[26]  1B8906   Rose Town, all houses except Gardener's House; Grate Guy's Casino, front door
+[27]  1B8C0B   Moleville, all shacks
+[28]  1B8E5A   Kero Sewers, water switch and Pandorite room
+[29]  1B91C6   --------
+[2A]  1B9608   --------
+[2B]  1B97B5   Bowser's Keep, tall room w/save point & Thwomp/bullet room; Culex's Room
+[2C]  1B993F   Grate Guy's Casino, inside
+[2D]  1B99DA   Midas River transaction area, Barrel Jumping river
+[2E]  1B9B43   Mushroom Way, area 2/Bandit's Way, area 2
+[2F]  1BA027   Yo'ster Isle; Kero Sewers/Pipe Vault/Yo'ster Isle pipe entrances
+[30]  1BA4AC   Forest Maze, underground areas
+[31]  1BA84F   Forest Maze, area 7
+[32]  1BA99F   Land's End underground area 1-3
+[33]  1BABEE   Marrymore Inn, Suite room
+[34]  1BACD2   --------
+[35]  1BAD0C   Nimbus Land outside, Beanstalk clouds, Hot Springs
+[36]  1BB0EB   Nimbus Castle, various areas 1
+[37]  1BB605   Nimbus Castle, various areas 2
+[38]  1BBAE0   Barrel Volcano, various areas 3
+[39]  1BC08D   --------
+[3A]  1BC0C7   Sea, all areas
+[3B]  1BC52A   Pipe Vault, all areas
+[3C]  1BC8D9   Sea, shore with Sunken Ship
+[3D]  1BCA36   --------
+[3E]  1BD0FF   Smithy Factory, area 2 & 3
+[3F]  1BD2DC   Smithy Factory, later areas
+[40]  1BD574   Smithy Factory, early areas
+[41]  1BD8DF   Tadpole Pond, area 1
+[42]  1BDB2A   Nimbus Land, all houses
+[43]  1BDEDD   Star Hill, area 2-4
+[44]  1BE382   Bean Valley, all five pipe rooms
+[45]  1BE5A5   --------
+[46]  1BE5DF   --------
+[47]  1BE8E9   Marrymore Chapel, main hall
+[48]  1BE9C0   Marrymore Chapel, sanctuary and entrance
+[49]  1BEC49   Bowser's Keep, area 3
+[4A]  1BECBE   Belome's Temple, all areas except Belome's room
+[4B]  1BF0CF   --------
+[4C]  1BF109   --------
+[4D]  1BF143   Bandit's Way, area 1 & 3
+[4E]  1BF794   Bandit's Way, area 4 & 5
+[4F]  1BFB78   Mario's Pipehouse
+
+[50]  1C0050   Mushroom Way, area 1 & 3
+[51]  1C0460   --------
+[52]  1C049A   Kero Sewers, area 1
+[53]  1C068A   Rose Way, area 1
+[54]  1C08DD   Midas River, all tunnels
+[55]  1C0BA6   Booster Pass, Area 1 & 2; Land's End high cliff
+[56]  1C107B   Moleville, outside
+[57]  1C157D   Marrymore, outside
+[58]  1C1882   Marrymore Inn/Chapel kitchen, all rooms except Suite; Gardener's House
+[59]  1C1B92   Barrel Volcano, map
+[5A]  1C1BCC   Sunken Ship later areas, Johnny's room and Bandana Red rooms
+[5B]  1C2121   Vista Hill
+[5C]  1C215B   Booster Hill
+[5D]  1C2205   Seaside Town, beach
+[5E]  1C234B   Seaside Town, outside; Toadstool kisses Mario at Marrymore
+[5F]  1C26E5   Land's End area 1-3
+[60]  1C294C   Land's End area 4,5
+[61]  1C2C28   Bean Valley, all areas before Beanstalk clouds
+[62]  1C3184   Bean Valley Beanstalk clouds; Nimbus Land entrance from map
+[63]  1C3435   --------
+[64]  1C38B8   Land's End area 4, secret underground area 1
+[65]  1C3C93   Land's End desert, all areas
+[66]  1C427E   Monstro Town, all houses
+[67]  1C455D   Monstro Town, outside/entrance
+[68]  1C4776   Monstro Town, Jinx's Dojo
+[69]  1C480C   BK 6-door, Action Room 1-C and 2-C
+[6A]  1C4A04   --------
+[6B]  1C4A3E   Booster Pass secret
+[6C]  1C4B82   Bowser's Keep, various areas right after area 4
+[6D]  1C4E14   Bowser's Keep 6-door, Action Room 1-B and 2-B
+[6E]  1C5099   Bowser's Keep, Magikoopa's room
+[6F]  1C5161   Bowser's Keep 6-door, all four Battle Rooms
+[70]  1C5299   Bowser's Keep 6-door, all six Puzzle rooms
+[71]  1C55D3   Bowser's Keep 6-door, Action Room 1-A and 2-A
+[72]  1C5815   Factory Grounds, area 1 & 4
+[73]  1C5949   Factory Grounds, area 2 & 3
+[74]  1C5A78   Bowser's Keep, 6-door room and exit room after each door
+[75]  1C5CDD   Nimbus Land, Royal Bus station and some clouds
+[76]  1C5F97   Smithy Factory, area 12-15
+[77]  1C6411   Star Hill, area 1

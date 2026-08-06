@@ -1,0 +1,54 @@
+------------------------------------------------------------------
+MONSTER FORMATIONS $39C000-$39FFFF (512 formations, 26 bytes each)
+------------------------------------------------------------------
+1st byte: bits set are number of monsters
+ 80   1
+ C0   2
+ E0   3
+ F0   4
+ F8   5
+ FC   6
+ FE   7
+ FF   8
+other values may be used
+
+2nd byte: bits set are unpresent monsters that may be called through script
+ 80   do not show monster 1
+ 40   do not show monster 2
+ C0   do not show monster 1,2
+ etc...
+
+3rd byte: monster 1
+4th byte: X coordinate of monster 1
+5th byte: Y coordinate of monster 1
+...every 3 bytes is a monster, up to 8 monsters total
+
+
+WARNING: palette RAM can only hold 3 _different_ monster palettes at a time;
+palette glitches WILL occur if more than 3 different palettes in a formation
+
+----------------------------------------------------------------------
+MONSTER FORMATION STATS $392AAA-$3930A9 (512 formations, 3 bytes each)
+----------------------------------------------------------------------
+
+byte 1   only used for Bowser fight
+byte 2   execute event at very start
+byte 3   if following bits set...
+ bit 0,1   can't run
+ bit 2     boss music 1
+ bit 2,3   Smithy 1
+ bit 2,3,4 Culex
+ bit 2,4   Booster Hill
+ bit 3     boss music 2
+ bit 3,4   Barrel Volcano
+ bit 4     minecart ride
+ bit 5     ----
+ bit 6,7   current music (no change)
+
+-----------------------------------------------------------------
+Monster Formation Packs $39222A-$392609 (248 packs, 4 bytes each)
+-----------------------------------------------------------------
+Byte 1-3  formations
+Byte 4    set 16-bit formation byte
+ 00 - formations $00-$FF
+ 07 - formations $100-$1FF

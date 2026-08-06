@@ -1,0 +1,82 @@
+{% extends 'randomizer/layouts/default.html' %}
+
+{% block content %}
+    <h1>What is the Super Mario RPG Open World Randomizer?</h1>
+    <div class="card card-body bg-light border my-2">
+        <p>A program that shuffles around a bunch of stuff in Super Mario RPG! The world looks the same, the game's
+            objective is the same, but plenty of things can get shuffled around &mdash; such as playable characters, monsters,
+            progression items, shop items, character/equipment/monster stats, and even Star Pieces! It's a different
+            experience every time!</p>
+        <p>This is an <strong>open world</strong> randomizer, inspired by other works such as the
+            <a href="http://ff4fe.com" target="_blank">FF4: Free Enterprise</a> randomizer.  This means much of the world map
+            is open from the start, which creates a scavenger hunt out of a game you already love!
+        </p>
+    </div>
+    <h1>Woah cool! Where do I download this?</h1>
+    <div class="card card-body bg-light border my-2">
+        <p>You don't! This new randomizer is entirely web-based. You simply provide your own ROM of the original game to the site, and
+            it does the rest. No downloading required! Click the
+            <a href="{% url 'randomizer:randomize' %}">Generate Randomized Game</a> link to get started!
+        </p>
+        <p>SMRPG Randomizer does NOT host or distribute ROMs, source code, or any other copyrighted material. It is strictly a patcher informed by reverse engineering.</p>
+    </div>
+    <h1>Sweet! How do I play this thing?</h1>
+    <div class="card card-body bg-light border my-2">
+        <p>The "<a href="{% url 'randomizer:how-to-play' %}">How To Play</a>" link provides details about
+            how to get the game working on your platform of choice (SNES, Wii, or PC emulator)! Check out the
+            "<a href="{% url 'randomizer:options' %}">Flag & Mode Explanations</a>" link for more details about the
+            changes to the game, and the "<a href="{% url 'randomizer:guide' %}">Player's Guide</a>" link to jog your
+            memory on what the game has in store!</p>
+    </div>
+    <h1>Awesome! Can I play with others?</h1>
+    <div class="card card-body bg-light border my-2">
+        <p>Yes! See <a href="/resources">the Resources page</a> for information on how to race with fellow players or play this randomizer in an Archipelago multiworld.</p>
+    </div>
+    <h1>Just who is responsible for this thing?</h1>
+    <div class="card card-body bg-light border my-2">
+        <p>This project wouldn't have been possible without the work of several people:</p>
+        <ul>
+            <li>Big thanks to abyssonym for making the
+                original command line version of the randomizer up to V4 and allowing us to adapt it into this new form!
+                While it has evolved far away from his original version, this would not have been possible without his work
+                in the first place. Check out <a href="https://github.com/abyssonym" target="_blank">his GitHub page</a> for more randomizer work!
+            </li>
+            <li>Huge thanks to Alanim for all of the original ROM hacking! This all would not be possible
+                without him!
+            </li>
+            <li>This web randomizer is maintained and originally developed by
+                <a href="https://github.com/DorkmasterFlek" target="_blank">Dorkmaster Flek</a>.
+            </li>
+            <li>pidgezero_one wrote the <a href="https://github.com/pidgezero-one/smrpgpatchbuilder" target="_blank">SMRPG modding framework</a> (with testwriting assistance from WonderJ and Seraphin Eveles) that made expanded feature development possible in V9, and did most of the code adaptation to make new and existing features work with it.
+            </li>
+            <li>Thanks to patcdr for his excellent core contributions, like the battle script disassembler that made complex features like enemy spell randomization possible (and also inspired the basis for the entire V9 rewrite)!
+            </li>
+            <li>Thanks to Swinch, Yakibomb, Foralias, and abyssonym (again) for their excellent ASM work that has made features like the ending credits, key item memory expansion, and shuffling spells in the item pool possible!
+            </li>
+            <li>Thanks to Amazing Ampharos for his contributions to randomization algorithms and WeffJebster for writing the mystery settings feature!</li>
+            <li>Thanks to Chaosicx and CoDanTheBarbarian for their code contributions on Github as well!</li>
+            <li>Thanks to LackAttack, this whole open world randomizer concept was originally his idea!
+            </li>
+            <li>Thanks to Xirr, SysL, and Mr. Dean for their excellent spriting work that made it possible to play as any party member in the overworld!</li>
+            <li>Thanks to SysL (again) for the spriting work that gave us working overworld sprites for every boss character!</li>
+            <li>Thanks to Minamiyo for creating the palettes that made every boss character able to have a Nimbus Castle statue!</li>
+            <li>Thanks to smbai, SeanCass, and Alanim (again) for their spriting work that made item descriptions and Psychopath dialogs informative!</li>
+            <li>Thanks to djfox11 for ripping the Culex 3D model from the SMRPG Remake and thanks to Nimbus for rigging up a battle pose screenshot to use in this randomizer!</li>
+            <li>Thanks to Cynas, Broatmeal, and SysL (again) for their dialog writing work that enhanced the boss shuffler!</li>
+            <li>Shoutouts to Rosalie, Solidus Snake, and bigmalletman for integrating this randomizer into Archipelago!</li>
+            <li>Thanks to FlareRDB, inthenameofDT, LockeColeLive, Gozengatta, Cavin856, smbai (again), Tinywetblanket (rest in peace 💚), SeanCass (again), WeffJebster (again), Broatmeal (again), Cynas (again), SNESChalmers, GuntherRidel, Xelecium, Minamiyo (again), Calereliya, Space Cow, Saxxon Fox, ateatree, Invariel, GoodMorningCrono, Lylovir, Anthony Mulberry, Maddi, katstasaph, aWillSandwich, and 0xwas for their QA and research support!</li>
+            <li>Shoutouts to Veetorp and the <a href="http://alttpr.com/" target="_blank">Link to the Past
+                randomizer</a> community for their excellent work on web-based ROM patching, and the
+                <a href="http://ff4fe.com" target="_blank">FF4: Free Enterprise</a> community which we totally stole a
+                bunch of good ideas from!
+            </li>
+            <li>The shuffler algorithm rewritten in V9 was designed based on <a href="https://good-quotations.com/2023/11/29/video-game-randomization-algorithms/" target="_blank">this blog post by Quote58 (Good Quotations)</a>!</li>
+            <li>The V9 UI and general progression philosophy was heavily inspired by <a href="https://ootrandomizer.com/" target="_blank">the Ocarina of Time randomizer</a>!</li>
+            <li>HUGE shoutout to anaxemranger for creating the SMRPG Demake that added the Switch remake's postgame back into the original game, which was lifted to be included in the randomizer! Big thanks to cleartonic as well for his ASM work that made some of these features feasible!</li>
+            <li>Shoutouts to Darkkefka and Doomsday (developers of <a href="https://www.romhacking.net/hacks/6665/" target="_blank">SMRPG Armageddon</a>) and Will (developer of <a href="https://www.romhacking.net/hacks/6345/" target="_blank">Super Luigi RPG Star Powered</a>) for loaning us a few features from their mods and general ASM help!</li>
+            <li>Shoutouts to giangurgolo and Omega for all of their work reverse engineering SMRPG and developing the Lazy Shell editor that made all of this possible in the first place (and thanks to Yakibomb for maintaining it)!</li>
+            <li>Big thanks to everyone who has submitted <a href="https://github.com/DorkmasterFlek/smrpg_web_randomizer/issues/new/choose">ally palettes, Sunken Ship passwords, and Melody Bay tunes</a> - you'll see their names in the credits when their work is used in your seed!</li>
+            <li>Thanks to everyone who has submitted <a href="https://github.com/DorkmasterFlek/smrpg_web_randomizer/issues/new/choose">Star Hill wishes and Dr. Topper quiz questions</a> as well!</li>
+        </ul>
+    </div>
+{% endblock %}

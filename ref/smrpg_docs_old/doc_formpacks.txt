@@ -1,0 +1,1031 @@
+-----------------------------------------------------------------
+Monster Formation Packs $39222A-$392609 (248 packs, 4 bytes each)
+-----------------------------------------------------------------
+Byte 1-3  formations
+Byte 4    set 16-bit formation byte
+ 00 - formations $00-$FF
+ 07 - formations $100-$1FF
+
+00	Terrapin
+	Terrapin, Terrapin
+	Terrapin, Terrapin, Terrapin
+
+01	Terrapin, Terrapin, Terrapin, Terrapin
+	Terrapin, Terrapin, Terrapin
+	Terrapin, Terrapin
+
+02	Spikey, Spikey
+	Spikey, Sky Troopa
+	Spikey, Sky Troopa
+
+03	Spikey, Spikey, Spikey
+	Spikey, Spikey, Frogog
+	Spikey, Spikey, Frogog
+
+04	Sky Troopa
+	Sky Troopa, Sky Troopa
+	Sky Troopa, Sky Troopa
+
+05	Sky Troopa, Sky Troopa, Goomba
+	Sky Troopa, Sky Troopa, Frogog
+	Sky Troopa, Sky Troopa
+
+06	Goomba, Goomba
+	Goomba, Goomba, Goomba
+	Goomba, Goomba
+
+07	Goomba, Frogog, Spikey
+	Goomba, Goomba, Spikey
+	Goomba, Goomba, Goomba
+
+08	K-9
+	K-9, K-9
+	K-9, K-9, Spikey
+
+09	K-9, Frogog, Frogog
+	K-9, K-9, Spikey
+	K-9, K-9
+
+0A	Shyster, Shyster
+	Shyster, Shyster, Shyster
+	Shyster, Shyster
+
+0B	Shyster, Shyster
+	Shyster, Shyster, Shyster
+	Shyster, Shyster, Shyster
+
+0C	Rat Funk, Rat Funk
+	Rat Funk, Rat Funk, Shadow
+	Rat Funk, Rat Funk, Hobgoblin
+
+0D	Rat Funk, Hobgoblin, Hobgoblin
+	Rat Funk, Rat Funk, Hobgoblin
+	Rat Funk, Rat Funk, Shadow
+
+0E	The Big Boo, Shadow
+	The Big Boo, Shadow
+	The Big Boo, Shadow, Hobgoblin
+
+0F	The Big Boo, The Big Boo, The Big Boo, Shadow
+	The Big Boo, Shadow, Hobgoblin
+	The Big Boo, Shadow
+
+10	Goby, Goby
+	Goby, Goby
+	Goby, Goby, Goby
+
+11	Goby, Goby, Goby
+	Goby, Goby, Goby
+	Goby, Goby
+
+12	Crook, Crook
+	Crook, Crook, Shy Guy
+	Crook, Snapdragon, Snapdragon
+
+13	Crook, Starslap, Arachne
+	Crook, Snapdragon, Snapdragon
+	Crook, Crook, Shy Guy
+
+14	Shy Guy, Starslap
+	Shy Guy, Starslap
+	Shy Guy, Shy Guy, Snapdragon
+
+15	Shy Guy, Crook, Arachne
+	Shy Guy, Shy Guy, Snapdragon
+	Shy Guy, Starslap
+
+16	Starslap, Shy Guy
+	Starslap, Arachne
+	Starslap, Snapdragon, Snapdragon
+
+17	Starslap, Starslap, Starslap, Starslap
+	Starslap, Snapdragon, Snapdragon
+	Starslap, Arachne
+
+18	Wiggler
+	Wiggler, Amanita
+	Wiggler, Wiggler
+
+19	Wiggler, Guerrilla
+	Wiggler, Wiggler
+	Wiggler, Amanita
+
+1A	Amanita, Amanita
+	Amanita, Amanita, Buzzer
+	Amanita, Amanita, Octolot
+
+1B	Amanita, Guerrilla, Buzzer
+	Amanita, Amanita, Octolot
+	Amanita, Amanita, Buzzer
+
+1C	Buzzer, Octolot
+	Buzzer, Buzzer, Amanita
+	Buzzer, Guerrilla
+
+1D	Buzzer, Guerrilla
+	Buzzer, Guerrilla
+	Buzzer, Buzzer, Amanita
+
+1E	Sparky
+	Sparky, Sparky, Shy Ranger
+	Sparky, Sparky, Sparky
+
+1F	Sparky, Sparky, Sparky
+	Sparky, Sparky, Sparky
+	Sparky, Sparky, Shy Ranger
+
+20	Goomba, Shy Ranger, Shy Ranger, Shy Ranger, Shy Ranger
+	Goomba, Goomba, Shy Ranger, Shy Ranger
+	Goomba, Goomba, Piranha Plant, Piranha Plant
+
+21	Goomba, Piranha Plant, Piranha Plant, Sparky
+	Goomba, Goomba, Piranha Plant, Piranha Plant
+	Goomba, Goomba, Shy Ranger, Shy Ranger
+
+22	Piranha Plant
+	Piranha Plant, Piranha Plant, Shy Ranger
+	Piranha Plant, Piranha Plant, Piranha Plant
+
+23	Piranha Plant, Piranha Plant, Piranha Plant, Piranha Plant, Piranha Plant
+	Piranha Plant, Piranha Plant, Piranha Plant
+	Piranha Plant, Piranha Plant, Shy Ranger
+
+24	Bob-Omb
+	Bob-Omb, Bob-Omb, Cluster
+	Bob-Omb, Bob-Omb, Bob-Omb, Bob-Omb
+
+25	Bob-Omb, Bob-Omb, Enigma, Cluster
+	Bob-Omb, Bob-Omb, Bob-Omb, Bob-Omb
+	Bob-Omb, Bob-Omb, Cluster
+
+26	Sparky, Enigma
+	Sparky, Sparky, Bob-Omb
+	Sparky, Cluster, Cluster
+
+27	Sparky, Sparky, Enigma, Enigma
+	Sparky, Cluster, Cluster
+	Sparky, Sparky, Bob-Omb
+
+28	Magmite, Magmite
+	Magmite, Bob-Omb, Sparky
+	Magmite, Magmite, Cluster, Cluster
+
+29	Magmite, Magmite, Bob-Omb, Cluster
+	Magmite, Magmite, Cluster, Cluster
+	Magmite, Bob-Omb, Sparky
+
+2A	Lakitu
+	Lakitu, Spikester, Artichoker
+	Lakitu, Lakitu, Lakitu
+
+2B	Lakitu, Lakitu, Artichoker
+	Lakitu, Lakitu, Lakitu
+	Lakitu, Spikester, Artichoker
+
+2C	Spikester, Carroboscis
+	Spikester, Spikester, Artichoker
+	Spikester, Carroboscis, Carroboscis
+
+2D	Spikester, Spikester, Spikester, Spikester, Carroboscis
+	Spikester, Carroboscis, Carroboscis
+	Spikester, Spikester, Artichoker
+
+2E	Spookum, Orb User
+	Spookum, Spookum, Jester
+	Spookum, Remo Con, Orb User
+
+2F	Spookum, Spookum, Remo Con
+	Spookum, Remo Con, Orb User
+	Spookum, Spookum, Jester
+
+30	Rob-Omb
+	Rob-Omb, Rob-Omb, Rob-Omb
+	Rob-Omb, Rob-Omb, Remo Con
+
+31	Rob-Omb, Rob-Omb, Rob-Omb, Rob-Omb, Orb User
+	Rob-Omb, Rob-Omb, Remo Con
+	Rob-Omb, Rob-Omb, Rob-Omb
+
+32	Chomp, Jester
+	Chomp, Rob-Omb, Remo Con
+	Chomp, Chomp, Orb User
+
+33	Chomp, Jester, Jester
+	Chomp, Chomp, Orb User
+	Chomp, Rob-Omb, Remo Con
+
+34	Blaster, Spookum
+	Blaster, Spookum, Remo Con
+	Blaster, Blaster, Spookum
+
+35	Blaster, Rob-Omb, Rob-Omb, Spookum, Spookum
+	Blaster, Blaster, Spookum
+	Blaster, Spookum, Remo Con
+
+36	Torte
+	Torte, Torte
+	Torte, Torte, Torte
+
+37	Torte, Torte, Torte, Torte
+	Torte, Torte, Torte
+	Torte, Torte
+
+38	Mukumuku
+	Mukumuku, Mukumuku
+	Mukumuku, Mukumuku, Pulsar
+
+39	Mukumuku, Pulsar, Gecko
+	Mukumuku, Mukumuku, Pulsar
+	Mukumuku, Mukumuku
+
+3A	Sackit, Sackit
+	Sackit, Sackit, Mukumuku, Gecko
+	Sackit, Pulsar, Pulsar
+
+3B	Sackit, Mastadoom
+	Sackit, Pulsar, Pulsar
+	Sackit, Sackit, Mukumuku, Gecko
+
+3C	Gecko, Sackit
+	Gecko, Mastadoom
+	Gecko, Gecko, Mukumuku, Mukumuku, Sackit, Sackit
+
+3D	Gecko, Gecko, Mastadoom
+	Gecko, Gecko, Mukumuku, Mukumuku, Sackit, Sackit
+	Gecko, Mastadoom
+
+3E	Zeostar, Zeostar
+	Zeostar, Zeostar, Bloober
+	Zeostar, Zeostar, Leuko, Leuko
+
+3F	Zeostar, Leuko, Crusty
+	Zeostar, Zeostar, Leuko, Leuko
+	Zeostar, Zeostar, Bloober
+
+40	Bloober, Mr.Kipper
+	Bloober, Bloober, Bloober
+	Bloober, Bloober, Mr.Kipper, Crusty
+
+41	Bloober, Bloober, Zeostar, Zeostar, Leuko
+	Bloober, Bloober, Mr.Kipper, Crusty
+	Bloober, Bloober, Bloober
+
+42	Mr.Kipper, Mr.Kipper, Mr.Kipper
+	Mr.Kipper, Mr.Kipper, Crusty
+	Mr.Kipper, Mr.Kipper, Crusty
+
+43	Mr.Kipper, Mr.Kipper, Mr.Kipper, Mr.Kipper
+	Mr.Kipper, Mr.Kipper, Crusty
+	Mr.Kipper, Mr.Kipper, Crusty
+
+44	Bandana Red, Bandana Red, Bandana Red, Bandana Red
+	Bandana Red, Bandana Red, Bandana Red, Bandana Red
+	Bandana Red, Bandana Red, Bandana Red, Bandana Red
+
+45	Bandana Red, Bandana Red, Bandana Red, Bandana Red, Bandana Red
+	Bandana Red, Bandana Red, Bandana Red, Bandana Red, Bandana Red
+	Bandana Red, Bandana Red, Bandana Red, Bandana Red, Bandana Red
+
+46	Bandana Blue
+	Bandana Blue, Bandana Blue, Greaper
+	Bandana Blue, Bandana Blue, Bandana Blue, Bandana Blue
+
+47	Bandana Blue, Bandana Blue, Greaper, Greaper, Straw Head
+	Bandana Blue, Bandana Blue, Bandana Blue, Bandana Blue
+	Bandana Blue, Bandana Blue, Greaper
+
+48	Dry Bones, Dry Bones
+	Dry Bones, Dry Bones, Greaper
+	Dry Bones, Greaper, Reacher
+
+49	Dry Bones, Dry Bones, Greaper, Greaper, Reacher
+	Dry Bones, Greaper, Reacher
+	Dry Bones, Dry Bones, Greaper
+
+4A	Alley Rat, Gorgon
+	Alley Rat, Alley Rat, Greaper, Greaper
+	Alley Rat, Alley Rat, Gorgon, Gorgon
+
+4B	Alley Rat, Reacher, Gorgon
+	Alley Rat, Alley Rat, Gorgon, Gorgon
+	Alley Rat, Alley Rat, Greaper, Greaper
+
+4C	Greaper
+	Greaper, Greaper, Reacher
+	Greaper, Straw Head, Reacher
+
+4D	Greaper, Gorgon, Straw Head, Straw Head
+	Greaper, Straw Head, Reacher
+	Greaper, Greaper, Reacher
+
+4E	Drill Bit
+	Drill Bit, Drill Bit
+	Drill Bit, Drill Bit, Drill Bit
+
+4F	Drill Bit, Drill Bit, Drill Bit, Drill Bit, Drill Bit
+	Drill Bit, Drill Bit, Drill Bit
+	Drill Bit, Drill Bit
+
+50	Stinger, Fink Flower
+	Stinger, Stinger, Octovader
+	Stinger, Fink Flower, Fink Flower
+
+51	Stinger, Stinger, Stinger, Stinger
+	Stinger, Fink Flower, Fink Flower
+	Stinger, Stinger, Octovader
+
+52	Chow, Octovader
+	Chow, Shogun
+	Chow, Shogun, Octovader
+
+53	Chow, Fink Flower, Shogun, Shogun
+	Chow, Shogun, Octovader
+	Chow, Shogun
+
+54	Chomp Chomp
+	Chomp Chomp, Chomp Chomp
+	Chomp Chomp, Chomp Chomp, Chomp Chomp
+
+55	Chomp Chomp, Chomp Chomp, Chomp Chomp, Chomp Chomp
+	Chomp Chomp, Chomp Chomp, Chomp Chomp
+	Chomp Chomp, Chomp Chomp
+
+56	Shy Away
+	Shy Away, Shy Away, Kriffid
+	Shy Away, Shy Away, Ribbite
+
+57	Shy Away, Geckit, Ribbite
+	Shy Away, Shy Away, Ribbite
+	Shy Away, Shy Away, Kriffid
+
+58	Chewy, Chewy
+	Chewy, Chewy, Shy Away
+	Chewy, Spinthra
+
+59	Chewy, Chewy, Geckit, Geckit, Kriffid
+	Chewy, Spinthra
+	Chewy, Chewy, Shy Away
+
+5A	Geckit, Spinthra
+	Geckit, Geckit, Spinthra
+	Geckit, Geckit, Chewy, Chewy, Shy Away
+
+5B	Geckit, Geckit, Spinthra, Kriffid
+	Geckit, Geckit, Chewy, Chewy, Shy Away
+	Geckit, Geckit, Spinthra
+
+5C	Birdy, Heavy Troopa
+	Birdy, Birdy, Birdy
+	Birdy, Birdy, Heavy Troopa
+
+5D	Birdy, Birdy, Birdy, Birdy, Birdy
+	Birdy, Birdy, Heavy Troopa
+	Birdy, Birdy, Birdy
+
+5E	Bluebird, Bluebird
+	Bluebird, Bluebird, Heavy Troopa
+	Bluebird, Bluebird, Bluebird, Bluebird
+
+5F	Bluebird, Bluebird, Bluebird, Bluebird, Heavy Troopa
+	Bluebird, Bluebird, Bluebird, Bluebird
+	Bluebird, Bluebird, Heavy Troopa
+
+60	Pinwheel
+	Pinwheel, Muckle
+	Pinwheel, Pinwheel, Muckle, Muckle
+
+61	Pinwheel, Pinwheel, Pinwheel, Sling Shy, Sling Shy
+	Pinwheel, Pinwheel, Muckle, Muckle
+	Pinwheel, Muckle
+
+62	Shaman, Shaman
+	Shaman, Orbison, Jawful
+	Shaman, Shaman, Jawful
+
+63	Shaman, Shaman, Sling Shy, Sling Shy, Jawful
+	Shaman, Shaman, Jawful
+	Shaman, Orbison, Jawful
+
+64	Sling Shy, Orbison
+	Sling Shy, Orbison, Orbison
+	Sling Shy, Orbison, Orbison, Jawful
+
+65	Sling Shy, Sling Shy, Pinwheel, Pinwheel, Muckle
+	Sling Shy, Orbison, Orbison, Jawful
+	Sling Shy, Orbison, Orbison
+
+66	Magmus
+	Magmus, Magmus, Armored Ant
+	Magmus, Magmus, Magmus, Oerlikon, Oerlikon
+
+67	Magmus, Magmus, Armored Ant, Armored Ant
+	Magmus, Magmus, Magmus, Oerlikon, Oerlikon
+	Magmus, Magmus, Armored Ant
+
+68	Oerlikon, Vomer
+	Oerlikon, Oerlikon, Oerlikon
+	Oerlikon, Chained Kong, Armored Ant
+
+69	Oerlikon, Oerlikon, Chained Kong
+	Oerlikon, Chained Kong, Armored Ant
+	Oerlikon, Oerlikon, Oerlikon
+
+6A	Pyrosphere, Pyrosphere, Pyrosphere
+	Pyrosphere, Pyrosphere, Chained Kong
+	Corkpedite, Body, Pyrosphere
+
+6B	Pyrosphere, Pyrosphere, Stumpet
+	Corkpedite, Body, Pyrosphere
+	Pyrosphere, Pyrosphere, Chained Kong
+
+6C	Vomer, Chained Kong
+	Vomer, Vomer, Vomer
+	Corkpedite, Body, Vomer
+
+6D	Vomer, Vomer, Stumpet
+	Corkpedite, Body, Vomer
+	Vomer, Vomer, Vomer
+
+6E	Terra Cotta
+	Terra Cotta, Terra Cotta, Terra Cotta
+	Terra Cotta, Forkies, Forkies
+
+6F	Terra Cotta, Terra Cotta, Gu Goomba, Gu Goomba, Forkies
+	Terra Cotta, Forkies, Forkies
+	Terra Cotta, Terra Cotta, Terra Cotta
+
+70	Malakoopa, Tub-O-Troopa
+	Malakoopa, Malakoopa, Tub-O-Troopa
+	Malakoopa, Malakoopa, Terra Cotta, Tub-O-Troopa
+
+71	Malakoopa, Tub-O-Troopa, Tub-O-Troopa
+	Malakoopa, Malakoopa, Terra Cotta, Tub-O-Troopa
+	Malakoopa, Malakoopa, Tub-O-Troopa
+
+72	Gu Goomba, Gu Goomba
+	Gu Goomba, Gu Goomba, Star Cruster
+	Gu Goomba, Forkies, Star Cruster
+
+73	Gu Goomba, Gu Goomba, Malakoopa, Malakoopa, Terra Cotta, Terra Cotta
+	Gu Goomba, Forkies, Star Cruster
+	Gu Goomba, Gu Goomba, Star Cruster
+
+74	Big Bertha
+	Big Bertha, Big Bertha
+	Big Bertha, Forkies
+
+75	Big Bertha, Big Bertha, Terra Cotta
+	Big Bertha, Forkies
+	Big Bertha, Big Bertha
+
+76	Magikoopa, Terra Cotta, Terra Cotta, Terra Cotta, Terra Cotta
+	Magikoopa, Malakoopa, Malakoopa, Tub-O-Troopa
+	Magikoopa, Gu Goomba, Gu Goomba, Star Cruster
+
+77	Magikoopa, Forkies, Star Cruster
+	Magikoopa, Gu Goomba, Gu Goomba, Star Cruster
+	Magikoopa, Malakoopa, Malakoopa, Tub-O-Troopa
+
+78	Ninja
+	Ninja, Doppel
+	Ninja, Ninja, Hippopo
+
+79	Ninja, Ninja, Ninja, Ninja, Ninja
+	Ninja, Ninja, Hippopo
+	Ninja, Doppel
+
+7A	Springer, Glum Reaper
+	Springer, Springer, Puppox
+	Springer, Glum Reaper
+
+7B	Springer, Puppox, Puppox
+	Springer, Springer, Puppox
+	Springer, Glum Reaper
+
+7C	Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet, Mad Mallet, Mad Mallet, Mad Mallet
+
+7D	Mad Mallet, Mad Mallet, Mad Mallet, Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet
+
+7E	Pounder
+	Pounder, Pounder, Pounder
+	Pounder, Pounder, Pounder, Pounder, Pounder
+
+7F	Pounder, Pounder, Pounder, Pounder, Pounder
+	Pounder, Pounder, Pounder
+	Pounder
+
+80	Poundette
+	Poundette, Poundette, Poundette
+	Poundette, Poundette, Poundette, Poundette, Poundette, Poundette
+
+81	Poundette, Poundette, Poundette, Poundette, Poundette, Poundette
+	Poundette, Poundette, Poundette
+	Poundette
+
+82	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+
+83	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+	Ameboid, Ameboid, Ameboid, Ameboid, Ameboid
+
+84	Glum Reaper, Glum Reaper, Glum Reaper
+	Glum Reaper, Hippopo
+	Glum Reaper, Glum Reaper, Doppel, Doppel
+
+85	Glum Reaper, Glum Reaper, Li~L Boo, Li~L Boo
+	Glum Reaper, Glum Reaper, Doppel, Doppel
+	Glum Reaper, Hippopo
+
+86	Li~L Boo
+	Li~L Boo, Li~L Boo, Hippopo
+	Li~L Boo, Li~L Boo, Puppox, Doppel
+
+87	Li~L Boo, Li~L Boo, Li~L Boo, Li~L Boo
+	Li~L Boo, Li~L Boo, Puppox, Doppel
+	Li~L Boo, Li~L Boo, Hippopo
+
+88	Jabit, Mad Mallet
+	Jabit, Pounder, Poundette
+	Jabit, Jabit, Jabit, Jabit, Jabit, Jabit
+
+89	Jabit, Jabit, Mad Mallet, Mad Mallet, Poundette, Poundette
+	Jabit, Jabit, Jabit, Jabit, Jabit, Jabit
+	Jabit, Pounder, Poundette
+
+8A	Rat Funk, Rat Funk, Rat Funk
+	Rat Funk, Rat Funk, Rat Funk, Rat Funk, Rat Funk
+	Rat Funk, Rat Funk, Rat Funk
+
+8B	Artichoker
+	Artichoker, Artichoker
+	Artichoker
+
+8C	Punchinello, Microbomb, Microbomb, Microbomb, Microbomb
+	Punchinello, Microbomb, Microbomb, Microbomb, Microbomb
+	Punchinello, Microbomb, Microbomb, Microbomb, Microbomb
+
+8D	Crook, Crook, Crook
+	Crook, Crook, Crook, Crook, Crook
+	Crook, Crook, Crook
+
+8E	Snifit
+	Snifit
+	Snifit
+
+8F	Fireball, Fireball
+	Fireball, Fireball, Fireball
+	Fireball, Fireball
+
+90	Stumpet, Magmus, Magmus
+	Stumpet, Magmus, Magmus, Magmus
+	Stumpet, Magmus, Magmus
+
+91	Corkpedite, Body, Oerlikon
+	Corkpedite, Body, Oerlikon, Oerlikon
+	Corkpedite, Body, Oerlikon
+
+92	Clerk, Mad Mallet, Mad Mallet
+	Clerk, Mad Mallet, Mad Mallet
+	Clerk, Mad Mallet, Mad Mallet
+
+93	Manager, Pounder, Pounder, Pounder
+	Manager, Pounder, Pounder, Pounder
+	Manager, Pounder, Pounder, Pounder
+
+94	Director, Poundette, Poundette, Poundette, Poundette
+	Director, Poundette, Poundette, Poundette, Poundette
+	Director, Poundette, Poundette, Poundette, Poundette
+
+95	Gunyolk, Factory Chief
+	Gunyolk, Factory Chief
+	Gunyolk, Factory Chief
+
+96	Mad Mallet, Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet, Mad Mallet
+	Mad Mallet, Mad Mallet, Mad Mallet
+
+97	Apprentice
+	Apprentice
+	Apprentice
+
+98	Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made
+
+99	Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made
+
+9A	--
+	--
+	--
+
+9B	--
+	--
+	--
+
+9C	Pandorite
+	Pandorite
+	Pandorite
+
+9D	Hidon, Goombette, Goombette, Goombette, Goombette
+	Hidon, Goombette, Goombette, Goombette, Goombette
+	Hidon, Goombette, Goombette, Goombette, Goombette
+
+9E	Box Boy, Fautso
+	Box Boy, Fautso
+	Box Boy, Fautso
+
+9F	Chester, Bahamutt
+	Chester, Bahamutt
+	Chester, Bahamutt
+
+A0	(Toadstool), Kinklink, Kinklink, Bowser
+	(Toadstool), Kinklink, Kinklink, Bowser
+	(Toadstool), Kinklink, Kinklink, Bowser
+
+A1	Booster, Snifit, Snifit, Snifit
+	Booster, Snifit, Snifit, Snifit
+	Booster, Snifit, Snifit, Snifit
+
+A2	Booster
+	Booster
+	Booster
+
+A3	Croco
+	Croco
+	Croco
+
+A4	Croco
+	Croco
+	Croco
+
+A5	(Croco)
+	(Croco)
+	(Croco)
+
+A6	Johnny, Bandana Blue, Bandana Blue, Bandana Blue, Bandana Blue
+	Johnny, Bandana Blue, Bandana Blue, Bandana Blue, Bandana Blue
+	Johnny, Bandana Blue, Bandana Blue, Bandana Blue, Bandana Blue
+
+A7	King Calamari, Tentacles, Tentacles, Tentacles, Tentacles, Tentacles
+	King Calamari, Tentacles, Tentacles, Tentacles, Tentacles, Tentacles
+	King Calamari, Tentacles, Tentacles, Tentacles, Tentacles, Tentacles
+
+A8	Belome
+	Belome
+	Belome
+
+A9	Belome, Mario Clone, Toadstool 2
+	Belome, Mario Clone, Toadstool 2
+	Belome, Mario Clone, Toadstool 2
+
+AA	--
+	--
+	--
+
+AB	Valentina, Dodo
+	Valentina, Dodo
+	Valentina, Dodo
+
+AC	Czar Dragon, Zombone, Helio, Helio, Helio, Helio
+	Czar Dragon, Zombone, Helio, Helio, Helio, Helio
+	Czar Dragon, Zombone, Helio, Helio, Helio, Helio
+
+AD	Smilax, Smilax, Smilax, Smilax, Smilax, Megasmilax
+	Smilax, Smilax, Smilax, Smilax, Smilax, Megasmilax
+	Smilax, Smilax, Smilax, Smilax, Smilax, Megasmilax
+
+AE	Count Down, Ding-A-Ling, Ding-A-Ling
+	Count Down, Ding-A-Ling, Ding-A-Ling
+	Count Down, Ding-A-Ling, Ding-A-Ling
+
+AF	Birdo, Shelly, Eggbert, Eggbert, Eggbert, Eggbert
+	Birdo, Shelly, Eggbert, Eggbert, Eggbert, Eggbert
+	Birdo, Shelly, Eggbert, Eggbert, Eggbert, Eggbert
+
+B0	Bundt, Raspberry, Torte, Torte
+	Bundt, Raspberry, Torte, Torte
+	Bundt, Raspberry, Torte, Torte
+
+B1	Knife Guy, Grate Guy
+	Knife Guy, Grate Guy
+	Knife Guy, Grate Guy
+
+B2	Jinx
+	Jinx
+	Jinx
+
+B3	Mack, Bodyguard, Bodyguard, Bodyguard, Bodyguard
+	Mack, Bodyguard, Bodyguard, Bodyguard, Bodyguard
+	Mack, Bodyguard, Bodyguard, Bodyguard, Bodyguard
+
+B4	Yaridovich, Yaridovich
+	Yaridovich, Yaridovich
+	Yaridovich, Yaridovich
+
+B5	Bowyer
+	Bowyer
+	Bowyer
+
+B6	Axem Rangers, Axem Red, Axem Black, Axem Pink, Axem Green, Axem Yellow
+	Axem Rangers, Axem Red, Axem Black, Axem Pink, Axem Green, Axem Yellow
+	Axem Rangers, Axem Red, Axem Black, Axem Pink, Axem Green, Axem Yellow
+
+B7	Hammer Bro, Hammer Bro
+	Hammer Bro, Hammer Bro
+	Hammer Bro, Hammer Bro
+
+B8	Cloaker, Domino, Mad Adder
+	Cloaker, Domino, Mad Adder
+	Cloaker, Domino, Mad Adder
+
+B9	Smithy, Smelter, Machine Made, Machine Made
+	Smithy, Smelter, Machine Made, Machine Made
+	Smithy, Smelter, Machine Made, Machine Made
+
+BA	Exor, Neosquid, Right Eye, Left Eye
+	Exor, Neosquid, Right Eye, Left Eye
+	Exor, Neosquid, Right Eye, Left Eye
+
+BB	Jinx
+	Jinx
+	Jinx
+
+BC	Jinx
+	Jinx
+	Jinx
+
+BD	Jagger
+	Jagger
+	Jagger
+
+BE	Super Spike, Super Spike, Super Spike
+	Super Spike, Super Spike, Super Spike, Super Spike
+	Super Spike, Super Spike, Super Spike
+
+BF	Heavy Troopa, Heavy Troopa, Heavy Troopa
+	Heavy Troopa, Heavy Troopa, Heavy Troopa
+	Heavy Troopa, Heavy Troopa, Heavy Troopa
+
+C0	--
+	--
+	--
+
+C1	--
+	--
+	--
+
+C2	--
+	--
+	--
+
+C3	--
+	--
+	--
+
+C4	Sky Troopa, Sky Troopa
+	Sky Troopa, Sky Troopa
+	Sky Troopa, Sky Troopa
+
+C5	Goomba, Goomba, K-9
+	Goomba, Goomba, K-9
+	Goomba, Goomba, K-9
+
+C6	The Big Boo, The Big Boo, Shadow, Shadow
+	The Big Boo, The Big Boo, Shadow, Shadow
+	The Big Boo, The Big Boo, Shadow, Shadow
+
+C7	Piranha Plant, Piranha Plant, Piranha Plant, Sparky, Sparky
+	Piranha Plant, Piranha Plant, Piranha Plant, Sparky, Sparky
+	Piranha Plant, Piranha Plant, Piranha Plant, Sparky, Sparky
+
+C8	Corkpedite, Body
+	Corkpedite, Body
+	Corkpedite, Body
+
+C9	Hammer Bro, Hammer Bro
+	Hammer Bro, Hammer Bro
+	Hammer Bro, Hammer Bro
+
+CA	Birdo
+	Birdo
+	Birdo
+
+CB	Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb
+	Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb
+	Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb, Bb-Bomb
+
+CC	Magidragon
+	Magidragon
+	Magidragon
+
+CD	Goomba, Goomba, Goomba
+	Goomba, Goomba, Goomba
+	Goomba, Goomba, Goomba
+
+CE	Shogun, Shogun, Shogun
+	Shogun, Shogun, Shogun
+	Shogun, Shogun, Shogun
+
+CF	Formless, Mokura
+	Formless, Mokura
+	Formless, Mokura
+
+D0	Dodo
+	Dodo
+	Dodo
+
+D1	Magikoopa, Terrapin (hiding behind Bahamutt)
+	Magikoopa, Terrapin (hiding behind Bahamutt)
+	Magikoopa, Terrapin (hiding behind Bahamutt)
+
+D2	Boomer, Hangin~ Shy, Hangin~ Shy
+	Boomer, Hangin~ Shy, Hangin~ Shy
+	Boomer, Hangin~ Shy, Hangin~ Shy
+
+D3	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+
+D4	Machine Made
+	Machine Made
+	Machine Made
+
+D5	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made, Machine Made, Machine Made
+
+D6	Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made, Machine Made
+	Machine Made, Machine Made, Machine Made
+
+D7	Smithy, Smithy
+	Smithy, Smithy
+	Smithy, Smithy
+
+D8	Culex, Fire Crystal, Fire Crystal, Fire Crystal, Fire Crystal
+	Culex, Fire Crystal, Fire Crystal, Fire Crystal, Fire Crystal
+	Culex, Fire Crystal, Fire Crystal, Fire Crystal, Fire Crystal
+
+D9	--
+	--
+	--
+
+DA	--
+	--
+	--
+
+DB	--
+	--
+	--
+
+DC	--
+	--
+	--
+
+DD	--
+	--
+	--
+
+DE	--
+	--
+	--
+
+DF	--
+	--
+	--
+
+E0	Terra Cotta, Terra Cotta, Terra Cotta, Terra Cotta
+	Terra Cotta, Terra Cotta, Terra Cotta, Terra Cotta
+	Terra Cotta, Terra Cotta, Terra Cotta, Terra Cotta
+
+E1	Oerlikon, Oerlikon, Star Cruster
+	Oerlikon, Oerlikon, Star Cruster
+	Oerlikon, Oerlikon, Star Cruster
+
+E2	Sackit, Big Bertha, Big Bertha
+	Sackit, Big Bertha, Big Bertha
+	Sackit, Big Bertha, Big Bertha
+
+E3	Chow, Chow, Forkies
+	Chow, Chow, Forkies
+	Chow, Chow, Forkies
+
+E4	Alley Rat, Armored Ant, Armored Ant
+	Alley Rat, Armored Ant, Armored Ant
+	Alley Rat, Armored Ant, Armored Ant
+
+E5	Bloober, Bloober, Bloober, Star Cruster
+	Bloober, Bloober, Bloober, Star Cruster
+	Bloober, Bloober, Bloober, Star Cruster
+
+E6	Stinger, Stinger, Stinger, Stinger
+	Stinger, Stinger, Stinger, Stinger
+	Stinger, Stinger, Stinger, Stinger
+
+E7	Geckit, Geckit, Chained Kong
+	Geckit, Geckit, Chained Kong
+	Geckit, Geckit, Chained Kong
+
+E8	Rob-Omb, Big Bertha, Big Bertha
+	Rob-Omb, Big Bertha, Big Bertha
+	Rob-Omb, Big Bertha, Big Bertha
+
+E9	Vomer, Vomer, Vomer, Vomer
+	Vomer, Vomer, Vomer, Vomer
+	Vomer, Vomer, Vomer, Vomer
+
+EA	Magmus, Magmus, Pulsar, Pulsar
+	Magmus, Magmus, Pulsar, Pulsar
+	Magmus, Magmus, Pulsar, Pulsar
+
+EB	Chester, Bahamutt
+	Chester, Bahamutt
+	Chester, Bahamutt
+
+EC	Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba
+	Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba
+	Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba, Gu Goomba
+
+ED	Malakoopa, Malakoopa, Tub-O-Troopa
+	Malakoopa, Malakoopa, Tub-O-Troopa
+	Malakoopa, Malakoopa, Tub-O-Troopa
+
+EE	The Big Boo, The Big Boo, Orbison, Orbison
+	The Big Boo, The Big Boo, Orbison, Orbison
+	The Big Boo, The Big Boo, Orbison, Orbison
+
+EF	Sling Shy, Sling Shy, Sling Shy, Sling Shy, Sling Shy
+	Sling Shy, Sling Shy, Sling Shy, Sling Shy, Sling Shy
+	Sling Shy, Sling Shy, Sling Shy, Sling Shy, Sling Shy
+
+F0	Chewy, Chewy, Shy Away, Shy Away
+	Chewy, Chewy, Shy Away, Shy Away
+	Chewy, Chewy, Shy Away, Shy Away
+
+F1	Mr.Kipper, Muckle, Muckle
+	Mr.Kipper, Muckle, Muckle
+	Mr.Kipper, Muckle, Muckle
+
+F2	Amanita, Amanita, Orbison
+	Amanita, Amanita, Orbison
+	Amanita, Amanita, Orbison
+
+F3	Greaper, Greaper, Glum Reaper
+	Greaper, Greaper, Glum Reaper
+	Greaper, Greaper, Glum Reaper
+
+F4	Pyrosphere, Pyrosphere, Pyrosphere
+	Pyrosphere, Pyrosphere, Pyrosphere
+	Pyrosphere, Pyrosphere, Pyrosphere
+
+F5	Lakitu, Lakitu, Lakitu
+	Lakitu, Lakitu, Lakitu
+	Lakitu, Lakitu, Lakitu
+
+F6	Zeostar, Zeostar, Shaman, Shaman
+	Zeostar, Zeostar, Shaman, Shaman
+	Zeostar, Zeostar, Shaman, Shaman
+
+F7	Shaman, Shaman, Shaman, Shaman, Shaman, Shaman
+	Shaman, Shaman, Shaman, Shaman, Shaman, Shaman
+	Shaman, Shaman, Shaman, Shaman, Shaman, Shaman
+
+F8	--
+	--
+	--
+
+F9	--
+	--
+	--
+
+FA	--
+	--
+	--
+
+FB	--
+	--
+	--
+
+FC	--
+	--
+	--
+
+FD	--
+	--
+	--
+
+FE	--
+	--
+	--
+
+FF	--
+	--
+	--

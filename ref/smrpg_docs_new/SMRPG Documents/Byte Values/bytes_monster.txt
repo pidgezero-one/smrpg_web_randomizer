@@ -1,0 +1,256 @@
+[00]  Terrapin
+[01]  Spikey
+[02]  Sky Troopa
+[03]  Mad Mallet
+[04]  Shaman
+[05]  Crook
+[06]  Goomba
+[07]  Piranha Plant
+[08]  Amanita
+[09]  Goby
+[0A]  Bloober
+[0B]  Bandana Red
+[0C]  Lakitu
+[0D]  Birdy
+[0E]  Pinwheel
+[0F]  Rat Funk
+[10]  K-9
+[11]  Magmite
+[12]  The Big Boo
+[13]  Dry Bones
+[14]  Greaper
+[15]  Sparky
+[16]  Chomp
+[17]  Pandorite
+[18]  Shy Ranger
+[19]  Bob-Omb
+[1A]  Spookum
+[1B]  Hammer Bro
+[1C]  Buzzer
+[1D]  Ameboid
+[1E]  Gecko
+[1F]  Wiggler
+[20]  Crusty
+[21]  Magikoopa
+[22]  Leuko
+[23]  Jawful
+[24]  Enigma
+[25]  Blaster
+[26]  Guerrilla
+[27]  Baba Yaga
+[28]  Hobgoblin
+[29]  Reacher
+[2A]  Shogun
+[2B]  Orb User
+[2C]  Heavy Troopa
+[2D]  Shadow
+[2E]  Cluster
+[2F]  Bahamutt
+[30]  Octolot
+[31]  Frogog
+[32]  Clerk
+[33]  Gunyolk
+[34]  Boomer
+[35]  Remo Con
+[36]  Snapdragon
+[37]  Stumpet
+[38]  Dodo (2nd time)
+[39]  Jester
+[3A]  Artichoker
+[3B]  Arachne
+[3C]  Carroboscis
+[3D]  Hippopo
+[3E]  Mastadoom
+[3F]  Corkpedite
+[40]  Terra Cotta
+[41]  Spikester
+[42]  Malakoopa
+[43]  Pounder
+[44]  Poundette
+[45]  Sackit
+[46]  Gu Goomba
+[47]  Chewy
+[48]  Fireball
+[49]  Mr.Kipper
+[4A]  Factory Chief
+[4B]  Bandana Blue
+[4C]  Manager
+[4D]  Bluebird
+[4E]  __nothing
+[4F]  Alley Rat
+[50]  Chow
+[51]  Magmus
+[52]  Li~L Boo
+[53]  Vomer
+[54]  Glum Reaper
+[55]  Pyrosphere
+[56]  Chomp Chomp
+[57]  Hidon
+[58]  Sling Shy
+[59]  Rob-Omb
+[5A]  Shy Guy
+[5B]  Ninja
+[5C]  Stinger
+[5D]  Goombette
+[5E]  Geckit
+[5F]  Jabit
+[60]  Star Cruster
+[61]  Merlin
+[62]  Muckle
+[63]  Forkies
+[64]  Gorgon
+[65]  Big Bertha
+[66]  Chained Kong
+[67]  Fautso
+[68]  Straw Head
+[69]  Juju
+[6A]  Armored Ant
+[6B]  Orbison
+[6C]  Tub-O-Troopa
+[6D]  Doppel
+[6E]  Pulsar
+[6F]  __purple Bahamutt
+[70]  Octovader
+[71]  Ribbite
+[72]  Director
+[73]  __Gunyolk (yellow)
+[74]  __Boomer (blue)
+[75]  Puppox
+[76]  Fink Flower
+[77]  Lumbler
+[78]  Springer
+[79]  Harlequin
+[7A]  Kriffid
+[7B]  Spinthra
+[7C]  Radish
+[7D]  Crippo
+[7E]  Mastablasta
+[7F]  Pile Driver
+[80]  Apprentice
+[81]  __nothing
+[82]  __nothing
+[83]  __nothing
+[84]  __Geno redemption
+[85]  __little bird
+[86]  Box Boy
+[87]  Shelly
+[88]  Super Spike
+[89]  Dodo (1st time)
+[8A]  Oerlikon
+[8B]  Chester
+[8C]  Body
+[8D]  __Pile Driver (body)
+[8E]  Torte
+[8F]  Shy Away
+[90]  Jinx Clone
+[91]  Machine Made (Shyster)
+[92]  Machine Made (Drill Bit)
+[93]  Formless
+[94]  Mokura
+[95]  Fire Crystal
+[96]  Water Crystal
+[97]  Earth Crystal
+[98]  Wind Crystal
+[99]  Mario Clone
+[9A]  Toadstool 2
+[9B]  Bowser Clone
+[9C]  Geno Clone
+[9D]  Mallow Clone
+[9E]  Shyster
+[9F]  Kinklink
+[A0]  __Toadstool (captive)
+[A1]  Hangin~ Shy
+[A2]  Smelter
+[A3]  Machine Made (Mack)
+[A4]  Machine Made (Bowyer)
+[A5]  Machine Made (Yaridovich)
+[A6]  Machine Made (Axem Pink)
+[A7]  Machine Made (Axem Black)
+[A8]  Machine Made (Axem Red)
+[A9]  Machine Made (Axem Yellow)
+[AA]  Machine Made (Axem Green)
+[AB]  Goomba (Intro)
+[AC]  Hammer Bro (Intro)
+[AD]  Birdo (Intro)
+[AE]  Bb-Bomb
+[AF]  Magidragon
+[B0]  Starslap
+[B1]  Mukumuku
+[B2]  Zeostar
+[B3]  Jagger
+[B4]  Chompweed
+[B5]  Smithy (Tank Head)
+[B6]  Smithy (Box Head)
+[B7]  __Corkpedite
+[B8]  Microbomb
+[B9]  __Thwomp
+[BA]  Grit
+[BB]  Neosquid
+[BC]  Yaridovich (mirage)
+[BD]  Helio
+[BE]  Right Eye
+[BF]  Left Eye
+[C0]  Knife Guy
+[C1]  Grate Guy
+[C2]  Bundt
+[C3]  Jinx (1st time)
+[C4]  Jinx (2nd time)
+[C5]  Count Down
+[C6]  Ding-A-Ling
+[C7]  Belome (1st time)
+[C8]  Belome (2nd time)
+[C9]  __Belome
+[CA]  Smilax
+[CB]  Thrax        
+[CC]  Megasmilax
+[CD]  Birdo
+[CE]  Eggbert
+[CF]  Axem Yellow
+[D0]  Punchinello
+[D1]  Tentacles (right)
+[D2]  Axem Red
+[D3]  Axem Green
+[D4]  King Bomb
+[D5]  Mezzo Bomb
+[D6]  __Bundt object
+[D7]  Raspberry
+[D8]  King Calamari
+[D9]  Tentacles (left)
+[DA]  Jinx (3rd time)
+[DB]  Zombone
+[DC]  Czar Dragon
+[DD]  Cloaker (1st time)
+[DE]  Domino (1st time)
+[DF]  Mad Adder
+[E0]  Mack
+[E1]  Bodyguard
+[E2]  Yaridovich
+[E3]  Drill Bit
+[E4]  Axem Pink
+[E5]  Axem Black
+[E6]  Bowyer
+[E7]  Aero
+[E8]  __Exor (mouth)
+[E9]  Exor
+[EA]  Smithy (1st Form)
+[EB]  Shyper
+[EC]  Smithy (Body)
+[ED]  Smithy (Head)
+[EE]  Smithy (Magic Head)
+[EF]  Smithy (Chest Head)
+[F0]  Croco (1st time)
+[F1]  Croco (2nd time)
+[F2]  __Croco
+[F3]  Earth Link
+[F4]  Bowser
+[F5]  Axem Rangers
+[F6]  Booster
+[F7]  Booster
+[F8]  Snifit
+[F9]  Johnny
+[FA]  Johnny (vs Mario)
+[FB]  Valentina
+[FC]  Cloaker (2nd time)
+[FD]  Domino (2nd time)
+[FE]  Candle
+[FF]  Culex

@@ -1,0 +1,333 @@
+===============================================================================
+BYTE ASSIGNMENTS (values in [] are indexed below)
+===============================================================================
+MONSTER STATS <390226-391146>
+Byte 1,2   HP
+Byte 3     Speed
+Byte 4     Attack
+Byte 5     Defense
+Byte 6     Magic Attack
+Byte 7     Magic Defense
+Byte 8     FP
+Byte 9     Evade %
+Byte 10    Magic Evade %
+Byte 11    Special Attribute [13]
+Byte 12    lower bits: Special Defense [12]
+           upper bits: Attack Sound (hit) [17]
+Byte 13    Ineffective Element(s) [9]
+Byte 14    lower bits: Attack Sound (approach) [18]
+           upper bits: Elemental Weaknesses [9]
+Byte 15    Ineffective Ailment(s) [10]
+Byte 16    lower bits: Entrance Style [15]
+           upper bits: Elevation, Coin Animation [15]
+---------------------------------------------------------------
+MONSTER SPECIAL ATTACK STATS <391226 - 391425> 5 Bytes each
+Byte 1     attack flags [5]
+Byte 2     hit rate
+Byte 3     status ailment [10]
+Byte 4     status enhancement [11]
+---------------------------------------------------------------
+MONSTER STATS <39162A - 391C29>
+Byte 1,2   EXP
+Byte 3     Coins
+Byte 4     Yoshi Cookie
+Byte 5     Item Win
+Byte 6     Rare Item Win
+---------------------------------------------------------------
+ALLY STARTING STATS <3A002C - 3A008F>
+Byte 1	   Level
+Byte 2,3   Current HP
+Byte 4,5   Max HP
+Byte 6     Speed
+Byte 7     Attack
+Byte 8     Defense
+Byte 9     Magic Attack
+Byte 10    Magic Defense
+Byte 11,12 Experience
+Byte 13    Starting Weapon
+Byte 14    Starting Armor
+Byte 15    Starting Accessory
+Byte 16    ????
+Byte 17-20 Spell list [16]
+---------------------------------------------------------------
+ITEM STATS <3A014D - 3A134C> 18 Bytes each
+Byte 1     lower bits: item type [1]
+           upper bits: use flags [1]
+Byte 2     lower bits: status flags (affects byte 8 & 9) [4]
+           upper bits: cursor behavior [4]
+Byte 3     who can equip [2]
+Byte 4     targetting [8]
+Byte 5     element [9]
+Byte 6     ineffective elements (used for armor/accessories) [9]
+Byte 7     elemental weaknesses (used for armor/accessories) [9]
+Byte 8     status ailment [10]
+Byte 9     status enhancement [11]
+Byte 10    Speed
+Byte 11    Attack
+Byte 12    Defense
+Byte 13    Magic Attack
+Byte 14    Magic Defense
+Byte 15    Attack Range: item's Attack Power - and + specified value
+Byte 16    heal/damage amount
+Byte 17    attack flags (affects byte 16) [6]
+Byte 18    hide digits if damage (bit 2)
+---------------------------------------------------------------
+MAGIC STATS <3A20F1 - 3A26F0> 12 Bytes each
+Byte 1     special flags [3]
+Byte 2     attack flags (affects byte 8 & 9) [7]
+Byte 3     FP cost
+Byte 4     targetting [8]
+Byte 5     element [9]
+Byte 6     Magic Power
+Byte 7     Hit %
+Byte 8     status ailment [10]
+Byte 9     status enhancement [11]
+Byte 10    ----
+Byte 11    special function [14]
+Byte 12    digit display (bit 2 - hide)
+---------------------------------------------------------------
+SHOP STATS <3A44DF - 3A565E> 16 bytes each
+Byte 1
+ bit 0   buy only w/Frog Coins, only one product each
+ bit 1   buy only w/Frog Coins
+ bit 2   buy only
+ bit 3   buy only
+ bit 4   6% discount
+ bit 5   12% discount
+ bit 6   25% discount
+ bit 7   50% discount
+Byte 2-16  items for sale
+
+===========================================================================
+BYTE VALUES INDEX
+===========================================================================
+1. ITEM TYPE, ITEM USAGE (items only)
+zero	 weapon
+bit 0    armor
+bit 1    accessory
+bit 0,1  item
+bit 2	 ----
+bit 3    usable in battle menu
+bit 4    usable in overworld menu
+bit 5    reusable
+bit 6    ----
+bit 7    prevents instant death
+---------------------------------------------------------------
+2. WHO CAN EQUIP (items only)
+bit 0  Mario
+bit 1  Toadstool
+bit 2  Bowser
+bit 3  Geno
+bit 4  Mallow
+---------------------------------------------------------------
+3. SPECIAL FLAGS (magic only)
+bit 0  read from attack & defense of allies/monsters
+bit 1  ignore defense
+bit 5  check if target death-protected
+bit 7  usable in overworld menu
+---------------------------------------------------------------
+4. STATUS FLAGS, CURSOR BEHAVIOR (items only)
+bits 5-7 only apply to the overworld menu cursor behavior;
+they do not indicate WHAT to replenish
+bit 0   status protection
+bit 1   status infliction
+bit 2   status nullify
+bit 3   ----
+bit 4   ----
+bit 5   direct cursor to FP
+bit 6   restore only if FP not maxed out
+bit 7   restore only if HP not maxed out
+ default cursor to HP, if bit 5 not set
+---------------------------------------------------------------
+5. ATTACK FLAGS (special attacks only)
+bit 0-2 attack level (0-7)
+bit 3   9999 dmg/instant death
+bit 4   no damage
+bit 5   hide damage digits
+bit 6   no damage
+bit 7   ----
+---------------------------------------------------------------
+6. ATTACK FLAGS (items only)
+#$01    revive
+#$02    FP
+#$04    HP
+#$05    all HP/FP
+#$06    max FP +1
+#$07    destroy
+#$FF    damage
+---------------------------------------------------------------
+7. ATTACK FLAGS (magic only)
+bit 0   heal
+bit 1   inflict
+bit 2   nullify
+bit 3   9999 damage
+---------------------------------------------------------------
+8. TARGETTING
+bit 0  ----
+bit 1  usable on any ally
+bit 2  usable on enemy
+bit 3  ----
+bit 4  usable on all
+bit 5  usable on wounded
+bit 6  usable on one party only
+bit 7  usable on other allies only
+---------------------------------------------------------------
+9. ELEMENT/STATUS AILMENT
+bit 0  Mute
+bit 1  Sleep
+bit 2  Poison
+bit 3  Fear
+bit 4  Ice
+bit 5  Thunder
+bit 6  Fire
+bit 7  Earth
+---------------------------------------------------------------
+10. STATUS AILMENT / TRANSFORMATION
+bit 0  Mute
+bit 1  Sleep
+bit 2  Poison
+bit 3  Fear
+bit 4  ----
+bit 5  Mushroom
+bit 6  Scarecrow
+bit 7  Invincibility
+---------------------------------------------------------------
+11. STATUS ENHANCEMENT
+bit 3  Magic Attack Up
+bit 4  Attack Up
+bit 5  Magic Defense Up
+bit 6  Defense Up
+---------------------------------------------------------------
+12. SPECIAL DEFENSE (monsters only)
+bit 0    invincibility
+bit 1    protected against instant death
+bit 2-3  ratio of success to failure of morph items (sheep, cookies)
+ #$04 bit 2    1:3
+ #$08 bit 3    2:3
+ #$0C bit 2,3  3:3 (100% success)
+ if no bits set, 100% failure
+---------------------------------------------------------------
+13. SPECIAL ATTRIBUTE (monsters only)
+bit 0   if set, wait for battle script to remove monster
+bit 1   affects palette? used by the four Crystals
+---------------------------------------------------------------
+14. SPECIAL FUNCTION (magic only)
+#$00   scan current HP and show
+#$01   miss
+#$02   no damage/heal
+#$03   revive + heal 3/4 max HP (all HP if timed)
+#$04   add Jump counter to base damage
+#$FF   none
+---------------------------------------------------------------
+15. ENTRANCE STYLE, COIN ANIMATION (monsters only)
+bit 0-3   entrance style
+x0	none
+x1	slide in
+x2	long jump
+x3	hop 3 times
+x4	drop from above
+x5	zoom in from right
+x6	zoom in from left
+x7	spread out from back
+x8	hover in
+x9	ready to attack
+xA	fade in
+xB	slow drop from above
+xC	wait, then appear
+xD	spread out from front
+xE	spread out from middle
+xF	ready to attack
+
+bit 4,5   height from ground (up to 3 units)
+bit 6     small coin
+bit 7     big coin
+---------------------------------------------------------------
+16. MAGIC BYTES (ally starting stats / spell mods only)
+Byte 1
+ bit 0 / 00 - Jump
+ bit 1 / 01 - Fire Orb
+ bit 2 / 02 - Super Jump
+ bit 3 / 03 - Super Flame
+ bit 4 / 04 - Ultra Jump
+ bit 5 / 05 - Ultra Flame
+ bit 6 / 06 - Therapy
+ bit 7 / 07 - Group Hug
+Byte 2
+ bit 0 / 08 - Sleepy Time
+ bit 1 / 09 - Come Back
+ bit 2 / 0A - Mute
+ bit 3 / 0B - Psych Bomb
+ bit 4 / 0C - Terrorize
+ bit 5 / 0D - Poison Gas
+ bit 6 / 0E - Crusher
+ bit 7 / 0F - Bowser Crush
+Byte 3
+ bit 0 / 10 - Geno Beam
+ bit 1 / 11 - Geno Boost
+ bit 2 / 12 - Geno Whirl
+ bit 3 / 13 - Geno Blast
+ bit 4 / 14 - Geno Flash
+ bit 5 / 15 - Thunderbolt
+ bit 6 / 16 - HP Rain
+ bit 7 / 17 - Psychopath
+Byte 4
+ bit 0 / 18 - Shocker
+ bit 1 / 19 - Snowy
+ bit 2 / 1A - Star Rain
+ bit 3 / 1B - Dummy
+ bit 4 / 1C - Dummy
+ bit 5 / 1D - Dummy
+ bit 6 / 1E - Dummy
+ bit 7 / 1F - Dummy
+---------------------------------------------------------------
+17. ATTACK SOUND (hit) (monsters only)
+0* = bite
+1* = pierce
+2* = claw strike
+3* = Metallic Jab
+4* = Slap
+5* = Shell Knock
+6* = Smash
+7* = Deep Knock
+8* = Punch
+9* = Bonk
+A* = Flopping
+B* = Deep Jab
+---------------------------------------------------------------
+18. ATTACK SOUND (approach) (monsters only)
+*0 = None
+*1 = Starslap, Spikey
+*2 = Goomba tumble
+*3 = Amanita shrivel
+*4 = Guerrilla cry
+*5 = Pulsar
+*6 = Bones head spin
+*7 = Torte rant
+---------------------------------------------------------------
+SHOP BYTES
+00  Mushroom Kingdom
+01  Rose Town Items
+02  Rose Town Armor
+03  Frog Disciple Shop
+04  Moleville Shop
+05  Marrymore Shop
+06  Frog Coin Emporium
+07  Sea Item shop
+08  Seaside Town Items (before yarid)
+09  Juice Bar (no card)
+0A  Juice Bar (alto card)
+0B  Juice Bar (tenor card)
+0C  Juice Bar (soprano card)
+0D  Seaside Weapons
+0E  Seaside Armor
+0F  Seaside Accessory
+10  Seaside Health Foods
+11  Monstro Town shop
+12  Nimbus Land shop
+13  Hinopio's Shop
+14  Baby Goomba shop
+15  Nimbus Land Item/Weapon
+16  Croco's Shop 1
+17  Croco's Shop 2
+18  Toad's Shop
+19-21	empty, unused shops

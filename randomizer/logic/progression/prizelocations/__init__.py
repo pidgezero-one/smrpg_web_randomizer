@@ -1,0 +1,35 @@
+# Re-export location base classes the old monolith pulled in, so external
+# from ...prizelocations import * (gameworld, prize_locations) still sees them.
+from randomizer.types.prizelocation import *  # noqa: F401,F403
+from .access import *  # noqa: F401,F403
+from .invisible_flags import *  # noqa: F401,F403
+from .bandits_way import *  # noqa: F401,F403
+from .barrel_volcano import *  # noqa: F401,F403
+from .bean_valley import *  # noqa: F401,F403
+from .booster_hill import *  # noqa: F401,F403
+from .booster_pass import *  # noqa: F401,F403
+from .booster_tower import *  # noqa: F401,F403
+from .bowsers_keep import *  # noqa: F401,F403
+from .casino import *  # noqa: F401,F403
+from .forest_maze import *  # noqa: F401,F403
+from .inner_factory import *  # noqa: F401,F403
+from .kero_sewers import *  # noqa: F401,F403
+from .lands_end import *  # noqa: F401,F403
+from .marios_house import *  # noqa: F401,F403
+from .marrymore import *  # noqa: F401,F403
+from .midas_river import *  # noqa: F401,F403
+from .moleville import *  # noqa: F401,F403
+from .monstro_town import *  # noqa: F401,F403
+from .mushroom_kingdom import *  # noqa: F401,F403
+from .mushroom_way import *  # noqa: F401,F403
+from .nimbus_land import *  # noqa: F401,F403
+from .outer_factory import *  # noqa: F401,F403
+from .pipe_vault import *  # noqa: F401,F403
+from .rose_town import *  # noqa: F401,F403
+from .rose_way import *  # noqa: F401,F403
+from .sea import *  # noqa: F401,F403
+from .seaside_town import *  # noqa: F401,F403
+from .star_hill import *  # noqa: F401,F403
+from .sunken_ship import *  # noqa: F401,F403
+from .tadpole_pond import *  # noqa: F401,F403
+from .yoster_isle import *  # noqa: F401,F403

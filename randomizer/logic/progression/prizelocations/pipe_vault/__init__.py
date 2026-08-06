@@ -1,0 +1,29 @@
+from .pipe_vault_chompweed_chest_location import PipeVaultChompweedChestLocation
+from .pipe_vault_goomba_thumpin_first_prize_location import PipeVaultGoombaThumpinFirstPrizeLocation
+from .pipe_vault_goomba_thumpin_second_prize_location import PipeVaultGoombaThumpinSecondPrizeLocation
+from .pipe_vault_rising_platform_chest_location import PipeVaultRisingPlatformChestLocation
+from .pipe_vault_sliding_coin_room_back_chest_location import PipeVaultSlidingCoinRoomBackChestLocation
+from .pipe_vault_sliding_coin_room_coin1_location import PipeVaultSlidingCoinRoomCoin1Location
+from .pipe_vault_sliding_coin_room_coin2_location import PipeVaultSlidingCoinRoomCoin2Location
+from .pipe_vault_sliding_coin_room_coin3_location import PipeVaultSlidingCoinRoomCoin3Location
+from .pipe_vault_sliding_coin_room_coin4_location import PipeVaultSlidingCoinRoomCoin4Location
+from .pipe_vault_sliding_coin_room_coin5_location import PipeVaultSlidingCoinRoomCoin5Location
+from .pipe_vault_sliding_coin_room_crouch_item_location import PipeVaultSlidingCoinRoomCrouchItemLocation
+from .pipe_vault_sliding_coin_room_front_chest_location import PipeVaultSlidingCoinRoomFrontChestLocation
+from .pipe_vault_sliding_coin_room_middle_chest_location import PipeVaultSlidingCoinRoomMiddleChestLocation
+
+__all__ = [
+    "PipeVaultChompweedChestLocation",
+    "PipeVaultGoombaThumpinFirstPrizeLocation",
+    "PipeVaultGoombaThumpinSecondPrizeLocation",
+    "PipeVaultRisingPlatformChestLocation",
+    "PipeVaultSlidingCoinRoomBackChestLocation",
+    "PipeVaultSlidingCoinRoomCoin1Location",
+    "PipeVaultSlidingCoinRoomCoin2Location",
+    "PipeVaultSlidingCoinRoomCoin3Location",
+    "PipeVaultSlidingCoinRoomCoin4Location",
+    "PipeVaultSlidingCoinRoomCoin5Location",
+    "PipeVaultSlidingCoinRoomCrouchItemLocation",
+    "PipeVaultSlidingCoinRoomFrontChestLocation",
+    "PipeVaultSlidingCoinRoomMiddleChestLocation",
+]

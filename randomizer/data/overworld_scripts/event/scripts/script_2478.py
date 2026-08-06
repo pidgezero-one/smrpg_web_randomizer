@@ -1,0 +1,106 @@
+# E2478_BEAN_VALLEY_BEANSTALK_ROOM_LOADER
+# pyright: reportWildcardImportFromLibrary=false
+
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.colours import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.coords import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.intro_title_text import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.layers import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_types import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.scenes import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.tutorials import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.palette_rows import *
+from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments import *
+from ....variables.action_script_names import *
+from ....variables.battlefield_names import *
+from ....variables.dialog_names import *
+from ....variables.event_script_names import *
+from ....variables.music_names import *
+from ....variables.overworld_area_names import *
+from ....variables.overworld_sfx_names import *
+from ....variables.pack_names import *
+from ....variables.room_names import *
+from ....variables.shop_names import *
+from ....variables.variable_names import *
+from ....items import *
+from ....packets import *
+from ....spells.spells import *
+from ....variables.event_palette_names import *
+
+script = EventScript([
+	SetVarToConst(CURRENT_OVERWORLD_MARKER_ID, OW45_BEAN_VALLEY),
+	ActionQueueSync(target=NPC_0, subscript=[
+		A_SetWalkingSpeed(FASTEST),
+		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
+		A_WalkNortheastPixels(5),
+		A_WalkNorthPixels(5),
+		A_WalkWestPixels(2),
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
+		A_ReturnQueue(),
+	]),
+	ActionQueueAsync(target=NPC_1, subscript=[
+		A_SetWalkingSpeed(FASTEST),
+		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
+		A_WalkNortheastPixels(7),
+		A_WalkEastPixels(4),
+		A_WalkNorthPixels(1),
+		A_WalkWestPixels(2),
+		A_SetSpriteSequence(index=14, is_mold=True, is_sequence=True, looping=True),
+		A_ReturnQueue(),
+	]),
+	SetSyncActionScript(NPC_2, A0015_DO_NOTHING),
+	Set7000ToObjectCoord(target_npc=MARIO, coord=COORD_Y, pixel=True, bit_7=True, identifier="EVENT_2478_set_7000_to_object_coord_15"),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 27, ["EVENT_2478_freeze_camera_19"]),
+	FadeInFromBlack(sync=False),
+	Return(),
+	FreezeCamera(identifier="EVENT_2478_freeze_camera_19"),
+	ActionQueueSync(target=MARIO, subscript=[
+		A_FloatingOff(),
+		A_ShadowOn(),
+		A_SetWalkingSpeed(FASTEST),
+		A_SetVRAMPriority(OBJECT_OVERLAPS_MARIO_ON_ALL_SIDES),
+		A_SetPriority(3),
+		A_OverwriteSolidity(),
+		A_SetSpriteSequence(index=7, sprite_offset=6, is_sequence=True, looping=True),
+		A_TransferToXYZF(x=27, y=27, z=24, direction=EAST),
+		A_WalkEastPixels(8),
+		A_SetWalkingSpeed(NORMAL)
+	]),
+	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
+		A_SetWalkingSpeed(FASTEST),
+		A_WalkToXYCoords(x=22, y=5),
+		A_SetWalkingSpeed(NORMAL)
+	]),
+	FadeInFromBlack(sync=False),
+	ActionQueueAsync(target=MARIO, subscript=[
+		A_ToggleSubroutineSlots(mask=0x01),
+		A_SetSubroutineXTargets(slot_26_x=0xFFE3, slot_27_x=0x0000),
+		A_ShiftZDownSteps(8),
+		A_KillAllSubroutineSlots(),
+		A_SetSpriteSequence(index=14, sprite_offset=6, is_mold=True, is_sequence=True, looping=True, identifier="climb_mold_4"),
+		A_Pause(16)
+	], identifier="climb_mold_aq_4"),
+	ActionQueueSync(target=MARIO, subscript=[
+		A_SetSpriteSequence(index=3, sprite_offset=1, is_mold=True, is_sequence=True, looping=True),
+		A_FaceSouthwest(),
+		A_PlaySound(sound=SO004_JUMP, channel=4),
+		A_ToggleSubroutineSlots(mask=0x07),
+		A_SetSubroutineXTargets(slot_26_x=0xFE80, slot_27_x=0x00B0),
+		A_UnknownCommand(bytearray([0x25, 0xC0, 0x06, 0x80, 0xFF])),
+		A_Pause(37),
+		A_KillAllSubroutineSlots()
+	]),
+	ActionQueueAsync(target=SCREEN_FOCUS, subscript=[
+		A_SetWalkingSpeed(FAST),
+		A_WalkSouthSteps(4)
+	]),
+	UnfreezeCamera(),
+	SetAsyncActionScript(MARIO, A0395_PLAYER_RESET_PROPERTIES_AND_SOLIDITY),
+	Return()
+])

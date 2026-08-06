@@ -1,0 +1,522 @@
+------------
+AREA OFFSETS
+sorted alphabetically by ID
+---------------------------
+
+ID's preceded by ____ are unmapped and unused
+ID's followed by *** are legitimate but unused/dummied
+
+BYTE	SPRITE	LAYOUT	EXIT-F	ATTRIB	MAPL	AREA ID
+-------------------------------------------------------
+[1FF]	14F017	1D242E	1D4905	20FDC5	<2A>	____black BG, nothing there
+[001]	148451	1D0052	1D3166	20E403	<00>	____blue BG, nothing there
+[032]	148EE5	1D03C4	1D341C	20E700	<00>	____blue BG, nothing there
+[124]	14C609	1D14C8	1D4004	20F38B	<28>	____unmapped house room
+[125]	14C609	1D14DA	1D4004	20F38E	<28>	____unmapped house room
+[126]	14C609	1D14EC	1D4004	20F391	<28>	____unmapped house room
+[127]	14C609	1D14FE	1D4004	20F394	<28>	____unmapped house room
+[128]	14C609	1D1510	1D4004	20F397	<28>	____unmapped house room
+[12A]	14C609	1D1534	1D4004	20F39D	<28>	____unmapped house room
+[12B]	14C609	1D1546	1D4004	20F3A0	<28>	____unmapped house room
+[12C]	14C609	1D1558	1D4004	20F3A3	<28>	____unmapped house room
+[129]	14C609	1D1522	1D4004	20F39A	<02>	____unmapped outside townplace (resembles Seaside Town)
+[04C]	1495B1	1D0598	1D34D3	20E8DF	<55>	Bandit's Way, Area 01
+[0CF]	14B4E8	1D0ECE	1D3C59	20F07A	<30>	Bandit's Way, Area 02
+[04D]	1495F6	1D05AA	1D34E2	20E8E2	<55>	Bandit's Way, Area 03
+[04E]	149643	1D05BC	1D34F4	20E8E5	<56>	Bandit's Way, Area 04
+[0CE]	14B48B	1D0EBC	1D3C50	20F077	<56>	Bandit's Way, Area 05
+[00D]	1486AE	1D012A	1D31D2	20E4BD	<31>	Barrel Volcano, falling into Volcano
+[17A]	14D3E2	1D1AD4	1D4310	20F709	<72>	Bean Valley Beanstalks, Area 01
+[17B]	14D43B	1D1AE6	1D4346	20F752	<72>	Bean Valley Beanstalks, Area 02
+[17C]	14D498	1D1AF8	1D4358	20F7C1	<72>	Bean Valley Beanstalks, Area 03 (from right beanstalk of Area 02)
+[17D]	14D4D9	1D1B0A	1D436A	20F81E	<72>	Bean Valley Beanstalks, Area 04 (from left beanstalk of Area 02)
+[15C]	14CED4	1D18B8	1D41E0	20F5FB	<4B>	Bean Valley pipe room, bottom left
+[15D]	14CF25	1D18CA	1D41E0	20F5FE	<4B>	Bean Valley pipe room, bottom right
+[14E]	14CBB2	1D17BC	1D41C5	20F4E9	<4B>	Bean Valley pipe room, left-most pipe
+[14F]	14CC03	1D17CE	1D41C5	20F4EC	<4B>	Bean Valley pipe room, right-most pipe (large room)
+[15B]	14CE9B	1D18A6	1D41E0	20F5E2	<4B>	Bean Valley pipe room, top pipe (leads to Grate Guy's Casino)
+[0FD]	14BE0B	1D120A	1D3E03	20F290	<6F>	Bean Valley, magic brick to Beanstalk Area
+[0FC]	14BDC6	1D11F8	1D3DFA	20F25F	<6F>	Bean Valley, main Area
+[0FB]	14BD61	1D11E6	1D3DE8	20F23E	<6F>	Bean Valley, piranha pipe Area
+[0FE]	14BE28	1D121C	1D3E03	20F298	<6F>	Bean Valley, Smilax Area
+[1AC]	14DF90	1D1E58	1D45C9	20FA13	<51>	Belome Temple, Area 01 (w/Warp Trampoline)
+[1A4]	14DE44	1D1DC8	1D456F	20F9CE	<51>	Belome Temple, Area 02 (Fortune Room)
+[1A8]	14DF60	1D1E10	1D459C	20F9F8	<51>	Belome Temple, Area 03 (pipe to room determined by fortune)
+[1A5]	14DE85	1D1DDA	1D4581	20F9E3	<51>	Belome Temple, Area 04 (room determined by fortune)
+[1A9]	14DF61	1D1E22	1D45A5	20FA00	<51>	Belome Temple, Area 05 (from Fortune Room)
+[1A7]	14DF3B	1D1DFE	1D4593	20F9E9	<51>	Belome Temple, Area 06 (Belome's fortune room w/elevating platform)
+[1AA]	14DF82	1D1E34	1D45B7	20FA03	<51>	Belome Temple, Area 07 (pipe to Belome's room)
+[10C]	14C111	1D1318	1D3E9A	20F2E5	<84>	Belome Temple, Area 08 (Belome's room)
+[1A6]	14DED6	1D1DEC	1D458A	20F9E6	<51>	Belome Temple, Area 09 (Belome's Treasure room)
+[1AB]	14DF83	1D1E46	1D45C0	20FA0B	<51>	Belome Temple, Area 10 (pipe to Monstro Town)
+[00E]	1486C7	1D013C	1D31D8	20E4C0	<32>	Booster Hill
+[036]	148F4D	1D030C	1D342D	20E74E	<32>	Booster Hill, chasing Booster
+[064]	149C01	1D0748	1D3634	20EA38	<5F>	Booster Pass, Area 01
+[065]	149C72	1D075A	1D363A	20EA47	<5F>	Booster Pass, Area 02
+[195]	14D9F1	1D1CBA	1D44A3	20F905	<7D>	Booster Pass, Secret
+[0CA]	14B35B	1D0E74	1D3C0E	20F013	<0C>	Booster Tower Entrance
+[02B]	148DE2	1D0346	1D33B4	20E6B5	<1D>	Booster Tower, 1F Area 01 (main room)
+[0C5]	14B25A	1D0E1A	1D3BC6	20EFE9	<03>	Booster Tower, 1F Area 02 (high Masher room w/teeter-totter)
+[0C4]	14B215	1D0E08	1D3BB4	20EFE6	<03>	Booster Tower, 2F Area 01 (w/constantly appearing Spookums)
+[0C2]	14B173	1D0DE4	1D3B87	20EFD6	<03>	Booster Tower, 2F Area 02 (Booster's railway room)
+[0C1]	14B13E	1D0DD2	1D3B6C	20EFCD	<03>	Booster Tower, 2F Area 03 (steps w/circling Bob-ombs)
+[103]	14BF30	1D1276	1D3E15	20F2AC	<03>	Booster Tower, 3F Area 01 (green switch for BP secret)
+[02A]	148DBD	1D0334	1D33A2	20E69C	<1D>	Booster Tower, 3F Area 02 (NES Mario room)
+[025]	148C64	1D02DA	1D335A	20E5D9	<1D>	Booster Tower, 4F (3-level room w/jumping Spookums)
+[027]	148D0A	1D02FE	1D3363	20E61B	<1D>	Booster Tower, 5F (Knife Guy's juggling room)
+[0C9]	14B34E	1D0E62	1D3C05	20F00A	<03>	Booster Tower, 6F Area 01 (small room w/save point)
+[0C3]	14B1A4	1D0DF6	1D3B99	20EFE3	<03>	Booster Tower, 6F Area 02 (Booster's Ancestor Game room)
+[0C8]	14B329	1D0E50	1D3BFC	20F007	<03>	Booster Tower, 6F Area 03 (Elder's Room w/Chomp)
+[024]	148C3F	1D02C8	1D3351	20E5D1	<1D>	Booster Tower, 6F Area 04 (3-level w/Thwomp on teeter-totter)
+[023]	148BEA	1D02B6	1D3312	20E5CE	<1D>	Booster Tower, 7F (3-level w/parachuting Spookums)
+[029]	148D54	1D0322	1D3387	20E621	<1D>	Booster Tower, 8F Area 01 ('minesweeper' room w/coins and hidden Fireballs)
+[030]	148EA3	1D03A0	1D3402	20E6F5	<1D>	Booster Tower, 8F Area 02 (locked room w/Zoom Shoes)
+[028]	148D3F	1D0310	1D3375	20E61E	<1D>	Booster Tower, 8F Area 03 (2-level w/three Chomps)
+[0C6]	14B297	1D0E2C	1D3BD8	20EFF1	<03>	Booster Tower, 8F Area 04 (3-level w/one Chomp)
+[026]	148CA9	1D02EC	1D3363	20E606	<1D>	Booster Tower, 9F (Booster's bomb-throwing room w/rail tracks)
+[0C7]	14B2C8	1D0E3E	1D3BEA	20EFF4	<03>	Booster Tower, 9F Area 01 (three yellow platforms w/save point)
+[0C0]	14B0ED	1D0DC0	1D3B63	20EFAC	<0D>	Booster Tower, 9F Area 02 (Booster's curtain game room)
+[102]	14BEEB	1D1264	1D3E15	20F2A9	<6E>	Booster Tower, Balcony at top floor
+[003]	14848A	1D0076	1D3166	20E409	<08>	Bowser's Keep 1st time, Area 01
+[004]	14848A	1D0088	1D316F	20E40C	<08>	Bowser's Keep 1st time, Area 02
+[105]	14BF62	1D129A	1D3E27	20F2B2	<50>	Bowser's Keep 1st time, Area 03 (lava room w/bridge)
+[00A]	1485E7	1D00F4	1D31B8	20E496	<0F>	Bowser's Keep 1st time, Area 04 (Throne Room)
+[1DC]	14E9D5	1D21B8	1D4760	20FCAD	<08>	Bowser's Keep 2nd Time, Area 01
+[1DD]	14E9E2	1D21CA	1D4769	20FCB6	<08>	Bowser's Keep 2nd Time, Area 02
+[1DE]	14EA03	1D21DC	1D477B	20FCB9	<50>	Bowser's Keep 2nd Time, Area 03 (lava room w/bridge)
+[1DF]	14EA4C	1D21EE	1D478D	20FCBC	<92>	Bowser's Keep 2nd Time, Area 04 (Throne Room)
+[142]	14C98A	1D16E4	1D40DE	20F465	<79>	Bowser's Keep 6-door, Action Room 1-A (jumping Terrapin)
+[1CA]	14E4F7	1D2074	1D46ED	20FB84	<7F>	Bowser's Keep 6-door, Action Room 1-B (moving platforms)
+[1C8]	14E441	1D2050	1D46D2	20FB72	<7B>	Bowser's Keep 6-door, Action Room 1-C (Gorilla throwing barrels)
+[141]	14C941	1D16D2	1D40D5	20F462	<79>	Bowser's Keep 6-door, Action Room 2-A (slow elevating platforms)
+[1C9]	14E48E	1D2062	1D46DB	20FB7B	<7F>	Bowser's Keep 6-door, Action Room 2-B (cannonball riding)
+[1C7]	14E3EC	1D203E	1D46C9	20FB69	<7B>	Bowser's Keep 6-door, Action Room 2-C (very slow moving circling platforms)
+[1CB]	14E550	1D2086	1D46FF	20FB8D	<81>	Bowser's Keep 6-door, Battle Room 1-A (1st fight: Terra Cotta)
+[1CC]	14E58D	1D2098	1D4708	20FBA8	<81>	Bowser's Keep 6-door, Battle Room 1-B (1st fight: Alley Rat)
+[1CD]	14E5CA	1D20AA	1D4711	20FBC3	<81>	Bowser's Keep 6-door, Battle Room 1-C (1st fight: Bob-Omb)
+[1CE]	14E607	1D20BC	1D4711	20FBE4	<81>	Bowser's Keep 6-door, Battle Room 2-A (1st fight: Gu Goomba)
+[178]	14D368	1D1AB0	1D4307	20F6CD	<81>	Bowser's Keep 6-door, Battle Room 2-B (1st fight: Chewy)
+[179]	14D3A5	1D1AC2	1D4310	20F6E8	<81>	Bowser's Keep 6-door, Battle Room 2-C (1st fight: Sparky)
+[1BE]	14E2E3	1D1F9C	1D466F	20FAC5	<8D>	Bowser's Keep 6-door, exit room after finishing 4 rooms
+[1D0]	14E685	1D20E0	1D471A	20FC02	<82>	Bowser's Keep 6-door, Puzzle Room 1-A (quiz)
+[1CF]	14E644	1D20CE	1D471A	20FBFF	<82>	Bowser's Keep 6-door, Puzzle Room 1-B (barrel-counting)
+[1D2]	14E6F3	1D2104	1D471A	20FC0E	<82>	Bowser's Keep 6-door, Puzzle Room 1-C (word problem)
+[1D3]	14E720	1D2116	1D471A	20FC17	<82>	Bowser's Keep 6-door, Puzzle Room 2-A (coin collecting)
+[1D1]	14E69E	1D20F2	1D471A	20FC05	<82>	Bowser's Keep 6-door, Puzzle Room 2-B (green switches)
+[1D4]	14E745	1D2128	1D471A	20FC1A	<82>	Bowser's Keep 6-door, Puzzle Room 2-C (ball solitaire)
+[1AF]	14E06B	1D1E8E	1D45ED	20FA21	<82>	Bowser's Keep 6-door, Puzzle Rooms ***
+[090]	14A6A4	1D0A60	1D38A3	20ED64	<8D>	Bowser's Keep 6-door, treasure after each room
+[1C5]	14E3AA	1D201A	1D46B7	20FB28	<35>	Bowser's Keep, Area 05 (dark tunnel, after throne room)
+[1C4]	14E391	1D2008	1D469C	20FB25	<35>	Bowser's Keep, Area 06 (save point w/Croco shop)
+[1C3]	14E378	1D1FF6	1D4693	20FB22	<35>	Bowser's Keep, Area 07 (150 coins and a mushroom)
+[1C6]	14E3DF	1D202C	1D46C9	20FB3C	<8D>	Bowser's Keep, Area 08 (room with 6 doors)
+[008]	1485CE	1D00D0	1D31AF	20E478	<35>	Bowser's Keep, Area 09 (tall room, w/o save point this time)
+[1C0]	14E321	1D1FC0	1D466F	20FB13	<7E>	Bowser's Keep, Area 09 (tall room, w/save point)
+[10A]	14C0C7	1D12F4	1D3E78	20F2D9	<80>	Bowser's Keep, Area 10 (Magikoopa's room)
+[1C1]	14E32E	1D1FD2	1D4678	20FB16	<7E>	Bowser's Keep, Area 11 (Thwomp/Bullet room after Magikoopa's room)
+[1C2]	14E36B	1D1FE4	1D468A	20FB19	<35>	Bowser's Keep, Area 12 (Croco's Shop 2, after Magikoopa's room)
+[190]	14D8C4	1D1C60	1D4488	20F8E0	<0F>	Bowser's Keep, Area 13 (2nd throne room, Boomer's room)
+[002]	148451	1D0064	1D3166	20E406	<09>	Bowser's Keep, outside (Mario enters at beginning of game)
+[1B7]	14E1A5	1D1F1E	1D464D	20FA6F	<09>	Bowser's Keep, outside (talk to Exor)
+[15F]	14CFAB	1D18EE	1D41F0	20F604	<7A>	Culex's Room
+[000]	148400	1D0040	1D3166	20E400	<20>	Debug Room
+[1B3]	14E0CE	1D1ED6	1D45FE	20FA39	<8A>	ENDING CREDITS: Bowser's Keep, Bowser & troops repair
+[1B0]	14E06B	1D1EA0	1D45ED	20FA24	<83>	ENDING CREDITS: Johnny looking out at sunset on beach shore
+[1FA]	14EF3B	1D23D4	1D48EB	20FDB6	<4F>	ENDING CREDITS: Marrymore Chapel, Booster wedding Valentina
+[10D]	14C146	1D132A	1D3EA3	20F2E8	<94>	ENDING CREDITS: Nimbus Land, Prince Mallow
+[177]	14D333	1D1A9E	1D4307	20F6CA	<93>	ENDING CREDITS: Star Pieces shoot through the sky
+[1E6]	14EB6F	1D226C	1D47EB	20FD06	<0B>	ENDING CREDITS: Star Pieces, last star piece to 'Thank You'
+[1B9]	14E243	1D1F42	1D465F	20FA87	<8C>	ENDING CREDITS: Toadofsky conducts choir
+[1F9]	14EEDE	1D23C2	1D48EB	20FDB3	<95>	ENDING CREDITS: Yo'ster Isle, Croco racing Yoshi
+[1D5]	14E79A	1D213A	1D471A	20FC23	<88>	Factory Grounds, Area 01
+[196]	14DA46	1D1CCC	1D44A3	20F90E	<88>	Factory Grounds, Area 01 (with Toad)
+[1D7]	14E860	1D215E	1D472C	20FC3B	<89>	Factory Grounds, Area 02
+[1D8]	14E8D9	1D2170	1D4735	20FC50	<89>	Factory Grounds, Area 03
+[1D6]	14E7E3	1D214C	1D472C	20FC2C	<87>	Factory Grounds, Area 04 (Gun Yolk's room)
+[1F0]	14ECA9	1D2320	1D4849	20FD92	<91>	Factory Grounds, fight with Smithy (uses Sledge)
+[1FD]	14EFA2	1D240A	1D4905	20FDBF	<96>	Factory Grounds, Smithy's Pad
+[0E6]	14B89B	1D106C	1D3DBB	20F19C	<12>	Forest Maze, 4-way path from Area 09
+[0F2]	14BB7C	1D1144	1D3DE8	20F21D	<21>	Forest Maze, all tree trunk underground areas
+[0E0]	14B73D	1D1000	1D3D7F	20F14D	<12>	Forest Maze, Area 01
+[0E2]	14B7BB	1D1024	1D3DA0	20F176	<12>	Forest Maze, Area 02
+[0E9]	14B985	1D10A2	1D3DBB	20F1DA	<21>	Forest Maze, Area 03 (underground)
+[0E4]	14B851	1D1048	1D3DA9	20F18C	<12>	Forest Maze, Area 04
+[0E1]	14B77A	1D1012	1D3D8E	20F150	<13>	Forest Maze, Area 05 (tree trunk Area)
+[0E5]	14B882	1D105A	1D3DB2	20F194	<12>	Forest Maze, Area 06
+[0EC]	14BA90	1D10D8	1D3DC4	20F1F4	<22>	Forest Maze, Area 07 (underground w/sleeping Wiggler)
+[0EB]	14BA3F	1D10C6	1D3DBB	20F1E5	<21>	Forest Maze, Area 08 (underground)
+[0E3]	14B804	1D1036	1D3DA9	20F17E	<14>	Forest Maze, Area 09 (leads to 4-path maze)
+[0E8]	14B904	1D1090	1D3DBB	20F1C5	<13>	Forest Maze, Bowyer's practice pad
+[0EA]	14B9D2	1010B4	1D3DBB	20F1E2	<21>	Forest Maze, Secret
+[0E7]	14B904	1D107E	1D3DBB	20F1B7	<12>	Forest Maze, Secret entrance
+[100]	14BE7E	1D1240	1D3E15	20F2A3	<13>	Forest Maze, Small area w/tree trunk ***
+[094]	14A72B	1D0AA8	1D38AC	20ED7C	<56>	GAME INTRO: Bandit's Way, Area 04
+[097]	14A7EE	1D0ADE	1D38AC	20ED8B	<32>	GAME INTRO: Booster Hill
+[123]	14C5C8	1D14B6	1D4004	20F388	<73>	GAME INTRO: Booster Tower, 7F (parachuting Spookums)
+[0FA]	14BD3C	1D11D4	1D3DE8	20F23B	<6E>	GAME INTRO: Booster Tower, balcony with Toadstool crying
+[101]	14BE7E	1D1252	1D3E15	20F2A6	<13>	GAME INTRO: Forest Maze, fighting Magikoopa at Bowyer's Pad
+[104]	14BF3D	1D1288	1D3E27	20F2AF	<23>	GAME INTRO: Forest Maze, jumping on Wiggler
+[0F6]	14BCAC	1D118C	1D3DE8	20F22F	<40>	GAME INTRO: Kero Sewers, Entrance
+[095]	14A764	1D0ABA	1D38AC	20ED7F	<36>	GAME INTRO: Midas River, Barrel Jumping
+[093]	14A6CA	1D0A96	1D38AC	20ED79	<5D>	GAME INTRO: Midas River, water tunnel
+[096]	14A7B1	1D0ACC	1D38AC	20ED88	<1A>	GAME INTRO: Moleville, outside during Bowser's troop scene
+[0F3]	14BBED	1D1156	1D3DE8	20F226	<11>	GAME INTRO: Mushroom Kingdom Castle, Throne Room
+[0F8]	14BCEE	1D11B0	1D3DE8	20F235	<7C>	GAME INTRO: Mushroom Way, Area 01
+[1AD]	14DFA9	1D1E6A	1D45DB	20FA16	<33>	GAME INTRO: Nimbus Land, outside with patrolling Birdies
+[0F5]	14BC87	1D117A	1D3DE8	20F22C	<44>	GAME INTRO: Pipe Vault, Area 02 (w/Thwomp)
+[0DB]	14B62C	1D0FA6	1D3D3C	20F0F0	<19>	GAME INTRO: Sea, shore with Sunken Ship
+[0F7]	14BCC5	1D119E	1D3DE8	20F232	<27>	GAME INTRO: Tadpole Pond, Mario summons tadpoles
+[0F9]	14BD2F	1D11C2	1D3DE8	20F238	<68>	GAME INTRO: Vista Hill
+[0F4]	14BC1A	1D1168	1D3DE8	20F229	<37>	GAME INTRO: Yo'ster Isle, talk to Yoshi & run around
+[1A2]	14DDDE	1D1DA4	1D4554	20F9BC	<65>	Gardener's House
+[1A1]	14DDC5	1D1D92	1D4542	20F9B9	<0B>	Gardener's House, outside
+[068]	149D21	1D0790	1D3685	20EABC	<97>	Grate Guy's Casino, entrance room
+[05C]	149A89	1D06B8	1D35E9	20E9B4	<98>	Grate Guy's Casino, inside casino
+[06A]	149D4B	1D07B4	1D36A0	20EADA	<07>	Grate Guy's Casino, outside
+[14D]	14CBA5	1D17AA	1D41BF	20F4DB	<40>	Kero Sewers Entrance
+[03E]	1490FC	1D049C	1D3491	20E808	<6A>	Kero Sewers, Area 01 (water room w/save)
+[038]	148FA6	1D0430	1D3439	20E759	<05>	Kero Sewers, Area 02 (long room w/three pipes)
+[039]	148FC3	1D0442	1D3442	20E771	<05>	Kero Sewers, Area 03 (large water room w/pipe in center)
+[03C]	14904A	1D0478	1D345D	20E7C9	<2F>	Kero Sewers, Area 04 (large room w/Pandorite and hiding Rat Funks)
+[03B]	149015	1D0466	1D345D	20E7B2	<05>	Kero Sewers, Area 05 (super star room w/four Rat Funks)
+[03A]	148FF4	1D0454	1D344B	20E799	<05>	Kero Sewers, Area 06 (long water room w/Rat Funks in a line)
+[12D]	14C609	1D156A	1D4004	20F3A6	<2F>	Kero Sewers, Area 07 (water switch room w/Boos)
+[12E]	14C652	1D157C	1D4004	20F3BD	<5B>	Kero Sewers, Area 08 (Belome's Room)
+[12F]	14C683	1D158E	1D4004	20F3CC	<5B>	Kero Sewers, Area 08 (Belome's Room, after defeat)
+[197]	14DAA3	1D1CDE	1D44AC	20F923	<5F>	Land's End Cliff (climb w/Sky Troopas)
+[13D]	14C86D	1D168A	1D40A8	20F450	<76>	Land's End Desert, Area 01
+[13E]	14C8A2	1D169C	1D40BA	20F453	<76>	Land's End Desert, Area 02
+[192]	14D936	1D1C84	1D449A	20F8FC	<76>	Land's End Desert, Area 03
+[194]	14D9B8	1D1CA8	1D44A3	20F902	<76>	Land's End Desert, Area 04
+[193]	14D983	1D1C96	1D44A3	20F8FF	<76>	Land's End Desert, Area 05
+[13F]	14C8EF	1D16AE	1D40C3	20F456	<76>	Land's End Desert, Area 06
+[10E]	14C1B3	1D133C	1D3EA3	20F2EB	<75>	Land's End Secret Underground, Area 01 (leads to Kero Sewers)
+[191]	14D8F1	1D1C72	1D4491	20F8EF	<75>	Land's End Secret Underground, Area 02 (leads to Kero Sewers)
+[107]	14C034	1D12BE	1D3E39	20F2BE	<23>	Land's End Underground, Area 01
+[108]	14C06D	1D12D0	1D3E42	20F2C1	<23>	Land's End Underground, Area 02
+[109]	14C09A	1D12E2	1D3E54	20F2C4	<23>	Land's End Underground, Area 03
+[106]	14BFC3	1D12AC	1D3E30	20F2BB	<75>	Land's End Underground, Area 04 (buy super stars)
+[089]	14A4A6	1D09E2	1D3852	20ED03	<70>	Land's End, Area 01
+[08A]	14A4E3	1D09F4	1D385B	20ED0C	<70>	Land's End, Area 02
+[08B]	14A52C	1D0A06	1D386D	20ED25	<70>	Land's End, Area 03 (Geckits playing cannonball)
+[08D]	14A579	1D0A2A	1D387F	20ED30	<71>	Land's End, Area 04 (rotating flowers)
+[08E]	14A5B2	1D0A3C	1D389A	20ED48	<71>	Land's End, Area 05 (sky bridge)
+[08C]	14A579	1D0A18	1D387F	20ED2D	<70>	Land's End, Areas ***
+[1A3]	14DE0F	1D1DB6	1D455D	20F9CB	<33>	Lazy Shell cloud
+[010]	148769	1D0160	1D31D8	20E4C6	<06>	Mario's Pad
+[0BD]	14AFAE	1D0D8A	1D3AD6	20EF68	<58>	Mario's Pipehouse
+[099]	14A87C	1D0B02	1D38B4	20EDAD	<4F>	Marrymore Chapel, entrance to sanctuary
+[09B]	14A956	1D0B26	1D38B4	20EDCF	<63>	Marrymore Chapel, kitchen
+[09C]	14A973	1D0B38	1D38C4	20EDD2	<66>	Marrymore Chapel, kitchen (no sprites/exits, unused?)
+[098]	14A817	1D0AF0	1D38AC	20ED8E	<4E>	Marrymore Chapel, main hall
+[041]	1491BA	1D04D2	1D34AC	20E843	<4F>	Marrymore Chapel, sanctuary
+[09A]	14A8C9	1D0B14	1D38B4	20EDC6	<4F>	Marrymore Chapel, sanctuary (during Booster)
+[007]	148569	1D00BE	1D31AF	20E426	<63>	Marrymore Inn, 1F
+[006]	14853C	1D00AC	1D3196	20E423	<65>	Marrymore Inn, 2F
+[00B]	14861C	1D0106	1D31B8	20E49F	<65>	Marrymore Inn, 3F
+[009]	1485CE	1D00E2	1D31AF	20E47B	<63>	Marrymore Inn, regular room
+[00C]	14865D	1D0118	1D31C9	20E4A2	<38>	Marrymore Inn, Suite room
+[040]	149115	1D04C0	1D3491	20E818	<62>	Marrymore, outside
+[005]	1484BB	1D009A	1D3178	20E415	<62>	Marrymore, outside (during Booster)
+[046]	1493DB	1D052C	1D34BB	20E8A6	<5D>	Midas River, 1st tunnel
+[047]	14943C	1D053E	1D34BB	20E8A9	<5D>	Midas River, 2nd tunnel (both left and right)
+[048]	149489	1D0550	1D34BB	20E8AC	<5D>	Midas River, 3rd tunnel (on left)
+[049]	1494D6	1D0562	1D34BB	20E8AF	<5D>	Midas River, 4th tunnel (on very bottom right)
+[044]	149309	1D0508	1D34BB	20E870	<36>	Midas River, barrel jumping river
+[043]	1492B4	1D04F6	1D34B5	20E867	<36>	Midas River, business transaction Area
+[045]	14936E	1D051A	1D34BB	20E8A3	<39>	Midas River, waterfall
+[114]	14C325	1D13A8	1D3EF8	20F30F	<24>	Moleville Mines, Area 01 (entrance)
+[112]	14C2CB	1D1384	1D3ED7	20F303	<24>	Moleville Mines, Area 02
+[116]	14C377	1D13CC	1D3F22	20F315	<24>	Moleville Mines, Area 03 (leads back to Area 1)
+[111]	14C29E	1D1372	1D3EBE	20F300	<24>	Moleville Mines, Area 04 (w/trampoline)
+[115]	14C33A	1D13BA	1D3F11	20F312	<24>	Moleville Mines, Area 05 (left of trampoline room)
+[113]	14C2FC	1D1396	1D3EE7	20F30C	<24>	Moleville Mines, Area 06 (small room leading to Area 06)
+[119]	14C3E2	1D1402	1D3F56	20F324	<24>	Moleville Mines, Area 07 (from Croco's bombed room)
+[117]	14C394	1D13DE	1D3F34	20F318	<24>	Moleville Mines, Area 08 (Croco's bombed room)
+[11B]	14C444	1D1426	1D3F81	20F32A	<29>	Moleville Mines, Area 09 (leads left to Croco's bombed room)
+[11A]	14C41F	1D1414	1D3F70	20F327	<24>	Moleville Mines, Area 10 (small room w/minecart tracks)
+[110]	14C26D	1D1360	1D3EAC	20F2FD	<24>	Moleville Mines, Area 11 (bombed room w/singing Moles)
+[11E]	14C4EB	1D145C	1D3FAC	20F350	<29>	Moleville Mines, Area 12 (2-level room, leads to long minecart tracks room)
+[11D]	14C4A6	1D144A	1D3F9B	20F342	<29>	Moleville Mines, Area 13 (long minecart tracks room)
+[11F]	14C510	1D146E	1D3FC5	20F359	<29>	Moleville Mines, Area 14 (2-level room from long minecart tracks room)
+[118]	14C3BD	1D13F0	1D3F46	20F321	<24>	Moleville Mines, Area 15 (2-level room w/Sparky and 10-coin TC)
+[120]	14C53D	1D1480	1D3FE0	20F35C	<29>	Moleville Mines, Area 16 (large save-point room w/four Bob-ombs)
+[10F]	14C204	1D134E	1D3EAC	20F2EE	<2A>	Moleville Mines, Area 17 (Punchinello's room)
+[121]	14C57A	1D1492	1D3FE9	20F36A	<2A>	Moleville Mines, Area 17 (Punchinello's room)
+[122]	14C5BB	1D14A4	1D3FF2	20F379	<2A>	Moleville Mines, Area 17 (Punchinello's room, before defeat)
+[11C]	14C481	1D1438	1D3F92	20F333	<29>	Moleville Mines, Area 18 (minecart room)
+[152]	14CCE6	1D1804	1D41C5	20F537	<01>	Moleville, Dyna and Mite's house
+[069]	149D32	1D07A2	1D3697	20EABF	<01>	Moleville, Dyna and Mite's house (before rescue)
+[153]	14CD17	1D1816	1D41CE	20F552	<01>	Moleville, Fireworks shop
+[151]	14CCB5	1D17F2	1D41C5	20F50A	<01>	Moleville, Inn
+[150]	14CC6C	1D17E0	1D41C5	20F4F5	<01>	Moleville, Item Shop
+[06C]	149DC9	1D07D8	1D36BB	20EAE6	<61>	Moleville, Outside
+[066]	149CAF	1D076C	1D3649	20EAB0	<1A>	Moleville, Outside (at Mines entrance)
+[154]	14CD3C	1D1828	1D41CE	20F573	<01>	Moleville, Special item-trading shop
+[18F]	14D87B	1D1C4E	1D447F	20F8D1	<77>	Monstro Town, 3 Musty Fears Inn
+[10B]	14C0EC	1D1306	1D3E91	20F2DC	<78>	Monstro Town, entrance
+[0FF]	14BE59	1D122E	1D3E0C	20F2A0	<4A>	Monstro Town, Jinx's Dojo
+[18B]	14D7B7	1D1C06	1D445D	20F8A7	<77>	Monstro Town, Monstermama's house (1F)
+[18C]	14D7F8	1D1C18	1D4465	20F8B0	<77>	Monstro Town, Monstermama's house (2F)
+[144]	14C9EC	1D1708	1D40F9	20F46B	<78>	Monstro Town, outside
+[18D]	14D81D	1D1C2A	1D446D	20F8BF	<77>	Monstro Town, super-jumping room
+[18E]	14D842	1D1C3C	1D4476	20F8CE	<77>	Monstro Town, Weapon and Armor Shop
+[031]	148EB0	1D03B2	1D340B	20E6F8	<1E>	Mushroom Kingdom before Croco, Inn (1F)
+[035]	148F28	1D03FA	1D3425	20E732	<1E>	Mushroom Kingdom before Croco, Item Shop (basement)
+[02F]	148E7E	1D038E	1D33F1	20E6E8	<1E>	Mushroom Kingdom before Croco, Item Shop (top floor)
+[02C]	148E2F	1D0358	1D33CF	20E6C4	<1E>	Mushroom Kingdom before Croco, jumping kid's house (1F)
+[02D]	148E4C	1D036A	1D33E0	20E6D1	<1E>	Mushroom Kingdom before Croco, jumping kid's house (2F)
+[02E]	148E59	1D037C	1D33E8	20E6D4	<1E>	Mushroom Kingdom before Croco, Raz and Raini's house
+[033]	148EF2	1D03D6	1D341C	20E703	<1E>	Mushroom Kingdom before Croco, running kid's house
+[149]	14CB41	1D1762	1D416E	20F4BD	<11>	Mushroom Kingdom Castle during Mack, branch room to Vault/Guest Room
+[143]	14C9DB	1D16F6	1D40E7	20F468	<11>	Mushroom Kingdom Castle during Mack, entrance to Throne Room
+[14C]	14CB88	1D1798	1D41A4	20F4D2	<11>	Mushroom Kingdom Castle during Mack, entrance to Toadstool's room
+[14A]	14CB5E	1D1774	1D4192	20F4C0	<11>	Mushroom Kingdom Castle during Mack, Guest room
+[145]	14CA11	1D171A	1D412F	20F479	<11>	Mushroom Kingdom Castle during Mack, Main Hall
+[147]	14CACF	1D173E	1D4153	20F4AB	<11>	Mushroom Kingdom Castle during Mack, stairwell to Toadstool's Room
+[146]	14CA56	1D172C	1D4153	20F47C	<11>	Mushroom Kingdom Castle during Mack, Throne Room
+[148]	14CAF4	1D1750	1D4165	20F4AE	<11>	Mushroom Kingdom Castle during Mack, Toadstool's Room
+[14B]	14CB6B	1D1786	1D419B	20F4CF	<11>	Mushroom Kingdom Castle during Mack, Vault
+[01E]	148ACA	1D025C	1D32E8	20E597	<11>	Mushroom Kingdom Castle, ___ ***
+[015]	14886D	1D01BA	1D321F	20E512	<11>	Mushroom Kingdom Castle, branch room to Vault/Guest Room
+[140]	14C924	1D16C0	1D40CC	20F459	<11>	Mushroom Kingdom Castle, Entrance to Throne room
+[020]	148B17	1D0280	1D32E8	20E5A3	<11>	Mushroom Kingdom Castle, Entrance to Toadstool's room
+[016]	148886	1D01CC	1D3231	20E51B	<11>	Mushroom Kingdom Castle, Guest room
+[011]	14879A	1D0172	1D31E0	20E4E4	<11>	Mushroom Kingdom Castle, Main Hall
+[013]	148824	1D0196	1D3204	20E500	<11>	Mushroom Kingdom Castle, Stair Room to Toadstool's room
+[012]	1487D7	1D0184	1D31FB	20E4ED	<11>	Mushroom Kingdom Castle, Throne Room
+[01D]	148A41	1D024A	1D32E8	20E58E	<11>	Mushroom Kingdom Castle, Throne Room (Princess returns)
+[014]	148824	1D01A8	1D3216	20E503	<11>	Mushroom Kingdom Castle, Toadstool's room
+[01F]	148ACA	1D026E	1D32E8	20E59A	<11>	Mushroom Kingdom Castle, Vault
+[1E5]	14EB3A	1D225A	1D47DA	20FCFE	<1E>	Mushroom Kingdom during Mack, Inn (1F)
+[1E4]	14EB15	1D2248	1D47D2	20FCE2	<1E>	Mushroom Kingdom during Mack, Item Shop (basement)
+[1E3]	14EAF0	1D2236	1D47C1	20FCDF	<1E>	Mushroom Kingdom during Mack, Item Shop (top floor)
+[1E0]	14EA85	1D2200	1D479F	20FCC5	<1E>	Mushroom Kingdom during Mack, jumping kid's house (1F)
+[1E1]	14EAB2	1D2212	1D47B0	20FCC8	<1E>	Mushroom Kingdom during Mack, jumping kid's house (2F)
+[0BE]	14AFDF	1D0D9C	1D3ADF	20EF77	<5A>	Mushroom Kingdom during Mack, Outside
+[1E2]	14EAD7	1D2224	1D47B8	20FCCB	<1E>	Mushroom Kingdom during Mack, Raz and Raini's house
+[1E7]	14EB94	1D227E	1D47EB	20FD09	<1E>	Mushroom Kingdom during Mack, running kid's house
+[017]	14889F	1D01DE	1D323A	20E52A	<1C>	Mushroom Kingdom, before Croco, Outside
+[1ED]	14EC4A	1D22EA	1D482F	20FD60	<1E>	Mushroom Kingdom, Inn (1F)
+[034]	148F0F	1D03E8	1D3425	20E712	<1E>	Mushroom Kingdom, Inn (2F)
+[1EC]	14EC25	1D22D8	1D4827	20FD44	<1E>	Mushroom Kingdom, Item Shop (basement)
+[1EB]	14EC00	1D22C6	1D4816	20FD37	<1E>	Mushroom Kingdom, Item Shop (top floor)
+[1E8]	14EBB1	1D2290	1D47F4	20FD18	<1E>	Mushroom Kingdom, jumping kid's house (1F)
+[1E9]	14EBCE	1D22A2	1D4805	20FD25	<1E>	Mushroom Kingdom, jumping kid's house (2F)
+[1EE]	14EC7F	1D22FC	1D4840	20FD68	<1E>	Mushroom Kingdom, jumping kid's house, no one there (1F)
+[0BF]	14B04C	1D0DAE	1D3B21	20EF7A	<1C>	Mushroom Kingdom, Outside
+[1EA]	14EBDB	1D22B4	1D480D	20FD28	<1E>	Mushroom Kingdom, Raz and Raini's house
+[1EF]	14EC8C	1D230E	1D4840	20FD83	<1E>	Mushroom Kingdom, running kid's house
+[0CB]	14B380	1D0E86	1D3C26	20F01C	<59>	Mushroom Way, Area 01
+[0CC]	14B3D1	1D0E98	1D3C2F	20F025	<30>	Mushroom Way, Area 02
+[0CD]	14B432	1D0EAA	1D3C41	20F044	<59>	Mushroom Way, Area 03
+[06D]	149E3E	1D07EA	1D36F7	20EAFA	<3E>	Nimbus Castle, Area 01 (entrance hall)
+[074]	149FE1	1D0868	1D3775	20EB39	<3E>	Nimbus Castle, Area 02 (left of Area 01)
+[1F5]	14EE16	1D237A	1D48C7	20FDA7	<3E>	Nimbus Castle, Area 03 (4-way path)
+[073]	149FB0	1D0856	1D3751	20EB30	<3E>	Nimbus Castle, Area 03 (4-way path, during Valentina)
+[1F4]	14EDF1	1D2368	1D48AC	20FDA4	<3E>	Nimbus Castle, Area 04 (red brick path, left of 4-way path)
+[06F]	149EC0	1D080E	1D3709	20EB0C	<3E>	Nimbus Castle, Area 04 (red brick path, left of 4-way path, during Valentina)
+[1F3]	14EDA0	1D2356	1D487F	20FDA1	<3E>	Nimbus Castle, Area 05 (long 5-exit room, after Valentina)
+[076]	14A07F	1D088C	1D3787	20EB6C	<3E>	Nimbus Castle, Area 05 (long 5-exit room, during Valentina)
+[1F1]	14ED42	1D2332	1D4849	20FD95	<3F>	Nimbus Castle, Area 06 (left-most front door from Area 05)
+[077]	14A0F0	1D089E	1D37B4	20EB6F	<3F>	Nimbus Castle, Area 06 (left-most front door from Area 05, during Valentina)
+[19A]	14DB8E	1D1D14	1D44C7	20F956	<3F>	Nimbus Castle, Area 07 (straight from Area 06 w/long staircase)
+[19E]	14DCA6	1D1D5C	1D44FD	20F96E	<3F>	Nimbus Castle, Area 08 (from Area 07, get Room Key 1 here)
+[199]	14DB41	1D1C02	1D44B5	20F953	<3F>	Nimbus Castle, Area 09 (Birdo's Room, during Valentina)
+[06B]	149D74	1D07C6	1D36A9	20EAE3	<3F>	Nimbus Castle, Area 09 (Statue Room, after Valentina)
+[1F2]	14ED63	1D2344	1D4864	20FD9E	<3E>	Nimbus Castle, Area 10 (red brick 2-level room from Birdo's room)
+[072]	149F63	1D0844	1D3736	20EB27	<3E>	Nimbus Castle, Area 10 (red brick 2-level room from Birdo's room, during Valentina)
+[19C]	14DC0C	1D1D38	1D44E2	20F962	<3F>	Nimbus Castle, Area 11 (long hallway, door to King's Cellar)
+[07A]	14A1EB	1D08D4	1D37CF	20EBAD	<3F>	Nimbus Castle, Area 12 (entrance to throne room)
+[1B8]	14E1DE	1D1F30	1D464D	20FA72	<3F>	Nimbus Castle, Area 13 (Throne room, after Valentina)
+[078]	14A141	1D08B0	1D37BD	20EB78	<3F>	Nimbus Castle, Area 13 (Throne Room, during Valentina)
+[198]	14DAF0	1D1CF0	1D44B5	20F944	<3F>	Nimbus Castle, Area 14 (right-most front door of long 5-exit room) 
+[075]	14A036	1D087A	1D377E	20EB4E	<3E>	Nimbus Castle, Area 15 (front of 4-way path, large right-angle room w/plant)
+[071]	149F32	1D0832	1D372D	20EB1E	<3E>	Nimbus Castle, Area 16 (small two-door room w/treasure, from Area 15)
+[070]	149F01	1D0820	1D3724	20EB0F	<3E>	Nimbus Castle, Area 17 (right of 4-way path, Save Point)
+[06E]	149E9F	1D07FC	1D3700	20EB09	<3E>	Nimbus Castle, Area 18 (Dodo's statue-polishing room)
+[19D]	14DC75	1D1D4A	1D44F4	20F96B	<3F>	Nimbus Castle, King's locked cellar
+[19B]	14DBE7	1D1D26	1D44D9	20F959	<3F>	Nimbus Castle, path after Throne room (1st)
+[079]	14A19A	1D08C2	1D37C6	20EB81	<3F>	Nimbus Castle, path after Throne Room (2nd)
+[1B5]	14E11F	1D1EFA	1D45FE	20FA3F	<3F>	Nimbus Castle, path after Throne room (3rd)
+[1F7]	14EE80	1D239E	1D48EB	20FDAD	<41>	Nimbus Land, Dream Cushion Dream: Heavy Troopa laying on Mario
+[1F6]	14EE37	1D238C	1D48EB	20FDAA	<41>	Nimbus Land, Dream Cushion Dream: small cloud, person cheers on Mario/bed floats
+[1F8]	14EEA5	1D23B0	1D48EB	20FDB0	<41>	Nimbus Land, Dream Cushion Dream: Tortes are seasoning Mario
+[17E]	14D536	1D1B1C	1D437C	20F87A	<72>	Nimbus Land, entrance (no trampolines/exits)
+[171]	14D281	1D1A32	1D4307	20F66A	<72>	Nimbus Land, entrance (w/warp trampoline)
+[172]	14D29A	1D1A44	1D4307	20F685	<8F>	Nimbus Land, entrance to hot springs
+[173]	14D2CF	1D1A56	1D4307	20F68E	<8F>	Nimbus Land, fall from platform (1st)
+[174]	14D2DC	1D1A68	1D4307	20F69D	<8F>	Nimbus Land, fall from platform (2nd)
+[175]	14D301	1D1A7A	1D4307	20F6B8	<8F>	Nimbus Land, fall from platform (3rd)
+[176]	14D326	1D1A8C	1D4307	20F6C7	<8F>	Nimbus Land, fall from platform (4th)
+[155]	14CD61	1D183A	1D41CE	20F594	<41>	Nimbus Land, Garro's House
+[1BF]	14E2F0	1D1FAE	1D466F	20FACE	<8E>	Nimbus Land, hot springs
+[157]	14CDEB	1D185E	1D41CE	20F5BF	<41>	Nimbus Land, Inn
+[15A]	14CE82	1D1894	1D41D7	20F5DF	<41>	Nimbus Land, Inn (bedroom)
+[158]	14CE1C	1D1870	1D41D7	20F5C8	<41>	Nimbus Land, Item Shop
+[156]	14CDD2	1D184C	1D41CE	20F5B6	<41>	Nimbus Land, lower house
+[1B6]	14E13C	1D1F0C	1D4610	20FA42	<33>	Nimbus Land, outside (after Valentina)
+[1A0]	14DD18	1D1D80	1D450E	20F986	<33>	Nimbus Land, outside (before Valentina)
+[03D]	14907F	1D048A	1D345D	20E7DB	<33>	Nimbus Land, outside (during Valentina right before fight)
+[1AE]	14DFCE	1D1E7C	1D45E4	20FA19	<85>	Nimbus Land, outside (during Valentina)
+[170]	14D24C	1D1A20	1D4307	20F661	<8F>	Nimbus Land, Royal Bus station
+[19F]	14DD0B	1D1D6E	1D4506	20F971	<8B>	Nimbus Land, small platform after Nimbus Castle throne paths
+[159]	14CE41	1D1882	1D41D7	20F5D6	<41>	Nimbus Land, top-right house (Croco drops Signal Ring)
+[037]	148FA6	1D041E	1D342D	20E751	<40>	Pipe Vault Entrance
+[07B]	14A224	1D08E6	1D37CF	20EBBC	<45>	Pipe Vault, Area 01
+[092]	14A6CA	1D0A84	1D38AC	20ED76	<44>	Pipe Vault, Area 01 (messed tilemap) ***
+[07F]	14A304	1D092E	1D37CF	20EC4F	<44>	Pipe Vault, Area 02
+[07C]	14A255	1D08F8	1D37CF	20EBC4	<44>	Pipe Vault, Area 03 (line of pipes)
+[07D]	14A26E	1D090A	1D37CF	20EBF4	<44>	Pipe Vault, Area 04 (line of coins, 2 hidden treasures)
+[081]	14A3AE	1D0952	1D37CF	20ECB9	<44>	Pipe Vault, Area 05
+[07E]	14A2D3	1D091C	1D37CF	20EC10	<44>	Pipe Vault, Area 06 (line of red pipes)
+[080]	14A335	1D0940	1D37CF	20ECAC	<44>	Pipe Vault, Area 07 (long path w/moving platforms)
+[08F]	14A637	1D0A4E	1D38A3	20ED61	<44>	Pipe Vault, Goomba-thumping room
+[055]	1498C2	1D063A	1D35C6	20E93F	<2E>	Rose Town during Bowyer, Inn (1F)
+[05F]	149B48	1D06EE	1D3614	20E9BD	<2E>	Rose Town during Bowyer, Inn (2F)
+[053]	1497E0	1D0616	1D3557	20E8FA	<60>	Rose Town during Bowyer, outside
+[059]	149A22	1D0682	1D35D7	20E981	<2E>	Rose Town during Bowyer, three grandkids' house
+[05D]	149AD6	1D06CA	1D35F2	20E9B7	<2E>	Rose Town during Bowyer, treasure house (1F)
+[061]	149B7A	1D0712	1D3624	20E9F3	<2E>	Rose Town during Bowyer, treasure house (2F)
+[05B]	149A70	1D06A6	1D35E9	20E99F	<2E>	Rose Town, couple's house
+[063]	149BB8	1D0736	1D3634	20EA35	<5E>	Rose Town, Geno Awakens in Inn (1F)
+[056]	14990F	1D064C	1D35C6	20E968	<2E>	Rose Town, Inn (1F)
+[060]	149B61	1D0700	1D361C	20E9D8	<2E>	Rose Town, Inn (2F)
+[057]	149984	1D065E	1D35D7	20E96B	<2E>	Rose Town, Item Shop
+[054]	14984D	1D0628	1D358A	20E937	<0B>	Rose Town, outside
+[05A]	149A4B	1D0694	1D35E0	20E990	<2E>	Rose Town, three grandkids' house
+[05E]	149B0F	1D06DC	1D3603	20E9BA	<2E>	Rose Town, treasure house (1F)
+[062]	149B9F	1D0724	1D362C	20EA14	<2E>	Rose Town, treasure house (2F)
+[042]	149247	1D04E4	1D34AC	20E858	<3B>	Rose Way, exit Area where Bowser's Troops gathered
+[04F]	1496A8	1D05CE	1D3506	20E8E8	<5C>	Rose Way, main Area
+[051]	149762	1D05F2	1D3533	20E8F4	<3B>	Rose Way, treasure chests w/coins Area
+[050]	149735	1D05E0	1D352A	20E8F1	<3B>	Rose Way, two fast-floating platforms
+[052]	1497AB	1D0604	1D3545	20E8F7	<3B>	Rose Way, winding path w/Crooks
+[087]	14A488	1D09BE	1D3840	20ECF8	<42>	Sea, Area 01 (entrance)
+[082]	14A3CF	1D0964	1D37CF	20ECDF	<42>	Sea, Area 02 (large room with shop)
+[086]	14A44F	1D09AC	1D382E	20ECF5	<9B>	Sea, Area 03 (super star room)
+[083]	14A3E8	1D0976	1D37E9	20ECEC	<9B>	Sea, Area 04 (bunch of Zeostars)
+[084]	14A405	1D0988	1D3803	20ECEF	<42>	Sea, Area 05 (from Area 02 w/save point)
+[085]	14A426	1D099A	1D3814	20ECF2	<42>	Sea, Area 06 (water room w/whirlpools)
+[088]	14A495	1D09D0	1D3849	20ECFB	<42>	Sea, Area 07 (small underwater room)
+[0AE]	14AD33	1D0C7C	1D39B6	20EEB2	<19>	Sea, Area 08 (shore with Sunken Ship)
+[0D9]	14B612	1D0F82	1D3D2A	20F0EA	<1F>	Seaside Town during Yaridovich, Accessory Shop (right-most)
+[13B]	14C7FB	1D1666	1D4096	20F44A	<69>	Seaside Town during Yaridovich, Beach
+[0D5]	14B5C2	1D0F3A	1D3CFD	20F0DE	<1F>	Seaside Town during Yaridovich, Beetles Are Us/Bomb Shop
+[0D3]	14B5A8	1D0F16	1D3CE4	20F0C0	<1F>	Seaside Town during Yaridovich, Elder's House (1F)
+[0D4]	14B5B5	1D0F28	1D3CF5	20F0C3	<1F>	Seaside Town during Yaridovich, Elder's House (2F)
+[0D7]	14B5F4	1D0F5E	1D3D18	20F0E4	<1F>	Seaside Town during Yaridovich, Health Food Store (left-most)
+[0D1]	14B582	1D0EF2	1D3CCB	20F0A2	<1F>	Seaside Town during Yaridovich, Inn (1F)
+[0D2]	14B59B	1D0F04	1D3CDC	20F0A5	<1F>	Seaside Town during Yaridovich, Inn (2F)
+[0D8]	14B601	1D0F70	1D3D21	20F0E7	<1F>	Seaside Town during Yaridovich, Mushroom Boy Shop (middle)
+[0D0]	14B539	1D0EE0	1D3C6B	20F09F	<07>	Seaside Town during Yaridovich, Outside
+[0DA]	14B61F	1D0F94	1D3D33	20F0ED	<1F>	Seaside Town during Yaridovich, Shed (unused b/c inaccessible)
+[0D6]	14B5D3	1D0F4C	1D3D06	20F0E1	<1F>	Seaside Town during Yaridovich, Weapons and Armor Shop
+[139]	14C78D	1D1642	1D4084	20F444	<1F>	Seaside Town, Accessory Shop
+[13C]	14C848	1D1678	1D409F	20F44D	<69>	Seaside Town, Beach
+[135]	14C70D	1D15FA	1D4057	20F438	<1F>	Seaside Town, Beetles Are Us
+[133]	14C6F3	1D15D6	1D403E	20F41A	<1F>	Seaside Town, Elder's house (1F)
+[134]	14C700	1D15E8	1D404F	20F41D	<1F>	Seaside Town, Elder's house (2F)
+[137]	14C75B	1D161E	1D4072	20F43E	<1F>	Seaside Town, Health Food Store
+[131]	14C6C1	1D15B2	1D4025	20F3FC	<1F>	Seaside Town, Inn (1F)
+[132]	14C6E6	1D15C4	1D4036	20F3FF	<1F>	Seaside Town, Inn (2F)
+[138]	14C774	1D1630	1D407B	20F441	<1F>	Seaside Town, Mushroom Boy's Shop
+[130]	14C6B4	1D15A0	1D4004	20F3CF	<6C>	Seaside Town, Outside
+[13A]	14C7A6	1D1654	1D408D	20F447	<1F>	Seaside Town, Shed
+[136]	14C732	1D160C	1D4060	20F43B	<1F>	Seaside Town, Weapon and Armor shop
+[1B4]	14E11F	1D1EE8	1D45FE	20FA3C	<86>	Smithy Factory, ___ ***
+[1BC]	14E2D6	1D1F78	1D466F	20FAB9	<49>	Smithy Factory, ___ ***
+[15E]	14CF8E	1D18DC	1D41E0	20F601	<86>	Smithy Factory, Area 01
+[0DC]	14B669	1D0FB8	1D3D3C	20F0F3	<47>	Smithy Factory, Area 02 (w/save point)
+[0DE]	14B6AF	1D0FDC	1D3D6E	20F105	<47>	Smithy Factory, Area 03 (Glum Reapers)
+[0DD]	14B686	1D0FCA	1D3D55	20F102	<86>	Smithy Factory, Area 04 (green switch w/Ameboids)
+[0ED]	14BAE5	1D10EA	1D3DCD	20F1FC	<86>	Smithy Factory, Area 05 (w/save point)
+[0EF]	14BB2F	1D110E	1D3DDF	20F202	<86>	Smithy Factory, Area 06 (Ultra Hammer)
+[0DF]	14B728	1D0FEE	1D3D7F	20F144	<46>	Smithy Factory, Area 07 (Count Down's room)
+[1B1]	14E078	1D1EB2	1D45ED	20FA27	<46>	Smithy Factory, Area 07 (Count Down's room, after defeat)
+[1FB]	14EF88	1D23E6	1D48EB	20FDB9	<86>	Smithy Factory, Area 08 (Trampoline after Count Down)
+[1B2]	14E091	1D1EC4	1D45ED	20FA2A	<49>	Smithy Factory, Area 09 (falling Axem Reds on conveyor belts)
+[1BD]	14E2D6	1D1F8A	1D466F	20FABC	<86>	Smithy Factory, Area 10 (fall from Area 09)
+[1BA]	14E274	1D1F54	1D465F	20FA8A	<49>	Smithy Factory, Area 11 (conveyor belts spawning Drill Bits and Macks)
+[1DB]	14E994	1D21A6	1D4750	20FC86	<90>	Smithy Factory, Area 12 (lots of consecutive conveyor belts and LIL~BOOS)
+[1D9]	14E932	1D2182	1D4735	20FC65	<90>	Smithy Factory, Area 13 (Bowyers falling down conveyor belts)
+[1FC]	14EF95	1D23F8	1D48F3	20FDBC	<86>	Smithy Factory, Area 14 (w/save point)
+[1DA]	14E967	1D2194	1D4747	20FC72	<90>	Smithy Factory, Area 15 (falling Yaridovichs)
+[1BB]	14E2BD	1D1F66	1D466F	20FAB1	<49>	Smithy Factory, Area 16 (small room w/two treasures after falling Yaridovich room)
+[067]	149D08	1D077E	1D3685	20EAB3	<49>	Smithy Factory, Area 17 (Domino and Cloaker's room)
+[0EE]	14BB22	1D10FC	1D3DDF	20F1FF	<86>	Smithy Factory, fall from lugnut rooms (Area 06 & prior)
+[058]	1499CD	1D0670	1D35D7	20E97E	<91>	Smithy's Final Form Defeat: Geno's Redemption
+[091]	14A6B1	1D0A72	1D38AC	20ED67	<99>	Star Hill, Area 01
+[09E]	14A9FC	1D0B5C	1D38CC	20EDFB	<64>	Star Hill, Area 02
+[09D]	14A973	1D0B4A	1D38CC	20EDDB	<64>	Star Hill, Area 03
+[09F]	14AA7D	1D0B6E	1D38CC	20EE1B	<64>	Star Hill, Area 04
+[0AD]	14AD26	1D0C6A	1D39AD	20EEA9	<18>	Sunken Ship post-KC, Area 01 (small room w/Trampoline)
+[0B4]	14AE71	1D0CE8	1D3A22	20EF11	<18>	Sunken Ship post-KC, Area 02 (small 2-level room)
+[0B5]	14AE8A	1D0CFA	1D3A3D	20EF20	<18>	Sunken Ship post-KC, Area 03 (Alley Rats on cannons)
+[0B2]	14AE27	1D0CC4	1D39FE	20EEFF	<18>	Sunken Ship post-KC, Area 04 (long stairwell w/running Alley Rats)
+[0AF]	14AD7C	1D0C8E	1D39BF	20EED8	<18>	Sunken Ship post-KC, Area 05 (w/Dry Bones, linked by Mario mirror room)
+[0B3]	14AE40	1D0CD6	1D3A10	20EF0E	<18>	Sunken Ship post-KC, Area 06 (Mario Mirror room)
+[0B6]	14AECB	1D0D0C	1D3A58	20EF23	<18>	Sunken Ship post-KC, Area 07 (three Dry Bones)
+[0B7]	14AEEC	1D0D1E	1D3A73	20EF32	<18>	Sunken Ship post-KC, Area 08 (secret room with Frog Coin)
+[0B8]	14AEF9	1D0D30	1D3A7C	20EF35	<18>	Sunken Ship post-KC, Area 09 (Hidon's room w/save point)
+[0BB]	14AF44	1D0D66	1D3AA0	20EF44	<67>	Sunken Ship post-KC, Area 10 (water room with frog coins)
+[0BC]	14AF79	1D0D78	1D3ABB	20EF59	<67>	Sunken Ship post-KC, Area 11 (water room with whirlpool)
+[01A]	14897E	1D0214	1D32A0	20E567	<67>	Sunken Ship post-KC, Area 12 (underwater room w/stairwell and Zeostars)
+[01B]	1489A7	1D0226	1D32BB	20E570	<67>	Sunken Ship post-KC, Area 13 (large underwater room with a Bloober)
+[0B9]	14AF1E	1D0D42	1D3A8E	20EF3E	<17>	Sunken Ship post-KC, Area 14 (secret Safety Ring)
+[018]	148928	1D01F0	1D327C	20E555	<67>	Sunken Ship post-KC, Area 15 (Bandana Red room long stairwell)
+[019]	14896D	1D0202	1D328E	20E55E	<67>	Sunken Ship post-KC, Area 16 (Entrance to Johnny's room)
+[01C]	1489E0	1D0238	1D32D6	20E585	<6B>	Sunken Ship post-KC, Area 17 (Johnny's room)
+[0BA]	14AF37	1D0D54	1D3A97	20EF41	<17>	Sunken Ship post-KC, Area 18 (warp room from Johnny's room)
+[0AA]	14AC8C	1D0C34	1D399B	20EEA0	<17>	Sunken Ship, ___ ***
+[0A0]	14AAF2	1D0B80	1D38CC	20EE2F	<17>	Sunken Ship, Area 01
+[0A4]	14ABB2	1D0BC8	1D390B	20EE53	<17>	Sunken Ship, Area 02 (from entrance w/save point)
+[0A1]	14AB0B	1D0B92	1D38DE	20EE3E	<17>	Sunken Ship, Area 03 (Greapers)
+[0A2]	14AB2C	1D0BA4	1D38F0	20EE47	<17>	Sunken Ship, Area 04 (Greapers & Dry Bones)
+[0A7]	14AC1D	1D0BFE	1D396E	20EE86	<17>	Sunken Ship, Area 05 (long stairwell with running Alley Rats)
+[0A5]	14ABCB	1D0BDA	1D3914	20EE56	<17>	Sunken Ship, Area 06 (puzzle room passageway)
+[0A9]	14AC67	1D0C22	1D3989	20EE91	<17>	Sunken Ship, Area 07 (puzzle room passageway branch room w/Shaman)
+[0B0]	14ADAD	1D0CA0	1D39E3	20EEE7	<18>	Sunken Ship, Area 08 (w/save point and green switch for barrel)
+[0B1]	14ADE2	1D0CB2	1D39F5	20EEF0	<18>	Sunken Ship, Area 09 (Password room)
+[0A6]	14ABEC	1D0BEC	1D3965	20EE83	<17>	Sunken Ship, puzzle room 1
+[0A3]	14AB65	1D0BB6	1D3902	20EE50	<17>	Sunken Ship, puzzle room 2
+[0A8]	14AC42	1D0C10	1D3980	20EE8E	<17>	Sunken Ship, puzzle room 3
+[0AB]	14AC8C	1D0C46	1D399B	20EEA3	<18>	Sunken Ship, puzzle room 4
+[0AC]	14ACED	1D0C58	1D39A4	20EEA6	<18>	Sunken Ship, puzzle room 5
+[04B]	149558	1D0586	1D34C4	20E8C0	<27>	Tadpole Pond, Area 01
+[04A]	149517	1D0574	1D34BB	20E8B2	<2C>	Tadpole Pond, Area 02
+[03F]	149115	1D04AE	1D3491	20E815	<6D>	Toadstool about to kiss Mario, Booster off to the right
+[00F]	148714	1D014E	1D31D8	20E4C3	<68>	Vista Hill
+[0F0]	14BB7C	1D1120	1D3DE8	20F217	<0E>	Volcano Post-CD ___ ***
+[165]	14D081	1D195A	1D4238	20F63A	<0E>	Volcano Post-CD Area 01
+[184]	14D65C	1D1B88	1D43E8	20F88C	<3D>	Volcano Post-CD Area 02
+[16D]	14D1E1	1D19EA	1D42D1	20F652	<16>	Volcano Post-CD Area 03
+[187]	14D71F	1D1BBE	1D441E	20F895	<3D>	Volcano Post-CD Area 04
+[18A]	14D796	1D1BF4	1D444B	20F8A4	<3D>	Volcano Post-CD Area 05
+[188]	14D738	1D1BD0	1D4430	20F898	<3D>	Volcano Post-CD Area 06
+[189]	14D761	1D1BE2	1D4442	20F8A1	<3D>	Volcano Post-CD Area 07 (warp to World Map)
+[0F1]	14BB7C	1D1132	1D3DE8	20F21A	<0E>	Volcano, ___ ***
+[162]	14D01A	1D1924	1D4214	20F631	<0E>	Volcano, Area 01
+[167]	14D0F7	1D197E	1D425C	20F640	<0E>	Volcano, Area 02
+[163]	14D033	1D1936	1D421D	20F634	<0E>	Volcano, Area 03 (secret w/two flowers)
+[168]	14D114	1D1990	1D4277	20F643	<0E>	Volcano, Area 04 (bunch of steps)
+[180]	14D58C	1D1B40	1D438E	20F880	<16>	Volcano, Area 05
+[181]	14D5C5	1D1B52	1D43A0	20F883	<16>	Volcano, Area 06
+[16A]	14D16A	1D19B4	1D429B	20F649	<16>	Volcano, Area 07 (stomping Corkpedite)
+[164]	14D064	1D1948	1D4226	20F637	<0E>	Volcano, Area 08
+[169]	14D12D	1D19A2	1D4289	20F646	<0E>	Volcano, Area 09
+[17F]	14D55F	1D1B2E	1D437C	20F87D	<16>	Volcano, Area 10 (jumping Pyrospheres)
+[166]	14D0B6	1D196C	1D424A	20F63D	<0E>	Volcano, Area 11
+[182]	14D5F2	1D1B64	1D43B2	20F886	<16>	Volcano, Area 12 (erupting Stumpet)
+[16E]	14D1FA	1D19FC	1D42E3	20F65B	<16>	Volcano, Area 13 (w/save point)
+[16C]	14D1B4	1D19D8	1D42BF	20F64F	<16>	Volcano, Area 14
+[16B]	14D18F	1D19C6	1D42AD	20F64C	<16>	Volcano, Area 15 (stomping Corkpedite)
+[186]	14D6DE	1D1BAC	1D440C	20F892	<3D>	Volcano, Area 16 (erupting Stumpet)
+[16F]	14D217	1D1A0E	1D42F5	20F65E	<16>	Volcano, Area 17 (leads to Hinopio's Shop)
+[161]	14CFF9	1D1912	1D4202	20F60A	<74>	Volcano, Area 18 (Hino Mart)
+[183]	14D643	1D1B76	1D43D6	20F889	<3D>	Volcano, Area 19 (from Hino Mart w/save point)
+[185]	14D691	1D1B9A	1D43FA	20F88F	<3D>	Volcano, Area 20 (jumping Pyrospheres)
+[160]	14CFB8	1D1900	1D41F0	20F607	<0E>	Volcano, Area 21 (Czar Dragon's room)
+[1FE]	14F017	1D241C	1D4905	20FDC2	<2A>	World Map to Mario's Pad
+[022]	148B3D	1D02A4	1D3303	20E5AE	<37>	Yo'ster Isle
+[021]	148B24	1D0292	1D32FA	20E5A6	<40>	Yo'ster Isle, entrance from Pipe Vault

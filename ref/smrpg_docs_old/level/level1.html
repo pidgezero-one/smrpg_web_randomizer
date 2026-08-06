@@ -1,0 +1,138 @@
+<style>
+body {font-family: courier; font-size: 10pt}
+table {border-width: 1; border-color: black; border-collapse: collapse}
+td {white-space: pre; font-family: courier; font-size: 10pt; vertical-align: top; border-color: black}
+</style>
+
+<h1>LEVEL MAPPING</h1>
+<h2>A. <i>locate the level's map data</i></h2>
+<ol>
+<li><b>LOAD LEVEL BYTE</b><br><br>
+<i>example</i>: 0x10 (Mario's Pad)<br><br>
+<ul><li>this is most often loaded from the <a href="../doc_exits.txt">exit field</a> data, but can also be loaded using the <a href="../doc_events.txt">event</a> instruction 0x68
+<li><i>document reference</i>: <a href="../doc_areas.txt">doc_areas.txt</a></ul><br><br>
+
+<li><b>CALCULATE LAYOUT POINTER</b>: (byte * 0x12) + 1D0040<br><br>
+<i>example</i>: (0x10 * 0x12) + 0x1D0040 = 1D0160<br><br>
+<img src="1D0160.gif"><br><br>
+<ul><li>this is the root class for defining an area<br>
+<li>byte 1 is the pointer to the mapping data for the level<br>
+<li>several levels can use the same mapping data, if they are similar in appearance or function (eg.townplaces, grasslands, etc.)<br>
+<li>all of the other bytes are variables that can change certain orientations of the level (eg.layer motion, level masks, level cropping, etc.)
+<li><i>document reference</i>: <a href="../doc_area-layout.txt">doc_area-layout.txt</a></ul><br><br>
+
+<li><b>CALCULATE MAP POINTER</b>: (byte 1 * 0x0F) + 1D2440<br><br>
+<i>example</i>: (0x06 * 0x0F) + 1D2440 = 1D249A<br><br>
+<img src="1D249A.gif"><br><br>
+<ul><li><i>document reference</i>: <a href="../doc_area-maps.txt">doc_area-maps.txt</a></ul>
+</ol><br>
+
+<hr>
+
+<h2>B. <i>determine the level's graphic sets</i></h2>
+<ol>
+<li><b>DEFINE GRAPHIC SETS</b><br><br>
+<img src="1D249A-gfx.gif"><br><br>
+<ul><li>graphic sets are listed by byte order in <a href="../doc_area-maps.txt">doc_area-maps.txt</a> under Tileset Group Values
+<li>there are 5 sets for each level map</ul><br><br>
+
+<li><b>CALCULATE COMPRESSED GRAPHICS POINTER</b>: use "difference method" for trans-bank location<br><br>
+<ul><li>
+compressed graphics are located in banks 0A0000 through 140000
+<li>to determine the bank and pointer of the compressed graphics use this equation: (byte + 0x48) * 2<br><br>
+<i>example</i>: (0x40 + 0x48) * 2 = 0x0110<br><br>
+<ol>
+<li>the "difference method" compares the pointer (0x0110 in this case) to the first byte in bank 0A0000
+<li><i>only if it is greater than/equal to</i> the first byte in bank 0A0000, the pointer is subtracted from the value (which is true in this case)...<br>
+...otherwise, it adds the pointer to 0A0000 and the sum is the location of the compressed graphics (not so in this case)
+<li>step 2 is repeated for each bank until the value is less than the first byte in the current bank</ol><br>
+<img src="0a0000.gif"> 0x0110 - 0x009C = 0x0074<br>
+<img src="0b0000.gif"> 0x0074 - 0x0020 = 0x0054<br>
+<img src="0c0000.gif"> 0x0054 - 0x0022 = 0x0032<br>
+<img src="0d0000.gif"> 0x0032 - 0x0024 = 0x000E<br>
+<img src="0e0000.gif"> 0x000E < 0x0024, therefore...<br><br>
+...0x000E + 0E0000 = 0E000E</ul><br>
+the final difference is added to the current bank, where the sum is the location of the compressed graphics pointer<br><br>
+<img src="0e000e.gif"><br><br><br></ol>
+
+<hr>
+
+<p align=right>
+<b><i>the grasslands BG layer 1 tileset</i></b>
+</p>
+<img src="tileset_06.gif" align=right>
+
+<h2>C. <i>determine the level's tilesets</i></h2>
+<ol>
+<li><b>DEFINE TILESETS</b><br><br>
+<img src="1d249f.gif"><br><br>
+<ul><li>tilesets are listed by byte order in <a href="../doc_map-tiles.txt">doc_map-tiles.txt</a>
+<li>there is a tileset for BG layer 1, 2 and 3 (0x06 and 0xBE, Mario's Pad doesn't use BG layer 3)</ul><br><br>
+
+<li><b>CALCULATE TILESET POINTER</b><br><br>
+<ul><li>compressed tilesets are located in banks 3B0000 through 3D0000 and both BG layer 1 and 2 are almost always consecutive
+<li>to determine the bank and pointer of the compressed tilesets use this equation: [(byte AND 0x7F) + 0x20] * 2<br><br>
+<i>BG layer 1 example</i>: [(0x06 AND 0x7F) + 0x20] * 2 = 0x4C<br>
+<i>BG layer 2 example</i>: [(0xBE AND 0x7F) + 0x20] * 2 = 0xBC<br><br>
+<ul><li>use the same "difference method" as used with the graphic sets pointer, starting with bank 3B0000</ul><br>
+<i>BG layer 1:</i><br><br>
+<img src="3b0000.gif"> 0x004C < 0x0074, therefore...<br><br>
+...0x004C + 3B0000 = 3B004C<br><br>
+<img src="3b004c.gif"><br><br><br>
+<i>BG layer 2:</i><br><br>
+<img src="3b0000.gif"> 0x00BC - 0x0074 = 0x0048<br>
+<img src="3c0000.gif"> 0x0048 - 0x0042 = 0x0006<br>
+<img src="3d0000.gif"> 0x0006 < 0x0044, therefore...<br><br>
+...0x0006 + 3D0000 = 3D0006<br><br>
+<img src="3d0006.gif"></ul></ol><br>
+
+<div style="margin-right: 300px">
+<ul><li>the long image on the right is the complete BG layer 1 tileset for grasslands areas
+<li>the BG layer 2 tileset is very similar, in that it organizes many of the same tiles yet in a different order
+<li>tilesets <i>assume</i> the assigned palette set for each area that uses the tileset
+<li>tiles in tilesets are organized in the order they appear in the decompressed data
+<li>tilemap byte values read from the tilesets to display the tile defined by the tileset data
+<li>the tilemap byte values read from the order of the tileset's data</ul>
+The <a href="level2.html">tileset organization</a> tutorial explains how the tiles in a tileset are defined.
+</div>
+<br>
+
+<hr>
+
+<h2>D. <i>determine the level's tilemaps</i></h2>
+<ol>
+<li><b>DEFINE TILEMAPS</b><br><br>
+<img src="1d24a1.gif"><br><br>
+<ul><li>tilemaps are listed by byte order in <a href="../doc_map-tiles.txt">doc_map-tiles.txt</a>
+<li>there is a tilemap for BG layer 1, 2, and 3 (0x0C and 0x0D, Mario's Pad doesn't use BG layer 3)</ul><br><br>
+
+<li><b>CALCULATE TILEMAP POINTER</b><br><br>
+<ul><li>compressed tilemaps are located in banks 160000 through 1A0000 and both BG layer 1 and 2 are almost always consecutive
+<li>to determine the bank and pointer of the compressed tilesets use this equation: (byte + 0x40) * 2<br><br>
+<i>BG layer 1 example</i>: (0x0C + 0x40) * 2 = 0x98<br>
+<i>BG layer 2 example</i>: (0x0D + 0x40) * 2 = 0x9A<br><br>
+<ul><li>use the "difference method" again starting with bank 160000</ul><br>
+<i>BG layer 1:</i><br><br>
+<img src="160000.gif"> 0x0098 < 0x00DA, therefore...<br><br>
+...0x0098 + 160000 = 160098<br><br>
+<img src="160098.gif"><br><br><br>
+<i>BG layer 2:</i><br><br>
+<img src="160000.gif"> 0x009A < 0x00DA, therefore...<br><br>
+...0x009A + 160000 = 16009A<br><br>
+<img src="16009A.gif"></ul></ol><br>
+
+<p align=right>
+<b><i>Mario's Pad BG layer 1 tilemap</i></b>
+</p><br>
+<img src="tilemap_bg1.gif" align=right>
+
+<div style="margin-top: -60px; margin-right: 600px">
+<ul><li>A tilemap encompasses a <i>region</i>
+<li>A region is a set of areas that share a similar style. An example would be <a href="region1D.gif">half of the areas in Booster's Tower</a>.
+<li>Every region's map is 1024x1024 pixels, or 64x64 tiles.
+<li>A tile byte is 2 bytes long, and a row is 0x80 bytes (64 tiles).
+<li>The tile bytes correspond to the order they are formatted in the tileset, as seen directly in the tileset image.
+<li>The tilemap gathers these tiles and arranges them into a map of BG layer 1 of Mario's Pad. BG layer 2 uses a different tileset but with a very similar set of tiles.
+<li>The tilemap image to the right is essentially the actual map of BG layer 1 of Mario's Pad. Mario's Pad has its own tilemap and isn't grouped into a "region", like some Mushroom Way areas for example.</ul>
+</div>
+<br>

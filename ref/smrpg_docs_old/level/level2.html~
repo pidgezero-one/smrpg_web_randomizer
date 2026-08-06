@@ -1,0 +1,105 @@
+<style>
+body {font-family: courier; font-size: 10pt}
+table {border-width: 1; border-color: black; border-collapse: collapse}
+td {white-space: pre; font-family: courier; font-size: 10pt; vertical-align: top; border-color: black}
+</style>
+
+<h1>TILESET ORGANIZING</h1>
+<h3>example: BG Layer 1 of grasslands areas (Mario's Pad, Mushroom Way)</h3>
+<h2>A. <i>organize 16x16 tiles from decompressed data</i></h2>
+<ol>
+<li><b>DECOMPRESS TILESET</b><br><br>
+<i>example</i>: Grasslands BG Layer 1<br><br>
+<img src="3bf474.gif"><br><br>
+<ul><li>the compressed tileset data starts at $3BF474
+<li>the decompressed tileset is 0x1000 (4096) bytes</ul><br><br>
+<i>decompressed tileset</i>:<br><br>
+<img src="tileset_row1hex.gif"><br><br>
+<ul><li>the selection represents the data for the first 16 tiles in the tileset
+<li>each 16x16 tile is 8 bytes
+<li>16x16 tiles are not organized consecutively; that is, the top two 8x8 tiles of the 16x16 tile are on the first row and the bottom two are 40 bytes ahead (ie.on the next row)
+<li>in the decompressed data, the 8x8 tiles are organized similar to the graphics seen in a tile editor
+<li>every 2 bytes defines an 8x8 tile plus its palette and/or its mirroring</ul><br>
+<ul type=square><li>Here are the first 16 tiles in the tileset:<br>
+<img src="06_0000.gif" width=32 height=32 border=1> <img src="06_0001.gif" width=32 height=32 border=1> <img src="06_0002.gif" width=32 height=32 border=1> <img src="06_0003.gif" width=32 height=32 border=1> <img src="06_0004.gif" width=32 height=32 border=1> <img src="06_0005.gif" width=32 height=32 border=1> <img src="06_0006.gif" width=32 height=32 border=1> <img src="06_0007.gif" width=32 height=32 border=1> <img src="06_0008.gif" width=32 height=32 border=1> <img src="06_0009.gif" width=32 height=32 border=1> <img src="06_0010.gif" width=32 height=32 border=1> <img src="06_0011.gif" width=32 height=32 border=1> <img src="06_0012.gif" width=32 height=32 border=1> <img src="06_0013.gif" width=32 height=32 border=1> <img src="06_0014.gif" width=32 height=32 border=1> <img src="06_0015.gif" width=32 height=32 border=1>
+<li>this corresponds directly with the hex data a few lines up<br>
+<li>for example...<br>
+this data: <img src="tile_02.gif"><br>
+represents tile 0x0002: <img src="06_0002.gif" width=32 height=32 border=1><br>
+<li>in total for this tileset, there are 1024 tiles in all
+<li>00 00 represents a blank transparent 8x8 tile</ul><br><br>
+
+<li><b>ORGANIZE 16x16 tile</b><br><br>
+<i>example</i>: tile 0x03<br><br>
+<img src="06_0003.gif" width=32 height=32 border=1> <img src="tile_03.gif"><br><br>
+<ul type=square><li>every 2 bytes defines an 8x8 tile, as mentioned before
+<li>51 2D and 52 29 are these:<br>
+<img src="tile_03-1.gif" width=16 height=16 border=1> <img src="tile_03-2.gif" width=16 height=16 border=1>
+<li>61 29 and 62 29 are these:<br>
+<img src="tile_03-3.gif" width=16 height=16 border=1> <img src="tile_03-4.gif" width=16 height=16 border=1>
+<li>the top row (51 2D and 52 29) and the bottom row (61 29 and 62 29) are 40 bytes apart
+<li><b>every 0x80 bytes represents 16 tiles</b><br><br>
+</ul>
+
+<table><tr><td valign=top>
+<img src="tile_03-1.gif" width=16 height=16 border=1> <img src="tile_03-2.gif" width=16 height=16 border=1>
+<img src="tile_03-3.gif" width=16 height=16 border=1> <img src="tile_03-4.gif" width=16 height=16 border=1> </td>
+<td> <img src="tile_03-a.gif"></td></tr></table>
+<ul><li>byte 1 is the number of the 8x8 tile in the graphic set
+<li>byte 2 defines the graphic set, palette and mirroring</ul><br><br>
+</ol>
+
+<hr>
+
+<h2>B. <i>define graphic and palette of tiles</i></h2>
+<ol>
+<li><b>LOAD GRAPHIC SETS</b><br><br>
+<img src="1D249A-gfx.gif"><br><br>
+<ul><li>these 5 decompressed graphics sets are used by Mario's Pad
+<li>the addresses shown above the images are the locations of the compressed graphic sets
+<li>the 8x8 graphics tiles in the graphics sets are arranged into 16x16 tiles by the tileset data</ul><br><br>
+<table width=800><tr>
+<td align=center>$0E60EA<br>graphics set 0x40<br>
+<img src="gfxset-40.gif"></td>
+<td align=center>$0E7E77<br>graphics set 0x41<br>
+<img src="gfxset-41.gif"></td>
+<td align=center>$0E8C8E<br>graphics set 0x42<br>
+<img src="gfxset-42.gif"></td>
+<td align=center>$0E994B<br>graphics set 0x43<br>
+<img src="gfxset-43.gif"></td>
+<td align=center>$0EA5CB<br>graphics set 0x44<br>
+<img src="gfxset-44.gif"></td>
+</tr></table><br><br>
+
+<li><b>DEFINE GRAPHIC SET OF 8x8 TILE</b><br><br>
+here is the decompressed data for the Mario's Pad tileset:<br><br>
+<img src="tile_03-a.gif"><br><br>
+<i>example</i>: 51 2D <img src="tile_03-1.gif" width=16 height=16 border=1><br><br>
+<ul type=disc><li>the particular graphic sets used in this case are 0x40, 0x41, 0x42, 0x43, and 0x44
+<li>these graphic sets will be referred to as sections 0, 1, 2, 3, and 4
+<li>eg. section 0 is the first graphic set (0x40)<br>
+section 1 is the second graphic set (0x41)<br>
+etc...</ul><br>
+
+The section (graphic set) is determined through the <b>remainder</b> after <i>AND'ing the byte with 0x1F then dividing it by 4.</i><br><br>
+<i>example</i>: the remainder of 0x2D AND'ed with 0x1F then divided by 4 is 1, therefore the tile is from section 1 (graphic set 0x41)<br><br>
+Thus, the tile is number 0x51 of graphic set 0x41:<br>
+<img src="tile_51.gif"><br><br>
+
+<li><b>DEFINE PALETTE OF 8x8 TILE</b><br><br>
+The palette of an 8x8 tile is assigned from the area's <a href="http://giangurgolo.home.att.net/smrpg/doc_palettes.txt">palette set</a>.<br>
+This is the Grasslands palette set, which is assigned to Mario's Pad:<br>
+<img src="palette-set.gif"><br>
+These are referred to as palettes 0 - 7.<br><br>
+
+The palette is determined through the <b>quotient</b> after <i>AND'ing the byte with 0x1F then dividing it by 4.</i><br><br>
+<i>example</i>: the quotient of 0x2D AND'ed with 0x1F then divided by 4 is 3, therefore it uses palette 3<br>
+<img src="palette_3.gif"><br><br>
+<img src="tile_03-1a.gif" width=32 height=32 border=1> is <img src="tile_03-1.gif" width=32 height=32 border=1> after applying the palette<br><br>
+
+<li><b>MIRRORING AND INVERTING</b><br><br>
+<ul><li>to mirror the 8x8 tile, simply set bit 6 of byte 2
+<li>to invert (horizontal flip) the 8x8 tile, simply set bit 7 of byte 2
+<li>the use of bit 5 in byte 2 is yet to be determined (it doesn't seem to do anything), but it is set in the tile 51 2D</ul><br>
+The 8x8 tile 51 2D is neither mirrored or inverted. To mirror it, change 0x2D to 0x6D. To invert it, change 0x2D to 0xA2. To mirror and invert it, change 0x2D to 0xED.
+</ol>

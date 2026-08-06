@@ -1,0 +1,256 @@
+396754	[00]	Suffering from shock!}
+39676C	[01]	CROCO: Yeouch!}
+39677C	[02]	MALLOW: Gimme back my coin}{ or I'll belt ya again!}
+3967B1	[03]	MALLOW: All right!}{ We got it back!}
+3967D7	[04]	CROCO: Oooouch!!!}{ I'm gonna pay ya back in spades, kid!}
+396812	[05]	Go on! }{ Take back your grubby old coin!}
+39683D	[06]	Adios amigos!}
+39684D	[07]	BOWSER: What was that sound?}
+39686B	[08]	N...n...NO!!!}
+39687B	[09]	It's a chain reaction!!}{ Hang on, Kinklink!!}
+3968AB	[0A]	Eyaaaaa!!}
+3968B7	[0B]	BOWSER: Coming, Mario?}
+3968CF	[0C]	This is IT!}{ I'm gonna take you out, Mario!}
+3968FE	[0D]	BOWSER: Fungah! Foiled again!}
+39691D	[0E]	TOADSTOOL: Mario! The chain!}{ Aim for the chain!}
+396950	[0F]	TOADSTOOL: Fight, Mario!}{ FIGHT!!!}
+396975	[10]	BOWSER: This should FINISH you!}
+396996	[11]	TOADSTOOL: Oh, Mario!}{ You had me so worried.}{ Let's get out of here!}
+3969DF	[12]	TOADSTOOL: Shriek!! Mario!! }{ I'm going to fall!}
+396A11	[13]	BOWSER: Mwa ha! Did you think}{ I was just gonna GIVE her to ya?}
+396A53	[14]	You're ALWAYS in my way!}
+396A6E	[15]	BELOME: Ooooh!}{ Room service has been kind to me!}{ Where's my bib?}
+396AB4	[16]	BELOME: Stick for a body,}{ head full of straw, give me}{ a scarecrow, rah, rah, RAH!}
+396B0B	[17]	BELOME: If you defeat me,}{ you STILL won't beat me!}{ Beware the flood!}
+396B56	[18]	TOADSTOOL: Don't let Bowser}{ bruise you, Mario!}
+396B88	[19]	BOWSER: Mario! Prepare yourself}{ for the great beyond!}
+396BC1	[1A]	BOWSER: What a joke!!}{ Put some muscle into it!}
+396BF3	[1B]	BOWYER: Nya?!}{ And who might you be?}
+396C1A	[1C]	???: I serve...a higher authority...}
+396C40	[1D]	That Star Piece belongs to everyone.}{ You can't keep it.}
+396C7C	[1E]	BOWYER: Nya! NYA!}{ Angry I am!}
+396C9D	[1F]	Nya!}{ A lesson I will teach you!}
+396CC1	[20]	???: Hey! Chill out!}
+396CD7	[21]	MALLOW: Mario!}{ It's dangerous out there!}
+396D03	[22]	You're gonna help, huh?}{ Whack that weirdo...}{ Save the guy in blue...}
+396D4E	[23]	Me too!}{ I will do what I can!}
+396D70	[24]	But...from over here!}
+396D88	[25]	Mario... wait!}
+396D99	[26]	I'm NOT afraid.}{ And I'm NOT gonna cry!}
+396DC4	[27]	Yeouch!}
+396DCE	[28]	???: Stop it! That's enough.}
+396DEC	[29]	BOWYER: Gunya! Nya!!!}
+396E03	[2A]	Strong you are.}{ But stronger am I!}{ Hurt you, I will!}
+396E3E	[2B]	So long, nya!!}{ Part, now, we must!}
+396E65	[2C]	Nya nya NYA!!}
+396E75	[2D]	???: Thanks for the help!}{ But... who are you?}
+396EA6	[2E]	MALLOW: Mario! You just...}{ DITCHED me back there!}
+396EDB	[2F]	Huh? Don't I know you?}{ You look... familiar!}
+396F0C	[30]	???: So! You're THE Mario!}{ WE know about you!}
+396F3D	[31]	BOWYER: Knock knock! Nya!}{ Insulted, I am!}
+396F6A	[32]	BOWYER: NYAAA!!}{ Now 3 against one!}{ Nyat FAIR!}{ Fix it, I will, nya!}{ Shoot an arrow, I shall.}{ When a target it hits,}{ that Button... LOCKED!}
+397001	[33]	BELOME: C...can't s...stand it!}{ The hunger...the HUNGER!}
+39703D	[34]	That was SCARY!}
+39704F	[35]	It's 1:00.Time to play.}
+397069	[36]	It's 3:00. Time to RECOVER!}
+397087	[37]	It's 5:00.Time for a break, huh?}
+3970AA	[38]	It's 6:00. Time to FULLY RECOVER.}
+3970CE	[39]	It's 7:00. DINNER TIME.}
+3970E8	[3A]	It's 9:00. Guess I'll break.}
+397107	[3B]	It's 10:00. Time to garden.}
+397125	[3C]	It's 12:00. It's high noon.}
+397143	[3D]	CROCO: You want them back?}{ You've got to take me down first!}
+397183	[3E]	CROCO: Yeouch! Enough already!}{ Here's your junk.}{ I'm outta here!}
+3971C9	[3F]	KNIFE GUY: Wait!}{ You took all the trouble to}{ come here, so...stick around!}
+397219	[40]	KNIFE GUY: Come on, brother!}{ Let's thrash 'em!}
+39724B	[41]	KNIFE GUY & GRATE GUY: Yikes!}{ They're pretty tough!}
+397282	[42]	GRATE GUY: Whoopdy do!}
+39729A	[43]	BOOSTER: Did the cake just move?}
+3972BC	[44]	BOOSTER: H...huh?!!}{ That MUST be Mario!}{ Let's make sure.}{ You! Check it out!}
+39730F	[45]	BOOSTER: Harumph!}{ Just as I thought!}{ It IS Mario.}{ Let's...wind him up!}
+39735D	[46]	PUNCHINELLO: Good day.}{ The name's Nello...PUNCHINELLO!}
+39735D	[47]	PUNCHINELLO: Good day.}{ The name's Nello...PUNCHINELLO!}
+397397	[48]	PUNCHINELLO: They say I'm a hot head,}{ but I'll show them!}{ You...YOU will make me famous!}{ So long!}
+397400	[49]	PUNCHINELLO: Not bad. Not bad!}{ Now let's up the ante!}
+397439	[4A]	PUNCHINELLO: Grrrrr...}{ All right!}{ It's CLOBBERING TIME!}
+397476	[4B]	PUNCHINELLO: Arghhh!!}
+39748D	[4C]	PUNCHINELLO: Simmer down, fluffy!}{ I'm not gonna waste this on YOU.}{ Who knows what might happen!}
+3974F2	[4D]	PUNCHINELLO: Enough!}{ I've got my pride.}{ Now you're in for it!}
+397535	[4E]	Huh? What the hay?}
+39754A	[4F]	Why isn't it working?}
+397562	[50]	Argh!! }}
+39756C	[51]	MALLOW: Punchinello...?}{ Never heard of ya.}
+39759A	[52]	MALLOW: I think he's bluffing.}
+3975BA	[53]	GENO: Take your best shot!}
+3975D6	[54]	PUNCHINELLO: I must be dreaming!}{ I'm ruined!}{ I didn't want to do this,}{ but now, I have NO CHOICE!!}
+397640	[55]	MALLOW: Mario!!!}{ If this thing explodes,}{ we're history!!}
+39767E	[56]	GENO: This is a fine mess!}
+39769A	[57]	MALLOW: Let's scram! NOW!}
+3976B5	[58]	Owww!}
+3976BD	[59]	GENO: It's gonna blow!!}
+3976D6	[5A]	MALLOW: NO!!}
+3976E4	[5B]	JOHNNY: Fuwa ha ha...}{ Not bad, fellas.}
+39770E	[5C]	How about it, Mario?}{ Mario versus me!}{ Wanna mix it up?}
+39774B	[5D]	Good fun!}{ And good for you, too!}
+397770	[5E]	All right.}{ Here comes my backup!}
+397795	[5F]	Poke, poke, poke!}
+3977A9	[60]	TORTE: Ouch! OUCH!}
+3977BD	[61]	Vat are you doing?!}
+3977D3	[62]	APPRENTICE: Chef Torte!}{ The cake's MOVING!}
+397801	[63]	TORTE: Vas?! Ist NOT moving!}{ Back to verk!}
+39782F	[64]	APPRENTICE: I KNOW it was moving!}
+397852	[65]	TORTE: Now vat?}
+397863	[66]	TORTE: Talk no more of zees!}
+397881	[67]	APPRENTICE: No! Really, truly.}{ Why would I lie?}
+3978B4	[68]	TORTE: Because you are...IDIOT!}
+3978D5	[69]	Zee! It IS NOT moving!}
+3978EE	[6A]	Huh?!}
+3978F6	[6B]	TORTE: Zee cake's alive! RUN!!}
+397916	[6C]	APPRENTICE: See? I was RIGHT!}
+397935	[6D]	SNIFIT 1: Maybe we ought to wait.}
+397958	[6E]	SNIFIT 2: This is Booster's}{ wedding cake!}
+397985	[6F]	SNIFIT 3: He'll have a fit}{ if we nibble on it!}
+3979B7	[70]	BOOSTER: Hey, No.1!}{ Where's my cake?!}
+3979E0	[71]	SNIFIT 1: Booster, Sir!}{ There's a 70% chance the object}{ you're standing on is a cake.}
+397A3B	[72]	BOOSTER: ++++?}{ THIS thing's a cake?}
+397A62	[73]	Okay, everyone!!}{ Here's the stumper.}{ How do we eat this?}{ I SAY we boil it!}{ No.2, what do you say?}
+397ACE	[74]	SNIFIT 2: Way too messy!}{ Why don't you just swallow it?!}
+397B0A	[75]	BOOSTER: WHAT?! In one GULP?}{ That's easier said than done!}
+397B48	[76]	SNIFIT 3: Come, Booster!}{ You can do it!}{ Open wide, please!}
+397B88	[77]	BOOSTER: My nerves are shot.}{ I feel like I've forgotten to tie}{ my cord before a bungee jump!}
+397BEA	[78]	SNIFIT: Here it comes!}
+397C02	[79]	BOOSTER: WAIT! WAIT!}
+397C18	[7A]	SNIFIT: Concentrate, Sir!}
+397C33	[7B]	BOOSTER: This doesn't feel right.}
+397C56	[7C]	BOOSTER: Mmmmmm...}{ Delicious!}{ It's so good it makes me want to cry!}
+397C9F	[7D]	SNIFIT: Congratulations, Sir.}{ The wedding is now officially over!!}
+397CE5	[7E]	BOOSTER: Thanks, everyone.}
+397D01	[7F]	BOOSTER: It's a wrap. Let's go.}
+397D22	[80]	Zapped!}
+397D2C	[81]	Bowser's mood has affected}{ the monster!}{ The monster's confused!!}
+397D73	[82]	Bowser's scaring the monster!}
+397D93	[83]	Croco's dousing a tail fire...}
+397DB4	[84]	Mack's stunned!!}
+397DC7	[85]	Mirage attack!}
+397DD8	[86]	Multiplier!}
+397DE6	[87]	Stop it!}
+397DF1	[88]	Stop! Stop!!}
+397E00	[89]	Blow those candles out!}
+397E1A	[8A]	First, push "A#.}
+397E39	[8B]	Push "A# again to attack!}
+397E5C	[8C]	Wait a second!}
+397E7A	[8D]	Hit "A# again, here.
+397E9B	[8E]	Good timing!}
+397EB8	[8F]	When successful, your attack}{      changes and damage increases.}
+397F01	[90]	Hit "A# prior to attack, too!
+397F25	[91]	Good timing!}
+397F42	[92]	This can help you decrease}{   the amount of damage done to you.}{      It won't always work, though.}
+397FB0	[93]	Now, try a "Special# strike!}
+397FD5	[94]	Push "Y# here!
+397FF2	[95]	Your attack will be more powerful!}
+398019	[96]	Learn Special Skills}{          as you gain experience.}{           They're on the menu!}
+39807E	[97]	Read about 'em, okay?}
+39809F	[98]	The Forkies are enraptured!}
+3980BD	[99]	The Forkies have come}{ to their senses!}
+3980E8	[9A]	VALENTINA: Dodo! DODO!}{ Come here this minute!}
+3980E8	[9B]	VALENTINA: Dodo! DODO!}{ Come here this minute!}
+398119	[9C]	VALENTINA: Dodo?!}{ How could you lose already?}{ Well, come on!}{ Get over here!}
+39816C	[9D]	VALENTINA: I don't believe this!}
+39818E	[9E]	The show's over, folks!}{ Dodo...! Let's get outta here!!}
+3981CA	[9F]	Don't just sit there. HELP ME!}
+3981EB	[A0]	Well, everyone...}{ Until we meet again!}
+398216	[A1]	Mwa, ha, ha, ha, ha...}
+39822F	[A2]	SHY AWAY: La dee dah:%}
+398247	[A3]	Hi ho, dee dum:%}
+39825A	[A4]	There there, my pretties!}
+398276	[A5]	It's shower time:%}
+39828B	[A6]	It's recycled water!}
+3982A2	[A7]	I added some nutrients:%}
+3982BD	[A8]	Ack! Sour!}
+3982CA	[A9]	Mmm, tastes peachy...}
+3982E2	[AA]	Yuck! How repulsive!}
+3982F9	[AB]	Bitter, but not bad...}
+398312	[AC]	YES! THIS is YUMMY:}
+398328	[AD]	You all LOOK delicious!}{ But how do you TASTE?}
+39835A	[AE]	There we are!}
+39836A	[AF]	BELOME: I never forget a taste!}{ In fact, I can clone someone}{ after just one slurp. Watch!}
+3983C9	[B0]	BELOME: Oh, no, not again!}{ I'm STARVING!}{ Time to go home for dinner.}{ Goodbye, boys and girls!}
+39842E	[B1]	AXEM RED: }{ This Star Piece gives people hope!}{ It needs to be destroyed!}
+39847B	[B2]	AXEM RED: Enough!!}{ Now I'm angry!}{ Time to finish this!}{ Formation...HO!!}
+3984CA	[B3]	Here we GO!}
+3984D8	[B4]	Force Beam energized!}{ Maximum charge!}
+398502	[B5]	NOW! Fire the BREAKER!!}
+39851C	[B6]	AXEM RED: What?}
+39852D	[B7]	AXEM RED: Then change brands!}
+39854C	[B8]	AXEM RED: Serves ya right!}
+398568	[B9]	AXEM RED: Chew on your tongue!}
+398588	[BA]	AXEM RED:}{ You're totally out of shape!}
+3985B2	[BB]	AXEM RED: SHUT UP, all of you!}{ We've got a job to do!}
+3985EB	[BC]	Yo, RED!!}
+3985F7	[BD]	AXEM PINK: My make-up's running!!}
+39861A	[BE]	AXEM BLACK: I broke my shades!}
+39863A	[BF]	AXEM YELLOW: I'm... hungry!!}
+398658	[C0]	AXEM GREEN: I've got a headache.}
+39867A	[C1]	AXEM RED: Ooh, my head is spinning!}
+39869F	[C2]	AXEM RED: We fight for evil!}
+3986BD	[C3]	AXEM BLACK: We live for disorder!}
+3986E0	[C4]	AXEM GREEN: We like what we do!}
+398701	[C5]	AXEM PINK: We struggle for chaos!}
+398724	[C6]	AXEM YELLOW: We are...}
+39873C	[C7]	...the AXEM RANGERS!!}
+398754	[C8]	AXEM RED: This isn't possible!}{ We are...invincible!}
+39878B	[C9]	AXEM PINK: Can this be happening}{ to the AXEM RANGERS?}
+3987C4	[CA]	Uwaaaaaah!!! }
+3987D3	[CB]	JINX: Phew! Simply...AMAZING!}
+3987F2	[CC]	Yikes! You're tough!}
+398809	[CD]	BIRDO: Hello$!}{ I'm Birdo.}
+398826	[CE]	BIRDO: Tee, hee!}{ Ouch, you're hurting me!}{ Now it's my turn!}{ Get it while it's hot!}
+398880	[CF]	BIRDO: Oh, I'm never gonna let ya go.}{ You're just too...CUTE!}
+3988C1	[D0]	The monster is stunned!}
+3988DB	[D1]	CAUTION: Confused monster!}
+3988F8	[D2]	Heavy Troopa's ready to launch.}
+39891A	[D3]	Jawful's sleeping.}
+39892F	[D4]	Jawful's awake now!}
+398945	[D5]	The monster's getting furious!}
+398966	[D6]	MOKUKA: Duh, huh huh...}
+39897F	[D7]	CULEX: I am matter...}{ I am antimatter...}{ I can see your past...}{ I can see your future...}{ I consume time...}{ And I will consume you!}
+398A0D	[D8]	Monsters are inside!}
+398A24	[D9]	Magikoopa's hiding!}
+398A3A	[DA]	The EYE is protecting Exor!!}
+398A59	[DB]	Exor's protection's gone!!}
+398A76	[DC]	Time is marching on!}
+398A8D	[DD]	The watch is broken!}
+398AA4	[DE]	Recharging!!}
+398AB3	[DF]	Guooooooo!}{ My b...body and head are burning!}{ It's not...possible...!}{ I don't believe it...!}{ I'm...finished...done for...!}{ Guooooooooo...noooooo...!}
+398B53	[E0]	Guooooo! C...can't move...!}
+398B70	[E1]	Mwa ha! I am burning with power!}
+398B92	[E2]	BOOMER: Argh!}{ This is absurd!}{ I CAN'T be defeated by THEM!}{ I won't let this happen!}{ I won't fall in battle...}
+398C09	[E3]	I don't need your sympathy!}{ I am a soldier...}{ I am prepared to...go...}
+398C56	[E4]	CHANDELI-HO: Boomer!}{ Oh, poor Boomer!}{ But not to worry!}{ A little fall isn't gonna hurt you!}
+398CB9	[E5]	CHANDELI-HO: All right, Mario!}{ I'll lead you to the top!}{ We must hurry to the appointed place!}
+398D1D	[E6]	CLOAKER: Mwee hee hee!}{ Behold! They've taken the bait!}
+398D57	[E7]	DOMINO: Hee hee hee!}{ I guess I can spare a few minutes!}{ Maybe they'd like to...play!}
+398DB1	[E8]	CLOAKER: This is tougher than}{ I thought!}{ I don't like where this is going...}
+398E03	[E9]	DOMINO: Phew! What weaklings!}{ How shameful if they were to}{ defeat me!}
+398E4E	[EA]	CLOAKER: Put your dukes up!}
+398E6B	[EB]	DOMINO: It's clobbering time!}
+398E8A	[EC]	Gasp...cough...hack...}{ H...having an attack...gasp...}
+398EC4	[ED]	CHANDELI-HO: Yeoouuch!!}
+398EDD	[EE]	See ya later, kids!}
+398EF3	[EF]	Hang on tight!}{ And away we go!}
+398F16	[F0]	CHANDELI-HO: Increasing speed...!}
+398F39	[F1]	CHANDELI-HO:}{ Next stop, the top floor!}{ Please fasten your seatbelts and...}{ Wait a sec! There ARE no seatbelts!}
+398FAF	[F2]	Take a dive, Chandeli-ho!}
+398FCB	[F3]	SMITHY: NOOOOOOOOOOOO...!!!}
+398FE8	[F4]	AERO: Calm down, Smithy!}{ Your head looks like a geyser!!}
+399024	[F5]	DRILL BIT: Don't get so worked up!}{ Think of your blood pressure!}
+399068	[F6]	SHYSTER:}{ We just built this yesterday,}{ and the foundation's very weak.}{ So...STOP SHAKING THE FLOOR!}
+3990D3	[F7]	SMITHY: How utterly annoying!}
+3990F2	[F8]	Huh?!}{ What the...?!}{ How in the heck...?!}
+399121	[F9]	SMITHY: You kids should be ashamed}{ of yourselves for making me}{ so upset!}
+39916F	[FA]	SMITHY:}{ Uwoooooooo...}{ I'm burning...seething...}{ Never have I been so wronged...}{ It is time...}{ I will show you my real form...}{ I will show you my true power...}{ I will teach you respect...}{ And I shall have my revenge...}
+39925A	[FB]	Guooooooo!!!!!}{ Come on, you puny ants!}
+399285	[FC]	The monster is mute!}
+39929C	[FD]	Monster's FP is gone!}
+3992B4	[FE]	Error message}
+3992C4	[FF]	Go, World!}

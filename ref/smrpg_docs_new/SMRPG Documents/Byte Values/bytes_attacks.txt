@@ -1,0 +1,129 @@
+[00]	___stationary attack
+[01]	___normal attack
+[02]	___high jump attack
+[03]	___normal attack
+[04]	___same as #$01
+[05]	___after-images
+[06]	___spin attack
+[07]	___don't move
+[08]	___dive underground
+[09]	___shoulder charge
+[0A]	___levitate attack
+[0B]	___high jump attack
+[0C]	___teleport attack
+[0D]	___short jump attack
+[0E]	___Croco charge
+[0F]	___similar to #$09
+[10]	___small spike shot
+[11]	Thornet      
+[12]	___large spike shot
+[13]	Funguspike   
+[14]	___knife throw
+[15]	___shuriken throw
+[16]	Full House   
+[17]	Wild Card    
+[18]	Royal Flush  
+[19]	___bomb throw
+[1A]	Spritz Bomb  
+[1B]	___black rock throw
+[1C]	___black rock throw, approach
+[1D]	___bullet bill shot
+[1E]	Blazer       
+[1F]	___Raspberry orb blast
+[20]	___Smithy's finger shot
+[21]	Echofinder   
+[22]	S'crow Bell  
+[23]	Doom Reverb  
+[24]	Spore Chimes 
+[25]	Ink Blast    
+[26]	Gunk Ball    
+[27]	Endobubble   
+[28]	DUMMY (water drop)
+[29]	Sleep-Sauce  
+[2A]	Venom Drool  
+[2B]	Mush Funk    
+[2C]	S'crow Funk  
+[2D]	Stench       
+[2E]	___throw hammer
+[2F]	___throw hammer, 'Fear'
+[30]	Viro Plasm   
+[31]	Psycho Plasm 
+[32]	___light ball, 'Mute'
+[33]	___light ball, 'Sleep'
+[34]	Pollen Nap   
+[35]	S'crow Dust  
+[36]	Sporocyst    
+[37]	Toxicyst     
+[38]	___throw bone, approach
+[39]	___throw bone
+[3A]	Lulla-Bye    
+[3B]	Elegy        
+[3C]	Backfire     
+[3D]	Va Va Voom   
+[3E]	Fun'n'Run    
+[3F]	Body Slam    
+[40]	Howl         
+[41]	Scream       
+[42]	Iron Maiden  
+[43]	Fangs        
+[44]	Poison       
+[45]	Carni-Kiss   
+[46]	Claw         
+[47]	Grinder      
+[48]	Dark Claw    
+[49]	Scythe       
+[4A]	Sickle       
+[4B]	Deathsickle  
+[4C]	Eerie Jig    
+[4D]	Somnus Waltz 
+[4E]	Dahlia Dance 
+[4F]	Skewer       
+[50]	Pierce       
+[51]	___Smithy Tank Head bullet
+[52]	Magnum       
+[53]	Psyche!      
+[54]	Migraine     
+[55]	___Bob-omb self-destruct
+[56]	___Microbomb self-destruct
+[57]	Multistrike  
+[58]	Flutter Hush 
+[59]	___Geno Clone attack
+[5A]	___Mario Clone attack
+[5B]	___Toadstool 2 sleep attack
+[5C]	Fear Roulette
+[5D]	___Smithy Form 1 hammer attack
+[5E]	___similar to #$00
+[5F]	___Smithy Body hammer attack
+[60]	Hammer Time  
+[61]	Valor Up     
+[62]	DUMMY (Terrapin attack)
+[63]	Last Shot!   
+[64]	DUMMY (Bowser claw strike)
+[65]	DUMMY (Bowser spike shot)
+[66]	DUMMY (Bowyer 'Button Lock' A)
+[67]	DUMMY (Bowyer 'Button Lock' Y)
+[68]	DUMMY (Bowyer 'Button Lock' X)
+[69]	DUMMY (Bowyer arrow shot)
+[6A]	G'night      
+[6B]	DUMMY (Shyguy slingshot)
+[6C]	DUMMY (Heavy Troopa launch)
+[6D]	Chomp        
+[6E]	Get Tough!   
+[6F]	DUMMY (Mukumuku attack)
+[70]	Missed me!   
+[71]	DUMMY (Mukumuku attack)
+[72]	Loco Express 
+[73]	DUMMY (3-egg shot)
+[74]	DUMMY (1-egg shot, ricochet)
+[75]	DUMMY (self-destruct, slow)
+[76]	DUMMY (Eggbert self-destruct)
+[77]	Jinxed       
+[78]	Triple Kick  
+[79]	Quicksilver  
+[7A]	Bombs Away   
+[7B]	Vigor up!    
+[7C]	DUMMY (Intro Goomba attack)
+[7D]	Silver Bullet
+[7E]	Terrapunch   
+[7F]	S'crow Fangs 
+[80]	Shaker

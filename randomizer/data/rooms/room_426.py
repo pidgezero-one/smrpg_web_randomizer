@@ -1,0 +1,69 @@
+# R426_BELOME_TEMPLE_AREA_07_PIPE_TO_BELOMES_ROOM
+# pyright: reportWildcardImportFromLibrary=false
+from smrpgpatchbuilder.datatypes.levels.classes import (EdgeDirection, BufferType, BufferSpace, Buffer, Partition, RoomExit, Event)
+from ...types.room import Room
+from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.directions import *
+from ..variables.room_names import *
+from ..variables.overworld_area_names import *
+from ..variables.music_names import *
+from ..variables.event_script_names import *
+from ..variables.action_script_names import *
+room = Room(
+    partition=Partition(
+        ally_sprite_buffer_size=1,
+        allow_extra_sprite_buffer=True,
+        extra_sprite_buffer_size=0,
+        buffers = [
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True
+            ),
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True
+            ),
+            Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True
+            )
+        ],
+        full_palette_buffer=True
+    ),
+    music=M0027_DUNGEONISFULLOFMONSTERS,
+    entrance_event=E1778_TEMPLE_GENERIC_PIPE_ROOM_LOADER,
+    events=[
+        Event(
+            event=E1689_TEMPLE_PIPE_TO_BOSS_FIGHT,
+            x=29,
+            y=16,
+            z=1,
+            f=EdgeDirection.SOUTHEAST,
+            height=0,
+            length=1,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_8_bit_4=False),
+    ],
+    exits=[
+        RoomExit(
+            x=26,
+            y=10,
+            z=0,
+            f=EdgeDirection.SOUTHEAST,
+            length=2,
+            height=0,
+            nw_se_edge_active=True,
+            ne_sw_edge_active=False,
+            byte_2_bit_2=False,
+            destination=R423_BELOME_TEMPLE_AREA_06_BELOMES_FORTUNE_ROOM_WELEVATING_PLATFORM,
+            show_message=False,
+            dst_x=23,
+            dst_y=58,
+            dst_z=0,
+            dst_z_half=False,
+            dst_f=NORTHWEST,
+            x_bit_7=False),
+    ])

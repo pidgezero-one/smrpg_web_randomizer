@@ -1,0 +1,2 @@
+snirk>=0.2.1
+websockets>=12.0

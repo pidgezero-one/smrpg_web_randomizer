@@ -1,0 +1,78 @@
+00218 - 00417	OAM data (128 sprite tiles, 4 bytes each)
+
+Byte 1 - X coord
+Byte 2 - Y coord
+Byte 3 - Tile Index (bits 0-7)
+Byte 4
+ bit 0 - Tile Index (bit 8)
+ bit 1-3 - Palette (0-7)
+ bit 4 - sprite priority 1
+ bit 5 - sprite priority 2
+ bit 4,5 - sprite priority 3
+ bit 6 - mirrored
+ bit 7 - inverted
+
+00618 - 00817	palettes (16 palettes, 32 bytes each)
+007B8 - 00817   monster sprite palettes (3 palettes, 32 bytes each)
+00FD3 - 00FDA   Tileset assignment
+ byte 1-5  tileset groups
+ byte 6    BG layer 1
+ byte 8    BG layer 2
+ byte 13   physical field
+
+02C13   BG color (change to 4047)
+02C35   BG layer 2 palette
+
+04C13   World Map GFX
+
+10C13   Tilemap (BGL 1)
+12C13   Tilemap (BGL 2)
+14C13   Tilemap (BGL 3)
+15C13   Tilesets
+
+18C13	Physical Tile properties
+1BC13   Physical Field Map
+
+20413   Allies' Stats
+  Byte 1     Level
+  Byte 2,3   Current HP 
+  Byte 4,5   Maximum HP
+  Byte 6     Speed
+  Byte 7     Attack
+  Byte 8     Defense
+  Byte 9     Mag.Attack
+  Byte 10    Mag.Defense
+  Byte 11,12 EXP
+  Byte 13    Equipped Weapon
+  Byte 14    Equipped Armor
+  Byte 15    Equipped Accessory
+  Byte 16    unused byte*
+  Byte 17-20 Spell List
+ 20413   Mario
+ 20427   Toadstool
+ 2043B   Bowser
+ 2044F   Geno
+ 20463   Mallow
+
+*based on careful observation, this byte is apparently never used
+
+20477   Equipment
+20495   Items
+204B3   Special Items
+204C2   Coins
+204C4   Current FP
+204C5   Max FP
+204C6   Frog Coins
+204C8   Player's Name
+
+21C13   Tileset (BGL 3)
+22C13   Tileset (BGL 1)
+
+2C813   Window frames (2-bit)
+2CC13	Battle Numeral/Cursor GFX
+
+44D99 = 7065
+44E17   Game Hi Score (4 bytes, decimal, Big Endian)
+
+0x1C bytes in each row (0x0E tiles)
+0x24 bytes of 00's between each row

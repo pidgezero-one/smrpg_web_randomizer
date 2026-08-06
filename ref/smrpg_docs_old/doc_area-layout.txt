@@ -1,0 +1,232 @@
+points individually to:
+148000	sprite map
+1D0040	layout
+1D4905	exit fields
+20E000	field mapping parameters
+
+Area Maps (512 Areas, 18 bytes each)
+------------------------------------
+byte 1	area map assignment (tilesets, physical field, etc.)
+	byte x15, add #$2440 to get PTR
+byte 2	message box
+	bit 0	(odd values mess up GFX)
+	00	Inn
+	02	Item Shop
+	04	Inn/Item Shop
+	06	Monstro Town
+	08	Toadstool's Room
+	0A	Belome Temple
+	0C	Garro's House
+	0E	Yo'ster Isle
+	10	Marrymore Hotel
+	12	Beetles Are Us
+	14	Weapon and Armor Shop
+	16	Bedroom
+	18	Health Food Store
+	1A	Mushroom Boy's Shop
+	1C	Accessory Shop
+	1E	Melody Bay
+	20	Grate Guy's Casino
+	22	Hino Mart
+
+==if bit 7 of byte 3 set: do not scroll past screen edges (both X and Y)
+byte 3	00-7F = screen cropping width (from left)
+byte 4	00-7F = screen cropping height (from top)
+byte 5	00-7F = screen width (from right)
+byte 6	00-7F = screen height (from bottom)
+
+==if bit 7 of byte 10 set: cover all of BGL 2 with BGL 3, continuous movement if flag set
+byte 7	00-7F = BGL 2, -X coordinate (from right)
+byte 8	00-7F = BGL 2, +Y coordinate (from bottom)
+byte 9	00-7F = BGL 3, -X coordinate (from right)
+byte 10	00-7F = BGL 3, +Y coordinate (from bottom)
+
+byte 11	scroll wrapping flag
+	bit 0	BG1 horizontal scroll wrap
+	bit 1	BG1 vertical scroll wrap
+	bit 2	??? used only by Culex Room
+	bit 3	BG2 horizontal scroll wrap
+	bit 4	BG2 vertical scroll wrap
+	bit 5	??? used only by Culex Room
+	bit 6	BG3 horizontal scroll wrap
+	bit 7	BG3 vertical scroll wrap
+
+byte 12	scrolling synchronization
+	bit 0	BGL 2 scrolls left/right fast when Mario is walking
+	bit 1	BGL 2 scrolls left/right slow when Mario is walking
+	bit 2	BGL 2 scrolls up/down fast when Mario is walking
+	bit 3	BGL 2 scrolls up/down slow when Mario is walking
+	bit 4	BGL 3 scrolls left/right fast when Mario is walking
+	bit 5	BGL 3 scrolls left/right slow when Mario is walking
+	bit 6	BGL 3 scrolls up/down fast when Mario is walking
+	bit 7	BGL 3 scrolls up/down slow when Mario is walking
+
+byte 13	auto-scrolling for BG2
+	+00	N/A
+	+01	medium fast
+	+02	slow
+	+03	very slow
+	+04	normal
+	+05	fast
+	+06	fast
+	+07	very fast
+	00-07	scroll left
+	08-0F	scroll up-left
+	10-17	scroll up
+	18-1F	scroll up-right
+	20-27	scroll right
+	28-2F	scroll down-right
+	30-37	scroll down
+	38-3F	scroll down-left
+
+byte 14	auto-scrolling for BG3 (uses same structure as byte 13)
+
+byte 15	layer priorities (see bottom of document for values)
+	bit 4	wavy, rippling effect on BGL3
+
+byte 16 animation effects on BGL 3
+	00  none
+	01  spinning stars/mushrooms outside decor
+	03  single spinning mushroom decor
+	05  rippling pond water
+	06  spinning stars/mushrooms room decor
+	07  talking organ pipes
+	08  burning torches
+	09  moving conveyor belts
+	0A  flowing ground water
+	0B  rotating flowers
+	0C  boiling lava
+	0D  rippling sewer water
+	0E  ???
+	0F  spinning stars/mushrooms Moleville decor
+	10  flowing river water
+	11  glowing stars
+	12  still sea water
+	14  moving long conveyor belt
+	15  spinning stars/mushrooms Nimbus Land decor
+	16  hot springs
+	17  glowing molten metal from Smelter
+	18  Toadofsky's singing choir
+
+byte 17	extra effects
+	05  waterfall
+	06  ???
+	07  glowing save point
+	0A  flashing chandelier
+	0B  glowing save point
+	0C
+	0D
+	0F  water tunnel water
+	10  glowing save point
+	12
+	13
+	15
+	16
+	17
+	18
+	19  glowing Volcanic magma
+	1A
+	1B
+	1D
+	1E
+	1F
+	20
+	21
+	22
+
+byte 18	___nothing uses this byte
+
+/////////////////////////////////////////////////////////////////////
+
+1D0000 - 1D002F	Layer Priorities and Partial Transparency Properties
+
+BYTE 1	enabled mainscreen
+bit 0	BG1
+bit 1	BG2
+bit 2	BG3
+bit 3	BG4
+bit 4	sprite layer
+
+BYTE 2	enabled subscreen
+bit 0	BG1
+bit 1	BG2
+bit 2	BG3
+bit 3	BG4
+bit 4	sprite layer
+
+BYTE 3	color math
+bit 0	BG1
+bit 1	BG2
+bit 2	BG3
+bit 3	BG4
+bit 4	sprite layer
+bit 5	background
+bit 6	half intensity
+bit 7	minus subscreen
+
+VALUES:
+
+00
+	mainscreen	00010011
+	subscreen	00000000
+	color math	00000000
+01
+	mainscreen	00010111
+	subscreen	00010011
+	color math	01100100
+02
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01000011
+03
+	mainscreen	00010011
+	subscreen	00000100
+	color math	00100000
+04
+	mainscreen	00010111
+	subscreen	00010010
+	color math	01000100
+05
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01110011
+06
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01000010
+07
+	mainscreen	00010111
+	subscreen	00010011
+	color math	01100100
+08
+	mainscreen	00010111
+	subscreen	00000000
+	color math	00010111
+09
+	mainscreen	00010011
+	subscreen	00000100
+	color math	00110011
+0A
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01010011
+0B
+	mainscreen	00010011
+	subscreen	00000100
+	color math	10010011
+0C
+	mainscreen	00010011
+	subscreen	00000100
+	color math	11000010
+0D
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01010010
+0E
+	mainscreen	00010011
+	subscreen	00000100
+	color math	00010011
+0F
+	mainscreen	00010011
+	subscreen	00000100
+	color math	01110010

@@ -1,0 +1,109 @@
+C2CBEEEA  auto-super jumps / fire orb / super flame
+C2CC5A1A  auto-ultra jumps / ultra flame
+C22CF200  infinite super/ultra jumps
+C22C8B80  infinite fire orbs and super/ultra flames
+
+C2CFF51A  auto-star rains (up to 16 default)
+C22C2580  infinite star rains
+
+C2C8E61A  automatically timed hits
+
+C2C9A61A+ automatically timed defense
+C2C9E01A  yielding 0 damage
+
+C22CF200  always get freebies
+C222A380  always run away
+
+C054C700  treasure chests never run out of coins
+
+C0553480  Grate Guy always points left in 'look the other way'
+
+Magikoopa's 'Infinite Coin Chest' codes
+E009303F   gives 10 coins each hit
+E009307E   gives frog coins
++E0093108
+E0093070   gives flowers
++E0093108
+
+0003CC01  no physical field
+C08C9500  no battle initiation/interaction when touching monsters/objects
+C004FA80  overworld menu accessible in Bowser's Keep, 1st time
+
+C106AF80  debug menu accessible
+C106D2F3
+C106D307
+C28EFA05  quick exit battle with select
+
+C2C2A400  all attacks do 9999 damage
+C2B30300  all attacks Miss
+
+C0B82Exx  Mario's running speed
+C014F7xx  Mario's jumping height
+
+C2C6F380  always get flower bonus
+E0400B01  lava doesn't burn
+
+007065FF  all World Map points/areas accessible
+007066FF
+007067FF
+007068FF
+00706DFF
+00706EFF
+00706FFF
+007070FF
+
+D4AFC100  Debug Option Dialogue - talk to lamp at Mario's Pipehouse
+D4AFC226
+DF000001
+
+Next
+
+	Next
+
+                Next
+
+                        Next
+                        _____ (Booster Hill, Booster chase)
+                        _____
+
+                                Next (Booster Hill, beetle chase)
+                                _____ (Booster Hill, flower search)
+                                _____ (Booster Hill, beetle chase no box)
+           
+                _____ (Moleville from minecart)
+                _____ (Midas River waterfall)
+
+        _____ (leads to Sky Bridge)
+        _____ (leads to Land's End Desert)
+
+_____
+
+        Next
+
+                Next
+
+                        Next
+                        _____ (INTRO: Jumping on Wiggler)
+                        _____ (INTRO: Bowser troops at Moleville)
+
+                _____ (INTRO: Bandit's Way)
+                _____ (INTRO: Booster Hill, Snifit chase)
+
+        _____ (INTRO: Midas River tunnel)
+        _____ (INTRO: Midas River Barrels)
+
+Option
+
+        Next
+
+                Next
+
+			Next
+			_____ (Moleville, Item Trade Shop)
+			_____ (restart from first menu)
+
+                99 flowers
+                Max level up
+
+        500 coins
+        1 level up
