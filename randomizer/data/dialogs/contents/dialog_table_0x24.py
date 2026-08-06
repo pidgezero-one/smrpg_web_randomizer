@@ -3,39 +3,39 @@ dialog_data[0] = '''SNIFIT 3: Um...
  Nice weather we’re having.[await]'''
 dialog_data[1] = '''SNIFIT 3: You wanna fight?[await]'''
 dialog_data[2] = '''
-           Got “Beetlemania”![await]'''
+[center]Got “Beetlemania”![await]'''
 dialog_data[3] = '''GARDENER: I’ll plant the seed...[await]'''
 dialog_data[4] = '''GARDENER: Then give it fertilizer.[await]'''
-dialog_data[5] = '''           Got “Beetlemania”![end]'''
+dialog_data[5] = '''[center]Got “Beetlemania”![end]'''
 dialog_data[6] = '''Got “Beetlemania”[end]'''
 dialog_data[7] = '''
-            Got a Star Piece![await]'''
+[center]Got a Star Piece![await]'''
 dialog_data[8] = ''' Can you believe there are people
  who call themselves gamers but
  don’t own a single pair of jorts?[await]'''
 dialog_data[9] = '''GARDENER: ••[delay]••[delay]••[delay]
-          Nothing’s happening.[await]'''
+[center]Nothing’s happening.[await]'''
 dialog_data[10] = '''SNIFIT 4: After years of
  hard work and effort, I’m now
  Snifit 4![await][page]
  
-     I’ll wear the number proudly![await]'''
+[center]I’ll wear the number proudly![await]'''
 dialog_data[11] = '''SNIFIT 5: Phew...![await]
  I’ve been training to become one
  of Booster’s Snifits for 3 years![await]'''
 dialog_data[12] = '''SNIFIT 6: If only Ma and Pa could
  see me now.[await]'''
 dialog_data[13] = '''SNIFIT 7:
-     Yee haw![await]
-          Hurrah!
-               I’m a Snifit![await][page]
+[center]Yee haw![await]
+[center]Hurrah!
+[center]I’m a Snifit![await][page]
 
-         ••[delay]••[delay]••[delay]I’m••speechless![await]'''
+[center]••[delay]••[delay]••[delay]I’m••speechless![await]'''
 dialog_data[14] = '''APPRENTICE: Shriek!
  The boss only wants 7 Snifits![await]
  All my training was in vain![await][page]
 
-               What a rip![await]'''
+[center]What a rip![await]'''
 dialog_data[15] = '''APPRENTICE: Harrumph!
  I’m off to the arcade![await]'''
 dialog_data[16] = '''GARDENER: W••[delay]••[delay]wow![await]'''
@@ -47,37 +47,37 @@ dialog_data[20] = '''GARDENER: This will get me in
  Happy Gardener Monthly magazine![await]'''
 dialog_data[21] = '''
 
-     (Wish I could run faster.)[await]'''
+[center](Wish I could run faster.)[await]'''
 dialog_data[22] = '''
 
-    Wish I had some Cricket Jam.[await]'''
+[center]Wish I had some Cricket Jam.[await]'''
 dialog_data[23] = '''
-      I wanna be a great plumber
-         like my brother Mario.[await]'''
+[center]I wanna be a great plumber
+[center]like my brother Mario.[await]'''
 dialog_data[24] = '''
 
-   If I could JUST get that melody![await]'''
+[center]If I could JUST get that melody![await]'''
 dialog_data[25] = '''
-               The hunger!
-           Oh, for some food! [await]'''
+[center]The hunger!
+[center]Oh, for some food! [await]'''
 dialog_data[26] = '''
-     I wanna be the best treasure
-          hunter in the world.[await]'''
+[center]I wanna be the best treasure
+[center]hunter in the world.[await]'''
 dialog_data[27] = '''
 
-   I vant to be a vald class baker.[await]'''
+[center]I vant to be a vald class baker.[await]'''
 dialog_data[28] = '''
 
-        I hope I become famous.[await]'''
+[center]I hope I become famous.[await]'''
 dialog_data[29] = '''
 
-        I hope she’ll say “yes”.[await]'''
+[center]I hope she’ll say “yes”.[await]'''
 dialog_data[30] = '''
 
-    I wish he’d pop THE question.[await]'''
+[center]I wish he’d pop THE question.[await]'''
 dialog_data[31] = '''
 
-   I wish I weren’t such a crybaby.[await]'''
+[center]I wish I weren’t such a crybaby.[await]'''
 dialog_data[32] = '''
 
 Please let Mallow find his way home.[await]'''
@@ -102,9 +102,9 @@ dialog_data[37] = '''MALLOW:
 dialog_data[38] = '''MALLOW: Come on `MAIN_CHARACTER_NAME`, we’ve got a busy schedule to keep.[await]
  I’ll make you eat dust if you don’t hurry.[await]'''
 dialog_data[39] = '''MALLOW: 
-                Sniffle...[await]'''
+[center]Sniffle...[await]'''
 dialog_data[40] = ''' What was that loud noise outside?
-       Check out Booster Pass![await]'''
+[center]Check out Booster Pass![await]'''
 dialog_data[41] = '''
   You noticed something in the bush.[await]'''
 dialog_data[42] = '''
@@ -258,7 +258,7 @@ dialog_data[92] = ''' The slot machine costs 10 coins
 dialog_data[93] = '''DEALER: Do you want to continue?
   [select] (Yes)
   [select] (No)[await]'''
-dialog_data[94] = '''           [delay]You [delay]missed![delay_40][end]'''
+dialog_data[94] = '''[center][delay]You [delay]missed![delay_40][end]'''
 dialog_data[95] = '''[center]Talk to the flower[await]
 and the star gate will open.[await]'''
 dialog_data[96] = '''[center]To Marrymore[await]'''
@@ -282,12 +282,12 @@ dialog_data[103] = '''JAGGER: Sensei, the new regimen
 dialog_data[104] = '''JINX: Master!
  Share your wisdom with us![await]'''
 dialog_data[105] = ''' I think our neighbor moved away.[await]'''
-dialog_data[106] = '''                 Caution![await]
-    If you fall out the back of the
-   castle, you won’t be able to get
-       back in without a battle.[await]
+dialog_data[106] = '''[center]Caution![await]
+[center]If you fall out the back of the
+[center]castle, you won’t be able to get
+[center]back in without a battle.[await]
   Make sure you have everything you
-        need before proceeding![await]
+[center]need before proceeding![await]
    ~The SMRPG Randomizer Dev Team[await]'''
 dialog_data[107] = ''' Have you ever visited the tower in
  the south? I snuck in one time.[await][page]
@@ -359,9 +359,9 @@ dialog_data[120] = ''' Sometimes, when no one’s looking,
  west beanstalks.[await]'''
 dialog_data[121] = ''' The guy in the left corner will give
  you something, too.[await]'''
-dialog_data[122] = '''                DANGER!!!
+dialog_data[122] = '''[center]DANGER!!!
 
-   Beyond the cliffs is the volcano[await]'''
+[center]Beyond the cliffs is the volcano[await]'''
 dialog_data[123] = ''' Please, enjoy yourselves.[await]
  The volcano is just past the
  hot springs.[await]'''
@@ -469,7 +469,7 @@ dialog_data[153] = '''GARRO: I don’t know why Dodo
  doesn’t just get a new helmet that
  won’t cover his eyes.[await]'''
 dialog_data[154] = '''GAZ:
-    Geno, come on, you can do it![await]'''
+[center]Geno, come on, you can do it![await]'''
 dialog_data[155] = '''YOSHI:
 [center](`MAIN_CHARACTER_NAME`! Good luck!)[await]'''
 dialog_data[156] = '''CHANCELLOR:
@@ -513,7 +513,7 @@ dialog_data[170] = '''
 dialog_data[171] = '''              Got [0x7000] Coins![end]'''
 dialog_data[172] = '''Got [0x7000] Coins![end]'''
 dialog_data[173] = '''
-            Got a Frog Coin![await]'''
+[center]Got a Frog Coin![await]'''
 dialog_data[174] = '''[center]Got a Frog Coin![end]'''
 dialog_data[175] = '''Got a Frog Coin![end]'''
 dialog_data[176] = '''

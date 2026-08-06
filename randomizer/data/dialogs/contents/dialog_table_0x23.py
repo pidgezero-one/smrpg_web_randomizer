@@ -33,10 +33,10 @@ dialog_data[8] = '''[page]
  Hya hya hya! Guess I’m one heck
  of a party animal, huh?[await][page]
  Hya hya[delay]...h[delay][delay]..[delay]ya..[await][pause][end]'''
-dialog_data[9] = '''             Got the Brooch![await]'''
-dialog_data[10] = '''              Got the Shoes![await]'''
-dialog_data[11] = '''               Got the Ring![await]'''
-dialog_data[12] = '''            Found the Crown![await]'''
+dialog_data[9] = '''[center]Got the Brooch![await]'''
+dialog_data[10] = '''[center]Got the Shoes![await]'''
+dialog_data[11] = '''[center]Got the Ring![await]'''
+dialog_data[12] = '''[center]Found the Crown![await]'''
 dialog_data[13] = ''' zzz...[delay_30]
  Signal Ring...[delay_30] star pieces...[delay_30]
  zzz...[await]'''
@@ -104,7 +104,7 @@ dialog_data[36] = ''' Why the long face?
 dialog_data[37] = ''' These massage chairs they installed
  in the pews are great![await]'''
 dialog_data[38] = '''
-                   I do.[await]'''
+[center]I do.[await]'''
 dialog_data[39] = ''' I came here to watch “Maria and
  Draco.” I think I’m lost.[await]'''
 dialog_data[40] = ''' I wasn’t invited to this wedding,
@@ -119,7 +119,7 @@ dialog_data[42] = ''' I’m a little worried about what
  out to be evil.[await]'''
 dialog_data[43] = ''' Do you think `TOWER_BOSS_1` is worried about anyone looting `TOWER_BOSS_1_GENDER_POSSESSIVE` tower?[await] The door’s wide open. Someone could even be in there right now![await]'''
 dialog_data[44] = '''
-       Hey, what are you doing?[await]'''
+[center]Hey, what are you doing?[await]'''
 dialog_data[45] = ''' We’re finally “man and wife”.[await]'''
 dialog_data[46] = ''' Honey, I don’t want you to
  wander too far off, now![await]'''
@@ -135,9 +135,9 @@ dialog_data[48] = ''' I stayed in the hotel for two nights
  difference.[delay] And you know what?[await]
  The tips were great![await]'''
 dialog_data[49] = '''
-          Pipe down and relax.[await]'''
+[center]Pipe down and relax.[await]'''
 dialog_data[50] = '''
-      I wish it were ski season![await]'''
+[center]I wish it were ski season![await]'''
 dialog_data[51] = ''' I wish those two a wonderful
  life together.[await]
  Hope they don’t fight too often![await]'''
@@ -209,9 +209,9 @@ dialog_data[70] = '''[page]
  I want to hold onto it, so...
  you can forget about paying up.[await]'''
 dialog_data[71] = '''YOSHI:
-       (There’s nothing in here.)[await]'''
+[center](There’s nothing in here.)[await]'''
 dialog_data[72] = '''
-         There’s nothing inside.[await]'''
+[center]There’s nothing inside.[await]'''
 dialog_data[73] = ''' (Hey there! What’s happening?)[await]
  [select]  (I want to store my Cookies)
  [select]  (I want my Cookies back)
@@ -230,7 +230,7 @@ dialog_data[78] = ''' (You gave me [0x7024]. So I’m
   storing [0x7000] for you!)[await]'''
 dialog_data[79] = '''[page]
 
-          (All right, see ya!)[await]'''
+[center](All right, see ya!)[await]'''
 dialog_data[80] = ''' (I gave you [0x7024]. I’ll store
   the other [0x7000] for you!)[await]'''
 dialog_data[81] = '''[page]
@@ -242,16 +242,16 @@ dialog_data[82] = ''' (Sorry. If I store [0x7024] more[await]
   That’s more than I can hold.)[await]'''
 dialog_data[83] = '''[page]
 
-      (Out of Cookies to store!)[await]'''
+[center](Out of Cookies to store!)[await]'''
 dialog_data[84] = '''[page]
 
-   (Out of Cookies to take back!)[await]'''
+[center](Out of Cookies to take back!)[await]'''
 dialog_data[85] = ''' (Okay, here’s [0x7024]. You don’t
   have any more to spare, so use
   what’s left wisely!)[await]'''
 dialog_data[86] = '''[page]
 
-      (You have too many items!)[await]'''
+[center](You have too many items!)[await]'''
 dialog_data[87] = '''[page]
  (Sorry.[await]
   I’m already storing 200 and
@@ -275,7 +275,7 @@ dialog_data[91] = '''[page]
   You can wager up to 10.)[await]'''
 dialog_data[92] = '''[page]
 
-         (Nice weather, eh?)[await]'''
+[center](Nice weather, eh?)[await]'''
 dialog_data[93] = '''BOSHI: (Count me in for [0x7024]![await]
  To the starting gate, group!)[await]'''
 dialog_data[94] = ''' (You’re carrying a lot of things![await]
@@ -306,9 +306,9 @@ dialog_data[101] = '''[page]
  [select]  (No way)[await]'''
 dialog_data[102] = '''[page]
 
-       Hey, you’re a little short![await]'''
+[center]Hey, you’re a little short![await]'''
 dialog_data[103] = '''BOSHI:
-    (Line it up, ON THE DOUBLE!)[await]'''
+[center](Line it up, ON THE DOUBLE!)[await]'''
 dialog_data[104] = ''' Those chests over there haven’t
  been refilled, but some of the
  others in this castle might be.[await]'''
@@ -385,7 +385,7 @@ dialog_data[123] = ''' There’s a heck of a lot going on in
  the castle.[await][pause] But Garro can show you
  secrets about it that you can’t
  find on your own![await]'''
-dialog_data[124] = '''   (Oops[delay][delay]...[delay][delay]I’ve lost my dentures)[await][pause][end]'''
+dialog_data[124] = '''[center](Oops[delay][delay]...[delay][delay]I’ve lost my dentures)[await][pause][end]'''
 dialog_data[125] = ''' Now[delay][delay]...[delay][delay]PARTY TIME!![await]'''
 dialog_data[126] = ''' Hello.
  How may I help you today?[await]
@@ -411,7 +411,7 @@ dialog_data[129] = '''[page]
  You seem to be a day late and
  a few coins short! BYE![await]'''
 dialog_data[130] = '''All the coins, even the Frog Coins,
-            have been taken![await]'''
+[center]have been taken![await]'''
 dialog_data[131] = ''' `MAIN_CHARACTER_HONORIFIC_CAP`![await]
  You have stayed over 200 times
  for the price of just ONE night![await][page]
@@ -423,7 +423,7 @@ dialog_data[132] = '''[page]
  I’ll take what you have on you,
  and you’ll work for the rest![await]'''
 dialog_data[133] = '''
-         Where’s the Crown?![await]'''
+[center]Where’s the Crown?![await]'''
 dialog_data[134] = '''BOOSTER: Found something, huh?[await]
  But wait a sec...I’ve only
  counted [0x7000] thing(s).
@@ -471,17 +471,17 @@ dialog_data[143] = '''SNIFIT 1: Hello there.[await]
  Come back some other time, or you
  can try to force your way in...[await]'''
 dialog_data[144] = '''
-           Booster the First[await]'''
+[center]Booster the First[await]'''
 dialog_data[145] = '''
-          Booster the Second[await]'''
+[center]Booster the Second[await]'''
 dialog_data[146] = '''
-           Booster the Third[await]'''
+[center]Booster the Third[await]'''
 dialog_data[147] = '''
-          Booster the Fourth[await]'''
+[center]Booster the Fourth[await]'''
 dialog_data[148] = '''
-           Booster the Fifth[await]'''
+[center]Booster the Fifth[await]'''
 dialog_data[149] = '''
-           Booster the Sixth[await]'''
+[center]Booster the Sixth[await]'''
 dialog_data[150] = '''SNIFIT 2: Please refrain
  from bothering Booster.[await]'''
 dialog_data[151] = '''HINOPIO: Our thermostat is busted,
@@ -535,7 +535,7 @@ dialog_data[166] = ''' I heard your composition, and it’s
  pretty good.[await]'''
 dialog_data[167] = ''' You’re on your way to composing![await]'''
 dialog_data[168] = '''
-       So La Mi Re Do Re Do Re [await]'''
+[center]So La Mi Re Do Re Do Re [await]'''
 dialog_data[169] = '''TOADOFSKY: You want a music
  lesson from MOI?[await]
   [select] (Yes)
@@ -645,7 +645,7 @@ dialog_data[216] = ''' I haven’t heard much news about
  you been practicing Super Jumps?[await]'''
 dialog_data[217] = ''' I recommend exploring the obstacle
  courses deep in Bowser’s Keep.[await]'''
-dialog_data[218] = '''         Need the key to get in[await]'''
+dialog_data[218] = '''[center]Need the key to get in[await]'''
 dialog_data[219] = '''
 [center]Need the “Shed Key” to get in[await]'''
 dialog_data[220] = '''[center]It’s locked[await]'''
@@ -654,9 +654,9 @@ dialog_data[221] = '''[center]Tried saying the password:[delay]
 dialog_data[222] = '''[center]No luck...[delay]
 [center]Booster changed the password.[delay]
 [center]Oh, well...[await]'''
-dialog_data[223] = '''      Take a look at Booster’s
-   family portraits in order from
-     the oldest to the youngest.[await]'''
+dialog_data[223] = '''[center]Take a look at Booster’s
+[center]family portraits in order from
+[center]the oldest to the youngest.[await]'''
 dialog_data[224] = '''\n[center]Remember to respect your elders.[await]'''
 dialog_data[225] = '''YARIDOVICH: Finally![await]
  It took you long enough to get
@@ -690,9 +690,9 @@ dialog_data[236] = ''' You...may not enter here.
  This is...a restricted area.[await]'''
 dialog_data[237] = ''' There is nothing of interest here.
  Don’t...bother looking inside.[await]'''
-dialog_data[238] = '''                   Hey![await]
-          Someone’s in there.[await]'''
-dialog_data[239] = '''               It’s locked[await]'''
+dialog_data[238] = '''[center]Hey![await]
+[center]Someone’s in there.[await]'''
+dialog_data[239] = '''[center]It’s locked[await]'''
 dialog_data[240] = '''DR. TOPPER: Give up?[await]
  [select]  (Still working on it)
  [select]  (I GIVE UP!)[await]'''
@@ -749,7 +749,7 @@ dialog_data[255] = '''ELDER: Hello, `MAIN_CHARACTER_NAME`![await][pause]
  my second floor?[await]'''
 dialog_data[256] = ''' Oops, sorry I’m all out of items.[await][page]
  In other words,
-          “Come back later!”[await]
+[center]“Come back later!”[await]
  So...good day to you![await]'''
 dialog_data[257] = ''' Hey, hey, HEY!![await]
  I’m the Mushroom Boy![await][page]
@@ -774,15 +774,15 @@ dialog_data[260] = ''' That was just a regular mushroom!
 dialog_data[261] = ''' See you around`MAIN_CHARACTER_MBOY_GREETING`.
  Come again, all right?[await]'''
 dialog_data[262] = ''' Hey you don’t have any mushrooms.[await]'''
-dialog_data[263] = '''      Received a “Maple Syrup”[await]'''
-dialog_data[264] = '''      Received a “Rock Candy”[await]'''
-dialog_data[265] = '''       Received a “Flower Tab”[await]'''
-dialog_data[266] = '''         Attention, Civilians![await]
-         Short on Frog Coins?[await]
+dialog_data[263] = '''[center]Received a “Maple Syrup”[await]'''
+dialog_data[264] = '''[center]Received a “Rock Candy”[await]'''
+dialog_data[265] = '''[center]Received a “Flower Tab”[await]'''
+dialog_data[266] = '''[center]Attention, Civilians![await]
+[center]Short on Frog Coins?[await]
  Climb the cliff in under 11 seconds,
-      and win FIVE Frog Coins![await][page]
+[center]and win FIVE Frog Coins![await][page]
   Claim as many times as you like!
-            Stop on by soon.
+[center]Stop on by soon.
                       ~The Sky Troopas[await]'''
 dialog_data[267] = '''DEALER: In Blackjack, whomever
  comes the closest to 21 points,
@@ -828,8 +828,8 @@ dialog_data[271] = '''GARDENER: This is unreal! This is
  to be famous! Maybe even get my
  picture in the next issue.[delay_24][end]'''
 dialog_data[272] = '''
-        Feel free to rest here.
-        ~The 3 MUSTY FEARS[await]'''
+[center]Feel free to rest here.
+[center]~The 3 MUSTY FEARS[await]'''
 dialog_data[273] = '''JAGGER: Now this should be
  interesting. Can you beat THE
  master, `MAIN_CHARACTER_NAME`?[await]'''
@@ -840,10 +840,10 @@ dialog_data[275] = ''' You will enter combat against me
  in 3D?[await]
   [select] (Yes)
   [select] (Uh...)[await]'''
-dialog_data[276] = '''             Got the Brooch![end]'''
-dialog_data[277] = '''              Got the Shoes![end]'''
-dialog_data[278] = '''               Got the Ring![end]'''
-dialog_data[279] = '''            Found the Crown![end]'''
+dialog_data[276] = '''[center]Got the Brooch![end]'''
+dialog_data[277] = '''[center]Got the Shoes![end]'''
+dialog_data[278] = '''[center]Got the Ring![end]'''
+dialog_data[279] = '''[center]Found the Crown![end]'''
 dialog_data[280] = ''' Here’s something I picked up.
  You can keep it for good luck.[await]'''
 dialog_data[281] =''' Take this with you.

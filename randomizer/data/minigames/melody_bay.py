@@ -581,7 +581,7 @@ all_songs = [
         hint_1=' When was the start of all this?\n ♪“Re Mi Re Do Ti La So”. When did\n the cogs of fate begin to turn?[await]',
         hint_2=' From deep within the flow of\n time... ♪“Re Mi Re Do Ti La So”.[await]',
         hint_3=' Whilst our laughter echoed,\n “Re Mi Re Do Ti La So”,\n under cerulean skies...[await]',
-        scroll='\n          Re Mi Re Do Ti La So[await]'),
+        scroll='\n[center]Re Mi Re Do Ti La So[await]'),
     Song(
         [(Fa, 20), (Ti, 20), (Re, 40), (Fa, 20), (Ti, 20), (Re, 0)],
         "Song of Soaring",
@@ -589,22 +589,22 @@ all_songs = [
         submitter_credits="TRIUMPHANTBASS",
         hint_1=' My favorite song?[await][page]\n It\'s the Song of Soaring!\n ♪“Fa Ti Re, Fa Ti Re”.\n It gives me a flutter![await]',
         hint_2=' The Moleville miners were singing,\n ♪“Fa Ti Re, Fa Ti Re”.\n Light and breezy![await]',
-        hint_3='\n            Repeat after me![await][page]\n We\'ll go “FA”r~[delay]\n            Build equi“TY”~[delay]\n                         Get a “RA”ise~[await][page]\n\n                Once more![await]',
-        scroll='\n           Fa Ti Re Fa Ti Re[await]'),
+        hint_3='\n[center]Repeat after me![await][page]\n We\'ll go “FA”r~[delay]\n[center]Build equi“TY”~[delay]\n[center]Get a “RA”ise~[await][page]\n\n[center]Once more![await]',
+        scroll='\n[center]Fa Ti Re Fa Ti Re[await]'),
     Song(
         [(Do, 12), (La, 23), (Do, 12), (Ti, 23), (Do, 12), (Ti, 23), (So, 0)],
         "Green Hill Zone",
         hint_1=' Gotta go fast!\n ♪“Do La Do Ti Do Ti So”.[await]',
         hint_2=' ♪“Do La Do Ti Do Ti So”.\n A song that goes great with\n chili dogs.[await]',
         hint_3=' Do La Do Ti Do Ti So.\n You\'re too slow![await]',
-        scroll='\n          Do La Do Ti Do Ti So[await]'),
+        scroll='\n[center]Do La Do Ti Do Ti So[await]'),
     Song(
         [(So, 25), (La, 25), (Ti, 50), (Ti, 25), (Re, 25), (La, 50), (La, 25), (Ti, 0)],
         "Earthbound - Smiles and Tears",
         hint_1=' ♪“So La Ti Ti Re La La Ti”.\n I miss you...[await]',
         hint_2=' ♪“So La Ti Ti Re La La Ti”.\n Now say, “fuzzy pickles!”[await]',
-        hint_3=' Earthbound?\n           “SO” “LA”st year.\n                            “TI”ck tock![await][page]\n No “TI”me to spa“RE”,\n     p“LA”y the “LA”test “TI”tle,\n                                Mother 3![await]',
-        scroll='\n         So La Ti Ti Re La La Ti[await]'),
+        hint_3=' Earthbound?\n[center]“SO” “LA”st year.\n[center]“TI”ck tock![await][page]\n No “TI”me to spa“RE”,\n[center]p“LA”y the “LA”test “TI”tle,\n[center]Mother 3![await]',
+        scroll='\n[center]So La Ti Ti Re La La Ti[await]'),
     Song(
         [(So, 40), (Fa, 40), (Mi, 80), (Re, 20), (Mi, 40), (Re, 10), (Ti, 10), (Do, 0)],
         "I See The Light",
@@ -613,7 +613,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s “I See The Light!”\n ♪“So Fa Mi Re Mi Re Ti Do”.\n It\'s warm and bright![await]',
         hint_2=' The moles adapted it up from\n somewhere,\n ♪“So Fa Mi Re Mi Re Ti Do”.[await]\n Theirs is somewhat shifted.[await]',
         hint_3=' Our song?[await]\n “SO” “FA”r “ME”, I\'ve been\n “RE”-“MI”, “RE”-“MI”-niscing.[await][page]\n Think I\'ll “RE”-“TI”-re soon, once\n I\'ve made the “DO”ugh![await]',
-        scroll='\n        So Fa Mi Re Mi Re Ti Do[await]'),
+        scroll='\n[center]So Fa Mi Re Mi Re Ti Do[await]'),
     Song(
         [(La, 18), (La, 35), (Re, 35), (Do, 35), (La, 70), (So, 18), (La, 35), (Do, 0)],
         "TNT",
@@ -621,8 +621,8 @@ all_songs = [
         submitter_credits="ALEX.THE.RIDDLER",
         hint_1=' \'Cause I\'m TNT, Dynamite.\n ♪“La La Re Do La So La Do”.[await]',
         hint_2=' I swam all the way to Australia\n and discovered this cool band.\n ♪“La La Re Do La So La Do”.[await]',
-        hint_3=' This is the song we sing when we\n blow up the TNT![delay]\n      “So Fa Mi Re Mi Re Ti Do”[await]',
-        scroll='\n       So Fa Mi Re Mi Re Ti Do[await]'),
+        hint_3=' This is the song we sing when we\n blow up the TNT![delay]\n[center]“So Fa Mi Re Mi Re Ti Do”[await]',
+        scroll='\n[center]So Fa Mi Re Mi Re Ti Do[await]'),
     Song(
         [(Fa, 15), (So, 15), (Mi, 42), (Re, 8), (Do, 8), (Ti, 0)],
         "SMB3 Flute",
@@ -631,7 +631,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the SMB3 Flute music,\n ♪“Fa So Mi Re Do Ti”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the SMB3 Flute song.\n ♪“Fa So Mi Re Do Ti”.[await]\n It makes you feel like you\'re being\n whisked away...[await]',
         hint_3=' Some of us are learnin\' how to play\n the flute. We only know how to play\n the tune from SMB3, though.[await]',
-        scroll='\n            Fa So Mi Re Do Ti[await]'),
+        scroll='\n[center]Fa So Mi Re Do Ti[await]'),
     Song(
         [(La, 80), (Ti, 40), (La, 40), (Fa, 20), (La, 20), (Re, 40), (Ti, 0)],
         "Elegy of Emptiness",
@@ -640,7 +640,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Elegy of Emptiness,\n ♪“La Ti La Fa La Re Ti”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Elegy of Emptiness.\n ♪“La Ti La Fa La Re Ti”.[await]\n It\'s got...[delay] soul?[await][pause] Wait,[delay] that\'s\n not right...[await]',
         hint_3=' We\'ve been singin\' a new song,\n “Elegy of Emptiness”.[await][pause] Pa\' Mole\n heard it from somewhere.[await]\n It\'s kinda creepy, but it grows\n on ya![await]',
-        scroll='\n          La Ti La Fa La Re Ti[await]'),
+        scroll='\n[center]La Ti La Fa La Re Ti[await]'),
     Song(
         [(Mi, 15), (Ti, 45), (Mi, 15), (Ti, 15), (Re, 15), (Mi, 0)],
         "Prelude of Light",
@@ -649,7 +649,7 @@ all_songs = [
         hint_1=' I\'ve heard it played on an\n Ocarina before![await]',
         hint_2=' Perhaps it\'s a PRELUDE to\n something that\'s... LIGHT?[await]',
         hint_3=' “MI”gh“TI” fine weather for some\n “MI”gh“TI” “RE”laxing “MI”ning![await]',
-        scroll='\n            Mi Ti Mi Ti Re Mi[await]'),
+        scroll='\n[center]Mi Ti Mi Ti Re Mi[await]'),
     Song(
         [(Ti, 20), (Re, 20), (Do, 40), (La, 20), (Ti, 20), (La, 40), (So, 0)],
         "Free Bird",
@@ -658,7 +658,7 @@ all_songs = [
         hint_1=' I\'ve heard someone request it\n at a concert many times![await]',
         hint_2=' If I leave here tomorrow, will you\n still remember me?[await]',
         hint_3=' “TI”me to “Re”member how to “Do”\n this... “La”st “Ti”me, “La”st\n “So”und![await]',
-        scroll='\n          Ti Re Do La Ti La So[await]'),
+        scroll='\n[center]Ti Re Do La Ti La So[await]'),
     Song(
         [
             (Mi, 20),
@@ -676,16 +676,16 @@ all_songs = [
         hint_1=' Darling, it\'s better down where it\'s\n wetter. Take it from me![await]',
         hint_2=' Sometimes I like to think of myself\n as half a mermaid!\n ♪“Mi Re Do Do Mi Re Do Re”.[await]',
         hint_3=' Have you ever seen a mermaid on\n your travels, Mario?[await]',
-        scroll='\n       Mi Re Do Do Mi Re Do Re[await]'),
+        scroll='\n[center]Mi Re Do Do Mi Re Do Re[await]'),
     Song(
         [(Ti, 35), (Do, 35), (La, 18), (Do, 18), (Re, 18), (So, 18), (Ti, 18), (Do, 0)],
         "I'm Blue",
         submitter="Alex.the.Riddler",
         submitter_credits="ALEX.THE.RIDDLER",
-        hint_1='\n    I\'m blue, da ba dee da ba daa.[await]',
+        hint_1='\n[center]I\'m blue, da ba dee da ba daa.[await]',
         hint_2=' What if the whole world was blue\n like the ocean?[await]',
         hint_3=' Yo listen up, here\'s the story,\n about a little guy that lives in a\n blue world! Ti Do La Do Re So Ti Do[await]',
-        scroll='\n        Ti Do La Do Re So Ti Do[await]'),
+        scroll='\n[center]Ti Do La Do Re So Ti Do[await]'),
     Song(
         [
             (So, 60),
@@ -703,7 +703,7 @@ all_songs = [
         hint_1=' Bet you aren\'t expecting to get\n Rickrolled![await]',
         hint_2=' Never gonna give you up!\n Never gonna let you down![await]',
         hint_3=' Never gonna run around, and\n desert you!\n So La La Ti Re Do Ti So~[await]',
-        scroll='\n        So La La Ti Re Do Ti So[await]'),
+        scroll='\n[center]So La La Ti Re Do Ti So[await]'),
     Song(
         [(Fa, 40), (So, 20), (Fa, 20), (Ti, 40), (La, 40), (Fa, 0)],
         "Requiem of Spirit",
@@ -712,7 +712,7 @@ all_songs = [
         hint_1=' I got Silver Gauntlets!\n I can finally play that darn song!!\n ♪“Fa So Fa Ti La Fa”.[await]',
         hint_2=' My favorite song?[await][page]\n It\'s the song that saves me from\n having to enter Wasteland to get\n into the Spirit Temple.[await]\n ♪“Fa So Fa Ti La Fa”.[await]',
         hint_3=' Have you ever heard a song that\n can warp you to the desert?[await]\n I don\'t think it works in our world.[delay]\n You have to go through the sewers\n to warp to our desert.[await]',
-        scroll='\n            Fa So Fa Ti La Fa[await]'),
+        scroll='\n[center]Fa So Fa Ti La Fa[await]'),
     Song(
         [(La, 35), (Re, 70), (La, 35), (Re, 35), (Ti, 70), (La, 35), (So, 35), (La, 0)],
         "Apache (Jump on it)",
@@ -721,7 +721,7 @@ all_songs = [
         hint_1=' Mario! Jump on it! That\'s like\n what you do, right?[await]',
         hint_2=' Think of this song when you\'re\n doing super jumps!\n ♪“La Re La Re Ti La So La”.[await]',
         hint_3=' “LA”y me to “RE”st. “LA”y me to\n “RE”st.[await][pause] “TI”s “LA”ter than you\n think.[await][pause] “SO” much “LA”ter than\n you think.~[await]',
-        scroll='\n        La Re La Re Ti La So La[await]'),
+        scroll='\n[center]La Re La Re Ti La So La[await]'),
     Song(
         [(So, 35), (Do, 35), (Re, 35), (Mi, 35), (So, 35), (Do, 35), (Ti, 35), (Do, 0)],
         "Mother 3 Love Theme",
@@ -729,8 +729,8 @@ all_songs = [
         submitter_credits="COUSINCATNIP",
         hint_1=' My favorite song?[await][page]\n I think it\'s called the\n “Theme of Hearts”.[await]\n No,[delay] wait,[delay] that\'s not right.[await]\n Maybe it was “Glove Team”?[await]\n No, no,[delay] I got it![await][page]\n It\'s “Love Theme”.\n ♪“So Do Re Mi So Do Ti Do”.[await]\n Toadofsky may like it,\n but let\'s make him LOVE it![await]',
         hint_2=' My favorite song?[await][page]\n I think it\'s called the\n “Theme of Hearts”.[await]\n No,[delay] wait,[delay] that\'s not right.[await]\n Maybe it was “Glove Team”?[await]\n No, no,[delay] I got it![await][page]\n It\'s “Love Theme”.\n ♪“So Do Re Mi So Do Ti Do”.[await]\n Toadofsky may like it,\n but let\'s make him LOVE it![await]',
-        hint_3=' “Love Theme” is all the rage. Check\n it out:[await][page]\n\n       We feel it in our “SO”ul~[await][page]\n\n       With everything we “DO”~[await][page]\n\n[1]     My heart is still a w“RE”ck~[await][page]\n\n   So it\'s “MI”ghty time to change~[await][page]\n\n      I\'m diggin\' up to re“SO”il~[await][page]\n\n       “DO” you know it\'s me?~[await][page]\n\n         Feelin\' kinda “TI”red~[await][page]\n\n    But I “DO”n\'t want it to end!~[await]',
-        scroll='\n       So Do Re Mi So Do Ti Do[await]'),
+        hint_3=' “Love Theme” is all the rage. Check\n it out:[await][page]\n\n[center]We feel it in our “SO”ul~[await][page]\n\n[center]With everything we “DO”~[await][page]\n\n[1]     My heart is still a w“RE”ck~[await][page]\n\n[center]So it\'s “MI”ghty time to change~[await][page]\n\n[center]I\'m diggin\' up to re“SO”il~[await][page]\n\n[center]“DO” you know it\'s me?~[await][page]\n\n[center]Feelin\' kinda “TI”red~[await][page]\n\n[center]But I “DO”n\'t want it to end!~[await]',
+        scroll='\n[center]So Do Re Mi So Do Ti Do[await]'),
     Song(
         [(Mi, 35), (Re, 18), (Mi, 42), (Re, 18), (Mi, 35), (So, 18), (La, 0)],
         "SMB3 Overworld bar 1",
@@ -739,7 +739,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s “SMB3 Overworld Bar 1”.\n ♪“Mi Re Mi Re Mi So La”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' The time signature for the song is\n 1-1.[await][pause] At least, according to\n “Super Mario Bros. 3.”[await]',
         hint_3=' It\'s the Moleville “MI”nes!\n “RE”ad all about it![await][page]\n I wish I had a Bambino Bomb for\n these “MI”nes, “RE”ally I wish!\n Don\'t “MI”nd if I do![await][page]\n “SO” you gotta find that bomb,\n I hope it\'s not your “LA”st\n key item![await]',
-        scroll='\n         Mi Re Mi Re Mi So La[await]'),
+        scroll='\n[center]Mi Re Mi Re Mi So La[await]'),
     Song(
         [(Mi, 35), (Re, 18), (Mi, 24), (Mi, 24), (Do, 18), (Re, 0)],
         "SMB3 Overworld bar 2",
@@ -748,7 +748,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s “SMB3 Overworld Bar 2”.\n ♪“Mi Re Mi Mi Do Re”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song? It\'s...[await][page]\n [delay]Wait,[delay] I thought this song was from\n Mario 3, but it\'s the second part?[await][page]\n OH![await][pause] It\'s the 2nd bar of 1-1![await][pause]\n I get it now.[await]',
         hint_3=' Moles “MI”ne! We “RE”ally dig![await]\n Moles “MI”ne for “MI”nerals![await]\n Wait, “DO” we “RE”ally?[await]',
-        scroll='\n           Mi Re Mi Mi Do Re[await]'),
+        scroll='\n[center]Mi Re Mi Mi Do Re[await]'),
     Song(
         [(Mi, 35), (Re, 18), (Mi, 24), (So, 24), (La, 24), (Do, 0)],
         "SMB3 Overworld bar 4",
@@ -757,7 +757,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s “SMB3 Overworld Bar 4”.\n ♪“Mi Re Mi So La Do”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' What a nice closing bar to Grass\n Land, a 1 to 1 representation if I\n do say so myself.[await]\n I don\'t mean the Juice Bar, though![await]',
         hint_3=' We live in the “MI”nes, “RE”ad between the lines![await][pause] These “MI”nes\n are ours![await][pause] “SO” make like a “LA”ke\n and “DO”n\'t quake![await]',
-        scroll='\n           Mi Re Mi So La Do[await]'),
+        scroll='\n[center]Mi Re Mi So La Do[await]'),
     Song(
         [(Mi, 35), (Mi, 35), (Re, 35), (Do, 35), (Ti, 35), (La, 35), (So, 35), (Fa, 0)],
         "I'm falling down all these stairs",
@@ -766,7 +766,7 @@ all_songs = [
         hint_1=' I warned you about stairs bro!\n I told you dog![await]',
         hint_2=' I told you man!\n I TOLD you about stairs![await]',
         hint_3=' I love to “ME” “ME”, yes I\n “RE”ally “DO”![await][pause] Oh no, it\'s “TI”me\n for work, I\'m “LA”te, “SO” please\n “FA”hgive me dude![await]',
-        scroll='\n       Mi Mi Re Do Ti La So Fa[await]'),
+        scroll='\n[center]Mi Mi Re Do Ti La So Fa[await]'),
     Song(
         [(La, 15), (Ti, 15), (Do, 15), (Re, 15), (Ti, 30), (So, 15), (La, 15)],
         "The Lick",
@@ -775,16 +775,16 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s “The Lick”.\n ♪“La Ti Do Re Ti So La”.\n Toadofsky\'s a fan of Jazz.[await]',
         hint_2=' My favorite song?[await][page]\n It\'s “The Lick”.\n ♪“La Ti Do Re Ti So La”.\n Ya like Jazz?[await]',
         hint_3=' La Ti Do Re Ti So La~[delay]\n Hmm,[delay] where have I heard this\n before?[await]',
-        scroll='\n          La Ti Do Re Ti So La[await]'),
+        scroll='\n[center]La Ti Do Re Ti So La[await]'),
     Song(
         [(La, 15), (Fa, 15), (La, 15), (Ti, 15), (So, 15), (La, 15), (Ti, 15), (Re, 0)],
         "Pekora BGM",
         submitter="SushiKishi",
         submitter_credits="SUSHIKISHI",
         hint_1=' For some reason, I have a craving\n for almonds.[await][pause] And...[delay] explosions?[await]\n ♪“La Fa La Ti So La Ti Re”.[await]\n Say,[delay] did you just hear laughing?[await]',
-        hint_2=' I was watching this rabbit on TV\n earlier today, and now I can\'t get\n the song out of my head.[await][page]\n ♪ U-sa-da Pe![delay] Ko![delay] Ra![delay]\n    U-sa-da Pe![delay] Ko![delay] Ra![delay]\n    U-sa-da PEKO-PEKO-CHAN![delay]\n    PEKO-PEKO-CHAN![await]',
+        hint_2=' I was watching this rabbit on TV\n earlier today, and now I can\'t get\n the song out of my head.[await][page]\n ♪ U-sa-da Pe![delay] Ko![delay] Ra![delay]\n[center]U-sa-da Pe![delay] Ko![delay] Ra![delay]\n[center]U-sa-da PEKO-PEKO-CHAN![delay]\n[center]PEKO-PEKO-CHAN![await]',
         hint_3=' D-DIG, D-DIG DIG DIG! What\'s the\n cutest song in the entire game?[await]\n D-DIG, D-DIG DIG DIG!\n It\'s Pekora\'s BGM![await][page]\n D-DIG, D-DIG DIG DIG!\n And how does that song go?[await]\n D-DIG, D-DIG DIG DIG! It goes\n “LA FA LA TI SO LA TI RE”![await]',
-        scroll='\n        La Fa La Ti So La Ti Re[await]'),
+        scroll='\n[center]La Fa La Ti So La Ti Re[await]'),
     Song(
         [(So, 30), (La, 15), (Fa, 30), (So, 75), (Ti, 30), (La, 15), (Fa, 30), (So, 0)],
         "John Cena Trumpets",
@@ -793,7 +793,7 @@ all_songs = [
         hint_1=' I have a date today, but I lost my\n watch. Do you have the time?[await]\n ♪“So La Fa So Ti La Fa So”.[await]\n What time was my date again...?\n OH NO! THE TIME IS NOW![await]',
         hint_2=' Someone gave me some sheet\n music to pass on to Toadofsky.[await]\n Unfortunately, I dropped the scroll\nin the water, the ink washed off,\n and I can\'t read the notes.[await]\n Even with the five-second rule, my\n time was up. Your time is now! Go\n find those notes for me, please![await]',
         hint_3=' All our kids\'re gettin\' to that age\n where they\'re really into pro\n wrestling.[await][pause] They can\'t stop singin\'\n John Cena\'s entrance music![await]\n I promise you kids, I can see ya!\n And I can DEFINITELY hear ya![await]\n (So La Fa So Ti La Fa So~...)[await]',
-        scroll='\n        So La Fa So Ti La Fa So[await]'),
+        scroll='\n[center]So La Fa So Ti La Fa So[await]'),
     Song(
         [(Ti, 70), (Re, 35), (La, 88), (Ti, 70), (Re, 35), (La, 0)],
         "Zelda's Lullaby",
@@ -802,7 +802,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s Zelda\'s Lullaby,\n ♪“Ti Re La Ti Re La”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s Zelda\'s Lullaby.\n ♪“Ti Re La Ti Re La”.[await]\n It\'s comforting, isn\'t it?[await]',
         hint_3=' I swear, if these fellas don\'t stop\n singin\' lullabies, we\'re all gonna\n fall asleep on the job![await]',
-        scroll='\n            Ti Re La Ti Re La[await]'),
+        scroll='\n[center]Ti Re La Ti Re La[await]'),
     Song(
         [(Re, 18), (Ti, 18), (La, 70), (Re, 18), (Ti, 18), (La, 0)],
         "Epona's Song",
@@ -810,8 +810,8 @@ all_songs = [
         submitter_credits="PIDGEZERO_ONE",
         hint_1=' My favorite song?[await][page]\n It\'s Epona\'s Song,\n ♪“Re Ti La Re Ti La”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s Epona\'s Song.\n It fills me with joy![await]',
-        hint_3=' What\'s that? You wanna hear\n Epona\'s Song? Well, alright then![await][page]\n\n    Standing here, I “RE”member~[await][page]\n\n            That “TI”me when~[await][page]\n\n      My mother wrote for you~[await][page]\n\n             This bal“LA”d~[await][page]\n [delay].[delay].[delay].[delay]Whoa, I gotta get back to work![await]\n But the song repeats that part.[await]',
-        scroll='\n            Re Ti La Re Ti La[await]'),
+        hint_3=' What\'s that? You wanna hear\n Epona\'s Song? Well, alright then![await][page]\n\n[center]Standing here, I “RE”member~[await][page]\n\n[center]That “TI”me when~[await][page]\n\n[center]My mother wrote for you~[await][page]\n\n[center]This bal“LA”d~[await][page]\n [delay].[delay].[delay].[delay]Whoa, I gotta get back to work![await]\n But the song repeats that part.[await]',
+        scroll='\n[center]Re Ti La Re Ti La[await]'),
     Song(
         [(Re, 60), (Mi, 60), (Re, 60), (Mi, 60), (Re, 60), (Mi, 60), (Ti, 0)],
         "The Brink of Time",
@@ -820,7 +820,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s The Brink of Time,\n ♪“Re Mi Re Mi Re Mi Ti”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s The Brink of Time.\n ♪“Re Mi Re Mi Re Mi Ti”.[await]\n It\'s quite melancholic.[await]',
         hint_3=' Feels like I\'m gonna be workin\'\n here \'til the end of time![await]',
-        scroll='\n         Re Mi Re Mi Re Mi Ti[await]'),
+        scroll='\n[center]Re Mi Re Mi Re Mi Ti[await]'),
     Song(
         [(Fa, 18), (La, 18), (Ti, 35), (Fa, 18), (La, 18), (Ti, 0)],
         "Saria's Song",
@@ -829,7 +829,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s Saria\'s Song,\n ♪“Fa La Ti Fa La Ti”.\n It\'s got a hot beat![await]',
         hint_2=' My favorite song?[await][page]\n It\'s Saria\'s Song.[await]\n A song like that is sure to cheer\n you up when you\'re feeling down![await]',
         hint_3=' ♪(Fa La Ti, Fa La Ti...)[await]\n I visited the forest,[delay] an\' now I\n can\'t get this tune outta my head![await]',
-        scroll='\n            Fa La Ti Fa La Ti[await]'),
+        scroll='\n[center]Fa La Ti Fa La Ti[await]'),
     Song(
         [(Ti, 12), (So, 12), (Mi, 60), (Ti, 12), (So, 12), (Mi, 0)],
         "Sun's Song",
@@ -838,7 +838,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Sun\'s Song,\n ♪“Ti So Mi Ti So Mi”.\n Toadofsky\'s fond of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Sun\'s Song.\n ♪“Ti So Mi Ti So Mi”.\n I wonder what it means?[await]',
         hint_3=' I tell ya, I can\'t wait for the work\n day to be over.[await][pause] I wish there was a\n way to make the day pass quicker![await]',
-        scroll='\n           Ti So Mi Ti So Mi[await]'),
+        scroll='\n[center]Ti So Mi Ti So Mi[await]'),
     Song(
         [(Ti, 35), (Fa, 70), (So, 35), (Ti, 35), (Fa, 70), (So, 0)],
         "Song of Time",
@@ -847,7 +847,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Song of Time,\n ♪“Ti Fa So Ti Fa So”.\n It makes me reflect...[await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Song of Time.\n ♪“Ti Fa So Ti Fa So”.\n It\'s mysterious, isn\'t it?[await]',
         hint_3=' Have ya ever wished you could\n just give the day a do-over,\n Mario?[await]',
-        scroll='\n            Ti Fa So Ti Fa So[await]'),
+        scroll='\n[center]Ti Fa So Ti Fa So[await]'),
     Song(
         [(Fa, 12), (So, 12), (Re, 55), (Fa, 12), (So, 12), (Re, 0)],
         "Song of Storms",
@@ -856,7 +856,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Song of Storms,\n ♪“Fa So Re Fa So Re”.\n It\'s wily![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Song of Storms.[await][pause] But I\'m\n worried if I recite it here, it\'ll\n cause a flood.[await]',
         hint_3=' ♪(Fa So Re, Fa So Re...)[await]\n This tune makes my head spin, but\n I can\'t get it outta my head![await]',
-        scroll='\n           Fa So Re Fa So Re[await]'),
+        scroll='\n[center]Fa So Re Fa So Re[await]'),
     Song(
         [(Fa, 18), (Re, 18), (Ti, 80), (La, 18), (Ti, 18), (La, 0)],
         "Minuet of Forest",
@@ -864,8 +864,8 @@ all_songs = [
         submitter_credits="PIDGEZERO_ONE",
         hint_1=' My favorite song?[await][page]\n It\'s the Minuet of Forest,\n ♪“Fa Re Ti La Ti La”.\n Isn\'t it cute?[await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Minuet of Forest.[await][pause] Such a\n cute and sprightly song![await]',
-        hint_3='\n      “FA”r away in a fo“RE”st~[await][page]\n\n     “TI”me seems to stand still~[await][page]\n\n Wood“LA”nd creatures so “TI”mid~[await][page]\n\n   Live among “LA”vish green hills~[await][page]\n Oops![delay] I reckon that\'s about all I\n can remember from that song...[await]',
-        scroll='\n            Fa Re Ti La Ti La[await]'),
+        hint_3='\n[center]“FA”r away in a fo“RE”st~[await][page]\n\n[center]“TI”me seems to stand still~[await][page]\n\n Wood“LA”nd creatures so “TI”mid~[await][page]\n\n[center]Live among “LA”vish green hills~[await][page]\n Oops![delay] I reckon that\'s about all I\n can remember from that song...[await]',
+        scroll='\n[center]Fa Re Ti La Ti La[await]'),
     Song(
         [(So, 15), (Fa, 15), (So, 15), (Fa, 15), (Ti, 15), (La, 15), (Ti, 15), (La, 0)],
         "Bolero of Fire",
@@ -874,7 +874,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Bolero of Fire,\n ♪“So Fa So Fa Ti La Ti La”.\n What a great rhythm![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Bolero of Fire.[await]\n It makes me want to just start\n dancing, and I don\'t have legs![await]',
         hint_3=' ♪(So Fa So Fa Ti La Ti La...)[await]\n I swear, this tune\'s a hot beat![await]\n Does it feel a little warm in here?[await]',
-        scroll='\n        So Fa So Fa Ti La Ti La[await]'),
+        scroll='\n[center]So Fa So Fa Ti La Ti La[await]'),
     Song(
         [(Fa, 40), (So, 40), (La, 40), (La, 40), (Ti, 40)],
         "Serenade of Water",
@@ -883,7 +883,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Serenade of Water,\n ♪“Fa So La La Ti”.\n It\'s so breezy![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Serenade of Water.\n ♪“Fa So La La Ti”.\n It gives me the chills![await]',
         hint_3=' Boy howdy, I sure wish I was\n somewhere a little colder\n right now!',
-        scroll='\n              Fa So La La Ti[await]'),
+        scroll='\n[center]Fa So La La Ti[await]'),
     Song(
         [(Ti, 35), (La, 35), (La, 18), (Fa, 18), (Ti, 18), (La, 18), (So, 18)],
         "Nocturne of Shadow",
@@ -892,7 +892,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Nocturne of Shadow,\n ♪“Ti La La Fa Ti La So”.\n It\'s unsettling![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Nocturne of Shadow.[await]\n Something about it just draws me\n right in.[await]',
         hint_3=' ♪(Ti La La Fa Ti La So...)[await]\n Y\'know, workin\' in these mines can\n be mighty creepy sometimes...[await]',
-        scroll='\n          Ti La La Fa Ti La So[await]'),
+        scroll='\n[center]Ti La La Fa Ti La So[await]'),
     Song(
         [(Re, 18), (Ti, 18), (Re, 18), (Ti, 35), (Fa, 35), (La, 70), (Fa, 0)],
         "Sonata of Awakening",
@@ -901,7 +901,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Sonata of Awakening,\n ♪“Re Ti Re Ti Fa La Fa”.\n Toadofsky\'s font of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Sonata of Awakening.[await]\n I\'m afraid that if I hum it,\n something weird will happen.[await]',
         hint_3=' ♪(Re Ti Re Ti Fa La Fa...)[await]\n Y\'know, it\'s weird, but I\'ve been\n havin\' some trouble sleeping.[await]',
-        scroll='\n          Re Ti Re Ti Fa La Fa[await]'),
+        scroll='\n[center]Re Ti Re Ti Fa La Fa[await]'),
     Song(
         [(Ti, 35), (La, 35), (Fa, 35), (Ti, 35), (La, 35), (Fa, 0)],
         "Song of Healing",
@@ -909,8 +909,8 @@ all_songs = [
         submitter_credits="PIDGEZERO_ONE",
         hint_1=' My favorite song?[await][page]\n It\'s the Song of Healing,\n ♪“Ti La Fa Ti La Fa”.\n Toadofsky\'s font of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Song of Healing.[await]\n I feel so clean and refreshed\n every time I hear it.[await]',
-        hint_3='\n        When the “TI”me comes~[await][page]\n\n        To “LA”y down to rest~[await][page]\n\n          I will “FA”ll asleep~[await][page]\n\n      And my soul will refresh~![await][page]\n If you sing that song twice in\n a row...[delay] well, you\'ll be feelin\'\n much better![await]',
-        scroll='\n            Ti La Fa Ti Ta Fa[await]'),
+        hint_3='\n[center]When the “TI”me comes~[await][page]\n\n[center]To “LA”y down to rest~[await][page]\n\n[center]I will “FA”ll asleep~[await][page]\n\n[center]And my soul will refresh~![await][page]\n If you sing that song twice in\n a row...[delay] well, you\'ll be feelin\'\n much better![await]',
+        scroll='\n[center]Ti La Fa Ti Ta Fa[await]'),
     Song(
         [(Fa, 35), (La, 35), (Ti, 35), (Fa, 35), (La, 35), (Ti, 35), (La, 35), (Fa, 0)],
         "Goron Lullaby",
@@ -919,7 +919,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the Goron Lullaby,\n ♪“Fa La Ti Fa La Ti La Fa”.\n Toadofsky\'s font of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Goron Lullaby.\n ♪“Fa La Ti Fa La Ti La Fa”.\n Don\'t fall asleep![await]',
         hint_3=' I swear, if these fellas don\'t stop\n singin\' lullabies, we\'re all gonna\n fall asleep on the job![await]',
-        scroll='\n         Fa La Ti Fa La Ti La Fa[await]'),
+        scroll='\n[center]Fa La Ti Fa La Ti La Fa[await]'),
     Song(
         [(Ti, 60), (Re, 12), (Do, 12), (La, 60), (Fa, 12), (Ti, 12), (La, 0)],
         "New Wave Bossa Nova",
@@ -928,7 +928,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n It\'s the New Wave Bossa Nova,\n ♪“Ti Re Do La Fa Ti La”.\n Toadofsky\'s font of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the New Wave Bossa Nova.[await]\n It\'d be cool if a giant turtle\n appeared in our pond, too.[await]',
         hint_3=' ♪(Ti Re Do La Fa Ti La...)[await]\n I\'m tellin ya, I could use a\n vacation![await]',
-        scroll='\n          Ti Re Do La Fa Ti La[await]'),
+        scroll='\n[center]Ti Re Do La Fa Ti La[await]'),
     Song(
         [(Ti, 80), (La, 40), (Fa, 40), (La, 40), (Ti, 40), (Re, 60)],
         "Oath to Order",
@@ -936,8 +936,8 @@ all_songs = [
         submitter_credits="PIDGEZERO_ONE",
         hint_1=' My favorite song?[await][page]\n It\'s the Oath to Order,\n ♪“Ti La Fa La Ti Re”.\n Toadofsky\'s font of it, too![await]',
         hint_2=' My favorite song?[await][page]\n It\'s the Oath to Order.[await]\n I heard that song carries great\n power in a far-off land.[await]',
-        hint_3=' Wassat? You wanna hear our\n song?[await][pause] Well, here goes![await][page]\n\n   Through the passage of “TI”me~[await][page]\n\n    And in “LA”nds “FA”r apart~[await][page]\n\n     We shall always be friends~[await][page]\n\n     I dec“LA”re this with heart~[await][page]\n\n     I will s“TI”ll heed your call~[await][page]\n\n      If you need me, my friend~[await][page]\n\n       I will always be the“RE”~[await][page]\n\n          Until the very end~![await]',
-        scroll='\n            Ti La Fa La Ti Re[await]'),
+        hint_3=' Wassat? You wanna hear our\n song?[await][pause] Well, here goes![await][page]\n\n[center]Through the passage of “TI”me~[await][page]\n\n[center]And in “LA”nds “FA”r apart~[await][page]\n\n[center]We shall always be friends~[await][page]\n\n[center]I dec“LA”re this with heart~[await][page]\n\n[center]I will s“TI”ll heed your call~[await][page]\n\n[center]If you need me, my friend~[await][page]\n\n[center]I will always be the“RE”~[await][page]\n\n[center]Until the very end~![await]',
+        scroll='\n[center]Ti La Fa La Ti Re[await]'),
     Song(
         [(Fa, 12), (So, 12), (Ti, 12), (Re, 12), (Ti, 12), (Do, 12)],
         "For the Animals of the Forest",
@@ -946,7 +946,7 @@ all_songs = [
         hint_1=' My favorite song?[await][page]\n ♪“Fa So Ti Re Ti Do”.\n I heard it in a forest once. I\n suspected the flutist was a ghost.[await]',
         hint_2=' My favorite song?[await][page]\n ♪“Fa So Ti Re Ti Do”.\n Most animals love that song.\n Especially birds.[await]',
         hint_3=' Don\'t ya wish sometimes that you\n could just fly anywhere ya wanted?[await]',
-        scroll='\n            Fa So Ti Re Ti Do[await]'),
+        scroll='\n[center]Fa So Ti Re Ti Do[await]'),
     Song(
         [(So, 20), (Re, 20), (Do, 20), (La, 20), (Ti, 30), (Ti, 30), (Do, 30)],
         "UNDERTALE - His Theme",
@@ -955,7 +955,7 @@ all_songs = [
         hint_1=' Hey, Toby, I forget. Who\'s theme is\n this, again?[await]',
         hint_2=' I heard that monsters that hear\n this song are filled with\n determination![await]',
         hint_3=' Oh yeah, the Moleville Blues![await][page]\n Even if it\'s His Theme, those cute\n bells make me cry every time I listen\n to it.[await]',
-        scroll='\n          So Re Do La Ti Ti Do[await]'),
+        scroll='\n[center]So Re Do La Ti Ti Do[await]'),
     Song(
         [(So, 1), (La, 2), (Re, 5), (La, 2), (Do, 4), (Re, 5), (Mi, 6), (Ti, 3)],
         "Chasing a Dream",
@@ -964,5 +964,5 @@ all_songs = [
         hint_1=""" My favorite song?[await][page]\n It's Chasing a Dream.\n ♪“So La Re La Do Re Mi Ti”.[await][page]\n Every time it plays in Rayman\n Origins/Legends...the feels![await]""",
         hint_2=""" My favorite song?[await][page]\n It's Chasing a Dream.\n ♪“So La Re La Do Re Mi Ti”.[await][page]\n Perfect song for a mad dash\n through the underworld![await]""",
         hint_3=""" The Moleville Blues.[await]\n “So La Re La Do Re Mi Ti”.[await][page]\n *sniff* Hearing it, I just want to\n chase my dream![await]""",
-        scroll='\n        So La Re La Do Re Mi Ti[await]'),
+        scroll='\n[center]So La Re La Do Re Mi Ti[await]'),
 ]

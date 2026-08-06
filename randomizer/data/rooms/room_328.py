@@ -113,7 +113,7 @@ room = Room(
         RegularNPC( # 2
             npc=npcs.TOAD_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
-            event_script=E0387_MUSHROOM_KINGDOM_OCCUPIED_TOADSTOOLS_ROOM_TOAD_2,
+            event_script=E1691_TOAD_WIN_CONDITION,
             action_script=A0098_WALK_RANDOM_DIRECTIONS_NO_SOLIDITY_CHANGE,
             visible=True,
             x=2,

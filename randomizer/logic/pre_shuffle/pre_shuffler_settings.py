@@ -55,7 +55,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (
 )
 from smrpgpatchbuilder.datatypes.levels.classes import EventInitiator
 
-from ...types.flags import (AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, DontAutoheal, DontAutohealOptions, ShuffleCookies, ShuffleMarioDoll)
+from ...types.flags import (AllowAllySwitching, BossScaleOptions, BossShuffleScaleStats, DontAutoheal, DontAutohealOptions, ShuffleCookies, ShuffleMarioDoll, RemakeNames)
 from ...types.flags import (
         WinCondition,
         WinConditions,
@@ -181,11 +181,14 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
     # Win conditions
     if world.settings.is_flag_value(WinCondition, WinConditions.SMITHY):
         world.event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
+        world.update_dialog(DI2027_WIN_CONDITION, '''\n[center]Good luck beating Smithy![await]''')
     elif world.settings.is_flag_value(WinCondition, WinConditions.STARS):
         world.event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
         world.event_scripts.get_command_by_identifier("end_game_after_collecting_star_piece", JmpIfVarEqualsConst).set_value(world.settings.get_flag(StarPiecesRequired).value)
+        world.update_dialog(DI2027_WIN_CONDITION, f" Good luck finding the {world.settings.get_flag(StarPiecesRequired).value} Star Pieces![await]")
     elif world.settings.is_flag_value(WinCondition, WinConditions.SEALED):
         world.event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
+        world.update_dialog(DI2027_WIN_CONDITION, ''' Good luck conquering Monstro Town![await]''')
 
     # Travel and warp settings
     if world.settings.isflag_enabled(FastTravel):
@@ -263,10 +266,16 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
             ).insert_before_nth_command(
                 0, RemoveObjectFromSpecificLevel(NPC_1, R333_KERO_SEWERS_ENTRANCE)
             )
-            world.update_dialog(
-                DI1055_SEWER_GATING_TEXT,
-                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on\n it is waiting for payment, but our\n shop guy is out of RareFrogCoins.[await]",
-            )
+            if world.settings.isflag_enabled(RemakeNames):
+                world.update_dialog(
+                    DI1055_SEWER_GATING_TEXT, 
+                    " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on it is waiting for payment, but our shop guy is out of Special Coins.[await]",
+                )
+            else:
+                world.update_dialog(
+                    DI1055_SEWER_GATING_TEXT,
+                    " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I think the guy who was working on it is waiting for payment, but our shop guy is out of RareFrogCoins.[await]",
+                )
 
         elif world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
             world.update_dialog(
@@ -276,13 +285,19 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.KINGDOM):
             world.update_dialog(
                 DI1055_SEWER_GATING_TEXT,
-                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet some bigger changes will\n happen to this town before that\n ever gets finished.[await]",
+                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet some bigger changes will happen to this town before that ever gets finished.[await]",
             )
         if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MACK):
-            world.update_dialog(
-                DI1055_SEWER_GATING_TEXT,
-                " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got\n distracted again when he heard\n Mack was around.[await]",
-            )
+            if world.settings.isflag_enabled(RemakeNames):
+                world.update_dialog(
+                    DI1055_SEWER_GATING_TEXT, 
+                    " Oh, the sewers? I think they're closed for repairs.[await][pause] Honestly, I thought that finished ages ago.[await][page]\n I bet the guy working on it got distracted again when he heard Claymorton was around.[await]"
+                )
+            else:
+                world.update_dialog(
+                    DI1055_SEWER_GATING_TEXT,
+                    " Oh, the sewers? I think they're\n closed for repairs.[await][pause] Honestly, I\n thought that finished ages ago.[await][page]\n I bet the guy working on it got distracted again when he heard Mack was around.[await]",
+                )
     else:
         world.event_2496_startup += [
             ClearBit(SEWERS_CLOSED),

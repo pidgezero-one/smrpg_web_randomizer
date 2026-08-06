@@ -1,22 +1,22 @@
-dialog_data = [""]*638
-dialog_data[0] = '''                     INN[end]'''
-dialog_data[1] = '''                ITEM SHOP[end]'''
-dialog_data[2] = '''             INN / ITEM SHOP[end]'''
-dialog_data[3] = '''             MONSTRO TOWN[end]'''
-dialog_data[4] = '''          TOADSTOOL’S ROOM[end]'''
-dialog_data[5] = '''            BELOME TEMPLE[end]'''
-dialog_data[6] = '''            GARRO’S HOUSE[end]'''
-dialog_data[7] = '''              YO’STER ISLE[end]'''
-dialog_data[8] = '''          MARRYMORE HOTEL[end]'''
-dialog_data[9] = '''            BEETLES ARE US[end]'''
-dialog_data[10] = '''      WEAPON AND ARMOR SHOP[end]'''
-dialog_data[11] = '''                 BEDROOM[end]'''
-dialog_data[12] = '''          HEALTH FOOD STORE[end]'''
-dialog_data[13] = '''        MUSHROOM BOY’S SHOP[end]'''
-dialog_data[14] = '''            ACCESSORY SHOP[end]'''
-dialog_data[15] = '''               MELODY BAY[end]'''
-dialog_data[16] = '''         GRATE GUY’S CASINO[end]'''
-dialog_data[17] = '''               HINO MART[end]'''
+dialog_data = [""]*640
+dialog_data[0] = '''[center]INN[end]'''
+dialog_data[1] = '''[center]ITEM SHOP[end]'''
+dialog_data[2] = '''[center]INN / ITEM SHOP[end]'''
+dialog_data[3] = '''[center]MONSTRO TOWN[end]'''
+dialog_data[4] = '''[center]TOADSTOOL’S ROOM[end]'''
+dialog_data[5] = '''[center]BELOME TEMPLE[end]'''
+dialog_data[6] = '''[center]GARRO’S HOUSE[end]'''
+dialog_data[7] = '''[center]YO’STER ISLE[end]'''
+dialog_data[8] = '''[center]MARRYMORE HOTEL[end]'''
+dialog_data[9] = '''[center]BEETLES ARE US[end]'''
+dialog_data[10] = '''[center]WEAPON AND ARMOR SHOP[end]'''
+dialog_data[11] = '''[center]BEDROOM[end]'''
+dialog_data[12] = '''[center]HEALTH FOOD STORE[end]'''
+dialog_data[13] = '''[center]MUSHROOM BOY’S SHOP[end]'''
+dialog_data[14] = '''[center]ACCESSORY SHOP[end]'''
+dialog_data[15] = '''[center]MELODY BAY[end]'''
+dialog_data[16] = '''[center]GRATE GUY’S CASINO[end]'''
+dialog_data[17] = '''[center]HINO MART[end]'''
 dialog_data[18] = ''' I don’t really like being a 
  stepstool,[delay] but I understand that
  I’m the perfect height for it.[await]
@@ -51,10 +51,10 @@ dialog_data[30] = ''' Why don’t you crash for a while?[await]
  [select]  (No, thanks.)[await]'''
 dialog_data[31] = '''[page]
 
-    Ahem...you’re a little short![await]'''
+[center]Ahem...you’re a little short![await]'''
 dialog_data[32] = '''[page]
 
-               Good luck![await]'''
+[center]Good luck![await]'''
 dialog_data[33] = '''[center]Got a “[0x70A7]”![await]'''
 dialog_data[34] = '''[page]
         [0x7024] Cookie(s)[end]'''
@@ -73,7 +73,7 @@ dialog_data[40] = ''' Some of the monsters out there are
  Timed Hits![await][pause] My husband knows all
  about them.[await]'''
 dialog_data[41] = '''
-              Gotta go fast![await]'''
+[center]Gotta go fast![await]'''
 dialog_data[42] = '''Got an “[0x70A7]”![end]'''
 dialog_data[43] = '''Got a “[0x70A7]”![end]'''
 dialog_data[44] = '''[center]Got a “Flower”[await]'''
@@ -95,9 +95,9 @@ dialog_data[47] = ''' One! Two! Three!
  [select]  (Sure!)
  [select]  (Yeah, right kid.)[await]'''
 dialog_data[48] = '''
-                 Yeah!!![await]'''
+[center]Yeah!!![await]'''
 dialog_data[49] = '''
-             Thanks a bunch.[await]'''
+[center]Thanks a bunch.[await]'''
 dialog_data[50] = ''' Hey `MAIN_CHARACTER_NAME`!
  My brother’s getting pretty good at Super Jumps.[await][page]
  It gets pretty precise after you do
@@ -105,11 +105,11 @@ dialog_data[50] = ''' Hey `MAIN_CHARACTER_NAME`!
  change, so he got the hang of it
  with enough practice.[await]'''
 dialog_data[51] = '''
-            This way, please.[await]'''
+[center]This way, please.[await]'''
 dialog_data[52] = '''
-                Hey, chill![await]'''
+[center]Hey, chill![await]'''
 dialog_data[53] = '''
-      Didn’t I tell you to CHILL?![await]'''
+[center]Didn’t I tell you to CHILL?![await]'''
 dialog_data[54] = '''CHANCELLOR: It’s a shame I don’t
  have a sitting sprite.[delay] Nobody uses
  that chair over there.[await]'''
@@ -152,7 +152,7 @@ dialog_data[65] = ''' I saw the guy in the guest room
  pick something up that looked
  important.[await]'''
 dialog_data[66] = '''
-               I’m scared![await]'''
+[center]I’m scared![await]'''
 dialog_data[67] = ''' What ARE those things
  out there, anyway?![await]'''
 dialog_data[68] = ''' OH NO!
@@ -161,7 +161,7 @@ dialog_data[68] = ''' OH NO!
 dialog_data[69] = '''
   I’m too scared to pass by them![await]'''
 dialog_data[70] = '''
-             Trapped again![await]'''
+[center]Trapped again![await]'''
 dialog_data[71] = ''' Saved by `MAIN_CHARACTER_NAME` again!
  How could I ever thank you
  enough?![await]'''
@@ -173,7 +173,7 @@ dialog_data[73] = ''' Hey! That’s the wallet I lost!
  [select]  (No way)[await]'''
 dialog_data[74] = '''[page]
 
-          Why, you’re terrible![await]'''
+[center]Why, you’re terrible![await]'''
 dialog_data[75] = '''[page]
  Thank you so much! Here,
  I’ll give you this as a reward.
@@ -182,9 +182,9 @@ dialog_data[76] = ''' Hey, give me back my wallet![await]
  [select]  (All right, quit whining)
  [select]  (NO WAY, Jose!)[await]'''
 dialog_data[77] = '''
-               Oh, wow...![await]'''
+[center]Oh, wow...![await]'''
 dialog_data[78] = '''
-     I’m shaken, but not stirred![await]'''
+[center]I’m shaken, but not stirred![await]'''
 dialog_data[79] = ''' It’s scary outside, so let’s play
  indoors, all right?[await]'''
 dialog_data[80] = ''' Not all attacks can be blocked with
@@ -194,7 +194,7 @@ dialog_data[80] = ''' Not all attacks can be blocked with
  And if you block it at just the
  right moment, you’ll evade it![await]'''
 dialog_data[81] = '''
-                Thank you![await]'''
+[center]Thank you![await]'''
 dialog_data[82] = ''' Excuse me?![await][page]
  You want to...WHAT? How can
  you shop at a time like this?![await][page]
@@ -205,19 +205,19 @@ dialog_data[83] = ''' We’re having an honoured guest
  I hope nothing disastrous happens
  around here in the meantime.[await]'''
 dialog_data[84] = '''
-                 Thanks![await]'''
+[center]Thanks![await]'''
 dialog_data[85] = ''' This guy can do more Super Jumps
  than me![await]'''
 dialog_data[86] = '''
-         I’ll get the 100 soon![await]'''
+[center]I’ll get the 100 soon![await]'''
 dialog_data[87] = '''
-     Hope my little brother is OK.[await]'''
+[center]Hope my little brother is OK.[await]'''
 dialog_data[88] = '''TOAD: Good luck, `MAIN_CHARACTER_NAME`!
  Give ’em heck![await]'''
 dialog_data[89] = '''
-   I’m really worried about my son.[await]'''
+[center]I’m really worried about my son.[await]'''
 dialog_data[90] = '''
-    Thanks for saving my brother.[await]'''
+[center]Thanks for saving my brother.[await]'''
 dialog_data[91] = ''' EEK! There are...THINGS
  in our kitchen. HELP!!!![await]'''
 dialog_data[92] = ''' Sigh... I asked for a Bowsette costume, not a`PEACH_ARTICLE` `PEACH_NAME` costume.[await]
@@ -227,15 +227,15 @@ dialog_data[93] = ''' Hi `MAIN_CHARACTER_NAME`. Staying for a nap?[await]
  [select]  (Maybe next time)[await]'''
 dialog_data[94] = '''[page]
 
-   Don’t worry. It’s on the house.[await]'''
+[center]Don’t worry. It’s on the house.[await]'''
 dialog_data[95] = '''[page]
 
-    Stop by anytime now, you hear?[await]'''
+[center]Stop by anytime now, you hear?[await]'''
 dialog_data[96] = ''' `MAIN_CHARACTER_NAME`! How are we feeling?[await]
  [select]  (Like a new `MAIN_CHARACTER_GENDER`!)
  [select]  (Need coffee. Keep away.)[await]'''
 dialog_data[97] = '''
-      Well, that’s good to hear![await]'''
+[center]Well, that’s good to hear![await]'''
 dialog_data[98] = ''' Yes, you look awful!
  Why don’t you rest some more?[await]'''
 dialog_data[99] = '''GAZ: Sometimes we have other
@@ -275,7 +275,7 @@ dialog_data[107] = ''' Found me, huh? What are you doing
  walking around HERE, though?
  You must be pretty bored...[await]'''
 dialog_data[108] = '''
-           I... I can’t move![await]'''
+[center]I... I can’t move![await]'''
 dialog_data[109] = ''' Oh, this is NOT GOOD...
  Now I can’t go to the forest to
  chop up any wood.[await]'''
@@ -301,7 +301,7 @@ dialog_data[117] = ''' That was SOME thumping!
  Here’s your prize! Next time,
  try and get [0x7000] pts.[await]'''
 dialog_data[118] = '''
-     You can do better than that![await]'''
+[center]You can do better than that![await]'''
 dialog_data[119] = ''' Looks like you’ve got
  yourself a tough road ahead.
  Good luck![await]'''
@@ -314,7 +314,7 @@ dialog_data[121] = ''' There are some people who like to
  I bet they will have some
  interesting things to tell you.[await]'''
 dialog_data[122] = '''
-            I’m finally HOME![await]'''
+[center]I’m finally HOME![await]'''
 dialog_data[123] = ''' Can’t believe we had arrows
  showering down around here...[await]'''
 dialog_data[124] = ''' The Gardener is a pretty generous
@@ -331,9 +331,9 @@ dialog_data[128] = ''' Phew..[delay]..[delay] That was close,
  but I made it on time...[delay]..[delay][await]'''
 dialog_data[129] = '''[page]
 
-                 [0x7024] points[end]'''
+[center][0x7024] points[end]'''
 dialog_data[130] = '''
-          Hey, I’ll carry that![await]'''
+[center]Hey, I’ll carry that![await]'''
 dialog_data[131] = ''' When our shops rotate their stock,
  they tend to carry the same types
  of items that they usually do.[await]
@@ -375,7 +375,7 @@ dialog_data[141] = ''' (Come see me later after you beat
   Boshi. I’ll help you manage your
   Cookies.)[await]'''
 dialog_data[142] = '''
-           (Gotta go fast!)[await]'''
+[center](Gotta go fast!)[await]'''
 dialog_data[143] = ''' (If you feed a baby 21
   cookies, it’ll get bigger.[await]
   Then you can feed it more, and it
@@ -385,7 +385,7 @@ dialog_data[144] = '''BOSHI: (What’re YOU lookin’ at?[await]
  If you wanna challenge me,
  you have to bring Cookies!)[await]'''
 dialog_data[145] = '''
-      (That can’t happen twice!)[await]'''
+[center](That can’t happen twice!)[await]'''
 dialog_data[146] = ''' (Baby Yoshies are known for
   their voracious appetites, but
   also for their generosity.)[await]'''
@@ -420,7 +420,7 @@ dialog_data[157] = '''
 dialog_data[158] = ''' Tip 10 coins?[await]
  [select]  (Sure, why not?)
  [select]  (No way)[await]'''
-dialog_data[159] = '''   You’re a little short of coins...[await]'''
+dialog_data[159] = '''[center]You’re a little short of coins...[await]'''
 dialog_data[160] = ''' THANK YOU very much, `MAIN_CHARACTER_HONORIFIC`!
  Please enjoy your stay here.[await]'''
 dialog_data[161] = '''[center]You have paid for only
@@ -505,7 +505,7 @@ dialog_data[189] = ''' [page]
 dialog_data[190] = ''' [page]
  [0x70A7][end]'''
 dialog_data[191] = '''
-         Found a “Frog Coin”![end]'''
+[center]Found a “Frog Coin”![end]'''
 dialog_data[192] = ''' I wish you the best of luck on your
  quest to conquer the Factory.[await]'''
 dialog_data[193] = ''' The menfolk’ll help you get inside
@@ -600,12 +600,12 @@ dialog_data[222] = '''GREAPER: Hey, `MAIN_CHARACTER_NAME`![await]
  somewhere in the world.[await][page]
  If you happen to find our flags,
  could you bring them back here?[await][page]
-   Anyway, about my secret item...[await]'''
+[center]Anyway, about my secret item...[await]'''
 dialog_data[223] = '''[await]'''
 dialog_data[224] = '''[await]'''
 dialog_data[225] = '''[await]'''
-dialog_data[226] = '''      CLOSED FOR MAINTENANCE
-        Please come back later.
+dialog_data[226] = '''[center]CLOSED FOR MAINTENANCE
+[center]Please come back later.
                                    Luigi[await]'''
 dialog_data[227] = ''' Almost forgot!
  You wagered 30 coins, didn’t ya?
@@ -680,11 +680,11 @@ dialog_data[246] = ''' Have ya met the weirdos livin’ in
  This land’s just full of interestin’
  people![await]'''
 dialog_data[247] = '''
-     “Mi”, a name I call myself![await][page]
+[center]“Mi”, a name I call myself![await][page]
 
   “Ti”, a drink of jam and bread![await][page]
 
-              [delay]  [delay]Oops![await][page]
+[center][delay]  [delay]Oops![await][page]
  That’s...not really how it goes.[await][page]
  I’m just bored.[await]
  But if you go to the mountain,
@@ -736,9 +736,9 @@ dialog_data[266] = ''' Ma and Pa say little ones aren’t
 dialog_data[267] = '''
   Bring your unwanted items here![await][page]
   We’ll exchange your Mushrooms
-       and Syrups for points.[await]
-        For every 100 points
-    you’ll get an item in return![await]'''
+[center]and Syrups for points.[await]
+[center]For every 100 points
+[center]you’ll get an item in return![await]'''
 dialog_data[268] = '''   Found a “[0x70A7]”![end]'''
 dialog_data[269] = '''   Found an “[0x70A7]”![end]'''
 dialog_data[270] = '''[center]
@@ -752,7 +752,7 @@ Bowser joins![await]'''
 dialog_data[274] = '''[center]
 Toadstool joins![await]'''
 dialog_data[275] = '''             Got [0x7000]/16 items[await]'''
-dialog_data[276] = '''      Didn’t get any items.[await]'''
+dialog_data[276] = '''[center]Didn’t get any items.[await]'''
 dialog_data[277] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
  isn’t anything to do yet.[await][page]
@@ -879,20 +879,20 @@ dialog_data[311] = ''' Do you want your fortune told?
 dialog_data[312] = ''' See the three faces on the wall?
  Hit them in any order and you’ll
  receive your fortune.[await]'''
-dialog_data[313] = '''    Yikes, looks like you’ll have
-       hardships ahead of you.[await]'''
+dialog_data[313] = '''[center]Yikes, looks like you’ll have
+[center]hardships ahead of you.[await]'''
 dialog_data[314] = ''' Looks like you’ll have a great meal
-        sometime in the future.[await]'''
+[center]sometime in the future.[await]'''
 dialog_data[315] = '''  Some tasty snacks are awaiting
-           you in the future.[await]'''
-dialog_data[316] = '''   You’ll have many friends in the
-                 future.[await]'''
+[center]you in the future.[await]'''
+dialog_data[316] = '''[center]You’ll have many friends in the
+[center]future.[await]'''
 dialog_data[317] = ''' You’ll have plenty of good things
-          to look forward to.[await]'''
-dialog_data[318] = '''     You’ll find some rare items.[await]'''
-dialog_data[319] = '''      You’ll pick up great items.[await]'''
-dialog_data[320] = '''   If you proceed through the pipe
-              next door...
+[center]to look forward to.[await]'''
+dialog_data[318] = '''[center]You’ll find some rare items.[await]'''
+dialog_data[319] = '''[center]You’ll pick up great items.[await]'''
+dialog_data[320] = '''[center]If you proceed through the pipe
+[center]next door...
 [end]'''
 dialog_data[321] = ''' Have you seen the huge hole in the
  cliff at Booster Pass?
@@ -931,7 +931,7 @@ dialog_data[328] = ''' I’ve been all around the world.[await][page]
 dialog_data[329] = ''' This is a dead end, so it’s best
  to turn back now.[await]'''
 dialog_data[330] = '''
-      Thanks for your business![await]'''
+[center]Thanks for your business![await]'''
 dialog_data[331] = ''' Wanna buy a mystery item for
  500 coins?[await]
   [select] (Okay)
@@ -943,7 +943,7 @@ dialog_data[332] = ''' Wanna buy some Fireworks for
 dialog_data[333] = ''' Aw, that’s too bad!
  Come back with more coins.[await]'''
 dialog_data[334] = '''
-            Got “Fireworks”[await]'''
+[center]Got “Fireworks”[await]'''
 dialog_data[335] = ''' You’ll trade your “Fireworks”?
   [select] (Yes)
   [select] (No)[await]'''
@@ -1015,22 +1015,22 @@ dialog_data[352] = ''' Sorry we’re closed for today.
 dialog_data[353] = '''       Got “ [0x7000] ” tries[end]'''
 dialog_data[354] = '''     Got “ [0x7000] ” chances[end]'''
 dialog_data[355] = ''' Only got “ [0x7000] ” chances left[end]'''
-dialog_data[356] = '''      This is your last chance![end]'''
-dialog_data[357] = '''       2 points[end]'''
+dialog_data[356] = '''[center]This is your last chance![end]'''
+dialog_data[357] = '''[center]2 points[end]'''
 dialog_data[358] = ''' 10 points[end]'''
 dialog_data[359] = ''' 30 points[end]'''
-dialog_data[360] = '''    4 points[end]'''
-dialog_data[361] = '''    12 points[end]'''
-dialog_data[362] = '''    30 points[end]'''
-dialog_data[363] = '''     2 points[end]'''
-dialog_data[364] = '''      2 points[end]'''
-dialog_data[365] = '''          15 points[end]'''
-dialog_data[366] = '''      20 points[end]'''
-dialog_data[367] = '''     40 points[end]'''
-dialog_data[368] = '''   50 points[end]'''
+dialog_data[360] = '''[center]4 points[end]'''
+dialog_data[361] = '''[center]12 points[end]'''
+dialog_data[362] = '''[center]30 points[end]'''
+dialog_data[363] = '''[center]2 points[end]'''
+dialog_data[364] = '''[center]2 points[end]'''
+dialog_data[365] = '''[center]15 points[end]'''
+dialog_data[366] = '''[center]20 points[end]'''
+dialog_data[367] = '''[center]40 points[end]'''
+dialog_data[368] = '''[center]50 points[end]'''
 dialog_data[369] = '''  40 points[end]'''
-dialog_data[370] = '''    25 points[end]'''
-dialog_data[371] = '''     9 points[end]'''
+dialog_data[370] = '''[center]25 points[end]'''
+dialog_data[371] = '''[center]9 points[end]'''
 dialog_data[372] = ''' There is a chest in the sewers that
  will have its contents change if
  you enter from Land’s End.[await][page]
@@ -1040,7 +1040,7 @@ dialog_data[372] = ''' There is a chest in the sewers that
  You may have to get creative in
  order to reach it.[delay_30]
  GOOD LUCK![await]'''
-dialog_data[373] = '''     The water has been drained.[await]'''
+dialog_data[373] = '''[center]The water has been drained.[await]'''
 dialog_data[374] = '''[center]Got a “[0x70A7]”![await]'''
 dialog_data[375] = ''' You can’t jump on or off when
  the block is blue.[await][page]
@@ -1050,29 +1050,29 @@ dialog_data[376] = ''' What’s that?
  You wanna hear the
  Moleville blues?[await][page]
 
-             Well...all right![await][page]
+[center]Well...all right![await][page]
 [end]'''
 dialog_data[377] = '''
-    Diggin’ deep in the “MI”nes~[await]
+[center]Diggin’ deep in the “MI”nes~[await]
 [end]'''
-dialog_data[378] = '''       “DO”n’t get much sun!~[await][page]
+dialog_data[378] = '''[center]“DO”n’t get much sun!~[await][page]
 [end]'''
 dialog_data[379] = '''
-       I’m covered with “SO”il~[await]
+[center]I’m covered with “SO”il~[await]
 [end]'''
-dialog_data[380] = '''     ’till my workday is “DO”ne~[await][page]
+dialog_data[380] = '''[center]’till my workday is “DO”ne~[await][page]
 [end]'''
 dialog_data[381] = '''
-        I “RE”ally hate sittin’~[await]
+[center]I “RE”ally hate sittin’~[await]
 [end]'''
-dialog_data[382] = '''        It’s “LA”bor I choose~[await][page]
+dialog_data[382] = '''[center]It’s “LA”bor I choose~[await][page]
 [end]'''
 dialog_data[383] = '''
-      ’cause then’s the “TI”me~[await]
+[center]’cause then’s the “TI”me~[await]
 [end]'''
 dialog_data[384] = ''' To “DO” them old Moleville blues!~[await]'''
 dialog_data[385] = '''
-   Here, hop up on our shoulders![await]'''
+[center]Here, hop up on our shoulders![await]'''
 dialog_data[386] = '''PA’MOLE: `MAIN_CHARACTER_NAME`! You’ve come to save us? One problem, though. This is a dead end...[await][page]
  We’d need a bomb to blast
  through here...[await]'''
@@ -1086,13 +1086,13 @@ dialog_data[389] = ''' Care to read the instructions?
  [select]  (Of course)
  [select]  (Forget it)[await]'''
 dialog_data[390] = '''
-           Mine Car Guidelines[await][page]
+[center]Mine Car Guidelines[await][page]
  Press A or Y to brake
  Press B to jump
  Get mushrooms & press X [await]
  to accelerate[await][page]
 
-    Moleville Safety Board (MSB)[await]'''
+[center]Moleville Safety Board (MSB)[await]'''
 dialog_data[391] = '''PA’ MOLE: There ain’t much left in
  the mines past this point.[await]'''
 dialog_data[392] = '''DRY BONES: I know! You probably
@@ -1115,24 +1115,24 @@ dialog_data[397] = ''' Hey![delay_15] Have you heard?[await][pause] The bushes
  Hm?[delay_30] Why’d I tell you that?[delay_60]
  Because I’m only in the business of
  cave treasures, of course.[await]'''
-dialog_data[398] = '''        Memo left by Magellean:
+dialog_data[398] = '''[center]Memo left by Magellean:
 
-      There is an “s” in the word.[await]'''
-dialog_data[399] = '''        Memo left by Magellean:
+[center]There is an “s” in the word.[await]'''
+dialog_data[399] = '''[center]Memo left by Magellean:
 
  It is found on the bed of the ocean.[await]'''
-dialog_data[400] = '''         Memo left by DeGama:
+dialog_data[400] = '''[center]Memo left by DeGama:
 
-          It has two vowels.[await]'''
-dialog_data[401] = '''         Memo left by DeGama:
+[center]It has two vowels.[await]'''
+dialog_data[401] = '''[center]Memo left by DeGama:
 
-        It has four consonants.[await]'''
-dialog_data[402] = '''       Memo left by Van Doren:
-               At least...
+[center]It has four consonants.[await]'''
+dialog_data[402] = '''[center]Memo left by Van Doren:
+[center]At least...
   two consonants are side by side.[await]'''
-dialog_data[403] = '''       Memo left by Van Doren:
+dialog_data[403] = '''[center]Memo left by Van Doren:
 
-    The “r” comes before the “l”.[await]'''
+[center]The “r” comes before the “l”.[await]'''
 dialog_data[404] = ''' We’re done for...A giant squid
  just got a hold of us. This ship’s
  going down fast...[await]'''
@@ -1620,7 +1620,7 @@ dialog_data[553] = '''DR. TOPPER: Wrong! TOO BAD!
 dialog_data[554] = '''
  And that’s the way it was![await]'''
 dialog_data[555] = ''' Try coming back when we’re on our\n lunch break.[await] ...[delay]That is, if we ever\n get one.[await]'''
-dialog_data[556] = '''\n   Don’t bother me! I’m on a break.[await]'''
+dialog_data[556] = '''\n[center]Don’t bother me! I’m on a break.[await]'''
 dialog_data[557] = '''[center]`CHARACTER` learns `SPELL_1`[await]'''
 dialog_data[558] = '''`CHARACTER` learns `SPELL_1`[end]'''
 dialog_data[559] = '''[center]`CHARACTER` learns `SPELL_2`[await]'''
@@ -1675,7 +1675,7 @@ dialog_data[607] = '''[center]`CHARACTER` learns `SPELL_26`[await]'''
 dialog_data[608] = '''`CHARACTER` learns `SPELL_26`[end]'''
 dialog_data[609] = '''[center]`CHARACTER` learns `SPELL_27`[await]'''
 dialog_data[610] = '''`CHARACTER` learns `SPELL_27`[end]'''
-dialog_data[611] = '''    Sent an item to another player[await]'''
+dialog_data[611] = '''[center]Sent an item to another player[await]'''
 dialog_data[612] = '''Sent an item to another player![end]'''
 dialog_data[613] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
@@ -1693,18 +1693,18 @@ dialog_data[614] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
 dialog_data[615] = ''' You’ve found the treasure!
  Way to GO!
  Keep up the good work![await]'''
-dialog_data[616] = '''   Found a “Lamb’s Lure”![end]'''
-dialog_data[617] = '''   Found a “B’tub Ring”![end]'''
+dialog_data[616] = '''[center]Found a “Lamb’s Lure”![end]'''
+dialog_data[617] = '''[center]Found a “B’tub Ring”![end]'''
 dialog_data[618] = '''[center]Got a “Lamb’s Lure”![await]'''
 dialog_data[619] = '''[center]Got a “B’tub Ring”![await]'''
 dialog_data[620] = '''[0x7000][await]'''
 dialog_data[621] = '''Kipp[end]'''
 dialog_data[622] = '''[center]Got a “Yoshi-Ade”![await]'''
-dialog_data[623] = '''   Found a “Yoshi-Ade”![end]'''
+dialog_data[623] = '''[center]Found a “Yoshi-Ade”![end]'''
 dialog_data[624] = '''[await]'''
 dialog_data[625] = '''[center]Got “[0x70A7]”![end]'''
 dialog_data[626] = '''[center]Got “[0x70A7]”![await]'''
-dialog_data[627] = '''   Found “[0x70A7]”![end]'''
+dialog_data[627] = '''[center]Found “[0x70A7]”![end]'''
 dialog_data[628] = '''[center]Got the “[0x70A7]”![end]'''
 dialog_data[629] = '''[center]Got the “[0x70A7]”![await]'''
 dialog_data[630] = '''   Found the “[0x70A7]”![end]'''
@@ -1721,3 +1721,8 @@ dialog_data[636] = ''' That’s right!
 dialog_data[637] = '''FROGFUCIUS: Eh!?[await]
  That delicious smell!
  You have some Cricket Jam, yes?[await]'''
+dialog_data[638] = '''\n[center]Good luck conquering the Factory![await]'''
+dialog_data[639] = ''' Have you been to the sewers yet?[await]
+ ...[delay_30]You know, I’m not sure why I
+ asked that. Why would anyone visit
+ a sewer?[await]'''

@@ -155,7 +155,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 attack.set_attack_name(at.remake_name)
         world.update_dialog(DI3072_TOWER_HENCHMAN_3_WINDOW, """SNIFSTER 3: Um...\n Nice weather we're having.[await]""")
         world.update_dialog(DI3073_TOWER_HENCHMAN_3, '''SNIFSTER 3:\n[center]You wanna fight?[await]''')
-        world.update_dialog(DI1055_SEWER_GATING_TEXT, " Oh, the sewers? I think they're closed for repairs.[await][pause] Honestly, I thought that finished ages ago.[await][page]\n I bet the guy working on it got distracted again when he heard Claymorton was around.[await]")
         world.overworld_dialogs.search_and_replace_in_all_dialogs("FROGFUCIUS", "FROG SAGE")
         deletables = [
             "EVENT_215_delete_vowel_1",

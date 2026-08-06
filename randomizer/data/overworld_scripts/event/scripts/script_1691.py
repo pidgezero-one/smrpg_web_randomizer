@@ -1,4 +1,4 @@
-# E1691_EMPTY
+# E1691_TOAD_WIN_CONDITION
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	RunDialog(dialog_id=DI2027_WIN_CONDITION, above_object=MEM_70A8, closable=True, sync=False, multiline=True, use_background=True),
+	Return()
 ])
+
