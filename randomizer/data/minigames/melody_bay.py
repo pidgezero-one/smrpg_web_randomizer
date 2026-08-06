@@ -589,7 +589,7 @@ all_songs = [
         submitter_credits="TRIUMPHANTBASS",
         hint_1=' My favorite song?[await][page]\n It\'s the Song of Soaring!\n ♪“Fa Ti Re, Fa Ti Re”.\n It gives me a flutter![await]',
         hint_2=' The Moleville miners were singing,\n ♪“Fa Ti Re, Fa Ti Re”.\n Light and breezy![await]',
-        hint_3='\n[center]Repeat after me![await][page]\n We\'ll go “FA”r~[delay]\n[center]Build equi“TY”~[delay]\n[center]Get a “RA”ise~[await][page]\n\n[center]Once more![await]',
+        hint_3='[center]\nRepeat after me![await][page]\n We\'ll go “FA”r~[delay]\n Build equi“TY”~[delay]\n Get a “RA”ise~[await][page]\n\n Once more![await]',
         scroll='\n[center]Fa Ti Re Fa Ti Re[await]'),
     Song(
         [(Do, 12), (La, 23), (Do, 12), (Ti, 23), (Do, 12), (Ti, 23), (So, 0)],
@@ -603,7 +603,7 @@ all_songs = [
         "Earthbound - Smiles and Tears",
         hint_1=' ♪“So La Ti Ti Re La La Ti”.\n I miss you...[await]',
         hint_2=' ♪“So La Ti Ti Re La La Ti”.\n Now say, “fuzzy pickles!”[await]',
-        hint_3=' Earthbound?\n[center]“SO” “LA”st year.\n[center]“TI”ck tock![await][page]\n No “TI”me to spa“RE”,\n[center]p“LA”y the “LA”test “TI”tle,\n[center]Mother 3![await]',
+        hint_3='[center] Earthbound?\n “SO” “LA”st year.\n “TI”ck tock![await][page]\n No “TI”me to spa“RE”,\n p“LA”y the “LA”test “TI”tle,\n Mother 3![await]',
         scroll='\n[center]So La Ti Ti Re La La Ti[await]'),
     Song(
         [(So, 40), (Fa, 40), (Mi, 80), (Re, 20), (Mi, 40), (Re, 10), (Ti, 10), (Do, 0)],
@@ -729,7 +729,7 @@ all_songs = [
         submitter_credits="COUSINCATNIP",
         hint_1=' My favorite song?[await][page]\n I think it\'s called the\n “Theme of Hearts”.[await]\n No,[delay] wait,[delay] that\'s not right.[await]\n Maybe it was “Glove Team”?[await]\n No, no,[delay] I got it![await][page]\n It\'s “Love Theme”.\n ♪“So Do Re Mi So Do Ti Do”.[await]\n Toadofsky may like it,\n but let\'s make him LOVE it![await]',
         hint_2=' My favorite song?[await][page]\n I think it\'s called the\n “Theme of Hearts”.[await]\n No,[delay] wait,[delay] that\'s not right.[await]\n Maybe it was “Glove Team”?[await]\n No, no,[delay] I got it![await][page]\n It\'s “Love Theme”.\n ♪“So Do Re Mi So Do Ti Do”.[await]\n Toadofsky may like it,\n but let\'s make him LOVE it![await]',
-        hint_3=' “Love Theme” is all the rage. Check\n it out:[await][page]\n\n[center]We feel it in our “SO”ul~[await][page]\n\n[center]With everything we “DO”~[await][page]\n\n[1]     My heart is still a w“RE”ck~[await][page]\n\n[center]So it\'s “MI”ghty time to change~[await][page]\n\n[center]I\'m diggin\' up to re“SO”il~[await][page]\n\n[center]“DO” you know it\'s me?~[await][page]\n\n[center]Feelin\' kinda “TI”red~[await][page]\n\n[center]But I “DO”n\'t want it to end!~[await]',
+        hint_3=' “Love Theme” is all the rage. Check\n it out:[await][page]\n\n[center]We feel it in our “SO”ul~[await][page]\n\n[center]With everything we “DO”~[await][page]\n\n[center]My heart is still a w“RE”ck~[await][page]\n\n[center]So it\'s “MI”ghty time to change~[await][page]\n\n[center]I\'m diggin\' up to re“SO”il~[await][page]\n\n[center]“DO” you know it\'s me?~[await][page]\n\n[center]Feelin\' kinda “TI”red~[await][page]\n\n[center]But I “DO”n\'t want it to end!~[await]',
         scroll='\n[center]So Do Re Mi So Do Ti Do[await]'),
     Song(
         [(Mi, 35), (Re, 18), (Mi, 42), (Re, 18), (Mi, 35), (So, 18), (La, 0)],
