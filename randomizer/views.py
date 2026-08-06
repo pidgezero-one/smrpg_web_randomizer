@@ -30,6 +30,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from randomizer.types.flags import FlagError
 from randomizer.types.flag_categories import CATEGORIES, PRESETS
@@ -43,6 +44,15 @@ from .types.flags import Flag, CategorizationFlag, CategorizationFlagWithOrdinan
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
+
+# Check if we need a login required mix-in for the views.
+class EmptyMixin:
+    pass
+
+if settings.LOGIN_REQUIRED:
+    MixinClass = LoginRequiredMixin
+else:
+    MixinClass = EmptyMixin
 
 
 def _build_flag_json_data(f: type[Flag], letter, flag_to_subcategory: dict[type[Flag], str] | None = None):
@@ -177,7 +187,7 @@ def _build_categories_for_template() -> list[dict]:
 CATEGORIES_FOR_TEMPLATE = _build_categories_for_template()
 
 
-class RandomizerView(TemplateView):
+class RandomizerView(MixinClass, TemplateView):
     """
     Base class for views that generate a ROM, i.e. randomizer and patch-from-hash views.
     This gets common context data.
@@ -247,7 +257,7 @@ class HashView(RandomizerView):
     template_name = "randomizer/patch_from_hash.html"
 
 
-class GenerateView(FormView):
+class GenerateView(MixinClass, FormView):
     form_class = GenerateForm
     return_patch_data = True
 
@@ -389,7 +399,7 @@ class GenerateView(FormView):
         return HttpResponseBadRequest(msg.encode())
 
 
-class GenerateStreamView(View):
+class GenerateStreamView(MixinClass, View):
     """Generate a seed with real-time progress updates via Server-Sent Events (SSE)."""
 
     def post(self, request):
@@ -569,7 +579,7 @@ class GenerateStreamView(View):
         return HttpResponseBadRequest(msg.encode())
 
 
-class GenerateFromHashView(View):
+class GenerateFromHashView(MixinClass, View):
     @staticmethod
     def get(request, hash, region):
         """Get a previously generated patch via hash value."""
@@ -606,7 +616,7 @@ class GenerateFromHashView(View):
 
 
 @method_decorator(csrf_exempt, name="dispatch")
-class PackingView(View):
+class PackingView(MixinClass, View):
     @staticmethod
     def post(request):
         """Pack uploaded ROM into the provided WAD file as downloaded file."""
@@ -764,7 +774,7 @@ class APIGenerateView(GenerateView):
         return kwargs
 
 
-class APIFlags(View):
+class APIFlags(MixinClass, View):
     @staticmethod
     def get(request):
         data = {

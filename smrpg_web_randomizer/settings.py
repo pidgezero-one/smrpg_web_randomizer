@@ -189,3 +189,6 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 25  # 25 MB
 
 # Beta site flag.
 BETA = int(os.environ.get("BETA", getattr(local, "BETA", 0)))
+
+# Flag to require login to access (for e.g. beta testing site)
+LOGIN_REQUIRED = int(os.environ.get("LOGIN_REQUIRED", getattr(local, "LOGIN_REQUIRED", 0)))
