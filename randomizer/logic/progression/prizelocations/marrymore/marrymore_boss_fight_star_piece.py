@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 class MarrymoreBossFightStarPiece(StarPieceLocation):
     _bias = True
     _originally_held = None
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, R294_UNMAPPED_HOUSE_ROOM]
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER]
     _id = ShuffleLocationSelector.MARRYMORE_STAR_PIECE
     _world_area = WorldAreaEnum.MARRYMORE
     _parent = MarrymoreBossFight

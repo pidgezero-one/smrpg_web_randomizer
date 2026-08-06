@@ -66,7 +66,7 @@ def get_patch() -> dict[int, bytes]:
             0x84, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
         ]),
-        # Room 294 (R294_UNMAPPED_HOUSE_ROOM) - clone of R154's layout
+        # Room 294 (R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER) - clone of R154's layout
         # (Marrymore chapel sanctuary): map 79, message NONE, mask
         # L=0/T=0/R=63/B=63, no lock-scrolling, all shifts/wrap/sync/
         # auto-scroll 0, priority set 0, L3 animation 0x07 (talking organ

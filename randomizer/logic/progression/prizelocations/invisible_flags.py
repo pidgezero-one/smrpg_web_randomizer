@@ -1557,6 +1557,7 @@ class MarrymoreOrganFlag(InvisibleFlagLocation):
     _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+        R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER
     ]
     _x_coord = 23
     _y_coord = 65
@@ -1591,6 +1592,7 @@ class MarrymoreAltarFlag(InvisibleFlagLocation):
     _rooms = [
         R065_MARRYMORE_CHAPEL_SANCTUARY,
         R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+        R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER
     ]
     _x_coord = 23
     _y_coord = 70

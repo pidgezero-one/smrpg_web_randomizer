@@ -52,7 +52,7 @@ def render_marrymore_boss_henchmen(
 class MarrymoreBossFight(BossFightLocation):
     _bias = True
     _originally_held = BundtBossFight
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, R294_UNMAPPED_HOUSE_ROOM]
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER]
     _id = ShuffleLocationSelector.MARRYMORE_BOSS_FIGHT
     _world_area = WorldAreaEnum.MARRYMORE
     _pack_id = PACK176_CHAPEL_BOSS
@@ -64,7 +64,7 @@ class MarrymoreBossFight(BossFightLocation):
             sequence_setter_event_id=E0796_MARRYMORE_KITCHEN_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
         BossFightLocationNPC(
-            R294_UNMAPPED_HOUSE_ROOM,
+            R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER,
             NPC_11,
             sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
@@ -73,14 +73,14 @@ class MarrymoreBossFight(BossFightLocation):
         BossFightLocationHenchmanNPC(
             [
                 R155_MARRYMORE_CHAPEL_KITCHEN,
-                R294_UNMAPPED_HOUSE_ROOM,
+                R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER,
             ],
             [NPC_1, NPC_3],
         ),
         BossFightLocationHenchmanNPC(
             [
                 R155_MARRYMORE_CHAPEL_KITCHEN,
-                R294_UNMAPPED_HOUSE_ROOM,
+                R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER,
             ],
             [NPC_2, NPC_4],
         ),

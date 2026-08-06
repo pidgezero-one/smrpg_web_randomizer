@@ -36,6 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	Set7000ToCurrentLevel(),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, ["EVENT_186_jmp_to_event_6"]),
+	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER, ["EVENT_186_jmp_to_event_6"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R205_MUSHROOM_WAY_AREA_03, ["EVENT_186_jmp_to_event_7"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R232_FOREST_MAZE_BOWYERS_PRACTICE_PAD, ["EVENT_186_jmp_to_event_8"]),
 	JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R284_MOLEVILLE_MINES_AREA_18_MINECART_ROOM, ["EVENT_186_jmp_to_event_9"]),

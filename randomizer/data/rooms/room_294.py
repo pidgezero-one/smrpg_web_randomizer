@@ -1,4 +1,4 @@
-# R294_UNMAPPED_HOUSE_ROOM
+# R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER
 # pyright: reportWildcardImportFromLibrary=false
 from smrpgpatchbuilder.datatypes.levels.classes import (EventInitiator, EdgeDirection, BufferType, BufferSpace, VramStore, Buffer, Partition, Event, RegularNPC, RegularClone)
 from ...types.room import Room

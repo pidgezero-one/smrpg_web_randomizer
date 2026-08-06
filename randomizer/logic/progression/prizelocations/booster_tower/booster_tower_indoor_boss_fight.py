@@ -419,7 +419,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
             min_vram_from_seq0_override=_marrymore_chapel_boss_min_vram_cap,
         ),
         BossFightLocationNPC(
-            R294_UNMAPPED_HOUSE_ROOM,
+            R294_MARRYMORE_CHAPEL_CLONE_BOSS_LAUNCHER,
             NPC_9,
             sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
             # Adaptive cap: ally buffer + Marrymore recruit (NPC_10) compete
