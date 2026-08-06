@@ -1,8 +1,8 @@
 """ShowEquips: relax the equipped-item bitmask check so the menu shows
 which items are equipped on each character.
 
-Replaces 3 bytes at ROM ``$03:3B6D`` — the mask byte changes from the
-vanilla value to ``$1F`` and the trailing instruction becomes ``NOP``::
+Replaces 3 bytes at ROM $03:3B6D - the mask byte changes from the
+vanilla value to $1F and the trailing instruction becomes NOP::
 
     AND #$1F   ; widen the mask
     NOP        ; eat the displaced byte

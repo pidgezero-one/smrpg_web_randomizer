@@ -1,5 +1,5 @@
 # Re-export location base classes the old monolith pulled in, so external
-# `from ...prizelocations import *` (gameworld, prize_locations) still sees them.
+# from ...prizelocations import * (gameworld, prize_locations) still sees them.
 from randomizer.types.prizelocation import *  # noqa: F401,F403
 from .access import *  # noqa: F401,F403
 from .invisible_flags import *  # noqa: F401,F403

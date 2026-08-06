@@ -57,12 +57,10 @@ def _calculate_location_stats(
 
     Returns (hp, xp, coins, attack, defense, magic_attack, magic_defense, evade, magic_evade)
     """
-    # Get the original prize class for this location
     original_prize_class = location._originally_held
     if original_prize_class is None:
         return (0, 0, 0, 0, 0, 0, 0, 0, 0)
 
-    # Instantiate to get the formation and configuration
     original_prize = original_prize_class()
     if not isinstance(original_prize, BossFightPrize):
         return (0, 0, 0, 0, 0, 0, 0, 0, 0)
@@ -73,13 +71,11 @@ def _calculate_location_stats(
     # Enemies excluded from HP slicing (they don't take from the pie, so don't contribute to location HP)
     hp_slice_excluded = set(original_prize.hp_slice_excluded_enemies)
 
-    # Formation members participating in HP calculation
     hp_counted_members = [
         m for m in original_prize.formation_members
         if m is not None and m.enemy not in scaling_excluded and m.enemy not in hp_slice_excluded
     ]
 
-    # Build list of (enemy_instance, enemy_class) tuples for HP calculation
     # Include extra_hp_enemies from the prize (e.g., King Calamari's extra tentacles)
     hp_enemy_pairs: list[tuple[Enemy, type]] = []
     for m in hp_counted_members:
@@ -91,7 +87,6 @@ def _calculate_location_stats(
     # Get HP contribution multipliers from the prize (e.g., Dodo at 0.4)
     hp_multipliers = original_prize.hp_pie_contribution_multipliers
 
-    # Calculate HP with multipliers, XP and coins without multipliers
     hp = 0
     xp = 0
     coins = 0
@@ -104,10 +99,8 @@ def _calculate_location_stats(
     # Apply location HP multiplier (e.g., Cloaker/Domino: you only fight 2 of 4 enemies)
     hp = round(hp * original_prize.location_hp_multiplier)
 
-    # Determine anchor enemies for other stats
     anchor_spec = original_prize.anchor_enemy
     if anchor_spec is None:
-        # Use all non-excluded formation members
         anchor_classes = [
             m.enemy for m in original_prize.formation_members
             if m is not None and m.enemy not in scaling_excluded
@@ -117,7 +110,6 @@ def _calculate_location_stats(
     else:
         anchor_classes = [anchor_spec]
 
-    # Calculate other stats from anchor enemies
     if anchor_classes:
         anchor_enemies = [cast(Enemy, c()) for c in anchor_classes]
         attack = int(round(statistics.mean(e.attack for e in anchor_enemies)))
@@ -158,20 +150,16 @@ def _apply_stats_to_prize(
     if location_hp == 0:
         return  # No stats to apply
 
-    # Get all formation members
     formation_members = [m for m in prize.formation_members if m is not None]
     if not formation_members:
         return
 
-    # Enemies completely excluded from scaling for this prize
     scaling_excluded = set(prize.scaling_excluded_enemies)
 
-    # Get enemy classes in formation and all classes to scale (excluding scaling_excluded)
     # m.enemy is already a type[Enemy], not an instance
     enemy_classes_in_formation = {m.enemy for m in formation_members if m.enemy not in scaling_excluded}
     all_enemy_classes = enemy_classes_in_formation | set(prize.additional_enemies_to_scale)
 
-    # Build enemy counts: formation members + extra_hp_enemies (excluding scaling_excluded)
     # Each entry in extra_hp_enemies represents one enemy instance
     enemy_counts: dict[type, int] = {}
     for m in formation_members:
@@ -180,13 +168,11 @@ def _apply_stats_to_prize(
     for e in prize.extra_hp_enemies:
         if e not in scaling_excluded:
             enemy_counts[e] = enemy_counts.get(e, 0) + 1
-            # Extra HP enemies also need to be scaled
             all_enemy_classes.add(e)
 
     if not enemy_classes_in_formation:
         return  # All formation members were excluded
 
-    # Determine anchor class(es), or None to use average of all formation members
     anchor_spec = prize.anchor_enemy
 
     # Normalize anchor_spec to a list of classes for averaging, or None for all formation members
@@ -200,7 +186,6 @@ def _apply_stats_to_prize(
         # Single anchor class
         anchor_classes = [anchor_spec]
 
-    # Get reference stats by averaging the anchor class(es)
     anchor_instances = [cast(Enemy, c()) for c in anchor_classes]
     num_anchors = len(anchor_instances)
     ref_hp: float = sum(e.hp for e in anchor_instances) / num_anchors
@@ -212,14 +197,10 @@ def _apply_stats_to_prize(
     ref_magic_evade: float = sum(e.magic_evade for e in anchor_instances) / num_anchors
 
     # Enemies excluded from HP slicing - they don't take from the pie
-    # This includes hp_slice_excluded_enemies AND additional_enemies_to_scale
     hp_slice_excluded = set(prize.hp_slice_excluded_enemies) | set(prize.additional_enemies_to_scale)
 
-    # Get pie contribution multipliers (affects how much each enemy counts toward total)
     pie_multipliers = prize.hp_pie_contribution_multipliers
 
-    # Calculate HP pie for non-excluded enemies, accounting for instance counts and pie multipliers
-    # Total = sum(class_hp * pie_multiplier * count) for all participating classes
     hp_slice_participant_classes = {c for c in enemy_counts.keys() if c not in hp_slice_excluded}
     total_pie_hp_for_slicing = sum(
         cast(Enemy, c()).hp * pie_multipliers.get(c, 1.0) * enemy_counts[c]
@@ -228,7 +209,6 @@ def _apply_stats_to_prize(
 
     # Calculate pie-adjusted reference HP (for scaling excluded enemies)
     # The reference HP should also use the pie multiplier for consistency
-    # Average the pie multipliers across all anchor classes
     avg_pie_multiplier = sum(pie_multipliers.get(c, 1.0) for c in anchor_classes) / len(anchor_classes)
     ref_pie_hp = ref_hp * avg_pie_multiplier
     if total_pie_hp_for_slicing > 0:
@@ -248,7 +228,6 @@ def _apply_stats_to_prize(
         for c in xp_slice_participant_classes
     ) if xp_slice_participant_classes else 0
 
-    # Reference (anchor) enemy's new XP/coins from slicing (for scaling excluded enemies)
     ref_xp: float = sum(cast(Enemy, c()).xp for c in anchor_classes) / len(anchor_classes)
     ref_coins: float = sum(cast(Enemy, c()).coins for c in anchor_classes) / len(anchor_classes)
     if total_xp_for_slicing > 0:
@@ -260,7 +239,6 @@ def _apply_stats_to_prize(
     else:
         ref_new_coins = coins
 
-    # Helper to scale a stat relative to reference, clamped to 0-255
     def scale_stat(loc_stat: int, orig_stat: int, ref_orig: float, ratio: float) -> int:
         if ref_orig > 0:
             result = round(loc_stat * (orig_stat / ref_orig) * ratio)
@@ -268,17 +246,14 @@ def _apply_stats_to_prize(
             result = round(orig_stat * ratio)
         return max(0, min(255, result))
 
-    # Apply stats to each enemy class
     for enemy_class in all_enemy_classes:
         enemy = cast(Enemy, world.get_enemy(cast(type[Enemy], enemy_class)))
         if enemy is None:
             continue
 
-        # Get original stats for this enemy (fresh instance)
         original = cast(Enemy, enemy_class())
 
         # === HP Calculation ===
-        # Get pie-adjusted HP for this enemy (used for determining share of pie)
         pie_adjusted_hp = original.hp * pie_multipliers.get(cast(type[Enemy], enemy_class), 1.0)
 
         if enemy_class in hp_slice_excluded:
@@ -298,7 +273,6 @@ def _apply_stats_to_prize(
         slice_multiplier = prize.hp_slice_multipliers.get(cast(type[Enemy], enemy_class), 1.0)
         new_hp = round(new_hp * slice_multiplier)
 
-        # Apply ratio multiplier if defined on the enemy itself
         new_hp = min(0xFFFF, round(new_hp * enemy.ratio_hp))
         enemy.set_hp(new_hp)
 
@@ -367,7 +341,6 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
         return
 
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.MATCH):
-        # Apply each location's stats to its current prize.
         # Unmoved bosses already hold their correct stats, so skip them.
         for location, stats in location_stats:
             if isinstance(location.prize, location._originally_held):
@@ -385,10 +358,8 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
         prizes = [loc.prize for loc, _ in moved]
         stats_list = [stats for _, stats in moved]
 
-        # Shuffle the stats
         random.shuffle(stats_list)
 
-        # Apply shuffled stats to prizes
         for prize, stats in zip(prizes, stats_list):
             assert isinstance(prize, BossFightPrize)
             _apply_stats_to_prize(prize, stats, world)

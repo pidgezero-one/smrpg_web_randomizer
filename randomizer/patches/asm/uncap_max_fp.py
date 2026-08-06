@@ -2,13 +2,13 @@
 
 Multiple sites participate:
 
-1. Two ``Add7000ToMaxFP`` handlers — overworld at ``$C0:C4CC`` and battle
-   at ``$C2:C14F`` — replace the 99-cap with a 255-cap. ``BCS`` catches
+1. Two Add7000ToMaxFP handlers - overworld at $C0:C4CC and battle
+   at $C2:C14F - replace the 99-cap with a 255-cap. BCS catches
    8-bit ADC overflow so a wrap cannot regress max FP.
 
 2. The X-menu MAIN-menu "Flowers" line ($C3:1621-$C3:163E) widens
    from 2-digit to 3-digit by switching its converter
-   ``$C3:78D2 -> $C3:78EC`` and shifting its destination LDX 2 tiles
+   $C3:78D2 -> $C3:78EC and shifting its destination LDX 2 tiles
    left ($4630 -> $462C). New layout: cur h/t/o at $462C/$462E/$4630,
    slash at $4632, max h/t/o at $4634/$4636/$4638 (max-ones at vanilla
    $4638). All three Flowers renderers use the same vanilla-minus-2-tile
@@ -17,7 +17,7 @@ Multiple sites participate:
 3. The X-menu Special-menu "Flowers" line at $C3:35EA: cur and max use
    the converter via the shared inner routine $C3:35FF (call sites at
    $C3:3605 and $C3:3615), with the field starting at tilemap slot
-   $44B2. The inner routine has no separate LDX for the slash or max —
+   $44B2. The inner routine has no separate LDX for the slash or max -
    both ride on $62, which each subroutine advances (2-digit converter
    += 4, slash writer += 2, 3-digit converter += 6). Switching both
    converters to 3-digit widens the field, so we shift the LDX start 2
@@ -27,7 +27,7 @@ Multiple sites participate:
    New layout: cur h/t/o at $44AE/$44B0/$44B2, slash at $44B4, max
    h/t/o at $44B6/$44B8/$44BA.
 
-4. The X-menu item-submenu Flowers display ($C3:2CC0) — third call site
+4. The X-menu item-submenu Flowers display ($C3:2CC0) - third call site
    that targets the same shared inner subroutine ($C3:35FF), so the JSR
    target swaps above already make this site emit 3-digit. Shift the
    LDX dest pointer 2 tiles left ($4694 -> $4690) so max-ones lands at
@@ -36,7 +36,7 @@ Multiple sites participate:
 5. The battle spell-menu FP header (bank $C1) widens to 3 digits.
 
    The vanilla renderer at $C1:62F6 (26 bytes) printed 2-digit cur/max
-   via two ``JSR $C1:6378`` calls, then ``STX``/``STA`` to the tilemap
+   via two JSR $C1:6378 calls, then STX/STA to the tilemap
    mirror at $702C/$702E (cur) and $7032/$7034 (max), with a static
    slash at $7030 supplied by the MVN template at $C1:639D. The 11-tile
    window $7020-$7034 is shared with the spell list (which begins at
@@ -45,7 +45,7 @@ Multiple sites participate:
 
    We rewrite the renderer in place to call a small converter in free
    ROM at $C1:C6C0, which reuses the proven battle HP 3-digit converter
-   at $C1:5D6A (it writes 3 tiles itself via ``STA $7000,X`` with X =
+   at $C1:5D6A (it writes 3 tiles itself via STA $7000,X with X =
    offset + $8C, applying leading-zero suppression and the $2400 tile
    attribute). The converter:
 
@@ -53,7 +53,7 @@ Multiple sites participate:
      by $C1:25D2 / $C1:2610, which doubles as the partition base $5D6A
      reads) and $8E (dialog scratch / $5D6A's value-stash) on the
      STACK, so no zero-page state leaks past the call; and
-   * ``STZ $8C`` so the partition base is 0 and Y is treated as a plain
+   * STZ $8C so the partition base is 0 and Y is treated as a plain
      offset from $7000.
 
    New tilemap layout in the existing 11-tile $7020-$7034 window::
@@ -66,33 +66,33 @@ Multiple sites participate:
    $702E and blanks the digit slots. Highest write is $7034 (vanilla
    parity, no DMA changes).
 
-   CRITICAL — trampoline location: the converter MUST live at $C1:C6C0
+   CRITICAL - trampoline location: the converter MUST live at $C1:C6C0
    (or another genuinely-free region such as $C1:9570-$C1:9D50). The
    region $C1:9564-$C1:956F is reserved in the patched ROM and the
    chest-packet allocator patch can land in $C1:95xx on some seeds.
    Placing the converter at $C1:9564 corrupted battle/HUD state and
    produced sprite/tile/palette artifacts even when the converter body
-   was a functional no-op — bisecting that down (Test A clean with no
+   was a functional no-op - bisecting that down (Test A clean with no
    trampoline; Tests B-G all dirty sharing the $C1:9564 location; Test
    F a no-op trampoline still dirty) is what pinned the location as the
    root cause. The per-spell FP cost renderer at $C1:635B is NOT
-   modified — spell costs stay capped at 99.
+   modified - spell costs stay capped at 99.
 
 6. The item RESTORE_FP handler ($C2:C040) is made 8-bit-overflow safe.
 
    Vanilla adds the item's heal amount to current FP with an 8-bit ADC,
-   never checks the carry, and clamps with a *signed* ``BMI``::
+   never checks the carry, and clamps with a *signed* BMI::
 
        LDA $7EFA0C / CLC / ADC $FB / CMP $7EFA0D / BMI + / LDA $7EFA0D
        STA $7EFA0C
 
    Both shortcuts hold only while max FP and every heal amount stay <= 99
-   (so ``cur + amount <= 198`` cannot wrap, and ``|cur + amount - max|``
+   (so cur + amount <= 198 cannot wrap, and |cur + amount - max|
    cannot exceed 127). Raising max FP to 255 breaks both:
 
-   * ``cur + 255`` (Royal Syrup) wraps to ``cur - 1``, carry is ignored,
-     and the wrapped value is stored — the heal *removes* 1 FP.
-   * whenever ``max - (cur + amount) > 127`` the signed compare takes the
+   * cur + 255 (Royal Syrup) wraps to cur - 1, carry is ignored,
+     and the wrapped value is stored - the heal *removes* 1 FP.
+   * whenever max - (cur + amount) > 127 the signed compare takes the
      branch backwards, so e.g. Honey Syrup at 0/255 FP restores all 255.
 
    This is also the overworld menu's FP restore: the item menu applies
@@ -101,7 +101,7 @@ Multiple sites participate:
    ROM that adds a heal amount to current FP.
 
    Fix, in place and byte-exact (the tail from $C2:C067 keeps its vanilla
-   addresses, so $C2:C074 — the next dispatch target — is untouched)::
+   addresses, so $C2:C074 - the next dispatch target - is untouched)::
 
        LDY $C6 / LDX $02,y        ; folds INY / INY / LDX $00,y, freeing 2
        ... damage-flag writes unchanged ...
@@ -112,8 +112,8 @@ Multiple sites participate:
        clamp: LDA $7EFA0D
        store: STA $7EFA0C
 
-   ``LDX $02,y`` reads the same effective address as the vanilla
-   ``INY / INY / LDX $00,y`` (D + 2 + Y), and Y is dead afterwards — unlike
+   LDX $02,y reads the same effective address as the vanilla
+   INY / INY / LDX $00,y (D + 2 + Y), and Y is dead afterwards - unlike
    RESTORE_HP, this handler does not loop over targets (FP is party-global,
    not per-actor), so it never writes Y back to $C6.
 

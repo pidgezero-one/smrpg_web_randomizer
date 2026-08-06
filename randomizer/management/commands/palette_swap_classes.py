@@ -1,7 +1,7 @@
 """Generate randomizer/data/sprites/palette_swap_classes.py.
 
 Two sprites belong to the same palette-swap class when their definitions are
-byte-identical once `palette_offset` is stripped. Such sprites share tile data
+byte-identical once palette_offset is stripped. Such sprites share tile data
 outright, so they can share one VRAM clone buffer -- a buffer holds exactly one
 sprite_id, and that is the constraint forcing extra NPCs into dedicated VRAM.
 

@@ -36,7 +36,7 @@ END_TITLES_DELAY = 40
 # memorial is tuned to fade in ~4:38 into the credits music; added panels
 # (tadpole/sunken) pushed it to ~5:04, so the pause is trimmed to pull it back.
 # Keep this >= 2x the filler block count (~48) so BOTH delay halves of every
-# block stay nonzero, matching the legacy (23,23) blocks — the earlier pause=0
+# block stay nonzero, matching the legacy (23,23) blocks - the earlier pause=0
 # attempt gave all-zero delays and the dedication vanished. If the memorial ever
 # fails to render, raise this (1012 = the legacy value, definitely in-window but
 # lands it late).
@@ -52,11 +52,11 @@ MAX_FILLER_DELAY = 127
 # more content => fewer filler panels, keeping the dedication's wall-clock time
 # constant. finalize() estimates the content's running time from its measured
 # transition count, then sizes the filler to reach the target. These are
-# stopwatch-calibrated approximations — change MEMORIAL_FADE_SECONDS to move the
+# stopwatch-calibrated approximations - change MEMORIAL_FADE_SECONDS to move the
 # target; nudge the two rates if the fit drifts. The credits engine spends a
 # large fixed time per panel TRANSITION, so only the filler COUNT matters for
 # timing (the byte-padding draws inside each panel are nearly free).
-MEMORIAL_FADE_SECONDS = 4 * 60 + 38   # 4:38 — when the dedication should fade in
+MEMORIAL_FADE_SECONDS = 4 * 60 + 38   # 4:38 - when the dedication should fade in
 CREDITS_INTRO_SECONDS = 15            # run-up before the first credit panel
 SEC_PER_CONTENT_EVENT = 1.83          # avg seconds per real-content transition
 SEC_PER_FILLER_PANEL = 4.7            # seconds the engine spends per filler panel
@@ -312,9 +312,9 @@ class Credits(object):
         self.acc += self.tail
 
         # ...then a single IDLE terminator. Credits opcode 0x02's handler is just
-        # `JMP $0C5F` (at $C2:12AF): it re-runs every frame WITHOUT advancing the
+        # JMP $0C5F (at $C2:12AF): it re-runs every frame WITHOUT advancing the
         # command pointer, so the engine freezes on the blank post-dedication
-        # screen until the music ends and the fireworks scene takes over — exactly
+        # screen until the music ends and the fireworks scene takes over - exactly
         # how vanilla ends its stream (its final byte is 0x02). This replaces both
         # the old zero pad (opcode 0x00 is a real command that marched off the
         # buffer into the string table = a crash) and the cycling hold panels

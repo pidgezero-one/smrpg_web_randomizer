@@ -6,7 +6,7 @@ from smrpgpatchbuilder.datatypes.graphics.classes import CompleteSprite, Animati
 
 
 def _shift_mold(source: Mold, new_index: int, dx: int) -> Mold:
-    """Clone ``source`` at ``new_index`` with every tile's x shifted by ``dx``.
+    """Clone source at new_index with every tile's x shifted by dx.
 
     deepcopy isolates the tile's subtile_bytes so shifted molds never share
     mutable byte arrays with mold 0.

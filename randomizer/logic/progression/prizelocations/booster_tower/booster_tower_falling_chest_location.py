@@ -44,7 +44,7 @@ class BoosterTowerFallingChestLocation(
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         # This spot renders like a chest, so it's the one NPC/event location allowed to hold
-        # YouMissed — which only defines a chest_grant, no npc_grant. Skip EventLocation's
+        # YouMissed - which only defines a chest_grant, no npc_grant. Skip EventLocation's
         # npc_grant gate for it (every other NPC location still rejects it), keep base gating.
         if isinstance(prize, YouMissed):
             return StandardPrizeLocation.can_accept(self, prize, inventory, world)

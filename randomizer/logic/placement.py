@@ -101,7 +101,6 @@ def _diagnose_placement_failure(
 
     player_has = collect_accessible_items(world)
 
-    # Show what's already placed
     placed: list[str] = []
     for loc in candidate_locations:
         if loc.has_item:
@@ -111,7 +110,6 @@ def _diagnose_placement_failure(
     for line in placed:
         print(f"[DEBUG] {line}")
 
-    # Show why each pending item is stuck
     empty_candidates = [l for l in candidate_locations if not l.has_item]
     accessible_empty = [l for l in empty_candidates if l.can_access(player_has, world)]
     print(f"[DEBUG] Empty candidate locations: {len(empty_candidates)}, accessible: {len(accessible_empty)}")
@@ -138,8 +136,8 @@ _MAX_REPAIR_VALIDATIONS = 64
 def _legal_placements(world: GameWorld) -> set[PrizeLocation]:
     """Placed locations that are currently reachable and legal for their prize.
 
-    Not every filled location qualifies: prizes seeded before ``place()`` runs
-    (vanilla holds, debug overrides) were never checked against ``can_accept``.
+    Not every filled location qualifies: prizes seeded before place() runs
+    (vanilla holds, debug overrides) were never checked against can_accept.
     Snapshotting the set that *is* legal lets the repair below demand "no worse
     than before" instead of "perfect", which a pre-existing violation would
     make unachievable.
@@ -160,7 +158,7 @@ def _still_legal(
     baseline: set[PrizeLocation],
     moved: PrizeLocation,
 ) -> bool:
-    """True if every placement in ``baseline``, plus ``moved``, is still legal."""
+    """True if every placement in baseline, plus moved, is still legal."""
     inventory = collect_accessible_items(world)
     for loc in (*baseline, moved):
         prize = loc.prize
@@ -223,7 +221,7 @@ def _repair_stall(
                 host.set_prize(item)
                 target.set_prize(displaced)
                 validations += 1
-                # host is in baseline, so this also re-checks it holding `item`.
+                # host is in baseline, so this also re-checks it holding item.
                 if _still_legal(world, baseline, target):
                     pending.remove(item)
                     if on_placed is not None:
@@ -245,7 +243,7 @@ def _try_repair(
     candidate_locations: list[PrizeLocation],
     on_placed: Callable[[Prize, PrizeLocation], None] | None,
 ) -> bool:
-    """``_repair_stall`` with the random stream pinned across the attempt."""
+    """_repair_stall with the random stream pinned across the attempt."""
     state = random.getstate()
     try:
         return _repair_stall(world, pending, candidate_locations, on_placed)
@@ -281,7 +279,6 @@ def place(
     repairs_left = _MAX_REPAIR_STALLS if world.allow_placement_repair else 0
     priority_types = tuple(priority_classes) if priority_classes else ()
 
-    # Get the set of valid locations (apply filter if provided)
     def get_candidate_locations():
         locs = world.locations.values()
         if location_filter is not None:
@@ -329,10 +326,8 @@ def place(
                     continue
             # Fall through to normal placement if no priority item can be placed
 
-        # Check if there's a character in the pending list
         character_items = [item for item in pending if isinstance(item, CharacterPrize)]
 
-        # If there's a character, try to place it first (prefer gate-critical ones)
         if character_items:
             if priority_types:
                 pri = [c for c in character_items if isinstance(c, priority_types)]
@@ -354,7 +349,6 @@ def place(
                 if len(frog_locations) > 0:
                     accessible_locations = frog_locations
 
-            # If the character can be placed, place it
             if len(accessible_locations) > 0:
                 selected = _select_by_sphere(accessible_locations, sphere_map)
                 selected.set_prize(character)
@@ -363,9 +357,7 @@ def place(
                 if on_placed:
                     on_placed(character, selected)
                 continue  # Go back to the start of the loop
-            # If character can't be placed yet, fall through to place other items
 
-        # Standard placement algorithm for all items (including character if it couldn't be placed)
         random.shuffle(pending)
         # Try priority items first to prevent non-critical items from consuming
         # limited typed locations (e.g. BossFightLocation) before gate-critical items
@@ -378,7 +370,6 @@ def place(
         placed_this_iteration = False
         for _, item in enumerate(ordered_pending):
             player_has = collect_accessible_items(world)
-            #print(f"  Inventory: {[type(i).__name__ for i in player_has]}")
             accessible_locations = [
                 l for l in candidate_locations
                 if l.can_access(player_has, world)
@@ -472,13 +463,11 @@ def diagnose_empty_locations(world: "GameWorld") -> None:
         loc_name = type(loc).__name__
         loc_type = type(loc)
 
-        # Check if this was a debug override
         if loc_type in debug_locations:
             prize_name = type(loc.prize).__name__ if loc.prize else "None"
             print(f"{BLUE}[DEBUG] {loc_name}: {prize_name}{RESET}")
             continue
 
-        # Check if location has no prize
         if not loc.has_item:
             if loc.can_be_empty(world):
                 print(f"{GREY}[EMPTY-OK] {loc_name}: no prize (allowed to be empty){RESET}")
@@ -486,16 +475,13 @@ def diagnose_empty_locations(world: "GameWorld") -> None:
                 print(f"{RED}[EMPTY-ERROR] {loc_name}: no prize (NOT allowed to be empty){RESET}")
             continue
 
-        # Location has a prize - check if it matches original
         prize_type = type(loc.prize)
         prize_name = prize_type.__name__
         originally_held = loc.originally_held
 
         if originally_held is not None and isinstance(loc.prize, originally_held):
-            # Prize is same as original
             print(f"{CYAN}[UNCHANGED] {loc_name}: {prize_name}{RESET}")
         else:
-            # Prize was shuffled
             orig_name = originally_held.__name__ if originally_held else "None"
             print(f"{GREEN}[SHUFFLED] {loc_name}: {orig_name} -> {prize_name}{RESET}")
 

@@ -78,7 +78,6 @@ def get_patch(world: GameWorld) -> Patch:
         source="dialog_font_item_punctuation",
     )
 
-    # Battle animations patch
     world._report_progress("Assembling battle animations...", progress)
     for animation_bank in world.battle_animations.values():
         patches = animation_bank.render()
@@ -86,7 +85,6 @@ def get_patch(world: GameWorld) -> Patch:
             patch.add_data(p[0], p[1], source="battle_animations")
     progress += 3
 
-    # Render character palettes when any non-default palette is selected
     palette_flags = [
         MarioPaletteChoice,
         MallowPaletteChoice,
@@ -104,9 +102,7 @@ def get_patch(world: GameWorld) -> Patch:
         patch.add_dict(world.toadstool_palette.render(world))
 
 
-    # ========================================================================
     # Render scripts and dialogs FIRST to reclaim unused space for animations
-    # ========================================================================
 
 
     # Overworld glow effects hardcode the CGRAM palette row they animate, so
@@ -114,7 +110,6 @@ def get_patch(world: GameWorld) -> Patch:
     # shuffle. See logic/green_switch_glow.py.
     patch.add_dict(_green_switch_glow_patch(world), source="green_switch_glow")
 
-    # Event scripts patch
     # NOTE: render() returns pointer_table + script_content combined,
     # so we must write to pointer_table_start, not start
     for event_script_bank in world.event_scripts.banks:
@@ -159,37 +154,22 @@ def get_patch(world: GameWorld) -> Patch:
     )
     progress += 3
 
-    # Collect unused ranges and add as AnimationBanks
-    # From overworld dialogs
     for start, end in world.overworld_dialogs.get_unused_ranges():
         world.sprites.animation_data_banks.append(AnimationBank(start, end))
 
-    # From event scripts
-    # for bank in world.event_scripts.banks:
-    #     unused = bank.get_unused_range()
-    #     if unused:
-    #         world.sprites.animation_data_banks.append(
-    #             AnimationBank(unused[0], unused[1])
-    #         )
-
-    # From action scripts
     unused = world.action_scripts.get_unused_range()
     if unused:
         world.sprites.animation_data_banks.append(
             AnimationBank(unused[0], unused[1])
         )
 
-    # From battle animation scripts (0x3A bank)
     # Reserve 0x3AFA00-0x3B0000 for item descriptions by limiting battle animations
     world.battle_animations[0x3A].set_bank_end(0x3AFA00)
     unused_ranges = world.battle_animations[0x3A].get_unused_ranges()
-    # Add the reserved range for item descriptions (1536 bytes)
     world.items.add_additional_desc_range(0x3AFA00, 0x3B0000)
-    # Add unused ranges as animation banks for sprites
     for start, end in unused_ranges:
         world.sprites.animation_data_banks.append(AnimationBank(start, end))
 
-    # From monster AI scripts
     for start, end in world.monster_scripts.get_unused_ranges():
         world.sprites.animation_data_banks.append(AnimationBank(start, end))
 
@@ -197,7 +177,7 @@ def get_patch(world: GameWorld) -> Patch:
     world._report_progress("Assembling graphics...", progress)
 
     # Sprites 490 (Smithy) and 491 (Smithy extended/"Shyper") must share
-    # the same tile group so their subtile ordering matches — battle
+    # the same tile group so their subtile ordering matches - battle
     # animation events 82/86 use sprite 491's sequences interchangeably
     # with sprite 490's during the Smithy fight.
     for p in world.sprites.render(shared_image_groups=[[490, 491]]):
@@ -206,14 +186,10 @@ def get_patch(world: GameWorld) -> Patch:
 
     # World map / file-select / overworld walker character overrides
     # are applied below in the non_mario_character block once we've
-    # computed `starter` and `i`.
+    # computed starter and i.
 
-    # fuck you
     if random.randint(0, 100) < 10:
         world.battle_dialogs.battle_messages[38] = "Wanna double you're coins?"
-
-    # Dialogs, enemies, items, packets, battle packs, rooms, shops, spells
-    # (Note: overworld_dialogs and action_scripts are rendered earlier for space reclamation)
 
     # UncapMaxFP: Royal Syrup's vanilla _inflict=99 caps the heal at 99 FP
     # even though the item description reads "Recovers all Flower Pts." Bump
@@ -227,7 +203,6 @@ def get_patch(world: GameWorld) -> Patch:
     if world.settings.isflag_enabled(UncapMaxFP):
         world.get_item(RoyalSyrupItem).set_inflict(255)
 
-    # Run all render() calls in parallel
     with ThreadPoolExecutor() as executor:
         futures = {
             "battle_dialogs": executor.submit(world.battle_dialogs.render),
@@ -242,7 +217,6 @@ def get_patch(world: GameWorld) -> Patch:
             "allies": executor.submit(world.allies.render),
             "world_map_locations": executor.submit(world.world_map_locations.render),
         }
-        # Wait for all to complete and add results to patch
         for key in [
             "battle_dialogs",
             "enemies",
@@ -279,7 +253,7 @@ def get_patch(world: GameWorld) -> Patch:
     # Always-on overworld engine substrate for the non-Mario-protagonist
     # system: ally-loader char-0 collapse ($9009) + name-targeted resolver
     # gutting ($3EB2/$E42C). Relocates the open_mode.json patched bytes
-    # verbatim (LOAD-BEARING — never restore vanilla). non_mario_character
+    # verbatim (LOAD-BEARING - never restore vanilla). non_mario_character
     # layers the per-seed sprite base ($9B86) on top of this.
     patch.add_dict(asm.protagonist_static.get_patch(), source="protagonist_static")
     # Skip the opening garden intro on new game + load game (the two
@@ -369,7 +343,7 @@ def get_patch(world: GameWorld) -> Patch:
     world.file_select_character = starter.name
 
     # World map sprite + file-select graphic + overworld walker hooks
-    # + file-select name strings — all character-display patches in
+    # + file-select name strings - all character-display patches in
     # one place.
     patch.add_dict(
         asm.non_mario_character.get_patch(
@@ -405,7 +379,7 @@ def get_patch(world: GameWorld) -> Patch:
     # The "Victory Against Culex" fanfare is selected by a hardcoded
     # comparison against Culex's vanilla formation ID, which our renumbering
     # invalidates. Point it at whatever formations end up behind the Monstro
-    # Town doors — the story boss and the postgame Culex 3D rematch.
+    # Town doors - the story boss and the postgame Culex 3D rematch.
 
     culex_music_formation_ids: list[int] = []
     for door_pack_id in (PACK216_MONSTRO_DOOR_BOSS, PACK055_MONSTRO_DOOR_POSTGAME):
@@ -425,8 +399,8 @@ def get_patch(world: GameWorld) -> Patch:
         source="culex_victory_music",
     )
 
-    # Packet allocation patch — allow low-VRAM packets (those with
-    # ``goes_to_npc_slot_buffer = True``) to use the NPC slot path
+    # Packet allocation patch - allow low-VRAM packets (those with
+    # goes_to_npc_slot_buffer = True) to use the NPC slot path
     # instead of the bitmap allocator.
     npc_slot_packet_ids: set[int] = {
         packet.packet_id
@@ -464,9 +438,9 @@ def get_patch(world: GameWorld) -> Patch:
         source="battlefield_underwater_palette",
     )
 
-    # FxPakPro Archipelago NMI hook — DISABLED (proof of concept only).
+    # FxPakPro Archipelago NMI hook - DISABLED (proof of concept only).
     # Enabling NMI ($4200 bit 7) during gameplay causes the vanilla NMI handler
-    # ($C0:0283) to fire every VBlank. That handler is NOT a no-op — it calls the
+    # ($C0:0283) to fire every VBlank. That handler is NOT a no-op - it calls the
     # SA-1 message dispatcher ($0691) which corrupts battle state including
     # $7E0926 (party size). All FxPak/NMI patching is commented out.
     # patch.add_data(NMI_VECTOR_ROM_OFFSET, NMI_VECTOR_NEW)
@@ -482,7 +456,6 @@ def get_patch(world: GameWorld) -> Patch:
         source="rom_metadata",
     )
 
-    # Cache the patch for subsequent calls
     world._cached_patch = patch
 
     return patch

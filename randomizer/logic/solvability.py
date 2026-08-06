@@ -3,16 +3,16 @@
 Some prizes are *pinned*: the placer cannot move them, so no seed can ever
 relocate them. There are two pinning sources:
 
-* offset-driven boss fights (``prize_offset`` / POP), which bypass ``place()``
+* offset-driven boss fights (prize_offset / POP), which bypass place()
   and assign bosses by index, and
-* every location that ``should_shuffle()`` excludes, which keeps whatever it
-  originally held — including the vanilla character seats when recruit order
+* every location that should_shuffle() excludes, which keeps whatever it
+  originally held - including the vanilla character seats when recruit order
   is not shuffled.
 
 An area gate whose requirement is pinned *inside the region that gate guards*
 forms a closed cycle. The region is then unreachable from an empty inventory
 in every seed, and nothing the placer does can open it. Placement does not
-notice this directly — it surfaces much later as an unrelated-looking overflow
+notice this directly - it surfaces much later as an unrelated-looking overflow
 (e.g. key items with nowhere legal to go), after dozens of pointless retries.
 
 This module finds those sealed regions up front.
@@ -53,7 +53,7 @@ if TYPE_CHECKING:
 class SettingsRelaxed(Exception):
     """A gate had to be forced open, so the seed must be rolled again.
 
-    The gates are not only a placement rule — ``apply_shuffler_independent_settings``
+    The gates are not only a placement rule - apply_shuffler_independent_settings
     turns them into ROM state (the Booster Tower door's solidity/tile mods and
     TOWER_OPENED, for one) long before the shuffler runs. Flipping a gate
     mid-shuffle therefore only convinces *placement* that the door is open; the
@@ -125,8 +125,8 @@ class OptimisticInventory(Inventory):
 def pinned_prizes(world: GameWorld) -> dict[PrizeLocation, type[Prize]]:
     """Map every location the placer cannot fill freely to the prize it must hold.
 
-    Offset-driven boss fights win over ``should_shuffle``, matching the order
-    ``shuffle_prizes`` applies them in.
+    Offset-driven boss fights win over should_shuffle, matching the order
+    shuffle_prizes applies them in.
     """
     from .shufflers.items import should_shuffle
 
@@ -217,7 +217,7 @@ def relax_deadlocked_gates(world: GameWorld) -> list[str]:
     """Open only the area gates that actually deadlock the world.
 
     Offsets are meant to override any other placement setting, but the gate
-    flags still evaluate against the bosses the offset just pinned — so a gate
+    flags still evaluate against the bosses the offset just pinned - so a gate
     can demand a boss that the offset locked inside the region that gate guards.
     Where that happens, the gate loses.
 
@@ -248,7 +248,7 @@ def relax_deadlocked_gates(world: GameWorld) -> list[str]:
             if best is None or remaining < best[0]:
                 best = (remaining, gate_cls, gating, was)
 
-        # No single gate improves things — leave the rest alone and let the
+        # No single gate improves things - leave the rest alone and let the
         # pre-flight check report the sealed region instead of silently
         # flattening every gate the user chose.
         if best is None or best[0] >= len(sealed):
@@ -269,13 +269,13 @@ def relax_deadlocked_gates(world: GameWorld) -> list[str]:
 def assert_solvable(world: GameWorld) -> None:
     """Fail fast if no seed can satisfy these settings.
 
-    Deliberately uses the same optimistic model as ``sealed_locations`` rather
+    Deliberately uses the same optimistic model as sealed_locations rather
     than the real prize pool. A pool-based check would have to know which
     locations *will* be filled: a star-piece slot, for instance, is only
-    reachable once its parent boss slot holds a boss, so before ``place()``
+    reachable once its parent boss slot holds a boss, so before place()
     runs it looks unreachable and a perfectly solvable world gets called sealed.
     Assuming every non-pinned prize is already in hand sidesteps that entirely,
-    and still proves unsolvability — if a location is unreachable even when the
+    and still proves unsolvability - if a location is unreachable even when the
     player is handed everything the placer could ever give them, no seed can
     reach it.
     """
@@ -291,7 +291,7 @@ def assert_solvable(world: GameWorld) -> None:
         f"These settings are unsolvable for every seed: {len(sealed)} location(s) "
         f"that must hold a prize can never be reached, even if the player is handed "
         f"every item in the game for free. Some gate requires a boss or character "
-        f"that is pinned behind that very gate, so the region can never open — this "
+        f"that is pinned behind that very gate, so the region can never open - this "
         f"is a closed cycle, not bad luck, and retrying cannot help. "
         f"Sealed: {shown}"
     )
@@ -301,7 +301,7 @@ def assert_solvable(world: GameWorld) -> None:
 # Key-item pool placeability
 #
 # With KeyItemsAnywhere off, a KeyPrize can only live in a KeyItemLocation, and
-# the design is 1:1 — one key item per key location. sealed_locations() can't
+# the design is 1:1 - one key item per key location. sealed_locations() can't
 # see a shortfall here: key slots are can-be-empty, so it never flags them, and
 # its all-items-in-hand optimism hands the player the island's keys for free.
 # These helpers reason about the key pool specifically.
@@ -309,7 +309,7 @@ def assert_solvable(world: GameWorld) -> None:
 
 
 def _reach_inventory(world: GameWorld, seed_items: list[Prize]) -> Inventory:
-    """Reachability fixpoint seeded with ``seed_items``: also collects every
+    """Reachability fixpoint seeded with seed_items: also collects every
     already-placed prize (offset-pinned bosses, static fills) from locations
     that become reachable. Mirrors collect_accessible_items but with a seed."""
     acc = Inventory(list(seed_items))
@@ -334,9 +334,9 @@ def unplaceable_key_items(
 ) -> tuple[int, list[str], list[str]]:
     """Deterministic, non-mutating assumed fill of the key-item pool only.
 
-    Returns ``(count, leftover_item_names, unreachable_location_names)``. A slot
+    Returns (count, leftover_item_names, unreachable_location_names). A slot
     is reachable for item X assuming the player holds every OTHER unplaced key
-    item, all non-key pool items, and the keys already committed here — plus
+    item, all non-key pool items, and the keys already committed here - plus
     whatever pre-placed bosses those unlock. Most-constrained-first ordering
     (place the item with the fewest options next) makes this near-complete
     without backtracking; because opening a gate only ever adds reachability,
@@ -389,8 +389,8 @@ def assert_key_pool_balanced(
 
     A homeless key item (more KeyPrize items than shuffle-target KeyItemLocations)
     means a flag combination removed a location without removing its item, or
-    added an item without a home. Fewer items than slots is fine — the surplus
-    slots hold filler — so this only fires on the genuinely-broken direction.
+    added an item without a home. Fewer items than slots is fine - the surplus
+    slots hold filler - so this only fires on the genuinely-broken direction.
     """
     from .shufflers.items import should_shuffle
     from ..types.gameworld import WorldBuildingException
@@ -426,11 +426,11 @@ def relax_key_pool_deadlock(
     """Open area gates until the key-item pool can be placed (POP only).
 
     The offset pins bosses so that a cluster of key slots sits behind gates that
-    can only be opened by keys living in that same cluster — the key pool can't
+    can only be opened by keys living in that same cluster - the key pool can't
     bootstrap. Offsets override placement settings, so the gates give way.
     Greedy: open the single gate that reduces the unplaceable count most, repeat.
     If no single gate helps but the pool still doesn't fit (AND-chained regions),
-    fall back to opening every remaining gate — proven to make it placeable.
+    fall back to opening every remaining gate - proven to make it placeable.
     Mutates the settings' gate flags and returns a description of each open.
     """
     if not (world.settings.debug_mode and world.settings.prize_offset is not None):
@@ -468,7 +468,7 @@ def relax_key_pool_deadlock(
             continue
 
         # No single gate helps (AND-chained regions) but the pool still doesn't
-        # fit. Open everything still closed — guaranteed placeable — and stop.
+        # fit. Open everything still closed - guaranteed placeable - and stop.
         opened_any = False
         for gate_cls, gating in AREA_GATES:
             flag = world.settings.get_flag(gate_cls)
@@ -496,7 +496,7 @@ def assert_key_pool_placeable(
 ) -> None:
     """Fail fast if the key-item pool still can't be placed after relaxation.
 
-    Only reached when opening every gate did not help — so it is a genuine
+    Only reached when opening every gate did not help - so it is a genuine
     dead end, not a gate cycle. Lists both sides so the disparity is findable.
     """
     from ..types.gameworld import WorldBuildingException

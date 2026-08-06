@@ -44,7 +44,7 @@ DEFAULT_FOREST_CHARACTER = NPC_3
 # Mario/Peach/Mallow/Geno/Doll/GenoRedemption/Bowser.
 DEFAULT_MINES_CHARACTER = NPC_6
 # Doll sits between Geno (NPC_3) and Bowser (NPC_6); its palette is provided
-# implicitly by the engine — see _apply_r375_protagonist_palette_rows.
+# implicitly by the engine - see _apply_r375_protagonist_palette_rows.
 DOLL = NPC_4
 # The Geno-redemption NPC (used for the cliff-side flying-sparkle effect)
 # stays at NPC_5.

@@ -40,7 +40,7 @@ from ....variables.event_palette_names import *
 # NEXT level's slice (that room's NPC_0). E1801 does TWO such writes for a packet: the
 # event-level RemoveObjectAt70A8FromCurrentLevel (F5) AND the action-level "set object
 # presence" (FD F2, inside the A1016 pickup animation). Neither may run for a packet.
-# Despawn transiently instead — object-local only (mark obj-mem bit 0x30.4 + visibility
+# Despawn transiently instead - object-local only (mark obj-mem bit 0x30.4 + visibility
 # off, the pattern vanilla uses for packet collection); the packet's respawn is gated by
 # its story flag, so no persistent presence write is needed.
 script = EventScript([

@@ -200,7 +200,7 @@ def _has_significant_visual_overlap(
     footprint_b: dict[int, int],
     overlap_fraction: float = 0.5,
 ) -> bool:
-    """Check whether two placed enemies visually overlap by more than `overlap_fraction`
+    """Check whether two placed enemies visually overlap by more than overlap_fraction
     of the shorter sprite's scanline height.
 
     This is a separate, stricter check from the OAM budget: even if two sprites

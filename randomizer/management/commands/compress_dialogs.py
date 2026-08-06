@@ -93,7 +93,6 @@ def find_removable_indexes(
         if not is_await_content(content):
             continue
 
-        # Check all dialogs using this index
         dialogs = index_to_dialogs.get((bank, index), [])
         if not dialogs:
             # No dialogs point here, can remove
@@ -135,8 +134,7 @@ def find_shared_await_index(
 def compute_index_shift(removable_indexes: list[int], old_index: int, shared_index: int) -> int:
     """Compute the new index after shifting, accounting for removed indexes."""
     if old_index in removable_indexes and old_index != shared_index:
-        # This dialog should point to shared index
-        # But we need to compute what shared_index will become after shifts
+        # shared_index shifts too, so resolve where it lands rather than using it raw
         shift = sum(1 for ri in removable_indexes if ri < shared_index and ri != shared_index)
         return shared_index - shift
 
@@ -169,11 +167,9 @@ def update_pointers_file(
         suffix = match.group(4)
 
         if old_index in actual_removable:
-            # Point to shared index (after shift)
             new_index = compute_index_shift(actual_removable, shared_index, shared_index)
             new_name = name
 
-            # Rename EMPTY to DUPLICATE
             if '_EMPTY' in name and not '_EMPTY_' in name:
                 # Simple _EMPTY suffix
                 new_name = name.replace('_EMPTY', '_DUPLICATE')
@@ -187,7 +183,6 @@ def update_pointers_file(
             changes.append(f"  {name}: index {old_index} -> {new_index} (shared)")
             return f"pointers[{new_name}] = Dialog(bank=0x{bank:02x}, index={new_index}{suffix}"
 
-        # Compute shifted index
         new_index = compute_index_shift(actual_removable, old_index, shared_index)
 
         if new_index != old_index:
@@ -256,17 +251,14 @@ def update_dialog_table(
         old_index = int(match.group(1))
         dialog_content = match.group(2)
 
-        # Skip entries being removed
         if old_index in actual_removable:
             continue
 
-        # Compute new index
         shift = sum(1 for ri in actual_removable if ri < old_index)
         new_index = old_index - shift
 
         entries.append((new_index, dialog_content))
 
-    # Rebuild file preserving the format
     # Use new compressed size (max index + 1)
     new_size = max(idx for idx, _ in entries) + 1 if entries else 0
     lines = [f'dialog_data = [""]*{new_size}']
@@ -307,7 +299,6 @@ def process_bank(
 
     print(f"  Found {len(removable_indexes)} removable [await] indexes: {removable_indexes[:20]}{'...' if len(removable_indexes) > 20 else ''}")
 
-    # Find shared target
     shared_index = find_shared_await_index(bank, dialog_table, index_to_dialogs, removable_indexes)
 
     if shared_index is None:
@@ -336,7 +327,6 @@ def process_bank(
                     new_name = name.replace('_EMPTY_', '_DUPLICATE_')
                 renames[name] = new_name
 
-    # Update pointers
     print(f"\n  Pointer changes:")
     changes = update_pointers_file(bank, removable_indexes, shared_index, dry_run)
     for change in changes[:30]:
@@ -344,7 +334,6 @@ def process_bank(
     if len(changes) > 30:
         print(f"    ... and {len(changes) - 30} more changes")
 
-    # Update dialog table
     removed = update_dialog_table(bank, removable_indexes, shared_index, dry_run)
     print(f"\n  {'Would remove' if dry_run else 'Removed'} {removed} dialog entries from table")
 

@@ -17,7 +17,7 @@ Architecture:
 # ROM patch addresses
 # =============================================================================
 
-# NMI vectors in ROM header — BOTH must be patched because SMRPG switches
+# NMI vectors in ROM header - BOTH must be patched because SMRPG switches
 # the SNES CPU between native and emulation mode (title screen vs gameplay).
 NMI_VECTOR_ROM_OFFSET = 0x7FEA       # Native mode NMI (SNES $00:FFEA)
 NMI_VECTOR_NEW = bytes([0xE0, 0xFF])  # Point to $FFE0 (trampoline)
@@ -33,14 +33,14 @@ TRAMPOLINE_CODE = bytes([0x5C, 0x00, 0xF0, 0xD5])  # JML $D5:F000
 
 # Hook code location ($D5:F000 = ROM offset $15F000)
 # Documented free space at $15EFEB-$15FFFF (doc_offsets.txt).
-# Must NOT be in animation banks $02/$35/$3A — those are overwritten by
+# Must NOT be in animation banks $02/$35/$3A - those are overwritten by
 # battle animation script rendering.
 HOOK_ROM_OFFSET = 0x15F000
 
 # Original NMI handler (in WRAM, set up by game during init)
 ORIGINAL_NMI_ADDR = 0x000008
 
-# NMITIMEN ($4200) patches — enable VBlank NMI during gameplay.
+# NMITIMEN ($4200) patches - enable VBlank NMI during gameplay.
 # SMRPG's gameplay engine (bank C0) writes $01 to $4200, which has bit 7=0
 # (NMI disabled). The game delegates VBlank work to the SA-1 coprocessor instead.
 # Our hook needs NMI enabled to run, so we patch $01 → $81 (NMI on + joypad on).
@@ -52,7 +52,7 @@ NMITIMEN_PATCHES: list[tuple[int, int, int]] = [
 ]
 
 # =============================================================================
-# Mailbox addresses — BW-RAM offset $3F00-$3F84
+# Mailbox addresses - BW-RAM offset $3F00-$3F84
 # =============================================================================
 # Access via BMAPS=1 window: $00:6000-$7FFF → BW-RAM $2000-$3FFF.
 # BW-RAM $3F00 = SNES $7F00 (with BMAPS=1) = FxPakPro SRAM $E03F00.
@@ -64,7 +64,7 @@ NMITIMEN_PATCHES: list[tuple[int, int, int]] = [
 MAILBOX_SNES_BASE = 0x3F00  # BW-RAM offset
 MAILBOX_FXPAK_BASE = 0xE03F00
 
-# Outbox (hook writes, AP client reads) — per-frame updates
+# Outbox (hook writes, AP client reads) - per-frame updates
 OUTBOX_MUSIC = 0x00       # 1B: current music track ($7E:1D04)
 OUTBOX_BATTLE = 0x01      # 1B: battle state ($7E:3021), 0=not in battle
 OUTBOX_FRAME_CTR = 0x02   # 2B: frame counter (LE), incremented each NMI
@@ -135,7 +135,7 @@ WRAM_MAX_FP = 0x7FF8B2        # 1 byte
 WRAM_FROG_COINS = 0x7FF8B3    # 2 bytes (LE)
 WRAM_NMI_HANDLER_BANK = 0x7E000B  # NMI handler target bank byte
 
-# Star piece counter — BW-RAM $30D5, accessible via BMAPS=1 window at $00:70D5
+# Star piece counter - BW-RAM $30D5, accessible via BMAPS=1 window at $00:70D5
 STAR_PIECE_ADDR = 0x0070D5    # BW-RAM via BMAPS window (FxPakPro $E030D5)
 
 # IRAM party addresses (SA-1 internal RAM, mirrored at $00:3000-$37FF)
@@ -353,7 +353,7 @@ def build_hook_code() -> bytes:
     # LDA, or STA. So carry survives from XCE through register saves
     # and BMAPS setup, and we can save it to the stack via ROL trick.
     a.emit(0x18)      # CLC
-    a.emit(0xFB)      # XCE — native mode; carry = old E flag
+    a.emit(0xFB)      # XCE - native mode; carry = old E flag
     a.rep(0x30)       # REP #$30: 16-bit A/X/Y (carry preserved)
     a.emit(0x48)      # PHA (16-bit, carry preserved)
     a.emit(0xDA)      # PHX (16-bit, carry preserved)
@@ -370,7 +370,7 @@ def build_hook_code() -> bytes:
     a.lda_imm8(0x01)
     a.sta_long(0x002224)            # BMAPS = 1
 
-    # Enable SNES CPU BW-RAM writes. Set at entry, NOT cleared at exit —
+    # Enable SNES CPU BW-RAM writes. Set at entry, NOT cleared at exit -
     # clearing SBWE during NMI breaks in-progress game BW-RAM operations.
     a.lda_imm8(0x80)
     a.sta_long(0x002226)            # SBWE bit 7 = 1 (enable writes)
@@ -410,7 +410,7 @@ def build_hook_code() -> bytes:
     # =================================================================
     # PER-FRAME: Copy game mode byte (NMI handler bank)
     # =================================================================
-    # The game's WRAM NMI handler at $0008 is a JML — the bank byte at
+    # The game's WRAM NMI handler at $0008 is a JML - the bank byte at
     # $000B indicates the active subsystem ($C0=overworld, $C3=menu, etc.)
     a.lda_long(WRAM_NMI_HANDLER_BANK)        # LDA $7E000B
     a.sta_long(_bwram(OUTBOX_GAME_MODE))     # STA outbox game mode
@@ -750,7 +750,7 @@ def build_hook_code() -> bytes:
     a.emit(0xE0, 0x05)                    # CPX #$05 (8-bit)
     a.bne("recruit_check_dup")
 
-    # Not found — find first empty slot ($FF)
+    # Not found - find first empty slot ($FF)
     a.emit(0xA2, 0x00)                    # LDX #$00 (8-bit)
     a.label("recruit_find_slot")
     a.lda_long_x(IRAM_CHAR_SLOTS)        # LDA $003033,X
@@ -854,7 +854,7 @@ def build_hook_code() -> bytes:
     # EXIT: Disable BW-RAM writes, restore registers and processor mode
     # =================================================================
     a.label("no_command")
-    # Note: SBWE is NOT touched — game manages it. If SBWE=$00 when NMI
+    # Note: SBWE is NOT touched - game manages it. If SBWE=$00 when NMI
     # fires, our BW-RAM writes are silently ignored (harmless miss).
 
     # Restore old E flag from stack

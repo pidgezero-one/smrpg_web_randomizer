@@ -1,8 +1,8 @@
 """Room area-layout records for rooms not handled by RoomCollection.render().
 
 Each record is the 18-byte layout written at
-``$1D:0040 + room_id * 18``. Byte layout matches LAZYSHELL-UPDATED's
-``LevelLayer.cs``::
+$1D:0040 + room_id * 18. Byte layout matches LAZYSHELL-UPDATED's
+LevelLayer.cs::
 
     0  map ID                                    (MAPS panel)
     1  message box                               (0xFE = NONE; non-zero = ((msg-1)<<1))
@@ -22,43 +22,43 @@ Each record is the 18-byte layout written at
     15 L3 animation effect
     16 effects-NPC                              (RoomCollection only writes when != 0)
 
-``RoomCollection.render()`` does not touch these records, so they have to
+RoomCollection.render() does not touch these records, so they have to
 be supplied directly.
 """
 
 
 def get_patch() -> dict[int, bytes]:
     return {
-        # Room 3 — map 107, priority set 10, mask L=40/T=48/R=63/B=63,
+        # Room 3 - map 107, priority set 10, mask L=40/T=48/R=63/B=63,
         # rippling pond water on L3.
         0x1D0076: bytes([
             0x6B, 0xFE, 0x28, 0x30, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0A, 0x05, 0x00,
         ]),
-        # Room 4 — map 13, priority set 12, mask L=0/T=0/R=19/B=15,
+        # Room 4 - map 13, priority set 12, mask L=0/T=0/R=19/B=15,
         # no L3 animation.
         0x1D0088: bytes([
             0x0D, 0xFE, 0x00, 0x00, 0x13, 0x0F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00,
         ]),
-        # Room 50 — map 79 (same as room 154), priority set 0,
+        # Room 50 - map 79 (same as room 154), priority set 0,
         # mask R=63/B=63, talking organ pipes on L3.
         0x1D03C4: bytes([
             0x4F, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00,
         ]),
-        # Room 292 — clone of R496's layout (map 145, priority set 1,
+        # Room 292 - clone of R496's layout (map 145, priority set 1,
         # effects-NPC 0x1B = UNKNOWN_1B). R292 is the
         # post-RunStarPieceSequence half of the R496 ending cutscene; map
         # data is shared with R496. Bytes are R496's vanilla 18-byte
         # record (read from $1D2320) written at R292's offset
-        # ($1D14C8 = 0x1D0040 + 292*18). 18 bytes, not 17 — final byte
+        # ($1D14C8 = 0x1D0040 + 292*18). 18 bytes, not 17 - final byte
         # stays 0.
         0x1D14C8: bytes([
             0x91, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1B, 0x00,
         ]),
-        # Room 293 — clone of R268's layout (map 132, mask R=63/B=63,
+        # Room 293 - clone of R268's layout (map 132, mask R=63/B=63,
         # all other fields 0). Bytes are R268's vanilla 18-byte record
         # (read from $1D1318) written at R293's offset
         # ($1D14DA = 0x1D0040 + 293*18).
@@ -66,12 +66,18 @@ def get_patch() -> dict[int, bytes]:
             0x84, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
         ]),
-        # Room 294 (R294_UNMAPPED_HOUSE_ROOM) — map 40, message NONE,
-        # mask L=20/T=0/R=43/B=13, no lock-scrolling, all shifts/wrap/
-        # sync/auto-scroll 0, priority set 0, no L3 animation, no
-        # effects-NPC. Written at $1D14EC = 0x1D0040 + 294*18.
+        # Room 294 (R294_UNMAPPED_HOUSE_ROOM) - clone of R154's layout
+        # (Marrymore chapel sanctuary): map 79, message NONE, mask
+        # L=0/T=0/R=63/B=63, no lock-scrolling, all shifts/wrap/sync/
+        # auto-scroll 0, priority set 0, L3 animation 0x07 (talking organ
+        # pipes), no effects-NPC. Map 79 carries the sanctuary GFX sets
+        # (107/108, L3 28), tilesets 56/57, tilemaps 152/153 (L3 priority
+        # 1), solidity 72, palette set 45, and the L1+L2+NPC mainscreen /
+        # full-plus color math - so only the map ID needs pointing here.
+        # Byte-identical to R154's vanilla record (read from $1D0B14) and
+        # to R50's entry above. Written at $1D14EC = 0x1D0040 + 294*18.
         0x1D14EC: bytes([
-            0x28, 0xFE, 0x14, 0x00, 0x2B, 0x0D, 0x00, 0x00,
-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+            0x4F, 0xFE, 0x00, 0x00, 0x3F, 0x3F, 0x00, 0x00,
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00,
         ]),
     }

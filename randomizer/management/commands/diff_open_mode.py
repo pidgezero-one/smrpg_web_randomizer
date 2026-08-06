@@ -1,20 +1,20 @@
 """Build-diff harness for the open_mode.json deprecation.
 
-Proves a candidate ``asm/*.py`` module reproduces the open_mode.json entries
-it is meant to replace (or that ``render()`` already covers a region we want
+Proves a candidate asm/*.py module reproduces the open_mode.json entries
+it is meant to replace (or that render() already covers a region we want
 to drop), by assembling two full seed ROMs and comparing them byte-for-byte:
 
 * **ROM A (current pipeline)** = vanilla + *all* open_mode.json + seed patch.
 * **ROM B (future pipeline)**  = vanilla + open_mode.json *minus the entries
-  owned by the module/drop-range* + seed patch + the module's ``get_patch()``.
+  owned by the module/drop-range* + seed patch + the module's get_patch().
 
-The same ``world.get_patch()`` output is reused for both builds, so any
-seed-RNG nondeterminism cancels out exactly — A and B can only differ where
+The same world.get_patch() output is reused for both builds, so any
+seed-RNG nondeterminism cancels out exactly - A and B can only differ where
 open_mode/module bytes differ. Identical A and B (exit 0) means the swap is
 byte-neutral and the JSON entries are safe to retire on the next regeneration.
 
 Patch application order mirrors the live browser path
-(``templates/randomizer/_rom_base.html`` fetches open_mode.json as the base,
+(templates/randomizer/_rom_base.html fetches open_mode.json as the base,
 then applies the per-seed patch over it): load vanilla -> apply open_mode ->
 apply seed patch (overrides JSON) -> recompute SNES checksum at 0x7FDC. The
 checksum is applied identically to A and B, so it never masks a real diff.
@@ -206,14 +206,14 @@ class Command(BaseCommand):
         runs = _diff_runs(rom_a, rom_b)
         if not runs:
             self.stdout.write(self.style.SUCCESS(
-                "IDENTICAL — ROM A == ROM B. The swap is byte-neutral; "
+                "IDENTICAL - ROM A == ROM B. The swap is byte-neutral; "
                 "JSON entries are safe to retire."
             ))
             return
 
         total = sum(length for _, length in runs)
         self.stdout.write(self.style.ERROR(
-            f"DIFFER — {len(runs)} run(s), {total} byte(s) differ between A and B:"
+            f"DIFFER - {len(runs)} run(s), {total} byte(s) differ between A and B:"
         ))
         for start, length in runs[:40]:
             a_bytes = bytes(rom_a[start : start + min(length, 16)]).hex(" ")

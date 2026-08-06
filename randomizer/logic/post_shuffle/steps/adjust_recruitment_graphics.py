@@ -354,13 +354,13 @@ def apply_protagonist_sprite_swaps(world: GameWorld) -> None:
     # sizing entirely on its own.
     #
     # NOTE on buffer space: the demoted NPC's clone-buffer slot needs enough
-    # `main_buffer_space` to fit any non-walk sequences declared in the room's
-    # `npc_expected_animations` for that slot. That sizing is computed by
-    # `_recalculate_room_partition` in `partition_calculator.py` (step ~568+,
-    # `npc_expected_animations` consumer block), which adjusts the buffer's
-    # `main_buffer_space` field based on each animation state's `max_sequence_vram`.
+    # main_buffer_space to fit any non-walk sequences declared in the room's
+    # npc_expected_animations for that slot. That sizing is computed by
+    # _recalculate_room_partition in partition_calculator.py (step ~568+,
+    # npc_expected_animations consumer block), which adjusts the buffer's
+    # main_buffer_space field based on each animation state's max_sequence_vram.
     # If that step is undersizing the buffer, fix is in partition_calculator.py
-    # NOT here — this hook only flips the cannot_clone bit.
+    # NOT here - this hook only flips the cannot_clone bit.
     R496_DEMOTE_FIRST_NON_BOWSER = False
     if R496_DEMOTE_FIRST_NON_BOWSER:
         r496 = world.rooms._rooms[R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE]
@@ -404,16 +404,6 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
     challenge_base_sprite = 0 if ally.index == 0 else SPR0031_ALT_PROTAGONIST_1
     challenge_sprite = world.get_sprite(challenge_base_sprite + challenge_offset)
     challenge_final_mold = challenge_sprite.animation.properties.sequences[challenge_seq].frames[-1].mold_id
-    # for aq_id, cmd_id in (
-    #     ("dojo_fight_2_mario_challenge_mold_aq", "dojo_fight_2_mario_challenge_mold"),
-    #     ("dojo_fight_3_mario_challenge_mold_aq", "dojo_fight_3_mario_challenge_mold"),
-    #     ("dojo_fight_5_mario_challenge_mold_aq", "dojo_fight_5_mario_challenge_mold"),
-    # ):
-    #     cmd = world.event_scripts.get_subscript_command_by_identifier(
-    #         aq_id, cmd_id, A_SetSpriteSequence
-    #     )
-    #     cmd.set_index(challenge_final_mold)
-    #     cmd.set_sprite_offset(challenge_offset)
     if ally.index != 0:
         # nimbus cutscene
         world.event_scripts.get_command_by_identifier("EVENT_738_action_queue_63_SUBSCRIPT", ActionQueueSync).set_subscript([
@@ -450,14 +440,14 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
         world.event_scripts.get_subscript_command_by_identifier("neutral_blackjack_aq_1", "neutral_blackjack_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("neutral_blackjack_aq_2", "neutral_blackjack_2", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
         world.event_scripts.get_subscript_command_by_identifier("EVENT_2630_action_queue_365", "neutral_blackjack_3", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.NEUTRAL_BLACKJACK)[1])
-        # bandits way anim — `ally.index` is sprite/area-object order
+        # bandits way anim - ally.index is sprite/area-object order
         # (Geno = 3), but Set7000ToIDOfMemberInSlot reports the party roster
         # in menu order (Geno = 2). Convert so the script's protagonist check
         # matches; otherwise a non-Mario protagonist gets cloned.
         # ending_protag_lean_back_1/2 target the Mario NPC (NPC_19) in R496, which
         # always uses sprite 0 (Mario) regardless of starter character. The script
         # source already hardcodes the correct mold (index=23, sprite_offset=2),
-        # so don't overwrite with the starter's mold_id — that would render
+        # so don't overwrite with the starter's mold_id - that would render
         # Toadstool's/Bowser's/etc. lean-back mold using Mario's sprite 2 layout
         # and produce a garbled mold.
         # world.event_scripts.get_subscript_command_by_identifier("ending_protag_lean_back_1_aq", "ending_protag_lean_back_1", A_SetSpriteSequence).set_index(ally._sprites_primary.get(SpriteAnimationState.LEAN_BACK)[1])

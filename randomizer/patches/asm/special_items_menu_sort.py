@@ -1,8 +1,8 @@
 """Sort the Special Items (key items) list when its menu opens.
 
 Unlike the item and equipment menus -- which MVN their whole 30-byte bag into
-the ``$7E:2940`` scratch list and then ``JSR $2630`` to sort it -- the Special
-Items menu builds ``$2940`` by a *filter-copy* and never sorts::
+the $7E:2940 scratch list and then JSR $2630 to sort it -- the Special
+Items menu builds $2940 by a *filter-copy* and never sorts::
 
     $C3:52EA  LDA #$FF : STA $2940 : MVN $7E,$7E   ; FF-fill $2940-$294F (16 bytes)
     $C3:5303  LDA #$0F                              ; read 15 key-item slots
@@ -13,28 +13,28 @@ Items menu builds ``$2940`` by a *filter-copy* and never sorts::
     $C3:5318  JSR $53E7                             ; draw -- no sort
 
 So key items appear in buffer (insertion) order. This patch inserts the same
-``$2630`` sort the other two menus use, right before the draw.
+$2630 sort the other two menus use, right before the draw.
 
-Two things make it more than a one-line ``JSR $2630``:
+Two things make it more than a one-line JSR $2630:
 
-1. **Display-only, never commit.** ``$2940`` is a *packed* copy here (gaps
-   stripped, only 15 slots read), not a faithful image of the ``$7F:F8F0`` key
-   inventory. Committing a sorted ``$2940`` back would corrupt the sparse
+1. **Display-only, never commit.** $2940 is a *packed* copy here (gaps
+   stripped, only 15 slots read), not a faithful image of the $7F:F8F0 key
+   inventory. Committing a sorted $2940 back would corrupt the sparse
    buffer. We sort the scratch copy only; every reopen rebuilds and re-sorts.
-   The draw at ``$C3:53E7`` looks every entry up by its id (``LDA ($64)`` ->
-   ``JSR $7A07``) and uses no position-indexed parallel array, so reordering
-   ``$2940`` alone cannot desync anything.
+   The draw at $C3:53E7 looks every entry up by its id (LDA ($64) ->
+   JSR $7A07) and uses no position-indexed parallel array, so reordering
+   $2940 alone cannot desync anything.
 
-2. **The FF-fill must cover the whole sort domain.** ``$2630`` sorts 30 bytes
-   (``$2940-$295D``); the vanilla build only FF-fills 16 (``$2940-$294F``),
-   leaving ``$2950-$295D`` holding stale bytes from the previous menu. Sorting
+2. **The FF-fill must cover the whole sort domain.** $2630 sorts 30 bytes
+   ($2940-$295D); the vanilla build only FF-fills 16 ($2940-$294F),
+   leaving $2950-$295D holding stale bytes from the previous menu. Sorting
    would pull that low-valued garbage into the visible rows. We widen the fill
-   from 15 to 29 MVN bytes so all 30 sort slots are real-or-``$FF``.
+   from 15 to 29 MVN bytes so all 30 sort slots are real-or-$FF.
 
-``$2630`` clobbers ``$60``, which ``$C3:52E5`` loaded with a routine pointer
-(``$5D12``) the menu still needs, so the helper saves and restores it. X is
-16-bit at the hook (verified), and ``$2630`` leaves the index width alone, so
-``PHX``/``PLX`` move the full pointer.
+$2630 clobbers $60, which $C3:52E5 loaded with a routine pointer
+($5D12) the menu still needs, so the helper saves and restores it. X is
+16-bit at the hook (verified), and $2630 leaves the index width alone, so
+PHX/PLX move the full pointer.
 
 Always applied; no flag.
 """

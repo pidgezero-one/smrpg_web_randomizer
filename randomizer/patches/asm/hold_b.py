@@ -1,7 +1,7 @@
 """HoldB: hold B to advance dialog instead of tapping.
 
 Patches four sites with short JSL trampolines / hooks that route the
-dialog-advance check through a small helper at ``$C2:FE90``.
+dialog-advance check through a small helper at $C2:FE90.
 """
 
 

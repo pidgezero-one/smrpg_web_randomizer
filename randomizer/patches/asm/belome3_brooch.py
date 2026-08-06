@@ -1,9 +1,9 @@
 """Belome 3 spell-block + Enduring Brooch ASM hook.
 
 Adapted from the community ASM patch in
-``randomizer/patches/asm_ref/{belome3,eb}.asm``. Both behaviors are always
+randomizer/patches/asm_ref/{belome3,eb}.asm. Both behaviors are always
 active. Only the Belome 3 blocked-spell list shrinks when the
-``InfuseSpellElements`` flag is enabled — those infused spells become
+InfuseSpellElements flag is enabled - those infused spells become
 elemental, and Belome 3's rule is to nullify only NON-elemental spells.
 
 Behaviors
@@ -32,27 +32,27 @@ ROM hooks
 
 Four short JSL trampolines are written into the battle engine:
 
-* ``$C2:C55E`` — entry of the apply-damage routine. Replaces 4 bytes
-  (``REP #$20`` + ``LDX $CA``) with a JSL; the helper restores those
+* $C2:C55E - entry of the apply-damage routine. Replaces 4 bytes
+  (REP #$20 + LDX $CA) with a JSL; the helper restores those
   instructions before RTL.
-* ``$C2:972E`` — start of "begin a character's defense turn". Replaces 6
-  bytes (``LDA $BA`` / ``AND #$00FF`` / ``TAY``) with JSL + 2 NOPs; the
+* $C2:972E - start of "begin a character's defense turn". Replaces 6
+  bytes (LDA $BA / AND #$00FF / TAY) with JSL + 2 NOPs; the
   helper clears the brooch-active flag for all 3 allies and restores the
   displaced LDA/AND/TAY.
-* ``$C2:CA73`` — entry of the perfect-block path. Replaces 5 bytes with
+* $C2:CA73 - entry of the perfect-block path. Replaces 5 bytes with
   JSL + RTS; the helper handles the perfect-block effect itself
   (including undoing the brooch activation if a perfect block landed).
-* ``$C2:C9FE`` — entry of the timed-block path. Replaces 5 bytes
-  (``LDA $C2`` / ``LSR`` / ``STA $C2``) with JSL + NOP; the helper applies
+* $C2:C9FE - entry of the timed-block path. Replaces 5 bytes
+  (LDA $C2 / LSR / STA $C2) with JSL + NOP; the helper applies
   half damage conditionally and resets the inter-handler scratch words.
 
 Free ROM region
 ---------------
 
 The four helper routines are laid out back-to-back starting at SNES
-``$CF:F7B0`` (ROM offset ``0x0FF7B0``). Vanilla SMRPG has 2128 zero bytes
-at ``$0F:F7B0``-``$0F:FFFF``; ``open_mode.ips`` does not touch this
-region; SA-1 can JSL into bank ``$CF`` (verified by the source ROM hack
+$CF:F7B0 (ROM offset 0x0FF7B0). Vanilla SMRPG has 2128 zero bytes
+at $0F:F7B0-$0F:FFFF; open_mode.ips does not touch this
+region; SA-1 can JSL into bank $CF (verified by the source ROM hack
 this is adapted from). The total payload is well under the available
 space.
 """
@@ -118,7 +118,7 @@ ALLY_F40_BASE = 0x7E0040
 ALLY_F43_BASE = 0x7E0043
 
 # Pre-hit HP. Vanilla saves it here itself at $C2:C56D (LDA $7E0011,X /
-# STA $7E0035,X) — which runs *after* this patch's apply-damage hook, so by
+# STA $7E0035,X) - which runs *after* this patch's apply-damage hook, so by
 # the time a block resolves it holds the true HP the character had before
 # the hit. Same address as ALLY_F35_BASE; named for the role we rely on.
 ALLY_PREHIT_HP_BASE = 0x7E0035
@@ -134,7 +134,7 @@ ALLY_PREHIT_HP_BASE = 0x7E0035
 # the $10-$23 window that $C2:92CB block-copies to $7F:F800.
 #
 # The previous revision of this patch kept these four words at
-# $7F:0000/0010/0020/0030 and called them free BW-RAM. They are not free —
+# $7F:0000/0010/0020/0030 and called them free BW-RAM. They are not free -
 # they are tiles 0/8/16/24 of the level tilemap ($C9:511C writes
 # STA $7F0000,X with a base-zero index), and battle never reinitialises
 # them. The block handlers gated a direct write of $7E0011,X (HP) on those
@@ -149,7 +149,7 @@ BROOCH_HALF_BASE = 0x7E0028      # scratch: half of BROOCH_DAMAGE
 # Spell IDs that Belome 3 nullifies (per the source patch, validated
 # against the randomizer's spell index file).
 # -----------------------------------------------------------------------
-# Always blocked — these spells are non-elemental even with InfuseSpellElements.
+# Always blocked - these spells are non-elemental even with InfuseSpellElements.
 SPELLS_ALWAYS_BLOCKED: tuple[int, ...] = (
     0x0C,  # Terrorize
     0x0D,  # Poison Gas
@@ -157,7 +157,7 @@ SPELLS_ALWAYS_BLOCKED: tuple[int, ...] = (
     0x13,  # Geno Blast
     0x1A,  # Star Rain
 )
-# Blocked only when InfuseSpellElements is OFF — these become elemental
+# Blocked only when InfuseSpellElements is OFF - these become elemental
 # under InfuseSpellElements and so should NOT be blocked then.
 SPELLS_BLOCKED_WHEN_NOT_INFUSED: tuple[int, ...] = (
     0x0B,  # Psych Bomb (becomes Fire)
@@ -336,7 +336,7 @@ def _build_apply_damage(infuse_spell_elements: bool) -> bytes:
 
     # Disarm first, unconditionally, on every hit that targets an ally. The
     # block handlers therefore only ever read a flag this routine has just
-    # written for this same ally on this same hit — they can never act on a
+    # written for this same ally on this same hit - they can never act on a
     # value left behind by an earlier hit, an earlier battle, or a cold boot.
     a.lda_imm16(0x0000)
     a.sta_long_x(BROOCH_ARMED_BASE)
@@ -393,7 +393,7 @@ def _build_zero_out_brooch() -> bytes:
     """Hook installed at $C2:972E (start of a character's defense turn).
 
     Clears the per-battle "brooch already used" flag for all three ally
-    slots, then replays the displaced ``LDA $BA / AND #$00FF / TAY`` so
+    slots, then replays the displaced LDA $BA / AND #$00FF / TAY so
     control returns to vanilla code unchanged.
     """
     a = _Asm(base_addr=0)
@@ -422,7 +422,7 @@ def _build_brooch_perfect_block() -> bytes:
     Then run the vanilla perfect-block effect.
     """
     a = _Asm(base_addr=0)
-    # X is the target's slot offset here — vanilla's own code at $C2:CA73
+    # X is the target's slot offset here - vanilla's own code at $C2:CA73
     # indexes off it, so trust X rather than re-reading $CA.
     a.rep(0x20)
     a.txa()
@@ -448,7 +448,7 @@ def _build_brooch_perfect_block() -> bytes:
     # No HP fix-up needed on this path. apply_damage clamped the hit to
     # HP-1 (so HP is 1) and stored HP-1 in the damage display; the vanilla
     # body below reloads $C2 from that display and adds it straight back,
-    # landing on the pre-hit HP — which is exactly what a perfect block owes.
+    # landing on the pre-hit HP - which is exactly what a perfect block owes.
 
     # Vanilla perfect-block effect (preserved verbatim from the asm
     # reference). The "brooch_bit_test" path covers a special-status
@@ -514,7 +514,7 @@ def _build_brooch_timed_block() -> bytes:
     a.beq("apply_half_damage_normal_case")
 
     # The brooch fired, so HP is currently 1 and the damage display holds
-    # the clamped HP-1 — neither is usable. Re-decide from the TRUE damage:
+    # the clamped HP-1 - neither is usable. Re-decide from the TRUE damage:
     # would a timed block's half-damage still have been lethal?
     a.lda_long_x(BROOCH_DAMAGE_BASE)
     a.lsr_a()
@@ -565,8 +565,8 @@ def _build_brooch_timed_block() -> bytes:
 def get_patch(
     infuse_spell_elements: bool,
 ) -> dict[int, bytes]:
-    """Return ``{rom_offset: bytes}`` for both the ASM hooks and the
-    free-rom payload. Caller passes the dict to ``Patch.add_dict``.
+    """Return {rom_offset: bytes} for both the ASM hooks and the
+    free-rom payload. Caller passes the dict to Patch.add_dict.
     """
     apply_bytes = _build_apply_damage(infuse_spell_elements)
     zero_bytes = _build_zero_out_brooch()
@@ -604,8 +604,8 @@ def get_patch(
         timed_rom_offset: timed_bytes,
     }
 
-    # Hook 1: $C2:C55E — JSL apply_damage. Replaces the 4 displaced bytes
-    # ``REP #$20`` + ``LDX $CA``; the helper restores them before RTL.
+    # Hook 1: $C2:C55E - JSL apply_damage. Replaces the 4 displaced bytes
+    # REP #$20 + LDX $CA; the helper restores them before RTL.
     out[HOOK_APPLY_DAMAGE_ROM_OFFSET] = bytes([
         0x22,
         apply_addr & 0xFF,
@@ -613,8 +613,8 @@ def get_patch(
         (apply_addr >> 16) & 0xFF,
     ])
 
-    # Hook 2: $C2:972E — JSL zero_brooch + 2 NOPs. Replaces the 6 bytes
-    # ``LDA $BA`` / ``AND #$00FF`` / ``TAY``; helper restores them.
+    # Hook 2: $C2:972E - JSL zero_brooch + 2 NOPs. Replaces the 6 bytes
+    # LDA $BA / AND #$00FF / TAY; helper restores them.
     out[HOOK_ZERO_BROOCH_ROM_OFFSET] = bytes([
         0x22,
         zero_addr & 0xFF,
@@ -623,7 +623,7 @@ def get_patch(
         0xEA, 0xEA,
     ])
 
-    # Hook 3: $C2:CA73 — JSL brooch_perfect + RTS. Replaces 5 bytes; the
+    # Hook 3: $C2:CA73 - JSL brooch_perfect + RTS. Replaces 5 bytes; the
     # helper terminates by RTL'ing back, then the RTS pops the parent.
     out[HOOK_PERFECT_BLOCK_ROM_OFFSET] = bytes([
         0x22,
@@ -633,8 +633,8 @@ def get_patch(
         0x60,
     ])
 
-    # Hook 4: $C2:C9FE — JSL brooch_timed + NOP. Replaces 5 bytes
-    # ``LDA $C2`` / ``LSR`` / ``STA $C2``; the helper performs them
+    # Hook 4: $C2:C9FE - JSL brooch_timed + NOP. Replaces 5 bytes
+    # LDA $C2 / LSR / STA $C2; the helper performs them
     # conditionally, then control falls through to vanilla code at $CA03.
     out[HOOK_TIMED_BLOCK_ROM_OFFSET] = bytes([
         0x22,

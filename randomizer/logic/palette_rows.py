@@ -1,20 +1,20 @@
-"""CGRAM sprite palette row layout — a scarce shared budget.
+"""CGRAM sprite palette row layout - a scarce shared budget.
 
 Overworld CGRAM layout: row 0 is untouched by event scripts, rows 1-7 are
 background palettes, row 8 is the protagonist, rows 9-15 are NPCs.
-`ally_sprite_buffer_size > 1` extends the protagonist across rows
+ally_sprite_buffer_size > 1 extends the protagonist across rows
 8..8+size-1 and NPC rows start after it.
 
-NPC rows are handed out **per distinct palette id, in object order** — not
+NPC rows are handed out **per distinct palette id, in object order** - not
 per sprite. Two sprites sharing a palette share one row, and an NPC whose
 palette id matches the protagonist's gets no row at all because the
 protagonist's row already covers it.
 
-`npc_palette_rows`, `protagonist_palette_id` and `PROTAGONIST_PALETTE_ROW`
-moved here verbatim from `green_switch_glow.py`, which re-imports them so its
+npc_palette_rows, protagonist_palette_id and PROTAGONIST_PALETTE_ROW
+moved here verbatim from green_switch_glow.py, which re-imports them so its
 existing callers are unaffected. This was a general room-layout primitive
 that happened to live in a single feature module; the palette-swap merge
-pass is a second consumer, via `rows_remaining` below.
+pass is a second consumer, via rows_remaining below.
 """
 from __future__ import annotations
 
@@ -44,7 +44,7 @@ def protagonist_palette_id(world: GameWorld) -> int | None:
 
 
 def npc_palette_rows(world: GameWorld, room: Room) -> dict[int, int]:
-    """CGRAM row each distinct NPC palette id occupies in `room`."""
+    """CGRAM row each distinct NPC palette id occupies in room."""
     partition = room.partition
     assert partition is not None, "room has no partition"
 
@@ -57,7 +57,7 @@ def npc_palette_rows(world: GameWorld, room: Room) -> dict[int, int]:
             continue
         palette = world.get_sprite(sprite_id).palette_id
         if palette == protagonist_palette or palette in rows:
-            # Already resident — the protagonist's row, or a row this palette
+            # Already resident - the protagonist's row, or a row this palette
             # was given by an earlier object.
             continue
         override = obj.extra_palette_row_count
@@ -68,10 +68,10 @@ def npc_palette_rows(world: GameWorld, room: Room) -> dict[int, int]:
 
 
 def rows_remaining(world: GameWorld, room: Room) -> int:
-    """Free CGRAM sprite palette rows in `room` after current allocations.
+    """Free CGRAM sprite palette rows in room after current allocations.
 
-    `npc_palette_rows` records each palette's *starting* row, not the rows it
-    occupies — a palette claiming `extra_palette_row_count` more rows spans
+    npc_palette_rows records each palette's *starting* row, not the rows it
+    occupies - a palette claiming extra_palette_row_count more rows spans
     that many rows past its start (see reference_effects_npc_palette_row:
     some effects records target hardcoded rows, so growing residency is
     never free). The highest start row equals the highest *occupied* row
@@ -79,12 +79,12 @@ def rows_remaining(world: GameWorld, room: Room) -> int:
     the same overcounts the free rows by exactly that extra, which could let
     a caller approve a merge that actually overflows CGRAM. For example,
     room 166 has a palette starting at row 11 with extra=3 (occupying rows
-    11-14): the naive `LAST_SPRITE_PALETTE_ROW - 11` claims 4 free rows, but
+    11-14): the naive LAST_SPRITE_PALETTE_ROW - 11 claims 4 free rows, but
     only row 15 (1 row) is actually free.
 
     The returned dict does not carry extras (see its docstring), so the
     highest-row palette's own extra is re-resolved here the same way
-    `npc_palette_rows` resolves it: from the first room object, in room
+    npc_palette_rows resolves it: from the first room object, in room
     order, that carries that palette.
     """
     rows = npc_palette_rows(world, room)

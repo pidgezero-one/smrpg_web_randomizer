@@ -161,7 +161,6 @@ def fix_bank(bank: int, pointers: list[tuple[int, str, int, int, int]], dry_run:
 
     # Step 4: Apply changes
     if not dry_run:
-        # Write new table
         new_size = max(new_table.keys()) + 1 if new_table else 0
         lines = [f'dialog_data = [""]*{new_size}']
         for idx in sorted(new_table.keys()):
@@ -170,7 +169,6 @@ def fix_bank(bank: int, pointers: list[tuple[int, str, int, int, int]], dry_run:
         table_file = BASE / f'randomizer/data/dialogs/contents/dialog_table_0x{bank:02x}.py'
         table_file.write_text('\n'.join(lines) + '\n')
 
-        # Update pointers
         if pointer_updates:
             content = POINTERS_FILE.read_text()
 

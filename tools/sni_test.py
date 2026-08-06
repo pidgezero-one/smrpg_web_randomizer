@@ -183,7 +183,6 @@ async def test_connection(snirk_client: Snirk, verbose: bool) -> tuple[str, str]
 
     device = devices[0]
 
-    # Detect memory mapping
     try:
         with grpc.insecure_channel(snirk_client.channel) as ch:
             stub = sni.DeviceMemoryStub(ch)
@@ -216,7 +215,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
     print("=" * 60)
     results = {}
 
-    # Test character stats block
     print("\n  Reading character stats ($7F:F800, 0xB9 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF6F800, 0xB9)
     if data is None:
@@ -228,7 +226,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
         print(f"  Result: {validity}")
         if verbose:
             print(hex_dump(data, 0x7FF800))
-        # Try to parse character stats
         if results["character_stats"]:
             for i in range(5):
                 try:
@@ -249,7 +246,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
                 except Exception as e:
                     print(f"    {CHARACTER_NAMES.get(i, '?')}: Parse error: {e}")
 
-    # Test coins
     print("\n  Reading coins ($7F:F8B9, 2 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF6F8B9, 2)
     if data is not None:
@@ -260,7 +256,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
         print("  FAIL: Read returned None")
         results["coins"] = False
 
-    # Test frog coins
     print("\n  Reading frog coins ($7F:F8BB, 2 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF6F8BB, 2)
     if data is not None:
@@ -271,7 +266,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
         print("  FAIL: Read returned None")
         results["frog_coins"] = False
 
-    # Test battle formation
     print("\n  Reading battle formation ($7E:0048, 2 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF50048, 2)
     if data is not None:
@@ -282,7 +276,6 @@ async def test_wram(channel: str, uri: str, verbose: bool) -> dict:
         print("  FAIL: Read returned None")
         results["battle_formation"] = False
 
-    # Test map location
     print("\n  Reading map location ($7E:09E5, 2 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF509E5, 2)
     if data is not None:
@@ -305,7 +298,6 @@ async def test_bwram_snes_abus(channel: str, uri: str, verbose: bool) -> dict:
     print("=" * 60)
     results = {}
 
-    # Test event flags
     print("\n  Reading event flags ($00:7040, 96 bytes)...")
     data = await read_snes_abus(channel, uri, 0x007040, 0x60)
     if data is None:
@@ -329,7 +321,6 @@ async def test_bwram_snes_abus(channel: str, uri: str, verbose: bool) -> dict:
             else:
                 print("  No progression flags set (early game or flags at $00 somehow)")
 
-    # Test menu flags
     print("\n  Reading menu flags ($00:7062, 1 byte)...")
     data = await read_snes_abus(channel, uri, 0x007062, 1)
     if data is not None:
@@ -344,7 +335,6 @@ async def test_bwram_snes_abus(channel: str, uri: str, verbose: bool) -> dict:
         print("  FAIL: Read returned None")
         results["menu_flags_abus"] = False
 
-    # Test hidden chest counter
     print("\n  Reading hidden chest counter ($00:70C8, 1 byte)...")
     data = await read_snes_abus(channel, uri, 0x0070C8, 1)
     if data is not None:
@@ -366,7 +356,6 @@ async def test_bwram_mirror(channel: str, uri: str, verbose: bool) -> dict:
     print("=" * 60)
     results = {}
 
-    # Test event flags via mirror
     print("\n  Reading event flags ($40:7040, 96 bytes)...")
     data = await read_snes_abus(channel, uri, 0x407040, 0x60)
     if data is None:
@@ -395,7 +384,6 @@ async def test_iram(channel: str, uri: str, verbose: bool) -> dict:
     print("=" * 60)
     results = {}
 
-    # Test current area
     print("\n  Reading current area ($00:3030, 2 bytes)...")
     data = await read_snes_abus(channel, uri, 0x003030, 2)
     if data is None:
@@ -409,7 +397,6 @@ async def test_iram(channel: str, uri: str, verbose: bool) -> dict:
         if verbose:
             print(hex_dump(data, 0x3030))
 
-    # Test party slots
     print("\n  Reading party slots ($00:3032, 14 bytes)...")
     data = await read_snes_abus(channel, uri, 0x003032, 0x0E)
     if data is None:
@@ -427,7 +414,6 @@ async def test_iram(channel: str, uri: str, verbose: bool) -> dict:
                 name = CHARACTER_NAMES.get(char_id, f"Unknown({char_id})")
                 print(f"    Slot {i}: {name} (0x{char_id:02X})")
 
-    # Test party count
     print("\n  Reading party count ($00:303F, 1 byte)...")
     data = await read_snes_abus(channel, uri, 0x00303F, 1)
     if data is not None:
@@ -463,7 +449,7 @@ async def test_sram_space(channel: str, uri: str, verbose: bool) -> dict:
     """
     print("=" * 60)
     print("Test 5: BW-RAM via FxPakPro SRAM Space ($E00000+)")
-    print("  SA-1 BW-RAM is the SRAM — try multiple offsets")
+    print("  SA-1 BW-RAM is the SRAM - try multiple offsets")
     print("=" * 60)
     results = {}
 
@@ -557,7 +543,6 @@ async def test_raw_reads(channel: str, uri: str, verbose: bool) -> dict:
     print("=" * 60)
     results = {}
 
-    # Try WRAM via Raw
     print("\n  Reading WRAM via Raw ($F6F800, 0x25 bytes)...")
     data = await read_raw(channel, uri, 0xF6F800, 0x25)
     if data is not None:
@@ -583,7 +568,6 @@ async def test_raw_reads(channel: str, uri: str, verbose: bool) -> dict:
         print("  FAIL: Read returned None")
         results["bwram_raw"] = False
 
-    # Try lower WRAM addresses that should have known game state
     print("\n  Reading WRAM $7E:0000 via FxPakPro ($F50000, 64 bytes)...")
     data = await read_fxpakpro(channel, uri, 0xF50000, 0x40)
     if data is not None:
@@ -658,10 +642,8 @@ async def main():
 
     snirk_client = Snirk(channel=args.host)
 
-    # Test connection
     uri, channel = await test_connection(snirk_client, args.verbose)
 
-    # Run all tests
     all_results = {}
     all_results.update(await test_wram(channel, uri, args.verbose))
     all_results.update(await test_bwram_snes_abus(channel, uri, args.verbose))
@@ -671,7 +653,6 @@ async def main():
     all_results.update(await test_raw_reads(channel, uri, args.verbose))
     all_results.update(await coherency_test(channel, uri, args.verbose))
 
-    # Summary
     print("=" * 60)
     print("SUMMARY")
     print("=" * 60)

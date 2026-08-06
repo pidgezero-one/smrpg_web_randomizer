@@ -249,7 +249,7 @@ def render_marrymore_character(world: GameWorld, prize: CharacterPrize) -> None:
 class MarrymoreCharacter(CharacterRecruitmentLocation):
     _bias = True
     _originally_held = ToadstoolRecruitmentPrize
-    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER]
+    _rooms = [R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER, R294_UNMAPPED_HOUSE_ROOM,]
     _id = ShuffleLocationSelector.MARRYMORE_CHARACTER
     _world_area = WorldAreaEnum.MARRYMORE
     _container_event = E1228_MARRYMORE_CHARACTER
@@ -258,6 +258,10 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
     _npc_fills = [
         AllyNPCSub(
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_10,
+        ),
+        AllyNPCSub(
+            R294_UNMAPPED_HOUSE_ROOM,
             NPC_10,
         ),
         AllyNPCSub(
@@ -349,7 +353,7 @@ class MarrymoreCharacter(CharacterRecruitmentLocation):
         if isinstance(self.prize, BowserRecruitmentPrize):
             obj._min_vram_size = 1
         else:
-            # Mario, Mallow, Geno, Peach — cloneable, use buffer system
+            # Mario, Mallow, Geno, Peach - cloneable, use buffer system
             obj._min_vram_size = 0
         obj._cannot_clone = True
 

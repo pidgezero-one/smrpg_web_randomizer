@@ -63,14 +63,12 @@ def formation_to_code(formation, var_name, formation_id):
 
     lines.append("    ],")
 
-    # Music
     if formation.music:
         music_name = type(formation.music).__name__
         lines.append(f"    music={music_name}(),")
     else:
         lines.append("    music=None,")
 
-    # Optional properties
     if not formation.can_run_away:
         lines.append("    can_run_away=False,")
 
@@ -101,7 +99,6 @@ def get_pack_name(pack_id):
         8: "PACK008_K9S_WITH_SPIKEYS",
         9: "PACK009_K9S_WITH_SPIKEYS_OR_FROGS",
     }
-    # We'll read these from the original file
     return f"PACK{pack_id:03d}"
 
 def main():
@@ -126,10 +123,8 @@ def main():
 
     print(f"Found {len(unique_formations)} unique formations", file=sys.stderr)
 
-    # Generate the new file
     output_lines = []
 
-    # Header
     output_lines.append('"""ROM\'s PackCollection disassembled from the original game."""')
     output_lines.append("")
     output_lines.append("from smrpgpatchbuilder.datatypes.battles.formations_packs.types.classes import (")
@@ -155,13 +150,11 @@ def main():
     output_lines.append("")
     output_lines.append("")
 
-    # Formation declarations section
     output_lines.append("# " + "=" * 76)
     output_lines.append("# Formation Declarations")
     output_lines.append("# " + "=" * 76)
     output_lines.append("")
 
-    # Sort formations by ID and generate declarations
     sorted_formations = sorted(unique_formations.items(), key=lambda x: x[1][1])
     key_to_varname = {}
 
@@ -171,7 +164,6 @@ def main():
         output_lines.append(formation_to_code(formation, var_name, fid))
         output_lines.append("")
 
-    # Pack definitions section
     output_lines.append("")
     output_lines.append("# " + "=" * 76)
     output_lines.append("# Pack Definitions")
@@ -181,21 +173,17 @@ def main():
     output_lines.append("packs: list[FormationPack] = [None] * 256  # type: ignore")
     output_lines.append("")
 
-    # Read original file to get pack names
     with open(BASE / 'randomizer/data/packs/pack_collection.py', 'r') as f:
         original_content = f.read()
 
-    # Extract pack names using regex
     pack_name_pattern = re.compile(r'packs\[(\w+)\]\s*=')
     pack_names_found = pack_name_pattern.findall(original_content)
 
-    # Create mapping from pack index to pack name
     pack_id_to_name = {}
     for i, name in enumerate(pack_names_found):
         if i < 256:
             pack_id_to_name[i] = name
 
-    # Generate pack definitions
     for pack_id, pack in enumerate(packs):
         if pack is None:
             continue
@@ -215,7 +203,6 @@ def main():
     output_lines.append("pack_collection = PackCollection(packs[:256])")
     output_lines.append("")
 
-    # Output the result
     print("\n".join(output_lines))
 
 

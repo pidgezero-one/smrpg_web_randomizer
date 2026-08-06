@@ -1,9 +1,9 @@
-"""Title screen loops forever — no attract-mode demo (open-mode base).
+"""Title screen loops forever - no attract-mode demo (open-mode base).
 
-``$C9:E6FE``: ``DEY`` -> ``NOP``. Removes the attract-mode/demo countdown
+$C9:E6FE: DEY -> NOP. Removes the attract-mode/demo countdown
 decrement so the title screen never times out to the demo. Render-disjoint
 engine code relocated from open_mode.json (verified byte-identical via
-``diff_open_mode``).
+diff_open_mode).
 """
 
 

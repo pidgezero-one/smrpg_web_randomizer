@@ -136,7 +136,6 @@ def shuffle_shops(world: GameWorld) -> None:
     no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
     free_shops = world.settings.isflag_enabled(FreeShops)
 
-    # Define shop indices for special handling
     FROG_DISCIPLE_SHOP = SH03_FROG_DISCIPLE
     FROG_COIN_EMPORIUM = SH06_FROG_COIN_EMPORIUM
     JUICE_BAR_BASE = SH09_JUICE_BAR_BASE
@@ -145,7 +144,6 @@ def shuffle_shops(world: GameWorld) -> None:
     JUICE_BAR_SOPRANO = SH12_JUICE_BAR_SOPRANO
     DUMMY_SHOPS = frozenset(range(25, 33))
 
-    # Original frog coin shop items (vanilla items sold in frog coin shops)
     # Used for price adjustment logic
     ORIGINAL_FROG_COIN_ITEMS: set[type[BaseItem]] = {
         # Frog Disciple (buy_frog_coin_one=True)
@@ -162,7 +160,6 @@ def shuffle_shops(world: GameWorld) -> None:
         PowerBlastItem,
     }
 
-    # Get the items from Frog Disciple prize locations (already shuffled)
     frog_disciple_items: list[type[BaseItem] | None] = []
     frog_disciple_locations = [
         FrogDiscipleLocation1,
@@ -174,17 +171,13 @@ def shuffle_shops(world: GameWorld) -> None:
     for loc_type in frog_disciple_locations:
         loc = world.locations.get(loc_type)
         if loc and loc.prize:
-            # Get the item type from the prize
-
             if isinstance(loc.prize, ItemPrize):
                 prize_item = loc.prize.item
                 if prize_item:
                     frog_disciple_items.append(prize_item)
 
-    # Set Frog Disciple shop contents (don't shuffle into it)
     world.shops.shops[FROG_DISCIPLE_SHOP].set_items(frog_disciple_items)
 
-    # Define should_get_better_items shops
     should_get_better_items = [
         SH06_FROG_COIN_EMPORIUM,
         SH08_SEASIDE_TOWN_MINION,
@@ -216,9 +209,7 @@ def shuffle_shops(world: GameWorld) -> None:
     high_impact_equip = world.high_impact_equip
     highest_impact_equip = world.highest_impact_equip
 
-    # Get original shop item types for each shop (for type restrictions)
     original_shop_data: dict[int, dict] = {}
-    # Track how many shops each item originally appeared in (for ORIGINAL mode)
     original_item_shop_count: dict[type[BaseItem], int] = {}
     for shop in world.shops.shops:
         if shop is None:
@@ -234,17 +225,14 @@ def shuffle_shops(world: GameWorld) -> None:
             "original_items": orig_items,
             "original_count": len(orig_items),
         }
-        # Count shops per item (excluding Frog Disciple as those are handled separately)
         if shop.index != FROG_DISCIPLE_SHOP:
             for item in orig_items:
                 original_item_shop_count[item] = (
                     original_item_shop_count.get(item, 0) + 1
                 )
 
-    # Track how many shops each item has been placed in during shuffling
     current_item_shop_count: dict[type[BaseItem], int] = {}
 
-    # Handle EMPTY mode: only GoodieBag in every shop
     if quality == ShopQualities.EMPTY:
         for shop in world.shops.shops:
             if shop is None:
@@ -252,14 +240,12 @@ def shuffle_shops(world: GameWorld) -> None:
             shop.set_items([GoodieBagItem])
         return
 
-    # Build item pools based on quality setting
     def get_item_pool(
         quality: ShopQualities, is_equipment: bool = False
     ) -> tuple[list, list, list]:
         """Returns (low, high, highest) pools based on quality."""
         if is_equipment:
             if quality == ShopQualities.ORIGINAL:
-                # Only equipment that was originally in shops
                 orig_equip_in_shops: set = set()
                 for shop in world.shops.shops:
                     if shop is None or shop.index == FROG_DISCIPLE_SHOP:
@@ -278,7 +264,6 @@ def shuffle_shops(world: GameWorld) -> None:
                 return (low_impact_equip, high_impact_equip, highest_impact_equip)
         else:
             if quality == ShopQualities.ORIGINAL:
-                # Only consumables that were originally in shops
                 orig_in_shops: set = set()
                 for shop in world.shops.shops:
                     if shop is None or shop.index == FROG_DISCIPLE_SHOP:
@@ -301,7 +286,6 @@ def shuffle_shops(world: GameWorld) -> None:
     )
     low_equip, high_equip, highest_equip = get_item_pool(quality, is_equipment=True)
 
-    # Remove Pick Me Ups if setting enabled
     if no_pickmeups:
         low_consumables = [i for i in low_consumables if i != PickMeUpItem]
         high_consumables = [i for i in high_consumables if i != PickMeUpItem]
@@ -318,13 +302,10 @@ def shuffle_shops(world: GameWorld) -> None:
         """Check if an item can be placed in a shop."""
         if item_type is None:
             return False
-        # No duplicates in same shop
         if item_type in current_items:
             return False
-        # Items in Frog Coin Emporium can't appear elsewhere
         if item_type in frog_emporium_items and shop_idx != FROG_COIN_EMPORIUM:
             return False
-        # Items in Frog Disciple can only also appear in Frog Coin Emporium
         if item_type in frog_disciple_set and shop_idx not in [
             FROG_DISCIPLE_SHOP,
             FROG_COIN_EMPORIUM,
@@ -336,7 +317,6 @@ def shuffle_shops(world: GameWorld) -> None:
             current_shops = current_item_shop_count.get(item_type, 0)
             if current_shops >= max_shops:
                 return False
-        # Check type restrictions
         # In COMPLETELY_RANDOM_NORMAL/FULL_RANDOM, Frog Coin Emporium can have any item type
         if shop_idx == FROG_COIN_EMPORIUM and quality in (
             ShopQualities.COMPLETELY_RANDOM, ShopQualities.ALL
@@ -363,18 +343,15 @@ def shuffle_shops(world: GameWorld) -> None:
         """Select an item for a shop based on bias and availability."""
         is_better_shop = shop_idx in should_get_better_items
 
-        # Build weighted pool
         candidates = []
         weights = []
 
-        # Combine consumables and equipment pools
         all_low = low_consumables + low_equip
         all_high = high_consumables + high_equip
         all_highest = highest_consumables + highest_equip
 
         if bias_enabled:
             if is_better_shop:
-                # Better shops: favor high/highest impact
                 for item in all_highest:
                     if can_place_item(item, shop_idx, current_items):
                         candidates.append(item)
@@ -388,7 +365,6 @@ def shuffle_shops(world: GameWorld) -> None:
                         candidates.append(item)
                         weights.append(1)
             else:
-                # Other shops: favor low impact
                 for item in all_low:
                     if can_place_item(item, shop_idx, current_items):
                         candidates.append(item)
@@ -397,13 +373,11 @@ def shuffle_shops(world: GameWorld) -> None:
                     if can_place_item(item, shop_idx, current_items):
                         candidates.append(item)
                         weights.append(1)
-                # Significantly less likely for highest
                 for item in all_highest:
                     if can_place_item(item, shop_idx, current_items):
                         candidates.append(item)
                         weights.append(0.2)
         else:
-            # No bias: equal weights
             for item in all_low + all_high + all_highest:
                 if can_place_item(item, shop_idx, current_items):
                     candidates.append(item)
@@ -414,7 +388,6 @@ def shuffle_shops(world: GameWorld) -> None:
 
         return random.choices(candidates, weights=weights, k=1)[0]
 
-    # Process each shop (except Frog Disciple which is already set)
     shops_to_process = [
         s for s in world.shops.shops if s is not None and s.index != FROG_DISCIPLE_SHOP
     ]
@@ -431,7 +404,6 @@ def shuffle_shops(world: GameWorld) -> None:
             if item:
                 emporium_new_items.append(item)
                 frog_emporium_items.add(item)
-                # Track shop count for ORIGINAL mode
                 current_item_shop_count[item] = current_item_shop_count.get(item, 0) + 1
 
         frog_emporium_shop.set_items(emporium_new_items)
@@ -459,7 +431,6 @@ def shuffle_shops(world: GameWorld) -> None:
         Returns True if item was added to at least the starting tier."""
         # In ORIGINAL mode, check if adding to cascade would exceed the limit
         if quality == ShopQualities.ORIGINAL:
-            # Count how many juice bar tiers we would add this item to
             shops_to_add = 0
             for i in range(starting_tier, len(juice_bars)):
                 bar_idx = juice_bars[i]
@@ -468,7 +439,6 @@ def shuffle_shops(world: GameWorld) -> None:
                 if len(items_list) < max_items and item not in items_list:
                     shops_to_add += 1
 
-            # Check if adding would exceed the original limit
             max_shops = original_item_shop_count.get(item, 0)
             current_shops = current_item_shop_count.get(item, 0)
             if current_shops + shops_to_add > max_shops:
@@ -486,7 +456,6 @@ def shuffle_shops(world: GameWorld) -> None:
                 if i == starting_tier:
                     added_to_start = True
 
-        # Track shop count for ORIGINAL mode
         if shops_added > 0:
             current_item_shop_count[item] = (
                 current_item_shop_count.get(item, 0) + shops_added
@@ -494,7 +463,6 @@ def shuffle_shops(world: GameWorld) -> None:
 
         return added_to_start
 
-    # Fill each tier, cascading items to higher tiers
     for tier_idx, bar_idx in enumerate(juice_bars):
         shop = world.shops.shops[bar_idx]
         if shop is None:
@@ -503,7 +471,6 @@ def shuffle_shops(world: GameWorld) -> None:
         max_items = juice_bar_max_items[bar_idx]
         current_items = juice_bar_items[bar_idx]
 
-        # Try to add items until we reach max capacity for this tier
         attempts = 0
         while len(current_items) < max_items and attempts < 100:
             item = select_item(bar_idx, current_items)
@@ -511,29 +478,25 @@ def shuffle_shops(world: GameWorld) -> None:
                 add_to_juice_bar_cascade(item, tier_idx)
             attempts += 1
 
-    # Set items for each juice bar shop
     for bar_idx in juice_bars:
         shop = world.shops.shops[bar_idx]
         if shop is not None:
             shop.set_items(juice_bar_items[bar_idx])
 
-    # Process remaining shops — guarantee at least 1 item per shop before filling to capacity
+    # Process remaining shops - guarantee at least 1 item per shop before filling to capacity
     processed = {FROG_DISCIPLE_SHOP, FROG_COIN_EMPORIUM} | set(juice_bars)
     remaining_shops = [
         s for s in shops_to_process
         if s.index not in processed and s.index not in DUMMY_SHOPS
     ]
 
-    # ALL mode: pre-distribute guaranteed unique items before random fill
     if quality == ShopQualities.ALL:
-        # Build exclusion set
         all_excluded: set[type[BaseItem]] = set()
         if not world.settings.is_flag_value(FireworksSetting, FireworksOptions.VANILLA):
             all_excluded.update([FireworksItem, ShinyStoneItem, CarboCookieItem])
         if world.settings.isflag_enabled(NoStarEgg):
             all_excluded.add(StarEggItem)
 
-        # Collect all eligible items from pools
         all_pool_items = set(
             low_consumables + high_consumables + highest_consumables
             + low_equip + high_equip + highest_equip
@@ -552,7 +515,6 @@ def shuffle_shops(world: GameWorld) -> None:
         ]
         all_pool_items.update(ALL_MODE_SPECIAL_ITEMS)
 
-        # Items already placed in Frog Coin Emporium or juice bars count as placed
         items_already_placed: set[type[BaseItem]] = set()
         for shop in world.shops.shops:
             if shop is None or shop.index == FROG_DISCIPLE_SHOP or shop.index in DUMMY_SHOPS:
@@ -562,7 +524,6 @@ def shuffle_shops(world: GameWorld) -> None:
                     if item is not None:
                         items_already_placed.add(item)
 
-        # Filter to items that still need placement
         guarantee_items = []
         for item_type in all_pool_items:
             if item_type in items_already_placed:
@@ -578,14 +539,13 @@ def shuffle_shops(world: GameWorld) -> None:
                 continue
             # Protected items carry the no_sell bit (ProtectSpecialItems /
             # statically, like Debug Candy). Selling is how you shed duplicates,
-            # so a buyable-but-unsellable item is a trap — bar them from shops.
+            # so a buyable-but-unsellable item is a trap - bar them from shops.
             if item_inst and item_inst.no_sell:
                 continue
             guarantee_items.append(item_type)
 
         random.shuffle(guarantee_items)
 
-        # Initialize remaining shops as empty
         shop_contents: dict[int, list[type[BaseItem]]] = {
             s.index: [] for s in remaining_shops
         }
@@ -611,7 +571,6 @@ def shuffle_shops(world: GameWorld) -> None:
                 shop_contents[target.index].append(item_type)
                 current_item_shop_count[item_type] = current_item_shop_count.get(item_type, 0) + 1
 
-        # Fill remaining capacity with random items
         for shop in remaining_shops:
             shop_data_entry = original_shop_data.get(shop.index, {})
             target_count = min(15, max(1, shop_data_entry.get("original_count", 5)))

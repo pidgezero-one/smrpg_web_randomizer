@@ -9,8 +9,8 @@ class Packet(PacketBase):
     # Whether this packet should be allocated through the NPC-slot path at
     # $C1:95DD instead of the bitmap allocator at $C1:9547. Packets in vanilla
     # with id < 8 took the NPC slot path; the SMRPG-web patch widens that
-    # gate. Subclasses override to opt in. Read by `GameWorld.build_patch`
-    # which iterates `self.packets.packets` to assemble the allowlist for
+    # gate. Subclasses override to opt in. Read by GameWorld.build_patch
+    # which iterates self.packets.packets to assemble the allowlist for
     # the inline range-check ASM at $C1:80C8.
     #
     # Why a class flag (not a hardcoded ID list): packet IDs can shuffle, and
@@ -23,13 +23,13 @@ class BoosterHillPacket(Packet):
     # Booster Hill prize packets (both room-54 variants spawned by
     # CreatePacketAtObjectCoords and standing room-14 variants spawned by
     # CreatePacketAt7010WithEvent). Both stay on the vanilla bitmap path
-    # at $C1:9547 — `goes_to_npc_slot_buffer = False` (inherited).
+    # at $C1:9547 - goes_to_npc_slot_buffer = False (inherited).
     #
     # An earlier vram_size-based routing patch incorrectly swept these onto
     # the NPC slot path because they share vram_size=0 with chest items,
     # which is what made them invisible in the original bug report. Routing
     # standing variants to NPC slot path was also tried and confirmed to
-    # leave them invisible — chest-style allocation isn't applicable here.
+    # leave them invisible - chest-style allocation isn't applicable here.
     def __init__(self, packet_id: int, sprite_id: int, action_script_id: int) -> None:
         super().__init__(
             packet_id,

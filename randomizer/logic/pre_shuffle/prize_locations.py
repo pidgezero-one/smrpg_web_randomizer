@@ -30,15 +30,15 @@ if TYPE_CHECKING:
 def _make_dummy_npc() -> RegularNPC:
     """Create a minimal, inert dummy NPC (non-clone) for pre-allocating object presence table slots.
 
-    Uses RegularNPC to break clone chain grouping — the serializer groups all consecutive
+    Uses RegularNPC to break clone chain grouping - the serializer groups all consecutive
     Clone objects after a non-Clone parent, so the first dummy in each batch must be a
     non-Clone to prevent grouping with incompatible preceding NPCs.
 
     cannot_clone=False is explicit, not incidental: the EMPTY sprite is non-gridplane, so
     it never lands in buffered_sprite_ids, and an auto-decide (None) dummy falls through to
-    `else: set_cannot_clone(True)` in _recalculate_room_partition step 7 — handing a
+    else: set_cannot_clone(True) in _recalculate_room_partition step 7 - handing a
     dedicated VRAM allocation to a sprite that draws nothing. Step 7 honors an explicit
-    False (`elif original_cannot_clone is False: pass`), so pinning it here keeps these
+    False (elif original_cannot_clone is False: pass), so pinning it here keeps these
     placeholders free in any room that gets recalculated for another reason.
     """
     return RegularNPC(
@@ -91,7 +91,7 @@ def _pre_allocate_dummy_npcs(world: GameWorld, invisible_item_pool: list[type]) 
 
     # Identify rooms that already contain vanilla slot machine NPCs.
     # These are rooms belonging to locations whose _originally_held is a SlotsPrize subclass.
-    # Their last 5 objects are the vanilla slot NPCs — adopt those positions instead of adding new ones.
+    # Their last 5 objects are the vanilla slot NPCs - adopt those positions instead of adding new ones.
     vanilla_slot_rooms: set[int] = set()
     for loc in world.locations.values():
         if isinstance(loc, TreasureChestLocation):
@@ -117,7 +117,6 @@ def _pre_allocate_dummy_npcs(world: GameWorld, invisible_item_pool: list[type]) 
         for r in temp_loc._rooms:
             flag_candidate_rooms.add(r)
 
-    # Process slot-eligible rooms
     for room_id in sorted(slot_eligible_rooms):
         room = world.rooms._rooms[room_id]
         if room is None:
@@ -464,8 +463,6 @@ def set_locations(world: GameWorld) -> None:
         DojoFourthFightStarPiece: DojoFourthFightStarPiece(),
         MonstroDojoClearRewardLocation: MonstroDojoClearRewardLocation(),
         MonstroSealedDoorBossFight: MonstroSealedDoorBossFight(),
-        MonstroSealedDoorStarPiece: MonstroSealedDoorStarPiece(),
-        MonstroSealedDoorClearRewardLocation: MonstroSealedDoorClearRewardLocation(),
         MonstroFlagExchangeLocation: MonstroFlagExchangeLocation(),
         BeanValleyFirstDeadEndLocation: BeanValleyFirstDeadEndLocation(),
         BeanValleyFirstProgressChestLocation: BeanValleyFirstProgressChestLocation(),
@@ -621,13 +618,18 @@ def set_locations(world: GameWorld) -> None:
         InnerFactoryFourthFightStarPiece: InnerFactoryFourthFightStarPiece(),
         FinalBossFight: FinalBossFight(),
     }
+    if not world.settings.is_flag_value(WinCondition, WinConditions.SEALED):
+        world.locations[MonstroSealedDoorStarPiece] = MonstroSealedDoorStarPiece()
+        world.locations[MonstroSealedDoorClearRewardLocation] = MonstroSealedDoorClearRewardLocation()
+
+    
 
     # SeeYa removes SeeYaPrize (Frog Disciple 1's item). The shop only shrinks to
     # 4 items when it is NOT fully shuffled: if BOTH shops and items are shuffled
     # the pool has a surplus, so the 5th slot fills normally and all 5 locations
     # must stay. Only drop FrogDiscipleLocation1 when SeeYa is on and the shop is
     # effectively unshuffled (shops off OR items off). This predicate MUST match
-    # the FROG_DISCIPLE_ITEM_5_PURCHASED sale-bit condition in gameworld.py — a
+    # the FROG_DISCIPLE_ITEM_5_PURCHASED sale-bit condition in gameworld.py - a
     # 4-item shop with the bit unset opens a glitched empty menu.
     frog_shop_reduced = world.settings.isflag_enabled(SeeYa) and not (
         world.settings.isflag_enabled(ShuffleShops)
@@ -965,19 +967,15 @@ def set_locations(world: GameWorld) -> None:
     # Must be called after world.locations is populated but before invisible flag placement.
     _pre_allocate_dummy_npcs(world, invisible_item_pool)
 
-    # Check if invisible item locations have already been initialized
-    # This prevents duplication when set_locations is called multiple times during shuffle retries
+    # reuse across retries: set_locations runs once per attempt and would otherwise duplicate these
     if world._invisible_item_locations is not None:
-        # Reuse the stored invisible item locations - just add them to world.locations
         invisible_flag_locations = world._invisible_item_locations
     else:
-        # First time initialization - create invisible item locations and modify rooms
         invisible_flag_locations = {}
 
-        # Check for debug override of invisible flags
         debug_invisible_flags: list[type] | None = None
         if world.settings.debug_mode:
-            # Prize offset takes precedence over config.yml for invisible flags —
+            # Prize offset takes precedence over config.yml for invisible flags -
             # unless the invisible flag category is switched off in the offset UI,
             # in which case config.yml is back in charge and, failing that, the
             # flags shuffle normally.
@@ -1002,7 +1000,6 @@ def set_locations(world: GameWorld) -> None:
 
         used_flag_rooms: set[int] = set()
         for i in range(0, 3):
-            # choose the three invisible item locations
             if debug_invisible_flags is not None:
                 location_cls = debug_invisible_flags[i]
             elif not world.settings.isflag_enabled(InvisibleFlagsSetting):
@@ -1035,14 +1032,12 @@ def set_locations(world: GameWorld) -> None:
                 npc = location.npc
                 npc.set_visible(False)
                 room._objects[idx] = npc
-                #print(location, r, idx, location._x_coord, location._y_coord, location._z_coord)
                 world.action_scripts.replace_script(
                     npc.action_script, location.shift
                 )
                 world.event_scripts.get_script_by_id(
                     E0091_INVISIBLE_ITEM_SUMMONER
                 ).insert_before_nth_command(0, SummonObjectToSpecificLevel(n_id, r))
-            # set hint text
             # Hint dialog must match the found-bit each slot sets (i=0,1,2 ->
             # flag1,2,3), and in script_2081 flag1's NPC (Greaper) shows DI1109,
             # flag2's (Big Boo) shows DI1107, flag3's (Dry Bones) shows DI1108.

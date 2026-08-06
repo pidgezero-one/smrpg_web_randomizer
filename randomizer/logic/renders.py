@@ -136,19 +136,19 @@ _ENDING_CHARACTER_1_NPC_FILLS: list[AllyNPCSub] = [
 ]
 
 _ENDING_CHARACTER_2_NPC_FILLS: list[AllyNPCSub] = [
-    # R496/R088/R375 entries removed — those rooms have a Mario NPC at the
+    # R496/R088/R375 entries removed - those rooms have a Mario NPC at the
     # front and recruits stay at their native slots (no model swap). Only
     # R269 keeps the model-swap for its single Prince Mallow scene.
     AllyNPCSub(R269_ENDING_CREDITS_NIMBUS_LAND_PRINCE_MALLOW, NPC_0),
 ]
 
 _ENDING_CHARACTER_3_NPC_FILLS: list[AllyNPCSub] = [
-    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
+    # R496/R088/R375 entries removed - see _ENDING_CHARACTER_2_NPC_FILLS comment.
 ]
 
 # NPCs that should be replaced with the doll variant matching the chosen
 # character in the Forest Maze ending cutscene (render_ending_character_3).
-# Geno is intentionally absent from the doll mapping below — render_ending_character_3
+# Geno is intentionally absent from the doll mapping below - render_ending_character_3
 # returns early when the prize is GenoRecruitmentPrize, so these substitutions
 # are never applied for Geno. R375 doll lives at NPC_4 (between Geno=NPC_3
 # and Bowser=NPC_6) so its palette is engine-assigned implicitly.
@@ -159,13 +159,13 @@ _ENDING_CHARACTER_3_DOLL_FILLS: list[AllyNPCSub] = [
 ]
 
 _ENDING_CHARACTER_4_NPC_FILLS: list[AllyNPCSub] = [
-    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
+    # R496/R088/R375 entries removed - see _ENDING_CHARACTER_2_NPC_FILLS comment.
     AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_7),
     AllyNPCSub(R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR, NPC_8),
 ]
 
 _ENDING_CHARACTER_5_NPC_FILLS: list[AllyNPCSub] = [
-    # R496/R088/R375 entries removed — see _ENDING_CHARACTER_2_NPC_FILLS comment.
+    # R496/R088/R375 entries removed - see _ENDING_CHARACTER_2_NPC_FILLS comment.
 ]
 
 
@@ -208,7 +208,7 @@ _R496_COORDS = {
     "inner_mines":  (6, 20, 0, SOUTHWEST),
 }
 
-# R292 — second-half of the R496 ending cutscene (post-RunStarPieceSequence).
+# R292 - second-half of the R496 ending cutscene (post-RunStarPieceSequence).
 # NPC IDs match R496 exactly so script_3885 references resolve consistently
 # across the EnterArea(R292) transition.
 R292_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
@@ -241,7 +241,7 @@ _R88_COORDS = {
 # R375 (script_3951 / E3951_STAR_PIECE_CREDITS_INIT). Layout reads
 # Mario/Peach/Mallow/Geno/Doll/GenoRedemption/Bowser; the doll sits between
 # Geno (NPC_3) and Bowser (NPC_6) so its palette is implicitly assigned by
-# the engine — see _apply_r375_protagonist_palette_rows.
+# the engine - see _apply_r375_protagonist_palette_rows.
 R375_NATIVE_SLOT_FOR_PRIZE: dict[type, AreaObject] = {
     MarioRecruitmentPrize:     NPC_0,
     ToadstoolRecruitmentPrize: NPC_1,
@@ -264,8 +264,8 @@ def _retarget_event_script_targets(
     skip_identifiers: frozenset[str] = frozenset(),
 ) -> None:
     """Recursively walk an event-script command list (and ActionQueue subscripts)
-    and replace each command's `target` according to target_map. Commands
-    whose `identifier` is in skip_identifiers are left untouched.
+    and replace each command's target according to target_map. Commands
+    whose identifier is in skip_identifiers are left untouched.
     """
     iterable = contents if isinstance(contents, list) else getattr(contents, "contents", [])
     for cmd in iterable:
@@ -285,7 +285,7 @@ def _retarget_event_script_targets(
 def _make_protagonist_sprite_31_variant(
     base: NPCBase, directions: VramStore | None = None
 ) -> NPCBase:
-    """Return a copy of `base` with sprite_id set to SPR0031_ALT_PROTAGONIST_1.
+    """Return a copy of base with sprite_id set to SPR0031_ALT_PROTAGONIST_1.
 
     Sprite 31 is the post-cosmetics protagonist sprite; the cosmetics layer
     overwrites sprites 31-37 with the protagonist character's full animation
@@ -294,7 +294,7 @@ def _make_protagonist_sprite_31_variant(
     the protagonist is not Mario, so the recruit-only sprite at that slot
     is replaced with the full protagonist sprite.
 
-    Pass `directions` (e.g. VramStore.DIR4_ALL_DIRECTIONS) to also override
+    Pass directions (e.g. VramStore.DIR4_ALL_DIRECTIONS) to also override
     the VRAM-store directions; defaults to copying base's existing value.
     """
     return NPCBase(
@@ -351,9 +351,9 @@ def _apply_overworld_character_sprite_swap(
     """Swap the overworld character's NPC slot to sprite 31.
 
     Cosmetics writes sprite 31-37 with the **overworld character**'s sprite
-    data (driven by `world.overworld_character.ally`, which is StartingCharacter1
-    by default). Whichever NPC slot belongs to that character — Toadstool's,
-    Mallow's, Geno's, or Bowser's — needs to render via sprite 31 so its
+    data (driven by world.overworld_character.ally, which is StartingCharacter1
+    by default). Whichever NPC slot belongs to that character - Toadstool's,
+    Mallow's, Geno's, or Bowser's - needs to render via sprite 31 so its
     cosmetic data lands. The cutscene "protagonist" role is unrelated; that
     role can be played by any character.
 
@@ -366,7 +366,7 @@ def _apply_overworld_character_sprite_swap(
     """
     ally_index = world.overworld_character.ally.index
     if ally_index == 0:
-        return  # Mario — no swap needed
+        return  # Mario - no swap needed
     ally_index_to_prize_class: dict[int, type[CharacterPrize]] = {
         1: ToadstoolRecruitmentPrize,
         2: BowserRecruitmentPrize,
@@ -393,7 +393,7 @@ def _apply_overworld_character_sprite_swap(
 
 
 def _swap_npc_directions(base: NPCBase, directions: VramStore) -> NPCBase:
-    """Return a copy of `base` with the given VramStore directions value."""
+    """Return a copy of base with the given VramStore directions value."""
     return NPCBase(
         sprite_id=base.sprite_id,
         shadow_size=base.shadow_size,
@@ -428,7 +428,7 @@ def _apply_ending_cutscene_assignments(
     """Per-seed ending-cutscene plumbing for R496/R088/R375.
 
     For each of the three rooms:
-      1. Rebuild the cutscene event script via its `build_contents` factory,
+      1. Rebuild the cutscene event script via its build_contents factory,
          passing the role NPC slots so script-internal references resolve to
          the right NPC for whichever character now plays each role.
       2. Move each character's NPC slot to its role's native (x, y, z,
@@ -442,15 +442,12 @@ def _apply_ending_cutscene_assignments(
     character's model regardless of cutscene role. The slot is moved to a
     role-specific coord so the same slot can play different roles per seed.
     """
-    # =========================================================================
     # TOGGLE: bump R292 forest NPC min_vram_size to 1.
     # Set True to apply, False to skip. R496 forest is bumped unconditionally
     # below; this flag only gates the R292 bump (which we currently leave off
     # because R292's cannot_clone budget is tight and the bump can push
     # NPC_24/Bowser into the spinning-stars buffer).
-    # =========================================================================
     R292_FOREST_MIN_VRAM_BUMP = True
-    # =========================================================================
 
 
     rooms = (
@@ -463,7 +460,7 @@ def _apply_ending_cutscene_assignments(
             ("marrymore", "mushroom_way", "forest_maze", "inner_mines"),
         ),
         # R292 shares script_3885 with R496 (same E3885_END_GAME). Re-running
-        # build_contents is idempotent — the second call overwrites with the
+        # build_contents is idempotent - the second call overwrites with the
         # same content. The coord-swap and sprite-31 logic must apply to R292
         # too so the post-RunStarPieceSequence half of the cutscene renders
         # correctly after EnterArea(R292).
@@ -535,7 +532,7 @@ def _apply_ending_cutscene_assignments(
 
         # 3. Sprite 31 swap on the OVERWORLD CHARACTER's NPC slot. Cosmetics
         # has written that character's sprite data to sprite 31, so it must
-        # be the slot belonging to the overworld character — not whatever
+        # be the slot belonging to the overworld character - not whatever
         # the cutscene's protagonist role happens to be (those can differ).
         _apply_overworld_character_sprite_swap(world, room_id, slot_for_prize)
 
@@ -548,7 +545,7 @@ def _apply_ending_cutscene_assignments(
         #   R292: forest role (victory_pose post-sequence). Gated by toggle.
         #   R088: mines role (shocked_bwd sprite_offset=1) by default.
         #     Special case: if mines is Bowser, his NPC default is already
-        #     min_vram_size=1 — bumping is a no-op. Bump the marrymore slot
+        #     min_vram_size=1 - bumping is a no-op. Bump the marrymore slot
         #     instead so its sprite_offset=1 frames have headroom too.
         #     Note: the cannot_clone region in R088 is tight; this bump is
         #     only safe because NPC_2 (Sparkle) is now cannot_clone=False,
@@ -580,7 +577,7 @@ def _apply_ending_cutscene_assignments(
         # Swap the doll to a Peach doll: Peach is always present in this
         # cutscene, so this only rearranges existing palette rows (adds no new
         # palette) and restores the row the star piece expects. Only R292 needs
-        # it — the spinning stars live in R292's half of the cutscene.
+        # it - the spinning stars live in R292's half of the cutscene.
         if room_id == R292_UNMAPPED_HOUSE_ROOM and isinstance(
             world.overworld_character, GenoRecruitmentPrize
         ):
@@ -592,7 +589,7 @@ def _apply_ending_cutscene_assignments(
 
 
 def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
-    """Return the doll NPC matching `prize` for the render_ending_character_3
+    """Return the doll NPC matching prize for the render_ending_character_3
     cutscene, or None if no doll variant exists for this character."""
     if isinstance(prize, MallowRecruitmentPrize):
         return MALLOW_DOLL_NPC
@@ -608,14 +605,14 @@ def _doll_for_prize(prize: CharacterPrize) -> NPCBase | None:
 def _apply_ending_character_npc_fills(
     world: GameWorld, prize: CharacterPrize, fills: list[AllyNPCSub]
 ) -> None:
-    """Replace each NPC listed in `fills` with the model corresponding to `prize`.
+    """Replace each NPC listed in fills with the model corresponding to prize.
 
     Mirrors the AllyNPCSub loop in CharacterRecruitmentLocation.render() so
     that ending-cutscene rooms can be populated with the chosen character
     independently of the recruitment location's own _npc_fills.
 
     For MarioRecruitmentPrize, MARIO_WALKING_DOWN_LEFT_NPC is used instead of
-    `prize.character_model.base` (which would resolve to the SPR0409_MARIO_CLONE
+    prize.character_model.base (which would resolve to the SPR0409_MARIO_CLONE
     sprite). The clone sprite uses sprite_offset shifts that crash in many
     cutscene contexts; MARIO_WALKING_DOWN_LEFT_NPC uses the protagonist sprite
     (0) and avoids that problem."""
@@ -640,7 +637,7 @@ def _apply_ending_character_npc_fills(
 def _apply_ending_character_3_doll_fills(
     world: GameWorld, prize: CharacterPrize, fills: list[AllyNPCSub]
 ) -> None:
-    """Replace each NPC listed in `fills` with the doll variant matching `prize`."""
+    """Replace each NPC listed in fills with the doll variant matching prize."""
     doll = _doll_for_prize(prize)
     if doll is None:
         return
@@ -667,11 +664,11 @@ def render_ending_character_1(
     """Apply animation/sprite changes for the protagonist's NPC slot in the
     ending cutscenes (the Mario-NPC slot at the front of R088/R375/R496).
 
-    For Mario protagonist this is a no-op — the script source already hardcodes
+    For Mario protagonist this is a no-op - the script source already hardcodes
     Mario's correct mold (index=23, sprite_offset=2). For non-Mario protagonists
     the cosmetics layer remaps sprite 31 to the protagonist character's full
     sprite, so the LEAN_BACK mold-id refs in script_3885 must come from
-    `_sprites_primary` (the protagonist character's full sprite data).
+    _sprites_primary (the protagonist character's full sprite data).
     """
     if isinstance(prize, MarioRecruitmentPrize):
         return
@@ -852,14 +849,6 @@ def render_ending_character_3(
     update_ally_animation(
         a0, ally, SpriteAnimationState.SPIN, use_primary=use_primary
     )
-    # a1 = world.event_scripts.get_subscript_command_by_identifier(
-    #     "ending_mway_character_geno_joy_aq",
-    #     "ending_mway_character_geno_joy",
-    #     A_SetSpriteSequence,
-    # )
-    # update_ally_animation(
-    #     a1, ally, SpriteAnimationState.JOY, use_primary=use_primary
-    # )
     a2 = world.event_scripts.get_subscript_command_by_identifier(
         "ending_geno_palette_spell_frame_3_aq",
         "ending_geno_palette_spell_frame_3",
@@ -1120,7 +1109,7 @@ def render_ending_character_5(
     )
 
 def _ending_palette_for_prize(prize: CharacterPrize) -> int:
-    """Return the light ending-credits palette ID for `prize`."""
+    """Return the light ending-credits palette ID for prize."""
     if isinstance(prize, MarioRecruitmentPrize):
         return EPAL0084_MARIO_ENDING
     if isinstance(prize, MallowRecruitmentPrize):
@@ -1135,7 +1124,7 @@ def _ending_palette_for_prize(prize: CharacterPrize) -> int:
 
 
 def _ending_dark_palette_for_prize(prize: CharacterPrize) -> int:
-    """Return the dark ending-credits palette ID for `prize`."""
+    """Return the dark ending-credits palette ID for prize."""
     if isinstance(prize, MarioRecruitmentPrize):
         return EPAL0163_MARIO_ENDING_DARK
     if isinstance(prize, ToadstoolRecruitmentPrize):
@@ -1162,8 +1151,8 @@ _ENDING_PALETTE_IDS_5 = ("ending_toadstool_palette", "ending_toadstool_palette_d
 def _set_ending_palette_pair(
     world: GameWorld, ids: tuple[str, str], prize: CharacterPrize
 ) -> None:
-    """Update the (light, dark) palette command pair identified by `ids` so
-    that they show `prize`'s ending palette."""
+    """Update the (light, dark) palette command pair identified by ids so
+    that they show prize's ending palette."""
     light_id, dark_id = ids
     world.event_scripts.get_command_by_identifier(
         light_id, PaletteSetMorphs
@@ -1176,7 +1165,7 @@ def _set_ending_palette_pair(
 # script_3951 (R375 ending credits) per-NPC palette command info. Each tuple is
 # (character class, light morph id, dark set id, light palette id, dark palette id).
 # Every NPC slot in R375 has a static sprite, so each command's palette content
-# is fixed by character — only the target row varies based on the protagonist
+# is fixed by character - only the target row varies based on the protagonist
 # and forest character's identity (see _apply_r375_protagonist_palette_rows).
 _R375_CHARACTER_PALETTE_INFO: list[
     tuple[type[CharacterPrize], str, str, int, int]
@@ -1228,7 +1217,7 @@ def _apply_r375_protagonist_palette_rows(
     (e.g. a non-Mario doll matching its character) reuse the existing row. The
     Mario doll has a unique palette ID so it always consumes its own row when
     Mario is the forest character; in every other case the doll's palette is
-    provided by its character's command, so `ending_doll_palette[/_dark]` are
+    provided by its character's command, so ending_doll_palette[/_dark] are
     deleted from the script.
     """
     proto = world.overworld_character
@@ -1317,16 +1306,16 @@ def apply_ending_characters(
         InnerMinesCharacter  -> render_ending_character_4
         MarrymoreCharacter   -> render_ending_character_5
 
-    `substitute_prizes` is the pool of CharacterPrize instances that are not
-    placed in any of the named recruitment slots above — i.e. the StartingCharacterX
+    substitute_prizes is the pool of CharacterPrize instances that are not
+    placed in any of the named recruitment slots above - i.e. the StartingCharacterX
     prizes plus stand-in prizes for any character excluded from the seed via
     the AvailableCharacters flag. The pool is shuffled and drained without
     replacement: each empty named slot pops one prize, and the single remaining
     prize is used as the protagonist (whose palette goes into the
     "ending_mario_palette" pair).
 
-    `mario_override`, when provided, replaces every MarioRecruitmentPrize among
-    the named-slot prizes and the substitute pool — but NOT the protagonist —
+    mario_override, when provided, replaces every MarioRecruitmentPrize among
+    the named-slot prizes and the substitute pool - but NOT the protagonist -
     with the given prize. This is used when PlayAsStarter is disabled and Mario
     is not the starter: the player plays as Mario in the overworld, so Mario is
     the cutscene protagonist, but Mario is *also* recruited as a battle
@@ -1335,10 +1324,10 @@ def apply_ending_characters(
     start and so has no named slot of its own). The protagonist is the literal
     overworld character and is never routed through this override.
 
-    `protagonist_override`, when provided, locks the cutscene protagonist to
+    protagonist_override, when provided, locks the cutscene protagonist to
     that prize regardless of pool draw. Required because the cutscene script
     targets the protagonist-role NPC for the player-character animations
-    (lean back, hold star, etc.) — that NPC must be the slot that belongs to
+    (lean back, hold star, etc.) - that NPC must be the slot that belongs to
     the actual overworld character, not whoever happens to be left in the
     pool after filling empty named slots.
 
@@ -1377,7 +1366,7 @@ def apply_ending_characters(
     if protagonist_override is not None:
         # The protagonist is the literal overworld character (Mario when
         # PlayAsStarter is disabled) and must NOT be routed through
-        # `_apply_mario_override`. That override rewrites Mario's *named-slot*
+        # _apply_mario_override. That override rewrites Mario's *named-slot*
         # appearance into the starter; applying it here would rewrite the Mario
         # protagonist into the starter too, animating the starter in the
         # protagonist role and stranding Mario in his recruitment slot.
@@ -1411,8 +1400,8 @@ def apply_ending_characters(
         protagonist_prize = pool.pop() if len(pool) == 1 else random.choice(pool)
 
     # Dedupe character types across the 5 final ending slots.
-    # `_apply_mario_override` can replace a real Mario prize with the starter
-    # character — and if that starter is already present somewhere else (as a
+    # _apply_mario_override can replace a real Mario prize with the starter
+    # character - and if that starter is already present somewhere else (as a
     # real recruit or another starter slot), we end up with two prizes of the
     # same type. The role-to-NPC slot mapping (R{496,292,88,375}_NATIVE_SLOT_FOR_PRIZE)
     # is keyed by prize TYPE, so duplicates collapse two cutscene roles onto
@@ -1432,8 +1421,8 @@ def apply_ending_characters(
     _present = {type(p) for p in _five_slots if p is not None}
     _missing = [cls for cls in _all_ending_prize_classes if cls not in _present]
     # Process the protagonist slot (position 4) FIRST so its type is locked in
-    # _seen — duplicates in named slots (positions 0-3) get replaced instead.
-    # Without this protection, `_apply_mario_override` rewriting a real Mario
+    # _seen - duplicates in named slots (positions 0-3) get replaced instead.
+    # Without this protection, _apply_mario_override rewriting a real Mario
     # prize into the starter could create a duplicate that gets resolved by
     # replacing the protagonist (since the loop processes indices in order),
     # which silently breaks the protagonist_override lock.
@@ -1466,7 +1455,7 @@ def apply_ending_characters(
     # DEBUG OVERRIDE: force vanilla cutscene assignment regardless of recruit
     # shuffle. Set R496_FORCE_VANILLA_CUTSCENE_ASSIGNMENT = False to disable.
     # When enabled, Peach is marrymore (p5), Mallow is mushroom_way (p2),
-    # Geno is forest (p3), Bowser is inner_mines (p4), Mario is protagonist —
+    # Geno is forest (p3), Bowser is inner_mines (p4), Mario is protagonist -
     # so the only non-trivial retarget in _apply_r496_role_assignments is
     # MARIO → NPC_19 (Mario's native slot). Recruit-room placements are
     # untouched; only the ending cutscene is reassigned. Useful for
@@ -1488,7 +1477,7 @@ def apply_ending_characters(
     # coords/directions, and apply sprite-31 + VRAM-store overrides. This MUST
     # run before the palette pair / palette-row logic below so the rebuilt
     # script contents (carrying the same identifiers) are what subsequent
-    # `get_command_by_identifier` calls operate on.
+    # get_command_by_identifier calls operate on.
     _apply_ending_cutscene_assignments(
         world,
         marrymore_prize=p5,

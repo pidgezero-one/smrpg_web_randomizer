@@ -38,7 +38,6 @@ def randomize_character_stats(world: GameWorld) -> None:
         "mg_defense_plus_bonus",
     ]
 
-    # Randomize XP requirements for each level
     randomize_levelup_xps(world)
 
     # Collect all bonuses from all allies for inter-shuffling (first 19 levels)
@@ -46,7 +45,6 @@ def randomize_character_stats(world: GameWorld) -> None:
     for ally in world.allies._allies:
         all_bonuses.extend(ally.levels[:19])
 
-    # Inter-shuffle level up stat bonuses between all characters
     for attrs in (
         ("hp_plus_bonus",),
         ("attack_plus_bonus", "defense_plus_bonus"),
@@ -69,9 +67,7 @@ def randomize_character_stats(world: GameWorld) -> None:
                 while getattr(bonus, attr) == 0 and non_zeros:
                     setattr(bonus, attr, getattr(random.choice(non_zeros), attr))
 
-    # Randomize each ally's stats
     for ally in world.allies._allies:
-        # Mutate starting level and speed
         ally.starting_level = mutate_normal(
             ally.starting_level, minimum=1, maximum=30
         )
@@ -79,7 +75,6 @@ def randomize_character_stats(world: GameWorld) -> None:
             ally.starting_speed, minimum=1, maximum=255
         )
 
-        # Randomize level up stat bonuses
         for level_up in ally.levels:
             for attr in BONUS_STATS:
                 value = getattr(level_up, attr)
@@ -87,7 +82,6 @@ def randomize_character_stats(world: GameWorld) -> None:
                 new_value = max(mutate_normal(value, maximum=15), 1)
                 setattr(level_up, attr, new_value)
 
-        # Randomize level up stat growths for each stat
         for attr in LEVEL_STATS:
             # For growths, work with levels 2-20 (first 19 entries)
             for i, level_up in enumerate(ally.levels[:19]):
@@ -110,7 +104,6 @@ def randomize_levelup_xps(world: GameWorld) -> None:
     if not ally.levels:
         return
 
-    # Build gaps between levels
     gaps = []
     prev_xp = 0
     for level_up in ally.levels:
@@ -135,7 +128,6 @@ def randomize_levelup_xps(world: GameWorld) -> None:
         gaps[-1] += diff
         gaps.sort()
 
-    # Apply new XP values to all allies
     for ally in world.allies._allies:
         prev = 0
         for i, level_up in enumerate(ally.levels):

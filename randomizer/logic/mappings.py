@@ -28,7 +28,7 @@ def _compute_check_bit_mapping(world: GameWorld) -> tuple[
 
     The chest state table at BW-RAM $3D80 (FxPak $E03D80) uses cumulative
     bit packing by room ID: room 0 gets its bits first, then room 1, etc.
-    Only chest-type objects (ChestNPC and ChestClone) get bits — other object
+    Only chest-type objects (ChestNPC and ChestClone) get bits - other object
     types are skipped. Within a room, chests are numbered sequentially.
 
     Returns:

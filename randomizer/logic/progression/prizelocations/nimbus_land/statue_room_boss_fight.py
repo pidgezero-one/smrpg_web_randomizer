@@ -339,7 +339,7 @@ def render_statue_room_boss(
         else:
             world.event_scripts.delete_subscript_command_by_identifier(aq, id)
 
-    # main 11-step NW walk — base script sets sequence 1 mirrored for Dodo;
+    # main 11-step NW walk - base script sets sequence 1 mirrored for Dodo;
     # for non-Dodo shuffles, use sequence 1 un-mirrored when back-walking exists,
     # otherwise drop the command.
     if has_back_walking_sequence:

@@ -22,26 +22,26 @@ def boss_slot_min_vram_cap_for_room(
     base_budget: int = 1,
     recruit_location: type[CharacterRecruitmentLocation] | None = None,
 ) -> int:
-    """Compute an adaptive min_vram cap for a boss model slot in `room_id`.
+    """Compute an adaptive min_vram cap for a boss model slot in room_id.
 
-    Starts from ``base_budget`` (the cap to use when nothing else is competing
+    Starts from base_budget (the cap to use when nothing else is competing
     for VRAM in the room) and subtracts 1 row per known competing factor:
 
     * **Protagonist-driven ally buffer growth.** Calls
-      ``Room.project_ally_sprite_buffer_size`` to see what
-      ``ally_sprite_buffer_size`` will become for the current
-      ``world.overworld_character``. Bowser always pushes the ally buffer up;
+      Room.project_ally_sprite_buffer_size to see what
+      ally_sprite_buffer_size will become for the current
+      world.overworld_character. Bowser always pushes the ally buffer up;
       Peach/Geno can also push it up depending on the room's
-      ``extra_sprite_actions``. Each unit of growth above the room's stored
+      extra_sprite_actions. Each unit of growth above the room's stored
       value subtracts 1 from the cap.
 
-    * **Bowser at the recruit slot.** If ``recruit_location`` is given and
+    * **Bowser at the recruit slot.** If recruit_location is given and
       that location's prize is the Bowser ally, the recruit's room NPC
       becomes a non-gridplane cannot_clone, eating an extra row.
 
-    Result is clamped to ``[0, base_budget]``. Callers pass this as a
-    ``min_vram_size_override`` / ``min_vram_from_seq0_override`` callable on
-    a ``BossFightLocationNPC`` so boss model selection downgrades to a
+    Result is clamped to [0, base_budget]. Callers pass this as a
+    min_vram_size_override / min_vram_from_seq0_override callable on
+    a BossFightLocationNPC so boss model selection downgrades to a
     smaller variant when the room is tight.
     """
     cap = base_budget
@@ -480,7 +480,7 @@ def can_damage_enemies_with_spells(world: GameWorld, inventory: Inventory) -> bo
     """If true, the player is expected to be able to damage enemies with a spell.
 
     Any damaging spell counts, whatever its element. FORMLESS transforms into
-    Mokura off a counter on ``IfTargetedByCommand([COMMAND_SPECIAL])`` (monster
+    Mokura off a counter on IfTargetedByCommand([COMMAND_SPECIAL]) (monster
     script 147), which no element can dodge, and Mokura merely resists (not
     nullifies) Thunder and Jump.
     """

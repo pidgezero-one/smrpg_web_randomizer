@@ -165,7 +165,7 @@ room = Room(
         # R292 (a R496 clone) at that point and the spinning stars live there.
         # Slots 8-14 stay as placeholders so script NPC_8..NPC_14 references
         # remain valid in R496 (they're not targeted in R496's half of 3885).
-        RegularNPC( # 8 — placeholder; spinning stars live in R292
+        RegularNPC( # 8 - placeholder; spinning stars live in R292
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.NONE,
             event_script=E0256_RETURN,
@@ -193,7 +193,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=False),
-        RegularClone( # 9 — placeholder
+        RegularClone( # 9 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -204,7 +204,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 10 — placeholder
+        RegularClone( # 10 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -215,7 +215,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 11 — placeholder
+        RegularClone( # 11 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -226,7 +226,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 12 — placeholder
+        RegularClone( # 12 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -237,7 +237,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 13 — placeholder
+        RegularClone( # 13 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -248,7 +248,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularClone( # 14 — placeholder
+        RegularClone( # 14 - placeholder
             npc=npcs.EMPTY_NPC_3,
             event_script=E0256_RETURN,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -320,7 +320,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularNPC( # 19 — Mario (always sprite 0; protagonist's slot when starter is Mario, otherwise Mario as recruit)
+        RegularNPC( # 19 - Mario (always sprite 0; protagonist's slot when starter is Mario, otherwise Mario as recruit)
             npc=npcs.MARIO_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -352,7 +352,7 @@ room = Room(
             #priority_1=True,
             #priority_2=False
             ),
-        RegularNPC( # 20 — Peach
+        RegularNPC( # 20 - Peach
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -384,7 +384,7 @@ room = Room(
             #priority_1=True,
             #priority_2=False
             ),
-        RegularNPC( # 21 — Mallow
+        RegularNPC( # 21 - Mallow
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -399,7 +399,7 @@ room = Room(
             #priority_1=True,
             #priority_2=False
             ),
-        RegularNPC( # 22 — Geno
+        RegularNPC( # 22 - Geno
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -414,7 +414,7 @@ room = Room(
             #priority_1=True,
             #priority_2=False
             ),
-        RegularNPC( # 23 — Geno doll
+        RegularNPC( # 23 - Geno doll
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -446,7 +446,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore.DIR2_SWSE),
-        RegularNPC( # 24 — Bowser
+        RegularNPC( # 24 - Bowser
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,

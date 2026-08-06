@@ -96,7 +96,6 @@ class SNIReader:
         # Group by address space for batched reads
         results = [None] * len(reads)
 
-        # Try MultiRead for each group
         by_space: dict[int, list[tuple[int, int, int, int]]] = {}
         for idx, (addr, size, space) in enumerate(reads):
             by_space.setdefault(space, []).append((idx, addr, size, space))
@@ -159,10 +158,9 @@ def format_state(state: GameState) -> str:
     """Format game state for terminal display."""
     lines = []
     lines.append("=" * 70)
-    lines.append(f"  SMRPG Debug Monitor — {time.strftime('%H:%M:%S')}")
+    lines.append(f"  SMRPG Debug Monitor {time.strftime('%H:%M:%S')}")
     lines.append("=" * 70)
 
-    # Area and party
     lines.append("")
     lines.append(f"  Area: {state.area_name} (ID: {state.current_area})")
     lines.append(f"  Map Location: {state.map_location}")
@@ -170,11 +168,9 @@ def format_state(state: GameState) -> str:
     lines.append(f"  Coins: {state.coins}   Frog Coins: {state.frog_coins}   "
                  f"Hidden Chests: {state.hidden_chests}   Boss Wins: {state.boss_victories}")
 
-    # Battle
     if state.battle_formation > 0:
         lines.append(f"  ** IN BATTLE ** Formation: {state.battle_formation}")
 
-    # Characters
     lines.append("")
     lines.append("  " + "-" * 66)
     lines.append(f"  {'Name':<10} {'Lv':>3} {'HP':>8} {'Spd':>4} {'Atk':>4} "
@@ -190,7 +186,6 @@ def format_state(state: GameState) -> str:
                 f"{char['mg_defense']:>4} {char['experience']:>6}"
             )
 
-    # Menu unlocks
     lines.append("")
     menu_items = []
     if state.menu_flags & 0x01: menu_items.append("Map")
@@ -199,7 +194,6 @@ def format_state(state: GameState) -> str:
     if state.menu_flags & 0x08: menu_items.append("Beetlemania")
     lines.append(f"  Menus: {', '.join(menu_items) if menu_items else '(none)'}")
 
-    # Event flags (show set ones)
     set_flags = [name for name, val in state.event_flags.items() if val]
     if set_flags:
         lines.append("")
@@ -224,7 +218,6 @@ def format_state(state: GameState) -> str:
             if len(other) > 10:
                 lines.append(f"    ... and {len(other) - 10} more")
 
-    # Errors
     if state.read_errors:
         lines.append("")
         lines.append("  Read Errors:")
@@ -277,10 +270,8 @@ async def read_game_state(
     else:
         reads.extend([(0, 0, FX)] * 3)  # placeholders
 
-    # Execute all reads
     results = reader.multi_read_sync(reads)
 
-    # Parse character block
     if results[0] is not None:
         for i in range(5):
             try:
@@ -296,43 +287,34 @@ async def read_game_state(
     else:
         state.read_errors.append("Character block read failed")
 
-    # Parse coins
     if results[1] is not None:
         state.coins = int.from_bytes(results[1], "little")
     else:
         state.read_errors.append("Coins read failed")
 
-    # Parse frog coins
     if results[2] is not None:
         state.frog_coins = int.from_bytes(results[2], "little")
 
-    # Parse battle formation
     if results[3] is not None:
         state.battle_formation = int.from_bytes(results[3], "little")
 
-    # Parse map location
     if results[4] is not None:
         state.map_location = int.from_bytes(results[4], "little")
 
-    # Parse event flags
     if use_abus_bwram and results[5] is not None:
         state.event_flags = parse_event_flags(results[5])
     elif use_abus_bwram:
         state.read_errors.append("Event flags read failed")
 
-    # Parse menu flags
     if use_abus_bwram and results[6] is not None:
         state.menu_flags = results[6][0]
 
-    # Parse hidden chests
     if use_abus_bwram and results[7] is not None:
         state.hidden_chests = results[7][0]
 
-    # Parse boss victories
     if use_abus_bwram and results[8] is not None:
         state.boss_victories = results[8][0]
 
-    # Parse current area
     if use_abus_iram and results[9] is not None:
         state.current_area = int.from_bytes(results[9], "little")
         state.area_name = AREA_NAMES.get(state.current_area,
@@ -340,7 +322,6 @@ async def read_game_state(
     elif use_abus_iram:
         state.read_errors.append("Current area read failed")
 
-    # Parse party slots
     if use_abus_iram and results[10] is not None:
         party_data = results[10]
         state.party = []
@@ -351,7 +332,6 @@ async def read_game_state(
     elif use_abus_iram:
         state.read_errors.append("Party slots read failed")
 
-    # Parse party count
     if use_abus_iram and results[11] is not None:
         state.party_count = results[11][0]
 

@@ -38,7 +38,7 @@ DEFAULT_PROTAGONIST_CHARACTER = NPC_0
 DEFAULT_MARRYMORE_CHARACTER = NPC_1
 DEFAULT_MWAY_CHARACTER = NPC_3
 # Forest character defaults to the Geno-ending NPC slot at R088 object index 5
-# (immediately after the doll at NPC_4 — anchors palette row 4 for the doll).
+# (immediately after the doll at NPC_4 - anchors palette row 4 for the doll).
 DEFAULT_FOREST_CHARACTER = NPC_5
 # Bowser is moved to the last object slot (index 8) so the layout reads
 # Mario/Peach/Sparkle/Mallow/Doll/Geno/Empty/GenoRedemption/Bowser.

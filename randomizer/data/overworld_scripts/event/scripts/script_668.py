@@ -41,6 +41,10 @@ script = EventScript([
 	StopBackgroundEvent(TIMER_701C),
 	StopBackgroundEvent(TIMER_701E),
 	Pause(10),
+    FadeOutToBlack(sync=False),
+	EnterArea(room_id=R294_UNMAPPED_HOUSE_ROOM, face_direction=NORTHEAST, x=22, y=74, z=1, run_entrance_event=False),
+    FadeInFromBlack(sync=True),
+    Pause(30),
 	ActionQueueSync(target=MARIO, subscript=[
 		A_FaceSouthwest()
 	]),

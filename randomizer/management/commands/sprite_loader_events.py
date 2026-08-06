@@ -32,7 +32,7 @@ the genuine 1145->1146 one room 315 depends on. (Verified by ablation --
 see .claude/tests/test_sprite_loader_events.py.)
 
 An accepted edge always resolves to the script that actually contains the
-identifier= tag (`definitions[0]`), never to the digits embedded in the
+identifier= tag (definitions[0]), never to the digits embedded in the
 label's own name. That is what keeps every other mismatched-but-valid edge
 in the corpus sound: even a label whose name embeds the wrong number can
 only ever resolve to where it is truly defined, so at worst it produces a
@@ -55,10 +55,10 @@ OUTPUT = pathlib.Path("randomizer/data/rooms/sprite_loader_events.py")
 _CALL = re.compile(r"(?:RunEventAsSubroutine|JmpToEvent|RunEventAtReturn)\((E\d+_\w+)")
 
 # Matches every EVENT_<script>_<name> label string in a script's text, whether
-# it is a definition (an `identifier="..."` tag, group 1 present) or a
+# it is a definition (an identifier="..." tag, group 1 present) or a
 # reference (a destination-list entry such as Jmp([...]) or
 # JmpIfBitSet(..., [...]), group 1 absent -- anything not immediately preceded
-# by `identifier=`).
+# by identifier=).
 _LABEL = re.compile(r'(identifier=)?"(EVENT_(\d+)_\w+)"')
 
 # Rooms where the nearest-caller BFS finds two (or more) stubs tied at the same
@@ -85,7 +85,7 @@ _LABEL = re.compile(r'(identifier=)?"(EVENT_(\d+)_\w+)"')
 # room 496 R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE: pre-hardening,
 # BFS tied stub 858 (INNER_FACTORY_4TH_ROOM) against stub 815 (DOJO) at depth
 # 2. Both are false claims. The 815 path ran through a stray identifier
-# inside script_3797.py, `identifier="EVENT_2064_action_queue_11"` -- the
+# inside script_3797.py, identifier="EVENT_2064_action_queue_11" -- the
 # same string script_2064.py uses for its own label, which script_2064.py
 # DOES jump to (so the string is referenced; see the module docstring). What
 # disqualifies it is that it is defined in two places (2064 and 3797), which
@@ -157,7 +157,6 @@ OVERRIDES: dict[int, int | None] = {
     324: None,
     433: None,
     508: None,
-    54: None,
     92: None,
 }
 
@@ -186,13 +185,13 @@ def _label_registries(scripts: dict[int, str]) -> tuple[dict[str, list[int]], se
     """Corpus-wide bookkeeping used to validate mismatched _LABEL edges.
 
     defined_in: label string -> ids of every script whose text defines it via
-    `identifier="..."`. A label is only safe to use as a cross-script edge
+    identifier="...". A label is only safe to use as a cross-script edge
     target when this list has exactly one entry -- if it is defined nowhere,
     or in more than one place, which script it actually names is unknown or
     ambiguous.
 
     referenced: every label that appears at least once as a destination-list
-    entry (not immediately preceded by `identifier=`) anywhere in the corpus.
+    entry (not immediately preceded by identifier=) anywhere in the corpus.
     A label absent from this set is never actually jumped to by anything --
     a decorative tag, not evidence of control flow reaching that script.
     """
@@ -225,7 +224,7 @@ def _edges(
         digits = int(m.group(3))
         if digits == script_id:
             # Self-match: the label names the script it was found in. BFS
-            # already has this node in `seen`, so adding it is a no-op.
+            # already has this node in seen, so adding it is a no-op.
             out.add(digits)
             continue
         # Mismatched: the label names a script other than the one its text

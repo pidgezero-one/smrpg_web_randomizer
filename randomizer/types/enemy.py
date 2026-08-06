@@ -76,11 +76,11 @@ class Enemy(EnemyBase):
 
         Format: [resist_icon elements] [weak_icon elements] [V statuses ohko]
 
-        Every symbol is emitted as a raw ``chr()``: the codes are randomizer-owned
+        Every symbol is emitted as a raw chr(): the codes are randomizer-owned
         glyphs in the dialogue font's blank slots, and the encoder passes unmapped
         characters through as their ordinal. See
-        :mod:`randomizer.data.variables.psychopath_symbols` -- in particular, none
-        of these may land on 0x7B-0x7E, which item names need for ``! # - '``.
+        :mod:randomizer.data.variables.psychopath_symbols -- in particular, none
+        of these may land on 0x7B-0x7E, which item names need for ! # - '.
 
         Returns:
             Psychopath message string with special characters for game display.

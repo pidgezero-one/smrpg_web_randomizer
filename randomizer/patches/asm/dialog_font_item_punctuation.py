@@ -9,28 +9,28 @@ prefixes, and byte 0 of every name is that prefix::
 The menu font and the description font both draw those glyphs. The *dialogue* font
 does not -- vanilla leaves codes 0x7B-0x7F blank, width 0. That is a latent vanilla
 bug, because item names are also drawn with the dialogue font: by the battle spoils
-box ("Item / <name>") and by the ``[0x70A7]`` dialog substitution. Vanilla never
+box ("Item / <name>") and by the [0x70A7] dialog substitution. Vanilla never
 trips it -- no vanilla enemy drops a hyphenated or apostrophe'd item, so "Yoshi-Ade"
 / "B'tub Ring" / "Lamb's Lure" never reach those code paths.
 
 The randomizer trips it. It shuffles drops, so Yoshi-Ade *can* be an enemy drop; and
-it fills dialogue codes 0x7B-0x85 (via ``static_data.bin``) with the Psychopath
+it fills dialogue codes 0x7B-0x85 (via static_data.bin) with the Psychopath
 element/status symbols. Codes 0x7B-0x7E carried the weakness / resistance / ice /
 fire symbols -- exactly the four an item name needs. A Yoshi-Ade drop rendered
 "Yoshi<snowflake>Ade": the hyphen hit the ice symbol.
 
 Both readings of those codes are load-bearing, so one has to move. The item-name
-codes are fixed by the game (menu font + ``Item.render()``); the Psychopath codes are
+codes are fixed by the game (menu font + Item.render()); the Psychopath codes are
 the randomizer's own choice. So this module:
 
 * repaints 0x7B-0x7E with the punctuation glyphs the dialogue font already carries
-  elsewhere (0x21 ``!``, 0x93 ``#``, 0x2D ``-``, 0x27 ``'``), and
+  elsewhere (0x21 !, 0x93 #, 0x2D -, 0x27 '), and
 * repaints the four displaced symbols at 0x88-0x8B, which vanilla leaves blank and
   nothing else claims.
 
-``psychopath_symbols.RELOCATED`` drives both halves, and
-``randomizer/types/enemy.py`` emits the new codes, so the font and the text cannot
-drift apart. ``static_data.py`` excludes 0x7B-0x7E: its stale symbol bytes sit at
+psychopath_symbols.RELOCATED drives both halves, and
+randomizer/types/enemy.py emits the new codes, so the font and the text cannot
+drift apart. static_data.py excludes 0x7B-0x7E: its stale symbol bytes sit at
 *higher* offsets and would otherwise win the address-ordered apply.
 """
 

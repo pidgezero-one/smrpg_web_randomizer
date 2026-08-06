@@ -150,12 +150,10 @@ def fix_bank(bank: int, pointers: dict[int, tuple[str, int, int, int]], dry_run:
     # Step 4: Apply changes
     changes = 0
 
-    # Update dialog table
     needs_table_update = any(old != new for old, new in old_to_new.items()) or content_to_duplicate
     if needs_table_update:
         new_table = {old_to_new[old]: content for old, content in table.items()}
 
-        # Add duplicated content
         for old_idx, dup_new_idx in content_to_duplicate:
             new_table[dup_new_idx] = table[old_idx]
 
@@ -172,7 +170,6 @@ def fix_bank(bank: int, pointers: dict[int, tuple[str, int, int, int]], dry_run:
         changes += sum(1 for old, new in old_to_new.items() if old != new)
         print(f"  Reordered {changes} table entries")
 
-    # Update pointers file
     content = POINTERS_FILE.read_text()
     ptr_changes = 0
 
@@ -180,7 +177,6 @@ def fix_bank(bank: int, pointers: dict[int, tuple[str, int, int, int]], dry_run:
         if b != bank:
             continue
 
-        # Check if this pointer needs update
         if ptr_id in pointer_updates:
             new_idx = pointer_updates[ptr_id]
         else:

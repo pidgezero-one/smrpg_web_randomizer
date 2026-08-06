@@ -163,7 +163,7 @@ STAR_PIECE_PRIZES: list[type] = [
 ]
 
 # Chests that are technically eligible for at least one mimic launcher but are
-# explicitly excluded from the mimic offset slider — e.g. they share a room
+# explicitly excluded from the mimic offset slider - e.g. they share a room
 # with a chest that already hosts a mimic, so dialing one in here makes for a
 # confusing preview.
 MIMIC_OFFSET_EXCLUDES: list[type] = []
@@ -190,7 +190,7 @@ def _get_classes_in_definition_order(base_class: type) -> list[type]:
             continue
         if not issubclass(cls, base_class):
             continue
-        # Keep only classes defined inside the prizelocations package — its __init__
+        # Keep only classes defined inside the prizelocations package - its __init__
         # or any region submodule (e.g. ...prizelocations.bandits_way.xxx). Abstract row
         # bases re-exported from types.prizelocation (e.g. TreasureChestLocationRow1..6)
         # live in another package and must not be treated as concrete placement targets.
@@ -241,7 +241,7 @@ def _get_eligible_chest_rooms() -> list[type]:
 def _get_eligible_mimic_chests() -> list[type]:
     """Return TreasureChestLocationRow subclasses eligible for mimic placement.
 
-    Excludes chests whose blacklist rejects every MIMIC_PRIZES class — e.g.
+    Excludes chests whose blacklist rejects every MIMIC_PRIZES class - e.g.
     Mimic1ReloadRewardLocation, which blacklists the parent MimicFightInitiatorPrize
     so none of the three mimic launcher prizes can land there. Chests that block
     only some of the three (e.g. block Second/Third but accept First) remain in
@@ -300,11 +300,11 @@ def _get_invisible_flag_locations() -> list[type]:
 
 
 def _get_boss_star_piece_locations() -> list[type]:
-    """Return one StarPieceLocation per BOSS_LOCATIONS entry (matched by ``_parent``).
+    """Return one StarPieceLocation per BOSS_LOCATIONS entry (matched by _parent).
 
     The list is parallel to BOSS_LOCATIONS so star piece assignments can
     rotate in lockstep with boss-prize assignments. Locations without a
-    ``_parent`` (e.g. StarHillStarPiece) are excluded. Bosses without a
+    _parent (e.g. StarHillStarPiece) are excluded. Bosses without a
     matching star piece location are skipped (none in current data).
     """
     by_parent: dict[type, type] = {}
@@ -320,7 +320,7 @@ def _get_boss_star_piece_locations() -> list[type]:
 def compute_star_piece_assignments(
     offset: int, total_star_pieces: int
 ) -> list[tuple[type, type]]:
-    """Pick ``total_star_pieces`` (location, prize) pairs for the given offset.
+    """Pick total_star_pieces (location, prize) pairs for the given offset.
 
     All picks within a single offset are in distinct WorldAreaEnums. Across
     all 47 offsets every boss-fight star piece location is picked at least
@@ -403,14 +403,14 @@ def compute_offset_assignments(
     Args:
         offset: The offset value to apply for rotating boss/slot/flag assignments.
         mimic_offset: Independent offset for mimic fight placement. When None
-            the main ``offset`` is reused. With ``stride=1`` and the
-            undeduplicated chest list, successive values of ``mimic_offset``
+            the main offset is reused. With stride=1 and the
+            undeduplicated chest list, successive values of mimic_offset
             slide each mimic fight through every individual chest (including
             chests that share a room with another testable chest).
         total_star_pieces: Number of star pieces to pre-place at boss-fight
             star piece locations (0..7, from the TotalStarPieces flag). 0
             disables star piece overrides.
-        enable_slots: When False, no slot machine chests are pre-set — the slot
+        enable_slots: When False, no slot machine chests are pre-set - the slot
             prizes stay in the pool and shuffle normally. The chests they would
             have taken are freed for the mimic and coin picks.
         enable_mimics: When False, no mimic fight chests are pre-set.
@@ -485,7 +485,7 @@ def compute_offset_assignments(
     # first NUM_OFFSETS entries (all early-game) and collapse several offsets onto
     # the same chest. Spread the picks evenly over the whole list instead, which
     # gives a distinct, well-distributed chest per offset. Chests already taken by a
-    # slot or mimic prize are skipped — a chest can only hold one prize.
+    # slot or mimic prize are skipped - a chest can only hold one prize.
     taken_chest_classes = slot_classes | {chest_cls for chest_cls, _ in mimic_overrides}
     num_coin_chests = len(coin_chests)
     coin_assignments: list[tuple[str, str]] = []
@@ -501,7 +501,7 @@ def compute_offset_assignments(
             break
 
     # Flag assignments: pick 3 flags using a stride of num_flags // 3 starting
-    # at index `offset`. This spreads the picks across the list so all flags
+    # at index offset. This spreads the picks across the list so all flags
     # can be tested within ~num_flags / 3 offsets, and naturally avoids room
     # collisions because the stride exceeds the typical same-room clustering.
     # If a stride pick happens to collide, walk forward until a non-colliding

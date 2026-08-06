@@ -1,15 +1,15 @@
 """Mark player-chosen items as unsellable.
 
-Sets the ``no_sell`` bit (item stat byte 0, bit 6) on whichever items the
-``ProtectSpecialItems`` flag selects. The bit is read by the
-``unsellable_items`` ASM patch, which bars those items from the Sell Items
+Sets the no_sell bit (item stat byte 0, bit 6) on whichever items the
+ProtectSpecialItems flag selects. The bit is read by the
+unsellable_items ASM patch, which bars those items from the Sell Items
 menu and from the Waste Basket.
 
 The bit is inert on its own -- no vanilla code reads it -- so applying it is
 safe regardless of which patches are active.
 
-Debug Candy is not handled here: it carries ``_no_sell`` statically in
-``items.py`` because it must always be protected and is unreachable outside
+Debug Candy is not handled here: it carries _no_sell statically in
+items.py because it must always be protected and is unreachable outside
 debug builds.
 """
 

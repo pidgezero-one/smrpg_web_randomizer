@@ -1,6 +1,6 @@
 """Play the "Victory Against Culex" fanfare behind the Monstro Town door(s).
 
-The battle-end music selector at ``$C2:4C8D`` picks the victory jingle by
+The battle-end music selector at $C2:4C8D picks the victory jingle by
 comparing the current formation ID against Culex's *vanilla* formation::
 
     C2/4C8D  AF 0E FA 7E  LDA $7EFA0E   ; current formation id
@@ -12,27 +12,27 @@ comparing the current formation ID against Culex's *vanilla* formation::
     C2/4C9E  85 E0        STA $E0       ; -> JSR $9EA5 (play song)
 
 We renumber every formation, so ID 350 lands on an unrelated fight and the
-real Culex never plays it. The 17-byte vanilla block (``$4C8D-$4C9D``) is a
+real Culex never plays it. The 17-byte vanilla block ($4C8D-$4C9D) is a
 single hardcoded compare with no room to add a second, so a one-value operand
 patch cannot cover both Monstro Town doors (the story boss *and* the postgame
 Culex 3D rematch).
 
-Instead, redirect the block to a tiny helper in the ``$FF`` padding right after
-the play-song routine (``$C2:9FCA``, 54 free bytes). The helper compares the
-formation ID against each door's formation and returns song ``$3C`` on a match,
-``$09`` otherwise -- so the fanfare follows whichever bosses boss-shuffle drops
+Instead, redirect the block to a tiny helper in the $FF padding right after
+the play-song routine ($C2:9FCA, 54 free bytes). The helper compares the
+formation ID against each door's formation and returns song $3C on a match,
+$09 otherwise -- so the fanfare follows whichever bosses boss-shuffle drops
 behind the doors, and it trivially extends to any number of formations.
 
-Both sites are battle-engine code in bank ``$C2`` running on SA-1, so the hook
-uses a same-bank ``JSR``/``RTS`` (no cross-bank ``JSL`` that SA-1 can't reach).
-The accumulator is 16-bit here (``BIT #$4000`` / ``LDA #$0007`` immediately
-above), matching the helper's 16-bit ``LDA``/``CMP``/immediate loads.
+Both sites are battle-engine code in bank $C2 running on SA-1, so the hook
+uses a same-bank JSR/RTS (no cross-bank JSL that SA-1 can't reach).
+The accumulator is 16-bit here (BIT #$4000 / LDA #$0007 immediately
+above), matching the helper's 16-bit LDA/CMP/immediate loads.
 """
 
 from typing import Sequence
 
-# ROM offset of the `LDA $7EFA0E` block ($C2:4C8D). We overwrite 17 bytes
-# ($4C8D-$4C9D) and leave `STA $E0` at $4C9E untouched.
+# ROM offset of the LDA $7EFA0E block ($C2:4C8D). We overwrite 17 bytes
+# ($4C8D-$4C9D) and leave STA $E0 at $4C9E untouched.
 HOOK_ADDR = 0x024C8D
 HOOK_LEN = 17
 
@@ -62,9 +62,9 @@ def _helper_bytes(formation_ids: Sequence[int]) -> bytes:
     out = bytearray([0xAF, 0x0E, 0xFA, 0x7E])  # LDA $7EFA0E
     for k, formation_id in enumerate(formation_ids):
         out += bytes([0xC9, formation_id & 0xFF, (formation_id >> 8) & 0xFF])
-        # Every BEQ targets the single `hit` label past the miss path. Each
+        # Every BEQ targets the single hit label past the miss path. Each
         # remaining (CMP+BEQ) pair is 5 bytes and the miss path is 4 bytes, so
-        # from the byte after this BEQ the distance to `hit` is 5*(n-k) - 1.
+        # from the byte after this BEQ the distance to hit is 5*(n-k) - 1.
         branch = 5 * (n - k) - 1
         assert 0 < branch < 128, f"BEQ offset {branch} out of range"
         out += bytes([0xF0, branch])
@@ -93,7 +93,7 @@ def get_patch(formation_ids: Sequence[int]) -> dict[int, bytes]:
         f"{HELPER_ADDR:#08x}"
     )
 
-    # JSR $9FCA then NOP-fill the rest of the vanilla block; `STA $E0` at $4C9E
+    # JSR $9FCA then NOP-fill the rest of the vanilla block; STA $E0 at $4C9E
     # then stores the song id the helper left in A.
     hook = bytes([0x20, HELPER_SNES & 0xFF, (HELPER_SNES >> 8) & 0xFF])
     hook += b"\xEA" * (HOOK_LEN - len(hook))

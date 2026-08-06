@@ -52,6 +52,7 @@ script = EventScript([
 		A_SetPriority(2),
 		A_SetVRAMPriority(MARIO_OVERLAPS_ON_ALL_SIDES)
 	]),
+	RunEventAsSubroutine(E1090_BOOSTER_TOWER_POSTGAME_SHUFFLED_NPC_ANIMATION_LOADER),
     FadeInFromBlack(sync=False),
 	Return()
 ])

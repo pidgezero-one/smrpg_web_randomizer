@@ -40,5 +40,6 @@ script = EventScript([
 		A_WalkEastPixels(8),
         A_FixedFCoordOff(),
 	], identifier="EVENT_725_action_queue_sync_0"),
+	RunEventAsSubroutine(E1092_CHAPEL_POSTGAME_SHUFFLED_NPC_ANIMATION_LOADER),
     JmpToEvent(E0015_STANDARD_ROOM_LOADER)
 ])

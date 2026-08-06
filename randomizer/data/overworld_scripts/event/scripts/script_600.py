@@ -40,6 +40,7 @@ script = EventScript([
 	JmpIfBitSet(MARRYMORE_LIBERATED, ["EVENT_257_fade_in_from_black_async_0"]),
 	JmpIfBitClear(CHAPEL_ITEM_RETRIEVAL_STARTED, ["EVENT_600_ret_9"]),
 	RunEventAsSubroutine(E3930_MARRYMORE_GEAR_PRELOADER),
+	RunEventAsSubroutine(E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=True),
 	Return(identifier="EVENT_600_ret_9")
 ])

@@ -3,29 +3,29 @@ is not Mario.
 
 Three independent sites:
 
-* **World map character sprite** (``$3E:90AA``) — picks one of four
+* **World map character sprite** ($3E:90AA) - picks one of four
   precomputed byte arrays based on which non-Mario ally walks the
   overworld. Used regardless of whether a starter override is in play.
 
-* **File-select character graphic** — when the *starter* (not the
+* **File-select character graphic** - when the *starter* (not the
   overworld walker) isn't Mario, eight small writes around
-  ``$3:4757-$3:5016`` swap the title-screen / file-select character
+  $3:4757-$3:5016 swap the title-screen / file-select character
   graphic to the alternate protagonist sprite.
 
-* **Overworld walker engine hooks** — when the *overworld walker* isn't
+* **Overworld walker engine hooks** - when the *overworld walker* isn't
   Mario, two sites:
 
-    - ``$0:9B86`` sets the default sprite base. (Recognition of that
+    - $0:9B86 sets the default sprite base. (Recognition of that
       base by the engine sprite-group whitelist is handled by the
-      always-on :mod:`sprite_group_whitelist` patch — this module no
+      always-on :mod:sprite_group_whitelist patch - this module no
       longer touches the whitelist.)
-    - ``$0:94AF`` rewrites the clone-protagonist setup so it copies
+    - $0:94AF rewrites the clone-protagonist setup so it copies
       the alternate sprite base instead of zeroing the byte
       (which would force Mario).
 
-* **File select names** — always written, but lives here because it's
+* **File select names** - always written, but lives here because it's
   the same character-display group. Each name is 7 bytes, padded with
-  ``\\x00``, written at ``$3E:F528 + i*7``.
+  \\x00, written at $3E:F528 + i*7.
 """
 
 from typing import Sequence
@@ -94,8 +94,8 @@ def get_patch(
 
         # Sprite 31 (the alternate-protagonist base) is recognized by the
         # engine sprite-group whitelist via the always-on
-        # `sprite_group_whitelist` patch, which fully owns $9BAA-$9BDF.
-        # This module must NOT write into that range — it previously
+        # sprite_group_whitelist patch, which fully owns $9BAA-$9BDF.
+        # This module must NOT write into that range - it previously
         # cannibalized the Green Yoshi entry there ($9BBF/$9BC1), which
         # broke room 34 Yoshi-riding on every non-Mario seed.
 
@@ -106,7 +106,7 @@ def get_patch(
         # $7F is unused by downstream subroutines; $1F is read at $94EE.
         # Note: $F5C0 is a SOUND dispatch routine (not sprite
         # processing). $17BE and $1A56 pass sound command type $00 to
-        # play water SFX — do NOT patch those bytes.
+        # play water SFX - do NOT patch those bytes.
         out[0x94AF] = bytes([
             0xA9, SPR0031_ALT_PROTAGONIST_1,  # LDA #$1F
             0x85, 0x70,                        # STA $70
@@ -114,9 +114,9 @@ def get_patch(
             0x64, 0x1F,                        # STZ $1F
         ])
 
-        # Clone-protagonist VRAM build-slot. Vanilla $C0:8B6F (`LDA #$04`,
+        # Clone-protagonist VRAM build-slot. Vanilla $C0:8B6F (LDA #$04,
         # operand byte at ROM $8B70) hardcodes the clone-protagonist's slot
-        # to 4 — `$70 = $4000 + $19*$40`, so the clone builds at $40:4100.
+        # to 4 - $70 = $4000 + $19*$40, so the clone builds at $40:4100.
         # That fits a 4-slot sprite (Mario), but Bowser is a 6-slot sprite
         # (slots 0-5 = $40:4000-$417F), so the clone at slot 4 builds on top
         # of the real protagonist and corrupts every room-load fade-in
@@ -126,7 +126,7 @@ def get_patch(
         if overworld_index == 2:  # Bowser
             out[0x8B70] = bytes([0x06])
 
-    # File-select names — always written.
+    # File-select names - always written.
     for i, name in enumerate(file_select_names):
         addr = 0x3EF528 + (i * 7)
         out[addr] = name.encode().ljust(7, b"\x00")

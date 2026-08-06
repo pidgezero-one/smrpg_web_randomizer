@@ -164,8 +164,8 @@ class Prize:
 
     # Source freestanding-grant event -> its packet-safe variant. A packet is a
     # dynamically-spawned object one slot past the room's last static NPC, so it has no
-    # presence bit of its own; ANY persistent presence write on it — event RemoveObject
-    # (F5/F9) OR the action-level "set object presence" (FD F2) — aliases into the NEXT
+    # presence bit of its own; ANY persistent presence write on it - event RemoveObject
+    # (F5/F9) OR the action-level "set object presence" (FD F2) - aliases into the NEXT
     # room's NPC_0. Each variant is a copy of the grant with every such write stripped
     # (object-local despawn only) and its own onward jumps repointed to variants. Grants
     # that never write presence aren't listed and pass through unchanged; the guard in
@@ -555,13 +555,13 @@ class SpellPrize(Prize):
         """True if this spell can actually damage an enemy.
 
         Element is deliberately not considered. FORMLESS's transform into Mokura
-        is a counter on ``IfTargetedByCommand([COMMAND_SPECIAL])`` (monster script
+        is a counter on IfTargetedByCommand([COMMAND_SPECIAL]) (monster script
         147), so it fires for any spell regardless of element; Mokura itself only
         *resists* Thunder/Jump and has 20 evade, so no element is a dead end.
 
         Reads the vanilla class attributes on purpose. InfuseSpellElements and
         CharacterSpellElements mutate the per-world spell *instances* via
-        ``world.get_spell(...)``, so this stays a fixed property of the spell and
+        world.get_spell(...), so this stays a fixed property of the spell and
         does not depend on setup order.
         """
         spell = cls._spell
@@ -859,10 +859,10 @@ class BossFightPrize(Prize):
     ) -> type[BossNPC] | None:
         """Override hook: force a specific NPC model when this boss is shuffled
         into a particular location, bypassing VRAM-based selection in
-        `get_npc_for_slot`.
+        get_npc_for_slot.
 
         Default: None (use normal selection). Subclasses return a model class
-        (which must still be one of `_npc_models`) to pin it.
+        (which must still be one of _npc_models) to pin it.
         """
         return None
 

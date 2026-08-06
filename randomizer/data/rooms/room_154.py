@@ -11,6 +11,15 @@ from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 
 room = Room(
+    # No sprite merging: after the R294 split this room has room to spare.
+    # Objects 3-8 and 11-12 are all SPR1023_EMPTY, and sprite 1023 is
+    # short-circuited at $C0:8D85 (CMP #$03FF -> $07,X bit 3 -> $C0:8E96
+    # branches to $C0:8F09, which zeroes $18/$19/$16,X), so it claims no
+    # buffer and never advances the dedicated cursor $6D. That leaves the
+    # three henchman slots 0/1/2 owning buffers A/B/C outright, with only
+    # Booster (9) and Toad (10) dedicated: cursor 16 -> 24 against the
+    # $C0:8EDD ceiling of $21. Torte and Bundt, which used to be the
+    # objects that overflowed it, now live in R294.
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=True,
@@ -103,7 +112,7 @@ room = Room(
         ),
 
         RegularNPC(  # 3
-            npc=npcs.TORTE_NPC_2,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0630_MARRYMORE_KITCHEN_CHEF_1,
             action_script=A0015_DO_NOTHING,
@@ -131,7 +140,7 @@ room = Room(
             byte7_upper2=3,
         ),
         RegularClone(  # 4
-            npc=npcs.TORTE_NPC_2,
+            npc=npcs.EMPTY_NPC_3,
             event_script=E0630_MARRYMORE_KITCHEN_CHEF_1,
             action_script=A0015_DO_NOTHING,
             visible=True,
@@ -266,7 +275,7 @@ room = Room(
             cannot_clone=True
         ),
         RegularNPC(  # 11
-            npc=npcs.BUNDT_OBJECT_NPC,
+            npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.JUMP_ON,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,

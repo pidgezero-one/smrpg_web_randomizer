@@ -14,7 +14,6 @@ def analyze_bank():
     # Render the bank - this returns a list of (address, bytearray) tuples
     render_result = bank.render()
 
-    # Combine all rendered bytes into a contiguous array for analysis
     # Find the min and max addresses
     min_addr = min(addr for addr, _ in render_result)
     max_addr = max(addr + len(data) for addr, data in render_result)
@@ -22,7 +21,6 @@ def analyze_bank():
     print(f"Bank 0x3A rendered from 0x{min_addr:X} to 0x{max_addr:X}")
     print(f"Number of chunks: {len(render_result)}")
 
-    # Create a combined byte array
     rendered = bytearray(max_addr - min_addr)
     for addr, data in render_result:
         rel_addr = addr - min_addr
@@ -50,10 +48,8 @@ def analyze_bank():
             abs_ptr = 0x3A0000 + ptr
             rel_ptr = abs_ptr - min_addr
 
-            # Check what's at that pointer
             if 0 <= rel_ptr < len(rendered):
                 first_byte = rendered[rel_ptr]
-                # Check if this points to a valid script start
                 print(f"Battle Event {i:3d}: ptr=0x{abs_ptr:06X}, first_byte=0x{first_byte:02X}", end="")
 
                 if first_byte in TERMINATION_OPCODES:
@@ -173,22 +169,18 @@ def simulate_lazyshell_parsing(rendered, min_addr):
             if rel_offset < 0 or rel_offset >= len(rendered):
                 return f"OUT_OF_BOUNDS at 0x{offset:X}"
 
-            # Check for infinite loop
             if offset in visited_set:
                 return f"LOOP at 0x{offset:X}"
             visited_set.add(offset)
 
             opcode = rendered[rel_offset]
 
-            # Check termination opcodes
             if opcode in (0x07, 0x09, 0x11, 0x5E):
                 return None  # Normal termination
 
-            # Get command length
             param1 = rendered[rel_offset + 1] if rel_offset + 1 < len(rendered) else 0
             length = get_length(opcode, param1)
 
-            # Check if this opcode triggers recursive disassembly
             # Opcodes 0x24-0x2B have jump targets at offset+4
             if 0x24 <= opcode <= 0x2B and length >= 6:
                 jump_lo = rendered[rel_offset + 4] if rel_offset + 4 < len(rendered) else 0
@@ -231,7 +223,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
 
         start_offset = offset
 
-        # First, run the recursive disassembly simulation
         result = disassemble_recursive(offset, set())
         if result:
             print(f"BE {i:3d}: PROBLEM - {result} (started at 0x{start_offset:X})")
@@ -259,7 +250,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
             print(f"{rendered[rel_start + j]:02X} ", end="")
         print()
 
-        # Show what opcodes these bytes represent
         offset = parse_start
         print(f"  Opcodes: ", end="")
         for _ in range(8):
@@ -304,7 +294,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
             p1 = rendered[rel + 1] if rel + 1 < len(rendered) else 0
             length = get_length(op, p1)
 
-            # Check for jump opcodes
             if 0x24 <= op <= 0x2B and length >= 6:
                 jump_lo = rendered[rel + 4] if rel + 4 < len(rendered) else 0
                 jump_hi = rendered[rel + 5] if rel + 5 < len(rendered) else 0
@@ -341,7 +330,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
                 print(f"BE {i}: OUT OF BOUNDS at 0x{offset:X} after {cmd_count} commands")
                 break
 
-            # Check LAZYSHELL break address
             if offset == 0x3A6BA1:
                 if cmd_count > 10:
                     print(f"BE {i}: Hit break address after {cmd_count} commands")
@@ -349,7 +337,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
 
             op = rendered[rel]
 
-            # Check termination
             if op in (0x07, 0x09, 0x11, 0x5E):
                 if cmd_count > 10:
                     print(f"BE {i}: Terminated with 0x{op:02X} at 0x{offset:X} after {cmd_count} commands")
@@ -364,7 +351,6 @@ def simulate_lazyshell_parsing(rendered, min_addr):
                 print(f"BE {i}: TIMEOUT after {cmd_count} commands! Last offset: 0x{offset:X}")
                 break
 
-    # Summary stats
     print(f"\n--- Summary ---")
     print(f"Rendered range: 0x{min_addr:X} - 0x{min_addr + len(rendered):X}")
     print(f"Total bytes: {len(rendered)}")
@@ -389,20 +375,17 @@ class Command(BaseCommand):
             rel_addr = addr - min_addr
             rendered[rel_addr:rel_addr + len(data)] = data
 
-        # Run analysis
         print(f"Bank 0x3A rendered from 0x{min_addr:X} to 0x{max_addr:X}")
         print(f"Number of chunks: {len(render_result)}")
         print(f"Total rendered bytes: {len(rendered)}")
         print(f"Scripts in bank: {len(bank.scripts)}")
 
-        # Check break address
         break_rel = LAZYSHELL_BREAK_ADDRESS - min_addr
         if 0 <= break_rel < len(rendered):
             print(f"✓ Break address 0x{LAZYSHELL_BREAK_ADDRESS:X} has byte: 0x{rendered[break_rel]:02X}")
         else:
             print(f"✗ Break address 0x{LAZYSHELL_BREAK_ADDRESS:X} not in rendered data")
 
-        # Check pointer table
         print("\n--- First 10 battle event pointers ---")
         pointer_table_start = 0x3A6004 - min_addr
         for i in range(10):
@@ -411,5 +394,4 @@ class Command(BaseCommand):
             abs_ptr = 0x3A0000 + ptr
             print(f"BE {i}: ptr=0x{abs_ptr:06X}")
 
-        # Run simulation
         simulate_lazyshell_parsing(rendered, min_addr)

@@ -939,12 +939,12 @@ _VANILLA_SPELL_OWNER_MAP: dict[type[SpellPrize], type[CharacterPrize]] | None = 
 
 
 def vanilla_spell_owner(spell_prize: type[SpellPrize]) -> type[CharacterPrize] | None:
-    """Return the character who learns ``spell_prize`` in the vanilla game.
+    """Return the character who learns spell_prize in the vanilla game.
 
     Used by SpellsAnywhere placement when learned-spell randomization
     (CharacterLearnedSpells) is disabled, so a spell found in the world is
     granted to its original owner instead of a random character. The mapping is
-    derived from the spell-slot locations' ``_originally_held`` values, which are
+    derived from the spell-slot locations' _originally_held values, which are
     the canonical definition of vanilla spell ownership.
     """
     global _VANILLA_SPELL_OWNER_MAP
@@ -1119,7 +1119,6 @@ class PrizeLocation(Generic[TOriginallyHeld]):
                     if l.world_area == self.world_area:
                         return False
         if isinstance(prize, SlotsPrize):
-            # Space is pre-allocated via dummy NPCs — just check no duplicate slots in same room
             if world._slot_dummy_indices is not None:
                 for r in self._rooms:
                     if r not in world._slot_dummy_indices:
@@ -1249,9 +1248,6 @@ class StandardPrizeLocation(PrizeLocation):
         if isinstance(prize, KeyPrize) and not world.settings.isflag_enabled(
             KeyItemsAnywhere
         ):
-            # KeyItemLocations should always accept KeyPrize items, even without
-            # KeyItemsAnywhere — that flag only controls whether key items can
-            # spill into the general (non-KeyItemLocation) pool.
             if isinstance(self, KeyItemLocation):
                 return super().can_accept(prize, inventory, world)
             return False
@@ -1276,10 +1272,10 @@ class FrogDiscipleLocation(PrizeLocation):
 
 class TreasureChestLocation(StandardPrizeLocation):
     _npc_ids: list[AreaObject]
-    # Rooms *besides* `_rooms` that must be able to allocate packet sprites when
-    # this location holds an EXP star — e.g. the room you land in after grabbing
-    # it, since the star outlives the room transition. `render()` always covers
-    # `_rooms` itself, so only list the extras.
+    # Rooms *besides* _rooms that must be able to allocate packet sprites when
+    # this location holds an EXP star - e.g. the room you land in after grabbing
+    # it, since the star outlives the room transition. render() always covers
+    # _rooms itself, so only list the extras.
     _extra_sprite_buffer_rooms: list[int] = []
     _set_extra_bits_when_opened: list[Flag] | None = None
 
@@ -1352,7 +1348,7 @@ class TreasureChestLocation(StandardPrizeLocation):
             #
             # extra_sprite_buffer_size is left alone: capacity is (size+1)*4
             # units and each sparkle needs 1, so the size=0 floor already holds
-            # 4 — the level the retry loop in A0446 settles at when the buffer
+            # 4 - the level the retry loop in A0446 settles at when the buffer
             # is small.
             for room_id in [*self._rooms, *self._extra_sprite_buffer_rooms]:
                 room = world.rooms._rooms[room_id]
@@ -1661,7 +1657,7 @@ class BossFightLocationNPC:
 
     def should_skip_swap(self, world: "GameWorld") -> bool:
         """Keep the original room NPC (skip the boss-model swap) when any listed
-        flag is enabled — mirrors BossFightLocationHenchmanNPC.should_skip_swap.
+        flag is enabled - mirrors BossFightLocationHenchmanNPC.should_skip_swap.
 
         Each entry is a flag class.
         """
@@ -1776,9 +1772,9 @@ class BossFightLocation(PrizeLocation):
 
     _chosen_npc_models_by_room: dict[int, type["BossNPC"]] | None = None
 
-    # Parallel to `_chosen_npc_models_by_room` but keyed by (room_id, npc_id)
+    # Parallel to _chosen_npc_models_by_room but keyed by (room_id, npc_id)
     # because a single room can hold multiple henchman slots. Populated by
-    # the henchman placement loop the same moment `obj._npc` is overwritten.
+    # the henchman placement loop the same moment obj._npc is overwritten.
     _chosen_henchman_models_by_room_npc: dict[
         tuple[int, int], type["HenchmanNPC"]
     ] | None = None
@@ -1786,7 +1782,7 @@ class BossFightLocation(PrizeLocation):
     def get_chosen_npc_model_for_room(
         self, room_id: int
     ) -> type["BossNPC"] | None:
-        """Return the NPC model selected at placement for the slot in `room_id`.
+        """Return the NPC model selected at placement for the slot in room_id.
 
         Falls back to None if placement was skipped (e.g. prize matched original)
         or no slot for that room exists. Renders should re-run selection with
@@ -1825,7 +1821,7 @@ class BossFightLocation(PrizeLocation):
         world: "GameWorld",
         slot: BossFightLocationNPC,
     ) -> type["BossNPC"]:
-        """Return the chosen model for `slot`, computing it on-demand if placement
+        """Return the chosen model for slot, computing it on-demand if placement
         was skipped (prize matched original). Uses the same constraints placement
         would have used so the render and placement layers always agree.
         """
@@ -1881,7 +1877,7 @@ class BossFightLocation(PrizeLocation):
 
     @property
     def eligible_mook_henchmen(self) -> list[BossFightHenchman] | None:
-        """Mook henchmen this location may put in its `_mook_henchman_slots`.
+        """Mook henchmen this location may put in its _mook_henchman_slots.
 
         Defaults to the prize's full list. Locations override to drop models
         their henchman rooms can't render.
@@ -2126,7 +2122,7 @@ class BossFightLocation(PrizeLocation):
 
         # Generate E1189 entries for unassigned slots that have non-BattlePackNPC
         # objects. This covers cases where the incoming boss has no henchmen or
-        # should_skip_swap filtered the slot out — the original NPCs remain
+        # should_skip_swap filtered the slot out - the original NPCs remain
         # visible and still call E1189 as a subroutine, so it needs an entry.
         for slot in all_henchman_slots:
             if slot in assigned_slots or slot.pack_id is None:
@@ -2879,14 +2875,14 @@ class PacketLocation(StandingLocationRow):
     # Additional packets whose sprite should also be repointed to the assigned
     # prize, for items displayed by more than one packet in the room (e.g. a
     # cutscene that spawns the same item more than once). The primary
-    # ``_packet_id`` is always included; subclasses opt in by listing extras here.
+    # _packet_id is always included; subclasses opt in by listing extras here.
     _extra_packet_ids: list[int] = []
 
     def render(
         self, world: GameWorld
     ) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         # Repoint the display packet's sprite to the assigned prize. This is ALL a bare
-        # PacketLocation does — it is a COSMETIC mixin. The grant path comes from the
+        # PacketLocation does - it is a COSMETIC mixin. The grant path comes from the
         # location's other bases (e.g. the Marrymore snifits keep their npc_grant; the
         # packet there is only a picture). A location whose prize is actually delivered by
         # the dynamically-spawned packet object must subclass PacketLocationRow1, which
@@ -2931,7 +2927,7 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
         if self._autoterminate_packet:
             # E0241 clears this at the top of every collection, so the bit is scoped to
             # exactly this grant. Prepending makes SetBit the grant's first command, which
-            # PrizeRow.render renames to the room dispatch target — execution enters here.
+            # PrizeRow.render renames to the room dispatch target - execution enters here.
             return EventScript(
                 [SetBit(SHIP_PACKET_AUTOTERM_DIALOG), *packet_grant.contents]
             )
@@ -2967,7 +2963,7 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
                 raise AssertionError(
                     f"{type(self).__name__}: packet grant for "
                     f"{type(self.prize).__name__} does a persistent presence write on $70A8 "
-                    f"(RemoveObject or FD F2) — would despawn the next room's NPC_0. Route it "
+                    f"(RemoveObject or FD F2) - would despawn the next room's NPC_0. Route it "
                     f"to an FD-F2-free packet variant (see Prize._PACKET_VARIANT_EVENTS)."
                 )
             for cmd in script.contents:
@@ -3166,7 +3162,7 @@ class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
             byte7_upper2=3,
             # The invisible flag rides the blank sprite, which is non-gridplane and never
             # lands in buffered_sprite_ids. Left at auto-decide (None) it falls through to
-            # `else: set_cannot_clone(True)` in _recalculate_room_partition step 7 and takes
+            # else: set_cannot_clone(True) in _recalculate_room_partition step 7 and takes
             # a dedicated VRAM allocation for a sprite that draws nothing.
             cannot_clone=False,
         )

@@ -1,7 +1,7 @@
 """Assemble all location hints and split across three event scripts.
 
 Extracted from the apply_shuffler_results orchestrator; called once, from
-`apply_shuffler_results_to_game_data`.
+apply_shuffler_results_to_game_data.
 """
 
 from __future__ import annotations
@@ -233,11 +233,9 @@ def apply_hint_text(world: GameWorld) -> None:
     if not all_hints:
         return
 
-    # Assign unique identifiers to the first command of each hint block
     for i, (_loc_type, commands) in enumerate(all_hints):
         commands[0].rename(f"hint_{i}")
 
-    # Split hints into three chunks for three event scripts
     chunk_size = math.ceil(len(all_hints) / 3)
     chunks = [
         all_hints[:chunk_size],
@@ -246,7 +244,6 @@ def apply_hint_text(world: GameWorld) -> None:
     ]
     script_ids = [E0947_HINT_SYSTEM, E1536_HINT_SYSTEM, E3088_HINT_SYSTEM]
 
-    # Build the final "done" commands for after the last hint
     done_dialog = RunDialog(
         dialog_id=DI2758_FROGFUCIUS_DEFAULT_STUFF,
         above_object=BOWSER,
@@ -258,7 +255,6 @@ def apply_hint_text(world: GameWorld) -> None:
     )
     done_return = ReturnCmd()
 
-    # Replace "next" destinations in each hint block
     # Hints within the same chunk point to the next hint; the last hint in a
     # chunk points to a "chain_to_next" label (JmpToEvent) or "hint_done".
     for i, (_loc_type, commands) in enumerate(all_hints):
@@ -280,7 +276,6 @@ def apply_hint_text(world: GameWorld) -> None:
         E0991_FROGFUCIUS_HINT_DIALOGUES
     ).contents
 
-    # Build each chunk's command list and write to its script
     for chunk_idx, chunk in enumerate(chunks):
         if not chunk:
             continue

@@ -1,39 +1,39 @@
 """Switch-menu cursor-navigation rework (open-mode base).
 
-Reworks the switch-window cursor handler (``$C3:623F``+) so it reads the
-alternate controller-input word (``$15`` instead of ``$14``) and bounds the
+Reworks the switch-window cursor handler ($C3:623F+) so it reads the
+alternate controller-input word ($15 instead of $14) and bounds the
 cursor against the actual party size.
 
 The window draws the five party slots in two columns: slots 0/1/2 down the
 left, slots 3/4 down the right, the right column starting one box lower.
-``$C3:6393`` resolves the highlighted slot as ``2*col + row + 1`` (``col`` =
-``$0929``, ``row`` = ``$092A``), and ``$C3:63FE`` places the cursor at
-``y = row*0x30 + 0x48``.
+$C3:6393 resolves the highlighted slot as 2*col + row + 1 (col =
+$0929, row = $092A), and $C3:63FE places the cursor at
+y = row*0x30 + 0x48.
 
-``row`` is *signed*.  ``row = $FF`` is the top-left box: the resolver's ``+1``
-cancels the ``-1`` to give slot 0, and the cursor Y wraps to ``0x3018`` whose
-low byte ``0x18`` is exactly that box.  That is what lets the leader be
+row is *signed*.  row = $FF is the top-left box: the resolver's +1
+cancels the -1 to give slot 0, and the cursor Y wraps to 0x3018 whose
+low byte 0x18 is exactly that box.  That is what lets the leader be
 switched out, and it must survive any change here.  So the reachable cells are
-``row`` in ``$FF..1`` at ``col`` 0 and ``row`` in ``0..1`` at ``col`` 1.
+row in $FF..1 at col 0 and row in 0..1 at col 1.
 
-``$60`` holds ``party_count - 1``, the highest occupied slot, and each
+$60 holds party_count - 1, the highest occupied slot, and each
 direction checks the slot it is about to land on:
 
-* up    - stop at ``row == col - 1`` (top of either column)
-* down  - stop at ``row == 1``, else need ``2*col + row + 2 <= $60``
-* left  - stop at ``col == 0``
-* right - stop at ``col != 0`` or ``row == $FF`` (leader box has no right
-  neighbour), else need ``row + 3 <= $60``
+* up - stop at row == col - 1 (top of either column)
+* down - stop at row == 1, else need 2*col + row + 2 <= $60
+* left - stop at col == 0
+* right - stop at col != 0 or row == $FF (leader box has no right
+  neighbour), else need row + 3 <= $60
 
 Vanilla assumed at least four characters, since the switch menu was unreachable
-below that, and bounded the cursor with ``party_count - 4``.  The randomizer
+below that, and bounded the cursor with party_count - 4.  The randomizer
 unlocks the menu at two characters, where that subtraction underflows to
-``$FE``/``$FF`` and every unsigned bound check passes, opening the whole grid
+$FE/$FF and every unsigned bound check passes, opening the whole grid
 onto slots that hold nobody.  Checking the destination slot against the highest
 occupied one degrades cleanly at any party size.
 
-The handlers also absorb vanilla's final clamp at ``$C3:62AE``; ``down`` now
-falls through to the redraw stub at ``$C3:62B8``.
+The handlers also absorb vanilla's final clamp at $C3:62AE; down now
+falls through to the redraw stub at $C3:62B8.
 
 Render-disjoint engine code relocated from open_mode.json.
 """

@@ -1,7 +1,7 @@
 """Prize definitions, split one class per file.
 
 The star-import header below is load-bearing: downstream modules do
-`from randomizer.logic.progression.prizes import *` and rely on names that leak
+from randomizer.logic.progression.prizes import * and rely on names that leak
 through it (dialog/variable/sfx name constants), not just the prize classes.
 """
 

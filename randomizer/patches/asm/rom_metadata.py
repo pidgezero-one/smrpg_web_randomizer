@@ -1,8 +1,8 @@
 """ROM title + version text writes.
 
-* SNES header title at ROM ``$7FC0`` (20 bytes, space-padded).
-* Major version byte at ROM ``$7FDB``.
-* Name-entry-screen version string at ROM ``$3E:F140`` (10 bytes,
+* SNES header title at ROM $7FC0 (20 bytes, space-padded).
+* Major version byte at ROM $7FDB.
+* Name-entry-screen version string at ROM $3E:F140 (10 bytes,
   space-padded).
 """
 

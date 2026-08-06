@@ -387,14 +387,14 @@ _MC_MAX_ATTEMPTS = 50        # re-rolls
 
 
 def _mc_screen(x, y):
-    """Maze cell ``(x=row, y=col)`` -> Mode7 ``(col, row)``. Rows are flipped and
-    the bottom ``_MC_STUB_LEN`` rows are reserved for the fixed straight start
+    """Maze cell (x=row, y=col) -> Mode7 (col, row). Rows are flipped and
+    the bottom _MC_STUB_LEN rows are reserved for the fixed straight start
     stub, so the maze origin lands just above the stub at the bottom-left."""
     return (y, MAP_H - 1 - _MC_STUB_LEN - x)
 
 
 def _mc_runout_dirs(in_dir):
-    """Run-out directions to try from a cell entered going ``in_dir`` — straight
+    """Run-out directions to try from a cell entered going in_dir - straight
     ahead first, then the two perpendicular turns (never a 180° reversal)."""
     perpendicular = [d for d in (NORTH, SOUTH, EAST, WEST)
                      if d not in (in_dir, _MC_REV[in_dir])]
@@ -402,8 +402,8 @@ def _mc_runout_dirs(in_dir):
 
 
 def _mc_line_clear(col, row, direction, length, occupied):
-    """True if ``length`` cells straight in ``direction`` from ``(col, row)`` are
-    all in-bounds and not in ``occupied``."""
+    """True if length cells straight in direction from (col, row) are
+    all in-bounds and not in occupied."""
     delta_col, delta_row = _MC_STEP[direction]
     for step in range(1, length + 1):
         cell = (col + delta_col * step, row + delta_row * step)
@@ -413,11 +413,11 @@ def _mc_line_clear(col, row, direction, length, occupied):
 
 
 def _build_minecart_track(path) -> Optional[MinecartTrack]:
-    """Convert a solved maze path into a :class:`MinecartTrack`: a fixed
-    ``_MC_STUB_LEN``-tile straight start stub, the maze interior, and a straight
+    """Convert a solved maze path into a MinecartTrack: a fixed
+    _MC_STUB_LEN-tile straight start stub, the maze interior, and a straight
     run-out (a lead tile, the BLUE stage-end marker, then
-    ``_MC_RUNOUT_AFTER_BLUE`` straight tiles) attached in clear space near the
-    end. Returns ``None`` on a 180° reversal the rails can't express, or if no
+    _MC_RUNOUT_AFTER_BLUE straight tiles) attached in clear space near the
+    end. Returns None on a 180° reversal the rails can't express, or if no
     run-out fits."""
     cells = [(*_mc_screen(x, y), _MC_DIR[d]) for (x, y, d) in path]  # (col, row, out_dir)
     stub = [(0, MAP_H - 1 - k) for k in range(_MC_STUB_LEN)]         # start straight tiles
@@ -482,7 +482,7 @@ def _build_minecart_track(path) -> Optional[MinecartTrack]:
 
 def _generate_minecart_track() -> Optional[MinecartTrack]:
     """One course: re-roll until a maze solves and yields a legal track. The
-    reduced grid (bottom rows reserved for the start stub) fails to ``solve()``
+    reduced grid (bottom rows reserved for the start stub) fails to solve()
     fairly often, hence the retries."""
     for _ in range(_MC_MAX_ATTEMPTS):
         maze = Maze(MAP_H - _MC_STUB_LEN, MAP_W)
@@ -499,8 +499,8 @@ def get_minecart_track_patch(world: GameWorld) -> dict[int, bytes]:
     """Generate both Mode7 courses and return the minecart ROM patch.
 
     Deterministic per seed (an independent RNG stream derived from
-    ``world.seed`` so it never perturbs the rest of randomization). Returns an
-    empty patch — leaving the vanilla courses intact — if no track compresses
+    world.seed so it never perturbs the rest of randomization). Returns an
+    empty patch - leaving the vanilla courses intact - if no track compresses
     within the minigame's fixed data window after several re-rolls.
     """
     saved_state = random.getstate()
@@ -517,14 +517,14 @@ def get_minecart_track_patch(world: GameWorld) -> dict[int, bytes]:
                 continue  # too dense to compress in budget; re-roll both
             block = len(patch[BLOCK_BASE])
             print(
-                "[moleville_track] seed %s: SUCCESS — generated 2 Mode7 "
+                "[moleville_track] seed %s: SUCCESS - generated 2 Mode7 "
                 "courses, minigame window %d/%d bytes (%d free) on attempt "
                 "%d/%d" % (world.seed, block, WINDOW_SIZE, WINDOW_SIZE - block,
                            attempt, _MC_MAX_ATTEMPTS)
             )
             return patch
         print(
-            "[moleville_track] seed %s: FELL BACK to vanilla minecart — no "
+            "[moleville_track] seed %s: FELL BACK to vanilla minecart - no "
             "in-budget track after %d attempts" % (world.seed, _MC_MAX_ATTEMPTS)
         )
         return {}

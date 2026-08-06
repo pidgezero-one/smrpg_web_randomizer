@@ -2,7 +2,7 @@
 
 These steps mutate world state (event scripts, room partitions) rather than
 emitting patch bytes, so they run at the end of build_world instead of inside
-get_patch. Two of them are NOT idempotent -- `event_2496_startup += [Return()]`
+get_patch. Two of them are NOT idempotent -- event_2496_startup += [Return()]
 appends every call, and the palette-row shift adds its delta every call -- so
 running them from get_patch was only safe because that function memoises via
 world._cached_patch. Doing them here makes get_patch a pure serializer.
@@ -32,7 +32,7 @@ def finalize_world(world: GameWorld) -> None:
         E1252_FLAG_SPECIFIC_HOUSEKEEPING_GAME_START
     ).set_contents(world.event_2496_startup)
 
-    # Partition + palette-row fixups must run BEFORE event scripts render —
+    # Partition + palette-row fixups must run BEFORE event scripts render -
     # the fixup mutates DarkenLayersExceptPaletteRows commands in event scripts,
     # so any post-render mutation would be lost.
     # Ending cutscene rooms keep a static ally_buffer regardless of
@@ -50,7 +50,7 @@ def finalize_world(world: GameWorld) -> None:
         435,  # R435_ENDING_CREDITS_BOWSERS_KEEP_BOWSER_TROOPS_REPAIR
         441,
         486,
-        292,  # R292 — split second-half of the R496 ending cutscene
+        292,  # R292 - split second-half of the R496 ending cutscene
         496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE
         505,
         506,

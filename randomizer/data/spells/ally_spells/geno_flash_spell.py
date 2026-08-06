@@ -54,7 +54,7 @@ class GenoFlashSpell(CharacterSpell):
 
     @property
     def palette_patch(self) -> dict[int, bytearray]:
-        # Geno Flash is a hardware screen effect (SEF0000_GENO_FLASH) — the sun
+        # Geno Flash is a hardware screen effect (SEF0000_GENO_FLASH) - the sun
         # gradient is generated procedurally by the SA-1 color-math HDMA pipeline,
         # not from a CGRAM palette. Element variation is conveyed via sound only.
         return {}

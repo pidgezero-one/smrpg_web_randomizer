@@ -111,13 +111,11 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     # Use os.urandom for maximum entropy instead of timestamp
     random.seed(int.from_bytes(os.urandom(8), 'big'))
 
-    # Canon names
     if world.settings.isflag_enabled(RemakeNames):
         world.battle_dialogs.battle_dialogs[217] = " Wizakoopa’s hiding![await]"
         world.battle_dialogs.battle_dialogs[214] = 'GASSOX: Duh, huh huh...[await]'
         world.battle_dialogs.battle_dialogs[132] = ' Claymorton’s stunned!![await]'
 
-    # Canon names
     if world.settings.isflag_enabled(CanonNames):
         world.enemies.get_by_type(KAMEKEnemy).set_name("KAMEK")
         world.enemies.get_by_type(BIRDETTAEnemy).set_name("BIRDETTA")
@@ -125,7 +123,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.battle_dialogs.battle_dialogs[217] = " Kamek’s hiding![await]"
         world.battle_dialogs.battle_dialogs[206] = 'BIRDETTA: Tee, hee![await]\n Ouch, you’re hurting me![await]\n Now it’s my turn![await]\n Get it while it’s hot![await]'
 
-    # Peach name
     if world.settings.isflag_enabled(Peach):
         world.allies._allies[1].name = "Peach"
         world.enemies.get_by_type(TOADSTOOL2Enemy).set_name("PEACH CLONE")
@@ -139,7 +136,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.enemies.get_by_type(BOOSTEREnemy).set_name("BOOSTER 1")
         world.enemies.get_by_type(BUNDTEnemy).set_name("BUNDT 1")
 
-    # Remake names
     if world.settings.isflag_enabled(RemakeNames):
         for enemy in world.enemies.enemies:
             e = cast(Enemy, enemy)
@@ -196,7 +192,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     # Remove screen flashes (accessibility)
     if world.settings.isflag_enabled(RemoveFlashes):
-        # Reduce flash intensity
         screenflashes = [
             "screen_flash_1",  # thunderbolt
             "screen_flash_2",
@@ -211,7 +206,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 NO_COLOUR
             )
 
-        # Delete flash commands # 
         deletes = [
             "command_0x35BE52",  # geno flash
             "geno_blast_effect",  # geno blast
@@ -244,7 +238,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         for identifier in deletes_3A:
             world.battle_animations[0x3A].delete_command_by_name(identifier)
 
-        # Replace flash effects
         world.battle_animations[0x35].get_command_by_name(
             "bigbang_flash"
         ).set_effect(EF0025_PSYCH_BOMB_BG)  # type: ignore
@@ -350,13 +343,9 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW CLONE", world.mallow_palette.clone_name)
             world.overworld_dialogs.search_and_replace_in_all_dialogs("MALLOW COPY S", world.mallow_palette.strong_clone_name)
 
-    # Initialize selected music IDs
     world.selected_music_ids = []
 
-    # Boss shuffle music
     if world.settings.isflag_enabled(BossShuffleMusic):
-
-        # Get the enabled music tracks from user selection
         enabled_tracks = world.settings.get_flag(ShuffledMusic).enabled
 
         # Pick 8 random music IDs from the enabled tracks (with replacement if needed)
@@ -365,10 +354,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         else:
             selected_tracks = random.choices(enabled_tracks, k=8)
 
-        # Store the music IDs for patching in get_patch
         world.selected_music_ids = [track.music_id for track in selected_tracks]
 
-        # Get all 8 battle music instances directly
         music_instances = get_default_music()
 
         # Assign random music to every battle formation (not just boss fights)
@@ -390,7 +377,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
     use_remake = world.settings.isflag_enabled(RemakeNames)
 
-    # Room service menu dialog
     if world.room_service_items:
         low_item = cast(Item, world.get_item(world.room_service_items[0]))
         high_item = cast(Item, world.get_item(world.room_service_items[1]))
@@ -404,7 +390,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             f" [select]  (No thanks)[await]"
         )
 
-    # Bomb trade shop dialogs
     if world.bomb_shop_items:
         bomb_items = [cast(Item, world.get_item(b)) for b in world.bomb_shop_items]
         bombs = [b.name for b in bomb_items]
@@ -428,8 +413,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             f"  3)\"{bombs[2]}\"[await]"
         )
 
-    # Replace dialog placeholders
-    # Character names and parts of speech
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MARIO_NAME`", world.allies._allies[0].name)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`PEACH_NAME`", world.allies._allies[1].name)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`BOWSER_NAME`", world.allies._allies[2].name)
@@ -449,7 +432,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`MAIN_CHARACTER_MBOY_GREETING`", nm.mboy_greeting)
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`PLAYER_INSULT`", nm.insult)
 
-    # Wedding courtyard dialogue
     towerboss = world.get_location(BoosterTowerIndoorBossFight).prize
     assert isinstance(towerboss, BossFightPrize)
     towerboss_name = towerboss.name(
@@ -457,7 +439,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.settings.isflag_enabled(CanonNames),
     )
     towerboss_gender = towerboss.gender
-    # Special dialog replacements if Mallow is the Marrymore character
     # we're not including any randomized ship dialogs when the recruited character is canonically a kid
     chapelchar = world.get_location(MarrymoreCharacter).prize
     if isinstance(chapelchar, CharacterPrize) and chapelchar._ally.index == 4:
@@ -494,7 +475,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_NAME_5`", random_boss_names[4][0])
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`RANDOM_BOSS_GENDER_1_OBJECTIVE`", random_boss_names[0][1][1])
 
-    # Other settings
     sjc1 = cast(RangeFlag, world.settings.get_flag(SuperJump1Threshold)).value
     sjc2 = cast(RangeFlag, world.settings.get_flag(SuperJump2Threshold)).value
     world.overworld_dialogs.search_and_replace_in_all_dialogs("`SUPER_JUMP_PRIZE_1_CAP`", str(sjc1))
@@ -572,7 +552,6 @@ DI1227_SHAMAN_SALESMAN_800_COINS, ''' I found an incredible item.
             dialog_id_2 = p.autoterm_dialog_id
             world.overworld_dialogs.search_and_replace_in_all_dialogs(f"`SPELL_{p.placement_id}`", spell.title)
 
-            # Determine character: use p.character if set, otherwise derive from SpellSlotLocation name
             char_type = p.character
             if char_type is None and isinstance(location, SpellSlotLocation):
                 # For SpellSlotLocations, determine character from location class name

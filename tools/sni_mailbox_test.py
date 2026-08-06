@@ -134,10 +134,8 @@ def send_command(host: str, uri: str, cmd: int, p1: int = 0, p2: int = 0, p3: in
     """
     # Write params first, then command byte (so hook sees consistent state)
     inbox_data = bytes([cmd, p1, p2, p3 & 0xFF, (p3 >> 8) & 0xFF])
-    # Write params at INBOX_COMMAND+1 first
     if not write_mailbox(host, uri, INBOX_COMMAND + 1, inbox_data[1:]):
         return None
-    # Write command byte to trigger
     if not write_mailbox(host, uri, INBOX_COMMAND, bytes([cmd])):
         return None
 
@@ -146,7 +144,6 @@ def send_command(host: str, uri: str, cmd: int, p1: int = 0, p2: int = 0, p3: in
         time.sleep(0.05)
         data = read_mailbox(host, uri, INBOX_COMMAND, 1)
         if data and data[0] == 0x00:
-            # Read result
             result = read_mailbox(host, uri, OUTBOX_RESULT, 1)
             if result:
                 return result[0]
@@ -279,7 +276,6 @@ def test_state_dump(host: str, uri: str) -> bool:
     if star_data:
         print(f"  Star pieces: {star_data[0]}/7")
 
-    # Character HP
     off = OUTBOX_CUR_HP - OUTBOX_CONSUMABLES
     char_names = ["Mario", "Toadstool", "Bowser", "Geno", "Mallow"]
     print("  Character HP:")
@@ -358,21 +354,20 @@ def diagnose_hook_failure(host: str, uri: str) -> None:
         if readback:
             print(f"  Read back: 0x{readback[0]:02X}")
             if readback[0] == 0xAA:
-                print("  SRAM write/read OK — FxPakPro can access this location")
+                print("  SRAM write/read OK - FxPakPro can access this location")
                 print("  → Hook is NOT writing here. Issue is in the SNES-side code.")
             elif readback[0] == 0x00:
-                print("  Read back 0x00 — game or SA-1 may be clearing this area!")
+                print("  Read back 0x00 - game or SA-1 may be clearing this area!")
             elif readback[0] == HOOK_VERSION:
                 print("  Read back hook version! Hook IS running but may be intermittent.")
             else:
-                print(f"  Unexpected value — something is writing to this location")
+                print(f"  Unexpected value - something is writing to this location")
 
     # Test 2: Read the ROM patches to verify they're present
     print()
     print("=" * 60)
     print("DIAGNOSTIC: ROM patch verification")
     print("=" * 60)
-    # Read NMI vectors from ROM via FxPakPro
     # Native NMI vector at SNES $00:FFEA
     rom_data = None
     try:
@@ -476,7 +471,6 @@ def diagnose_hook_failure(host: str, uri: str) -> None:
         (0xE06100, "BW-RAM $6100 (page 3)"),
         (0xE07F00, "BW-RAM $7F00 (page 3 end)"),
     ]
-    # Write test pattern to all locations
     for addr, desc in test_addrs:
         try:
             with grpc.insecure_channel(host) as ch:
@@ -494,7 +488,6 @@ def diagnose_hook_failure(host: str, uri: str) -> None:
 
     time.sleep(0.3)
 
-    # Read back
     for addr, desc in test_addrs:
         try:
             with grpc.insecure_channel(host) as ch:
@@ -541,7 +534,7 @@ def main() -> None:
     parser.add_argument("--heal", action="store_true", help="Heal all characters")
     args = parser.parse_args()
 
-    print("NMI Cooperative Hook — Mailbox Test")
+    print("NMI Cooperative Hook - Mailbox Test")
     print("=" * 60)
 
     uri = find_device(args.host)

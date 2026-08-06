@@ -185,9 +185,9 @@ from .items import (
     CrownItem,
     DummyItem)
 
-# Explicit export surface. Without this, `from ..items import *` also leaks the
-# `definitions` SUBPACKAGE name into the importer (enemies.py does exactly that),
-# where it shadows unrelated names. `items` IS listed: the items.items submodule
+# Explicit export surface. Without this, from ..items import * also leaks the
+# definitions SUBPACKAGE name into the importer (enemies.py does exactly that),
+# where it shadows unrelated names. items IS listed: the items.items submodule
 # leaked here before the split and reaches ~250 monster_ai scripts, so dropping it
 # would be a silent export-surface regression. Keep in sync with the imports above.
 __all__ = [

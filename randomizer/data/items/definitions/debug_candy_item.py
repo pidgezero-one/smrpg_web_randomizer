@@ -3,9 +3,9 @@ from smrpgpatchbuilder.datatypes.items.enums import (ItemPrefix)
 
 
 class DebugCandyItem(RegularItem):
-    """Debug Candy — reusable Rock Candy for debug/testing.
+    """Debug Candy - reusable Rock Candy for debug/testing.
 
-    Same effect as Rock Candy (200 power, all enemies) but ``_reusable``
+    Same effect as Rock Candy (200 power, all enemies) but _reusable
     is True so it never decrements from inventory. Lives at item_id 177
     (first slot in the contiguous DummyItem range, safely past every
     real vanilla item ID) and is intended only for debug builds.

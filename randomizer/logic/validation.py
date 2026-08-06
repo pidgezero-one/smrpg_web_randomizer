@@ -27,6 +27,8 @@ from ..types.flags import (
         LandsEndGate, LandsEndGating,
         BowsersKeepGate, BowsersKeepGating,
         FactoryGate, FactoryGating,
+        WinCondition, WinConditions,
+        Remake
     )
 from ..types.flags import (
         ExperienceNoRegular,
@@ -71,7 +73,6 @@ def _validate_character_requirements(settings: Settings) -> None:
     - Total required unique characters does not exceed max characters
     """
 
-    # Only validate if character shuffle is enabled
     if not settings.isflag_enabled(ShuffleCharacters):
         return
 
@@ -101,7 +102,6 @@ def _validate_character_requirements(settings: Settings) -> None:
             f"'Total playable allies'."
         )
 
-    # Collect characters required by gating settings
     gating_required_characters: set[str] = set()
     gating_checks: list[tuple[type, object, str]] = [
         (BanditsWayGate, BanditsWayGating.MALLOW, "Mallow"),
@@ -119,26 +119,21 @@ def _validate_character_requirements(settings: Settings) -> None:
         if settings.is_flag_value(flag_class, gating_value):
             gating_required_characters.add(char_name)
 
-    # Collect explicitly set starting characters (non-random)
     explicitly_set_starting_chars: set[str] = set()
     for option in starting_chars_flag.enabled:
         value = option.value
         # Check if this is a "Random_X" string value - skip, those aren't explicit
         if isinstance(value, str):
             continue
-        # This is an actual ally instance
         ally_name = value.name
         if ally_name:
             explicitly_set_starting_chars.add(ally_name)
 
-    # Get available characters
     available_chars_flag = settings.get_flag(AvailableCharacters)
     disabled_char_names = {m.value.name for m in available_chars_flag.disabled}
 
-    # Combine gating-required and explicitly set starting characters
     all_required_characters = gating_required_characters | explicitly_set_starting_chars
 
-    # Check for disabled required characters
     disabled_required = all_required_characters & disabled_char_names
     if disabled_required:
         raise SettingsValidationError(
@@ -147,7 +142,6 @@ def _validate_character_requirements(settings: Settings) -> None:
             f"Either change the gating/starting settings or enable these characters."
         )
 
-    # Check for max characters constraint
     if len(all_required_characters) > max_char_count:
         raise SettingsValidationError(
             f"Settings require {len(all_required_characters)} unique characters "
@@ -162,27 +156,40 @@ def _validate_star_piece_requirements(settings: Settings) -> None:
 
     Checks:
     - StarPiecesRequired does not exceed TotalStarPieces
+    - StarPiecesRequired is not 0 if WinCondition is STARS
     - TotalStarPieces is at least 4 if SeaGate is STAR_4
     - TotalStarPieces is at least 5 if LandsEndGate is STAR_5
     - TotalStarPieces is at least 6 if BowsersKeepGate or FactoryGate is STAR_6
     """
 
-    # Get star piece settings
     total_stars = settings.get_flag(TotalStarPieces).value
     required_stars = settings.get_flag(StarPiecesRequired).value
 
-    # Check that required doesn't exceed total
     if required_stars > total_stars:
         raise SettingsValidationError(
             f"'Star Pieces required to access the final Factory boss' ({required_stars}) "
             f"cannot be higher than 'Total Star Pieces available' ({total_stars})."
         )
 
-    # Only check gating requirements if star piece shuffle is enabled
+    # A "collect required Star Pieces" objective with 0 required would be won the
+    # instant the game starts, so reject it regardless of the shuffle setting.
+    if required_stars == 0 and settings.is_flag_value(WinCondition, WinConditions.STARS):
+        raise SettingsValidationError(
+            f"'Condition required to beat the game' is set to "
+            f"'{WinConditions.STARS.value}', but 'Star Pieces required to access "
+            f"the final Factory boss' is 0. Either raise the required Star Piece "
+            f"count or choose a different win condition."
+        )
+
+    # Monstro sealed door blocks a remake boss fight, so don't allow remake content if that's a win condition.
+    if settings.isflag_enabled(Remake) and settings.is_flag_value(WinCondition, WinConditions.SEALED):
+        raise SettingsValidationError(
+            f"The Monstro Town sealed door gates too much remake content to make placements solvable. Disable the remake content flag or choose a different win condition."
+        )
+
     if not settings.isflag_enabled(ShuffleStarPieces):
         return
 
-    # Check minimum star pieces based on gating settings
     min_required = 0
     min_reason = ""
 

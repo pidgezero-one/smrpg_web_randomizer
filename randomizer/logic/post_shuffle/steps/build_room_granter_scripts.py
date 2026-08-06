@@ -207,7 +207,6 @@ def build_room_granter_scripts(world: GameWorld) -> None:
     builders: dict[
         int, tuple[list[UsableEventScriptCommand], list[UsableEventScriptCommand]]
     ] = {}
-    # Collect all henchman container events used
     henchman_container_events: set[int] = set()
     # Snapshot vanilla NPC states before any shuffling modifies room objects
     snapshot_vanilla_room_states(world)
@@ -246,7 +245,6 @@ def build_room_granter_scripts(world: GameWorld) -> None:
     shared_mold_queue: list[tuple[AreaObject, int, int]] = []
 
     for place in world.locations.values():
-        # Construct prize granter hub events
         # skip frog disciple locations, they're set in shop shuffler
         if isinstance(place, (BossFightLocation, PrizeRow, StarPieceLocation)):
             ctr = place._container_event
@@ -254,7 +252,6 @@ def build_room_granter_scripts(world: GameWorld) -> None:
                 builders[ctr] = ([], [])
             if isinstance(place, BossFightLocation):
                 decision, execution, henchmen_packs = place.render(world)
-                # Add henchmen event script battle packs
                 for container_event, room_id, pack_id in henchmen_packs:
                     henchman_container_events.add(container_event)
                     if container_event not in builders:
@@ -523,8 +520,8 @@ def build_room_granter_scripts(world: GameWorld) -> None:
         marrymore_prize=_char_prize(MarrymoreCharacter),
         substitute_prizes=starter_prizes + excluded_prizes,
         mario_override=mario_override,
-        # Lock the cutscene protagonist to `world.overworld_character` — the
-        # same source `_apply_overworld_character_sprite_swap` uses to pick
+        # Lock the cutscene protagonist to world.overworld_character - the
+        # same source _apply_overworld_character_sprite_swap uses to pick
         # which NPC slot gets sprite 31. Both the script's protagonist-role
         # animations and the sprite-31 swap MUST target the same NPC slot,
         # otherwise the script animates one slot while sprite 31 lives on
@@ -532,7 +529,6 @@ def build_room_granter_scripts(world: GameWorld) -> None:
         protagonist_override=world.overworld_character,
     )
 
-    # Insert Set7000ToCurrentLevel at the beginning of all henchman container events
     for henchman_event in henchman_container_events:
         builders[henchman_event][0].insert(0,
             Set7000ToCurrentLevel(),
@@ -552,7 +548,7 @@ def build_room_granter_scripts(world: GameWorld) -> None:
             contents.insert(0, Set7000ToCurrentLevel())
             # Normalize the ship-packet auto-terminate signal before every freestanding
             # grant. The 5 auto-terminating Sunken Ship packets set it in their grant tail
-            # (in `execution` below); clearing here guarantees it never leaks past one
+            # (in execution below); clearing here guarantees it never leaks past one
             # collection, including on grant paths that show no "Got ..." dialog (star
             # piece, coins, flower) and so never clear it themselves.
             contents.insert(0, ClearBit(SHIP_PACKET_AUTOTERM_DIALOG))

@@ -36,7 +36,7 @@ room = Room(
     music=M0000_CURRENT,
     entrance_event=E0015_STANDARD_ROOM_LOADER,
     objects=[
-        RegularNPC( # 0 — Mario
+        RegularNPC( # 0 - Mario
             npc=npcs.MARIO_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -67,7 +67,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularNPC( # 1 — Peach
+        RegularNPC( # 1 - Peach
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -98,7 +98,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularClone( # 2 — Mallow
+        RegularClone( # 2 - Mallow
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -112,7 +112,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularNPC( # 3 — Geno (forest character; was NPC_4)
+        RegularNPC( # 3 - Geno (forest character; was NPC_4)
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -123,7 +123,7 @@ room = Room(
             z_half=False,
             direction=NORTHWEST,
             cannot_clone=True),
-        RegularNPC( # 4 — Geno doll (between Geno at NPC_3 and Bowser at NPC_6)
+        RegularNPC( # 4 - Geno doll (between Geno at NPC_3 and Bowser at NPC_6)
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -155,7 +155,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore.DIR2_SWSE),
-        RegularNPC( # 5 — Geno (redemption-scene NPC, separate from #4)
+        RegularNPC( # 5 - Geno (redemption-scene NPC, separate from #4)
             npc=npcs.GENO_REDEMPTION_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -182,7 +182,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3),
-        RegularNPC( # 6 — Bowser (must remain the last NPC in the room)
+        RegularNPC( # 6 - Bowser (must remain the last NPC in the room)
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,

@@ -1654,7 +1654,7 @@ class WinCondition(SelectOneFlag[WinConditions]):
 <br>
 <br><b>Beat Smithy</b>: The game is over as soon as you find Smithy and defeat him. (If you don't have him shuffled into the boss pool, this is the same thing as "Beat the Factory".)
 <br>
-<br><b>Collect required Star Pieces</b>: As soon as you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the game is finishe regardless of where you found your final Star Piece.
+<br><b>Collect required Star Pieces</b>: As soon as you collect the number of Star Pieces specified in your 'Star Pieces required to access the final Factory boss' setting, the game is finished regardless of where you found your final Star Piece.
 <br>
 <br><b>Beat Monstro Town sealed door</b>: The game is over when you defeat the boss behind the sealed door in Monstro Town, regardless of your Star Piece count."""
     choices = [o for o in WinConditions]

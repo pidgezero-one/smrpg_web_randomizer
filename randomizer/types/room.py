@@ -34,9 +34,9 @@ class Room(RoomBase):
     extra_sprite_actions: list[SpriteAnimationState]
     adjacent_rooms: list[int]  # List of adjacent room indices for EXP star buffer propagation
     # NPC obj index → list of expected animations. Each entry is one of:
-    #   - str: SpriteAnimationCollection attribute name (boss sprites)
-    #   - SpriteAnimationState: ally character animation state
-    #   - ("character", SpriteAnimationState): explicit ally form (legacy)
+    # - str: SpriteAnimationCollection attribute name (boss sprites)
+    # - SpriteAnimationState: ally character animation state
+    # - ("character", SpriteAnimationState): explicit ally form (legacy)
     npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]]
     # Role → expected animations, for ending cutscene rooms where the NPC slot a
     # role lands on depends on per-seed recruit assignment. Apply-time code
@@ -50,6 +50,15 @@ class Room(RoomBase):
     # calculator proceeds normally.
     vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]]
 
+    # Opt in to palette-swap sprite merging for this room's henchman slots.
+    # OFF by default and deliberately so: merging collapses two recoloured
+    # sprites onto one clone buffer, but a merged object renders from the
+    # canonical sprite's mold set, so any slot that plays an animation the
+    # canonical lacks breaks (room 192's snifits corrupt on mold 6). Only rooms
+    # crowded enough to actually need the buffer -- and whose henchmen stay on
+    # simple poses -- should turn it on.
+    allow_sprite_merging: bool
+
     def __init__(
         self,
         *args,
@@ -58,6 +67,7 @@ class Room(RoomBase):
         npc_expected_animations: dict[int, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]] | None = None,
         role_expected_animations: dict[str, Sequence[str | SpriteAnimationState | tuple[str, SpriteAnimationState]]] | None = None,
         vanilla_sprite_buffer_pins: dict[int, tuple[int, BufferSpace]] | None = None,
+        allow_sprite_merging: bool = False,
         **kwargs,
     ):
         super().__init__(*args, **kwargs)
@@ -66,20 +76,21 @@ class Room(RoomBase):
         self.npc_expected_animations = npc_expected_animations or {}
         self.role_expected_animations = role_expected_animations or {}
         self.vanilla_sprite_buffer_pins = vanilla_sprite_buffer_pins or {}
+        self.allow_sprite_merging = allow_sprite_merging
 
     def project_ally_sprite_buffer_size(
         self, world: GameWorld
     ) -> tuple[int, str] | None:
-        """Compute what `ally_sprite_buffer_size` would become for this room
-        given `world.overworld_character`, without mutating anything.
+        """Compute what ally_sprite_buffer_size would become for this room
+        given world.overworld_character, without mutating anything.
 
         Returns (new_buffer_size, worst_contributor_label), or None if the
         room has no ally buffer or the protagonist's sprite set isn't known.
 
-        The result is `max(min_vram_needed_for_protagonist_animations + 1,
-        current ally_sprite_buffer_size)`. Callers that just want to know
+        The result is max(min_vram_needed_for_protagonist_animations + 1,
+        current ally_sprite_buffer_size). Callers that just want to know
         whether the buffer grows can compare against
-        `partition.ally_sprite_buffer_size`.
+        partition.ally_sprite_buffer_size.
         """
         if self.partition is None:
             return None
@@ -88,13 +99,6 @@ class Room(RoomBase):
 
         ally = world.overworld_character.ally
 
-        # The protagonist sprite the engine actually renders is NOT the
-        # character_model.base.sprite_id. It's sprite 0 for Mario protagonist or
-        # sprite 31 (post-remap) for any other protagonist. Offsets in
-        # `_sprites_primary` are defined relative to that base, but only the first
-        # 7 sprites in that range (offsets 0-6) actually belong to the protagonist
-        # — offsets >= 7 reference unrelated NPC sprites and shouldn't contribute
-        # to partition sizing. See `utils/npcs.py:get_protagonist_sprite`.
         if ally.index not in PROTAGONIST_BASE_SPRITE_ID:
             return None
         protagonist_base = PROTAGONIST_BASE_SPRITE_ID[ally.index]
@@ -127,9 +131,6 @@ class Room(RoomBase):
                 continue
             labelled_values.append((v, f"default {label} (sprite {sid})"))
 
-        # Extra sprite actions — skip those whose offset falls outside the protagonist
-        # sprite range (offset >= 7), since those reference unrelated NPC sprites
-        # rather than protagonist animations.
         for state in self.extra_sprite_actions:
             if state not in ally._sprites_primary:
                 continue

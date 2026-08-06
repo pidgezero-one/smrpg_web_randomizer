@@ -33,15 +33,15 @@ class RandomPrizeSubstitute(Prize):
     def _draw(
         self, world: GameWorld, pool: Sequence[type[ItemPrize]]
     ) -> type[ItemPrize]:
-        """Pick from the least-used classes in ``pool``, then record the pick.
+        """Pick from the least-used classes in pool, then record the pick.
 
-        Plain ``random.choice`` samples with replacement, so a ~158-draw fill over
+        Plain random.choice samples with replacement, so a ~158-draw fill over
         a ~120-class pool leaves roughly 18 classes with 3+ copies and a quarter of
         the pool unused. Dealing from the least-used tranche spreads the fill: every
         class appears once before any appears twice.
         """
-        # ponytail: strict least-used deal — no repeats until the pool exhausts.
-        # Loosen to `count <= least + 1` if seeds read too uniform.
+        # ponytail: strict least-used deal - no repeats until the pool exhausts.
+        # Loosen to count <= least + 1 if seeds read too uniform.
         counts = world.substitute_draw_counts
         least = min(counts.get(prize_cls, 0) for prize_cls in pool)
         chosen = random.choice(

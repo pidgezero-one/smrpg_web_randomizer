@@ -1,17 +1,17 @@
 """StaticData: open-mode base ROM content the randomizer does not regenerate.
 
-Carries the *render-disjoint* bytes of the open-mode base ROM — spell/effect
-animation graphics + molds + palettes (``$F3``/``$F4``), object/effect palettes
-(``$E5``), compressed tilesets (``$FD``), and assorted gap data
-(``$D4``/``$DD``/``$E0``/``$E4``/``$F7``/``$F9``/``$FA``/``$FE``/``$FF``) that no
-``smrpgpatchbuilder`` ``render()`` method writes. The randomizer only renders a
-subset of animation banks (``_02``/``_35``/``_3A``), so these banks fall
+Carries the *render-disjoint* bytes of the open-mode base ROM - spell/effect
+animation graphics + molds + palettes ($F3/$F4), object/effect palettes
+($E5), compressed tilesets ($FD), and assorted gap data
+($D4/$DD/$E0/$E4/$F7/$F9/$FA/$FE/$FF) that no
+smrpgpatchbuilder render() method writes. The randomizer only renders a
+subset of animation banks (_02/_35/_3A), so these banks fall
 through; without this module the data would revert to vanilla when
-``open_mode.json`` is retired (verified: dropping it changes a real ROM).
+open_mode.json is retired (verified: dropping it changes a real ROM).
 
-Stored as a checked-in binary asset (``static_data.bin``) rather than inline
-literals (~137 KB). The loader streams it into the patch as ``{offset: bytes}``.
-Record format (same as ``title_screen.bin``)::
+Stored as a checked-in binary asset (static_data.bin) rather than inline
+literals (~137 KB). The loader streams it into the patch as {offset: bytes}.
+Record format (same as title_screen.bin)::
 
     [u32 file_offset LE][u32 length LE][length bytes] ...
 
@@ -19,11 +19,11 @@ Only the render-disjoint bytes are carried (per-byte, so partially-rendered
 entries don't clobber the bytes their collection owns).
 
 ORDERING: this must be applied **before** the palette cosmetic renders
-(``sprite_palettes`` / ``event_palettes`` / spell palettes) so those override
+(sprite_palettes / event_palettes / spell palettes) so those override
 the effect-palette base where they overlap.
 
-To regenerate ``static_data.bin``, re-extract the render-disjoint bytes for
-file offsets ``>= 0x140000`` (banks ``$D4``+) — see the deconstruction notes.
+To regenerate static_data.bin, re-extract the render-disjoint bytes for
+file offsets >= 0x140000 (banks $D4+) - see the deconstruction notes.
 """
 
 import os
@@ -34,7 +34,7 @@ from . import dialog_font_item_punctuation
 
 _ASSET = os.path.join(os.path.dirname(__file__), "static_data.bin")
 
-# Ranges owned by a ``render()`` pass that regenerates them on EVERY build.
+# Ranges owned by a render() pass that regenerates them on EVERY build.
 # static_data.bin must not carry base-ROM bytes here: a leftover blob is applied
 # in address order (patch keys are sorted at build time) and clobbers freshly
 # rendered data whose key sits below it.
@@ -70,9 +70,9 @@ _RENDERER_OWNED = (
 
 
 def _excluding_owned(offset: int, data: bytes) -> Iterator[tuple[int, bytes]]:
-    """Yield the sub-records of ``[offset, offset+len(data))`` that remain after
+    """Yield the sub-records of [offset, offset+len(data)) that remain after
     removing every renderer-owned range (so static_data never overwrites a
-    region that a ``render()`` pass regenerates on every build)."""
+    region that a render() pass regenerates on every build)."""
     start, end = offset, offset + len(data)
     pos = start
     for lo, hi in sorted(r for r in _RENDERER_OWNED if r[0] < end and r[1] > start):
@@ -84,7 +84,7 @@ def _excluding_owned(offset: int, data: bytes) -> Iterator[tuple[int, bytes]]:
 
 
 def get_patch() -> dict[int, bytes]:
-    """Stream the render-disjoint base-ROM records from ``static_data.bin``."""
+    """Stream the render-disjoint base-ROM records from static_data.bin."""
     out: dict[int, bytes] = {}
     with open(_ASSET, "rb") as handle:
         blob = handle.read()

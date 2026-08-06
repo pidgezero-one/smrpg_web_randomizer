@@ -1,14 +1,14 @@
 """Battle init: copy overworld party count to battle party size.
 
-Replaces the linear zero-fill block at ``$C2:A2BD`` (vanilla = 8
-individual ``STA $7EE0xx`` instructions, 39 bytes) with a tight zero-fill
+Replaces the linear zero-fill block at $C2:A2BD (vanilla = 8
+individual STA $7EE0xx instructions, 39 bytes) with a tight zero-fill
 loop followed by an explicit copy of the overworld party count
-(``$00:303F``) into the battle party-size byte (``$00:0926``).
+($00:303F) into the battle party-size byte ($00:0926).
 
-Patches a single contiguous 39-byte block at ROM ``$02:A2BD`` (SNES
-``$C2:A2BD``) — the new code is 31 bytes plus 8 NOP bytes of padding so
+Patches a single contiguous 39-byte block at ROM $02:A2BD (SNES
+$C2:A2BD) - the new code is 31 bytes plus 8 NOP bytes of padding so
 the routine fits in the same footprint. Trailing fall-through to vanilla
-code at ``$C2:A2E4`` is unchanged.
+code at $C2:A2E4 is unchanged.
 """
 
 _ROUTINE_OFFSET = 0x02A2BD

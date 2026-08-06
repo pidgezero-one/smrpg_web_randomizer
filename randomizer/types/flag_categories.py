@@ -247,7 +247,7 @@ class PuzzleCategory(FlagCategory):
         QuizIncludeNonSmrpg,
         RandomTadpolePondSong,
         RandomSunkenShipPassword,
-        RandomMinecartTrack,
+        #RandomMinecartTrack,
         RedBarrels,
         BowserDoorShuffle,
         BetterTips,

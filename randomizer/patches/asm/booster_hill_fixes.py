@@ -1,16 +1,16 @@
-"""Booster Hill (room 14) cold-entry hard freeze + slide + splash — ROOT fix.
+"""Booster Hill (room 14) cold-entry hard freeze + slide + splash - ROOT fix.
 
 All three symptoms (SA-1 deadlock, player "slide", water "splash") are a single
 bug that only surfaces on a *cold* Booster Hill entry (world-map -> room 14
 without first passing through a Booster Tower / Booster Pass area-load). See the
-``project_booster_hill_sa1_deadlock`` session memory (esp. update #85) for the
+project_booster_hill_sa1_deadlock session memory (esp. update #85) for the
 full multi-day trace; the short version is below.
 
 Root cause: a 1-byte SA-1 stack leak
 ------------------------------------
-The randomized prize packet is overworld object ``$6600``. Its animation is run
-by the SA-1 sprite-animation interpreter (``$C0:CE00`` .. bank ``$E1`` script).
-One animation command is handled at ``$C0:E0A2``:
+The randomized prize packet is overworld object $6600. Its animation is run
+by the SA-1 sprite-animation interpreter ($C0:CE00 .. bank $E1 script).
+One animation command is handled at $C0:E0A2:
 
     C0/E0B4  LDA $30,X        ; X = anim-part index * 2; tests bit7 of a $00:00xx flag
     C0/E0B6  BPL $E0BF        ; bit7 CLEAR -> skip (this is the *warm* path)
@@ -21,42 +21,42 @@ One animation command is handled at ``$C0:E0A2``:
                               ;   byte is never popped -> a 1-byte stack LEAK
     C0/E0BF  BRL $CE36
 
-The frame's single exit ``$C0:E380 PLB`` is reserved for the ``$CE1E`` entry
-``PHB``; there is no second ``PLB`` to balance ``$E0BC``. So when that flag's
+The frame's single exit $C0:E380 PLB is reserved for the $CE1E entry
+PHB; there is no second PLB to balance $E0BC. So when that flag's
 bit7 is SET, the anim frame runs with the SA-1 stack one byte low. At frame exit
-(``$E380 PLB`` then ``$E395 RTS``) the misaligned unwind pops the stale ``$E1``
-as the data bank and the stale ``$5100`` as the return address, so instead of
-returning to the animation loop (``$C0:CA52``) it lands on ``$C0:5101 BRL $3E93``
-— the *event*-script interpreter. The event interpreter then decodes ``$6600``'s
-animation bytes as event commands, one of which (``$C0:3F68 STA $31,X`` with
-X=$6000) stamps the *player* object's animation bank to ``$E1``. The player then
+($E380 PLB then $E395 RTS) the misaligned unwind pops the stale $E1
+as the data bank and the stale $5100 as the return address, so instead of
+returning to the animation loop ($C0:CA52) it lands on $C0:5101 BRL $3E93
+- the *event*-script interpreter. The event interpreter then decodes $6600's
+animation bytes as event commands, one of which ($C0:3F68 STA $31,X with
+X=$6000) stamps the *player* object's animation bank to $E1. The player then
 runs a garbage animation that (a) stages an SA-1 graphics command that never
 completes -> the S-CPU/SA-1 handshake deadlock, (b) drives the player east ->
 the slide, and (c) draws stale water molds -> the splash.
 
 A *warm* entry leaves that flag's bit7 CLEAR (Booster Tower / Booster Pass area
-loads clear it — the entire "196/197" asymmetry), so ``$E0B6 BPL`` is taken, the
-leak never happens, and ``$6600`` stays in the animation engine. Confirmed by
-diffing the cold vs warm SA-1 trace logs: at the shared ``$C0:DBC8`` the cold
-stack is ``S:07F5`` and the warm stack is ``S:07F6`` — exactly one byte.
+loads clear it - the entire "196/197" asymmetry), so $E0B6 BPL is taken, the
+leak never happens, and $6600 stays in the animation engine. Confirmed by
+diffing the cold vs warm SA-1 trace logs: at the shared $C0:DBC8 the cold
+stack is S:07F5 and the warm stack is S:07F6 - exactly one byte.
 
 The fix
 -------
 Reproduce the warm behaviour on a cold Booster Hill entry: when the leaky path
-would run (bit7 SET) *and* we are in Booster Hill (IRAM ``$003030`` == ``$000E``),
-skip the redundant ``LDA #$E1 / STA $31,X / PHB/PHA/PLB`` block entirely — i.e.
-take the same ``BRL $CE36`` the warm branch takes, with no orphaned byte. Every
+would run (bit7 SET) *and* we are in Booster Hill (IRAM $003030 == $000E),
+skip the redundant LDA #$E1 / STA $31,X / PHB/PHA/PLB block entirely - i.e.
+take the same BRL $CE36 the warm branch takes, with no orphaned byte. Every
 other room, and every bit7-CLEAR invocation, runs the exact vanilla bytes.
 
-``$C0:E0A2`` is shared engine code, so the hook is area-gated to be completely
-inert outside Booster Hill. In practice the handler only ever runs for ``$6600``
+$C0:E0A2 is shared engine code, so the hook is area-gated to be completely
+inert outside Booster Hill. In practice the handler only ever runs for $6600
 in this scenario (verified 1x in the trace), but the gate keeps it safe.
 
-This single patch replaces the earlier ``$5754`` deadlock trampoline (proven
-inert — reverting it still crashed) and the ``$3F66`` slide stamp (a downstream
+This single patch replaces the earlier $5754 deadlock trampoline (proven
+inert - reverting it still crashed) and the $3F66 slide stamp (a downstream
 band-aid): both are deleted.
 
-Run the ``smrpg-patch-audit`` skill if the hook site or free-space range moves.
+Run the smrpg-patch-audit skill if the hook site or free-space range moves.
 """
 
 from randomizer.data.nmi_hook import Asm65816
@@ -67,7 +67,7 @@ from randomizer.data.nmi_hook import Asm65816
 # $E0B8-$E0BE become dead inline code (only reached via the trampoline, which
 # reproduces them).
 _LEAK_HOOK = 0x00E0B4
-_E0BF_SNES = 0xC0E0BF        # vanilla BRL $CE36 — where every path rejoins
+_E0BF_SNES = 0xC0E0BF        # vanilla BRL $CE36 - where every path rejoins
 
 # Trampoline in C1 free space (the region the old slide trampoline used; the
 # always-on uncap_max_fp module owns $C1:C6C0-$C6DD, this sits just past it).
@@ -83,8 +83,8 @@ def _leak_trampoline() -> bytes:
     """Skip the leaky bank-dance in Booster Hill; run vanilla bytes elsewhere.
 
     Entry width matches the hook site ($C0:E0B4): M=8, X=16. X (the anim-part
-    index) must be preserved for ``STA $31,X``; A and flags are free — the
-    vanilla code past ``$E0BF`` reloads A at ``$CE36`` and never reads them.
+    index) must be preserved for STA $31,X; A and flags are free - the
+    vanilla code past $E0BF reloads A at $CE36 and never reads them.
     """
     a = Asm65816(base_addr=_LEAK_TRAMP & 0xFFFF)
     # Reproduce "LDA $30,X / BPL $E0BF": bit7 clear -> vanilla skip.

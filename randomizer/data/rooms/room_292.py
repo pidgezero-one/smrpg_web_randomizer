@@ -1,4 +1,4 @@
-# R292 — second half of the R496 ending cutscene (post-RunStarPieceSequence)
+# R292 - second half of the R496 ending cutscene (post-RunStarPieceSequence)
 #
 # This room is a clone of R496 with NPC_7 (the pre-sequence yellow star) demoted
 # to an empty placeholder. R496 retains NPC_7 and demotes NPC_8–14 (the spinning
@@ -142,7 +142,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=False),
-        RegularNPC( # 23 — Geno doll
+        RegularNPC( # 23 - Geno doll
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -329,7 +329,7 @@ room = Room(
             z_half=False,
             direction=SOUTHEAST,
             cannot_clone=False),
-        RegularNPC( # 19 — Mario (always sprite 0; protagonist's slot when starter is Mario, otherwise Mario as recruit)
+        RegularNPC( # 19 - Mario (always sprite 0; protagonist's slot when starter is Mario, otherwise Mario as recruit)
             npc=npcs.MARIO_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -358,7 +358,7 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=True,
             ),
-        RegularNPC( # 20 — Peach
+        RegularNPC( # 20 - Peach
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -387,7 +387,7 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=True,
             ),
-        RegularNPC( # 21 — Mallow
+        RegularNPC( # 21 - Mallow
             npc=npcs.MALLOW_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -399,7 +399,7 @@ room = Room(
             direction=SOUTHWEST,
             cannot_clone=True,
             ),
-        RegularNPC( # 22 — Geno
+        RegularNPC( # 22 - Geno
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -411,7 +411,7 @@ room = Room(
             direction=SOUTHWEST,
             cannot_clone=True,
             ),
-        RegularNPC( # 7 — empty placeholder (yellow star lives in R496)
+        RegularNPC( # 7 - empty placeholder (yellow star lives in R496)
             npc=npcs.EMPTY_NPC_3,
             event_script=E0540_UNUSED_HINT_DIALOG,
             action_script=A0246_ENDING_CUTSCENE_EFFECT,
@@ -422,7 +422,7 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=False),
-        RegularNPC( # 24 — Bowser
+        RegularNPC( # 24 - Bowser
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,

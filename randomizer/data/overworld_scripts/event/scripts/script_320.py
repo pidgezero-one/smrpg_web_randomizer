@@ -44,7 +44,8 @@ script = EventScript([
     SetSyncActionScript(NPC_4, A0111_MK_HALL_REPEATING_HENCHMEN_STARTING),
     SummonObjectToCurrentLevel(NPC_5),
     SetSyncActionScript(NPC_5, A0112_MK_HALL_TOAD),
-	FadeInFromBlack(sync=False, identifier="EVENT_320_fade_in_from_black_async"),
+	RunEventAsSubroutine(E1091_MUSHROOM_KINGDOM_MAIN_HALL_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_320_fade_in_from_black_async"),
+	FadeInFromBlack(sync=False),
     RunBackgroundEvent(event_id=E0324_KINGDOM_MAIN_HALL_FLIP_VERANDA, return_on_level_exit=True),
 	Return()
 ])

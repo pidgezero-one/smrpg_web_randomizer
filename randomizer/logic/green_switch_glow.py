@@ -1,16 +1,16 @@
 """Aim the green-switch glow at the palette row its sprite actually lands on.
 
-Area-map byte 16 (`effects_npc`) indexes a table of palette animations in bank $DD
-— base word `$DD:003E` = `$DD:9CF1`, **entry index = byte - 1** (there is a `DEC` at
-`$C0/2316`). Each entry is a list of 3-byte records, and the per-record handler at
-`$C0/235F` reads byte 1's low nibble as the CGRAM row to animate (`$2002 + row * 32`).
+Area-map byte 16 (effects_npc) indexes a table of palette animations in bank $DD
+- base word $DD:003E = $DD:9CF1, **entry index = byte - 1** (there is a DEC at
+$C0/2316). Each entry is a list of 3-byte records, and the per-record handler at
+$C0/235F reads byte 1's low nibble as the CGRAM row to animate ($2002 + row * 32).
 The record names a *row*, never an NPC.
 
 Overworld CGRAM layout: row 0 is untouched by event scripts, rows 1-7 are background
-palettes, row 8 is the protagonist, rows 9-15 are NPCs. `ally_sprite_buffer_size > 1`
+palettes, row 8 is the protagonist, rows 9-15 are NPCs. ally_sprite_buffer_size > 1
 extends the protagonist across rows 8..8+size-1 and NPC rows start after it.
 
-NPC rows are handed out **per distinct palette id, in object order** — not per sprite.
+NPC rows are handed out **per distinct palette id, in object order** - not per sprite.
 Two sprites sharing a palette share one row, and an NPC whose palette id matches the
 protagonist's gets no row at all because the protagonist's row already covers it. So
 the target row moves whenever the room's palette set changes, which under boss shuffle
@@ -19,17 +19,17 @@ them to a single model, and Belome 2's clone mirrors the overworld protagonist a
 therefore drops out of the allocation entirely.
 
 That is why this recomputes the row rather than shifting the vanilla one by the ally
-delta the way the save-point remap and `credits_palette_fix` do — the ally buffer is
+delta the way the save-point remap and credits_palette_fix do - the ally buffer is
 only one of the things that moves it.
 
-Each effect id below is set on exactly one room and the `effects_npc` check enforces
+Each effect id below is set on exactly one room and the effects_npc check enforces
 that, so rewriting the row nibble in place cannot reach another room. Background-layer
-records are absent from the table on purpose: `0x1D` and `0x22` both open with
-`6D 81 89` (palette row 1), the factory/keep background glow shared verbatim with
+records are absent from the table on purpose: 0x1D and 0x22 both open with
+6D 81 89 (palette row 1), the factory/keep background glow shared verbatim with
 rooms 469 and 471, and BG rows do not move.
 
-NOTE: at vanilla `ally_sprite_buffer_size = 1` room 470's switch computes to row 13
-while the vanilla record encodes 14 — an unoccupied row. The vanilla glow there misses
+NOTE: at vanilla ally_sprite_buffer_size = 1 room 470's switch computes to row 13
+while the vanilla record encodes 14 - an unoccupied row. The vanilla glow there misses
 the button; this aims it.
 """
 from __future__ import annotations
@@ -42,7 +42,7 @@ from ..data.variables.sprite_names import SPR0102_SAVE_POINT, SPR0109_GREEN_SWIT
 from ..types.room import Room
 # Re-exported, not just used here: these moved to palette_rows but existing
 # callers (and test_green_switch_glow) still import them from this module.
-# `protagonist_palette_id` and `PROTAGONIST_PALETTE_ROW` look unused locally --
+# protagonist_palette_id and PROTAGONIST_PALETTE_ROW look unused locally --
 # they are not. Removing them breaks those importers.
 from .palette_rows import (
     PROTAGONIST_PALETTE_ROW,
@@ -57,7 +57,7 @@ if TYPE_CHECKING:
 FIRST_NPC_PALETTE_ROW = 9
 MAX_OBJ_PALETTE_ROW = 15
 
-# room id -> (the `effects_npc` that room is expected to hold, records to aim).
+# room id -> (the effects_npc that room is expected to hold, records to aim).
 # Each record is (ROM address of the record's row byte, the record's high nibble,
 # the sprite whose palette the record is meant to animate).
 GLOW_RECORDS: dict[int, tuple[EffectsNpc, tuple[tuple[int, int, int], ...]]] = {

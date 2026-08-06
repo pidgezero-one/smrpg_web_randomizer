@@ -399,8 +399,7 @@ def _on_item_placed(
 ) -> None:
     """Callback to handle placement events like Mimic world area updates and spell count tracking."""
 
-    # Update spell assignment count when a spell is actually placed
-    # (the character was assigned in can_accept, but count is tracked here)
+    # the character was assigned back in can_accept; only the count lands here
     if isinstance(item, SpellPrize) and world.settings.isflag_enabled(SpellsAnywhere):
         if item.character is not None:
             if world._spell_assignments is None:
@@ -410,7 +409,6 @@ def _on_item_placed(
                 world._spell_assignments.get(char_type, 0) + 1
             )
 
-    # Update Mimic location world areas to match where the launcher was placed
     if isinstance(item, FirstMimicFightLauncher):
         world_area = placed_location._world_area
         world.locations[Mimic1BossFight]._world_area = world_area
@@ -476,7 +474,6 @@ def _dump_placement_failure(
     lines.append(f"PLACEMENT FAILURE - {datetime.now().isoformat()}")
     lines.append("=" * 80)
 
-    # 1) Pool contents before placement, by tier
     lines.append("")
     lines.append("POOL BEFORE PLACEMENT (by tier)")
     lines.append("-" * 40)
@@ -487,7 +484,6 @@ def _dump_placement_failure(
         for item_name in sorted(items):
             lines.append(f"    - {item_name}")
 
-    # 2) Priority classes used for placement
     lines.append("")
     lines.append("PRIORITY CLASSES (high-volume items)")
     lines.append("-" * 40)
@@ -497,14 +493,12 @@ def _dump_placement_failure(
     else:
         lines.append("  (none)")
 
-    # 3) Unplaceable items
     lines.append("")
     lines.append(f"UNPLACEABLE ITEMS ({len(unplaced_items)})")
     lines.append("-" * 40)
     for name in sorted(unplaced_items):
         lines.append(f"  - {name}")
 
-    # 3) Already placed items and their locations
     placed: list[tuple[str, str]] = []
     for loc in world.locations.values():
         if loc.has_item:
@@ -517,7 +511,6 @@ def _dump_placement_failure(
     for loc_name, prize_name in placed:
         lines.append(f"  {loc_name}: {prize_name}")
 
-    # 4) Accessible locations with no item
     accessible_empty: list[str] = []
     for loc in world.locations.values():
         if loc.can_access(player_has, world) and not loc.has_item:
@@ -530,7 +523,6 @@ def _dump_placement_failure(
     for name in accessible_empty:
         lines.append(f"  - {name}")
 
-    # 5) Inaccessible locations
     inaccessible: list[str] = []
     for loc in world.locations.values():
         if not loc.can_access(player_has, world):
@@ -587,13 +579,11 @@ def select_spells(
         PsychBombSpellPrize,
     ]
 
-    # Get excluded spell classes from AvailableSpells setting (for individual spell exclusions)
     available_spells_flag = world.settings.get_flag(AvailableSpells)
     excluded_spell_classes: set[type] = {
         m.value for m in available_spells_flag.disabled
     }
 
-    # Map spell classes to their corresponding SpellPrize classes
     spell_to_prize: dict[type, type[Prize]] = {
         JumpSpell: JumpSpellPrize,
         FireOrbSpell: FireOrbSpellPrize,
@@ -624,14 +614,12 @@ def select_spells(
         PsychBombSpell: PsychBombSpellPrize,
     }
 
-    # Get excluded spell prize classes (from AvailableSpells setting)
     excluded_spell_prizes: set[type[Prize]] = {
         spell_to_prize[spell_cls]
         for spell_cls in excluded_spell_classes
         if spell_cls in spell_to_prize
     }
 
-    # Build available spells list (all spells minus UI exclusions)
     available_spells: list[type[Prize]] = [
         sp for sp in all_spell_prizes if sp not in excluded_spell_prizes
     ]
@@ -736,9 +724,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     # All boss fights are progress because they each unlock one star piece check at minimum.
     for prize_cls in BossFightPrize.__subclasses__():
         progress_rules.append(prize_cls)
-    # Prizes that unlock progress depending on settings
-    # Character recruitment prize handling
-    # Map character names to their prize classes
     all_character_prizes: dict[str, type[CharacterPrize]] = {
         "Mario": MarioRecruitmentPrize,
         "Mallow": MallowRecruitmentPrize,
@@ -747,19 +732,16 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         "Toadstool": ToadstoolRecruitmentPrize,
     }
 
-    # Get excluded characters from AvailableCharacters setting
     available_chars_flag = world.settings.get_flag(AvailableCharacters)
     excluded_char_names: set[str] = {
         m.value.name for m in available_chars_flag.disabled
     }
-    # --- Character roster first ---------------------------------------------
     # Decide which characters are actually in the seed BEFORE selecting spells,
     # so the spell pool can be derived from the final roster. In vanilla
     # learned-spell mode a spell is only learnable by its owning character, so a
     # spell whose owner isn't in the seed must never enter the pool (it could
     # never be placed and would deadlock the fill).
 
-    # Get MaxCharacters setting
     max_characters = world.settings.get_flag(MaxCharacters).value
 
     # Characters explicitly chosen as starters. They must be present in the
@@ -771,14 +753,13 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     explicit_starter_prizes: set[type[CharacterPrize]] = set()
     for option in starting_chars_flag.enabled:
         value = option.value
-        # Skip Random_X placeholders — those are meant to be resolved randomly
+        # Skip Random_X placeholders - those are meant to be resolved randomly
         if isinstance(value, str):
             continue
         prize_cls = all_character_prizes.get(value.name)
         if prize_cls is not None:
             explicit_starter_prizes.add(prize_cls)
 
-    # Determine which characters are required for progression
     conditional_progress: dict[type[Prize], list[tuple[type, object]]] = {
         MallowRecruitmentPrize: [
             (BanditsWayGate, BanditsWayGating.MALLOW),
@@ -802,7 +783,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         ],
     }
 
-    # Collect characters required for progression
     progression_required_chars: set[type[CharacterPrize]] = set()
     for prize_cls, gating_info in conditional_progress.items():
         if not issubclass(prize_cls, CharacterPrize):
@@ -821,10 +801,8 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     ) and not world.settings.isflag_enabled(SpellsAnywhere):
         progression_required_chars.add(MarioRecruitmentPrize)
 
-    # Add characters explicitly selected as starters.
     progression_required_chars |= explicit_starter_prizes
 
-    # Map prize class to character name for validation
     prize_to_name: dict[type[CharacterPrize], str] = {
         v: k for k, v in all_character_prizes.items()
     }
@@ -872,7 +850,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
                 world._cached_spell_damage_char = random.choice(qualified)
             progression_required_chars.add(world._cached_spell_damage_char)
 
-    # Validation: Check if any progression-required character is excluded
     for prize_cls in progression_required_chars:
         char_name = prize_to_name.get(prize_cls)
         if char_name and char_name in excluded_char_names:
@@ -880,7 +857,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
                 f"Character '{char_name}' is required for progression but has been excluded in settings."
             )
 
-    # Validation: Check if MaxCharacters < number of progression-required characters
     if max_characters < len(progression_required_chars):
         raise ValueError(
             f"MaxCharacters ({max_characters}) is less than the number of characters "
@@ -888,28 +864,23 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             f"Required characters: {[prize_to_name[c] for c in progression_required_chars]}"
         )
 
-    # Calculate available (non-excluded) characters
     available_char_prizes: set[type[CharacterPrize]] = {
         prize_cls
         for name, prize_cls in all_character_prizes.items()
         if name not in excluded_char_names
     }
 
-    # Validation: Check if MaxCharacters can be fulfilled with available characters
     if max_characters > len(available_char_prizes):
         raise ValueError(
             f"MaxCharacters ({max_characters}) cannot be fulfilled. "
             f"Only {len(available_char_prizes)} characters are available after exclusions."
         )
 
-    # Add progression-required characters to progress_rules
     for prize_cls in progression_required_chars:
         progress_rules.append(prize_cls)
 
-    # Determine how many additional characters we can add to should_otherwise_include_rules
     remaining_slots = max_characters - len(progression_required_chars)
 
-    # Get non-progression, non-excluded characters
     non_progression_available: list[type[CharacterPrize]] = [
         prize_cls
         for prize_cls in available_char_prizes
@@ -923,7 +894,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     if world._cached_char_fill is not None:
         chars_to_include = world._cached_char_fill
     elif remaining_slots > 0 and non_progression_available:
-        # Select up to remaining_slots characters randomly
         chars_to_include = random.sample(
             non_progression_available,
             min(remaining_slots, len(non_progression_available)),
@@ -940,7 +910,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         progression_required_chars | set(chars_to_include)
     )
 
-    # --- Spells, derived from the final roster ------------------------------
     selected_spells = select_spells(world, selected_roster)
 
     selected_damaging_spells: list[type[SpellPrize]] = [
@@ -1013,8 +982,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             k: v for k, v in world.locations.items() if k not in monstro_locations
         }
 
-    # These will be added to should_otherwise_include_rules later
-
     # Tier 3: Prizes that don't unlock anything but that are extremely limited in terms of where they can be placed, so they need to be placed next
     post_progression_rules: list[type[Prize]] = [
         SlotsPrize,
@@ -1045,7 +1012,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
     if not world.settings.isflag_enabled(NoStarEgg):
         should_otherwise_include_rules.extend([StarEggPrize])
 
-    # Add non-progression characters that were randomly selected to fill remaining slots
     should_otherwise_include_rules.extend(chars_to_include)
     if world.settings.isflag_enabled(ShuffleBeetlemania):
         should_otherwise_include_rules.append(BeetlemaniaPrize)
@@ -1107,8 +1073,6 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
             progress_rules.append(stars[i])
         elif i < maxstars:
             should_otherwise_include_rules.append(stars[i])
-
-    # Add spells to mandatory inclusions tier with characters
 
     return {
         PROGRESSION_PRIZES: copy(progress_rules),
@@ -1238,7 +1202,6 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
     # empty locations don't return anything
     if location.originally_held is None:
         return None
-    # special case
     if issubclass(location.originally_held, SpellPrize):
         return None
     if issubclass(
@@ -1250,7 +1213,6 @@ def pull_prize(location: PrizeLocation, world: GameWorld) -> Prize | None:
     if not should_shuffle(location, world):
         return location.originally_held()
     inclusions = shuffle_rules(world)
-    # Ignore excluded star pieces and characters
     if issubclass(location.originally_held, (StarPiecePrize, CharacterPrize)):
         for _, classes in inclusions.items():
             for cls in classes:
@@ -1386,7 +1348,6 @@ def _build_priority_classes(world: GameWorld) -> set[type[Prize]]:
         if world.settings.is_flag_value(gate, gating_value):
             priority.add(boss_prize)
 
-    # Conditional key items
     if world.settings.is_flag_value(LandsEndGate, LandsEndGating.ELDER):
         priority.add(ShedKeyPrize)
 
@@ -1443,7 +1404,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             # Without them, vanilla slot/exp-star/magikoopa chests stay
             # not-shuffleable, the pool builder pre-binds their originally_held
             # prizes, and any duplicate of those classes ends up in LOW_PRIORITY
-            # — which is how slot/exp-star prizes silently leak into chests the
+            # - which is how slot/exp-star prizes silently leak into chests the
             # offset preview never showed.
             world.settings._flags[SlotsAnywhere] = SlotsAnywhere(True)
             world.settings._flags[EXPStarsAnywhere] = EXPStarsAnywhere(True)
@@ -1466,7 +1427,7 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     # NOTE: gate relaxation deliberately does NOT happen here. Gates are baked
     # into ROM state by apply_shuffler_independent_settings long before the
-    # shuffler runs, so they must be settled before that — see
+    # shuffler runs, so they must be settled before that - see
     # GameWorld._shuffle_items, which calls relax_deadlocked_gates() and rebuilds
     # the world if anything changed.
 
@@ -1489,7 +1450,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 ]
             )
 
-    # Reset spell assignments for SpellsAnywhere
     world._spell_assignments = None
     # Reset the cached character roster so this attempt re-rolls the random fill
     # (retries should get a fresh roster), but stays stable across the many
@@ -1503,7 +1463,6 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     rules = shuffle_rules(world)
 
-    # Empty every location and build the prize pool
     all_locations = list(world.locations.values())
 
     pre_seeded = sum(len(p) for p in pool.values())
@@ -1570,7 +1529,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if type(loc).__name__ == loc_name:
                     loc.set_prize(prize_cls())
                     break
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1589,7 +1547,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if isinstance(loc, chest_cls):
                     loc.set_prize(slots_prize_cls())
                     break
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1616,7 +1573,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                     break
             if placed_at is not None:
                 _on_item_placed(world, placed_prize, placed_at)
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1628,14 +1584,13 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if removed:
                     break
 
-        # Coin override: [(chest_class, InfiniteCoinsPrize)] — one chest per offset.
+        # Coin override: [(chest_class, InfiniteCoinsPrize)] - one chest per offset.
         for chest_cls, coin_prize_cls in offset_result["coin_overrides"]:
             offset_reserved_chest_classes.add(chest_cls)
             for loc in world.locations.values():
                 if isinstance(loc, chest_cls):
                     loc.set_prize(coin_prize_cls())
                     break
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1655,7 +1610,6 @@ def shuffle_prizes(world: GameWorld) -> None:
                 if isinstance(loc, sp_loc_cls):
                     loc.set_prize(sp_prize_cls())
                     break
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1690,16 +1644,14 @@ def shuffle_prizes(world: GameWorld) -> None:
                         or (world.settings.offset_mimics and issubclass(prize_cls, MimicBase))):
                     continue
                 # Also skip locations where the offset code already placed a
-                # slot or mimic prize — otherwise config.yml would overwrite
+                # slot or mimic prize - otherwise config.yml would overwrite
                 # that placement with a different prize.
                 if location_cls in offset_reserved_chest_classes:
                     continue
-            # Place the override prize at the target location
             for loc in world.locations.values():
                 if isinstance(loc, location_cls):
                     loc.set_prize(prize_cls())
                     break
-            # Remove one instance of this prize class from the pool
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):
@@ -1713,7 +1665,6 @@ def shuffle_prizes(world: GameWorld) -> None:
 
     pool_total = sum(len(p) for p in pool.values())
     if pool_total != pre_seeded + spell_count + pulled_count:
-        # Dump full pool contents to find the extras
         pool_contents: dict[str, int] = {}
         for tier_prizes in pool.values():
             for p in tier_prizes:
@@ -1741,7 +1692,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         assert npc is not None, f"NPC {npc_target} not found in room 349"
         npc._npc = EMPTY_NPC
 
-    # Build mapping of starting character locations to their index (0-4)
     starting_char_locations: dict[type, int] = {
         StartingCharacter1: 0,
         StartingCharacter2: 1,
@@ -1750,7 +1700,6 @@ def shuffle_prizes(world: GameWorld) -> None:
         StartingCharacter5: 4,
     }
 
-    # Map ally names to character prizes
     ally_name_to_prize: dict[str, type[CharacterPrize]] = {
         "Mario": MarioRecruitmentPrize,
         "Mallow": MallowRecruitmentPrize,
@@ -1763,16 +1712,13 @@ def shuffle_prizes(world: GameWorld) -> None:
     starting_chars_flag = world.settings.get_flag(StartingCharacters)
     resolved_starting_chars = starting_chars_flag.resolve_random_selections()
 
-    # Fill statically set locations
     for loc in world.locations.values():
-        # Handle starting character locations based on settings
         if isinstance(loc, StartingCharacterLocation):
             loc_idx = starting_char_locations.get(type(loc))
             if loc_idx is not None and loc_idx < len(resolved_starting_chars):
                 ally = resolved_starting_chars[loc_idx]
                 if ally and hasattr(ally, "name") and ally.name in ally_name_to_prize:
                     prize_cls = ally_name_to_prize[ally.name]
-                    # Check if this character is in the pool (not excluded)
                     char_in_pool = any(
                         isinstance(p, prize_cls) for tier in pool.values() for p in tier
                     )
@@ -1786,7 +1732,6 @@ def shuffle_prizes(world: GameWorld) -> None:
 
         elif not should_shuffle(loc, world):
             if loc.originally_held is not None:
-                # Check if this prize exists in the pool before trying to set/remove
                 # Excluded characters/star pieces/spells won't be in the pool
                 prize_exists_in_pool = any(
                     isinstance(p, loc.originally_held)
@@ -1798,7 +1743,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                     # ReplaceItems runs even without item shuffle: swap the worst
                     # consumables for coins wherever a coin can actually be held
                     # (chests, most NPC/event spots). A location that can't grant
-                    # a coin — e.g. StartingItem — keeps its item.
+                    # a coin - e.g. StartingItem - keeps its item.
                     swapped = _maybe_replace_bad_item_with_coin(prize, world)
                     if swapped is not prize and not loc.can_accept(
                         swapped, Inventory(), world
@@ -1807,26 +1752,12 @@ def shuffle_prizes(world: GameWorld) -> None:
                     loc.set_prize(swapped)
                     remove_prize_from_pool(pool, loc.originally_held, world)
 
-    # Shuffle the prize pools
+    # shuffled twice on purpose. A dropped experiment used to sit between these
+    # two passes, and the second one is now redundant, but dropping it shifts
+    # every subsequent random() draw and so changes every existing seed.
     for prizes in pool.values():
         random.shuffle(prizes)
 
-    # Add some "noise" to the top tier to prevent progression items from ending up in too many same-y formations
-    # non_progression_size = len(pool[RESTRICTED_PRIZES]) + len(pool[MANDATORY_INCLUSIONS]) + len(pool[LOW_PRIORITY])
-    # progression_size = len(pool[PROGRESSION_PRIZES])
-    # if non_progression_size > 0:
-    #     addition_size = progression_size * 0.2
-    #     rate = addition_size / non_progression_size
-    # else:
-    #     rate = 0
-    # for tier, prizes in pool.items():
-    #     if tier == PROGRESSION_PRIZES:
-    #         continue
-    #     for _ in range(len(prizes)):
-    #         if random.random() < rate:
-    #             pool[PROGRESSION_PRIZES].append(prizes.pop())
-
-    # Shuffle the prize pools again
     for prizes in pool.values():
         random.shuffle(prizes)
 
@@ -1851,17 +1782,16 @@ def shuffle_prizes(world: GameWorld) -> None:
     for name, count in static_placed.items():
         pool_plus_static[name] = pool_plus_static.get(name, 0) + count
 
-    # Only place items in locations that should be shuffled
     shuffle_filter = lambda loc: should_shuffle(loc, world)
     priority_classes = _build_priority_classes(world)
 
     # Key-item pool health. With KeyItemsAnywhere off, key items may only go in
-    # key-item locations, 1:1, so guard the count invariant, then — under POP —
+    # key-item locations, 1:1, so guard the count invariant, then - under POP -
     # open gates if boss pinning islanded some key slots (see solvability.py).
     # With KeyItemsAnywhere on, key items are ordinary items placed by the
     # general fill into any location, so the key-slot accounting is meaningless
     # and would false-positive whenever a key location gets filled by non-key
-    # filler (e.g. a debug override) — skip the whole guard.
+    # filler (e.g. a debug override) - skip the whole guard.
     if not world.settings.isflag_enabled(KeyItemsAnywhere):
         all_pool = [p for prizes in pool.values() for p in prizes]
         key_pool = [p for p in all_pool if isinstance(p, KeyPrize)]

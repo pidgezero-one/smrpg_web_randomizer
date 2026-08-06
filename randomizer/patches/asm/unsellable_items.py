@@ -1,69 +1,69 @@
-"""Bar ``no_sell`` items from being sold or thrown in the Waste Basket.
+"""Bar no_sell items from being sold or thrown in the Waste Basket.
 
-Item stat byte 0 bit 6 (``0x40``) is unused by vanilla: no code reads it and
-``smrpgpatchbuilder`` never wrote it before ``_no_sell`` existed. This module
+Item stat byte 0 bit 6 (0x40) is unused by vanilla: no code reads it and
+smrpgpatchbuilder never wrote it before _no_sell existed. This module
 teaches three menu code paths to honour it.
 
 Applied unconditionally. Which items carry the bit is decided per seed by
-``logic.pre_shuffle.item_protection`` from the ``ProtectSpecialItems`` flag (plus
+logic.pre_shuffle.item_protection from the ProtectSpecialItems flag (plus
 Debug Candy, always). With no item flagged, all three hooks behave exactly as
 vanilla did, so there is nothing to gate.
 
 Everything here reuses machinery the engine already has:
 
-* ``$C3:77E2`` turns an item id in ``$70`` into ``X = 0x014D + id*18``, the
-  offset of that item's stat record inside bank ``$FA``.
-* ``$9D`` is the item-name gray flag. ``$C3:7A3C`` folds it into the name's tile
-  attribute (``LDA $9D : ASL : ASL : ORA #$20``), so 0 draws white and 1 draws
+* $C3:77E2 turns an item id in $70 into X = 0x014D + id*18, the
+  offset of that item's stat record inside bank $FA.
+* $9D is the item-name gray flag. $C3:7A3C folds it into the name's tile
+  attribute (LDA $9D : ASL : ASL : ORA #$20), so 0 draws white and 1 draws
   the dark-blue "unusable" palette. The X menu sets it per row by calling the
-  gray setter ``$C3:2D9E`` immediately before the name drawer ``$C3:7A07``.
-* ``$C3:3F3C`` and ``$C3:2BEC`` are the engine's own rejection stubs
-  (``JSR $1963`` -- error buzz -- then ``RTS``), already used for empty slots and
+  gray setter $C3:2D9E immediately before the name drawer $C3:7A07.
+* $C3:3F3C and $C3:2BEC are the engine's own rejection stubs
+  (JSR $1963 -- error buzz -- then RTS), already used for empty slots and
   for the Waste Basket item itself.
 
 Three hooks:
 
-A. Sell Items name list (``$C3:3FD9``, entered from ``$C3:3DFE`` on open and
-   ``$C3:3F25`` on redraw after a sale) does ``STZ $9D`` once at ``$C3:3FF2``
-   and then two bare ``JSR $7A07``, so nothing ever grays. Only the two ``JSR``
-   *operands* change, to a helper that sets ``$9D`` then tail-calls ``$7A07``.
+A. Sell Items name list ($C3:3FD9, entered from $C3:3DFE on open and
+   $C3:3F25 on redraw after a sale) does STZ $9D once at $C3:3FF2
+   and then two bare JSR $7A07, so nothing ever grays. Only the two JSR
+   *operands* change, to a helper that sets $9D then tail-calls $7A07.
 
-B. Sell Items A-button handler ``$C3:3EF0`` hardcodes ``CMP #$FF`` /
-   ``CMP #$A0`` as its only refusals. Replaced with a gate that also refuses on
-   the ``no_sell`` bit.
+B. Sell Items A-button handler $C3:3EF0 hardcodes CMP #$FF /
+   CMP #$A0 as its only refusals. Replaced with a gate that also refuses on
+   the no_sell bit.
 
-C. Waste Basket drop ``$C3:2BCD`` erases the carried item
-   (``LDY $095F : LDA #$FF : STA $0000,Y``). Replaced with a gate that performs
+C. Waste Basket drop $C3:2BCD erases the carried item
+   (LDY $095F : LDA #$FF : STA $0000,Y). Replaced with a gate that performs
    that erase only for sellable items, and otherwise falls to the buzz.
 
-D. The "items maxed out" menu (``SC05_OPEN_ITEMS_MAXED_OUT_MENU``, init at
-   ``$C3:509A``, input at ``$C3:512C``, A-press at ``$C3:51B4``). Its cursor sits
-   either on the incoming "limbo" item (``$0931 == 0``, id in ``$59``) or on a bag
-   slot (``$0931 != 0``). Both land in ``$70`` before ``$C3:51CC``, where vanilla
-   refuses the Waste Basket and any ``price == 0`` item with message ``#$18``
+D. The "items maxed out" menu (SC05_OPEN_ITEMS_MAXED_OUT_MENU, init at
+   $C3:509A, input at $C3:512C, A-press at $C3:51B4). Its cursor sits
+   either on the incoming "limbo" item ($0931 == 0, id in $59) or on a bag
+   slot ($0931 != 0). Both land in $70 before $C3:51CC, where vanilla
+   refuses the Waste Basket and any price == 0 item with message #$18
    ("That's a Special Item") plus the buzz. We widen that same test to the
-   ``no_sell`` bit, so one hook covers both:
+   no_sell bit, so one hook covers both:
 
    * tossing a protected item **out of the bag** to make room, and
    * tossing the protected item **you just picked up** (which is never written to
      any inventory, so no store-site hook could ever have caught it).
 
-   Refusing here happens *before* the Yes/No confirm at ``$C3:51E2``, so the store
-   at ``$C3:5233`` (``LDA $59 : STA $2940,X`` -- an overwrite, not an ``#$FF``
+   Refusing here happens *before* the Yes/No confirm at $C3:51E2, so the store
+   at $C3:5233 (LDA $59 : STA $2940,X -- an overwrite, not an #$FF
    erase, which is why store-site scans never found it) is unreachable with a
    protected item and needs no hook of its own.
 
-Note ``$7E:2940`` is only a 30-byte scratch list shared by the item and equipment
-menus, not the real bag; ``$C3:72E6``/``$72FD`` and ``$C3:7316``/``$732D`` copy it
-to and from the canonical inventories in bank ``$7F``.
+Note $7E:2940 is only a 30-byte scratch list shared by the item and equipment
+menus, not the real bag; $C3:72E6/$72FD and $C3:7316/$732D copy it
+to and from the canonical inventories in bank $7F.
 
-Note ``price == 0`` is NOT a sell gate -- ``$C3:3EE6`` will happily sell a
+Note price == 0 is NOT a sell gate -- $C3:3EE6 will happily sell a
 price-0 item for 0 coins. Key items are safe only because they live in a
-separate inventory at ``$7FF8F0`` (see ``key_item_inventory``), not ``$2940``.
+separate inventory at $7FF8F0 (see key_item_inventory), not $2940.
 
-Free space: ``$C3:F000`` (ROM ``0x03F000``), 1024 bytes of ``$FF`` in vanilla,
-unclaimed by ``open_mode.json`` (nothing in bank C3 above ``0x0362B8``) or
-``static_data.bin`` (carries only ``>= 0x140000``).
+Free space: $C3:F000 (ROM 0x03F000), 1024 bytes of $FF in vanilla,
+unclaimed by open_mode.json (nothing in bank C3 above 0x0362B8) or
+static_data.bin (carries only >= 0x140000).
 """
 
 # Free-space helper entry points, as SNES bank-C3 addresses.
@@ -117,7 +117,7 @@ def _hi(addr: int) -> int:
 def _free_space() -> bytes:
     """Assemble the four helpers as one contiguous $C3:F000 block.
 
-    Laid out at fixed offsets so the ``JSR`` targets above stay stable; the gaps
+    Laid out at fixed offsets so the JSR targets above stay stable; the gaps
     between routines are padded with $FF.
     """
     blocks: dict[int, list[int]] = {}
@@ -160,7 +160,7 @@ def _free_space() -> bytes:
     ]
 
     # ---- $F040 nosell_draw ----------------------------------------------
-    # Drop-in for ``JSR $7A07`` in the sell list: sets $9D from the bit, then
+    # Drop-in for JSR $7A07 in the sell list: sets $9D from the bit, then
     # tail-calls the name drawer so its RTS returns to the list loop.
     blocks[_NOSELL_DRAW] = [
         0x20, _lo(_CHECK_NOSELL), _hi(_CHECK_NOSELL),  # $F040 JSR check_nosell
@@ -221,13 +221,13 @@ def _free_space() -> bytes:
 
 
 def get_patch() -> dict[int, bytes]:
-    """Return the byte writes that make ``no_sell`` items unsellable."""
+    """Return the byte writes that make no_sell items unsellable."""
     return {
         # Free-space helpers at $C3:F000.
         0x03F000: _free_space(),
 
         # Hook A: gray the two Sell Items name columns. Operand-only rewrite of
-        # ``JSR $7A07`` -> ``JSR nosell_draw`` at $C3:4006 and $C3:401A.
+        # JSR $7A07 -> JSR nosell_draw at $C3:4006 and $C3:401A.
         _DRAW_OPERAND_A: bytes([_lo(_NOSELL_DRAW), _hi(_NOSELL_DRAW)]),
         _DRAW_OPERAND_B: bytes([_lo(_NOSELL_DRAW), _hi(_NOSELL_DRAW)]),
 

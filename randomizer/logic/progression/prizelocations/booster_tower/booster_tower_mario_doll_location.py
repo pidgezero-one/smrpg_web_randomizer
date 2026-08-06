@@ -60,7 +60,7 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
     def grant(self, world: GameWorld | None = None) -> EventScript:
         # The shuffled prize is bonked off the curtain rod during a scripted sequence,
         # not walked onto at leisure, so its "got item" box must wait for A ([await]),
-        # like the ship-puzzle/altar packets — not auto-terminate like an ordinary
+        # like the ship-puzzle/altar packets - not auto-terminate like an ordinary
         # freestanding pickup. Reuse packet_grant, whose variants are exactly the
         # [await] copies of every standing grant.
         #

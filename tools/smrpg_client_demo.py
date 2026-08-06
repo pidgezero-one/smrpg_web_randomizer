@@ -101,14 +101,14 @@ def print_header(client: SmrpgClient) -> None:
 
 
 def on_check(event: CheckEvent) -> None:
-    """Handle a check event — print it to the log."""
+    """Handle a check event - print it to the log."""
     ts = format_timestamp(event.timestamp)
     print(f"\r\033[K  [{ts}] CHECK [{event.check_type.value.upper()}] {event.name}")
     print("> ", end="", flush=True)
 
 
 def on_var(event: VarEvent) -> None:
-    """Handle a variable change event — print it to the log."""
+    """Handle a variable change event - print it to the log."""
     ts = format_timestamp(event.timestamp)
     action = "SET" if event.value else "CLR"
     print(f"\r\033[K  [{ts}] VAR {action}: {event.var_name}")
@@ -116,14 +116,14 @@ def on_var(event: VarEvent) -> None:
 
 
 def on_room(event: RoomEvent) -> None:
-    """Handle a room change event — print it to the log."""
+    """Handle a room change event - print it to the log."""
     ts = format_timestamp(event.timestamp)
     print(f"\r\033[K  [{ts}] ROOM [{event.prev_room_id}] {event.prev_room_name} -> [{event.room_id}] {event.room_name}")
     print("> ", end="", flush=True)
 
 
 def on_command(event: CommandEvent) -> None:
-    """Handle a command event — print it to the log (skip STATE_DUMP to reduce noise)."""
+    """Handle a command event - print it to the log (skip STATE_DUMP to reduce noise)."""
     if event.command_name == "STATE_DUMP":
         return
     ts = format_timestamp(event.timestamp)
@@ -299,7 +299,7 @@ async def handle_command(client: SmrpgClient, line: str) -> None:
             print("  No checks completed yet.")
 
     elif cmd == "debug":
-        print("  Debug poll — raw read results:")
+        print("  Debug poll - raw read results:")
         await client.debug_poll()
         # Show parsed outbox details
         print(f"    Version byte: 0x{client._version_byte:02X} (expect 0x02 for IRAM support)")

@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 def set_fight_run_away_flags(world: GameWorld) -> None:
     # NOTE: update_changed_room_partitions(world) used to be here but was moved
-    # to after the protagonist sprite remap below — the orchestrator reads
+    # to after the protagonist sprite remap below - the orchestrator reads
     # sprite data from world.sprites for VRAM calculations, and the per-character
     # protagonist sprites aren't written to slots 31-37 until after this point.
 

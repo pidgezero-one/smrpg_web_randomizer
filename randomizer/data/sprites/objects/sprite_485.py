@@ -4,7 +4,7 @@
 
 from smrpgpatchbuilder.datatypes.graphics.classes import (CompleteSprite, AnimationPack, AnimationPackProperties, AnimationSequence, AnimationSequenceFrame, Mold, Tile)
 
-from randomizer.data.variables.sprite_palette_names import SPAL259_MACHINE_MADE_AXEM_BLACK
+from randomizer.data.variables.sprite_palette_names import SPAL255_MACHINE_MADE_AXEM_RED
 sprite = CompleteSprite(
     animation=AnimationPack(144, length=810, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
@@ -1114,7 +1114,11 @@ sprite = CompleteSprite(
             ]
         )
     ),
-    palette_id=SPAL259_MACHINE_MADE_AXEM_BLACK,
+    # SPAL259 and SPAL255 hold BYTE-IDENTICAL colours -- only the index differs.
+    # Sharing Red's id costs one CGRAM row instead of two wherever both appear,
+    # which is what lets room 315 keep a row free for the ship boss's crystal
+    # palette bump when the Axem Rangers are the seaside boss. Visually a no-op.
+    palette_id=SPAL255_MACHINE_MADE_AXEM_RED,
     palette_offset=0,
     unknown_num=8
 )

@@ -1,6 +1,6 @@
-"""The procedural minecart track generator — the project's ``Maze`` class, kept
+"""The procedural minecart track generator - the project's Maze class, kept
 verbatim. The randomizer business logic that turns a solved maze into Moleville
-Mountain Mode7 rail tiles lives in :mod:`randomizer.logic.shufflers.minigames`.
+Mountain Mode7 rail tiles lives in randomizer.logic.shufflers.minigames.
 """
 
 import random

@@ -9,7 +9,7 @@ from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBu
 
 # Item stat byte 0, bit 6. Unused by vanilla: no ROM code reads it, and
 # smrpgpatchbuilder neither writes nor parses it. The randomizer claims it as a
-# "cannot be sold or thrown away" flag, honoured by the ``unsellable_items`` ASM
+# "cannot be sold or thrown away" flag, honoured by the unsellable_items ASM
 # patch. This is a randomizer feature, not a game feature, so it lives here
 # rather than in smrpgpatchbuilder's Item.
 NO_SELL_BIT = 0x40

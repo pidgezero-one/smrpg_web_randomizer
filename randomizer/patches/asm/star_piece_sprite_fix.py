@@ -1,21 +1,21 @@
 """Fix the hardcoded sprite in ending star-piece sequence #8.
 
-The credits cutscene at ``$C3:5516`` originally does
-``LDX #$0184; STX $74`` to load sprite ``$0184`` (388). In v9 sprite 388
+The credits cutscene at $C3:5516 originally does
+LDX #$0184; STX $74 to load sprite $0184 (388). In v9 sprite 388
 moved into the enemy-reserved range and now renders Poundette. Redirect
 the load to sprite 725 (Geno Redemption), which is the intended visual.
 
-Patches the 2-byte LDX immediate operand at ROM ``$03:5517``.
+Patches the 2-byte LDX immediate operand at ROM $03:5517.
 
 Also relocates the level-up "choose a bonus" screen sprites. Those seven
 sprites were moved out of slots 225/227-232 into 829-835 (see
-``sprite_names.py``, ``npcs.py``, ``packets.py`` and ``sprite_829``-``835.py``).
-The level-up display lists in bank ``$C2`` still draw the old slot numbers as
-hardcoded ``81`` sprite-draw command operands, so repoint each operand to its
+sprite_names.py, npcs.py, packets.py and sprite_829-835.py).
+The level-up display lists in bank $C2 still draw the old slot numbers as
+hardcoded 81 sprite-draw command operands, so repoint each operand to its
 new slot. Each offset below is a 16-bit little-endian sprite-ID word (the
-``81 2X`` draw-command operand), located by ASM trace:
-``$C2:DE94`` (level-up object builder) -> ``$C2:E574`` (object loader)
--> master table ``$C2:E654[9]`` = ``$C2:E703`` -> ``81`` draw commands.
+81 2X draw-command operand), located by ASM trace:
+$C2:DE94 (level-up object builder) -> $C2:E574 (object loader)
+-> master table $C2:E654[9] = $C2:E703 -> 81 draw commands.
 """
 
 from randomizer.data.variables.sprite_names import (

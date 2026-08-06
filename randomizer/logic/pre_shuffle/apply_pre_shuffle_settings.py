@@ -1,6 +1,6 @@
 """Settings applied to game data before any shuffling happens.
 
-These five steps run back-to-back and depend only on `world.settings`, so they
+These five steps run back-to-back and depend only on world.settings, so they
 are grouped here rather than inlined in GameWorld.__init__. The remaining
 pre_shuffle entry points (apply_debug_max_stats, apply_experience_zero_settings,
 apply_minigame_settings, set_locations) are NOT called from here -- each is
@@ -80,7 +80,7 @@ def _set_startup_event_flags(world: GameWorld) -> None:
             AddToInventory(SeeYaItem),
         ]
         # Pre-set the 5th Frog Disciple sale bit whenever SeeYa shrinks the
-        # shop to 4 items — i.e. any time it is NOT fully shuffled (shops off
+        # shop to 4 items - i.e. any time it is NOT fully shuffled (shops off
         # OR items off). If both are shuffled the shop keeps 5 items and the
         # bit must stay clear. This MUST match the FrogDiscipleLocation1
         # removal predicate in prize_locations.py; a 4-item shop with the bit

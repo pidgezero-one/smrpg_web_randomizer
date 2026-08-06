@@ -1,8 +1,8 @@
 """Raw ASM / byte-level ROM patches.
 
-Each module in this package exposes a ``get_patch(...) -> dict[int, bytes]``
+Each module in this package exposes a get_patch(...) -> dict[int, bytes]
 function returning a mapping of ROM offset to bytes that the caller passes
-to ``Patch.add_dict``. Gameworld decides whether to call each module based
+to Patch.add_dict. Gameworld decides whether to call each module based
 on flags / settings; the modules themselves are concerned only with
 generating bytes.
 
@@ -10,67 +10,67 @@ Modules
 -------
 
 ASM hooks (multi-site / runtime-built):
-    * :mod:`battle_intro_hdma_fix` — Order-gate the sprite-palette HDMA
+    * :mod:battle_intro_hdma_fix - Order-gate the sprite-palette HDMA
       enable so it cannot bleed during the battle intro (the neon-block
       glitch).
-    * :mod:`battlefield_underwater_palette` — Whitelist gate for the
+    * :mod:battlefield_underwater_palette - Whitelist gate for the
       "+4 palette" path in BF14/BF34/BF38 so non-underwater monsters
       keep their normal colors.
-    * :mod:`belome3_brooch` — Belome 3 spell-block + Enduring Brooch.
-    * :mod:`exp_star_music_sticky` — Keep the EXP-star (Invincible Star)
+    * :mod:belome3_brooch - Belome 3 spell-block + Enduring Brooch.
+    * :mod:exp_star_music_sticky - Keep the EXP-star (Invincible Star)
       music overriding room BGM across room transitions when it is
-      started via ``PlayMusicAtCurrentVolume``.
-    * :mod:`invincibility_fix` — Red Essence dispel guard.
-    * :mod:`packet_allocation` — Packet allowlist routine for NPC slots.
+      started via PlayMusicAtCurrentVolume.
+    * :mod:invincibility_fix - Red Essence dispel guard.
+    * :mod:packet_allocation - Packet allowlist routine for NPC slots.
 
 Always-on byte patches:
-    * :mod:`key_item_inventory` — Expand key-item inventory size.
-    * :mod:`uncap_coins` — Raise the current-coins cap from 999 to 9999
+    * :mod:key_item_inventory - Expand key-item inventory size.
+    * :mod:uncap_coins - Raise the current-coins cap from 999 to 9999
       (overworld add-coins, battle reward, X-menu).
-    * :mod:`protagonist_static` — Always-on overworld engine substrate
+    * :mod:protagonist_static - Always-on overworld engine substrate
       (ally-loader char-0 collapse + name-targeted resolver gutting) for
       the non-Mario-protagonist system.
-    * :mod:`disable_garden_intro` — Skip the opening garden intro on both
+    * :mod:disable_garden_intro - Skip the opening garden intro on both
       new game and load game.
-    * :mod:`title_screen` — Custom intro / title-screen GFX, streamed from
-      the ``title_screen.bin`` asset (render() does not regenerate it).
-    * :mod:`static_data` — Render-disjoint open-mode base data (effect
-      animations/palettes, tilesets, gap data) from ``static_data.bin``;
+    * :mod:title_screen - Custom intro / title-screen GFX, streamed from
+      the title_screen.bin asset (render() does not regenerate it).
+    * :mod:static_data - Render-disjoint open-mode base data (effect
+      animations/palettes, tilesets, gap data) from static_data.bin;
       applied before the palette cosmetics.
-    * :mod:`learn_special_event` — Custom "learn special ability" event command.
-    * :mod:`dialogue_text_expansion` — Dialogue codes 0x18/0x19 -> bank $E4 text.
-    * :mod:`dialog_font_item_punctuation` — Give the dialogue font the ``!``
-      ``#`` ``-`` ``'`` glyphs item names encode at codes 0x7B-0x7E, so an item
-      name drawn with that font (battle spoils box, ``[0x70A7]`` substitution)
+    * :mod:learn_special_event - Custom "learn special ability" event command.
+    * :mod:dialogue_text_expansion - Dialogue codes 0x18/0x19 -> bank $E4 text.
+    * :mod:dialog_font_item_punctuation - Give the dialogue font the !
+      # - ' glyphs item names encode at codes 0x7B-0x7E, so an item
+      name drawn with that font (battle spoils box, [0x70A7] substitution)
       reads the same as it does in the menu.
-    * :mod:`battle_attribute_patches` — Confuse-status mask + attribute table.
-    * :mod:`menu_item_always_available` — Force a $40:30E3 menu item available.
-    * :mod:`grid_menu_navigation` — 2-D grid-menu cursor rework.
-    * :mod:`equip_menu_sort` — Sort the equipment list when the Equip menu opens.
-    * :mod:`special_items_menu_sort` — Sort the key-items list when its menu opens.
-    * :mod:`title_loop` — Title screen loops forever (no attract-mode demo).
-    * :mod:`battle_init` — Copy overworld party size to battle party size.
-    * :mod:`star_piece_sprite_fix` — Credits ending sequence sprite ID.
-    * :mod:`room_layouts` — Room area-layout records.
-    * :mod:`room_174_battlefield` — Force Sea Enclave for room 174 fights.
-    * :mod:`room_325_solidity` — Mushroom Kingdom doorway chest fix.
-    * :mod:`sprite_group_whitelist` — Relocated engine sprite-group
+    * :mod:battle_attribute_patches - Confuse-status mask + attribute table.
+    * :mod:menu_item_always_available - Force a $40:30E3 menu item available.
+    * :mod:grid_menu_navigation - 2-D grid-menu cursor rework.
+    * :mod:equip_menu_sort - Sort the equipment list when the Equip menu opens.
+    * :mod:special_items_menu_sort - Sort the key-items list when its menu opens.
+    * :mod:title_loop - Title screen loops forever (no attract-mode demo).
+    * :mod:battle_init - Copy overworld party size to battle party size.
+    * :mod:star_piece_sprite_fix - Credits ending sequence sprite ID.
+    * :mod:room_layouts - Room area-layout records.
+    * :mod:room_174_battlefield - Force Sea Enclave for room 174 fights.
+    * :mod:room_325_solidity - Mushroom Kingdom doorway chest fix.
+    * :mod:sprite_group_whitelist - Relocated engine sprite-group
       whitelist; restores the Green Yoshi entry alongside the
       alternate-protagonist entry (room 34 Yoshi-riding).
-    * :mod:`rom_metadata` — ROM title + version text.
+    * :mod:rom_metadata - ROM title + version text.
 
 Flag-gated byte patches:
-    * :mod:`no_exp` — Zero EXP table.
-    * :mod:`show_equips` — Show equipped item bitmasks in menu.
-    * :mod:`uncap_max_fp` — Uncap max FP from 99 to 255.
-    * :mod:`unsellable_items` — Bar ``no_sell`` items from being sold or discarded.
-    * :mod:`selected_music` — Battle music ID overrides.
-    * :mod:`culex_victory_music` — Point the "Victory Against Culex" fanfare at
+    * :mod:no_exp - Zero EXP table.
+    * :mod:show_equips - Show equipped item bitmasks in menu.
+    * :mod:uncap_max_fp - Uncap max FP from 99 to 255.
+    * :mod:unsellable_items - Bar no_sell items from being sold or discarded.
+    * :mod:selected_music - Battle music ID overrides.
+    * :mod:culex_victory_music - Point the "Victory Against Culex" fanfare at
       whatever formation ends up behind the Monstro Town door, instead of
       Culex's stale vanilla formation ID.
-    * :mod:`hold_b` — Hold-B-to-advance dialog patch.
-    * :mod:`debug_fp` — Starting FP override under debug mode.
-    * :mod:`non_mario_character` — Starter / overworld / file-select
+    * :mod:hold_b - Hold-B-to-advance dialog patch.
+    * :mod:debug_fp - Starting FP override under debug mode.
+    * :mod:non_mario_character - Starter / overworld / file-select
       sprite redirects when the player is not Mario.
 """
 

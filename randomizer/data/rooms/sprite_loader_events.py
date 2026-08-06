@@ -1,22 +1,21 @@
-"""Room to reserved sprite-loader stub. GENERATED -- do not edit by hand.
-
-Regenerate with: patchvenv/bin/python manage.py sprite_loader_events
-Drift is caught by .claude/tests/test_sprite_loader_events.py
-
-Each value is an empty *_SHUFFLED_NPC_ANIMATION_LOADER event already invoked from
-that room's loader chain, reserved for per-object sprite setup.
-"""
+"""Room to reserved sprite-loader stub. GENERATED -- do not edit by hand."""
 
 
 ROOM_SPRITE_LOADER: dict[int, int] = {
+    3: 1089,
+    4: 1090,
+    17: 1091,
     24: 803,
     25: 804,
     28: 801,
     37: 799,
     43: 797,
+    50: 1092,
+    54: 1093,
     76: 757,
     77: 758,
     78: 759,
+    83: 1094,
     109: 823,
     110: 819,
     112: 818,
@@ -30,6 +29,7 @@ ROOM_SPRITE_LOADER: dict[int, int] = {
     155: 796,
     177: 800,
     190: 762,
+    191: 1095,
     192: 789,
     193: 792,
     194: 798,
@@ -49,6 +49,8 @@ ROOM_SPRITE_LOADER: dict[int, int] = {
     216: 812,
     217: 813,
     223: 854,
+    228: 1096,
+    230: 1097,
     232: 775,
     254: 817,
     255: 815,
@@ -82,6 +84,7 @@ ROOM_SPRITE_LOADER: dict[int, int] = {
     406: 859,
     408: 830,
     411: 838,
+    416: 1098,
     430: 822,
     437: 820,
     440: 831,

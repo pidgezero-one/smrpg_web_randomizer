@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+	RunEventAsSubroutine(E1096_FOREST_MAZE_BEFORE_TRUNK_ROOM_SHUFFLED_NPC_ANIMATION_LOADER),
 	JmpIfBitClear(DIRECTIONAL_7047_0, ["EVENT_2806_fade_in_from_black_async_9"]),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_VisibilityOff()

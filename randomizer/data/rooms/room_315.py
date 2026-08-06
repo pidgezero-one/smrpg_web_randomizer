@@ -10,6 +10,9 @@ from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 room = Room(
+    # Crowded enough to need the clone buffer a palette-swap merge frees,
+    # and its henchmen stay on poses the canonical sprite can render.
+    allow_sprite_merging=True,
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,
@@ -250,7 +253,15 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3, cannot_clone=True),
+            # No cannot_clone override: this slot's occupant is replaced by boss
+            # shuffle, and a hard True is honoured regardless of what lands here
+            # (partition_calculator.py:521, :563), which excludes the new sprite
+            # from frequency analysis. With the Axem Rangers as the seaside boss
+            # that pinned the room's most-repeated sprite into dedicated VRAM
+            # twice over and pushed the cursor onto clone buffer A. Gridplane
+            # sprites never need the override; non-gridplane ones are already
+            # dropped from buffer candidacy at :565.
+            byte7_upper2=3),
         RegularNPC( # 7
             npc=npcs.YARIDOVICH_OUT_OF_BATTLE_NPC,
             initiator=EventInitiator.NONE,
@@ -277,7 +288,9 @@ room = Room(
             byte3_bit7=False,
             slidable_along_walls=True,
             cant_move_if_in_air=True,
-            byte7_upper2=3, cannot_clone=True),
+            # Same as slot 6. Yaridovich's own sprite 617 is non-gridplane, so
+            # :565 keeps him out of a clone buffer without the override.
+            byte7_upper2=3),
         RegularNPC( # 8
             npc=npcs.JONATHAN_JONES_NPC_2,
             initiator=EventInitiator.NONE,

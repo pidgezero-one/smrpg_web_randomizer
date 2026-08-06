@@ -50,6 +50,7 @@ script = EventScript([
 		A_SetWalkingSpeed(FAST),
 		A_WalkNorthwestSteps(18)
 	]),
+	RunEventAsSubroutine(E1093_BOOSTER_HILL_SHUFFLED_NPC_ANIMATION_LOADER),
 	FadeInFromBlack(sync=False),
 	ActionQueueAsync(target=NPC_8, subscript=[
 		A_ToggleSubroutineSlots(mask=0x04),

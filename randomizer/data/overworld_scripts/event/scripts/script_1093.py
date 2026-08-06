@@ -1,4 +1,4 @@
-# E1093_EMPTY
+# E1093_BOOSTER_HILL_SHUFFLED_NPC_ANIMATION_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	Return()
 ])

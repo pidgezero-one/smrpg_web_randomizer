@@ -123,6 +123,7 @@ script = EventScript([
         A_ObjectMemoryClearBit(0x30, bits=[4]),
         A_SetSolidityBits(cant_jump_through=True, cant_pass_walls=True),
         A_ClearSolidityBits(cant_walk_through=True),
+        A_FaceSouthwest(),
         A_SummonObjectToSpecificLevel(NPC_2, R286_MOLEVILLE_MINES_AREA_12_2LEVEL_ROOM_LEADS_TO_LONG_MINECART_TRACKS_ROOM),
         A_ReturnQueue(),
 	]),

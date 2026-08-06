@@ -581,12 +581,12 @@ class NPC:
     @property
     def min_vram_size(self) -> int:
         """The minimum number (0 to 7) of VRAM chunks the NPC's sprite can be expected to require.\n
-        The engine grants `4 * (min_vram_size + 1)` 16x16 tile slots, each holding four
-        8x8 subtiles — so capacity is `16 * (min_vram_size + 1)` subtiles.\n
+        The engine grants 4 * (min_vram_size + 1) 16x16 tile slots, each holding four
+        8x8 subtiles - so capacity is 16 * (min_vram_size + 1) subtiles.\n
         Generally, this number is 0 for gridplane sprites (a gridplane mold is one
         contiguous block of at most 16 subtiles, which is exactly the baseline).\n
-        For non-gridplane sprites it is `ceil(max(0, subtiles - 16) / 16)` over the
-        largest mold — counted in *subtiles*, not 16x16 tiles — based on the largest
+        For non-gridplane sprites it is ceil(max(0, subtiles - 16) / 16) over the
+        largest mold - counted in *subtiles*, not 16x16 tiles - based on the largest
         mold you expect to see displayed from the sprite."""
         assert self.base._min_vram_size <= 7
         return self.base._min_vram_size
@@ -597,7 +597,7 @@ class NPC:
     ) -> int:
         """Get min vram size from a certain sprite mold ID.
 
-        Pass `player_sprite=True` when sizing the protagonist's ally buffer — the
+        Pass player_sprite=True when sizing the protagonist's ally buffer - the
         VramStore 7 path uploads whole 16x16 tiles, so sparse ones aren't packed.
         See utils.npcs.min_vram_from_mold_geometry.
         """
@@ -619,7 +619,7 @@ class NPC:
     ) -> int:
         """Get min vram size from a certain sprite sequence ID.
 
-        Pass `player_sprite=True` when sizing the protagonist's ally buffer.
+        Pass player_sprite=True when sizing the protagonist's ally buffer.
         """
         sprite = world.get_sprite(self.base.sprite_id + offset)
         assert sequence_id < len(sprite.animation.properties.sequences)

@@ -10,6 +10,9 @@ from ..variables.music_names import *
 from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 room = Room(
+    # Crowded enough to need the clone buffer a palette-swap merge frees,
+    # and its henchmen stay on poses the canonical sprite can render.
+    allow_sprite_merging=True,
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,

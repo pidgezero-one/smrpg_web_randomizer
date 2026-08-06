@@ -38,7 +38,7 @@ def apply_debug_max_stats(world: GameWorld) -> None:
         ]
     )
     # Debug-only combat boost: give the Signal Ring and Safety Ring a big attack
-    # and magic-attack bump so test parties hit hard. Debug mode only — this
+    # and magic-attack bump so test parties hit hard. Debug mode only - this
     # whole function early-returns when debug mode is off.
     signal_ring.set_attack(100)
     signal_ring.set_magic_attack(100)

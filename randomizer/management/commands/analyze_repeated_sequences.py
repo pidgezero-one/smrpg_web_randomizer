@@ -61,7 +61,7 @@ def _normalize_arg_value(value) -> str:
     """Normalize a command's attribute value into a stable string form.
 
     TransformableIdentifier values are reduced to their label (so the command's
-    own identifier — excluded upstream — and destination labels render
+    own identifier - excluded upstream - and destination labels render
     deterministically). Lists/tuples recurse. Everything else falls back to repr.
     """
     if isinstance(value, TransformableIdentifier):
@@ -77,7 +77,7 @@ def get_command_signature(cmd: UsableAnimationScriptCommand) -> str:
     """Signature of a command based on its class and arguments.
 
     Two commands are considered equal iff they are the same class and their
-    constructor arguments match — EXCEPT `identifier`, which is always ignored
+    constructor arguments match - EXCEPT identifier, which is always ignored
     (so two commands that differ only by label compare equal).
     """
     cmd_type = type(cmd).__name__

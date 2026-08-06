@@ -1,26 +1,26 @@
 """Static check/flag/room data parsed from project source files.
 
 Parses variable_names.py, room_names.py, and prizelocations.py at import time
-using text regex — no dependency on smrpgpatchbuilder.
+using text regex - no dependency on smrpgpatchbuilder.
 
 Also contains AP location check tables from the Archipelago SMRPG world,
 which provide authoritative check detection data for all 229 AP locations
 across three BW-RAM regions (lower, event flags, treasure chests).
 
 Exports:
-    ROOM_NAMES: dict[int, str]  — room ID → display name (509 entries)
-    FLAG_NAMES: dict[tuple[int, int], str]  — (byte_offset, bit) → var name (768 entries)
-    CHECK_CONDITIONS: dict[str, list[str]]  — var name → check class names
-    COMPOUND_CHECKS: list[tuple[str, list[str]]]  — (class_name, [required_var_names])
+    ROOM_NAMES: dict[int, str] - room ID → display name (509 entries)
+    FLAG_NAMES: dict[tuple[int, int], str] - (byte_offset, bit) → var name (768 entries)
+    CHECK_CONDITIONS: dict[str, list[str]] - var name → check class names
+    COMPOUND_CHECKS: list[tuple[str, list[str]]] - (class_name, [required_var_names])
     check_flag(data, byte_offset, bit) → bool
 
     AP check detection:
-    AP_REGION_LOWER_ADDR/SIZE — lower BW-RAM region (key items, NPC triggers)
-    AP_REGION_EVENT_ADDR/SIZE — event flag region
-    AP_REGION_CHEST_ADDR/SIZE — treasure chest region
-    AP_LOWER_CHECKS — per-region lookup for lower BW-RAM
-    AP_EVENT_CHECKS — per-region lookup for event flags
-    AP_CHEST_CHECKS — per-region lookup for treasure chests
+    AP_REGION_LOWER_ADDR/SIZE - lower BW-RAM region (key items, NPC triggers)
+    AP_REGION_EVENT_ADDR/SIZE - event flag region
+    AP_REGION_CHEST_ADDR/SIZE - treasure chest region
+    AP_LOWER_CHECKS - per-region lookup for lower BW-RAM
+    AP_EVENT_CHECKS - per-region lookup for event flags
+    AP_CHEST_CHECKS - per-region lookup for treasure chests
 """
 
 from __future__ import annotations
@@ -180,7 +180,7 @@ CHECK_CONDITIONS, COMPOUND_CHECKS = _parse_check_conditions()
 #
 # Three BW-RAM read regions cover all 229 AP location checks:
 #   Lower:  0xE02D00-0xE02E8F  (key items, NPC triggers, some bosses)
-#   Events: 0xE03040-0xE0309F  (event flags — same as existing read)
+#   Events: 0xE03040-0xE0309F  (event flags - same as existing read)
 #   Chests: 0xE03D80-0xE03D98  (treasure chest opened bits)
 #
 # Each check has a polarity (set_when_checked):

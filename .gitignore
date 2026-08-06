@@ -119,6 +119,7 @@ CLAUDE.md
 patchvenv
 .agents
 skills-lock.json
+.superpowers
 
 **/.DS_Store
 

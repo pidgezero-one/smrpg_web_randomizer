@@ -82,16 +82,13 @@ def parse_issue_body(body: str) -> dict[str, str]:
 
     for line in body.split("\n"):
         if line.startswith("### "):
-            # Save previous field
             if current_field:
                 fields[current_field] = "\n".join(current_value_lines).strip()
-            # Start new field
             current_field = line[4:].strip()
             current_value_lines = []
         elif current_field:
             current_value_lines.append(line)
 
-    # Save last field
     if current_field:
         fields[current_field] = "\n".join(current_value_lines).strip()
 
@@ -114,16 +111,13 @@ def add_wish(fields: dict[str, str]) -> None:
         print("Error: No wish text found in issue")
         sys.exit(1)
 
-    # Add trailing punctuation if missing
     if wish_text and wish_text[-1] not in ".!?~":
         wish_text += "."
 
-    # Auto-format line breaks, vertical centering, and centering
     wish_text = format_dialog(wish_text)
     wish_text = format_wish(wish_text)
     wish_text = "[center]" + wish_text
 
-    # Validate centering works
     warnings = validate_dialog(wish_text)
     for w in warnings:
         print(f"Warning: {w}")
@@ -131,7 +125,6 @@ def add_wish(fields: dict[str, str]) -> None:
     escaped = escape_string(wish_text)
     new_entry = f'    "{escaped}",\n'
 
-    # Read file and find WISH_POOL list
     content = WISH_FILE.read_text()
 
     # Find the closing bracket of WISH_POOL list (before WISH_DIALOG_IDS)
@@ -156,10 +149,8 @@ def add_wish(fields: dict[str, str]) -> None:
 def clean_quiz_answer(answer: str) -> str:
     """Clean quiz answer: strip parentheses and trailing periods."""
     answer = answer.strip()
-    # Strip surrounding parentheses
     if answer.startswith("(") and answer.endswith(")"):
         answer = answer[1:-1].strip()
-    # Strip trailing period
     answer = answer.rstrip(".")
     return answer
 
@@ -175,17 +166,14 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
         print("Error: Missing required fields (question, correct answer, wrong answers)")
         sys.exit(1)
 
-    # Ensure question ends with ?
     question = question.rstrip()
     if question and not question.endswith("?"):
         question += "?"
 
-    # Clean answers
     correct = clean_quiz_answer(correct)
     wrong1 = clean_quiz_answer(wrong1)
     wrong2 = clean_quiz_answer(wrong2)
 
-    # Auto-format question line breaks and validate
     question = format_dialog(question)
     warnings = validate_dialog(question)
     for w in warnings:
@@ -201,13 +189,11 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
             print(f"Error: {label} answer too wide ({line_width}px > {max_width}px): {answer}")
             sys.exit(1)
 
-    # Escape strings
     question = escape_string(question)
     correct = escape_string(correct)
     wrong1 = escape_string(wrong1)
     wrong2 = escape_string(wrong2)
 
-    # Format the new Question entry
     new_entry = f'''        Question(
             "{question}",
             "{correct}",
@@ -219,11 +205,9 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
     content = QUIZ_FILE.read_text()
 
     if non_smrpg:
-        # Find get_non_smrpg_questions() return list
         pattern = r"(def get_non_smrpg_questions\(\).*?return \[.*?)(^\s*\])"
         func_name = "get_non_smrpg_questions"
     else:
-        # Find get_smrpg_questions() return list
         pattern = r"(def get_smrpg_questions\(\).*?return \[.*?)(^\s*\])"
         func_name = "get_smrpg_questions"
 
@@ -233,7 +217,6 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
         print(f"Error: Could not find {func_name}() return list in file")
         sys.exit(1)
 
-    # Insert new entry before closing bracket
     insert_pos = match.end(1)
     new_content = content[:insert_pos] + new_entry + content[insert_pos:]
 
@@ -243,7 +226,6 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
 
 def format_credits_name(name: str) -> str:
     """Format name for credits (uppercase, only A-Z, space, period, underscore)."""
-    # Filter to allowed characters and uppercase
     allowed = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ. _")
     result = "".join(c for c in name.upper() if c in allowed)
     return result if result else "ANONYMOUS"
@@ -284,7 +266,6 @@ def add_password(fields: dict[str, str]) -> None:
         print("Error: All 6 required hints must be provided")
         sys.exit(1)
 
-    # Format submitter info
     submitter = name if name else "Anonymous"
     submitter_credits = format_credits_name(name) if name else "ANONYMOUS"
     submitter_hint_prefix = format_hint_prefix(submitter)
@@ -295,7 +276,6 @@ def add_password(fields: dict[str, str]) -> None:
             return hint + "[await]"
         return hint
 
-    # Format hints with %RANDOM_WRITER% prefix
     def format_hint(hint: str) -> str:
         hint = format_dialog(hint)
         hint = ensure_await(hint)
@@ -318,7 +298,6 @@ def add_password(fields: dict[str, str]) -> None:
 
     word_escaped = escape_string(word.lower())
 
-    # Build the Password entry
     new_entry = f'''    Password(
         "{word_escaped}",
         {format_hint(hint1)},
@@ -340,7 +319,6 @@ def add_password(fields: dict[str, str]) -> None:
 
     content = PASSWORD_FILE.read_text()
 
-    # Find the pool list
     pattern = r"(^pool = \[.*?)(^\])"
     match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
 
@@ -348,7 +326,6 @@ def add_password(fields: dict[str, str]) -> None:
         print("Error: Could not find pool list in file")
         sys.exit(1)
 
-    # Insert new entry before closing bracket
     insert_pos = match.end(1)
     new_content = content[:insert_pos] + new_entry + content[insert_pos:]
 
@@ -367,7 +344,6 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
     """
     notes = []
 
-    # Try Python tuple format first: (Note, duration)
     tuple_pattern = r"\(\s*(Fa|So|La|Ti|Do|Re|Mi)\s*,\s*(\d+)\s*\)"
     matches = list(re.finditer(tuple_pattern, notation, re.IGNORECASE))
     if matches:
@@ -377,7 +353,6 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
             notes.append((note_name, duration))
         return notes
 
-    # Try colon/dash/space separated format: Note:duration or Note-duration
     pair_pattern = r"(Fa|So|La|Ti|Do|Re|Mi)\s*[:\-\s]\s*(\d+)"
     matches = list(re.finditer(pair_pattern, notation, re.IGNORECASE))
     if matches:
@@ -387,7 +362,6 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
             notes.append((note_name, duration))
         return notes
 
-    # Try simpler format: just note names with default durations
     simple_pattern = r"\b(Fa|So|La|Ti|Do|Re|Mi)\b"
     for match in re.finditer(simple_pattern, notation, re.IGNORECASE):
         note_name = match.group(1).capitalize()
@@ -398,9 +372,7 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
 
 def strip_markdown_ticks(s: str) -> tuple[str, bool]:
     """Remove markdown code ticks and return (cleaned_string, had_ticks)."""
-    # Check for code block or inline code ticks
     had_ticks = '`' in s
-    # Remove backticks
     s = s.replace('`', '')
     return s, had_ticks
 
@@ -418,7 +390,6 @@ def add_song(fields: dict[str, str]) -> None:
         print("Error: Missing required fields")
         sys.exit(1)
 
-    # Parse the notation
     notes = parse_song_notation(notation)
     if not notes:
         print(f"Error: Could not parse song notation: {notation}")
@@ -428,26 +399,21 @@ def add_song(fields: dict[str, str]) -> None:
         print(f"Warning: Song has {len(notes)} notes, but max is 8. Truncating.")
         notes = notes[:8]
 
-    # Format submitter info
     submitter = name if name else "Anonymous"
     submitter_credits = format_credits_name(name) if name else "ANONYMOUS"
 
-    # Generate scroll text from notes
     note_names = " ".join(n for n, _ in notes)
     scroll_text = f"\\n          {note_names}[await]"
 
-    # Check for markdown ticks and clean hints
     hint1, hint1_ticks = strip_markdown_ticks(hint1)
     hint2_pond, hint2_ticks = strip_markdown_ticks(hint2_pond)
     hint2_mines, hint3_ticks = strip_markdown_ticks(hint2_mines)
 
-    # Ensure hints end with [await]
     def ensure_await(hint: str) -> str:
         if not hint.rstrip().endswith("[await]"):
             return hint + "[await]"
         return hint
 
-    # Auto-format line breaks and validate hints
     hint1 = format_dialog(hint1)
     hint2_pond = format_dialog(hint2_pond)
     hint2_mines = format_dialog(hint2_mines)
@@ -461,14 +427,12 @@ def add_song(fields: dict[str, str]) -> None:
         for w in warnings:
             print(f"Warning ({label}): {w}")
 
-    # Escape strings
     songname_escaped = escape_string(songname)
     submitter_escaped = escape_string(submitter)
     hint1_escaped = escape_string(hint1)
     hint2_pond_escaped = escape_string(hint2_pond)
     hint2_mines_escaped = escape_string(hint2_mines)
 
-    # Format notes list
     notes_str = ", ".join(f"({n}, {d})" for n, d in notes)
 
     # Use triple quotes if any hint had backticks
@@ -477,7 +441,6 @@ def add_song(fields: dict[str, str]) -> None:
             return f'"""{hint}"""'
         return f"'{hint}'"
 
-    # Build the Song entry
     new_entry = f'''    Song(
         [{notes_str}],
         "{songname_escaped}",
@@ -491,7 +454,6 @@ def add_song(fields: dict[str, str]) -> None:
 
     content = SONG_FILE.read_text()
 
-    # Find the all_songs list
     pattern = r"(^all_songs = \[.*?)(^\])"
     match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
 
@@ -499,7 +461,6 @@ def add_song(fields: dict[str, str]) -> None:
         print("Error: Could not find all_songs list in file")
         sys.exit(1)
 
-    # Insert new entry before closing bracket
     insert_pos = match.end(1)
     new_content = content[:insert_pos] + new_entry + content[insert_pos:]
 
@@ -520,9 +481,7 @@ def parse_palette_colors(text: str) -> list[int]:
 
 def generate_palette_class_name(character_prefix: str, palette_name: str) -> str:
     """Generate a class name from character and palette name."""
-    # Remove non-alphanumeric characters except spaces and underscores
     clean_name = re.sub(r"[^a-zA-Z0-9\s_]", "", palette_name)
-    # Convert to PascalCase
     words = clean_name.split()
     pascal_name = "".join(word.capitalize() for word in words)
     return f"{character_prefix}{pascal_name}"
@@ -530,9 +489,7 @@ def generate_palette_class_name(character_prefix: str, palette_name: str) -> str
 
 def generate_palette_enum_name(palette_name: str) -> str:
     """Generate an enum name from palette name (SCREAMING_SNAKE_CASE)."""
-    # Remove non-alphanumeric characters except spaces
     clean_name = re.sub(r"[^a-zA-Z0-9\s]", "", palette_name)
-    # Convert to SCREAMING_SNAKE_CASE
     words = clean_name.split()
     return "_".join(word.upper() for word in words if word)
 
@@ -547,8 +504,6 @@ def add_palette_enum_to_flags(enum_class_name: str, enum_name: str, palette_name
     """
     content = FLAGS_FILE.read_text()
 
-    # Find the enum class definition and its last entry
-    # Pattern: find the class, then find the last entry before the closing of the class
     pattern = rf"^class {re.escape(enum_class_name)}\(CategorizationOption\):.*?(?=^class |\Z)"
     match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
 
@@ -560,8 +515,6 @@ def add_palette_enum_to_flags(enum_class_name: str, enum_name: str, palette_name
     enum_start = match.start()
     enum_end = match.end()
 
-    # Find the last assignment in this enum (e.g., 'BLUE2 = "Blue2"')
-    # We'll insert the new entry after this
     assignment_pattern = r'^\s+([A-Z_0-9]+)\s*=\s*"([^"]+)"'
     assignments = list(re.finditer(assignment_pattern, enum_block, re.MULTILINE))
 
@@ -570,13 +523,10 @@ def add_palette_enum_to_flags(enum_class_name: str, enum_name: str, palette_name
         sys.exit(1)
 
     last_assignment = assignments[-1]
-    # Calculate position in full content
     insert_pos = enum_start + last_assignment.end()
 
-    # Generate the new enum entry with proper indentation
     new_entry = f'\n    {enum_name} = "{palette_name}"'
 
-    # Insert the new entry
     new_content = content[:insert_pos] + new_entry + content[insert_pos:]
 
     FLAGS_FILE.write_text(new_content)
@@ -595,7 +545,6 @@ def parse_palette_sections(body: str) -> tuple[list[int], list[int], list[int]]:
     header, so we need to parse by order rather than by name.
     Returns: (basic_colors, dark_colors, psn_colors)
     """
-    # Split by markdown headers
     sections = re.split(r"^###\s+", body, flags=re.MULTILINE)
 
     color_sections = []
@@ -622,7 +571,6 @@ def generate_palette_preview_for_submission(character: str, palette_class_name: 
         palette_name: Display name of the palette
     """
 
-    # Sprite ID mapping
     sprite_ids = {
         'mario': 0,
         'mallow': 19,
@@ -638,7 +586,6 @@ def generate_palette_preview_for_submission(character: str, palette_class_name: 
 
     sprite_id = sprite_ids[character]
 
-    # Import the palette module to get the newly created class
     palette_module_map = {
         'mario': 'randomizer.data.allies.palettes.mario',
         'mallow': 'randomizer.data.allies.palettes.mallow',
@@ -651,26 +598,21 @@ def generate_palette_preview_for_submission(character: str, palette_class_name: 
     module_name = palette_module_map[character]
 
     try:
-        # Dynamically import the module
         # Reload the module to pick up the newly added class
         if module_name in sys.modules:
             module = importlib.reload(sys.modules[module_name])
         else:
             module = importlib.import_module(module_name)
 
-        # Get the palette class
         palette_class = getattr(module, palette_class_name)
 
-        # Generate safe filename
         safe_name = palette_name.lower().replace(' ', '_').replace("'", '')
 
-        # Determine output directory
         char_output_dir = character if character != 'peach' else 'toadstool'
         output_dir = REPO_ROOT / 'randomizer' / 'static' / 'randomizer' / 'images' / 'palette_previews' / char_output_dir
         output_dir.mkdir(parents=True, exist_ok=True)
         output_path = output_dir / f'{safe_name}.png'
 
-        # Generate the preview
         generate_ally_palette_preview(
             sprite_id=sprite_id,
             palette_class=palette_class,
@@ -722,21 +664,17 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     if psn_colors and len(psn_colors) != 15:
         print(f"Warning: Expected 15 poison colors, found {len(psn_colors)}")
 
-    # Get character info
     filename, char_prefix, base_class, enum_class = CHARACTER_MAP[character]
     file_path = PALETTES_DIR / filename
 
-    # Generate class name and enum name from palette name
     class_name = generate_palette_class_name(char_prefix, palette_name)
     enum_name = generate_palette_enum_name(palette_name)
 
-    # Add enum entry to flags.py
     add_palette_enum_to_flags(enum_class, enum_name, palette_name)
 
     # Format author for credits (uppercase, A-Z, space, period, underscore)
     author = format_credits_name(author_name) if author_name else None
 
-    # Build the class code
     lines = [
         "",
         "",
@@ -760,7 +698,6 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
             "    ]",
         ])
 
-    # Add id field using the enum
     lines.append(f"    id = {enum_class}.{enum_name}")
     lines.append(f'    name = "{escape_string(palette_name)}"')
     if author:
@@ -770,36 +707,29 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
         lines.append("    rename_character = False")
     class_code = "\n".join(lines)
 
-    # Read file and insert class before all_palettes list
     content = file_path.read_text()
 
-    # Find all_palettes list
     pattern = r"^(all_palettes.*?=.*?\[)"
     match = re.search(pattern, content, re.MULTILINE)
     if not match:
         print(f"Error: Could not find all_palettes in {filename}")
         sys.exit(1)
 
-    # Insert class before all_palettes
     insert_pos = match.start()
     new_content = content[:insert_pos] + class_code + "\n\n\n" + content[insert_pos:]
 
-    # Now add to all_palettes list
-    # Find the closing bracket of all_palettes
     all_palettes_pattern = r"(^all_palettes.*?=.*?\[.*?)(^\])"
     match = re.search(all_palettes_pattern, new_content, re.MULTILINE | re.DOTALL)
     if not match:
         print(f"Error: Could not find all_palettes closing bracket in {filename}")
         sys.exit(1)
 
-    # Insert new instance before closing bracket
     insert_pos = match.end(1)
     new_content = new_content[:insert_pos] + f"    {class_name}(),\n" + new_content[insert_pos:]
 
     file_path.write_text(new_content)
     print(f"Added palette: {class_name} to {filename}")
 
-    # Generate preview image for the new palette
     print("Generating palette preview image...")
     generate_palette_preview_for_submission(character, class_name, palette_name)
 
@@ -841,7 +771,6 @@ class Command(BaseCommand):
         issue = options["issue"]
         repo = options["repo"]
 
-        # Fetch issue
         print(f"Fetching issue #{issue}..." + (f" from {repo}" if repo else ""))
         try:
             issue_data = fetch_issue(issue, repo)
@@ -850,7 +779,6 @@ class Command(BaseCommand):
 
         print(f"Title: {issue_data['title']}")
 
-        # Parse issue body
         fields = parse_issue_body(issue_data["body"])
 
         if options["dry_run"]:
@@ -859,7 +787,6 @@ class Command(BaseCommand):
                 print(f"  {key}: {value[:100]}..." if len(value) > 100 else f"  {key}: {value}")
             return
 
-        # Add to appropriate file
         submission_type = options["type"]
         if submission_type == "wish":
             add_wish(fields)

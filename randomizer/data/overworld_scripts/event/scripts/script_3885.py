@@ -50,8 +50,8 @@ def build_contents(
 ):
 	"""Build the contents list for E3885_END_GAME with the given role NPCs.
 
-	`protagonist`, `marrymore`, `mway`, `forest`, and `mines` are AreaObject
-	NPC slot ids — pass each role's permanent NPC slot for the seed and the
+	protagonist, marrymore, mway, forest, and mines are AreaObject
+	NPC slot ids - pass each role's permanent NPC slot for the seed and the
 	returned list will use those targets in place of the vanilla NPC_19-22/24
 	references.
 	"""
@@ -388,7 +388,7 @@ def build_contents(
 		EnterArea(room_id=R292_UNMAPPED_HOUSE_ROOM, face_direction=SOUTHWEST, x=4, y=48, z=0, run_entrance_event=False),
 		RemoveObjectFromCurrentLevel(PLAYER, identifier="hide_player_avatar_post_split"),
 		# Camera setup. SCREEN_FOCUS.TransferToXYZF isn't a usage pattern that
-		# appears anywhere else in the codebase — its X/Y interpretation
+		# appears anywhere else in the codebase - its X/Y interpretation
 		# doesn't match tile coords (camera ended up way northwest when tried).
 		# Instead let the existing state machine below (Set7016701BToObjectXYZ +
 		# AddConstToVar + the post-FreezeCamera relative walk) drive camera

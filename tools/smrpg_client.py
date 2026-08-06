@@ -101,9 +101,9 @@ from randomizer.data.nmi_hook import (
 # =============================================================================
 #
 # On real SA-1 hardware with FxPak Pro:
-#   - FxPakPro SRAM ($E0xxxx) = BW-RAM: WORKS
-#   - FxPakPro WRAM ($F5/$F6xxxx): returns open bus (0x55) — SA-1 blocks access
-#   - SnesABus ($00:xxxx / $40:xxxx): fails entirely
+# - FxPakPro SRAM ($E0xxxx) = BW-RAM: WORKS
+# - FxPakPro WRAM ($F5/$F6xxxx): returns open bus (0x55) - SA-1 blocks access
+# - SnesABus ($00:xxxx / $40:xxxx): fails entirely
 #
 # So ALL reads go through FxPakPro SRAM. For WRAM data (coins, characters),
 # we use the hook's CMD_STATE_DUMP. IRAM (party, area) is read from the
@@ -295,7 +295,7 @@ try:
     for _item in _ITEMS_COLLECTION.items:
         ITEM_NAMES[_item.item_id] = _item.name
 except ImportError:
-    pass  # smrpgpatchbuilder not installed — names unavailable, fall back to hex
+    pass  # smrpgpatchbuilder not installed - names unavailable, fall back to hex
 
 
 def _item_name(item_id: int) -> str:
@@ -458,7 +458,7 @@ class SmrpgClient:
         self._cur_hp: list[int] = [0] * 5
         self._max_hp: list[int] = [0] * 5
 
-        # IRAM state (not directly readable — derived from state dump)
+        # IRAM state (not directly readable - derived from state dump)
         self._party_slot_data: bytes = b""
         self._area_id: int = 0
         self._party_count: int = 0
@@ -760,9 +760,9 @@ class SmrpgClient:
             (BWRAM_HIDDEN_CHESTS[0], BWRAM_HIDDEN_CHESTS[1], FX),
             (BWRAM_BOSS_VICTORIES[0], BWRAM_BOSS_VICTORIES[1], FX),
             (BWRAM_MENU_FLAGS[0], BWRAM_MENU_FLAGS[1], FX),
-            # Star pieces — index 7
+            # Star pieces - index 7
             (0xE030D5, 1, FX),
-            # NPC presence — index 8
+            # NPC presence - index 8
             (self.BWRAM_NPC_PRESENCE[0], self.BWRAM_NPC_PRESENCE[1], FX),
         ]
         labels = [
@@ -792,34 +792,33 @@ class SmrpgClient:
         All reads use FxPakPro address space (SRAM for BW-RAM, SRAM for mailbox).
         WRAM data (coins, characters) comes from periodic CMD_STATE_DUMP.
         """
-        # All reads go through FxPakPro — no SnesABus (broken on SA-1 hardware)
+        # All reads go through FxPakPro - no SnesABus (broken on SA-1 hardware)
         reads: list[tuple[int, int, int]] = [
-            # Mailbox outbox (FxPakPro SRAM $E03F00) — index 0
+            # Mailbox outbox (FxPakPro SRAM $E03F00) - index 0
             # 15 bytes: music(1)+battle(1)+frame(2)+ver(1)+result(1)+mode(1)+area(2)+party(5)+count(1)
             (MAILBOX_FXPAK_BASE, 0x0F, FX),
-            # Lower BW-RAM (key items, NPC triggers) — index 1
+            # Lower BW-RAM (key items, NPC triggers) - index 1
             (BWRAM_LOWER[0], BWRAM_LOWER[1], FX),
-            # Event flags (BW-RAM via FxPakPro SRAM) — index 2
+            # Event flags (BW-RAM via FxPakPro SRAM) - index 2
             (BWRAM_EVENT_FLAGS[0], BWRAM_EVENT_FLAGS[1], FX),
-            # Treasure chests — index 3
+            # Treasure chests - index 3
             (BWRAM_CHESTS[0], BWRAM_CHESTS[1], FX),
-            # Hidden chests — index 4
+            # Hidden chests - index 4
             (BWRAM_HIDDEN_CHESTS[0], BWRAM_HIDDEN_CHESTS[1], FX),
-            # Boss victories — index 5
+            # Boss victories - index 5
             (BWRAM_BOSS_VICTORIES[0], BWRAM_BOSS_VICTORIES[1], FX),
-            # Menu flags — index 6
+            # Menu flags - index 6
             (BWRAM_MENU_FLAGS[0], BWRAM_MENU_FLAGS[1], FX),
-            # Star pieces — index 7
+            # Star pieces - index 7
             (0xE030D5, 1, FX),
-            # NPC presence — index 8
+            # NPC presence - index 8
             (self.BWRAM_NPC_PRESENCE[0], self.BWRAM_NPC_PRESENCE[1], FX),
-            # Booster Hill flower counter — index 9
+            # Booster Hill flower counter - index 9
             (BWRAM_BOOSTER_HILL_CTR[0], BWRAM_BOOSTER_HILL_CTR[1], FX),
         ]
 
         results = self._reader.multi_read(reads)
 
-        # Parse mailbox outbox (15 bytes)
         outbox = results[0]
         if isinstance(outbox, bytes) and len(outbox) >= 0x0F:
             self._music_byte = outbox[OUTBOX_MUSIC]
@@ -897,7 +896,6 @@ class SmrpgClient:
         if isinstance(menu, bytes) and len(menu) >= 1:
             self._menu_flags = menu[0]
 
-        # Star pieces
         star_data = results[7]
         if isinstance(star_data, bytes) and len(star_data) >= 1:
             self._star_pieces = star_data[0]
@@ -911,12 +909,10 @@ class SmrpgClient:
                 ))
             self._prev_star_pieces = self._star_pieces
 
-        # NPC presence
         npc_pres = results[8]
         if isinstance(npc_pres, bytes):
             self._npc_presence_data = npc_pres
 
-        # Booster Hill flower counter
         hill_data = results[9]
         if isinstance(hill_data, bytes) and len(hill_data) >= 1:
             self._booster_hill_counter = hill_data[0]
@@ -940,12 +936,10 @@ class SmrpgClient:
 
         Also diffs against previous dump and fires change events.
         """
-        # Send CMD_STATE_DUMP and wait for ack
         ok = await self._send_command(CMD_STATE_DUMP)
         if not ok:
             return
 
-        # Read the dump area from FxPakPro SRAM
         dump = self._reader.read_fxpak(
             MAILBOX_FXPAK_BASE + OUTBOX_CONSUMABLES, 0x74
         )
@@ -985,7 +979,6 @@ class SmrpgClient:
         # --- Diff against previous state and fire events ---
         now = time.time()
 
-        # Currency diffing
         if self._prev_coins is not None and self._coins != self._prev_coins:
             self._fire_currency(CurrencyChangeEvent(
                 "coins", self._prev_coins, self._coins,
@@ -997,7 +990,6 @@ class SmrpgClient:
                 self._frog_coins - self._prev_frog_coins, now,
             ))
 
-        # FP diffing
         if self._prev_current_fp is not None and (
             self._current_fp != self._prev_current_fp
             or self._max_fp != self._prev_max_fp
@@ -1018,7 +1010,6 @@ class SmrpgClient:
                         self._max_hp[i], now,
                     ))
 
-        # Inventory diffing
         if self._prev_consumables is not None:
             self._diff_inventory("consumable", self._prev_consumables, self._consumables, now)
         if self._prev_equipment is not None:
@@ -1026,7 +1017,6 @@ class SmrpgClient:
         if self._prev_key_items is not None:
             self._diff_inventory("key_item", self._prev_key_items, self._key_items, now)
 
-        # Save previous state for next diff
         self._prev_coins = self._coins
         self._prev_frog_coins = self._frog_coins
         self._prev_current_fp = self._current_fp
@@ -1107,7 +1097,7 @@ class SmrpgClient:
             )
             self._prev_lower_data = bytes(self._lower_data)
 
-        # Event flag region (96 bytes — bosses, events, key items)
+        # Event flag region (96 bytes - bosses, events, key items)
         if isinstance(self._event_data, bytes) and len(self._event_data) > 0:
             self._diff_region_checks(
                 self._event_data, self._prev_event_data,
@@ -1384,7 +1374,6 @@ class SmrpgClient:
         if not ok:
             return None
 
-        # Read the full outbox dump area
         dump = self._reader.read_fxpak(MAILBOX_FXPAK_BASE + OUTBOX_CONSUMABLES, 0x74)
         if dump is None:
             return None
@@ -1481,7 +1470,6 @@ class SmrpgClient:
             await asyncio.sleep(0.05)
             data = self._reader.read_fxpak(MAILBOX_FXPAK_BASE + INBOX_COMMAND, 1)
             if isinstance(data, bytes) and len(data) >= 1 and data[0] == CMD_IDLE:
-                # Check result
                 result = self._reader.read_fxpak(
                     MAILBOX_FXPAK_BASE + OUTBOX_RESULT, 1
                 )

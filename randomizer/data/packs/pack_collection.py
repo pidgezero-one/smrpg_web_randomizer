@@ -4086,8 +4086,8 @@ FORM0364_ONE_BOXBOY_ONE_FAUTSO = Formation(
 # Dedicated henchman formation for the Punchinello boss-room henchman pack
 # (PACK152). FORM0060/0061/0062 are shared with the regular Moleville bob-omb
 # encounter (PACK036), so PACK152 needs its own formation built from the
-# dedicated BOBOMBEnemyHenchman (monster_id 111) — which Punchinello registers
-# in boss_enemy_types — to keep it out of randomize_enemy_formations.
+# dedicated BOBOMBEnemyHenchman (monster_id 111) - which Punchinello registers
+# in boss_enemy_types - to keep it out of randomize_enemy_formations.
 FORM0365_THREE_BOBOMBHENCHMAN = Formation(
     id=365,
     members=[

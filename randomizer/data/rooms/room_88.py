@@ -37,7 +37,7 @@ room = Room(
     music=M0000_CURRENT,
     entrance_event=E0015_STANDARD_ROOM_LOADER,
     objects=[
-        RegularNPC( # 0 — Mario
+        RegularNPC( # 0 - Mario
             npc=npcs.MARIO_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -68,7 +68,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularNPC( # 1 — Peach
+        RegularNPC( # 1 - Peach
             npc=npcs.TOADSTOOL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -99,7 +99,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularNPC( # 2 — Sparkle
+        RegularNPC( # 2 - Sparkle
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -126,7 +126,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3),
-        RegularNPC( # 3 — Mallow
+        RegularNPC( # 3 - Mallow
             npc=npcs.MALLOW_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -157,7 +157,7 @@ room = Room(
             priority_0=True,
             priority_1=True,
             priority_2=False),
-        RegularNPC( # 4 — Geno doll
+        RegularNPC( # 4 - Geno doll
             npc=npcs.GENO_DOLL_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -189,7 +189,7 @@ room = Room(
             priority_1=False,
             priority_2=True,
             directions=VramStore.DIR2_SWSE),
-        RegularNPC( # 5 — Geno (ending sprite, palette anchor for doll at NPC_4)
+        RegularNPC( # 5 - Geno (ending sprite, palette anchor for doll at NPC_4)
             npc=npcs.GENO_ENDING,
             event_script=E0256_RETURN,
             action_script=A0015_DO_NOTHING,
@@ -201,7 +201,7 @@ room = Room(
             direction=NORTHWEST,
             cannot_clone=True,
             vram_size=1),
-        RegularNPC( # 6 — Empty
+        RegularNPC( # 6 - Empty
             npc=npcs.EMPTY_NPC_3,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -228,7 +228,7 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3),
-        RegularNPC( # 7 — Geno (redemption-scene NPC, separate from #5)
+        RegularNPC( # 7 - Geno (redemption-scene NPC, separate from #5)
             npc=npcs.GENO_REDEMPTION_NPC,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,
@@ -256,7 +256,7 @@ room = Room(
             cant_move_if_in_air=False,
             byte7_upper2=3,
             cannot_clone=True),
-        RegularNPC( # 8 — Bowser (must remain the last NPC in the room)
+        RegularNPC( # 8 - Bowser (must remain the last NPC in the room)
             npc=npcs.BOWSER_ENDING,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0256_RETURN,

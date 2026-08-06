@@ -1,17 +1,17 @@
-"""Shift NPC palette rows in `DarkenLayersExceptPaletteRows` event commands when the
-credits room's `ally_sprite_buffer_size` was bumped above its original value.
+"""Shift NPC palette rows in DarkenLayersExceptPaletteRows event commands when the
+credits room's ally_sprite_buffer_size was bumped above its original value.
 
-The credits-room cutscene uses event command `0xFD 0x8E` (`DarkenLayersExceptPaletteRows`)
+The credits-room cutscene uses event command 0xFD 0x8E (DarkenLayersExceptPaletteRows)
 to darken the level background and all NPCs *except* a hardcoded set of OBJ palette
-rows. Per SMRPG's VRAM partition rules, growing `ally_sprite_buffer_size` by N shifts
+rows. Per SMRPG's VRAM partition rules, growing ally_sprite_buffer_size by N shifts
 every NPC palette row by +N, so any preserved NPC row in this command must shift
 forward by the same delta to keep targeting the same NPC. The MARIO_PALETTE row never
 shifts (the player is always palette row 8 on the OBJ side).
 
 The shift amount is read from room 496's
-`(ally_sprite_buffer_size - original_ally_sprite_buffer_size)` after
-`update_partition_by_protagonist` has run, and is applied to every
-`DarkenLayersExceptPaletteRows` command in events 3797 and 3885.
+(ally_sprite_buffer_size - original_ally_sprite_buffer_size) after
+update_partition_by_protagonist has run, and is applied to every
+DarkenLayersExceptPaletteRows command in events 3797 and 3885.
 """
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ MAX_OBJ_PALETTE_VALUE = 15  # PaletteRow(15) = NPC_PALETTE_ROW_7. Hard upper cap
 
 
 def _shift_row(row: PaletteRow, delta: int) -> PaletteRow | None:
-    """Shift a single palette row by `delta`. MARIO_PALETTE never shifts.
+    """Shift a single palette row by delta. MARIO_PALETTE never shifts.
     Returns None if the shifted row would overflow past NPC_PALETTE_ROW_7."""
     value = int(row)
     if value == MARIO_PALETTE_VALUE:

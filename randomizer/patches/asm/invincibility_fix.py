@@ -4,15 +4,15 @@ ailments.
 Bug
 ---
 
-The ailment-clearing routine at ``$C2:C4E1`` unconditionally writes
-``$00`` to entity+``$43`` (the status turn timer). When invincible
-(bit 7 of +``$40``) is still set after ailment clearing, the zeroed
+The ailment-clearing routine at $C2:C4E1 unconditionally writes
+$00 to entity+$43 (the status turn timer). When invincible
+(bit 7 of +$40) is still set after ailment clearing, the zeroed
 timer causes invincibility to expire on the character's next turn.
 
 Fix
 ---
 
-After the ailment-clear logic runs (EOR/AND/STA at +``$40``), check if
+After the ailment-clear logic runs (EOR/AND/STA at +$40), check if
 bit 7 (invincible) is still set. If so, skip the timer clear to preserve
 the remaining invincibility turns.
 
@@ -21,13 +21,13 @@ All code runs in 8-bit accumulator mode (M=1).
 Layout
 ------
 
-Original 6 bytes at ROM ``$02:C4E1``::
+Original 6 bytes at ROM $02:C4E1::
 
     A9 00          LDA #$00
     9F 43 00 7E    STA $7E0043,X    ; unconditionally clear turn timer
 
-Hook: ROM ``$02:C4E1`` — replaces 6 bytes with ``JSR $FEA5`` + 3 NOPs.
-Patch: ROM ``$02:FEA5`` (SA-1 ``$C2:FEA5``) — small subroutine.
+Hook: ROM $02:C4E1 - replaces 6 bytes with JSR $FEA5 + 3 NOPs.
+Patch: ROM $02:FEA5 (SA-1 $C2:FEA5) - small subroutine.
 """
 
 # Hook at ROM $02C4E1: JSR $FEA5 + 3 NOPs.

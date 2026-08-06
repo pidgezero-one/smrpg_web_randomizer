@@ -47,7 +47,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import AreaObject
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
-    ActionQueueSync,
+    ActionQueueAsync,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (
     A_IncPaletteRowBy,
@@ -245,9 +245,8 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
         for obj in room.objects:
             current_sprites.append(obj._npc.sprite_id)
 
-        # Compare against snapshot
         if len(current_sprites) != len(vanilla_state.npcs):
-            # NPC count changed (e.g., dummies added) — mark as changed
+            # NPC count changed (e.g., dummies added) - mark as changed
             changed.add(room_id)
             continue
 
@@ -257,6 +256,25 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
                 break
 
     return changed
+
+
+# Rooms that size a declared animation by WHOLE 16x16 tiles instead of by present
+# 8x8 subtiles - i.e. min_vram_from_mold_geometry(..., player_sprite=True).
+#
+# The subtile packing is right everywhere it has been checked (Croco's two vanilla
+# records pin it exactly), but room 255's dojo slots are the one place where being
+# one unit short is known to corrupt a neighbour rather than land in slack: every
+# slot is cannot_clone, the blocks are allocated back to back, and a shuffled boss
+# can put a zero-slack sprite (Belome 3 Small - 16/16 subtiles) directly after a
+# mixed gridplane/tilemap sprite (256 Terrapin/Jagger, whose dojo_challenge molds
+# are 6-7 tiles). Whole-tile sizing is the conservative reading: it over-reserves
+# rather than under-reserves. Room 255 can absorb that - all three of its clone
+# buffers are EMPTY, so anything past the packed $40 cap lands in unclaimed VRAM.
+#
+# Do NOT widen this set without checking the room's buffers and cursor budget;
+# whole-tile sizing in a room with an active buffer (rooms 77/78/206/207, chest in
+# buffer A) is the R206 overrun.
+WHOLE_TILE_ANIMATION_VRAM_ROOMS: set[int] = {255}
 
 
 def _size_dedicated_min_vram(
@@ -270,18 +288,29 @@ def _size_dedicated_min_vram(
     """Raise an NPC's min_vram_size to fit its sprite's largest mold.
 
     Only meaningful for cannot_clone NPCs: the engine gives them
-    `4 * (min_vram_size + 1)` dedicated tile slots at $C0:8EBC. Undersize it
+    4 * (min_vram_size + 1) dedicated tile slots at $C0:8EBC. Undersize it
     and the sprite's tile upload runs past its allocation into the next
     dedicated NPC's slots.
 
     Gridplane sprites live in a fixed-size block, so min_vram_size stays 0.
 
-    Only increases, never decreases — an NPC default may be hand-tuned above
+    KNOWN GAP (measured 2026-08-05, not fixed here): is_gridplane is
+    molds[0].gridplane, so MIXED sprites - gridplane direction molds plus
+    tilemap action molds, e.g. sprite 256 Terrapin/Jagger - are skipped
+    entirely and keep whatever the NPC record shipped. Dropping the early-out
+    raises 37 rooms by one unit each, and among them re-inflates sprite 48
+    (Croco) in rooms 77/78/206/207 from the vanilla 0 to 1 - the R206
+    chest-buffer overrun that the subtile formula exists to avoid, because the
+    all-sequences scan sizes for seq 4/6 that CROCO_NPC_2's rooms never play.
+    Scoping the scan to direction sequences + declared animations avoids that
+    but computes 0 for Jagger too, so the geometry rule (not the scan scope) is
+    what under-predicts. Needs an in-emulator measurement before changing.
+
+    Only increases, never decreases - an NPC default may be hand-tuned above
     what the formula computes.
     """
     if is_gridplane:
         return
-
 
     current_min = (
         obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
@@ -304,17 +333,17 @@ def _size_dedicated_min_vram(
 
 
 def _canonical_record(npc: NPC, canonical_sprite_id: int) -> NPC:
-    """A copy of `npc` pointing at `canonical_sprite_id`.
+    """A copy of npc pointing at canonical_sprite_id.
 
-    Room objects have no usable per-object sprite override -- `RegularNPC`
-    exposes no `sprite_id` attribute, `BaseRoomObject._sprite_id` is written by
-    `set_sprite_id` and read by nothing, and both `_get_npc_signature` and
-    `_render_npc` key on the record. So merging swaps the record instead.
+    Room objects have no usable per-object sprite override -- RegularNPC
+    exposes no sprite_id attribute, BaseRoomObject._sprite_id is written by
+    set_sprite_id and read by nothing, and both _get_npc_signature and
+    _render_npc key on the record. So merging swaps the record instead.
 
     This MUST copy rather than mutate: NPC records are shared across rooms, and
     mutating one in place corrupts every other room using it. Two objects merged
     onto the same canonical produce records with identical signatures, so
-    `_get_npc_signature` dedups them into a single NPC-table entry and they share
+    _get_npc_signature dedups them into a single NPC-table entry and they share
     one clone buffer -- which is the whole point.
     """
     record = copy.copy(npc)
@@ -327,8 +356,70 @@ def _canonical_record(npc: NPC, canonical_sprite_id: int) -> NPC:
 _MAX_PACK_SPAN = 3
 
 
+_HENCHMAN_MERGE_ROOMS: dict[int, frozenset[int]] | None = None
+
+
+def _henchman_merge_rooms() -> dict[int, frozenset[int]]:
+    """Rooms where two or more henchmen can occupy distinct slots.
+
+    Palette-swap merging is only worth doing where two objects in the same room
+    can end up in the same equivalence class, and that is the henchman case: a
+    boss whose henchmen are recolours of each other (Culex's crystals,
+    Valentina's birds, Johnny's bandanas, Booster's snifits) otherwise burns one
+    clone buffer per colour.
+
+    Everything else in the class tables is deliberately out of scope. Item
+    sprites fall in the same classes -- a frog coin is a recoloured coin -- but
+    merging those can ADD a palette to a room that is already at capacity (Rose
+    Way's freestanding items being the known case), which trades a VRAM saving
+    for a palette overflow. Non-henchman NPCs also produced the room 197 defect,
+    where a HAMMER_PACKET at object 3 took a +2 bump nobody wanted.
+
+    A room with only ONE henchman slot cannot host a collapse, so it is excluded
+    too -- that is rooms 17/191/228/230 among others.
+    """
+    global _HENCHMAN_MERGE_ROOMS
+    if _HENCHMAN_MERGE_ROOMS is not None:
+        return _HENCHMAN_MERGE_ROOMS
+
+    def subclasses(cls: type) -> list[type]:
+        found: list[type] = []
+        for sub in cls.__subclasses__():
+            found.append(sub)
+            found.extend(subclasses(sub))
+        return found
+
+    # room id -> object indices that some boss can drop a henchman into
+    slots_by_room: dict[int, set[int]] = {}
+    for location in subclasses(BossFightLocation):
+        # Count SLOT OCCURRENCES, not slots: one BossFightLocationHenchmanNPC can
+        # list the same room several times (the ship mooks list room 24 four
+        # times), and each occurrence is a separate henchman in that room.
+        occurrences: Counter[int] = Counter()
+        per_location: dict[int, set[int]] = {}
+        for slots in (
+            location._character_henchman_slots,
+            location._mook_henchman_slots,
+        ):
+            for slot in slots or []:
+                for room_id, npc_id in zip(slot._room_ids, slot._npc_ids):
+                    occurrences[int(room_id)] += 1
+                    # _npc_ids hold AreaObject values, and AREAOBJECT_FROM_NPC_ID
+                    # is NPC_0 == 20, so the object index is the offset from NPC_0.
+                    per_location.setdefault(int(room_id), set()).add(
+                        int(npc_id) - int(NPC_0)
+                    )
+        for room_id, indices in per_location.items():
+            # A room with only one henchman slot cannot host a collapse.
+            if occurrences[room_id] >= 2:
+                slots_by_room.setdefault(room_id, set()).update(indices)
+
+    _HENCHMAN_MERGE_ROOMS = {r: frozenset(v) for r, v in slots_by_room.items()}
+    return _HENCHMAN_MERGE_ROOMS
+
+
 def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]]:
-    """Collapse palette-swap-equivalent sprites in `room_id` onto one sprite_id.
+    """Collapse palette-swap-equivalent sprites in room_id onto one sprite_id.
 
     A VRAM clone buffer holds exactly one sprite_id and a room has three, so two
     sprites with byte-identical tile data still cost two buffers until they share
@@ -349,16 +440,34 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
     room = world.rooms._rooms[room_id]
     assert room is not None
 
+    # Opt-in per room. A merged object renders from the CANONICAL sprite's mold
+    # set, so a slot that plays an animation the canonical lacks corrupts --
+    # room 192's snifits break on mold 6. Only rooms crowded enough to need the
+    # freed clone buffer, whose henchmen stay on simple poses, set the flag.
+    if not isinstance(room, ExtRoom) or not room.allow_sprite_merging:
+        return []
+
+    henchman_indices = _henchman_merge_rooms().get(room_id)
+    if not henchman_indices:
+        return []
+
+    # Only henchman slots converge. Everything else in the class tables is out of
+    # scope: item sprites share classes too (a frog coin is a recoloured coin),
+    # but merging one can ADD a palette to a room already at capacity -- Rose
+    # Way's freestanding items being the known case -- and non-henchman NPCs
+    # produced the room 197 defect, where a HAMMER_PACKET took a +2 nobody wanted.
+    candidates = [i for i in henchman_indices if i < len(room.objects)]
+
     # Tier 1: pure duplicates. No palette work, no stub needed.
-    for obj in room.objects:
+    for index in candidates:
+        obj = room.objects[index]
         canonical = PURE.get(int(obj._npc.sprite_id))
         if canonical is not None:
             obj._npc = _canonical_record(obj._npc, canonical)
 
-    # Group the offset-shifted candidates by canonical sprite.
     by_canonical: dict[int, list[tuple[int, int]]] = {}
-    for index, obj in enumerate(room.objects):
-        entry = SHIFTED.get(int(obj._npc.sprite_id))
+    for index in candidates:
+        entry = SHIFTED.get(int(room.objects[index]._npc.sprite_id))
         if entry is None:
             continue
         canonical, offset = entry
@@ -373,9 +482,21 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
         # canonical for it too, and it can no longer be told apart from an
         # object that was already canonical to begin with.
         participants: list[tuple[int, int]] = list(members)
-        for index, obj in enumerate(room.objects):
-            if int(obj._npc.sprite_id) == canonical:
+        for index in candidates:
+            if int(room.objects[index]._npc.sprite_id) == canonical:
                 participants.append((index, world.get_sprite(canonical).palette_offset))
+
+        # Nothing to collapse if every participant already holds the same sprite
+        # id: they share one clone buffer as they are, so merging frees no VRAM
+        # and only makes them depend on a palette-row bump that could fail.
+        # Room 154 hit exactly this -- three Snifits (504) merged onto Spookum
+        # (282) with no Spookum present, converting three objects that rendered
+        # correctly by default into three that rendered canonical blue.
+        distinct_sprites = {
+            int(room.objects[index]._npc.sprite_id) for index, _ in participants
+        }
+        if len(distinct_sprites) < 2:
+            continue
 
         # The baseline every merged object renders at is the CANONICAL sprite's
         # own palette_offset, because palette_offset lives on the sprite, not the
@@ -393,27 +514,60 @@ def _merge_palette_swaps(world: GameWorld, room_id: int) -> list[tuple[int, int]
             )
 
         free = max(0, rows_remaining(world, room))
+
+        # How far past the canonical's row the furthest participant needs to sit.
+        # One declaration covers the whole class: the rows are contiguous, so an
+        # object needing +1 and one needing +2 share a single 2-row block.
+        span = 0
+        for _, offset in participants:
+            span = max(span, offset - canonical_offset)
+        if span <= 0:
+            # Everything already renders the canonical's palette; nothing to do.
+            continue
+
+        declared = min(span, _MAX_PACK_SPAN, free)
+        if declared < span:
+            logging.info(
+                "room %d: palette %d needs %d extra row(s) but only %d can be "
+                "declared (2-bit field caps at %d, %d free) -- objects beyond "
+                "that render in the canonical palette instead",
+                room_id, world.get_sprite(canonical).palette_id, span, declared,
+                _MAX_PACK_SPAN, free,
+            )
+
+        # Residency must go on the FIRST object in room order carrying this
+        # palette, NOT on the object being recoloured. npc_palette_rows skips
+        # later carriers (if palette in rows: continue, palette_rows.py:58) and
+        # reads the row count only from the first one, so a declaration on a
+        # later object is silently ignored -- the extra row then gets allocated
+        # after the intervening palettes instead of adjacent to its own, and the
+        # bump lands on whatever NPC sits between. Observed in room 43: NPC 4
+        # bumped +1 onto NPC 3's palette while its intended row sat two places
+        # further down.
+        palette_id = world.get_sprite(canonical).palette_id
+        first_carrier = None
+        for index, obj in enumerate(room.objects):
+            if int(world.get_sprite(int(obj._npc.sprite_id)).palette_id) == palette_id:
+                first_carrier = index
+                break
+        if first_carrier is None:
+            continue
+
+        # Source offset is ALWAYS 1, never the delta: it shifts the palette
+        # SOURCE pointer, so rows R+1..R+N load palettes base+1..base+N. Writing
+        # the delta there lands on base+delta+N-1. Every one of the 821 vanilla
+        # NPC records with a row count >= 2 uses source offset 1 (see
+        # SHARED_ITEM_BASE in data/rooms/npcs.py, which is 1/2 for an
+        # A_IncPaletteRowBy(2)). At delta 1 the two encodings coincide, which is
+        # why this only shows up on classes with an offset of 2 or more.
+        carrier = room.objects[first_carrier]
+        carrier.set_extra_palette_source_offset(1)
+        carrier.set_extra_palette_row_count(declared)
+
         for index, offset in participants:
             delta = offset - canonical_offset
-            if delta <= 0:
-                # Already renders the canonical's palette; nothing to do.
-                continue
-            declared = min(delta, _MAX_PACK_SPAN, free)
-            if declared < delta:
-                logging.info(
-                    "room %d obj %d: needs a +%d palette row but only %d can be "
-                    "declared (2-bit field caps at %d, %d free) -- renders in the "
-                    "canonical palette instead",
-                    room_id, index, delta, declared, _MAX_PACK_SPAN, free,
-                )
-                continue
-            # Residency goes on the object BEING RECOLOURED, not on the first
-            # object carrying the palette. Confirmed in-game via the pink Yoshi
-            # NPC, which sets source_offset=1 / row_count=1 for a +1 shift.
-            obj = room.objects[index]
-            obj.set_extra_palette_source_offset(declared)
-            obj.set_extra_palette_row_count(declared)
-            bumps.append((index, declared))
+            if 0 < delta <= declared:
+                bumps.append((index, delta))
 
     # Bumps need somewhere to run. Without a stub the sprite_id merge still
     # stands and the VRAM is still saved; only the recolour is lost.
@@ -435,9 +589,18 @@ def _emit_palette_bumps(
     """Queue A_IncPaletteRowBy for each merged object in the room's stub.
 
     The stub is an empty *_SHUFFLED_NPC_ANIMATION_LOADER already invoked from the
-    room's loader as a subroutine, so the queue runs before the fade without any
-    of the E0015 tail-jump ordering hazards. Queues are Sync, matching the room
-    422 precedent -- Async loses the race against FadeInFromBlack.
+    room's loader as a subroutine.
+
+    Queues are ASYNC. A preloader stub legitimately runs well before the fade and
+    before objects are made visible -- room 315 does exactly that and renders
+    correctly -- so a Sync queue that completes inline is the wrong shape here.
+
+    NOT fully explained: room 154 reached via script_3809 rendered all three
+    merged objects in the canonical palette even though the residency was
+    correct (the Snifit palette was resident one row below Spookum, confirmed in
+    a debugger) and the bumps were present in stub 790. The same stub reached via
+    script_600 was fine. An ordering theory was ruled out by room 315, which has
+    the same late-visibility shape and works.
     """
     if not bumps:
         return 0
@@ -446,7 +609,7 @@ def _emit_palette_bumps(
     for index, delta in bumps:
         script.insert_before_nth_command(
             0,
-            ActionQueueSync(
+            ActionQueueAsync(
                 target=AREA_OBJECTS[index],
                 subscript=[A_IncPaletteRowBy(delta)],
             ),
@@ -466,7 +629,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     Algorithm:
     1. Analyze all NPCs: sprite ID, gridplane format, room-level cannot_clone
     2. Map original buffers to the NPC indices they served
-    3. Group sprites by ID and count frequency — counting ONLY NPCs whose
+    3. Group sprites by ID and count frequency - counting ONLY NPCs whose
        room-level cannot_clone is None (the auto-decide bucket). NPCs with
        explicit room-level cannot_clone=True/False are excluded so a single
        override-NPC can't disqualify its sprite for other NPCs sharing it.
@@ -488,9 +651,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
     existing = room.partition
 
-    # =========================================================================
     # Step 1: Analyze current NPCs
-    # =========================================================================
     @dataclass
     class NPCInfo:
         obj_index: int
@@ -499,7 +660,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         gridplane_format: int | None  # 0-1 = FOUR, 2-3 = THREE
         is_chest: bool
         is_coin: bool
-        force_cannot_clone: bool  # Room-level override — orchestrator must respect
+        force_cannot_clone: bool  # Room-level override - orchestrator must respect
         # Raw room-level cannot_clone value (True/False/None) at recalc-entry.
         # Drives frequency-analysis exclusion (Step 3) and override preservation
         # in Step 7. force_cannot_clone may flip to True later via Step 5b's
@@ -515,7 +676,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
         # Room-level cannot_clone=True is a hard structural constraint: the
         # NPC goes in dedicated VRAM regardless of what sprite lands here
-        # after shuffling. `npc_expected_animations` only influences the
+        # after shuffling. npc_expected_animations only influences the
         # min_vram_size sizing for that dedicated allocation (handled in
         # step 5b / step 7), not whether the NPC clones.
         force_cc = obj.cannot_clone is True
@@ -531,24 +692,22 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             original_cannot_clone=obj.cannot_clone,
         ))
 
-    # =========================================================================
-    # Step 3: Determine buffer needs — one buffer per unique sprite ID
-    # =========================================================================
+    # Step 3: Determine buffer needs - one buffer per unique sprite ID
     # At runtime, each unique sprite ID gets its own VRAM allocation via
     # the sprite table at $9C4A. Different sprites with the same format
-    # do NOT share a buffer — each needs its own slot.
+    # do NOT share a buffer - each needs its own slot.
     has_chest = any(n.is_chest for n in npc_infos)
     has_coin = any(n.is_coin for n in npc_infos)
 
     # Build sprite groups: sprite_id → (buffer_type, npc_count, first_obj_index)
     # Frequency analysis includes NPCs with original_cannot_clone in {None, False};
-    # only `True` is excluded.
-    #   - None (auto-decide): standard candidate, demand for a buffer slot.
-    #   - False (explicit opt-in to cloning): the room author has declared this
-    #     NPC must ride a clone buffer, so its sprite_id MUST claim a slot —
+    # only True is excluded.
+    # - None (auto-decide): standard candidate, demand for a buffer slot.
+    # - False (explicit opt-in to cloning): the room author has declared this
+    #     NPC must ride a clone buffer, so its sprite_id MUST claim a slot -
     #     otherwise step 7 honors the False override and the NPC ends up with
     #     no buffer at all (room 341 GOLD_GOOMBA bug).
-    #   - True (explicit dedicated VRAM): goes to its own min_vram_size
+    # - True (explicit dedicated VRAM): goes to its own min_vram_size
     #     allocation, doesn't need a clone-buffer slot, and shouldn't disqualify
     #     its sprite for other NPCs that share the sprite_id. (Pre-fix bug: a
     #     force_cannot_clone NPC sharing a sprite with cannot_clone=None NPCs
@@ -575,31 +734,25 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         if sprite_id not in sprite_first_appearance:
             sprite_first_appearance[sprite_id] = npc_info.obj_index
 
-    # Also remove chest/coin sprites from gridplane consideration
     for npc in npc_infos:
         if (npc.is_chest or npc.is_coin) and npc.sprite_id in sprite_to_type:
             del sprite_to_type[npc.sprite_id]
             sprite_counts.pop(npc.sprite_id, None)
             sprite_first_appearance.pop(npc.sprite_id, None)
 
-    # Count available buffer slots (after reserving for chest/coin)
     available_slots = 3
     if has_chest:
         available_slots -= 1
     if has_coin:
         available_slots -= 1
 
-    # Rank unique sprite IDs by NPC count (most frequent first)
-    # Each unique sprite needs its own buffer slot
     ranked_sprites = sorted(
         sprite_to_type.keys(),
         key=lambda sid: sprite_counts[sid],
         reverse=True,
     )
 
-    # Select which sprite IDs get buffer slots (up to available_slots)
     buffered_sprite_ids: set[int] = set()
-    # Each selected sprite claims one buffer slot
     selected_buffers: list[tuple[int, BufferType]] = []  # (sprite_id, buffer_type)
     for sprite_id in ranked_sprites:
         if len(selected_buffers) >= available_slots:
@@ -607,9 +760,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         selected_buffers.append((sprite_id, sprite_to_type[sprite_id]))
         buffered_sprite_ids.add(sprite_id)
 
-    # =========================================================================
     # Step 4: Assign buffers, bottom-packing toward slot C
-    # =========================================================================
     # Two invariants drive slot assignment:
     #
     #   (A) NPC object order ⇒ slot order.  Within the slots claimed by
@@ -621,18 +772,18 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     #       the engine reads buffer A's format for cannot_clone NPC tile
     #       layout and applies it globally; placing a clone-buffer type
     #       (FOUR_SPR / THREE_SPR) at slot 0 corrupts cannot_clone NPC
-    #       renders (see room 110 regression — Boomer peck animation
-    #       overwriting the statues — and rooms 205/232 history).
+    #       renders (see room 110 regression - Boomer peck animation
+    #       overwriting the statues - and rooms 205/232 history).
     #
     # Strategy: bottom-pack.  Reserve slot 0 for chests, slot 2 for coins,
     # and pack the remaining gridplane sprites into the bottom-most free
     # slots (high index first), assigning sprites to those slots in NPC
     # object order with ascending slot index.  This guarantees:
     #
-    #   - 1 sprite, no chest/coin → [EMPTY, EMPTY, sprite]
-    #   - 2 sprites, no chest/coin → [EMPTY, sprite_first, sprite_second]
-    #   - chest + 1 sprite → [CHEST, EMPTY, sprite]
-    #   - chest + coin + 1 sprite → [CHEST, sprite, COIN]
+    # - 1 sprite, no chest/coin → [EMPTY, EMPTY, sprite]
+    # - 2 sprites, no chest/coin → [EMPTY, sprite_first, sprite_second]
+    # - chest + 1 sprite → [CHEST, EMPTY, sprite]
+    # - chest + coin + 1 sprite → [CHEST, sprite, COIN]
     #
     # Slot 0 stays EMPTY in every layout that doesn't have a chest, which
     # is what the cannot_clone NPC tile-layout path expects.
@@ -640,7 +791,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         key=lambda sb: sprite_first_appearance.get(sb[0], 999),
     )
 
-    # Build the 3-slot buffer assignment
     new_buffer_types: list[BufferType] = [BufferType.EMPTY_3] * 3
 
     if has_chest:
@@ -652,7 +802,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     # main_buffer_space overrides produced by vanilla_sprite_buffer_pins
     pinned_slot_bufspace: dict[int, BufferSpace] = {}
 
-    # Step 4a: Apply vanilla_sprite_buffer_pins — if an NPC's current sprite
+    # Step 4a: Apply vanilla_sprite_buffer_pins - if an NPC's current sprite
     # matches its vanilla sprite, force that sprite into the pinned slot
     # before bottom-packing runs.  These overrides are explicit room author
     # choices and take precedence over the bottom-packing default.
@@ -668,7 +818,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                 current_sprite = room.objects[npc_idx]._npc.sprite_id
                 vanilla_sprite = vanilla_state_for_pins.npcs[npc_idx].sprite_id
                 if current_sprite != vanilla_sprite:
-                    continue  # Sprite replaced — pin is ignored
+                    continue  # Sprite replaced - pin is ignored
                 if current_sprite not in sprite_to_type:
                     continue  # Not a gridplane sprite we can pin
                 if new_buffer_types[slot_idx] != BufferType.EMPTY_3:
@@ -681,7 +831,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 
     # Step 4b: Bottom-pack remaining buffers.
     #
-    # `free_slots` lists unreserved slots ranked bottom-first (slot 2 first).
+    # free_slots lists unreserved slots ranked bottom-first (slot 2 first).
     # Take the bottom-most N of those free slots for the N unplaced sprites,
     # then sort ascending and zip with sprites in NPC-object-appearance order.
     # Result: earliest NPC's sprite gets the lowest chosen slot index,
@@ -705,11 +855,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
     for sprite_id, _ in unplaced_buffers[n_to_place:]:
         buffered_sprite_ids.discard(sprite_id)
 
-    # =========================================================================
     # Step 5: Carry over buffer space and index_in_main_buffer
-    # =========================================================================
     # Map vanilla sprites to their original buffer index.  The game engine
-    # assigns NPCs to clone buffers by matching sprite ID — the first NPC
+    # assigns NPCs to clone buffers by matching sprite ID - the first NPC
     # with a new sprite claims the next available buffer of the right type.
     # We replicate that walk to build vanilla_sprite_to_buffer.
     assert world._vanilla_room_states is not None
@@ -749,7 +897,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     new_index_in_main[i] = orig_buf.index_in_main_buffer
                     break
         else:
-            # Gridplane buffer — find which sprites are assigned here and
+            # Gridplane buffer - find which sprites are assigned here and
             # carry over buffer space from their VANILLA buffer (if the same
             # sprite was present in vanilla).  For new sprites not in vanilla,
             # use the NPC's min_vram_size as a baseline.
@@ -759,10 +907,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     continue
                 if sprite_to_new_buffer.get(npc.sprite_id) != i:
                     continue
-                # Check if this sprite was in a vanilla buffer
                 orig_buf_idx = vanilla_sprite_to_buffer.get(npc.sprite_id)
                 if orig_buf_idx is not None:
-                    # Same sprite in vanilla — carry over its buffer space
+                    # Same sprite in vanilla - carry over its buffer space
                     orig_space = existing.buffers[orig_buf_idx].main_buffer_space.value
                     if orig_space > max_space:
                         max_space = orig_space
@@ -782,9 +929,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         if pinned_space.value > new_buffer_space[slot_idx].value:
             new_buffer_space[slot_idx] = pinned_space
 
-    # =========================================================================
     # Step 5b: Compute animation-based buffer space / min_vram_size
-    # =========================================================================
     # If the room declares expected_animations for any NPC slot, look up
     # the current sprite's animation sequences and compute needed VRAM.
     #
@@ -819,7 +964,6 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     anim_state = anim_entry[1]
 
                 if anim_state is not None:
-                    # Character animation — look up via CharacterPrize ally sprites
                     for location in world.locations.values():
                         if not hasattr(location, 'prize') or not isinstance(location.prize, CharacterPrize):
                             continue
@@ -846,17 +990,17 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                             pass
                         break
                 elif isinstance(anim_entry, str):
-                    # Boss / henchman animation attr — search locations for a
+                    # Boss / henchman animation attr - search locations for a
                     # placed model whose sprite matches the post-shuffle sprite
                     # in this slot. Both BossNPC and HenchmanNPC subclass
                     # SupplantableNPC, so once we find any model with a matching
                     # sprite_id, the named animation attr resolves uniformly.
                     #
-                    # Bosses are recorded by room into `_chosen_npc_models_by_room`
+                    # Bosses are recorded by room into _chosen_npc_models_by_room
                     # by the npc_slots placement loop; henchmen are recorded by
-                    # (room_id, npc_id) into `_chosen_henchman_models_by_room_npc`
+                    # (room_id, npc_id) into _chosen_henchman_models_by_room_npc
                     # by the henchman placement loop. We pull both. No room /
-                    # NPC class is special-cased here — every location's chosen
+                    # NPC class is special-cased here - every location's chosen
                     # models are eligible, and the sprite_id filter below picks
                     # whichever one actually landed in this slot.
                     matched = False
@@ -887,7 +1031,12 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                                 if animation is None:
                                     continue
                                 seq_id = animation.sequence_id
-                                vram = min_vram_from_sequence_for_sprite(world, sprite_id, seq_id)
+                                vram = min_vram_from_sequence_for_sprite(
+                                    world,
+                                    sprite_id,
+                                    seq_id,
+                                    player_sprite=room_id in WHOLE_TILE_ANIMATION_VRAM_ROOMS,
+                                )
                                 max_vram_needed = max(max_vram_needed, vram)
                                 matched = True
                                 break
@@ -899,7 +1048,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             if max_vram_needed == 0:
                 continue
 
-            # Case 1: Room-level cannot_clone=True — already force_cannot_clone,
+            # Case 1: Room-level cannot_clone=True - already force_cannot_clone,
             # just ensure min_vram_size is sufficient
             if npc_info and npc_info.force_cannot_clone:
                 current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
@@ -907,10 +1056,9 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     obj.set_min_vram_size(max_vram_needed)
                 continue
 
-            # Case 2: Unique sprite (only 1 NPC with this sprite) — cheaper
+            # Case 2: Unique sprite (only 1 NPC with this sprite) - cheaper
             # to use cannot_clone=True + min_vram_size than inflate a buffer
             if sprite_counts.get(sprite_id, 0) <= 1:
-                # Pull from buffer if it was assigned one
                 if npc_info and npc_info.sprite_id in buffered_sprite_ids:
                     buffered_sprite_ids.discard(npc_info.sprite_id)
                     buf_idx = sprite_to_new_buffer.pop(npc_info.sprite_id, None)
@@ -924,7 +1072,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     npc_info.force_cannot_clone = True
                 continue
 
-            # Case 3: Shared sprite (multiple NPCs) — increase buffer space
+            # Case 3: Shared sprite (multiple NPCs) - increase buffer space
             if npc_info and npc_info.sprite_id in buffered_sprite_ids:
                 buf_idx = sprite_to_new_buffer.get(npc_info.sprite_id)
                 if buf_idx is not None:
@@ -932,26 +1080,24 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                     if needed_space.value > new_buffer_space[buf_idx].value:
                         new_buffer_space[buf_idx] = needed_space
             else:
-                # Shared but not in buffer (no slot available) — set min_vram
+                # Shared but not in buffer (no slot available) - set min_vram
                 obj.set_cannot_clone(True)
                 current_min = obj.min_vram_size if obj.min_vram_size is not None else obj._npc.min_vram_size
                 obj.set_min_vram_size(max(max_vram_needed, current_min))
                 if npc_info:
                     npc_info.force_cannot_clone = True
 
-    # =========================================================================
     # Step 6: Apply buffer changes to the existing partition
-    # =========================================================================
 
     # Rooms whose buffer TYPES must always be preserved from the source partition,
     # regardless of what the orchestrator's analysis would otherwise pick. The
-    # orchestrator still updates `main_buffer_space`, `index_in_main_buffer`, and
-    # per-NPC `cannot_clone` / `min_vram_size`, but the buffer-type sequence
+    # orchestrator still updates main_buffer_space, index_in_main_buffer, and
+    # per-NPC cannot_clone / min_vram_size, but the buffer-type sequence
     # (THREE_SPRITES_PER_ROW / FOUR_SPRITES_PER_ROW / etc.) stays as authored.
     PRESERVE_BUFFER_TYPES_ROOMS: set[int] = {
-        292,  # R292 — split second-half of the R496 ending cutscene; mirrors
+        292,  # R292 - split second-half of the R496 ending cutscene; mirrors
               # R496's hand-tuned 3/4/4 layout.
-        496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE — ending cutscene
+        496,  # R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE - ending cutscene
               # has a hand-tuned 3/4/4 layout that must survive ally_buffer growth.
     }
     if room_id in PRESERVE_BUFFER_TYPES_ROOMS:
@@ -962,13 +1108,11 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
         existing.buffers[i].set_main_buffer_space(new_buffer_space[i])
         existing.buffers[i].set_index_in_main_buffer(new_index_in_main[i])
 
-    # =========================================================================
     # Step 7: Set cannot_clone and min_vram_size on all NPCs
-    # =========================================================================
     for npc in npc_infos:
         obj = room.objects[npc.obj_index]
         if npc.force_cannot_clone:
-            # Room-level override — always dedicated VRAM. Which sprite occupies
+            # Room-level override - always dedicated VRAM. Which sprite occupies
             # this slot still varies with boss shuffle, so the allocation must be
             # sized for whatever landed here.
             _size_dedicated_min_vram(
@@ -978,7 +1122,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
             # Room author explicitly opted this NPC INTO cloning. Honor it
             # even if the sprite didn't end up in a frequency-selected buffer
             # (responsibility falls on the room author to ensure a buffer
-            # exists for the sprite — typically via vanilla_sprite_buffer_pins
+            # exists for the sprite - typically via vanilla_sprite_buffer_pins
             # or by relying on a same-sprite cannot_clone=None NPC alongside).
             pass
         elif npc.is_chest or npc.is_coin:
@@ -991,10 +1135,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                 world, room_id, npc.obj_index, obj, npc.sprite_id, npc.is_gridplane
             )
 
-    # =========================================================================
     # Step 8: Log warnings
-    # =========================================================================
-    # Check for sprites that needed a buffer but didn't get one
     if world.settings.debug_mode:
         for npc in npc_infos:
             if npc.force_cannot_clone:
@@ -1004,7 +1145,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
 def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
     """Collect room IDs that have boss, henchman, or statue NPC placements.
 
-    Only these rooms need partition recalculation — other rooms with NPC
+    Only these rooms need partition recalculation - other rooms with NPC
     changes (character recruitment, credits, etc.) have stable partitions.
     """
 
@@ -1012,7 +1153,6 @@ def _get_boss_henchman_rooms(world: GameWorld) -> set[int]:
     for location in world.locations.values():
         if not isinstance(location, BossFightLocation):
             continue
-        # Collect rooms from all NPC slot types
         for slot_attr in ('_npc_slots', '_character_henchman_slots', '_mook_henchman_slots', '_tiny_henchman_slots', '_statue_slots'):
             slots = getattr(location, slot_attr, None)
             if slots is None:
@@ -1052,7 +1192,7 @@ def _detect_slot_machine_rooms(world: GameWorld) -> set[int]:
 
 def _detect_ending_character_rooms() -> set[int]:
     """Return the set of rooms where ending-cutscene NPC slots get sprite-substituted
-    by `_apply_ending_character_npc_fills` based on which character landed in each
+    by _apply_ending_character_npc_fills based on which character landed in each
     recruitment slot. The shuffle puts any of {Toadstool, Mallow, Geno, Bowser, Mario}
     minus the protagonist into NPC slots 19-23 of room 496 (and corresponding slots in
     rooms 88, 269, 375, 435, etc.), so the partition for each of these rooms must be
@@ -1074,7 +1214,7 @@ def _detect_ending_character_rooms() -> set[int]:
 
 # Rooms whose partition must NEVER be recalculated. These are the three
 # ending-cutscene rooms (88/375/496) where NPC slots, vram sizes, and buffer
-# layout are all hand-frozen — the role-swap path keeps each character at
+# layout are all hand-frozen - the role-swap path keeps each character at
 # their permanent NPC slot and only retargets script commands + swaps coords.
 # Room 422 (Belome's treasure room) is also locked: empirically, the items
 # only render correctly with all three buffers set to EMPTY_3, and the
@@ -1342,7 +1482,7 @@ COIN_SPRITE_IDS = frozenset({
 CHEST_SPRITE_ID = SPR0094_TREASURE_CHEST
 
 # The blank sprite. It renders nothing, so it needs neither a clone-buffer slot nor a
-# dedicated VRAM allocation — but it IS non-gridplane, and every cannot_clone/buffer
+# dedicated VRAM allocation - but it IS non-gridplane, and every cannot_clone/buffer
 # heuristic reads "non-gridplane" as "needs its own VRAM". The inert placeholders from
 # _pre_allocate_dummy_npcs use it in ~95 rooms, so it must be excluded explicitly.
 EMPTY_SPRITE_ID = SPR1023_EMPTY
@@ -1367,7 +1507,7 @@ class NPCAnalysis:
     force_cannot_clone: bool
     bitmap_slots: int              # Extra sprite bitmap slots consumed by this parent NPC
     # Raw room-level cannot_clone (True/False/None) before any NPC-level default or
-    # heuristic is folded in. `cannot_clone` above already merges the NPC default, so
+    # heuristic is folded in. cannot_clone above already merges the NPC default, so
     # it cannot distinguish "author explicitly opted into cloning" (False) from
     # "auto-decide" (None). Apply sites need that distinction to honor an explicit
     # False, exactly as _recalculate_room_partition step 7 does.
@@ -1545,7 +1685,7 @@ def _analyze_npc(
     min_vram = npc_obj.min_vram_size if npc_obj.min_vram_size is not None else npc.min_vram_size
     cannot_clone = npc_obj.cannot_clone if npc_obj.cannot_clone is not None else npc.cannot_clone
 
-    # Detect by sprite ID, not just class — a RegularNPC with sprite 94
+    # Detect by sprite ID, not just class - a RegularNPC with sprite 94
     # still needs TREASURE_CHEST buffer type for VRAM layout purposes.
     is_chest = isinstance(npc_obj, ChestNPC) or sprite_id == CHEST_SPRITE_ID
     is_coin = sprite_id in COIN_SPRITE_IDS
@@ -1555,8 +1695,8 @@ def _analyze_npc(
     # The blank sprite draws nothing: it must claim no buffer slot (EMPTY_3 is excluded
     # from _assign_buffers_v2's four_npcs/three_npcs groups) and take no dedicated VRAM.
     # Checked before the clone_count branch below, which would otherwise hand the
-    # placeholder blocks (1 RegularNPC + 4 RegularClones) a FOUR_SPRITES_PER_ROW slot —
-    # one of only three — in every slot-eligible room.
+    # placeholder blocks (1 RegularNPC + 4 RegularClones) a FOUR_SPRITES_PER_ROW slot -
+    # one of only three - in every slot-eligible room.
     is_empty = sprite_id == EMPTY_SPRITE_ID
 
     if is_empty:
@@ -1573,7 +1713,7 @@ def _analyze_npc(
         else:
             buffer_type = BufferType.EMPTY_3
     elif clone_count > 0:
-        # Shared tilemap (non-gridplane) sprite — multiple NPCs reference
+        # Shared tilemap (non-gridplane) sprite - multiple NPCs reference
         # one VRAM copy from a clone buffer. Default to FOUR_SPRITES_PER_ROW
         # (the most flexible buffer format for tilemap; engine accepts
         # tilemap data into either FOUR/THREE-per-row buffers, but
@@ -1583,8 +1723,8 @@ def _analyze_npc(
         buffer_type = BufferType.EMPTY_3
 
     # NPCs that get dedicated VRAM outside the buffer system:
-    # - cannot_clone NPCs (gridplane or not) — the game allocates dedicated VRAM
-    # - non-gridplane NPCs that are the SOLE user of their sprite_id —
+    # - cannot_clone NPCs (gridplane or not) - the game allocates dedicated VRAM
+    # - non-gridplane NPCs that are the SOLE user of their sprite_id -
     #   they can't be referenced from a shared clone-buffer slot, so they
     #   need their own VRAM allocation.
     #
@@ -1597,8 +1737,8 @@ def _analyze_npc(
     #
     # The sole-user heuristic only applies to auto-decide NPCs. A room-level
     # cannot_clone=False is the author declaring "this must ride a clone buffer",
-    # and must not be silently promoted — mirrors _recalculate_room_partition
-    # step 7 (`elif original_cannot_clone is False: pass`). Without the `is None`
+    # and must not be silently promoted - mirrors _recalculate_room_partition
+    # step 7 (elif original_cannot_clone is False: pass). Without the is None
     # guard, the inert EMPTY placeholders from _pre_allocate_dummy_npcs (sprite
     # 1023: non-gridplane, and solitary wherever no dummy clones trail them) get
     # dedicated VRAM for a sprite that draws nothing.
@@ -1682,7 +1822,7 @@ def _assign_buffers(
     dedicated_npcs = [n for n in npc_analyses if n.cannot_clone]
 
     # Track gridplane types from ALL NPCs (including cannot_clone)
-    # for the fill strategy — these NPCs need compatible buffer format
+    # for the fill strategy - these NPCs need compatible buffer format
     all_four_spr = [
         n for n in npc_analyses
         if n.buffer_type == BufferType.FOUR_SPRITES_PER_ROW
@@ -1699,14 +1839,12 @@ def _assign_buffers(
         R073_MIDAS_RIVER_4TH_TUNNEL_ON_VERY_BOTTOM_RIGHT,
     ]
 
-    # Start with 3 empty buffer slots
     assignments: list[BufferAssignment] = [
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
     ]
 
-    # Assign TREASURE_CHEST to buffer A if needed
     if chest_npcs:
         assignments[0] = BufferAssignment(
             BufferType.TREASURE_CHEST,
@@ -1714,7 +1852,6 @@ def _assign_buffers(
             [n.index for n in chest_npcs],
         )
 
-    # Assign COINS to buffer C if needed
     if coin_npcs or force_coins:
         assignments[2] = BufferAssignment(
             BufferType.COINS,
@@ -1739,7 +1876,6 @@ def _assign_buffers(
     gridplane_groups.sort(key=lambda g: len(g[1]), reverse=True)
 
     for buf_type, npcs in gridplane_groups:
-        # Place into first available empty slot
         placed = False
         for i in range(3):
             if assignments[i].buffer_type == BufferType.EMPTY_3:
@@ -1751,7 +1887,6 @@ def _assign_buffers(
                 placed = True
                 break
         if not placed:
-            # Try to merge into an existing matching buffer
             for i in range(3):
                 if assignments[i].buffer_type == buf_type:
                     assignments[i].npc_indices.extend(n.index for n in npcs)
@@ -1794,7 +1929,6 @@ def _assign_buffers(
             if assignments[i].buffer_type == BufferType.EMPTY_3:
                 assignments[i] = BufferAssignment(dominant_type, space)
 
-    # Assign non-gridplane clonable NPCs to any available EMPTY_3 slot
     if empty_npcs:
         for i in range(3):
             if assignments[i].buffer_type == BufferType.EMPTY_3:
@@ -1830,7 +1964,6 @@ def _assign_buffers_v2(
     """
     warnings: list[str] = []
 
-    # Separate NPCs into groups (only considering assignable NPCs)
     chest_npcs = [n for n in npc_analyses if n.is_chest and not n.force_cannot_clone]
     coin_npcs = [n for n in npc_analyses if n.is_coin and not n.force_cannot_clone]
     four_npcs = [
@@ -1844,14 +1977,12 @@ def _assign_buffers_v2(
         if n.buffer_type == BufferType.THREE_SPRITES_PER_ROW and not n.force_cannot_clone
     ]
 
-    # Start with 3 empty buffer slots
     assignments: list[BufferAssignment] = [
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
         BufferAssignment(BufferType.EMPTY_3, BufferSpace.BYTES_0),
     ]
 
-    # Assign TREASURE_CHEST to buffer A (index 0) if needed
     if chest_npcs:
         assignments[0] = BufferAssignment(
             BufferType.TREASURE_CHEST,
@@ -1859,7 +1990,6 @@ def _assign_buffers_v2(
             [n.index for n in chest_npcs],
         )
 
-    # Assign COINS to buffer C (index 2) if needed
     if coin_npcs:
         assignments[2] = BufferAssignment(
             BufferType.COINS,
@@ -1867,7 +1997,6 @@ def _assign_buffers_v2(
             [n.index for n in coin_npcs],
         )
 
-    # Collect gridplane groups sorted by count descending (majority first)
     gridplane_groups = []
     if four_npcs:
         gridplane_groups.append(
@@ -1879,7 +2008,6 @@ def _assign_buffers_v2(
         )
     gridplane_groups.sort(key=lambda g: len(g[1]), reverse=True)
 
-    # Assign each gridplane group to the first available empty slot
     for buf_type, npcs in gridplane_groups:
         placed = False
         for i in range(3):
@@ -1892,7 +2020,7 @@ def _assign_buffers_v2(
                 placed = True
                 break
         if not placed:
-            # No empty slot available — force all NPCs in this group to cannot_clone
+            # No empty slot available - force all NPCs in this group to cannot_clone
             for npc in npcs:
                 npc.force_cannot_clone = True
             warnings.append(
@@ -1988,11 +2116,9 @@ def _calculate_ally_buffer_size(
         except (IndexError, AssertionError):
             pass
 
-    # Check default animation states
     for state in DEFAULT_ANIMATION_STATES:
         _add_state_vram(state)
 
-    # Check room's extra_sprite_actions
     for action in room.extra_sprite_actions:
         for state in EXTRA_ACTION_TO_ANIMATION_STATE.get(action, []):
             _add_state_vram(state)
@@ -2025,7 +2151,7 @@ def analyze_partition(
 ) -> PartitionAnalysis:
     """Analyze a room and compute optimal partition configuration.
 
-    Pure computation — no side effects. Deterministic for identical inputs.
+    Pure computation - no side effects. Deterministic for identical inputs.
 
     Args:
         world: GameWorld with loaded sprite data.
@@ -2070,7 +2196,6 @@ def analyze_partition(
 
         npc_analysis = _analyze_npc(world, obj, i, clone_count)
 
-        # Apply sequence overrides for buffer space calculation
         if npc_sequence_overrides and i in npc_sequence_overrides:
             seq_ids = npc_sequence_overrides[i]
             max_seq_vram = 0
@@ -2231,7 +2356,7 @@ def can_room_support_slots(
     non-gridplane, cannot_clone=True. Clones share parent VRAM.
 
     Only the 3 parents consume bitmap slots. Call this BEFORE the slot NPCs
-    are placed — it checks whether there's headroom for them.
+    are placed - it checks whether there's headroom for them.
 
     Args:
         world: GameWorld instance.
@@ -2277,7 +2402,7 @@ def analyze_room_partition(
     while i < len(objects):
         obj = objects[i]
         if isinstance(obj, Clone):
-            # Orphan clone (no parent before it) — skip
+            # Orphan clone (no parent before it) - skip
             i += 1
             continue
 
@@ -2292,7 +2417,6 @@ def analyze_room_partition(
         npc_analyses.append(analysis)
         i = j
 
-    # Calculate ally buffer size from room's extra_sprite_actions
     ally_buffer_size = 1  # default minimum
     if isinstance(room, Room) and room.extra_sprite_actions:
         overworld_prize = world.overworld_character
@@ -2340,7 +2464,7 @@ def analyze_room_partition(
                 ally_buffer_size = min(max(vram_values) + 1, 3)
 
     # Preserve extra sprite buffer and full palette from the room's existing
-    # partition — other things besides chests (water splash, coins, explosions)
+    # partition - other things besides chests (water splash, coins, explosions)
     # can use packets, so don't override the room definition.
     allow_extra_sprite_buffer = False
     extra_buffer_size = 0
@@ -2360,7 +2484,6 @@ def analyze_room_partition(
         allow_extra_sprite_buffer = False
         extra_buffer_size = 0
 
-    # Assign NPCs to buffers
     buffer_assignments, warnings = _assign_buffers(npc_analyses, room_id)
 
     # Special case rooms: force triple empty
@@ -2422,7 +2545,6 @@ def apply_partition_analysis(
 
     existing_partition = room.partition
 
-    # Apply the partition
     partition = analysis.to_partition()
     partition._full_palette_buffer = analysis.full_palette
 
@@ -2437,12 +2559,10 @@ def apply_partition_analysis(
 
     room._partition = partition
 
-    # Determine which NPC indices are assigned to a buffer
     buffered_indices: set[int] = set()
     for assignment in analysis.buffers:
         buffered_indices.update(assignment.npc_indices)
 
-    # Apply cannot_clone overrides at the room object level
     for npc_analysis in analysis.npcs:
         obj = room.objects[npc_analysis.index]
         if isinstance(obj, Clone):
@@ -2459,7 +2579,6 @@ def apply_partition_analysis(
             # Non-gridplane or explicitly cannot_clone: needs dedicated VRAM
             obj.set_cannot_clone(True)
         elif npc_analysis.index in buffered_indices:
-            # Assigned to a buffer: ensure clone is allowed
             obj.set_cannot_clone(False)
 
     return analysis

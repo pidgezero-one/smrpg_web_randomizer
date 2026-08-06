@@ -10,7 +10,7 @@
 # writes all 9 ids and a None becomes subtile 0 -- which renders as junk.
 # The art is re-composited at the PIXEL level: the 16x16 is decoded, placed into a
 # 24x24 canvas at x=4 (centred) / y=8 (bottom), then re-encoded as 9 subtiles. The
-# tile `x` field does NOT shift a gridplane mold (tried 124, no effect), and 4px is
+# tile x field does NOT shift a gridplane mold (tried 124, no effect), and 4px is
 # below what the 8px subtile grid can express, so pixel recompositing is the only way.
 # Single sprite carrying every freestanding-prize graphic room 422 can show, so all
 # fifteen of its prizes share ONE sprite_id and therefore one dedicated VRAM
@@ -28,7 +28,7 @@ sprite = CompleteSprite(
     animation=AnimationPack(0, length=0, unknown=0x0002,
         properties=AnimationPackProperties(vram_size=2048,
             molds=[
-                # mold 0: flower — 16x16 art, centred + bottom-aligned in 24x32
+                # mold 0: flower - 16x16 art, centred + bottom-aligned in 24x32
                 Mold(0, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
@@ -47,7 +47,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                # mold 1: recovery mushroom — 16x16 art, centred + bottom-aligned in 24x32
+                # mold 1: recovery mushroom - 16x16 art, centred + bottom-aligned in 24x32
                 Mold(1, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
@@ -66,7 +66,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                # mold 2: item bag — 16x16 art, centred + bottom-aligned in 24x32
+                # mold 2: item bag - 16x16 art, centred + bottom-aligned in 24x32
                 Mold(2, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
@@ -85,7 +85,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                # mold 3: big coin — 13x16 art, centred + bottom-aligned in 24x32
+                # mold 3: big coin - 13x16 art, centred + bottom-aligned in 24x32
                 Mold(3, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
@@ -104,7 +104,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                # mold 4: small coin — 9x10 art, centred + bottom-aligned in 24x32
+                # mold 4: small coin - 9x10 art, centred + bottom-aligned in 24x32
                 Mold(4, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[
@@ -123,7 +123,7 @@ sprite = CompleteSprite(
                         ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
                     ]
                 ),
-                # mold 5: key — 16x16 art, centred + bottom-aligned in 24x32
+                # mold 5: key - 16x16 art, centred + bottom-aligned in 24x32
                 Mold(5, gridplane=True,
                     tiles=[
                         Tile(mirror=False, invert=False, format=1, length=13, subtile_bytes=[

@@ -85,6 +85,7 @@ script = EventScript([
 	JmpIfRandom1of2(["EVENT_2431_fade_in_from_black_async_47"], identifier="EVENT_2431_jmp_if_random_above_128_44"),
 	SummonObjectToCurrentLevel(NPC_10),
 	SetSyncActionScript(NPC_10, A0412_FOREST_MAZE_AREA_BEE),
-	FadeInFromBlack(sync=False, identifier="EVENT_2431_fade_in_from_black_async_47"),
+	RunEventAsSubroutine(E1097_FOREST_MAZE_AREA_SHUFFLED_NPC_ANIMATION_LOADER, identifier="EVENT_2431_fade_in_from_black_async_47"),
+	FadeInFromBlack(sync=False),
 	Return()
 ])

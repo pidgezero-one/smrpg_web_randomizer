@@ -150,7 +150,7 @@ def _shuffle_items(world: GameWorld):
     set_locations(world)
 
     # Offsets override every other placement setting, but the gate flags
-    # still evaluate against the bosses the offset pinned — so a gate can
+    # still evaluate against the bosses the offset pinned - so a gate can
     # demand a boss the offset locked inside the region that gate guards.
     # Open only the gates that actually deadlock, then bail out: the gates
     # were already turned into ROM state by apply_shuffler_independent_settings,
@@ -166,12 +166,10 @@ def _shuffle_items(world: GameWorld):
     # now instead of burning retries and then blaming "excluded locations".
     assert_solvable(world)
 
-    # shuffle according to settings
     shuffle_prizes(world)
 
     # replace bad items with coins, supplant YouMissed, fill empty locations, etc
 
-    # Write spoiler to JSON file
     with open("spoiler.json", "w") as f:
         json.dump(world.spoiler, f, indent=2, default=str)
 
@@ -192,8 +190,7 @@ __all__ = ['_rebuild_hash', '_shuffle_items', '_apply_shuffle_results']
 
 def build_world(world: GameWorld) -> None:
     """Run the full randomization pipeline against a freshly constructed world."""
-    # Validate settings combinations before doing anything else
-    # This catches invalid combinations early with clear error messages
+    # up front, so a bad combination gives a clear error instead of crashing mid-placement
     validate_settings(world.settings)
 
     random.seed(world.seed)
@@ -205,8 +202,7 @@ def build_world(world: GameWorld) -> None:
     # Apply any settings that might impact the progression shuffler, or that are independent of it.
     apply_pre_shuffle_settings(world)
 
-    # Categorize items by impact.
-    # This takes randomized equipment stats into account.
+    # impact categories account for the randomized equipment stats
     build_item_impact_categories(world)
 
     # Build item to prize mapping (used to choose which items will be used in "completely random" item pool)
@@ -234,7 +230,7 @@ def build_world(world: GameWorld) -> None:
             world.rooms = deepcopy(rooms_snapshot)
             # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms.
             # Also reset _invisible_item_locations so set_locations re-runs the
-            # flag-NPC swap loop — otherwise the freshly re-added dummies stay at
+            # flag-NPC swap loop - otherwise the freshly re-added dummies stay at
             # (0, 0, 0) and the chosen flag NPCs never get written to room data.
             world._slot_dummy_indices = None
             world._flag_dummy_index = None
@@ -242,7 +238,6 @@ def build_world(world: GameWorld) -> None:
             if world.settings.debug_mode:
                 print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
-            # Track this failure count
             count = e.unplaced_count
             failure_counts[count] = failure_counts.get(count, 0) + 1
 
@@ -261,7 +256,6 @@ def build_world(world: GameWorld) -> None:
                     )
                 continue
 
-            # Check if any failure count has reached the threshold
             if failure_counts and all(
                 v >= MAX_FAILURES_PER_COUNT for v in failure_counts.values()
             ):
@@ -287,10 +281,8 @@ def build_world(world: GameWorld) -> None:
     if world.settings.isflag_enabled(EnemyAttacks):
         randomize_enemy_attacks_and_spells(world)
 
-    # Modify the game to reflect the placement results
     _apply_shuffle_results(world)
 
-    # Set enemy stats and Psychopath messages
     randomize_enemy_stats(world)
 
     # Update HP-based AI thresholds proportionately after all stat mutations are complete
@@ -304,12 +296,10 @@ def build_world(world: GameWorld) -> None:
     if world.settings.isflag_enabled(EnemyFormations):
         randomize_enemy_formations(world)
 
-    # Randomize character stats
     if world.settings.isflag_enabled(CharacterStats):
         randomize_character_stats(world)
         randomize_levelup_xps(world)
 
-    # Randomize character spell stats
     if world.settings.isflag_enabled(CharacterSpellStats):
         randomize_character_spell_stats(world)
     apply_post_randomization_settings(world)

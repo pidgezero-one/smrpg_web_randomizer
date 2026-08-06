@@ -68,6 +68,7 @@ script = EventScript([
 	ActionQueueAsync(target=NPC_9, subscript=[
 		A_SetPriority(3)
 	]),
+	RunEventAsSubroutine(E1098_NIMBUS_EXTERIOR_OCCUPIED_SHUFFLED_NPC_ANIMATION_LOADER),
 	JmpIfBitSet(TEMP_704C_0, ["EVENT_3584_ret_0"]),
 	JmpIfBitSet(TEMP_7042_0, ["EVENT_3642_fade_in_from_black_sync_20"]),
 	FadeInFromBlack(sync=False),

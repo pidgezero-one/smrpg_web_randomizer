@@ -100,6 +100,7 @@ from ...types.flags import (
         BowsersKeepGating,
         FactoryGate,
         FactoryGating,
+        StarPiecesRequired
     )
 from ...data.variables.variable_names import (
         SMITHY_BOSS_HUNT_WIN_CONDITION,
@@ -182,6 +183,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.event_2496_startup += [SetBit(SMITHY_BOSS_HUNT_WIN_CONDITION)]
     elif world.settings.is_flag_value(WinCondition, WinConditions.STARS):
         world.event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
+        world.event_scripts.get_command_by_identifier("end_game_after_collecting_star_piece", JmpIfVarEqualsConst).set_value(world.settings.get_flag(StarPiecesRequired).value)
     elif world.settings.is_flag_value(WinCondition, WinConditions.SEALED):
         world.event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]
 
@@ -678,11 +680,9 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         to_delete = vanilla_heals + added_heals
     elif heal_mode is DontAutohealOptions.VANILLA:
         to_delete = added_heals
-    else:  # ALL — keep every post-fight heal
+    else:  # ALL - keep every post-fight heal
         to_delete = []
     for h in to_delete:
         world.event_scripts.delete_command_by_identifier(h)
-
-    # Apply debug starting items if debug mode is enabled
 
     apply_debug_start_items(world)

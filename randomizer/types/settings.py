@@ -19,9 +19,6 @@ class Settings:
     _debug_mode: bool = False
     _prize_offset: int | None = None
     _mimic_offset: int | None = None
-    # Per-category switches for prize offset mode (dev-only). A category turned
-    # off is left out of the offset overrides entirely and shuffles normally.
-    # Boss fights have no switch — they are always offset-driven.
     offset_slots: bool = True
     offset_mimics: bool = True
     offset_coins: bool = True
@@ -30,8 +27,6 @@ class Settings:
     _flags: dict[type[Flag], Flag]
     _override: dict = {}
     _is_flag_value_cache: dict[tuple[type[Flag], Any], bool]
-    # Settings that offset mode overrode behind the user's back, in plain English.
-    # Surfaced on the seed page so a POP seed's flags aren't silently a lie.
     forced_overrides: list[str]
 
     @property
@@ -55,7 +50,7 @@ class Settings:
     @property
     def mimic_offset(self) -> int | None:
         """Independent offset for mimic fight placement (dev-only). None means
-        fall back to ``prize_offset`` for mimics."""
+        fall back to prize_offset for mimics."""
         return self._mimic_offset
 
     @mimic_offset.setter
@@ -216,9 +211,8 @@ class Settings:
             RemoveFlashes: RemoveFlashes(),
             HoldB: HoldB(),
         }
-        # Reverse map for id-based lookup (get_flag_by_id) — lets modules query a
-        # flag without importing its class, avoiding import cycles.
         self._flags_by_id: dict[str, Flag] = {f.id: f for f in self._flags.values()}
+        # todo: get rid of this
 
     @property
     def flags(self) -> dict[type[Flag], Flag]:
@@ -240,10 +234,6 @@ class Settings:
 
     def get_flag_by_id(self, flag_id: str) -> Flag:
         """Get a flag instance by its string id (e.g. "chests", "bosses").
-
-        Used where importing the flag class would create an import cycle — e.g.
-        prizelocation.py querying the check-flags that are built from its own
-        location classes.
         """
         return self._flags_by_id[flag_id]
     
@@ -375,7 +365,6 @@ class Settings:
         """
         options_list = Settings._get_sorted_options_list(flag)
 
-        # Get enabled options sorted by their order value
         enabled_with_order = [
             (opt, flag.options[opt])
             for opt in options_list
@@ -383,7 +372,6 @@ class Settings:
         ]
         enabled_with_order.sort(key=lambda x: x[1])  # type: ignore
 
-        # Build colon-separated index string
         indices = [str(options_list.index(opt)) for opt, _ in enabled_with_order]
         return ":".join(indices) if indices else ""
 
@@ -403,7 +391,6 @@ class Settings:
         if not hash_str:
             return result
 
-        # Parse colon-separated indices
         parts = hash_str.split(":")
         for ordinance, part in enumerate(parts):
             try:
@@ -444,7 +431,6 @@ class Settings:
             return f"{flag.id}:{flag.value}"
 
         if isinstance(flag, SelectOneFlag):
-            # Get the enum key name in lowercase
             selected = flag.selected
             if hasattr(selected, "name"):
                 key_name = selected.name.lower()
@@ -509,7 +495,6 @@ class Settings:
         Format: CategoryId(flag_id|flag_id:value|...)
         Categories with same ID are combined.
         """
-        # Group subcategories by their ID
         id_to_flags: dict[str, list[str]] = {}
 
         for subcat_cls in self._get_all_subcategories():
@@ -526,7 +511,6 @@ class Settings:
                         id_to_flags[cat_id] = []
                     id_to_flags[cat_id].append(encoded)
 
-        # Build final string
         parts: list[str] = []
         for cat_id in sorted(id_to_flags.keys()):
             flag_parts = id_to_flags[cat_id]
@@ -557,7 +541,6 @@ class Settings:
                         id_to_flags[cat_id] = []
                     id_to_flags[cat_id].append(encoded)
 
-        # Build final string
         parts: list[str] = []
         for cat_id in sorted(id_to_flags.keys()):
             flag_parts = id_to_flags[cat_id]
@@ -601,7 +584,6 @@ class Settings:
             return
 
         if isinstance(flag, SelectOneFlag):
-            # Find the enum value by lowercase name
             for choice in flag.choices:
                 if hasattr(choice, "name"):
                     if choice.name.lower() == value_str.lower():
@@ -701,7 +683,6 @@ class Settings:
                 lines.append(f"{marker}{flag_name}: {flag.value} (default: {flag.default})")
 
             elif isinstance(flag, CategorizationFlagWithOrdinance):
-                # Show enabled options in order with their order values
                 enabled_items = [
                     (opt, order) for opt, order in flag.options.items()
                     if order is not None
@@ -754,14 +735,12 @@ class Settings:
 
                 lines.append(f"{marker}{flag_name}:")
 
-                # Format enabled as table with multiple items per line
                 lines.append(f"    Enabled ({len(enabled_names)}):")
                 if enabled_names:
                     lines.append(self._format_options_table(enabled_names, max_width - 6, "      "))
                 else:
                     lines.append("      (none)")
 
-                # Format disabled as table with multiple items per line
                 lines.append(f"    Disabled ({len(disabled_names)}):")
                 if disabled_names:
                     lines.append(self._format_options_table(disabled_names, max_width - 6, "      "))
@@ -808,15 +787,12 @@ class Settings:
         if not items:
             return ""
 
-        # Find the maximum item length for column sizing
         max_item_len = max(len(item) for item in items)
         col_width = max_item_len + 2  # Add padding
 
-        # Calculate how many columns fit
         available_width = max_width - len(indent)
         num_cols = max(1, available_width // col_width)
 
-        # Build rows
         lines = []
         for i in range(0, len(items), num_cols):
             row_items = items[i:i + num_cols]

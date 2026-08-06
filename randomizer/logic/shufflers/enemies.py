@@ -147,7 +147,6 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
         Status.SCARECROW,
     ]
 
-    # Randomize enemy spells
     for spell in world.spells.spells:
         if not isinstance(spell, EnemySpell):
             continue
@@ -156,7 +155,6 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
         new_fp = mutate_normal(int(spell.fp), minimum=1, maximum=31)
         spell.set_fp(new_fp)
 
-        # Shuffle status effects if the spell has any
         if spell.status_effects:
             num_effects = len(spell.status_effects)
             new_effects = random.sample(
@@ -164,7 +162,6 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
             )
             spell.set_status_effects(new_effects)
 
-        # Mutate power
         new_power = mutate_normal(int(spell.power), minimum=0, maximum=255)
         spell.set_power(int(max(0, min(255, new_power))))
 
@@ -173,13 +170,11 @@ def randomize_enemy_attacks_and_spells(world: GameWorld) -> None:
         new_hit_rate = mutate_normal(int(spell.hit_rate), minimum=1, maximum=max_hit)
         spell.set_hit_rate(new_hit_rate)
 
-    # Randomize enemy attacks
     for attack in world.enemy_attacks.attacks:
         # Mutate attack level (0-7 range)
         new_level = mutate_normal(int(attack.attack_level), minimum=0, maximum=7)
         attack.set_attack_level(new_level)
 
-        # Shuffle status effects if the attack has any
         if attack.status_effects:
             num_effects = len(attack.status_effects)
             new_effects = random.sample(
@@ -206,7 +201,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
 
     all_enemies = list(world.enemies.enemies)
 
-    # Get sidekick and boss enemy types to exclude from inter-shuffling
     sidekick_types, boss_types = _get_enemy_lists()
     boss_related_types = set(sidekick_types) | set(boss_types)
 
@@ -236,7 +230,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
             == EnemyStatsShuffleOptions.FULL_RANDOM
         )
 
-        # Get list of non-boss enemies for FULL_RANDOM mode effects
         # Exclude both ohko_immune enemies AND sidekick enemies (boss henchmen)
         non_boss_enemies = [
             e for e in world.enemies.enemies
@@ -250,7 +243,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
 
         # In FULL_RANDOM mode, we DO shuffle non-stat properties (elemental, morph)
         if full_random:
-            # Inter-shuffle resistances, weaknesses, status immunities
             for attr in ["resistances", "weaknesses", "status_immunities"]:
                 shuffled = list(non_boss_enemies)
                 max_index = len(non_boss_enemies) - 1
@@ -268,7 +260,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                     shuffled[i] = b
                     shuffled[new_index] = a
 
-                # Swap attribute values
                 swaps = [getattr(s, attr) for s in shuffled]
                 for enemy, swapped_val in zip(non_boss_enemies, swaps):
                     setter_name = f"set_{attr}"
@@ -276,22 +267,19 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                         setter = getattr(enemy, setter_name)
                         setter(list(swapped_val))
 
-            # Inter-shuffle morph chances randomly
             morph_chances = [e.morph_chance for e in non_boss_enemies]
             random.shuffle(morph_chances)
             for chance, enemy in zip(morph_chances, non_boss_enemies):
                 enemy.set_morph_chance(chance)
 
-        # Mutate individual enemy stats
         # Cap changes at ±50% to prevent wild swings, especially for scaled boss stats
         for enemy in all_enemies:
-            # BOOSTERDUMMY is an internal mechanic actor, not a real combatant —
+            # BOOSTERDUMMY is an internal mechanic actor, not a real combatant -
             # never mutate its stats.
             if isinstance(enemy, BOOSTERDUMMY):
                 continue
             orig = original_stats[id(enemy)]
 
-            # Mutate numeric stats with ±50% cap relative to current (post-shuffle) value
             enemy.set_hp(mutate_normal(int(enemy.hp), minimum=1, maximum=32000, max_change_ratio=0.5))
             enemy.set_speed(mutate_normal(int(enemy.speed), minimum=0, maximum=255, max_change_ratio=0.5))
             enemy.set_attack(mutate_normal(int(enemy.attack), minimum=1, maximum=255, max_change_ratio=0.5))
@@ -345,7 +333,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
                 if random.randint(1, 3) == 3:
                     enemy.set_ohko_immune(not enemy.ohko_immune)
 
-                # Randomize morph chance (only in FULL_RANDOM mode)
                 if full_random:
                     morph_options = [0, 25, 75, 100]
                     enemy.set_morph_chance(random.choice(morph_options))
@@ -372,7 +359,6 @@ def randomize_enemy_stats(world: GameWorld) -> None:
         if original_stats[id(enemy)]["hp"] == 0:
             enemy.set_hp(0)
 
-    # Update psychopath messages based on new stats
     for enemy in all_enemies:
         custom_enemy = cast(CustomEnemy, enemy)
         custom_enemy.set_psychopath_message(custom_enemy.build_psychopath_text())
@@ -416,7 +402,6 @@ def _randomize_enemy_elements_and_statuses(enemy) -> None:
             random.sample(potential_res, min(new_resistances, len(potential_res)))
         )
 
-    # Randomize flower bonus type and chance
     flower_types = [
         FlowerBonusType.ATTACK_UP, FlowerBonusType.DEFENSE_UP, FlowerBonusType.HP_MAX,
         FlowerBonusType.ONCE_AGAIN, FlowerBonusType.LUCKY,
@@ -471,10 +456,8 @@ def randomize_enemy_drops(world: GameWorld) -> None:
     ]
 
     for enemy in world.enemies.enemies:
-        # Mutate coins
         enemy.set_coins(mutate_normal(int(enemy.coins), minimum=0, maximum=255))
 
-        # Mutate XP
         old_xp = int(enemy.xp)
         new_xp = mutate_normal(old_xp, minimum=1, maximum=0xFFFF)
 
@@ -485,7 +468,6 @@ def randomize_enemy_drops(world: GameWorld) -> None:
         else:
             enemy.set_xp(max(1, max(old_xp, new_xp)))
 
-        # Shuffle reward items
         linked = enemy.common_item_drop == enemy.rare_item_drop
 
         if enemy.common_item_drop is not None:
@@ -566,7 +548,7 @@ def generate_formation_coordinates(
         # Require that the candidate coord does not visually overlap any
         # already-placed enemy by more than 50% of the shorter sprite's body.
         # If no such coord exists (e.g., two tall sprites can't fit in the
-        # tight coord grid at <= 50% overlap), drop this enemy — caller will
+        # tight coord grid at <= 50% overlap), drop this enemy - caller will
         # handle the None and exclude it from the formation. Producing a
         # "mostly overlapping" placement just looks like a bug to the player.
         valid = find_valid_coordinates(
@@ -873,15 +855,12 @@ def randomize_enemy_formations(world: GameWorld) -> None:
         if hasattr(location_cls, '_pack_id') and location_cls._pack_id is not None:
             boss_pack_ids.add(location_cls._pack_id)
 
-    # Collect all enemy types that appear in any BossFightPrize subclass
     boss_enemy_types: set[type] = set()
     for prize_cls in BossFightPrize.__subclasses__():
-        # Get enemies from formation members
         if hasattr(prize_cls, '_members') and prize_cls._members:
             for member in prize_cls._members:
                 if member is not None:
                     boss_enemy_types.add(member.enemy)
-        # Get additional enemies that are part of the boss fight
         if hasattr(prize_cls, '_additional_enemies_to_scale'):
             boss_enemy_types.update(prize_cls._additional_enemies_to_scale)
         if hasattr(prize_cls, '_extra_hp_enemies'):
@@ -897,7 +876,6 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             else:
                 boss_enemy_types.add(anchor)
 
-    # Build pool of eligible enemy types (exclude boss enemies and ohko_immune enemies)
     eligible_enemy_types = [
         type(e) for e in world.enemies.enemies
         if not e.ohko_immune and type(e) not in boss_enemy_types
@@ -908,7 +886,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
     # stalls the fight. Collect the formation IDs reachable through the packs
     # they must be kept out of. Formation instances are shared across packs,
     # so a formation belonging to a restricted pack can still be mutated while
-    # shuffling a *different* pack — hence we restrict by formation_id rather
+    # shuffling a *different* pack - hence we restrict by formation_id rather
     # than pack_id.
     from randomizer.logic.progression.prizelocations import (
         MushroomKingdomBossFight,
@@ -924,7 +902,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
         PACK144_STUMPET_ENCOUNTER,
         PACK143_TOWER_FIREBALLS,
     }
-    # For the boss fights, the boss pack itself is never shuffled — it is the
+    # For the boss fights, the boss pack itself is never shuffled - it is the
     # henchman packs (swapped in around the boss by the henchman shuffler)
     # that can roll undead enemies, so restrict those instead.
     for boss_fight_cls in (
@@ -952,11 +930,9 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
     undead_enemy_types = (DRYBONESEnemy, VOMEREnemy)
 
-    # Helper function to calculate stat sum for an enemy
     def get_stat_sum(enemy) -> int:
         return enemy.attack + enemy.defense + enemy.magic_attack + enemy.magic_defense
 
-    # Helper function to get vram_size for an enemy type
     # Sprite ID = monster_id + 256
     def get_vram_size(enemy_type: type) -> int:
         enemy = world.enemies.get_by_type(enemy_type)
@@ -1018,17 +994,14 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                 if fe not in candidates:
                     candidates.append(fe)
 
-            # Calculate average stat sum of unique monsters in the formation
             current_enemies_objs = [world.enemies.get_by_type(e) for e in current_enemy_types]
             avg_stat_sum = sum(get_stat_sum(e) for e in current_enemies_objs) / len(current_enemies_objs)
 
-            # Find enemies with similar stats (within ±20% of average stat sum)
             similar_enemies = []
             for enemy_type in eligible_enemy_types:
                 enemy = world.enemies.get_by_type(enemy_type)
                 enemy_stat_sum = get_stat_sum(enemy)
 
-                # Check if stat sum is within ±20% of average
                 lower_bound = avg_stat_sum * 0.8
                 upper_bound = avg_stat_sum * 1.2
 
@@ -1044,9 +1017,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
                     e for e in candidate_pool if e not in undead_enemy_types
                 ]
 
-            # Add unique candidates up to 3, but avoid infinite loop if not enough unique enemies exist
             while len(candidates) < 3 and candidate_pool:
-                # Find enemies not yet in candidates
                 remaining_unique = [e for e in candidate_pool if e not in candidates]
                 if not remaining_unique:
                     break  # No more unique enemies available
@@ -1094,7 +1065,7 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             # Shuffle for visual variety, then re-prioritize: forced enemies
             # first, then vanilla originals, then random additions. Coord
             # placement is greedy and earlier entries get first pick of the
-            # grid, so high-priority enemies must lead — otherwise a
+            # grid, so high-priority enemies must lead - otherwise a
             # randomly-added sprite can claim the only viable spot and force
             # a forced/original enemy to be dropped as None.
             random.shuffle(chosen_enemies)

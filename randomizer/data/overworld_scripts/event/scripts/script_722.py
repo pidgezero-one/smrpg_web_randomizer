@@ -37,5 +37,6 @@ script = EventScript([
     ActionQueueAsync(NPC_0, [
         A_SetPriority(3),
     ]),
+	RunEventAsSubroutine(E1089_SHIP_POSTGAME_SHUFFLED_NPC_ANIMATION_LOADER),
 	JmpToEvent(E0015_STANDARD_ROOM_LOADER),
 ])

@@ -191,17 +191,22 @@ def render_booster_tower_indoor_boss(
         if m.animations.tpose_mold_id is not None:
             a.set_index(m.animations.tpose_mold_id)
 
-        if m.base.directions != VramStore.DIR2_SWSE:
-            if a.mirror_sprite:
-                world.event_scripts.replace_subscript_command_by_identifier(
-                    eid, aid, A_FaceNortheast()
-                )
+            if m.base.directions == VramStore.DIR2_SWSE:
+                a.set_mirror_sprite(not a.mirror_sprite)
+        else:
+            if m.base.directions != VramStore.DIR2_SWSE:
+                if a.mirror_sprite:
+                    world.event_scripts.replace_subscript_command_by_identifier(
+                        eid, aid, A_FaceNortheast()
+                    )
+                else:
+                    world.event_scripts.replace_subscript_command_by_identifier(
+                        eid, aid, A_FaceNorthwest()
+                    )
             else:
                 world.event_scripts.replace_subscript_command_by_identifier(
-                    eid, aid, A_FaceNorthwest()
+                    eid, aid, A_FaceSouthwest()
                 )
-        else: # if can only face SWSE, north-facing directions are reversed
-            a.set_mirror_sprite(not a.mirror_sprite)
 
     # Stare up replacements
     stare_up_replacements = [
@@ -294,7 +299,7 @@ def render_booster_tower_henchman_scripts(
 
         # Third henchman tower bullet animation
         # The third character slot may be filled by a character henchman or
-        # a mook henchman fallback — check both sources.
+        # a mook henchman fallback - check both sources.
         third_henchman: BossFightHenchman | None = None
         if prize.character_henchmen is not None and len(prize.character_henchmen) >= 3:
             third_henchman = prize.character_henchmen[2]
@@ -406,6 +411,15 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         ),
         BossFightLocationNPC(
             R154_MARRYMORE_CHAPEL_SANCTUARY_DURING_BOOSTER,
+            NPC_9,
+            sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
+            # Adaptive cap: ally buffer + Marrymore recruit (NPC_10) compete
+            # for VRAM in this room.
+            min_vram_size_override=_marrymore_chapel_boss_min_vram_cap,
+            min_vram_from_seq0_override=_marrymore_chapel_boss_min_vram_cap,
+        ),
+        BossFightLocationNPC(
+            R294_UNMAPPED_HOUSE_ROOM,
             NPC_9,
             sequence_setter_event_id=E0790_MARRYMORE_OCCUPIED_SANCTUARY_SHUFFLED_NPC_ANIMATION_LOADER,
             # Adaptive cap: ally buffer + Marrymore recruit (NPC_10) compete

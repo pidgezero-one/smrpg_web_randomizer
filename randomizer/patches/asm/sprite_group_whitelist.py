@@ -1,27 +1,27 @@
 """Restore the Green Yoshi entry in the engine sprite-group whitelist.
 
 The overworld engine keeps a hardcoded whitelist of "base" sprite IDs as
-an inline ``CMP``/``BEQ`` chain at ``$00:9BAA``. When a room loads a sprite
+an inline CMP/BEQ chain at $00:9BAA. When a room loads a sprite
 whose ID is on the list, the engine builds a run of *additional sprites*
 in VRAM for it (extra pose / jump / riding banks); action-script
-``SetSpriteSequence``'s ``sprite_offset`` then indexes into that run.
+SetSpriteSequence's sprite_offset then indexes into that run.
 
-Vanilla whitelists sprite ``$31`` (49 = Green Yoshi) — the Yoster Isle
-Yoshi-riding minigame in room 34 depends on it. :mod:`non_mario_character`
+Vanilla whitelists sprite $31 (49 = Green Yoshi) - the Yoster Isle
+Yoshi-riding minigame in room 34 depends on it. :mod:non_mario_character
 also needs the alternate-protagonist base (sprite 31) whitelisted, and
 originally got it by *overwriting* the Green Yoshi entry
-(``CMP #$31`` -> ``CMP #$1F``). That silently broke Yoshi-riding on every
+(CMP #$31 -> CMP #$1F). That silently broke Yoshi-riding on every
 non-Mario seed (jump -> garbage VRAM read -> softlock / black screen).
 
 The inline chain has no spare slot for a 7th entry, so this patch
-relocates the comparison + dispatch logic. ``$9BAA`` becomes a
-``JMP $9BAD`` into a rewritten routine that fits in the 54 bytes the old
-chain vacated (``$9BAA-$9BDF``) and recognizes every vanilla entry *plus*
-sprite 31. The ``$9BE0`` build loop and ``$9BED`` RTS are untouched.
+relocates the comparison + dispatch logic. $9BAA becomes a
+JMP $9BAD into a rewritten routine that fits in the 54 bytes the old
+chain vacated ($9BAA-$9BDF) and recognizes every vanilla entry *plus*
+sprite 31. The $9BE0 build loop and $9BED RTS are untouched.
 
-Always applied — the routine is a strict superset of vanilla behavior.
-This patch fully owns ``$9BAA-$9BDF``; :mod:`non_mario_character` must NOT
-also write ``$9BBF`` / ``$9BC1`` (those bytes are now inside this routine).
+Always applied - the routine is a strict superset of vanilla behavior.
+This patch fully owns $9BAA-$9BDF; :mod:non_mario_character must NOT
+also write $9BBF / $9BC1 (those bytes are now inside this routine).
 """
 
 from randomizer.data.variables.sprite_names import (
@@ -33,8 +33,8 @@ from randomizer.data.variables.sprite_names import (
 def get_patch() -> dict[int, bytes]:
     """Return the relocated sprite-group whitelist routine.
 
-    54 bytes overwriting ``$9BAA-$9BDF``. Branch displacements are
-    position-fixed for this exact layout — do not reorder or resize.
+    54 bytes overwriting $9BAA-$9BDF. Branch displacements are
+    position-fixed for this exact layout - do not reorder or resize.
     """
     return {
         0x009BAA: bytes([

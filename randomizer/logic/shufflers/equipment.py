@@ -77,14 +77,12 @@ def randomize_equipment_properties(world: GameWorld) -> None:
         if not isinstance(item, (Weapon, Armor, Accessory)):
             continue
 
-        # Get primary stats for this item type
         primary_stats = []
         for item_type, stats in PRIMARY_STATS_BY_TYPE.items():
             if isinstance(item, item_type):
                 primary_stats = stats
                 break
 
-        # Calculate stat point value (similar to old logic)
         stat_point_value = 0
         for attr in EQUIP_STATS:
             val = getattr(item, attr, 0)
@@ -119,12 +117,10 @@ def randomize_equipment_properties(world: GameWorld) -> None:
         # Priority to going up
         downs = [d for d in downs if d not in ups]
 
-        # Track increases and decreases
         score = stat_point_value
         up_vals = {u: 0 for u in ups}
         down_vals = {d: 0 for d in downs}
 
-        # Distribute down points
         if downs:
             if score != 0:
                 down_points = random.randint(0, random.randint(0, score))
@@ -137,7 +133,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                 attr = random.choice(downs)
                 down_vals[attr] += 1
 
-        # Distribute up points
         while score > 0:
             attr = random.choice(ups)
             up_vals[attr] += 1
@@ -146,31 +141,26 @@ def randomize_equipment_properties(world: GameWorld) -> None:
             else:
                 score -= 2
 
-        # Zero all stats
         for attr in EQUIP_STATS:
             setter = getattr(item, f"set_{attr}")
             setter(0)
 
-        # Set new positive stats with mutation
         for attr in up_vals:
             val = mutate_normal(up_vals[attr], minimum=1, maximum=127)
             setter = getattr(item, f"set_{attr}")
             setter(val)
 
-        # Set new negative stats with mutation
         for attr in down_vals:
             val = mutate_normal(down_vals[attr], minimum=1, maximum=127)
             setter = getattr(item, f"set_{attr}")
             setter(-val)
 
-        # If weapon with variance, shuffle that too
         if isinstance(item, Weapon) and item.variance > 0:
             new_variance = mutate_normal(
                 int(item.variance), minimum=1, maximum=127
             )
             item.set_variance(new_variance)
 
-        # Randomize special properties based on tier
         # Determine tier based on item price (rough approximation)
         price = item.price
         if price <= 50:
@@ -251,7 +241,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                 if random.random() < buff_odds:
                     item.append_temp_buff(buff)
 
-        # Update description based on new stats
         item.set_description(item.build_equipment_description())
 
 
@@ -375,7 +364,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
 
     no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
 
-    # Define consumable item pools
     world.low_impact_items = [
         MushroomItem,
         HoneySyrupItem,
@@ -420,7 +408,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
         RockCandyItem,
     ]
 
-    # Get all equipment and sort by rank
     all_equipment = [
         i for i in world.items.items if isinstance(i, (Weapon, Armor, Accessory))
     ]
@@ -480,7 +467,7 @@ def build_item_to_prize_mapping(world: GameWorld) -> None:
     """Build a mapping from item classes to their corresponding prize classes.
 
     Iterates through all ItemPrize subclasses and creates a reverse mapping
-    from their `item` attribute to the prize class itself.
+    from their item attribute to the prize class itself.
     """
 
     world.item_to_prize = {}

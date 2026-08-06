@@ -23,7 +23,7 @@ room = Room(
                 index_in_main_buffer=True
             ),
             # Greaper (sprite 276) and the J puzzle block (sprite 104) are both
-            # gridplane format 3. Vanilla ROM partition 58 is `b1 82 80 80` =
+            # gridplane format 3. Vanilla ROM partition 58 is b1 82 80 80 =
             # CHEST / THREE / THREE; the FOUR + EMPTY_3 this file used to carry
             # did not match either the ROM or the room's own sprites.
             Buffer(
@@ -93,7 +93,7 @@ room = Room(
             # is shared with the stationary recruitment NPCs.
             directions=VramStore.DIR7_ALL_DIRECTIONS,
             # Everything below pins this slot to the vanilla Mario clone's NPC
-            # record (ROM 0x1DB800 + 6*7 = `00 5c 80 a0 45 2c 00`), because
+            # record (ROM 0x1DB800 + 6*7 = 00 5c 80 a0 45 2c 00), because
             # apply.py swaps the record to ALLY_CLONE_NPC on non-Mario seeds and
             # that record is tuned for the stationary recruitment NPCs it is
             # shared with. cannot_clone is the load-bearing one: an 8-direction

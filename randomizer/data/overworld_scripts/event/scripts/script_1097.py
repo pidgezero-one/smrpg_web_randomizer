@@ -1,4 +1,4 @@
-# E1097_EMPTY
+# E1097_FOREST_MAZE_AREA_SHUFFLED_NPC_ANIMATION_LOADER
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -34,5 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-
+	Return()
 ])

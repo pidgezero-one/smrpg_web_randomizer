@@ -7,7 +7,7 @@ from mypy import api
 
 
 # The check framework is used for multiple different kinds of checks. As such, errors
-# and warnings can originate from models or other django objects. The `CheckMessage`
+# and warnings can originate from models or other django objects. The CheckMessage
 # requires an object as the source of the message and so we create a temporary object
 # that simply displays the file and line number from mypy (i.e. "location")
 class MyPyErrorLocation:

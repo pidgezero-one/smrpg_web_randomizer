@@ -34,7 +34,7 @@ def apply_shuffler_results_to_game_data(world: GameWorld) -> None:
     # Update partition buffers for rooms with shuffled sprites.
     # MUST run after the per-character protagonist sprite remap above, since
     # the orchestrator reads sprite data at slots 31-37 for VRAM calculations
-    # — those slots are empty placeholders until cosmetics writes them.
+    # - those slots are empty placeholders until cosmetics writes them.
     update_changed_room_partitions(world)
 
     apply_recruitment_palette_adjustments(world)

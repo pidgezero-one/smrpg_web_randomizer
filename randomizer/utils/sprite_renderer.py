@@ -31,7 +31,6 @@ def _decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
 
     pixels = []
     for y in range(8):
-        # Each row of 8 pixels
         # Bitplanes 0-1 are in bytes 0-15 (interleaved by row)
         # Bitplanes 2-3 are in bytes 16-31 (interleaved by row)
         bp0 = subtile_bytes[y * 2]
@@ -39,7 +38,6 @@ def _decode_snes_4bpp_subtile(subtile_bytes: bytearray) -> list[int]:
         bp2 = subtile_bytes[16 + y * 2]
         bp3 = subtile_bytes[16 + y * 2 + 1]
 
-        # Extract 8 pixels from this row
         for x in range(8):
             # Bit position (MSB first)
             bit = 7 - x
@@ -89,33 +87,26 @@ def _render_tile_to_pixels(tile: Tile, palette_colors: list[int], gridplane: boo
     tile_width = cols * 8
     tile_height = rows * 8
 
-    # Initialize output image with transparent pixels
     pixels = [[(0, 0, 0, 0) for _ in range(tile_width)] for _ in range(tile_height)]
 
-    # Process each subtile
     subtile_bytes_list = tile.subtile_bytes
     for i, subtile_bytes in enumerate(subtile_bytes_list):
         if subtile_bytes is None:
             # Empty subtile, skip
             continue
 
-        # Calculate subtile position in gridplane
         subtile_row = i // cols
         subtile_col = i % cols
 
-        # Decode subtile to palette indices
         subtile_pixels = _decode_snes_4bpp_subtile(subtile_bytes)
 
-        # Place subtile pixels in output image
         for py in range(8):
             for px in range(8):
                 palette_idx = subtile_pixels[py * 8 + px]
 
-                # Calculate output position
                 out_y = subtile_row * 8 + py
                 out_x = subtile_col * 8 + px
 
-                # Apply mirroring if needed
                 if tile.mirror:
                     out_x = tile_width - 1 - out_x
                 if tile.invert:
@@ -153,30 +144,23 @@ def _render_metasprite_to_image(
     if len(mold.tiles) == 0:
         raise ValueError("Mold has no tiles to render")
 
-    # Calculate bounding box from all tiles
     min_x = min(tile.x for tile in mold.tiles)
     min_y = min(tile.y for tile in mold.tiles)
 
-    # Calculate max bounds by adding tile dimensions
     max_x = max(tile.x + 16 for tile in mold.tiles)  # Assuming 2x2 = 16 pixels
     max_y = max(tile.y + 16 for tile in mold.tiles)
 
     canvas_width = max_x - min_x
     canvas_height = max_y - min_y
 
-    # Create canvas
     canvas = Image.new('RGBA', (canvas_width, canvas_height), (0, 0, 0, 0))
 
-    # Render each tile and composite onto canvas
     for tile in mold.tiles:
-        # Render this tile
         pixels_2d = _render_tile_to_pixels(tile, palette_colors, gridplane=False)
 
-        # Get tile dimensions
         tile_height = len(pixels_2d)
         tile_width = len(pixels_2d[0]) if tile_height > 0 else 0
 
-        # Create tile image
         tile_img = Image.new('RGBA', (tile_width, tile_height))
         tile_data = []
 
@@ -187,14 +171,11 @@ def _render_metasprite_to_image(
 
         tile_img.putdata(tile_data)
 
-        # Calculate position on canvas (relative to min_x, min_y)
         pos_x = tile.x - min_x
         pos_y = tile.y - min_y
 
-        # Composite onto canvas
         canvas.paste(tile_img, (pos_x, pos_y), tile_img)
 
-    # Crop to non-transparent bounds
     bbox = canvas.getbbox()
     if bbox:
         canvas = canvas.crop(bbox)
@@ -226,7 +207,6 @@ def _render_sprite_to_image(
     Returns:
         PIL Image with the rendered sprite (RGBA mode)
     """
-    # Get the animation pack and mold
     animation_pack = sprite.animation
     if mold_index >= len(animation_pack.properties.molds):
         raise ValueError(f"Mold index {mold_index} out of range (max: {len(animation_pack.properties.molds) - 1})")
@@ -236,17 +216,14 @@ def _render_sprite_to_image(
     if len(mold.tiles) == 0:
         raise ValueError("Mold has no tiles to render")
 
-    # Check if this is a gridplane or metasprite
     if mold.gridplane:
         # Gridplane: single tile arranged in a grid
         tile: Tile = mold.tiles[0]
         pixels_2d = _render_tile_to_pixels(tile, palette_colors, gridplane=True)
 
-        # Get dimensions
         height = len(pixels_2d)
         width = len(pixels_2d[0]) if height > 0 else 0
 
-        # Create PIL Image (RGBA for transparency)
         img = Image.new('RGBA', (width, height))
         img_data = []
 
@@ -257,7 +234,6 @@ def _render_sprite_to_image(
 
         img.putdata(img_data)
 
-        # Crop to non-transparent bounds
         bbox = img.getbbox()
         if bbox:
             img = img.crop(bbox)
@@ -290,11 +266,9 @@ def generate_ally_palette_preview(
         scale: Scale factor (default: 4)
     """
 
-    # Get the sprite object
     sprite_module = getattr(sprites, f'sprite_{sprite_id}')
     sprite: CompleteSprite = sprite_module
 
-    # Get palette colors
     if hasattr(palette_class, 'colours'):
         palette_colors = palette_class.colours
     elif hasattr(palette_class, 'colors'):
@@ -302,8 +276,6 @@ def generate_ally_palette_preview(
     else:
         raise ValueError("Palette class must have 'colours' or 'colors' attribute")
 
-    # Render to image
     img = _render_sprite_to_image(sprite, palette_colors, mold_index, scale)
 
-    # Save
     img.save(output_path, 'PNG')
