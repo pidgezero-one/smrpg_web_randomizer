@@ -135,6 +135,9 @@ event_script_audit.txt
 
 .vscode
 
+# Production environment details.
+.env.prod*
+
 # Environment files with secrets
 .env.prod*unreferenced_dialogs.txt
 
