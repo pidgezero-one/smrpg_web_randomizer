@@ -34,8 +34,8 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
-    JmpToEvent(E3885_END_GAME),
+	# EnterArea(room_id=R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE, face_direction=NORTHWEST, x=4, y=48, z=0, run_entrance_event=False),
+    # JmpToEvent(E3885_END_GAME),
 	JmpIfBitSet(MARIOS_PAD_OR_MONSTRO_TOWN_SLEEP, ["EVENT_256_ret_0"]),
 	Pause(1),
 	PlaySound(sound=SO010_TRAMPOLINE, channel=6),
