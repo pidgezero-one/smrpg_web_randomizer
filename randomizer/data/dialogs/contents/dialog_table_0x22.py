@@ -605,7 +605,7 @@ dialog_data[223] = '''[await]'''
 dialog_data[224] = '''[await]'''
 dialog_data[225] = '''[await]'''
 dialog_data[226] = '''[center]CLOSED FOR MAINTENANCE
-[center]Please come back later.
+Please come back later.
                                    Luigi[await]'''
 dialog_data[227] = ''' Almost forgot!
  You wagered 30 coins, didn’t ya?
@@ -682,9 +682,9 @@ dialog_data[246] = ''' Have ya met the weirdos livin’ in
 dialog_data[247] = '''
 [center]“Mi”, a name I call myself![await][page]
 
-  “Ti”, a drink of jam and bread![await][page]
+“Ti”, a drink of jam and bread![await][page]
 
-[center][delay]  [delay]Oops![await][page]
+[delay]  [delay]Oops![await][page]
  That’s...not really how it goes.[await][page]
  I’m just bored.[await]
  But if you go to the mountain,
@@ -880,19 +880,19 @@ dialog_data[312] = ''' See the three faces on the wall?
  Hit them in any order and you’ll
  receive your fortune.[await]'''
 dialog_data[313] = '''[center]Yikes, looks like you’ll have
-[center]hardships ahead of you.[await]'''
-dialog_data[314] = ''' Looks like you’ll have a great meal
-[center]sometime in the future.[await]'''
-dialog_data[315] = '''  Some tasty snacks are awaiting
-[center]you in the future.[await]'''
+hardships ahead of you.[await]'''
+dialog_data[314] = '''[center]Looks like you’ll have a great meal
+sometime in the future.[await]'''
+dialog_data[315] = '''[center]Some tasty snacks are awaiting
+you in the future.[await]'''
 dialog_data[316] = '''[center]You’ll have many friends in the
-[center]future.[await]'''
-dialog_data[317] = ''' You’ll have plenty of good things
-[center]to look forward to.[await]'''
+future.[await]'''
+dialog_data[317] = '''[center]You’ll have plenty of good things
+to look forward to.[await]'''
 dialog_data[318] = '''[center]You’ll find some rare items.[await]'''
 dialog_data[319] = '''[center]You’ll pick up great items.[await]'''
 dialog_data[320] = '''[center]If you proceed through the pipe
-[center]next door...
+next door...
 [end]'''
 dialog_data[321] = ''' Have you seen the huge hole in the
  cliff at Booster Pass?
@@ -1092,7 +1092,7 @@ dialog_data[390] = '''
  Get mushrooms & press X [await]
  to accelerate[await][page]
 
-[center]Moleville Safety Board (MSB)[await]'''
+Moleville Safety Board (MSB)[await]'''
 dialog_data[391] = '''PA’ MOLE: There ain’t much left in
  the mines past this point.[await]'''
 dialog_data[392] = '''DRY BONES: I know! You probably
@@ -1117,22 +1117,22 @@ dialog_data[397] = ''' Hey![delay_15] Have you heard?[await][pause] The bushes
  cave treasures, of course.[await]'''
 dialog_data[398] = '''[center]Memo left by Magellean:
 
-[center]There is an “s” in the word.[await]'''
+There is an “s” in the word.[await]'''
 dialog_data[399] = '''[center]Memo left by Magellean:
 
  It is found on the bed of the ocean.[await]'''
 dialog_data[400] = '''[center]Memo left by DeGama:
 
-[center]It has two vowels.[await]'''
+It has two vowels.[await]'''
 dialog_data[401] = '''[center]Memo left by DeGama:
 
-[center]It has four consonants.[await]'''
+It has four consonants.[await]'''
 dialog_data[402] = '''[center]Memo left by Van Doren:
-[center]At least...
+At least...
   two consonants are side by side.[await]'''
 dialog_data[403] = '''[center]Memo left by Van Doren:
 
-[center]The “r” comes before the “l”.[await]'''
+The “r” comes before the “l”.[await]'''
 dialog_data[404] = ''' We’re done for...A giant squid
  just got a hold of us. This ship’s
  going down fast...[await]'''

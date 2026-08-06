@@ -652,11 +652,11 @@ dialog_data[220] = '''[center]It’s locked[await]'''
 dialog_data[221] = '''[center]Tried saying the password:[delay]
               [filename][await]'''
 dialog_data[222] = '''[center]No luck...[delay]
-[center]Booster changed the password.[delay]
-[center]Oh, well...[await]'''
+Booster changed the password.[delay]
+Oh, well...[await]'''
 dialog_data[223] = '''[center]Take a look at Booster’s
-[center]family portraits in order from
-[center]the oldest to the youngest.[await]'''
+family portraits in order from
+the oldest to the youngest.[await]'''
 dialog_data[224] = '''\n[center]Remember to respect your elders.[await]'''
 dialog_data[225] = '''YARIDOVICH: Finally![await]
  It took you long enough to get
@@ -691,7 +691,7 @@ dialog_data[236] = ''' You...may not enter here.
 dialog_data[237] = ''' There is nothing of interest here.
  Don’t...bother looking inside.[await]'''
 dialog_data[238] = '''[center]Hey![await]
-[center]Someone’s in there.[await]'''
+Someone’s in there.[await]'''
 dialog_data[239] = '''[center]It’s locked[await]'''
 dialog_data[240] = '''DR. TOPPER: Give up?[await]
  [select]  (Still working on it)
@@ -778,11 +778,11 @@ dialog_data[263] = '''[center]Received a “Maple Syrup”[await]'''
 dialog_data[264] = '''[center]Received a “Rock Candy”[await]'''
 dialog_data[265] = '''[center]Received a “Flower Tab”[await]'''
 dialog_data[266] = '''[center]Attention, Civilians![await]
-[center]Short on Frog Coins?[await]
+Short on Frog Coins?[await]
  Climb the cliff in under 11 seconds,
-[center]and win FIVE Frog Coins![await][page]
+and win FIVE Frog Coins![await][page]
   Claim as many times as you like!
-[center]Stop on by soon.
+Stop on by soon.
                       ~The Sky Troopas[await]'''
 dialog_data[267] = '''DEALER: In Blackjack, whomever
  comes the closest to 21 points,
@@ -827,9 +827,9 @@ dialog_data[271] = '''GARDENER: This is unreal! This is
  Monthly hear about this. I’m going
  to be famous! Maybe even get my
  picture in the next issue.[delay_24][end]'''
-dialog_data[272] = '''
-[center]Feel free to rest here.
-[center]~The 3 MUSTY FEARS[await]'''
+dialog_data[272] = '''[center]
+Feel free to rest here.
+~The 3 MUSTY FEARS[await]'''
 dialog_data[273] = '''JAGGER: Now this should be
  interesting. Can you beat THE
  master, `MAIN_CHARACTER_NAME`?[await]'''

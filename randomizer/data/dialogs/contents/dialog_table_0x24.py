@@ -51,18 +51,18 @@ dialog_data[21] = '''
 dialog_data[22] = '''
 
 [center]Wish I had some Cricket Jam.[await]'''
-dialog_data[23] = '''
-[center]I wanna be a great plumber
-[center]like my brother Mario.[await]'''
+dialog_data[23] = '''[center]
+I wanna be a great plumber
+like my brother Mario.[await]'''
 dialog_data[24] = '''
 
 [center]If I could JUST get that melody![await]'''
-dialog_data[25] = '''
-[center]The hunger!
-[center]Oh, for some food! [await]'''
-dialog_data[26] = '''
-[center]I wanna be the best treasure
-[center]hunter in the world.[await]'''
+dialog_data[25] = '''[center]
+The hunger!
+Oh, for some food! [await]'''
+dialog_data[26] = '''[center]
+I wanna be the best treasure
+hunter in the world.[await]'''
 dialog_data[27] = '''
 
 [center]I vant to be a vald class baker.[await]'''
@@ -283,11 +283,11 @@ dialog_data[104] = '''JINX: Master!
  Share your wisdom with us![await]'''
 dialog_data[105] = ''' I think our neighbor moved away.[await]'''
 dialog_data[106] = '''[center]Caution![await]
-[center]If you fall out the back of the
-[center]castle, you won’t be able to get
-[center]back in without a battle.[await]
-  Make sure you have everything you
-[center]need before proceeding![await]
+If you fall out the back of the
+castle, you won’t be able to get
+back in without a battle.[await]
+Make sure you have everything you
+need before proceeding![await]
    ~The SMRPG Randomizer Dev Team[await]'''
 dialog_data[107] = ''' Have you ever visited the tower in
  the south? I snuck in one time.[await][page]
@@ -361,7 +361,7 @@ dialog_data[121] = ''' The guy in the left corner will give
  you something, too.[await]'''
 dialog_data[122] = '''[center]DANGER!!!
 
-[center]Beyond the cliffs is the volcano[await]'''
+Beyond the cliffs is the volcano[await]'''
 dialog_data[123] = ''' Please, enjoy yourselves.[await]
  The volcano is just past the
  hot springs.[await]'''

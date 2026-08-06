@@ -10,17 +10,7 @@ from ...data.variables.room_names import (
     R192_BOOSTER_TOWER_9F_AREA_02_BOOSTERS_CURTAIN_GAME_ROOM,
 )
 from ...data.variables.variable_names import (COMPLETED_MUSHROOM_DERBY, ITEM_ID, MAP_CASINO, MAP_DIRECTIONAL_BEAN_VALLEY_CASINO, MAP_DIRECTIONAL_PIPE_VAULT_YOSTER_ISLE, MAP_YOSTER_ISLE, PRIMARY_TEMP_7000, RETURNED_MARIO_DOLL, YOSHI_ITEM_GRANTED, MAP_INNER_FACTORY)
-from ...data.variables.dialog_names import (
-    DI1051_MOLEVILLE_CLOSED,
-    DI1052_PIPE_VAULT_HINT,
-    DI1053_BANDITS_WAY_HINT,
-    DI1054_SUNKEN_SHIP_HINT,
-    DI1055_SEWER_GATING_TEXT,
-    DI2474_NIMBUS_NPC,
-    DI3726_KEEP_ACCESS_HINT,
-    DI4058_SHUFFLE_COOKIES_1,
-    DI4059_SHUFFLE_COOKIES_2,
-)
+from ...data.variables.dialog_names import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     DisableObjectTrigger,
     RunEventAsSubroutine,
