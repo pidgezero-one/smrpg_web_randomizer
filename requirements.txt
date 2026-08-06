@@ -2,7 +2,7 @@ Django==6.0.4
 jsonfield2==4.0.0.post0
 Markdown==3.10.2
 nlzss==0.1.2
-Pillow==10.4.0
+Pillow==12.3.0
 pytest==8.3.5
 PyYAML==6.0.2
 scipy
