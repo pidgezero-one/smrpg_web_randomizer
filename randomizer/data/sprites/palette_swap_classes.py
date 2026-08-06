@@ -7,7 +7,7 @@ PURE:    sprite_id -> canonical_sprite_id
          Same palette_offset. Merging is a sprite-id override and nothing else.
 SHIFTED: sprite_id -> (canonical_sprite_id, pack_offset)
          Merging additionally needs palette residency plus an A_IncPaletteRowBy
-         bump; see docs/superpowers/specs/2026-07-30-npc-palette-swap-unification-design.md
+         bump.
 """
 
 

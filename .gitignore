@@ -116,6 +116,8 @@ smrpgr.code-workspace
 .claude
 CLAUDE.md
 /.planning
+/docs
+ASM_TRACE_*.md
 patchvenv
 .agents
 skills-lock.json
