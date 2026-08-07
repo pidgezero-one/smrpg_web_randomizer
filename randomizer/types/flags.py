@@ -889,7 +889,7 @@ class ShuffleMagikoopaChest(BooleanFlag):
 # ✅
 class ShuffleWeddingGear(BooleanFlag):
     _name = "Shuffle Marrymore wedding gear"
-    _description = """If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight will be located randomly within the world (not necessarily key item locations). The four NPCs in the chapel become item checks.
+    _description = """If enabled, the four pieces of wedding gear required to initiate the Marrymore boss fight become "Special Items" and are placed in the item pool. The four NPCs in the chapel become "Special Item" checks.
 <br>
 <br>If disabled, the Marrymore chapel minigame will behave as normal."""
     _id = "marry"
@@ -898,7 +898,7 @@ class ShuffleWeddingGear(BooleanFlag):
 
 class ShuffleMarioDoll(BooleanFlag):
     _name = "Shuffle Mario doll"
-    _description = """If enabled, you will need to find the Mario Doll in the item pool in order to initiate the curtain sequence in Booster Tower. A random item will be placed on the curtain rod for you to bonk off.
+    _description = """If enabled, the Mario Doll becomes a "Special Item" and you must find it in order to initiate the curtain sequence in Booster Tower. A random item will be placed on the curtain rod for you to bonk off, which is a "Special Item" check.
 <br>
 <br>If disabled, the curtain minigame will behave as normal."""
     _id = "doll"
@@ -907,7 +907,7 @@ class ShuffleMarioDoll(BooleanFlag):
 
 class ShuffleCookies(BooleanFlag):
     _name = "Shuffle Cookies"
-    _description = """If enabled, the cookies you receive to initiate the Mushroom Derby solo race with Boshi are shuffled into the pool as a single key item. Once turned in, the race will always be available until you win it. The Yoshi who normally grants you the event cookies will give you a random item.
+    _description = """If enabled, the cookies you receive to initiate the Mushroom Derby solo race with Boshi are shuffled into the pool as a single "Special Item". Once turned in, the race will always be available until you win it. The Yoshi who normally grants you the event cookies becomes a "Special Item" check.
 <br>
 <br>If disabled, the Mushroom Derby solo race will behave as normal."""
     _id = "cookies"
@@ -948,7 +948,7 @@ class KeyItemsAnywhere(BooleanFlag):
 <br>If disabled, the "Special Items" will only be shuffled within each other's locations.
 <br>
 <br>The items targeted by this setting are the <b>Rare Frog Coin</b>, <b>Wallet</b>, <b>Cricket Pie</b>, <b>Bambino Bomb</b>, <b>Castle Key 1</b>, <b>Castle Key 2</b>, <b>Alto Card</b>, <b>Tenor Card</b>, <b>Soprano Card</b>, <b>Greaper Flag</b>, <b>Dry Bones Flag</b>, <b>Big Boo Flag</b>, <b>Shed Key</b>, <b>Elder Key</b>, <b>Cricket Jam</b>, <b>Temple Key</b>, <b>Room Key</b>, <b>Seed</b>, <b>Fertilizer</b>, and <b>Bright Card</b>.
-<br><br>Certain settings can also add the <b>Extra Shiny Stone</b>, <b>Crystal Shard</b>, <b>Ring</b>, <b>Brooch</b>, <b>Shoes</b>, <b>Crown</b>, <b>Fireworks</b>, <b>Shiny Stone</b>, <b>Carbo Cookie</b>, and <b>Gold Paint</b>.
+<br><br>Certain settings can also add the <b>Extra Shiny Stone</b>, <b>Crystal Shard</b>, <b>Ring</b>, <b>Brooch</b>, <b>Shoes</b>, <b>Crown</b>, <b>Fireworks</b>, <b>Shiny Stone</b>, <b>Carbo Cookie</b>, <b>Mario Doll</b>, <b>Beetlemania</b>, and <b>Gold Paint</b>.
 """
     _id = "keys_anywhere"
     _requires_all = [(ShuffleItems(), True)]
@@ -975,7 +975,7 @@ class InvisibleFlagsSetting(BooleanFlag):
     _name = "Move invisible flag checks"
     _description = """Chooses where the invisible items placed by the Three Musty Fears are located. This setting will put your attention to detail and your knowledge of the world of SMRPG to the test!
 <br>
-<br>If "Default locations" is selected, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
+<br>If disabled, these checks will remain in their default locations (Mario's Pad bed, Rose Town sign, Yo'ster Isle goalpost).
 <br>
 <br>If enabled, the three checks will be located somewhere random in the world as an invisible item. The Three Musty Fears will give you hints as to their locations.
 <br>
@@ -993,7 +993,7 @@ class Remake(BooleanFlag):
 <br>
 <br>Boss fight locations will be available after you defeat the first iterations of those fights and also find the Stay Voucher. For example, you cannot do the postgame temple fight until after you have defeated the regular campaign temple fight, you can't use the Extra Shiny Stone until you've defeated the boss in the Monstro Town door the first time, etc.
 <br>
-<br>Defeating all seven bosses that have a postgame re-fight will unlock a check in Mario's Pad that normally contains the Stay Voucher (shuffled as a key item check)."""
+<br>Defeating all seven bosses that have a postgame re-fight will unlock a check in Mario's Pad that normally contains the Stay Voucher (shuffled as a "Special Item" check)."""
     _id = "postgame"
     _remake = False
 
@@ -1442,7 +1442,7 @@ class PoisonMushroom(BooleanFlag):
     _name = "Change Fake Mushroom's Effect"
     _description = (
         "Randomize the status effect inflicted on a party member with the Fake Mushroom. It will only give "
-        "one status effect per seed, which has a 1/8 chance of being Invincibility."
+        "one status effect per seed, which has a 12.5 percent chance of being Invincibility."
     )
     _id = "fake"
 
@@ -1577,7 +1577,7 @@ class SuperJump2Threshold(RangeFlag):
 # ✅
 class FixKnifeGuy(BooleanFlag):
     _name = "Fix Knife Guy max prize glitch"
-    _description = """In the original game, Knife Guy runs a dialog that suggests you get a Red Essence at 255 net wins. However, a command to actually add the item to your inventory is missing, so the item you get is just a random mushroom like normal. This flag fixes this and turns it into a check."""
+    _description = """In the original game, Knife Guy displays a dialog that says you get a Red Essence at 255 net wins. However, you don't actually get the Red Essence because its grant code has a bug. This flag fixes that and turns it into a check."""
     _id = "fix_kg"
 
 
@@ -1614,7 +1614,7 @@ class StarPiecesRequired(RangeFlag):
 # ✅
 class CasinoWarp(BooleanFlag):
     _name = "Casino Warp"
-    _description = """If enabled, a trampoline warping directly to the final boss fight will become available in Grate Guy's Casino."""
+    _description = """If enabled, an usher will appear inside Grate Guy's Casino who will escort you to the final boss fight."""
     _id = "cwarp"
 
 
