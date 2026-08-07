@@ -19,7 +19,7 @@ def _register_config_watcher():
     """Register config.yml with Django's autoreloader."""
 
     def _watch_config_file(sender, **kwargs):
-        sender.watch_file(_config_path)
+        sender.extra_files.add(_config_path)
 
     autoreload_started.connect(_watch_config_file)
 
