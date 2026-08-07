@@ -1,8 +1,10 @@
 """Item and prize shuffling logic."""
 
 from __future__ import annotations
-from randomizer.debug.offset_preview import compute_offset_assignments
+from randomizer.utils.debug_output import debug_print
+from randomizer.logic.offset_preview import compute_offset_assignments
 from randomizer.debug import load_debug_config, get_prize_class, get_location_class
+from randomizer.utils.debug_output import DEBUG_FILE_DUMPS
 from randomizer.types.prize import SlotsPrize as SlotsPrizeBase
 from randomizer.types.prize import MimicFightInitiatorPrize as MimicBase
 import os
@@ -541,7 +543,7 @@ def _dump_placement_failure(
         f.write(text)
 
     if world.settings.debug_mode:
-        print(f"[DEBUG] Placement failure dump written to: {filepath}")
+        debug_print(f"[DEBUG] Placement failure dump written to: {filepath}")
     return filepath
 
 
@@ -1671,7 +1673,7 @@ def shuffle_prizes(world: GameWorld) -> None:
                 name = type(p).__name__
                 pool_contents[name] = pool_contents.get(name, 0) + 1
         if world.settings.debug_mode:
-            print(f"[DEBUG] Full pool contents: {dict(sorted(pool_contents.items()))}")
+            debug_print(f"[DEBUG] Full pool contents: {dict(sorted(pool_contents.items()))}")
     # remove slot machine npcs from their original rooms
     room_334 = world.rooms._rooms[334]
     assert room_334 is not None, "Room 334 not found"
@@ -1850,13 +1852,13 @@ def shuffle_prizes(world: GameWorld) -> None:
         ]
         if world.settings.debug_mode:
             if non_spell_inaccessible:
-                print(
+                debug_print(
                     f"[DEBUG] After progression placement: {len(non_spell_inaccessible)} non-SpellSlot locations still inaccessible:"
                 )
                 for loc in non_spell_inaccessible:
-                    print(f"[DEBUG]   {type(loc).__name__}")
+                    debug_print(f"[DEBUG]   {type(loc).__name__}")
             else:
-                print(
+                debug_print(
                     f"[DEBUG] After progression placement: {len(inaccessible)} inaccessible locations, all SpellSlotLocations"
                 )
 
@@ -1892,7 +1894,8 @@ def shuffle_prizes(world: GameWorld) -> None:
             location_filter=shuffle_filter,
         )
     except PlacementException as e:
-        _dump_placement_failure(world, pool_before, e.unplaced_items, priority_classes)
+        if DEBUG_FILE_DUMPS:
+            _dump_placement_failure(world, pool_before, e.unplaced_items, priority_classes)
         raise
 
     # Post-placement diff: collect all items from every location and compare to pool snapshot
@@ -1903,7 +1906,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             placed_items[name] = placed_items.get(name, 0) + 1
     total_after = sum(placed_items.values())
     if world.settings.debug_mode:
-        print(f"[DEBUG] Items in locations after placement: {total_after}")
+        debug_print(f"[DEBUG] Items in locations after placement: {total_after}")
 
         all_keys = sorted(set(pool_plus_static.keys()) | set(placed_items.keys()))
         diffs: list[str] = []
@@ -1915,11 +1918,11 @@ def shuffle_prizes(world: GameWorld) -> None:
                     f"  {key}: pool+static={before}, placed={after} (diff={after - before:+d})"
                 )
         if diffs:
-            print(f"[DEBUG] POOL vs PLACED DIFF ({len(diffs)} mismatches):")
+            debug_print(f"[DEBUG] POOL vs PLACED DIFF ({len(diffs)} mismatches):")
             for d in diffs:
-                print(f"[DEBUG] {d}")
+                debug_print(f"[DEBUG] {d}")
         else:
-            print(f"[DEBUG] Pool and placed items match perfectly.")
+            debug_print(f"[DEBUG] Pool and placed items match perfectly.")
 
 
 def assign_spell_prize_models(world: GameWorld) -> None:
@@ -2028,7 +2031,7 @@ def post_shuffle_cleanup(world: GameWorld) -> None:
             continue
         if loc.can_be_empty(world):
             continue  # Location is allowed to be empty
-        print(f"Error: Location {loc} is empty but cannot be empty based on settings")
+        debug_print(f"Error: Location {loc} is empty but cannot be empty based on settings")
         raise PlacementException(0, [])
 
     for loc in [

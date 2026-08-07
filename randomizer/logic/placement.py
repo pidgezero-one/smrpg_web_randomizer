@@ -7,6 +7,7 @@ from copy import copy
 from ..types.prizelocation import FrogDiscipleLocation, StarPieceLocation
 from ..types.logic import Inventory
 from ..types.prize import StarPiecePrize, CharacterPrize, SpellPrize
+from randomizer.utils.debug_output import debug_print
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -105,25 +106,25 @@ def _diagnose_placement_failure(
     for loc in candidate_locations:
         if loc.has_item:
             placed.append(f"  {type(loc).__name__}: {type(loc.prize).__name__}")
-    print(f"\n[DEBUG] === PLACEMENT FAILURE ===")
-    print(f"[DEBUG] Already placed ({len(placed)} items):")
+    debug_print(f"\n[DEBUG] === PLACEMENT FAILURE ===")
+    debug_print(f"[DEBUG] Already placed ({len(placed)} items):")
     for line in placed:
-        print(f"[DEBUG] {line}")
+        debug_print(f"[DEBUG] {line}")
 
     empty_candidates = [l for l in candidate_locations if not l.has_item]
     accessible_empty = [l for l in empty_candidates if l.can_access(player_has, world)]
-    print(f"[DEBUG] Empty candidate locations: {len(empty_candidates)}, accessible: {len(accessible_empty)}")
-    print(f"[DEBUG] Unplaceable items ({len(pending)}):")
+    debug_print(f"[DEBUG] Empty candidate locations: {len(empty_candidates)}, accessible: {len(accessible_empty)}")
+    debug_print(f"[DEBUG] Unplaceable items ({len(pending)}):")
     for item in pending:
         accepting = [l for l in accessible_empty if l.can_accept(item, player_has, world)]
         if accepting:
-            print(f"[DEBUG]   {type(item).__name__}: {len(accepting)} locations could accept (bug?)")
+            debug_print(f"[DEBUG]   {type(item).__name__}: {len(accepting)} locations could accept (bug?)")
         else:
             inaccessible_accepting = [
                 l for l in empty_candidates
                 if not l.can_access(player_has, world) and l.can_accept(item, Inventory(), world)
             ]
-            print(f"[DEBUG]   {type(item).__name__}: 0 accessible accepting locations"
+            debug_print(f"[DEBUG]   {type(item).__name__}: 0 accessible accepting locations"
                   f" ({len(inaccessible_accepting)} inaccessible could accept)")
 
 
@@ -455,9 +456,9 @@ def diagnose_empty_locations(world: "GameWorld") -> None:
     # Get debug locations if they were tracked during shuffle_prizes
     debug_locations: set[type["PrizeLocation"]] = getattr(world, '_debug_locations', set())
 
-    print("\n" + "=" * 80)
-    print("LOCATION DIAGNOSTIC REPORT")
-    print("=" * 80)
+    debug_print("\n" + "=" * 80)
+    debug_print("LOCATION DIAGNOSTIC REPORT")
+    debug_print("=" * 80)
 
     for loc in world.locations.values():
         loc_name = type(loc).__name__
@@ -465,14 +466,14 @@ def diagnose_empty_locations(world: "GameWorld") -> None:
 
         if loc_type in debug_locations:
             prize_name = type(loc.prize).__name__ if loc.prize else "None"
-            print(f"{BLUE}[DEBUG] {loc_name}: {prize_name}{RESET}")
+            debug_print(f"{BLUE}[DEBUG] {loc_name}: {prize_name}{RESET}")
             continue
 
         if not loc.has_item:
             if loc.can_be_empty(world):
-                print(f"{GREY}[EMPTY-OK] {loc_name}: no prize (allowed to be empty){RESET}")
+                debug_print(f"{GREY}[EMPTY-OK] {loc_name}: no prize (allowed to be empty){RESET}")
             else:
-                print(f"{RED}[EMPTY-ERROR] {loc_name}: no prize (NOT allowed to be empty){RESET}")
+                debug_print(f"{RED}[EMPTY-ERROR] {loc_name}: no prize (NOT allowed to be empty){RESET}")
             continue
 
         prize_type = type(loc.prize)
@@ -480,10 +481,10 @@ def diagnose_empty_locations(world: "GameWorld") -> None:
         originally_held = loc.originally_held
 
         if originally_held is not None and isinstance(loc.prize, originally_held):
-            print(f"{CYAN}[UNCHANGED] {loc_name}: {prize_name}{RESET}")
+            debug_print(f"{CYAN}[UNCHANGED] {loc_name}: {prize_name}{RESET}")
         else:
             orig_name = originally_held.__name__ if originally_held else "None"
-            print(f"{GREEN}[SHUFFLED] {loc_name}: {orig_name} -> {prize_name}{RESET}")
+            debug_print(f"{GREEN}[SHUFFLED] {loc_name}: {orig_name} -> {prize_name}{RESET}")
 
-    print("=" * 80 + "\n")
+    debug_print("=" * 80 + "\n")
 

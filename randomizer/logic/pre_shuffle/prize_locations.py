@@ -1,5 +1,5 @@
 from __future__ import annotations
-from randomizer.debug.offset_preview import compute_offset_assignments
+from randomizer.logic.offset_preview import compute_offset_assignments
 from randomizer.debug import load_debug_config, get_location_class
 
 from randomizer.logic.progression.prizelocations import *

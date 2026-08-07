@@ -60,6 +60,7 @@ Run the smrpg-patch-audit skill if the hook site or free-space range moves.
 """
 
 from randomizer.data.nmi_hook import Asm65816
+from randomizer.utils.debug_output import debug_print
 
 # --- Hook site (ROM offset; HiROM $C0:xxxx -> ROM $00xxxx) ---
 # Vanilla $C0:E0B4 = B5 30 10 07  (LDA $30,X / BPL $E0BF). Replaced by a 4-byte
@@ -137,6 +138,6 @@ if __name__ == "__main__":
     p = get_patch()
     assert p[_LEAK_HOOK] == bytes([0x5C, 0x00, 0xC7, 0xC1]), "hook = JML $C1:C700"
     assert len(p[_LEAK_HOOK]) == 4, "hook must be exactly 4 bytes (B5 30 10 07)"
-    print(f"leak trampoline ({len(t)}B @ $C1:C700): {t.hex()}")
-    print(f"hook @ $C0:E0B4: {p[_LEAK_HOOK].hex()}")
-    print("ok")
+    debug_print(f"leak trampoline ({len(t)}B @ $C1:C700): {t.hex()}")
+    debug_print(f"hook @ $C0:E0B4: {p[_LEAK_HOOK].hex()}")
+    debug_print("ok")

@@ -1,4 +1,4 @@
-from randomizer.debug.offset_preview import get_ordered_lists
+from randomizer.logic.offset_preview import get_ordered_lists
 import binascii
 import hashlib
 import json

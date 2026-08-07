@@ -1,4 +1,5 @@
 """Debug configuration loader and utilities."""
+from django.conf import settings
 from django.utils import autoreload
 from django.utils.autoreload import autoreload_started
 
@@ -16,21 +17,15 @@ _config_path = Path(__file__).parent / "config.yml"
 
 def _register_config_watcher():
     """Register config.yml with Django's autoreloader."""
-    try:
 
-        # Try to add file to existing reloader if running
-        if hasattr(autoreload, 'trigger_reload'):
-            # Django 2.2+: use autoreload_started signal
+    def _watch_config_file(sender, **kwargs):
+        sender.watch_file(_config_path)
 
-            def _watch_config_file(sender, **kwargs):
-                sender.watch_file(_config_path)
-
-            autoreload_started.connect(_watch_config_file)
-    except ImportError:
-        pass  # Django not available
+    autoreload_started.connect(_watch_config_file)
 
 
-_register_config_watcher()
+if settings.DEBUG:
+    _register_config_watcher()
 
 
 def load_debug_config() -> dict[str, Any]:

@@ -139,7 +139,7 @@ def pinned_prizes(world: GameWorld) -> dict[PrizeLocation, type[Prize]]:
             pinned[loc] = loc.originally_held
 
     if world.settings.debug_mode and world.settings.prize_offset is not None:
-        from ..debug.offset_preview import compute_offset_assignments
+        from .offset_preview import compute_offset_assignments
 
         boss_overrides = compute_offset_assignments(
             world.settings.prize_offset,

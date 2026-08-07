@@ -1,5 +1,6 @@
 """Minigame randomization logic."""
 from __future__ import annotations
+from randomizer.utils.debug_output import debug_print
 import random
 from typing import TYPE_CHECKING, Optional, cast
 
@@ -516,14 +517,14 @@ def get_minecart_track_patch(world: GameWorld) -> dict[int, bytes]:
             except ValueError:
                 continue  # too dense to compress in budget; re-roll both
             block = len(patch[BLOCK_BASE])
-            print(
+            debug_print(
                 "[moleville_track] seed %s: SUCCESS - generated 2 Mode7 "
                 "courses, minigame window %d/%d bytes (%d free) on attempt "
                 "%d/%d" % (world.seed, block, WINDOW_SIZE, WINDOW_SIZE - block,
                            attempt, _MC_MAX_ATTEMPTS)
             )
             return patch
-        print(
+        debug_print(
             "[moleville_track] seed %s: FELL BACK to vanilla minecart - no "
             "in-budget track after %d attempts" % (world.seed, _MC_MAX_ATTEMPTS)
         )

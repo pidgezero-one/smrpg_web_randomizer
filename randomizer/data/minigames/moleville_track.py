@@ -5,6 +5,7 @@ Mountain Mode7 rail tiles lives in randomizer.logic.shufflers.minigames.
 
 import random
 from collections import deque as queue
+from randomizer.utils.debug_output import debug_print
 
 
 class Maze:
@@ -103,4 +104,4 @@ class Maze:
             m_c[point[0]][point[1]] = point[2]
 
         for i in m_c:
-            print(*i)
+            debug_print(*i)

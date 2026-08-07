@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 import hashlib
 import json
 import re
+from randomizer.utils.debug_output import DEBUG_FILE_DUMPS
 from randomizer.logic.post_shuffle.apply_shuffler_results import (
     apply_shuffler_results_to_game_data,
 )
@@ -77,6 +78,7 @@ from randomizer.logic.shufflers.equipment import (
     build_item_to_prize_mapping,
 )
 from randomizer.logic.shufflers.shops import (exclude_seeya_from_frog_disciple, shuffle_shops)
+from randomizer.utils.debug_output import debug_print
 from randomizer.logic.validation import (validate_settings)
 from randomizer.types.flags import (
     CharacterSpellStats,
@@ -170,8 +172,9 @@ def _shuffle_items(world: GameWorld):
 
     # replace bad items with coins, supplant YouMissed, fill empty locations, etc
 
-    with open("spoiler.json", "w") as f:
-        json.dump(world.spoiler, f, indent=2, default=str)
+    if DEBUG_FILE_DUMPS:
+        with open("spoiler.json", "w") as f:
+            json.dump(world.spoiler, f, indent=2, default=str)
 
     post_shuffle_cleanup(world)
 
@@ -195,7 +198,7 @@ def build_world(world: GameWorld) -> None:
 
     random.seed(world.seed)
     if world.settings.debug_mode:
-        print(world.seed)
+        debug_print(world.seed)
 
     world.event_2496_startup: list[UsableEventScriptCommand] = []
 
@@ -236,7 +239,7 @@ def build_world(world: GameWorld) -> None:
             world._flag_dummy_index = None
             world._invisible_item_locations = None
             if world.settings.debug_mode:
-                print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
+                debug_print(f"[DEBUG] Placement failed with {e.unplaced_count} unplaced items, retrying...")
 
             count = e.unplaced_count
             failure_counts[count] = failure_counts.get(count, 0) + 1
@@ -267,7 +270,7 @@ def build_world(world: GameWorld) -> None:
                 # above it, so a seed that builds today builds identically.
                 world.allow_placement_repair = True
                 if world.settings.debug_mode:
-                    print("[DEBUG] Retry budget spent; retrying with stall repair enabled")
+                    debug_print("[DEBUG] Retry budget spent; retrying with stall repair enabled")
         except Exception:
             # Re-raise unexpected exceptions
             raise
@@ -310,7 +313,8 @@ def build_world(world: GameWorld) -> None:
     # Apply cosmetic settings (re-seeded for variation between generations)
     apply_cosmetic_settings(world)
 
-    with open("spoiler_after_replacements.json", "w") as f:
-        json.dump(world.spoiler, f, indent=2, default=str)
+    if DEBUG_FILE_DUMPS:
+        with open("spoiler_after_replacements.json", "w") as f:
+            json.dump(world.spoiler, f, indent=2, default=str)
 
     finalize_world(world)
