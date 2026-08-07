@@ -229,5 +229,5 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3),
     ],
-    effects_npc=EffectsNpc.SAVE_POINT_NPC1,
+    effects_npc=EffectsNpc.SAVE_POINT_NPC0,
 )
