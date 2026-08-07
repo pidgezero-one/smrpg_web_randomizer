@@ -11,7 +11,7 @@ class BambinoBombPrize(ItemPrize, KeyPrize):
         nickname="Explosive Device", description="Don't try this at home!"
     )
     _model = MicrobombObject
-    _packet_data = (SPR0205_MICROBOMB_PACKET, 5)
+    _packet_data = (SPR0205_MICROBOMB_PACKET, 0)
     _fortune_type: FortuneEnum = FortuneEnum.RARE
 
 

@@ -293,16 +293,22 @@ def apply_protagonist_sprite_swaps(world: GameWorld) -> None:
             world.sprites.sprites[SPR0037_ALT_PROTAGONIST_7] = BOWSER_975
             world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_1", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_2", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_3", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_4", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_5", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
             world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_palette_set_starts_at(EPAL0140_BOWSER_ENDING)
             world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_from_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("midas_palette_6", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
         elif world.overworld_character.ally.index == 3:
             world.sprites.sprites[SPR0096_MARIO_DOLL_SURPRISED] = GENO_96
             world.sprites.sprites[SPR0132_MOLEVILLE_MINE_CART] = GENO_132
@@ -477,6 +483,7 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
+        world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_to_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_mirror_sprite(False)
@@ -499,6 +506,23 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
             world.event_scripts.get_command_by_identifier("ending_geno_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
             world.event_scripts.get_command_by_identifier("ending_toadstool_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
             world.event_scripts.get_command_by_identifier("ending_bowser_palette_dark", PaletteSet).set_from_row(NPC_PALETTE_ROW_6)
+            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette", PaletteSet).set_from_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_2", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("infinite_coin_chest_palette_2", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_1", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_2", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_3", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_4", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_5", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("kamek_palette_br_6", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_mallow_palette", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_geno_palette", PaletteSet).set_to_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_toadstool_palette", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_bowser_palette", PaletteSet).set_to_row(NPC_PALETTE_ROW_6)
+            world.event_scripts.get_command_by_identifier("ending_mallow_palette_dark", PaletteSet).set_to_row(NPC_PALETTE_ROW_3)
+            world.event_scripts.get_command_by_identifier("ending_geno_palette_dark", PaletteSet).set_to_row(NPC_PALETTE_ROW_4)
+            world.event_scripts.get_command_by_identifier("ending_toadstool_palette_dark", PaletteSet).set_to_row(NPC_PALETTE_ROW_2)
+            world.event_scripts.get_command_by_identifier("ending_bowser_palette_dark", PaletteSet).set_to_row(NPC_PALETTE_ROW_6)
         except:
             pass
     # statue minigame

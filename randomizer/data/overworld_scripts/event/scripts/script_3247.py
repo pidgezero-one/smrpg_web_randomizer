@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-    SetVarToConst(ACTIVE_NPC, NPC_5), # target a dummy invisible item for the animation, real benefit here is getting the sync dialog
-	JmpToEvent(E0241_FREESTANDING_1_GRANT)
+    # E0178 sets $7000 to the current room, which is what the rebuilt NPC_QUEST_1
+    # container dispatches on. Nothing downstream reads $70A8 on this path.
+	JmpToEvent(E0178_NPC_QUEST_1_CONTAINER)
 ])

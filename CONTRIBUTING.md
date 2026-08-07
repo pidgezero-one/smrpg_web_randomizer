@@ -4,7 +4,7 @@
 
 If you are new to SMRPG modding, it is strongly recommended to look around the game in the [Lazy Shell editor](https://github.com/Yakibomb/LAZYSHELL-UPDATED/releases). This is a powerful ROM-editing GUI specifically designed for SMRPG that will greatly help you visualize how some of the most important parts of the game work.
 
-Much of the randomizer's foundations are based in the [smrpgpatchbuilder](https://github.com/pidgezero-one/smrpgpatchbuilder) library, which allows you to edit most of the randomizer-relevant game features as Python code and produces the bytes needed to patch those edits to the game. This library was designed to resemble the workflows and verbiage of Lazy Shell as much as possible.
+Much of the randomizer's foundations are based in the [smrpgpatchbuilder](https://github.com/Super-Mario-RPG-Randomizer/smrpgpatchbuilder) library, which allows you to edit most of the randomizer-relevant game features as Python code and produces the bytes needed to patch those edits to the game. This library was designed to resemble the workflows and verbiage of Lazy Shell as much as possible.
 
 The vast majority of things you will want to edit in this randomizer require no ASM knowledge.
 
