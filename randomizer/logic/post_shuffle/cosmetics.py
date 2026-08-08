@@ -12,7 +12,7 @@ from smrpgpatchbuilder.datatypes.spells.enums import Element
 
 from randomizer.data.enemies.enemies import CZARDRAGONEnemy
 
-from ...data.packets import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST, P097_YELLOW_SPELL_CHEST
+from randomizer.data.packets import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST, P097_YELLOW_SPELL_CHEST
 from randomizer.logic.progression.prizes import BowserRecruitmentPrize, GenoRecruitmentPrize, MallowRecruitmentPrize, MarioRecruitmentPrize, ToadstoolRecruitmentPrize
 from randomizer.data.variables.dialog_names import (
     DI1055_SEWER_GATING_TEXT,
@@ -29,6 +29,7 @@ from randomizer.data.variables.dialog_names import (
     DI3072_TOWER_HENCHMAN_3_WINDOW,
     DI3073_TOWER_HENCHMAN_3,
 )
+from randomizer.data.variables.screen_effect_names import SEF0004_UNKNOWN
 from randomizer.logic.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
 from randomizer.types.flags import BarrelVolcanoGate, BarrelVolcanoGating, BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
 from randomizer.types.prize import BossFightPrize, CharacterPrize, SpellPrize
@@ -36,6 +37,9 @@ from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands import (
     ScreenFlashWithDuration,
     AttackTimerBegins,
     DefineObjectQueue,
+    ScreenEffect,
+    Pause1Frame,
+    NewEffectObject,
 )
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments import NO_COLOUR
 from ...types.flags import (
@@ -58,7 +62,7 @@ from ...data.allies.palettes.geno import all_palettes as GENO_PALETTES
 from ...data.allies.palettes.toadstool import all_palettes as TOADSTOOL_PALETTES
 from ...data.allies.palettes.bowser import all_palettes as BOWSER_PALETTES
 from ...data.minigames.star_hill_wishes import WISH_POOL, WISH_DIALOG_IDS
-from ...data.variables.battle_effect_names import EF0025_PSYCH_BOMB_BG
+from ...data.variables.battle_effect_names import EF0025_PSYCH_BOMB_BG, EF0073_DUMMY
 from ...types.enemy import Enemy
 from ...types.item import Item
 from ...types.spell import Spell
@@ -205,13 +209,18 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
                 NO_COLOUR
             )
 
-        deletes = [
+        replace_screen_effects = [
             "command_0x35BE52",  # geno flash
             "geno_blast_effect",  # geno blast
             "corona_flash",
+            "shaker_delete_3",
+        ]
+        for identifier in replace_screen_effects:
+            world.battle_animations[0x35].replace_command_by_name(identifier, ScreenEffect(SEF0004_UNKNOWN, identifier=identifier))
+
+        deletes = [
             "shaker_delete_1",  # shaker / silver bullet
             "shaker_delete_2",
-            "shaker_delete_3",
             "shaker_delete_4",
             "shaker_delete_5",
             "statice_delete_1",
@@ -222,20 +231,31 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             "meteorswarm_delete_maybe",
             "rockcandy_delete",
             "rockcandy_delete_2",
+            "geno_blast_sfx"
         ]
         for identifier in deletes:
             world.battle_animations[0x35].delete_command_by_name(identifier)
-        # geno flash is a queue entry, move ptr to the command that comes after it
-        doq = world.battle_animations[0x35].get_command_by_name("command_0x35BE06", DefineObjectQueue)
-        doq.set_destinations([
-            doq.destinations[0].label,
-            "geno_flash_begins_if_accessibility_enabled",
-            *[d.label for d in doq.destinations[2:]]
-        ])
 
-        deletes_3A = ["smithy_delete_1", "smithy_delete_2"]
-        for identifier in deletes_3A:
-            world.battle_animations[0x3A].delete_command_by_name(identifier)
+        replace_screen_effects_3A = ["smithy_delete_1", "smithy_delete_2"]
+        for identifier in replace_screen_effects_3A:
+            world.battle_animations[0x3A].replace_command_by_name(identifier, ScreenEffect(SEF0004_UNKNOWN, identifier=identifier))
+
+        # Blank out the effect instead of replacing the command. NewEffectObject is
+        # the only writer of the object's effect index (slot field +0x2C), and the
+        # Layer3On / FadeOutObject that follow read it back - swapping the command
+        # out would leave them firing graphics and fade requests against a stale
+        # index. EF0073 is empty, and unlike EF0025 it has no entry in the layer
+        # animation pointer table at $1D9CF1, so it doesn't wave.
+        blank_effects = [
+            "icebomb_explosion",
+            "meteorswarm_replace",  # meteor swarm
+            "rockcandy_replace",  # rock candy
+            "meteorblast_replace",  # meteor blast
+        ]
+        for identifier in blank_effects:
+            world.battle_animations[0x35].get_command_by_name(
+                identifier, NewEffectObject
+            ).set_effect(EF0073_DUMMY)
 
         world.battle_animations[0x35].get_command_by_name(
             "bigbang_flash"
@@ -244,32 +264,20 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             "firebomb_explosion"
         ).set_effect(EF0025_PSYCH_BOMB_BG)  # type: ignore
         world.battle_animations[0x35].replace_command_by_name(
-            "icebomb_explosion", ScreenFlashWithDuration(NO_COLOUR, 1)
-        )
-        world.battle_animations[0x35].replace_command_by_name(
             "command_0x35358A",
-            AttackTimerBegins(identifier="command_0x35358A"),  # shaker / silver bullet
+            Pause1Frame(identifier="command_0x35358A"),  # shaker / silver bullet
         )
+        # statice keeps a real flash rather than a blanked effect: the deletes above
+        # strip its whole Layer3On / FadeOutObject / Layer3Off scaffold, so this is
+        # the only thing left holding the attack's duration.
         world.battle_animations[0x35].replace_command_by_name(
-            "statice_flash", ScreenFlashWithDuration(NO_COLOUR, 44)  # static e!
-        )
-        world.battle_animations[0x35].replace_command_by_name(
-            "meteorswarm_replace",
-            ScreenFlashWithDuration(NO_COLOUR, 16),  # meteor swarm
-        )
-        world.battle_animations[0x35].replace_command_by_name(
-            "rockcandy_replace",
-            ScreenFlashWithDuration(NO_COLOUR, 20),  # rock candy
-        )
-        world.battle_animations[0x35].replace_command_by_name(
-            "meteorblast_replace",
-            ScreenFlashWithDuration(NO_COLOUR, 20),  # meteor blast
+            "statice_flash", ScreenFlashWithDuration(NO_COLOUR, 44, identifier="statice_flash")  # static e!
         )
         world.battle_animations[0x3A].replace_command_by_name(
-            "smithy_replace_1", ScreenFlashWithDuration(NO_COLOUR, 1)
+            "smithy_replace_1", ScreenFlashWithDuration(NO_COLOUR, 1, identifier="smithy_replace_1")
         )
         world.battle_animations[0x3A].replace_command_by_name(
-            "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1)
+            "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1, identifier="smithy_replace_2")
         )
 
         for i in range(1, 11):
