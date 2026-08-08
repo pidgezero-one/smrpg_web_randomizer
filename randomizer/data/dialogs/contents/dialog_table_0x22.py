@@ -226,7 +226,6 @@ dialog_data[93] = ''' Hi `MAIN_CHARACTER_NAME`. Staying for a nap?[await]
  [select]  (Sure)
  [select]  (Maybe next time)[await]'''
 dialog_data[94] = '''[page]
-
 [center]Don’t worry. It’s on the house.[await]'''
 dialog_data[95] = '''[page]
 
