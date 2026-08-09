@@ -202,6 +202,7 @@ class FinalBossFight(BossFightLocation):
             ],
         ),
     ]
+    _access_conditions = "Not a check if your win condition is \"Beat the final Factory boss\""
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

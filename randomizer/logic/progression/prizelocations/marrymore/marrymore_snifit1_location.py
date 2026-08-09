@@ -37,6 +37,7 @@ class MarrymoreSnifit1Location(KeyItemLocation, NPCLocationRow1, PacketLocation)
         JmpIfBitSet(CHAPEL_ITEM_1_RETRIEVED, ["next"]),
         Jmp(["marrymore_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Marrymore wedding gear\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_chapel(world, inventory)

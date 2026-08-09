@@ -22,6 +22,7 @@ class Mimic2StarPiece(StarPieceLocation):
     _rooms = [513]
     _override_id = 513
     _parent = Mimic2BossFight
+    _access_conditions = "Stays in Sunken Ship if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)

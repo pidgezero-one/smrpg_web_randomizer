@@ -39,6 +39,7 @@ class LandsEndUndergroundSaveBoxChestLocation(TreasureChestLocationRow1):
         ),
         Jmp(["lands_end_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle EXP stars\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory)

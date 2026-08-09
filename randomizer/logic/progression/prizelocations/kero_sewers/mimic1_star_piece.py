@@ -22,6 +22,7 @@ class Mimic1StarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.PANDORITE_BOSS
     _world_area = WorldAreaEnum.KERO_SEWERS
     _parent = Mimic1BossFight
+    _access_conditions = "Stays in Kero Sewers if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and inventory.has_item(

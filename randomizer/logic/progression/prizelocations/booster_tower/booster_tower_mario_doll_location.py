@@ -53,6 +53,7 @@ class BoosterTowerMarioDollLocation(KeyItemLocation, StandingLocationRow1):
         ),
         Jmp(["booster_tower_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Mario Doll\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_do_tower_curtain_game(world, inventory)

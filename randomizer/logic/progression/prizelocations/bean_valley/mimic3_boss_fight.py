@@ -36,6 +36,7 @@ class Mimic3BossFight(MimicFightLocation):
         return inventory.has_item(ThirdMimicFightLauncher) and not_earlygame(
             world, inventory
         )
+    _access_conditions = "Stays in Bean Valley if \"Shuffle mimic chests\" is disabled."
 
 
 __all__ = ["Mimic3BossFight"]

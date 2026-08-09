@@ -25,6 +25,7 @@ class Mimic2ReloadRewardLocation(TreasureChestLocationRow3):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _override_id = 513
     _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize, InfiniteCoinsPrize]
+    _access_conditions = "Reload the room that the mimic chest fight was in. Stays in Sunken Ship if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(SecondMimicFightLauncher)

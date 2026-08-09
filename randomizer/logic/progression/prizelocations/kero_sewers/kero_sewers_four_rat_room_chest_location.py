@@ -43,6 +43,7 @@ class KeroSewersFourRatRoomChestLocation(TreasureChestLocationRow1):
         ),
         Jmp(["kero_sewers_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle EXP stars\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_sewer(world, inventory)

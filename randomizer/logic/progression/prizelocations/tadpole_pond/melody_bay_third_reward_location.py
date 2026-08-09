@@ -35,6 +35,7 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
         JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["next"]),
         Jmp(["tadpole_pond_hint_text"]),
     ]
+    _access_conditions = "Requires the Belome Temple boss to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

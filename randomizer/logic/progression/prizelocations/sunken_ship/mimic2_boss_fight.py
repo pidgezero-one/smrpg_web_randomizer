@@ -24,6 +24,7 @@ class Mimic2BossFight(MimicFightLocation):
     _world_area = WorldAreaEnum.SUNKEN_SHIP
     _pack_id = PACK157_SHIP_CHEST_FIGHT
     _post_unlocks_event_id = E1250_MIMIC_2_BOSS_UNLOCKS
+    _access_conditions = "Stays in Sunken Ship if \"Shuffle mimic chests\" is disabled."
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

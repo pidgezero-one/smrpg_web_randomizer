@@ -35,6 +35,7 @@ class RoseTownInnGazPrizeLocation(NPCLocationRow1):
         JmpIfBitClear(FOREST_LIBERATED, ["next"]),
         Jmp(["rose_town_hint_text"]),
     ]
+    _access_conditions = "Requires the Forest Maze boss to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_forest(world, inventory)

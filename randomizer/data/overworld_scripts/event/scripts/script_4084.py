@@ -1,4 +1,4 @@
-# E4084_PACKET_OF_E3113 (auto: E3113 minus FD F2 presence-commit, jumps repointed)
+# E4084_PACKET_OF_E4084 (auto: E4084 minus FD F2 presence-commit, jumps repointed)
 # pyright: reportWildcardImportFromLibrary=false
 
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import EventScript
@@ -50,7 +50,10 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
 	RemoveOneOfItemFromInventory(ShinyStoneItem),
-	JmpToEvent(E4077_PACKET_OF_E0165),
+	Set7000ToCurrentLevel(),
+    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R324_MONSTRO_TOWN_OUTSIDE, ["E4084_unlock_culex_door_if_current_lvl"]),
+	RemoveObjectFromCurrentLevel(NPC_2),
+	JmpToEvent(E4077_PACKET_OF_E0165, identifier="E4084_unlock_culex_door_if_current_lvl"),
 	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_4084L_3098_set_var_to_const_10"),
 	RemoveOneOfItemFromInventory(FireworksItem),
 	JmpToEvent(E4077_PACKET_OF_E0165)

@@ -41,6 +41,7 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
         ),
         Jmp(["bowsers_keep_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Magikoopa's coin chest\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_pass_obstacle_courses(world, inventory) and not_earlygame(

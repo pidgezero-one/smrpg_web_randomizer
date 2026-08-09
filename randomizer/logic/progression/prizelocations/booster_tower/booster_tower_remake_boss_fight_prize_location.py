@@ -59,6 +59,8 @@ class BoosterTowerRemakeBossFightPrizeLocation(NPCLocationRow1):
         ),
         Jmp(["booster_tower_hint_text"]),
     ]
+    _access_conditions = "Must first defeat the boss fight in the Booster Tower curtain room and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_tower_postgame_boss(world, inventory)

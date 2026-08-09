@@ -35,6 +35,7 @@ class MelodyBaySecondRewardLocation(NPCLocationRow2, KeyItemLocation):
         JmpIfBitClear(MINES_BOSS_2_DEFEATED, ["next"]),
         Jmp(["tadpole_pond_hint_text"]),
     ]
+    _access_conditions = "Requires the inner Moleville Mines boss to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory)

@@ -43,6 +43,7 @@ class BoosterHillGuaranteedItem12(BoosterHillLocation, StandingLocation):
         JmpIfComparisonResultIsGreaterOrEqual(["next"]),
         Jmp(["booster_hill_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Booster Hill flowers\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_hill(world, inventory)

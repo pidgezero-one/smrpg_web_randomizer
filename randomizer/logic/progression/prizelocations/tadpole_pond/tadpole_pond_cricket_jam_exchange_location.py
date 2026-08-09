@@ -36,6 +36,7 @@ class TadpolePondCricketJamExchangeLocation(NPCLocationRow2):
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         Jmp(["tadpole_pond_hint_text"]),
     ]
+    _access_conditions = "Requires the Cricket Pie to be exchanged first."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(CricketPiePrize) and inventory.has_item(

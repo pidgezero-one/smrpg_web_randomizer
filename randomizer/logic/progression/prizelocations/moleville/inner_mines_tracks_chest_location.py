@@ -43,6 +43,7 @@ class InnerMinesTracksChestLocation(TreasureChestLocationRow1):
         StoreItemAmountTo7000(BambinoBombItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["mines_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle EXP stars\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_mines(world, inventory)

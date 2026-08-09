@@ -73,6 +73,8 @@ class BoosterTowerIndoorBossFightRemake(BossFightLocation):
             [NPC_3],
         ),
     ]
+    _access_conditions = "Must first defeat the boss fight in the Booster Tower curtain room and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

@@ -43,6 +43,7 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
     ]
+    _access_conditions = "You will always get this regardless of if you win or fail."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_inner_nimbus(world, inventory)

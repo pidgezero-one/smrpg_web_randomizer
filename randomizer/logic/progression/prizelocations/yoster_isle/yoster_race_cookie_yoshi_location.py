@@ -35,6 +35,7 @@ class YosterRaceCookieYoshiLocation(KeyItemLocation, NPCLocationRow5):
         JmpIfBitSet(YOSHI_ITEM_GRANTED, ["next"]),
         Jmp(["yoster_isle_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Cookies\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_pipe_vault(world, inventory)

@@ -20,6 +20,7 @@ class Mimic1DropRewardLocation(NPCLocationRow1):
     _id = ShuffleLocationSelector.PANDORITE_REWARD_1
     _world_area = WorldAreaEnum.KERO_SEWERS
     _override_id = 512
+    _access_conditions = "Stays in Kero Sewers if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)

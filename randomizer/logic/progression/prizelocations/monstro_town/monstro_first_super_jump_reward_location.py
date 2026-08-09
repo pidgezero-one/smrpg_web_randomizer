@@ -35,6 +35,7 @@ class MonstroFirstSuperJumpRewardLocation(NPCLocationRow1):
         JmpIfBitClear(MAP_MONSTRO_TOWN, ["next"]),
         Jmp(["super_jump_hint_text"]),
     ]
+    _access_conditions = "Not a check if none of your characters learn Super Jump."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_monstro_town(world, inventory) and inventory.has_item(

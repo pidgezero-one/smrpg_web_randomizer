@@ -49,6 +49,8 @@ class TemplePostgameFightItemDrop(NPCLocationRow1):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["belome_temple_hint_text"]),
     ]
+    _access_conditions = "Must first defeat the boss fight at Belome Temple and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_temple_postgame_boss(world, inventory)

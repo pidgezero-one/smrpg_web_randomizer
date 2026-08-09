@@ -34,6 +34,7 @@ class TempleBossFightPostgame(BossFightLocation):
             sequence_setter_event_id=E0814_TEMPLE_BOSS_ROOM_SHUFFLED_NPC_ANIMATION_LOADER,
         ),
     ]
+    _access_conditions = "Must first defeat the boss fight at Belome Temple and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

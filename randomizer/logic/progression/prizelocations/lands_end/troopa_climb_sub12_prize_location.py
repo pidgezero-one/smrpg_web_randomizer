@@ -35,6 +35,7 @@ class TroopaClimbSub12PrizeLocation(NPCLocationRow1):
         JmpIfBitSet(TROOPA_CLIMB_COMPLETED, ["next"]),
         Jmp(["lands_end_hint_text"]),
     ]
+    _access_conditions = "Requires the Belome Temple boss to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and can_access_monstro_town(

@@ -31,6 +31,8 @@ class MushroomWayRightItemRemake(StandingLocationRow2):
         JmpIfObjectNotInSpecificLevel(NPC_11, R204_MUSHROOM_WAY_AREA_02, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Enable Remake content\" is turned off."
+
 
 
 __all__ = ["MushroomWayRightItemRemake"]

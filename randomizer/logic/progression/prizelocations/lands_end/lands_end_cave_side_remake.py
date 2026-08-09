@@ -39,6 +39,8 @@ class LandsEndCaveSideRemake(StandingLocationRow1):
         ),
         Jmp(["lands_end_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_lands_end(world, inventory) and world.settings.is_flag_value(

@@ -28,6 +28,7 @@ class MonstroSealedDoorBossFightPostgame(BossFightLocation):
     _remake_only = True
     _pack_id = PACK055_MONSTRO_DOOR_POSTGAME
     _post_unlocks_event_id = E1219_POSTGAME_MONSTRO_SEALED_BOSS_UNLOCKS
+    _access_conditions = "Requies the X.ShinyStone. Must first defeat the sealed door boss fight and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
 
     _npc_slots = [
         BossFightLocationNPC(

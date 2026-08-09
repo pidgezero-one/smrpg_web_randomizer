@@ -35,6 +35,7 @@ class TreasureShopItem3(TreasureShopLocation, NPCLocationRow3):
         JmpIfBitSet(TREASURE_SHOP_ITEM_3_PURCHASED, ["next"]),
         Jmp(["moleville_hint_text"]),
     ]
+    _access_conditions = "Requires inner Moleville Mines and Barrel Volcano bosses to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and can_clear_volcano(world, inventory)

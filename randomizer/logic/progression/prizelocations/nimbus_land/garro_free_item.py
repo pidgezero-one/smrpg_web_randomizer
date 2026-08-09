@@ -34,6 +34,7 @@ class GarroFreeItem(KeyItemLocation, NPCLocationRow1):
         JmpIfBitSet(GARRO_ITEM_GRANTED, ["next"]),
         Jmp(["nimbus_land_hint_text"]),
     ]
+    _access_conditions = "Only a check if Nimbus Land access is \"Find Gold Paint\"."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_outer_nimbus(world, inventory)

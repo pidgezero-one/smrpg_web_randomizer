@@ -12,7 +12,7 @@ from randomizer.types.prizelocation import (FrogDiscipleLocation, ShuffleLocatio
 class FrogDiscipleLocation3(FrogDiscipleLocation):
     _originally_held = ExpBoosterPrize
     _id = ShuffleLocationSelector.FROG_DISCIPLE_3
-    _world_area = WorldAreaEnum.TADPOLE_POND
+    _world_area = WorldAreaEnum.SEASIDE_TOWN
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 207),
         # RunDialog(

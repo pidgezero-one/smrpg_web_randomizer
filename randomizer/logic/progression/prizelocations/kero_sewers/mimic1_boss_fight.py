@@ -24,6 +24,7 @@ class Mimic1BossFight(MimicFightLocation):
     _world_area = WorldAreaEnum.KERO_SEWERS
     _pack_id = PACK156_SEWER_CHEST_FIGHT
     _post_unlocks_event_id = E1249_MIMIC_1_BOSS_UNLOCKS
+    _access_conditions = "Stays in Kero Sewers if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)

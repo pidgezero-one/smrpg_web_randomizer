@@ -32,6 +32,7 @@ class BeanValleyBottomLeftPiranhaPipeLocation(TreasureChestLocationRow1):
         ),
         Jmp(["bean_valley_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle slot machine chests\" is disabled."
 
 
 __all__ = ["BeanValleyBottomLeftPiranhaPipeLocation"]

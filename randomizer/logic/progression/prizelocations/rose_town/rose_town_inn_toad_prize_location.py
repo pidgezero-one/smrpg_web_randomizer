@@ -31,6 +31,7 @@ class RoseTownInnToadPrizeLocation(NPCLocationRow1):
         JmpIfBitSet(ROSE_TOWN_INN_TOAD_ITEM_RECEIVED, ["next"]),
         Jmp(["rose_town_hint_text"]),
     ]
+    _access_conditions = "Activate by sleeping in the Inn"
 
 
 __all__ = ["RoseTownInnToadPrizeLocation"]

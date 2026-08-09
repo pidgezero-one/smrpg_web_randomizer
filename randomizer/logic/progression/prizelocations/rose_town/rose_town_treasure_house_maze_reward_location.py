@@ -39,6 +39,7 @@ class RoseTownTreasureHouseMazeRewardLocation(NPCLocationRow1):
         JmpIfBitClear(FOREST_MAZE_SECRET_FOUND, ["forest_maze_hint_text"]),
         Jmp(["rose_town_hint_text"]),
     ]
+    _access_conditions = "Requires you to have visited the Forest Maze secret. Does not require the Forest Maze boss to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_forest(world, inventory)

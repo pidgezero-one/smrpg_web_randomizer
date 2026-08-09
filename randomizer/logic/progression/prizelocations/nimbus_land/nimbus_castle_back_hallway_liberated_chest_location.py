@@ -62,6 +62,7 @@ class NimbusCastleBackHallwayLiberatedChestLocation(TreasureChestLocationRow2):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["nimbus_castle_hint_text"]),
     ]
+    _access_conditions = "This check is the second time you open this chest."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_nimbus_boss(world, inventory)

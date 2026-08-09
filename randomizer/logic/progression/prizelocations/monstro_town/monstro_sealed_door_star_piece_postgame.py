@@ -45,6 +45,8 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["monstro_town_hint_text"]),
     ]
+    _access_conditions = "Requies the X.ShinyStone. Must first defeat the sealed door boss fight and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_sealed_postgame_boss(

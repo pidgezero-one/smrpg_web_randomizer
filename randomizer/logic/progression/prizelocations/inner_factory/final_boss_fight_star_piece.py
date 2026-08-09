@@ -76,6 +76,7 @@ class FinalBossFightStarPiece(StarPieceLocation):
             and can_access_inner_factory_final_boss(world, inventory)
             and not_earlygame(world, inventory)
         )
+    _access_conditions = "Not a check if your win condition is \"Beat the final Factory boss\""
 
 
 __all__ = ["FinalBossFightStarPiece"]

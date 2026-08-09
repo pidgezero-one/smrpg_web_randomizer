@@ -52,6 +52,7 @@ class RoseTownCloudRightChestLocation(TreasureChestLocationRow1):
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         Jmp(["rose_town_hint_text"]),
     ]
+    _access_conditions = "Requires Forest Maze and Marrymore bosses to be defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

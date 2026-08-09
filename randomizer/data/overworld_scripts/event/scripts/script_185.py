@@ -45,7 +45,10 @@ script = EventScript([
 	ApplySolidityModToLevel(permanent=True, room_id=R324_MONSTRO_TOWN_OUTSIDE, mod_id=0),
 	RemoveObjectFromSpecificLevel(NPC_2, R324_MONSTRO_TOWN_OUTSIDE),
 	RemoveOneOfItemFromInventory(ShinyStoneItem),
-	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM),
+	Set7000ToCurrentLevel(),
+    JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, R324_MONSTRO_TOWN_OUTSIDE, ["E185_unlock_culex_door_if_current_lvl"]),
+	RemoveObjectFromCurrentLevel(NPC_2),
+	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM, identifier="E185_unlock_culex_door_if_current_lvl"),
 	SetVarToConst(ITEM_ID, ShinyStoneItem, identifier="EVENT_185_set_var_to_const_10"),
 	RemoveOneOfItemFromInventory(FireworksItem),
 	JmpToEvent(E0160_NPC_QUEST_GRANT_ITEM)

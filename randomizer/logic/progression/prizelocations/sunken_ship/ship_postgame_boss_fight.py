@@ -76,6 +76,8 @@ class ShipPostgameBossFight(BossFightLocation):
     _dialogs_expecting_replacement = [
         DI2023_SHIP_BOSS_2_DRINK,
     ]
+    _access_conditions = "Must first defeat the boss fight at the Sunken Ship exit and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

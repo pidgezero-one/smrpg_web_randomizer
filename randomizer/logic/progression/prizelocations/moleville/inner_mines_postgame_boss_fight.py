@@ -33,6 +33,7 @@ class InnerMinesPostgameBossFight(BossFightLocation):
             NPC_0,
         ),
     ]
+    _access_conditions = "Must first defeat the boss fight at inner Moleville and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

@@ -36,6 +36,7 @@ class MonstroSealedDoorBossFight(BossFightLocation):
         DI3338_MONSTRO_SUPERBOSS_HINT,
         DI3057_MONSTRO_SUPERBOSS_PROMPT,
     ]
+    _access_conditions = "If \"Progressive Fireworks\" or \"Shuffle One Fireworks\" is enabled, the door will unlock automatically if your Shiny Stone is traded for a Carbo Cookie."
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_accept(prize, inventory, world) and (

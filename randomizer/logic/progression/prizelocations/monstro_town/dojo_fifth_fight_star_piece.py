@@ -43,6 +43,8 @@ class DojoFifthFightStarPiece(StarPieceLocation):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 0, ["next"]),
         Jmp(["marrymore_hotel_hint_text"]),
     ]
+    _access_conditions = "Must fully clear the Dojo and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_fifth_dojo_boss(

@@ -28,6 +28,7 @@ class Mimic1ReloadRewardLocation(TreasureChestLocationRow3):
     # This location's can_access requires defeating first mimic, which requires
     # accessing the FirstMimicFightLauncher location - can't be the same location.
     _blacklist = [EXPStarPrize, SlotsPrize, MimicFightInitiatorPrize, InfiniteCoinsPrize]
+    _access_conditions = "Reload the room that the mimic chest fight was in. Stays in Kero Sewers if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return inventory.has_item(FirstMimicFightLauncher)

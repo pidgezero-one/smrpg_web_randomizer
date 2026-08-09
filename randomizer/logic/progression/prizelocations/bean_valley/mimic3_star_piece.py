@@ -23,6 +23,7 @@ class Mimic3StarPiece(StarPieceLocation):
     _world_area = WorldAreaEnum.BEAN_VALLEY
     _override_id = 514
     _parent = Mimic3BossFight
+    _access_conditions = "Stays in Bean Valley if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

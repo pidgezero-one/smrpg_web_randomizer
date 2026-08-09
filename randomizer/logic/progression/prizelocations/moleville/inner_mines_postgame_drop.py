@@ -52,6 +52,8 @@ class InnerMinesPostgameDrop(NPCLocationRow1):
         ),
         Jmp(["mines_hint_text"]),
     ]
+    _access_conditions = "Must first defeat the boss fight at inner Moleville and use the Stay Voucher. Not a check if \"Enable Remake content\" is turned off."
+
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_moleville_postgame_boss(world, inventory)
