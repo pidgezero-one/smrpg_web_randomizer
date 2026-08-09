@@ -1201,7 +1201,7 @@ class BoosterTowerCurtainFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _z_coord = 9
     _y_shift = 8
-    _clue_text = " Mine's in a corner, between a\n window and a red curtain.[await]"
+    _clue_text = " Mine's in a corner, between a window and a solid red curtain.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 478),
         # RunDialog(
@@ -1416,7 +1416,7 @@ class MarrymoreCurtains(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MARRYMORE
     _z_coord = 0
     _x_shift = -8
-    _clue_text = " Mine's beneath a clock that's beside red curtains.[await]"
+    _clue_text = " Mine's beneath a clock. The clock is beside some red plaid curtains.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 1008),
         # RunDialog(
