@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     restart: always
-    command: gunicorn smrpg_web_randomizer.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn smrpg_web_randomizer.wsgi:application --bind 0.0.0.0:8000 --timeout 3600 -w 4
     volumes:
       - static_volume:/home/app/web/staticfiles
       - /etc/localtime:/etc/localtime:ro
@@ -43,6 +43,9 @@ services:
       - internal
     expose:
       - 80
+    # Uncomment for testing production setup on local system.
+#    ports:
+#      - 8000:80
     env_file:
       - ./.env.prod.nginx
     depends_on:
