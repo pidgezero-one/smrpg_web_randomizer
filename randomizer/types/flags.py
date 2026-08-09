@@ -592,6 +592,8 @@ class StarPieceHints(BooleanFlag):
     _name = "Signal Ring Star Piece hints"
     _description = """If enabled, the Signal Ring (if equipped to your active party) will play a sound when you enter a world area that contains a Star Piece.  
 <br>
+<br>If you don't hear a sound, it only means that world area does not have a Star Piece. The area could still have other progress items.
+<br>
 <br>The Signal Ring will only sound off when you enter an area from the World Map, from loading a save, or from an area warp (ex: the Kero Sewers - Land's End pipe). Therefore, the chime does not necessarily indicate that your current room contains a Star Piece, but rather that at least one room in the area does. (Note: Belome Temple and Land's End are considered different areas.)"""
     _id = "hints"
 
