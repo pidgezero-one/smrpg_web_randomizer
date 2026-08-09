@@ -485,7 +485,6 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_to_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
-        world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_mirror_sprite(False)
         try:
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)

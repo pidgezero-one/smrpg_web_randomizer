@@ -23,7 +23,7 @@ sprite = CompleteSprite(
                             bytearray(b'J\x00H\x06\xba\x0c\xc0\x1c<\x9c\xb2XL\xb0\x9c\x18@\x00\xaaj\xf0\x10|<\xacL\xe0H\x0c\xf0\xfc|'),
                             bytearray(b'\x04\x1f\x1b\x0c\xbeQ;\xc4\xef\x10w\x08w\x08\x00\x00\x01\x1b\x11\x06\xe0\xe0\xf0\xe0\xef\x10w\x08w\x08\x00\x00'),
                             bytearray(b'0<z\x848\xc4\xf8\x048\x80r\x80\x00\x00\x00\x00\xfc\xfcf\x9c$\\d\x1c`\xd8p\x80\x80\x80\x00\x00'),
-                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=120),
+                        ], is_16bit=False, y_plus=0, y_minus=0, x=120, y=119),
                     ]
                 ),
                 Mold(2, gridplane=False,

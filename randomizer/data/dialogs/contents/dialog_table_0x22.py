@@ -593,7 +593,7 @@ dialog_data[220] = ''' Let me tally up the numbers...
 dialog_data[221] = '''MA’MOLE: I wonder how those
  kids’re doing?
  Sure wish they’d hurry home![await]'''
-dialog_data[222] = '''GREAPER: Hey, `MAIN_CHARACTER_NAME`![await]
+dialog_data[222] = '''GREAPER: Hey, `MAIN_CHARACTER_NAME`![await][page]
  We don’t remember where our flags
  are, so we each hid a random prize
  somewhere in the world.[await][page]
