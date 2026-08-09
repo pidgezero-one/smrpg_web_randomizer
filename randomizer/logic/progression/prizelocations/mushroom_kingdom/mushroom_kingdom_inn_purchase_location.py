@@ -36,6 +36,7 @@ class MushroomKingdomInnPurchaseLocation(NPCLocationRow1, KeyItemLocation):
         JmpIfBitClear(MUSHROOM_KINGDOM_LIBERATED, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
+    _access_conditions = "Not a check if \"Shuffle Beetlemania\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory)

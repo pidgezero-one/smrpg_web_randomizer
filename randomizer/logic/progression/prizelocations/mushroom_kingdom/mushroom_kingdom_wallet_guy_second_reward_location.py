@@ -38,6 +38,7 @@ class MushroomKingdomWalletGuySecondRewardLocation(NPCLocationRow3):
         JmpIfBitClear(RETURNED_WALLET, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
+    _access_conditions = "Becomes available after defeating the Marrymore boss"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_chapel(world, inventory) and inventory.has_item(WalletPrize)

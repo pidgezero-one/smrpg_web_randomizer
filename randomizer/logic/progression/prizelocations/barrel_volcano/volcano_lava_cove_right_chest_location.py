@@ -21,7 +21,7 @@ class VolcanoLavaCoveRightChestLocation(TreasureChestLocationRow2):
     _originally_held = FPFlowerPrize
     _rooms = [R355_VOLCANO_AREA_03_SECRET_WTWO_FLOWERS]
     _npc_ids = [NPC_2]
-    _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_1
+    _id = ShuffleLocationSelector.BARREL_VOLCANO_SECRET_2
     _world_area = WorldAreaEnum.BARREL_VOLCANO
     _blacklist = [EXPStarPrize, SlotsPrize]
     _hint = [

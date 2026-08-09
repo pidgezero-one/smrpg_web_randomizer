@@ -16,6 +16,7 @@ urlpatterns = [
     path('difficulties', views.AboutView.as_view(), name='difficulties'),
     path('options', views.OptionsView.as_view(), name='options'),
     path('resources', views.ResourcesView.as_view(), name='resources'),
+    path('checks', views.ChecksView.as_view(), name='checks'),
     path('guide', views.GuideView.as_view(), name='guide'),
     path('updates', views.UpdatesView.as_view(), name='updates'),
     path('remake', views.RemakeView.as_view(), name='remake'),

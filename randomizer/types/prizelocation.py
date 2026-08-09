@@ -237,7 +237,6 @@ class ShuffleLocationSelector(CategorizationOption):
     STARTER_CHARACTER_3 = "Starter character 3"
     STARTER_CHARACTER_4 = "Starter character 4"
     STARTER_CHARACTER_5 = "Starter character 5"
-    MARIOS_PAD_BED = "Mario's Pad Invisible Item"
     MARIOS_PAD_STARTER_1 = "Starter item 1"
     MARIOS_PAD_STARTER_2 = "Starter item 2"
     MARIOS_PAD_STARTER_3 = "Starter item 3"
@@ -263,8 +262,8 @@ class ShuffleLocationSelector(CategorizationOption):
     MUSHROOM_KINGDOM_VAULT_5 = "Mushroom Kingdom vault right chest (occupied)"
     MUSHROOM_KINGDOM_VAULT_6 = "Mushroom Kingdom vault middle chest (occupied)"
     INVASION_EASTERN_GUARD = "Mushroom Kingdom eastern guard rescue (invasion)"
-    WALLET_GUY_1 = "Wallet reward 1"
-    WALLET_GUY_2 = "Wallet reward 2"
+    WALLET_GUY_1 = "Wallet exchange reward 1"
+    WALLET_GUY_2 = "Wallet exchange reward 2"
     MUSHROOM_KINGDOM_STORE = "Mushroom Kingdom shop free item"
     MUSHROOM_KINGDOM_STORE_EXCHANGE = "Mushroom Kingdom shop Rare Frog Coin exchange"
     MUSHROOM_KINGDOM_STORE_BASEMENT_1 = "Mushroom Kingdom shop basement left chest"
@@ -332,7 +331,6 @@ class ShuffleLocationSelector(CategorizationOption):
     ROSE_WAY_FIVE_CHESTS_3 = "Rose Way five-chest top right chest"
     ROSE_WAY_FIVE_CHESTS_4 = "Rose Way five-chest top left chest"
     ROSE_WAY_FIVE_CHESTS_5 = "Rose Way five-chest bottom right chest"
-    ROSE_TOWN_FLAG = "Rose Town Invisible Item"
     ROSE_TOWN_STORE_1 = "Rose Town shop right chest"
     ROSE_TOWN_STORE_2 = "Rose Town shop left chest"
     GARDENER_CLOUD_1 = "Rose Town gardener right chest"
@@ -375,7 +373,6 @@ class ShuffleLocationSelector(CategorizationOption):
     YOSTER_ISLE_RACE_REWARD_1 = "Yo'ster Isle first race prize item 1"
     YOSTER_ISLE_RACE_REWARD_2 = "Yo'ster Isle first race prize item 3"
     YOSTER_ISLE_RACE_REWARD_3 = "Yo'ster Isle first race prize item 2"
-    YOSTER_ISLE_FLAG = "Yo'ster Isle Invisible Item"
     CROCO_FLUNKIE_1 = "Moleville Mines trampoline bandit"
     CROCO_FLUNKIE_2 = "Moleville Mines left bandit"
     CROCO_FLUNKIE_3 = "Moleville Mines right bandit"
@@ -393,7 +390,6 @@ class ShuffleLocationSelector(CategorizationOption):
     MOLEVILLE_MINES_BOSS_FIGHT_3 = "Moleville Mines postgame boss fight"
     MOLEVILLE_MINES_BOSS_3 = "Moleville Mines postgame boss Star Piece"
     MOLEVILLE_MINES_POSTGAME_DROP = "Moleville Mines postgame prize"
-    FIREWORKS_STORE = "Fireworks Shop (only when fireworks are shuffled)"
     PURTEND_STORE = "Pur-tend Store (only when progressive fireworks is enabled)"
     COOKIE_TRADER = "Carbo Cookie Trader (only when progressive fireworks is enabled)"
     BUCKET_GIRL = "Moleville bucket girl"
@@ -547,7 +543,6 @@ class ShuffleLocationSelector(CategorizationOption):
     LANDS_END_CHOW_PIT_1 = "Land's End chow pit left chest"
     LANDS_END_CHOW_PIT_2 = "Land's End chow pit right chest"
     LNDS_END_BEE_ROOM = "Land's End bee room chest"
-    REMAKE_3 = "Land's End bridge room freestanding item (remake)"
     LANDS_END_CAVE_SIDE_REMAKE = "Land's End sky bridge freestanding item (remake)"
     LANDS_END_SECRET_1 = "Land's End grotto first chest"
     LANDS_END_SECRET_2 = "Land's End grotto corner chest"
@@ -692,7 +687,6 @@ class ShuffleLocationSelector(CategorizationOption):
     NIMBUS_LAND_INN = "Nimbus Land dream cushion 1st item"
     NIMBUS_LAND_INN_2 = "Nimbus Land dream cushion 2nd item"
     NIMBUS_LAND_GARRO = "Nimbus Land Garro check (only if gold paint enabled)"
-    NIMBUS_LAND_BEFORE_BIRDETTA_1 = "Nimbus Castle (occupied) 5-door room chest"
     NIMBUS_LAND_BEFORE_BIRDETTA_2 = "Nimbus Castle west two-level room chest"
     NIMBUS_CASTLE_EGG_BOSS_FIGHT = "Nimbus Land giant egg boss fight"
     NIMBUS_CASTLE_BIRDETTA = "Nimbus Castle giant egg prize"
@@ -995,6 +989,7 @@ class PrizeLocation(Generic[TOriginallyHeld]):
     _bias: bool = False
     _monstro_shuffle: bool = False
     _hint: list[UsableEventScriptCommand] | None = None
+    _access_conditions: str = ""
 
     def __repr__(self) -> str:
         prize_name = type(self._prize).__name__ if self._prize else "None"
@@ -1002,6 +997,16 @@ class PrizeLocation(Generic[TOriginallyHeld]):
 
     def hint(self, world: GameWorld) -> list[UsableEventScriptCommand]:
         return self._hint or []
+
+    @property
+    def access_conditions(self) -> str:
+        """Optional prose describing what's needed to reach this check.
+
+        Purely documentation: rendered in the List of Checks resource page and
+        read nowhere else. Unrelated to _hint, which is in-game event script.
+        Empty means nobody has written it yet.
+        """
+        return self._access_conditions
 
     @property
     def has_item(self) -> bool:

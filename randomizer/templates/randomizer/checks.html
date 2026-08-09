@@ -1,0 +1,90 @@
+{% extends 'randomizer/layouts/default.html' %}
+
+{% block content %}
+    <h1>List of Checks</h1>
+    <div class="card border-info my-3">
+        <div class="card-body">
+            9.x.x+ can have over 400 checks in your seed. Some of them are pretty obscure.<br>
+            Frogfucius will tell you about a world area where you haven't done a check yet, but he won't tell you exactly which check it was.<br>
+            You can use this list to narrow your search and keep track of your checks if you aren't already using a tracker for that.
+        </div>
+    </div>
+    <div class="card border-info my-3">
+        <div class="card-header bg-info text-white">
+            <h3 class="card-title">Checks</h3>
+        </div>
+        <div class="card-body">
+            <p>
+                <button type="button" class="btn btn-outline-danger" id="clear-checks">Clear all checkboxes</button>
+                <span class="ms-2 text-muted"><span id="checks-done">0</span> / {{ checks|length }} checked</span>
+            </p>
+            <table class="table table-striped table-sm">
+                <thead class="sticky-top bg-white">
+                <tr>
+                    <th scope="col" class="text-nowrap"></th>
+                    <th scope="col" class="text-nowrap">Area</th>
+                    <th scope="col" class="text-nowrap">Check</th>
+                    <th scope="col" class="text-nowrap">Type</th>
+                    <th scope="col">Notes</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for check in checks %}
+                    <tr>
+                        <td class="text-nowrap"><input type="checkbox" class="form-check-input check-box" data-key="{{ check.key }}"></td>
+                        <td class="text-nowrap">{{ check.world_area }}</td>
+                        <td class="text-nowrap">{{ check.name }}</td>
+                        <td class="text-nowrap">{{ check.check_type }}</td>
+                        <td>{{ check.conditions }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            // One localforage entry holding every ticked key, not one entry per row -
+            // 500 individual async gets on page load is not worth it.
+            var STORAGE_KEY = 'checklist.checked';
+            var checked = {};
+
+            function updateCount() {
+                $('#checks-done').text($('.check-box:checked').length);
+            }
+
+            function save() {
+                localforage.setItem(STORAGE_KEY, Object.keys(checked));
+            }
+
+            localforage.getItem(STORAGE_KEY).then(function (keys) {
+                (keys || []).forEach(function (key) {
+                    checked[key] = true;
+                });
+                $('.check-box').each(function () {
+                    $(this).prop('checked', checked[$(this).data('key')] === true);
+                });
+                updateCount();
+            });
+
+            $('.check-box').change(function () {
+                var key = $(this).data('key');
+                if ($(this).prop('checked')) {
+                    checked[key] = true;
+                } else {
+                    delete checked[key];
+                }
+                updateCount();
+                save();
+            });
+
+            $('#clear-checks').click(function () {
+                checked = {};
+                $('.check-box').prop('checked', false);
+                updateCount();
+                save();
+            });
+        });
+    </script>
+{% endblock %}

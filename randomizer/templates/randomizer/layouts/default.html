@@ -73,6 +73,7 @@
                 <a class="dropdown-item {% if 'how-to-play' in request.path %}active{% endif %}" href="{% url 'randomizer:how-to-play' %}">How To Play</a>
                 <a class="dropdown-item {% if 'options' in request.path %}active{% endif %}" href="{% url 'randomizer:options' %}">About the Randomizer's Settings</a>
                 <a class="dropdown-item {% if 'guide' in request.path %}active{% endif %}" href="{% url 'randomizer:guide' %}">Beginner's Guide</a>
+                <a class="dropdown-item {% if 'checks' in request.path %}active{% endif %}" href="{% url 'randomizer:checks' %}">List of Checks</a>
                 <a class="dropdown-item {% if 'resources' in request.path %}active{% endif %}" href="{% url 'randomizer:resources' %}">Get Better at SMRPG</a>
                 <a class="dropdown-item {% if 'updates' in request.path %}active{% endif %}" href="{% url 'randomizer:updates' %}">Version History</a>
                 <a class="dropdown-item {% if 'remake' in request.path %}active{% endif %}" href="{% url 'randomizer:remake' %}">What About the Remake?</a>

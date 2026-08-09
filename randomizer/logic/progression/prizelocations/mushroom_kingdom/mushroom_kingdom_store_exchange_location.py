@@ -40,6 +40,7 @@ class MushroomKingdomStoreExchangeLocation(NPCLocationRow2, KeyItemLocation):
         JmpIfVarNotEqualsConst(PRIMARY_TEMP_7000, 1, ["next"]),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
+    _access_conditions = "Requires the Mushroom Kingdom boss to have been defeated"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_bandits_way(world, inventory) and inventory.has_item(

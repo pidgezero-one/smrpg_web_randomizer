@@ -27,6 +27,7 @@ class MushroomWay1ToadRescue(NPCLocationRow2):
         JmpIfBitSet(TOAD_IN_MUSHROOM_WAY_1, ["next"]),
         Jmp(["mushroom_way_hint_text"]),
     ]
+    _access_conditions = "Will be given to you automatically if you defeat the area boss without fighting the goomba"
 
 
 __all__ = ["MushroomWay1ToadRescue"]

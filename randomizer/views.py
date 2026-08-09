@@ -1,3 +1,4 @@
+from randomizer.logic.check_list import CHECK_ROWS
 from randomizer.logic.offset_preview import get_ordered_lists
 import binascii
 import hashlib
@@ -227,6 +228,15 @@ class OptionsView(RandomizerView):
 
 class ResourcesView(RandomizerView):
     template_name = "randomizer/resources.html"
+
+
+class ChecksView(RandomizerView):
+    template_name = "randomizer/checks.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["checks"] = CHECK_ROWS
+        return context
 
 
 class ContributeView(RandomizerView):

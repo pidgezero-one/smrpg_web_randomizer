@@ -21,6 +21,7 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
     _id = ShuffleLocationSelector = ShuffleLocationSelector.POSTGAME_VOUCHER
     _world_area = WorldAreaEnum.MARIOS_PAD
     _remake_only = True
+    _access_conditions = "Defeat the boss fights at inner Moleville Mines, Booster Tower curtain game room, Marrymore, Sunken Ship exit, Belome Temple, Monstro Town sealed door, and Dojo master. Not a check if \"Enable Remake content\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

@@ -35,6 +35,7 @@ class MushroomKingdomOccupiedVaultRight(TreasureChestLocationRow5):
         ),
         Jmp(["mushroom_kingdom_hint_text"]),
     ]
+    _access_conditions = "This check is for the second time you open this chest."
 
 
 __all__ = ["MushroomKingdomOccupiedVaultRight"]
