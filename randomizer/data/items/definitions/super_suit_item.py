@@ -1,5 +1,5 @@
 from randomizer.types.item import (Armor)
-from smrpgpatchbuilder.datatypes.items.enums import (EffectType, ItemPrefix)
+from smrpgpatchbuilder.datatypes.items.enums import (ItemPrefix)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     BOWSER,
     GENO,
@@ -27,7 +27,6 @@ class SuperSuitItem(Armor):
     _magic_attack: int = 50
     _magic_defense: int = 50
     _price: int = 700
-    _effect_type = EffectType.PROTECTION
     _inflict_type = None
     _elemental_immunities: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP, Status.POISON, Status.FEAR, Status.BERSERK, Status.MUSHROOM, Status.SCARECROW]

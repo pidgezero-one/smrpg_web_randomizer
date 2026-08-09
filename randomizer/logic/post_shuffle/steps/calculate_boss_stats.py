@@ -21,9 +21,9 @@ from randomizer.logic.progression.prizes import (
 )
 from randomizer.types.enemy import (Enemy)
 from randomizer.types.flags import (BossScaleOptions, BossShuffleScaleStats)
-from randomizer.types.prize import (BossFightPrize)
+from randomizer.types.prize import (BossFightPrize, StatAnchorName)
 from randomizer.types.prizelocation import (BossFightLocation)
-from typing import (cast)
+from typing import (Callable, cast)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
@@ -43,6 +43,26 @@ _GODMODE_EXCLUDED_FIGHTS: tuple[type, ...] = (
     Jinx4BossFight,
     Culex3DBossFight,
 )
+
+def _anchor_mean(
+    prize: BossFightPrize,
+    stat: StatAnchorName,
+    default_classes: list[type],
+    get: Callable[[Enemy], int],
+) -> float:
+    """Mean of one stat across the prize's anchor enemies for that stat.
+
+    Uses _stat_anchor_overrides[stat] when the prize declares one (e.g. Booster's
+    magic attack anchors to his Sniffits), otherwise the prize's normal anchor.
+    """
+    override = prize.stat_anchor_overrides.get(stat)
+    if override is None:
+        classes: list[type] = default_classes
+    elif isinstance(override, list):
+        classes = list(override)
+    else:
+        classes = [override]
+    return statistics.mean(get(cast(Enemy, c())) for c in classes)
 
 def _calculate_location_stats(
     location: BossFightLocation,
@@ -111,13 +131,12 @@ def _calculate_location_stats(
         anchor_classes = [anchor_spec]
 
     if anchor_classes:
-        anchor_enemies = [cast(Enemy, c()) for c in anchor_classes]
-        attack = int(round(statistics.mean(e.attack for e in anchor_enemies)))
-        defense = int(round(statistics.mean(e.defense for e in anchor_enemies)))
-        magic_attack = int(round(statistics.mean(e.magic_attack for e in anchor_enemies)))
-        magic_defense = int(round(statistics.mean(e.magic_defense for e in anchor_enemies)))
-        evade = int(round(statistics.mean(e.evade for e in anchor_enemies)))
-        magic_evade = int(round(statistics.mean(e.magic_evade for e in anchor_enemies)))
+        attack = int(round(_anchor_mean(original_prize, "attack", anchor_classes, lambda e: e.attack)))
+        defense = int(round(_anchor_mean(original_prize, "defense", anchor_classes, lambda e: e.defense)))
+        magic_attack = int(round(_anchor_mean(original_prize, "magic_attack", anchor_classes, lambda e: e.magic_attack)))
+        magic_defense = int(round(_anchor_mean(original_prize, "magic_defense", anchor_classes, lambda e: e.magic_defense)))
+        evade = int(round(_anchor_mean(original_prize, "evade", anchor_classes, lambda e: e.evade)))
+        magic_evade = int(round(_anchor_mean(original_prize, "magic_evade", anchor_classes, lambda e: e.magic_evade)))
     else:
         attack = defense = magic_attack = magic_defense = evade = magic_evade = 0
 
@@ -189,12 +208,14 @@ def _apply_stats_to_prize(
     anchor_instances = [cast(Enemy, c()) for c in anchor_classes]
     num_anchors = len(anchor_instances)
     ref_hp: float = sum(e.hp for e in anchor_instances) / num_anchors
-    ref_attack: float = sum(e.attack for e in anchor_instances) / num_anchors
-    ref_defense: float = sum(e.defense for e in anchor_instances) / num_anchors
-    ref_magic_attack: float = sum(e.magic_attack for e in anchor_instances) / num_anchors
-    ref_magic_defense: float = sum(e.magic_defense for e in anchor_instances) / num_anchors
-    ref_evade: float = sum(e.evade for e in anchor_instances) / num_anchors
-    ref_magic_evade: float = sum(e.magic_evade for e in anchor_instances) / num_anchors
+    # Per-stat anchors must match the ones _calculate_location_stats used, or a fight
+    # scaled into its own slot would not round-trip back to its vanilla stats.
+    ref_attack: float = _anchor_mean(prize, "attack", anchor_classes, lambda e: e.attack)
+    ref_defense: float = _anchor_mean(prize, "defense", anchor_classes, lambda e: e.defense)
+    ref_magic_attack: float = _anchor_mean(prize, "magic_attack", anchor_classes, lambda e: e.magic_attack)
+    ref_magic_defense: float = _anchor_mean(prize, "magic_defense", anchor_classes, lambda e: e.magic_defense)
+    ref_evade: float = _anchor_mean(prize, "evade", anchor_classes, lambda e: e.evade)
+    ref_magic_evade: float = _anchor_mean(prize, "magic_evade", anchor_classes, lambda e: e.magic_evade)
 
     # Enemies excluded from HP slicing - they don't take from the pie
     hp_slice_excluded = set(prize.hp_slice_excluded_enemies) | set(prize.additional_enemies_to_scale)

@@ -878,21 +878,20 @@ dialog_data[311] = ''' Do you want your fortune told?
 dialog_data[312] = ''' See the three faces on the wall?
  Hit them in any order and you’ll
  receive your fortune.[await]'''
-dialog_data[313] = '''[center]Yikes, looks like you’ll have
+dialog_data[313] = '''\n[center]Yikes, looks like you’ll have
 hardships ahead of you.[await]'''
-dialog_data[314] = '''[center]Looks like you’ll have a great meal
+dialog_data[314] = '''\n[center]Looks like you’ll have a great meal
 sometime in the future.[await]'''
-dialog_data[315] = '''[center]Some tasty snacks are awaiting
+dialog_data[315] = '''\n[center]Some tasty snacks are awaiting
 you in the future.[await]'''
-dialog_data[316] = '''[center]You’ll have many friends in the
+dialog_data[316] = '''\n[center]You’ll have many friends in the
 future.[await]'''
-dialog_data[317] = '''[center]You’ll have plenty of good things
+dialog_data[317] = '''\n[center]You’ll have plenty of good things
 to look forward to.[await]'''
-dialog_data[318] = '''[center]You’ll find some rare items.[await]'''
-dialog_data[319] = '''[center]You’ll pick up great items.[await]'''
+dialog_data[318] = '''\n[center]You’ll find some rare items.[await]'''
+dialog_data[319] = '''\n[center]You’ll pick up great items.[await]'''
 dialog_data[320] = '''[center]If you proceed through the pipe
-next door...
-[end]'''
+next door...[end]'''
 dialog_data[321] = ''' Have you seen the huge hole in the
  cliff at Booster Pass?
  Strange, huh?[await]'''

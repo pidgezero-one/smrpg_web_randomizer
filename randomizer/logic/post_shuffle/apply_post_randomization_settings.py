@@ -4,6 +4,7 @@ These four steps ran back-to-back in GameWorld.__init__ after the shuffle retry
 loop and all the _randomize_* passes. Order is load-bearing:
 
 * debug max stats first, so it overrides everything randomization produced;
+* ally starting EXP next, once every starting_level is final;
 * the EXP multiplier next, since it scales the randomized XP values;
 * zero-XP settings AFTER all XP manipulation, so the 0-XP flags win;
 * minigame settings last.
@@ -18,6 +19,9 @@ from randomizer.logic.post_shuffle.steps.experience_zero import (
     apply_experience_zero_settings,
 )
 from randomizer.logic.post_shuffle.steps.minigames_setup import apply_minigame_settings
+from randomizer.logic.post_shuffle.steps.starting_experience import (
+    apply_starting_experience,
+)
 from randomizer.logic.shufflers.enemies import apply_exp_multiplier
 
 if TYPE_CHECKING:
@@ -28,6 +32,10 @@ def apply_post_randomization_settings(world: GameWorld) -> None:
     # Debug mode max stats, applied after all character randomization so debug
     # stats override everything.
     apply_debug_max_stats(world)
+
+    # Every starting_level the seed will ship is now final, so allies recruited
+    # above level 1 can be given the EXP that level is worth.
+    apply_starting_experience(world)
 
     apply_exp_multiplier(world)
 

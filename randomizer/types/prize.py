@@ -1,7 +1,7 @@
 from __future__ import annotations
 import random
 from copy import deepcopy
-from typing import TYPE_CHECKING, Sequence, TypeVar
+from typing import TYPE_CHECKING, Literal, Sequence, TypeVar
 
 from ..data.variables.sprite_names import (SPR0193_SMALL_COIN, SPR0195_FLOWER, SPR0226_TINY_STAR, SPR0234_STATIC_FROG_COIN, SPR0235_STATIC_COIN, SPR0238_STATIC_FROG_COIN_SMALL)
 from .physical_objects import NPC, BossNPC, ItemNPC, HenchmanNPC, StatueNPC
@@ -52,19 +52,30 @@ if TYPE_CHECKING:
     from .gameworld import GameWorld
     from .prizelocation import PrizeLocation, BossFightLocation
 
+# Combat stats that a boss fight may anchor to an enemy other than its _anchor_enemy.
+# HP/XP/coins are excluded: those are divided by the HP pie, not ratio-scaled.
+StatAnchorName = Literal[
+    "attack",
+    "defense",
+    "magic_attack",
+    "magic_defense",
+    "evade",
+    "magic_evade",
+]
+
 class FortuneEnum(StrEnum):
-    RARE = '''[center]You'll find some rare items.[await]'''
-    STAR = '''[center]You're going to save the world.[await]'''
-    GREAT = '''[center]You'll pick up great items.[await]'''
-    SNACK = '''[center]Some tasty snacks are awaiting\nyou in the future.[await]'''
-    MEAL = '''[center]Looks like you'll have a great meal\nsometime in the future.[await]'''
-    DRINK = '''[center]You'll have a refreshing drink in the near future.[await]'''
-    WEAPON = '''[center]You'll achieve great power.[await]'''
-    COINS = '''[center]Vast riches will be yours in the future.[await]'''
-    ARMOR = '''[center]You will develop great constitution in your future.[await]'''
-    ACCESSORY = '''[center]You'll have amazing fashion sense in the future.[await]'''
-    YIKES = '''[center]Yikes, looks like you'll have\nhardships ahead of you.[await]'''
-    SPELL = '''[center]You'll acquire many skills in your future.[await]'''
+    RARE = '''\n[center]You'll find some rare items.[await]'''
+    STAR = '''\n[center]You're going to save the world.[await]'''
+    GREAT = '''\n[center]You'll pick up great items.[await]'''
+    SNACK = '''\n[center]Some tasty snacks are awaiting\nyou in the future.[await]'''
+    MEAL = '''\n[center]Looks like you'll have a great meal\nsometime in the future.[await]'''
+    DRINK = '''\n[center]You'll have a refreshing drink in the near future.[await]'''
+    WEAPON = '''\n[center]You'll achieve great power.[await]'''
+    COINS = '''\n[center]Vast riches will be yours in the future.[await]'''
+    ARMOR = '''\n[center]You will develop great constitution in your future.[await]'''
+    ACCESSORY = '''\n[center]You'll have amazing fashion sense in the future.[await]'''
+    YIKES = '''\n[center]Yikes, looks like you'll have\nhardships ahead of you.[await]'''
+    SPELL = '''\n[center]You'll acquire many skills in your future.[await]'''
 
 class TreasureHunterNickname:
     _nickname: str
@@ -690,6 +701,11 @@ class BossFightPrize(Prize):
     # If a single enemy class, uses that enemy's stats as reference
     # If a list of enemy classes, uses the average of those specific enemies as reference
     _anchor_enemy: type[Enemy] | list[type[Enemy]] | None = None
+    # Per-stat anchor overrides. A stat named here uses these enemies as its scaling
+    # reference instead of _anchor_enemy; every other stat still uses _anchor_enemy.
+    # (e.g., Booster's magic attack is 1, so anchoring it to Booster makes his Sniffits'
+    # magic attack explode by a factor of 20 - anchor that one stat to the Sniffit instead)
+    _stat_anchor_overrides: dict[StatAnchorName, type[Enemy] | list[type[Enemy]]] = {}
     # Extra enemies to include in HP slicing beyond what's in the formation
     # (e.g., King Calamari has more tentacles in battle than formation can hold)
     # Each entry represents one enemy instance
@@ -771,6 +787,11 @@ class BossFightPrize(Prize):
     def anchor_enemy(self) -> type[Enemy] | list[type[Enemy]] | None:
         """The anchor enemy(s) for stat ratio calculations. Other enemies' stats scale relative to this."""
         return self._anchor_enemy
+
+    @property
+    def stat_anchor_overrides(self) -> dict[StatAnchorName, type[Enemy] | list[type[Enemy]]]:
+        """Stats that scale against an enemy other than anchor_enemy. Unlisted stats use anchor_enemy."""
+        return self._stat_anchor_overrides
 
     @property
     def extra_hp_enemies(self) -> list[type[Enemy]]:

@@ -41,7 +41,7 @@ script = ActionScript([
 	A_Pause(1),
 	A_EndLoop(),
 	A_JmpIfBitClear(TEMP_7076_0, ["ACTION_446_start_loop_n_times_26"]),
-	A_CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["ACTION_446_respawn_retry"]),
+	#A_CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["ACTION_446_respawn_retry"]),
 	A_Jmp(["ACTION_446_start_loop_n_times_26"]),
 	# Extra sprite buffer was full. Wait a frame and retry instead of falling
 	# through: this spawn IS the chain, and nothing re-seeds it mid-star, so a
@@ -50,7 +50,7 @@ script = ActionScript([
 	A_JmpIfBitSet(EXP_STAR_BIT_5, ["ACTION_446_visibility_off_31"], identifier="ACTION_446_respawn_retry"),
 	A_JmpIfBitSet(EXP_STAR_BIT_6, ["ACTION_446_visibility_off_31"]),
 	A_Pause(1),
-	A_CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["ACTION_446_respawn_retry"]),
+	#A_CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["ACTION_446_respawn_retry"]),
 	A_StartLoopNTimes(11, identifier="ACTION_446_start_loop_n_times_26"),
 	A_JmpIfBitSet(EXP_STAR_BIT_5, ["ACTION_446_visibility_off_31"]),
 	A_JmpIfBitSet(EXP_STAR_BIT_6, ["ACTION_446_visibility_off_31"]),

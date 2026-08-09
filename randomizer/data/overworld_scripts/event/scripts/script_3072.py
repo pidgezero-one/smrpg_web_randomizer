@@ -120,7 +120,7 @@ script = EventScript([
 	ClearBit(EXP_STAR_BIT_6),
 	ClearBit(UNKNOWN_7064_4),
 	ClearBit(EXP_STAR_BIT_5),
-	CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["EVENT_3072_jmp_89"]),
+	#CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["EVENT_3072_jmp_89"]),
 	Jmp(["EVENT_3072_ret_98"], identifier="EVENT_3072_jmp_89"),
 	PlaySound(sound=SO014_FLOWER, channel=6, identifier="EVENT_3072_play_sound_90"),
 	CreatePacketAt7010(packet=P000_FLASHING_POOF_FLOWER, destinations=["EVENT_3072_increase_fp"]),

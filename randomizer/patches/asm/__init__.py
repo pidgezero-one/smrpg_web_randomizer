@@ -72,11 +72,14 @@ Flag-gated byte patches:
     * :mod:debug_fp - Starting FP override under debug mode.
     * :mod:non_mario_character - Starter / overworld / file-select
       sprite redirects when the player is not Mario.
+    * :mod:blank_dummy_effect - Erase the tile data behind the shared DUMMY
+      battle effect so RemoveFlashes has an effect id that draws nothing.
 """
 
 from . import (
     battle_init,
     battle_intro_hdma_fix,
+    blank_dummy_effect,
     battlefield_underwater_palette,
     belome3_brooch,
     booster_hill_fixes,
@@ -122,6 +125,7 @@ __all__ = [
     "belome3_brooch",
     "booster_hill_fixes",
     "culex_victory_music",
+    "blank_dummy_effect",
     "debug_fp",
     "dialog_font_item_punctuation",
     "disable_garden_intro",

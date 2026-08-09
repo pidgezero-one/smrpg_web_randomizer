@@ -39,6 +39,7 @@ from randomizer.types.flags import (
     MallowPaletteChoice,
     MarioPaletteChoice,
     RandomMinecartTrack,
+    RemoveFlashes,
     ShowEquips,
     ToadstoolPaletteChoice,
     UncapMaxFP,
@@ -289,6 +290,13 @@ def get_patch(world: GameWorld) -> Patch:
 
     if world.settings.isflag_enabled(HoldB):
         patch.add_dict(asm.hold_b.get_patch(), source="hold_b")
+
+    # Blanks the DUMMY effect's tile data so the NewEffectObject rewrites in
+    # apply_cosmetic_settings have an effect id that renders nothing.
+    if world.settings.isflag_enabled(RemoveFlashes):
+        patch.add_dict(
+            asm.blank_dummy_effect.get_patch(), source="blank_dummy_effect"
+        )
 
     if world.settings.isflag_enabled(RandomMinecartTrack):
         patch.add_dict(

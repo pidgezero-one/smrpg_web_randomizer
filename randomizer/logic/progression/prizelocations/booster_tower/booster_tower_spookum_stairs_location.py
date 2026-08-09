@@ -23,7 +23,6 @@ class BoosterTowerSpookumStairsLocation(TreasureChestLocationRow1):
     _id = ShuffleLocationSelector.BOOSTER_TOWER_SPOOKUM
     _world_area = WorldAreaEnum.BOOSTER_TOWER
     _blacklist = [ThirdMimicFightLauncher]
-    _extra_sprite_buffer_rooms = [R193_BOOSTER_TOWER_2F_AREA_03_STEPS_WCIRCLING_BOBOMBS]
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 138),
         # RunDialog(

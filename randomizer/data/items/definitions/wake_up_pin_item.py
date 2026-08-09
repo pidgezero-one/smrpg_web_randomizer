@@ -1,5 +1,5 @@
 from randomizer.types.item import (Accessory)
-from smrpgpatchbuilder.datatypes.items.enums import (EffectType, ItemPrefix)
+from smrpgpatchbuilder.datatypes.items.enums import (ItemPrefix)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     BOWSER,
     GENO,
@@ -24,7 +24,6 @@ class WakeUpPinItem(Accessory):
     _defense: int = 3
     _magic_defense: int = 3
     _price: int = 42
-    _effect_type = EffectType.PROTECTION
     _inflict_type = None
     _status_immunities: list[Status] = [Status.MUTE, Status.SLEEP]
 

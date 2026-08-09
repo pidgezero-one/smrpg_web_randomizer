@@ -10954,6 +10954,27 @@ POUNDETTE_NPC_2 = NPC(
     byte6_bit2=False,
 )
 
+POUNDETTE_NPC_3 = NPC(
+    sprite_id=SPR0764_POUNDETTE_GRIDPLANE,
+    shadow_size=ShadowSize.OVAL_MED,
+    acute_axis=4,
+    obtuse_axis=4,
+    height=9,
+    y_shift=-1,
+    show_shadow=True,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=0,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 J_PUZZLE_BLOCK_NPC_6 = NPC(
     sprite_id=SPR0104_J_PUZZLE_BLOCK,
     shadow_size=ShadowSize.OVAL_SMALL,

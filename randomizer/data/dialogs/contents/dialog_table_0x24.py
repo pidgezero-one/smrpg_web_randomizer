@@ -497,7 +497,7 @@ dialog_data[162] = '''[page]
  [select]  (Pick Me Up........10 Coins)
  [select]  (Kerokero Cola....150 Coins)
  [select]  (No thanks)[await]'''
-dialog_data[163] = '''      Bought a “[0x70A7]”![await]'''
+dialog_data[163] = ''' Bought a “[0x70A7]”![await]'''
 dialog_data[164] = '''[page]
  `MAIN_CHARACTER_HONORIFIC_CAP`, you seem to be a few coins short. Please ring again.[await][pause][end]'''
 dialog_data[165] = ''' Our guest is resting.

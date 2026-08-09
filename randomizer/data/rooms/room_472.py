@@ -17,17 +17,17 @@ room = Room(
         extra_sprite_buffer_size=0,
         buffers=[
             Buffer(
+                buffer_type=BufferType.EMPTY_3,
+                main_buffer_space=BufferSpace.BYTES_0,
+                index_in_main_buffer=True,
+            ),
+            Buffer(
                 buffer_type=BufferType.THREE_SPRITES_PER_ROW,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
             Buffer(
                 buffer_type=BufferType.FOUR_SPRITES_PER_ROW,
-                main_buffer_space=BufferSpace.BYTES_0,
-                index_in_main_buffer=True,
-            ),
-            Buffer(
-                buffer_type=BufferType.EMPTY_3,
                 main_buffer_space=BufferSpace.BYTES_0,
                 index_in_main_buffer=True,
             ),
@@ -203,7 +203,7 @@ room = Room(
             direction=SOUTHEAST,
         ),
         RegularNPC(  # 7
-            npc=npcs.POUNDETTE_NPC_2,
+            npc=npcs.POUNDETTE_NPC_3,
             initiator=EventInitiator.NONE,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0962_FACTORY_3RD_BOSS_LEFT_HAMMER,
@@ -230,10 +230,9 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
             cannot_clone=True,
-            vram_size=1
         ),
         RegularClone(  # 8
-            npc=npcs.POUNDETTE_NPC_2,
+            npc=npcs.POUNDETTE_NPC_3,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0963_FACTORY_3RD_BOSS_MID_HAMMER,
             visible=True,
@@ -243,10 +242,9 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
-            vram_size=1
         ),
         RegularClone(  # 9
-            npc=npcs.POUNDETTE_NPC_2,
+            npc=npcs.POUNDETTE_NPC_3,
             event_script=E2304_BANK_1F_RETURN_EVENT_2,
             action_script=A0964_FACTORY_3RD_BOSS_RIGHT_HAMMER,
             visible=True,
@@ -256,7 +254,6 @@ room = Room(
             z_half=False,
             direction=SOUTHWEST,
             cannot_clone=True,
-            vram_size=1
         ),
         RegularNPC(  # 10
             npc=npcs.FACTORY_DIRECTOR_RED_NPC,

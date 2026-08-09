@@ -427,7 +427,7 @@ room = Room(
             cant_move_if_in_air=True,
             byte7_upper2=3,
         ),
-        RegularNPC(  # 7
+        RegularNPC(  # 8
             npc=npcs.RAINI_NPC,
             event_script=E0394_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_PINK_TOAD,
             action_script=A0130_OCCUPIED_KINGDOM_TOAD_PROXY,
@@ -454,17 +454,6 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-        ),
-        RegularClone(  # 8
-            npc=npcs.RAINI_NPC,
-            event_script=E0394_MUSHROOM_KINGDOM_OCCUPIED_EXTERIOR_PINK_TOAD,
-            action_script=A0130_OCCUPIED_KINGDOM_TOAD_PROXY,
-            visible=True,
-            x=11,
-            y=98,
-            z=4,
-            z_half=False,
-            direction=NORTHEAST,
         ),
         RegularNPC(  # 9
             npc=npcs.TOAD_NPC,

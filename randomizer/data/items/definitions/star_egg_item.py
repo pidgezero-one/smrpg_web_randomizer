@@ -10,7 +10,7 @@ class StarEggItem(RegularItem):
     _item_id: int = 176
     _description: str = " Reusable battle\n item"
     _inflict: int = 100
-    _price: int = 2
+    _price: int = 1500
     _inflict_type = None
     _usable_battle: bool = True
     _reusable: bool = True

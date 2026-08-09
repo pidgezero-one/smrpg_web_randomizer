@@ -61,6 +61,10 @@ class BoosterBossFight(BossFightPrize):
         FormationMember(SNIFITEnemyHenchman, 199, 151),
     ]
     _anchor_enemy = BOOSTEREnemy
+    # Booster's magic attack is 1, so anchoring that stat to him would multiply his
+    # Sniffits' magic attack by 20 (and zero out anything landing in his slot).
+    # Magic attack alone anchors to the Sniffit; every other stat stays on Booster.
+    _stat_anchor_overrides = {"magic_attack": SNIFITEnemyHenchman}
     _additional_enemies_to_scale = [APPRENTICEEnemyHenchman]
     _seaside_letter_name_if_volcano_boss = "a viking riding trains"
     _seaside_letter_name_if_final_boss = "Booster's frenemies."

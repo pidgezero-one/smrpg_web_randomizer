@@ -38,6 +38,6 @@ script = EventScript([
 	JmpIfBitClear(TEMP_7076_0, ["EVENT_254_ret_5"]),
 	JmpIfBitSet(EXP_STAR_BIT_5, ["EVENT_254_ret_5"]),
 	ClearBit(EXP_STAR_BIT_6),
-	CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["EVENT_254_ret_5"]),
+	#CreatePacketAtObjectCoords(packet=P022_RECURSIVE_SPARKLES, target_npc=MARIO, destinations=["EVENT_254_ret_5"]),
 	Return(identifier="EVENT_254_ret_5")
 ])

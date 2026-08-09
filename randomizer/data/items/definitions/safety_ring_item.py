@@ -1,5 +1,5 @@
 from randomizer.types.item import (Accessory)
-from smrpgpatchbuilder.datatypes.items.enums import (EffectType, ItemPrefix)
+from smrpgpatchbuilder.datatypes.items.enums import (ItemPrefix)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     BOWSER,
     GENO,
@@ -25,7 +25,6 @@ class SafetyRingItem(Accessory):
     _defense: int = 5
     _magic_defense: int = 5
     _price: int = 800
-    _effect_type = EffectType.PROTECTION
     _inflict_type = None
     _prevent_ko: bool = True
     _elemental_immunities: list[Element] = [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]

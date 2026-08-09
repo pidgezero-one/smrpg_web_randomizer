@@ -683,6 +683,23 @@ pool = [
         submitter_credits="NINTENDONUT",
         submitter_hint_prefix="[center]Memo left by nintendonut:",
     ),
+    Password(
+        "mearls",
+        "%RANDOM_WRITER%\n\nA common misspelling of something\n that is found in the sea[await]",
+        "%RANDOM_WRITER%\n\nThere is an 'm' in the word.[await]",
+        "%RANDOM_WRITER%\n\nIt has two vowels.[await]",
+        "%RANDOM_WRITER%\n\nIt has four consonants.[await]",
+        "%RANDOM_WRITER%\n\nAt least... two consonants are side\n by side.[await]",
+        "%RANDOM_WRITER%\n\nThe 'r' comes before the 'l'.[await]",
+        "You might have accidentally used\n this password before.[await]",
+        "It rhymes with \"pearls.\"[await]",
+        None,
+        None,
+        None,
+        submitter="MikeyMet",
+        submitter_credits="MIKEYMET",
+        submitter_hint_prefix="[center]Memo left by MikeyMet:",
+    ),
 ]
 
 all_symbols = list("""0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'""")

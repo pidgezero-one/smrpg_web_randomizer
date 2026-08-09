@@ -4,7 +4,6 @@ from __future__ import annotations
 from randomizer.data.items.items import SafetyRingItem, SignalRingItem
 from randomizer.logic.progression.prizelocations import StartingCharacter1
 from randomizer.types.prize import CharacterPrize
-from smrpgpatchbuilder.datatypes.items.enums import EffectType
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
 
 
@@ -22,7 +21,6 @@ def apply_debug_max_stats(world: GameWorld) -> None:
     signal_ring.set_defense(5)
     signal_ring.set_magic_defense(5)
     signal_ring.set_prevent_ko(True)
-    signal_ring.set_effect_type(EffectType.PROTECTION)
     signal_ring.set_elemental_immunities(
         [Element.ICE, Element.THUNDER, Element.FIRE, Element.JUMP]
     )

@@ -72,7 +72,7 @@ class Belome3Fight(BossFightPrize):
         DI1793_SHIP_BOSS_SIDEKICK_IN_ROOM_4: """ Hop on the trampoline in the next\n room. It’ll take ya outside.\n Go on, now. Give it a try![await]""",
         DI2061_HEAD_CHEF: """CHEF TORTE: Zees cake, ve make\n it look like big dog! It is...\n masterpiece![await]""",
         DI2180_CHAPEL_NPC: """ Reverend Belome must have gotten\n lost on his way here.""",
-        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you’re still\n missing [0x7024] item(s).[await][pause] I can’t wait any\n longer to see what today’s cake\n will be.[await][pause] I’m STARVING![await]""",
+        DI2503_NEED_X_MORE_ITEMS_MARRYMORE: """BELOME: Oh, no, you’re still\n missing [0x7024] item(s).[await][page]\n I can’t wait any longer to see what today’s cake will be.[await]\n I’m STARVING![await]""",
         DI4060_NEED_TO_DO_CHAPEL_CHECKS: """BELOME: Mmm, you’ve found all of `MARRYMORE_CHARACTER`’s things![await]\n But they won’t bring the cake in here until we AERO_NPclean the place up.[await]\n Go Cgrab the leftover items, please.[await]""",
         DI2560_TOWER_HENCHMAN_1: """SNIFIT 1: Hello there.[await]\n Belome’s busy right now, so he\n can’t play.[await][page]\n Come back some other time, or you\n can try to force your way in...[await]""",
         DI2572_TOWER_HENCHMAN_2: """SNIFIT 2: Please refrain\n from bothering Belome.[await]""",
