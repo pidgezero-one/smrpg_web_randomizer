@@ -1053,7 +1053,7 @@ class MolevilleMinesEntryFlag(InvisibleFlagLocation):
     _world_area = WorldAreaEnum.MOLEVILLE
     _z_coord = 3
     _x_shift = 16
-    _clue_text = " My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a big hole.[await]"
+    _clue_text = " My item?[delay]\n ...[delay]It's on the word “IN”,\n [delay]above a long track.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 473),
         # RunDialog(
