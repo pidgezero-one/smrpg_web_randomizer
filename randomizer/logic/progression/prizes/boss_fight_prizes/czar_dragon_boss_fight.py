@@ -65,7 +65,7 @@ class CzarDragonBossFight(BossFightPrize):
     ]
     # Anchor is the average of Czar Dragon and Zombone (excluding Helios)
     _anchor_enemy = [CZARDRAGONEnemy, ZOMBONEEnemy]
-    _scaling_excluded_enemies = [HELIOEnemy, HELIOEnemy, HELIOEnemy, HELIOEnemy]
+    _hp_slice_excluded_enemies = [HELIOEnemy, HELIOEnemy, HELIOEnemy, HELIOEnemy]
     _additional_enemies_to_scale = [PYROSPHEREEnemyHenchman]
 
     _seaside_letter_name_if_seaside_boss = "the Dragon"

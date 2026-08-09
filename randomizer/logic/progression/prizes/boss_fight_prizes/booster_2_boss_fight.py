@@ -45,6 +45,7 @@ class Booster2BossFight(BossFightPrize):
         FormationMember(BOOSTERDUMMY, 0, 0),
     ]
     _anchor_enemy = BOOSTEREnemy2
+    _stat_anchor_overrides = {"magic_attack": SNIFIT2Enemy}
 
     _seaside_letter_name_if_volcano_boss = "a viking riding trains"
     _seaside_letter_name_if_final_boss = "Booster's frenemies."

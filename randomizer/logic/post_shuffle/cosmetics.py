@@ -235,17 +235,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         ]
         for identifier in deletes:
             world.battle_animations[0x35].delete_command_by_name(identifier)
-
-        replace_screen_effects_3A = ["smithy_delete_1", "smithy_delete_2"]
-        for identifier in replace_screen_effects_3A:
-            world.battle_animations[0x3A].replace_command_by_name(identifier, ScreenEffect(SEF0004_UNKNOWN, identifier=identifier))
-
-        # Blank out the effect instead of replacing the command. NewEffectObject is
-        # the only writer of the object's effect index (slot field +0x2C), and the
-        # Layer3On / FadeOutObject that follow read it back - swapping the command
-        # out would leave them firing graphics and fade requests against a stale
-        # index. EF0073 is empty, and unlike EF0025 it has no entry in the layer
-        # animation pointer table at $1D9CF1, so it doesn't wave.
+            
         blank_effects = [
             "icebomb_explosion",
             "meteorswarm_replace",  # meteor swarm
@@ -272,12 +262,6 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         # the only thing left holding the attack's duration.
         world.battle_animations[0x35].replace_command_by_name(
             "statice_flash", ScreenFlashWithDuration(NO_COLOUR, 44, identifier="statice_flash")  # static e!
-        )
-        world.battle_animations[0x3A].replace_command_by_name(
-            "smithy_replace_1", ScreenFlashWithDuration(NO_COLOUR, 1, identifier="smithy_replace_1")
-        )
-        world.battle_animations[0x3A].replace_command_by_name(
-            "smithy_replace_2", ScreenFlashWithDuration(NO_COLOUR, 1, identifier="smithy_replace_2")
         )
 
         for i in range(1, 11):
