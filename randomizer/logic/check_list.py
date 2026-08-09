@@ -48,7 +48,7 @@ class CheckRow(NamedTuple):
 # freestanding pickup, shop purchase, NPC reward, river item, frog disciple.
 CHECK_TYPES: tuple[tuple[type[PrizeLocation], str], ...] = (
     (BossFightLocation, "Boss fight"),
-    (StarPieceLocation, "Boss Star Piece"),
+    (StarPieceLocation, "Star Piece"),
     (CharacterRecruitmentLocation, "Character"),
     (KeyItemLocation, "Key Item"),
 )
@@ -82,7 +82,7 @@ EXCLUDED_SELECTORS: frozenset[ShuffleLocationSelector] = frozenset({
 # stating an area would be wrong more often than right. The rows stay, the area goes.
 # Listed by selector because the ten classes share no base: only the three fights are
 # MimicFightLocation, the rewards are plain NPC / treasure chest rows.
-LOCATIONLESS_SELECTORS: frozenset[ShuffleLocationSelector] = frozenset({
+MIMIC_SELECTORS: frozenset[ShuffleLocationSelector] = frozenset({
     ShuffleLocationSelector.PANDORITE_BOSS_FIGHT,
     ShuffleLocationSelector.PANDORITE_BOSS,
     ShuffleLocationSelector.PANDORITE_REWARD_1,
@@ -95,30 +95,40 @@ LOCATIONLESS_SELECTORS: frozenset[ShuffleLocationSelector] = frozenset({
     ShuffleLocationSelector.BOX_BOY_BOSS,
 })
 
-# The Three Musty Fears proxies are bare classes with no rooms and so no _world_area.
-# They stand for the three invisible items a seed places, drawn from the whole
-# InvisibleFlagLocation pool, so they're named as generic slots rather than by which
-# ghost hands the item over - the hiding spot is different every seed. Monstro Town
-# is where the sidequest lives, not where the items are hidden. Type is stated here
-# too: the proxies subclass nothing, but what they stand for is an
-# InvisibleFlagLocation, which is a KeyItemLocation.
-PROXY_ROWS: dict[ShuffleLocationSelector, tuple[WorldAreaEnum, str, str]] = {
-    ShuffleLocationSelector.THREE_MUSTY_FEARS_BONES: (
-        WorldAreaEnum.MONSTRO_TOWN,
+# The Three Musty Fears proxies are bare classes with no rooms, no _world_area and no
+# type, so their whole row is written out here. They stand for the three invisible
+# items a seed places, drawn from the whole InvisibleFlagLocation pool, so they're
+# named as generic slots - the hiding spot is different every seed. Type is Key Item
+# because what they stand for is an InvisibleFlagLocation, which is a KeyItemLocation.
+#
+# ORDER IS LOAD-BEARING, and it is not the enum's. prize_locations.py fills slot i
+# from invisible_item_pool[i] when the flag is off, and hands slot i to a fixed ghost:
+# i=0 Greaper / MariosPadBedFlag, i=1 Big Boo / RoseTownSignFlag, i=2 Dry Bones /
+# YosterIsleGoalFlag. Reordering these three puts each note on the wrong row.
+PROXY_ROWS: dict[ShuffleLocationSelector, tuple[str, str, str]] = {
+    ShuffleLocationSelector.THREE_MUSTY_FEARS_GREAPER: (
         "Invisible item 1",
         "Key Item",
-    ),
-    ShuffleLocationSelector.THREE_MUSTY_FEARS_GREAPER: (
-        WorldAreaEnum.MONSTRO_TOWN,
-        "Invisible item 2",
-        "Key Item",
+        'Stays in Mario\'s Pad if "Move invisible flag checks" is disabled',
     ),
     ShuffleLocationSelector.THREE_MUSTY_FEARS_BOO: (
-        WorldAreaEnum.MONSTRO_TOWN,
+        "Invisible item 2",
+        "Key Item",
+        'Stays in Rose Town if "Move invisible flag checks" is disabled',
+    ),
+    ShuffleLocationSelector.THREE_MUSTY_FEARS_BONES: (
         "Invisible item 3",
         "Key Item",
+        'Stays in Yo\'ster Isle if "Move invisible flag checks" is disabled',
     ),
 }
+
+# Checks with no fixed place in the world: they render a blank Area, and they're
+# listed first because they have no slot in the play-order walkthrough the rest of
+# the table follows.
+LOCATIONLESS_SELECTORS: frozenset[ShuffleLocationSelector] = MIMIC_SELECTORS | frozenset(
+    PROXY_ROWS
+)
 
 
 def _selector_of(cls: type[PrizeLocation]) -> ShuffleLocationSelector | None:
@@ -201,29 +211,37 @@ def _build_rows() -> list[CheckRow]:
 
         proxy = PROXY_ROWS.get(selector)
         if proxy is not None:
-            area, name, check_type = proxy
+            name, check_type, conditions = proxy
+        else:
+            name = selector.value
+            check_type = _check_type_of(cls)
+            conditions = cls._access_conditions
+
+        if selector in LOCATIONLESS_SELECTORS:
+            area_label = ""
         else:
             area = _world_area_of(cls)
             if area is None:
                 continue
-            name = selector.value
-            check_type = _check_type_of(cls)
-        area_label = "" if selector in LOCATIONLESS_SELECTORS else area.value
+            area_label = area.value
 
         found.setdefault(
             selector,
-            CheckRow(
-                selector.name,
-                area_label,
-                name,
-                check_type,
-                cls._access_conditions,
-            ),
+            CheckRow(selector.name, area_label, name, check_type, conditions),
         )
 
-    # ShuffleLocationSelector is authored in play order, so iterating it is the
-    # ordering - no sort needed.
-    return [found[selector] for selector in ShuffleLocationSelector if selector in found]
+    # Locationless checks lead, mimics then invisible items. Everything after them is
+    # in ShuffleLocationSelector order, which is authored in play order - the mimic
+    # block keeps that order too, but the invisible items follow PROXY_ROWS instead
+    # because their slot numbering is not the enum's.
+    order = [selector for selector in ShuffleLocationSelector if selector in MIMIC_SELECTORS]
+    order += PROXY_ROWS
+    order += [
+        selector
+        for selector in ShuffleLocationSelector
+        if selector not in LOCATIONLESS_SELECTORS
+    ]
+    return [found[selector] for selector in order if selector in found]
 
 
 CHECK_ROWS: list[CheckRow] = _build_rows()

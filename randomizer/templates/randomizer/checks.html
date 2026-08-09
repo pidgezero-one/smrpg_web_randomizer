@@ -18,7 +18,24 @@
                 <button type="button" class="btn btn-outline-danger" id="clear-checks">Clear all checkboxes</button>
                 <span class="ms-2 text-muted"><span id="checks-done">0</span> / {{ checks|length }} checked</span>
             </p>
-            <table class="table table-striped table-sm">
+            <style>
+                /* table-sm sets .25rem all round; widen everything but the checkbox. */
+                #checks-table th:not(:first-child),
+                #checks-table td:not(:first-child) {
+                    padding-left: calc(.25rem + 5px);
+                    padding-right: calc(.25rem + 5px);
+                }
+
+                /* Shrink to fit: 1% is under what the content needs, and text-nowrap
+                   stops these columns wrapping to honour it, so each ends up exactly
+                   as wide as its widest cell. Notes is the only column left that can
+                   wrap, so it soaks up the remaining width. */
+                #checks-table th:not(:last-child),
+                #checks-table td:not(:last-child) {
+                    width: 1%;
+                }
+            </style>
+            <table class="table table-striped table-sm" id="checks-table">
                 <thead class="sticky-top bg-white">
                 <tr>
                     <th scope="col" class="text-nowrap"></th>

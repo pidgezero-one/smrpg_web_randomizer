@@ -34,7 +34,7 @@ class FireworksShopItemLocation(KeyItemLocation, NPCLocationRow1):
         JmpIfBitSet(FIREWORKS_HOUSE_ITEM_SOLD, ["next"]),
         Jmp(["moleville_hint_text"]),
     ]
-    _access_conditions = "Only a check if \"Progressive Fireworks\" or \"Shuffle One Fireworks\" is enabled"
+    _access_conditions = "Requires the inner Moleville Mines boss to be defeated. Only a check if \"Progressive Fireworks\" or \"Shuffle One Fireworks\" is enabled"
 
     def key(self, world: GameWorld) -> bool:
         return not world.settings.is_flag_value(

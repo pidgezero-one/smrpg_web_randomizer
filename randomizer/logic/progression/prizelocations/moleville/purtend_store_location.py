@@ -42,7 +42,7 @@ class PurtendStoreLocation(KeyItemLocation, NPCLocationRow2):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
         JmpIfBitSet(CARBO_COOKIE_GIVEN, ["moleville_hint_text"]),
     ]
-    _access_conditions = "Not a check if \"Progressive Fireworks\" is disabled"
+    _access_conditions = "Requires the inner Moleville Mines boss to be defeated. Not a check if \"Progressive Fireworks\" is disabled"
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_clear_mines(world, inventory) and inventory.has_item_count(

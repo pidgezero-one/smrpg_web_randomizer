@@ -45,6 +45,7 @@ class BucketGirlRewardLocation(NPCLocationRow1):
         StoreItemAmountTo7000(ShinyStoneItem),
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
     ]
+    _access_conditions = "Requires the inner Moleville Mines boss to be defeated."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         if not can_clear_mines(world, inventory):
