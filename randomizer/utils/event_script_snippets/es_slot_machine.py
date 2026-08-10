@@ -71,6 +71,7 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
         AreaObject(0x14 + slot_start_idx + x) for x in range(5)
     ]
     uniq = str(uuid4())
+    bk = f"{uniq}_reset_in_bowsers_keep"
 
     return [
         JmpIfBitSet(TEMP_7044_2, [f"gen_{uniq}_jmp_if_bit_set_22"]),
@@ -247,6 +248,16 @@ def create_slot_machine_script_for_one_room(room: Room, battlefield_override_id:
         ClearBit(TEMP_7044_3),
         ClearBit(TEMP_7044_4),
         Return(),
-        ResetAndChooseGame(identifier=f"{uniq}_reset_and_choose_game_3"),
-        Return()
+        Set7000ToCurrentLevel(identifier=f"{uniq}_reset_and_choose_game_3"),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R144_BOWSERS_KEEP_6DOOR_TREASURE_AFTER_EACH_ROOM, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R321_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2A_SLOW_ELEVATING_PLATFORMS, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R322_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1A_JUMPING_TERRAPIN, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R446_BOWSERS_KEEP_6DOOR_EXIT_ROOM_AFTER_FINISHING_4_DOORS, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R455_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2C_VERY_SLOW_MOVING_CIRCLING_PLATFORMS, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R457_BOWSERS_KEEP_6DOOR_ACTION_ROOM_2B_CANNONBALL_RIDING, [bk]),
+        JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R458_BOWSERS_KEEP_6DOOR_ACTION_ROOM_1B_MOVING_PLATFORMS, [bk]),
+        ResetAndChooseGame(),
+        Return(),
+        SetVarToConst(KEEP_DOOR_LIVES, 0, identifier=bk),
+	    JmpToEvent(E3356_KEEP_RESPAWN_IN_LOBBY_UPON_FAILURE),
     ]
