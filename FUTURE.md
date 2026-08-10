@@ -10,3 +10,4 @@
 - freebie settings: sliding scale from 0 to 100% chance
 - minecart randomizer
 - allies in the general pool
+- randomize DPS on bombs

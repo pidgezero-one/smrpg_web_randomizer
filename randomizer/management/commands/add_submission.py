@@ -435,7 +435,11 @@ def add_song(fields: dict[str, str]) -> None:
     def quote_hint(hint: str, had_ticks: bool) -> str:
         if had_ticks:
             return f'"""{hint}"""'
-        return f"'{hint}'"
+        # Double quotes, not single: escape_string() escapes " but not ', so a
+        # single-quoted hint containing an apostrophe ("It's All the Small Things")
+        # closes the literal early and writes a file that won't import. Every other
+        # emitter here (wish, quiz, password) already double-quotes for this reason.
+        return f'"{hint}"'
 
     new_entry = f'''    Song(
         [{notes_str}],

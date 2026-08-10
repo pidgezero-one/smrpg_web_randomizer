@@ -965,4 +965,22 @@ all_songs = [
         hint_2=""" My favorite song?[await][page]\n It's Chasing a Dream.\n ♪“So La Re La Do Re Mi Ti”.[await][page]\n Perfect song for a mad dash\n through the underworld![await]""",
         hint_3=""" The Moleville Blues.[await]\n “So La Re La Do Re Mi Ti”.[await][page]\n *sniff* Hearing it, I just want to\n chase my dream![await]""",
         scroll='\n[center]So La Re La Do Re Mi Ti[await]'),
+    Song(
+        [(Mi, 6), (Do, 4), (Ti, 3), (Do, 4), (Mi, 6), (Do, 4), (Ti, 3), (Do, 4)],
+        "All the Small Things",
+        submitter="WEFFJEBSTER",
+        submitter_credits="WEFFJEBSTER",
+        hint_1="It's All the Small Things.\nMi Do Ti Do Mi Do Ti Do.\nToadofsky says it's not real punk![await]",
+        hint_2="It's All the Small Things.\nMi Do Ti Do Mi Do Ti Do.\nBlink and you'll miss it![await]",
+        hint_3="Say it ain't so! I will not go! Turn the lights off! Carry me home![await]",
+        scroll='\n          Mi Do Ti Do Mi Do Ti Do[await]'),
+    Song(
+        [(La, 2), (Mi, 6), (La, 2), (Do, 4), (Fa, 0), (Mi, 6), (Fa, 0), (Do, 4)],
+        "One",
+        submitter="WEFFJEBSTER",
+        submitter_credits="WEFFJEBSTER",
+        hint_1="It's One.\nLa Mi La Do Fa Mi Fa Do.\nIt's from before Toadofsky\ncut his hair![await]",
+        hint_2="It's One.[await]\nYou can't really hear the bass\ntadpoles, though...[await]",
+        hint_3="The Moleville Blues?\nLa Mi La Do... [await]\nFa Mi Fa Do... [await][page]\nSure, it's a bit of a bummer, but\nwait'll ya get to the fast part![await]",
+        scroll='\n          La Mi La Do Fa Mi Fa Do[await]'),
 ]
