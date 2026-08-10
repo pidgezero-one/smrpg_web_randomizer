@@ -1523,6 +1523,7 @@ def shuffle_prizes(world: GameWorld) -> None:
             enable_slots=world.settings.offset_slots,
             enable_mimics=world.settings.offset_mimics,
             enable_coins=world.settings.offset_coins,
+            win_condition=world.settings.get_flag(WinCondition).selected.name,
         )
 
         # Boss overrides: {location_class_name: prize_class}
@@ -1608,10 +1609,18 @@ def shuffle_prizes(world: GameWorld) -> None:
         # Lock TotalStarPieces star pieces to specific boss-fight star piece locations
         # so the offset slider also rotates star piece placements deterministically.
         for sp_loc_cls, sp_prize_cls in offset_result["star_piece_overrides"]:
+            placed_at_location = False
             for loc in world.locations.values():
                 if isinstance(loc, sp_loc_cls):
                     loc.set_prize(sp_prize_cls())
+                    placed_at_location = True
                     break
+            if not placed_at_location:
+                # The target location isn't in this world (win-condition-dependent
+                # locations are dropped by the pre-shuffler). Leaving the pool pop
+                # below unguarded deleted the star piece without ever placing it;
+                # instead leave it in the pool so it shuffles normally.
+                continue
             removed = False
             for tier_list in pool.values():
                 for i, item in enumerate(tier_list):

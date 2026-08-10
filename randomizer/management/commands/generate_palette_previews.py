@@ -7,7 +7,7 @@ This command generates preview images for all ally character palettes,
 showing what each character looks like with that palette applied.
 """
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from randomizer.utils.sprite_renderer import generate_ally_palette_preview
 from randomizer.data.allies.palettes import mario, mallow, geno, bowser, toadstool
 from pathlib import Path
@@ -54,6 +54,11 @@ class Command(BaseCommand):
             help='Generate previews for a specific character only',
         )
         parser.add_argument(
+            '--palette-class',
+            type=str,
+            help='Generate a preview for a single palette class only (e.g. ToadstoolNoelle)',
+        )
+        parser.add_argument(
             '--scale',
             type=int,
             default=3,
@@ -62,6 +67,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         character_filter = options.get('character')
+        palette_class_filter = options.get('palette_class')
         scale = options.get('scale')
 
         # Base output directory in static files
@@ -93,6 +99,9 @@ class Command(BaseCommand):
                     attr_name not in ['MarioPalette', 'MallowPalette', 'GenoPalette', 'BowserPalette', 'ToadstoolPalette']):
                     palette_classes.append(attr)
 
+            if palette_class_filter:
+                palette_classes = [c for c in palette_classes if c.__name__ == palette_class_filter]
+
             # Generate preview for each palette
             for palette_class in palette_classes:
                 # Skip "Default" and "Random" palettes, and base palette classes with no ID
@@ -120,6 +129,9 @@ class Command(BaseCommand):
                     self.stdout.write(
                         self.style.ERROR(f"  ✗ Failed to generate {palette_class.name}: {e}")
                     )
+
+        if palette_class_filter and total_generated == 0:
+            raise CommandError(f"No palette class named '{palette_class_filter}' was rendered")
 
         self.stdout.write(
             self.style.SUCCESS(f"\nTotal previews generated: {total_generated}")

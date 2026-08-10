@@ -280,6 +280,11 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
 
     # Enemy spell randomization
     if world.settings.isflag_enabled(EnemySpells):
+        # Breaker Beam's animation code includes forcing the caster to run sprite seq 3 
+        # which not all monsters actually have. delete it if this flag is turned on
+        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_1")
+        world.battle_animations[0x35].delete_command_by_name("breaker_beam_sequence_2")
+
         spell_pool: list[type[EnemySpell]] = [
             DrainSpell, LightningOrbSpell, FlameSpell, BoltSpell, CrystalSpell,
             FlameStoneSpell, MegaDrainSpell, WillyWispSpell, DiamondSawSpell,
@@ -288,14 +293,14 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
             PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
-            MeteorSwarmSpell, ShredderSpell,
+            MeteorSwarmSpell, ShredderSpell, BreakerBeamSpell,
             SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell,
         ]
         for script in world.monster_scripts.scripts:
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
-                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell, BreakerBeamSpell)
+                    excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell)
                     if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
                         cmd.set_spell_1(random.choice(spell_pool))
                     if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:

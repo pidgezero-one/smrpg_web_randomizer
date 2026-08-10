@@ -318,7 +318,7 @@ def _get_boss_star_piece_locations() -> list[type]:
 
 
 def compute_star_piece_assignments(
-    offset: int, total_star_pieces: int
+    offset: int, total_star_pieces: int, win_condition: str | None = None
 ) -> list[tuple[type, type]]:
     """Pick total_star_pieces (location, prize) pairs for the given offset.
 
@@ -327,8 +327,15 @@ def compute_star_piece_assignments(
     once: with len(locs)==47 (prime), any non-zero stride is coprime, so each
     of the N pickers cycles through every index as offset varies.
 
+    win_condition is the WinConditions member *name* (e.g. "FACTORY"). A location
+    whose _excluded_win_conditions covers it can never hold a collectible star
+    piece, so its pick is dropped rather than slid onto the next location: sliding
+    would shift every subsequent assignment and desync the browser-side preview
+    from the seed. The prize for a dropped pick simply stays in the pool and
+    shuffles normally, so the seed still gets its full star piece count.
+
     Returns: list of (star_piece_location_class, star_piece_prize_class) tuples
-    with length min(total_star_pieces, len(locs)).
+    with length up to min(total_star_pieces, len(locs)) - shorter when picks drop.
     """
     locs = _get_boss_star_piece_locations()
     n = len(locs)
@@ -349,6 +356,12 @@ def compute_star_piece_assignments(
             area = getattr(loc, "_world_area", None)
             if area is not None and area in used_areas:
                 continue
+            if win_condition is not None and win_condition in [
+                wc.name for wc in getattr(loc, "_excluded_win_conditions", [])
+            ]:
+                # Spend the slot without assigning: this pick is dropped.
+                used_indices.add(idx)
+                break
             selected.append((loc, STAR_PIECE_PRIZES[k]))
             if area is not None:
                 used_areas.add(area)
@@ -385,6 +398,13 @@ def get_ordered_lists() -> dict:
             else None
             for cls in star_piece_locs
         ],
+        # Parallel to star_piece_locations: the WinConditions member names under which
+        # each location can't hold a collectable star piece. The browser preview skips
+        # those picks so it shows exactly what compute_star_piece_assignments produces.
+        "star_piece_excluded_win_conditions": [
+            [wc.name for wc in getattr(cls, "_excluded_win_conditions", [])]
+            for cls in star_piece_locs
+        ],
         "star_piece_prizes": [cls.__name__ for cls in STAR_PIECE_PRIZES],
         "total_star_pieces_default": TotalStarPieces._default,
     }
@@ -397,6 +417,7 @@ def compute_offset_assignments(
     enable_slots: bool = True,
     enable_mimics: bool = True,
     enable_coins: bool = True,
+    win_condition: str | None = None,
 ) -> dict:
     """Compute offset-based assignments for bosses, slots, mimics, flags, and star pieces.
 
@@ -415,6 +436,9 @@ def compute_offset_assignments(
             have taken are freed for the mimic and coin picks.
         enable_mimics: When False, no mimic fight chests are pre-set.
         enable_coins: When False, the infinite coins chest is not pre-set.
+        win_condition: WinConditions member name (e.g. "FACTORY"). Star piece picks
+            landing on a location that can't hold a collectable piece under that win
+            condition are dropped. None disables the check.
 
     Returns:
         A dict with:
@@ -529,7 +553,9 @@ def compute_offset_assignments(
                 picked_indices.add(idx)
                 break
 
-    star_piece_overrides = compute_star_piece_assignments(offset, total_star_pieces)
+    star_piece_overrides = compute_star_piece_assignments(
+        offset, total_star_pieces, win_condition
+    )
     star_piece_assignments = [
         (loc.__name__, prize.__name__) for loc, prize in star_piece_overrides
     ]

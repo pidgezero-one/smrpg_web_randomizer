@@ -23,6 +23,9 @@ class MonstroSealedDoorStarPiecePostgame(StarPieceLocation):
     _rooms = [R324_MONSTRO_TOWN_OUTSIDE]
     _id = ShuffleLocationSelector.CULEX_POSTGAME_BOSS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
+    # See MonstroSealedDoorStarPiece: the postgame sealed-door locations are dropped
+    # under SEALED win too, so the offset rotation must not pick this one either.
+    _excluded_win_conditions = [WinConditions.SEALED]
     _remake_only = True
     _parent = MonstroSealedDoorBossFightPostgame
     _hint = [

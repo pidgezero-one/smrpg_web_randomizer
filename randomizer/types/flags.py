@@ -2149,6 +2149,7 @@ class MallowPaletteOptions(CategorizationOption):
     MINT = "Mint"
     DEMON = "Demon"
     RAINCLOUD = "Rain Cloud"
+    LANCER = "Lancer"
 
 
 class MallowPaletteChoice(SelectOneFlag[MallowPaletteOptions]):
@@ -2260,6 +2261,7 @@ class ToadstoolPaletteOptions(CategorizationOption):
     BLACK = "Black"
     INDIGO = "Indigo"
     SHADOWQ = "Shadow Q."
+    NOELLE = "Noelle"
 
 
 class ToadstoolPaletteChoice(SelectOneFlag[ToadstoolPaletteOptions]):

@@ -730,6 +730,63 @@ class MallowRainCloud(MallowPalette):
     author = "SMBAI"
 
 
+class MallowLancer(MallowPalette):
+    colours = [
+        0xF8F8F8,
+        0xF8F8F8,
+        0xF8F8F8,
+        0x5080B8,
+        0x000000,
+        0x5080B8,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x5080B8,
+        0x5080B8,
+        0x5080B8,
+        0x5080B8,
+        0x000000,
+        0x000000,
+    ]
+    poison_colours = [
+        0xA870E0,
+        0xA870E0,
+        0xA870E0,
+        0x5848C0,
+        0x000000,
+        0x5848C0,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x5848C0,
+        0x5848C0,
+        0x5848C0,
+        0x5848C0,
+        0x000000,
+        0x000000,
+    ]
+    underwater_colours = [
+        0xD8D8D8,
+        0xD8D8D8,
+        0xD8D8D8,
+        0x306098,
+        0x000000,
+        0x306098,
+        0x000000,
+        0x000000,
+        0x000000,
+        0x306098,
+        0x306098,
+        0x306098,
+        0x306098,
+        0x000000,
+        0x000000,
+    ]
+    id = MallowPaletteOptions.LANCER
+    name = "Lancer"
+    author = "MADDI"
+
+
 all_palettes: list[MallowPalette] = [
     MallowDefault(),
     MallowMokura(),
@@ -743,5 +800,6 @@ all_palettes: list[MallowPalette] = [
     MallowRed(),
     MallowMint(),
     MallowDemon(),
-    MallowRainCloud()
+    MallowRainCloud(),
+    MallowLancer(),
 ]

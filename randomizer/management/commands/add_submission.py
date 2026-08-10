@@ -10,10 +10,6 @@ Usage:
     # Specify upstream repo when working from a fork:
     manage.py add_submission --type wish --issue 123 --repo owner/repo
 """
-from randomizer.utils.sprite_renderer import generate_ally_palette_preview
-import importlib
-import traceback
-
 import json
 import re
 import subprocess
@@ -562,70 +558,40 @@ def parse_palette_sections(body: str) -> tuple[list[int], list[int], list[int]]:
     return basic_colors, dark_colors, psn_colors
 
 
-def generate_palette_preview_for_submission(character: str, palette_class_name: str, palette_name: str) -> None:
+def generate_palette_preview_for_submission(character: str, palette_class_name: str) -> None:
     """Generate a preview image for a newly submitted palette.
 
+    This runs in a fresh interpreter so that both the newly written enum member in
+    flags.py and the new palette class are read from disk. Doing it in-process does
+    not work: importlib.reload() reloads only the module it is given, so reloading
+    the palette module rebinds it to the stale randomizer.types.flags still sitting
+    in sys.modules, and the new enum member does not exist there.
+
     Args:
-        character: Character name (mario, mallow, geno, bowser, toadstool)
+        character: Character name (mario, mallow, geno, bowser, toadstool, peach)
         palette_class_name: Name of the palette class that was created
-        palette_name: Display name of the palette
     """
+    char_arg = "toadstool" if character == "peach" else character
 
-    sprite_ids = {
-        'mario': 0,
-        'mallow': 19,
-        'geno': 25,
-        'bowser': 13,
-        'toadstool': 7,
-        'peach': 7,
-    }
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(REPO_ROOT / "manage.py"),
+            "generate_palette_previews",
+            "--character", char_arg,
+            "--palette-class", palette_class_name,
+        ],
+        capture_output=True,
+        text=True,
+    )
 
-    if character not in sprite_ids:
-        print(f"Warning: Unknown character '{character}', skipping preview generation")
-        return
+    if result.stdout.strip():
+        print(result.stdout.strip())
 
-    sprite_id = sprite_ids[character]
-
-    palette_module_map = {
-        'mario': 'randomizer.data.allies.palettes.mario',
-        'mallow': 'randomizer.data.allies.palettes.mallow',
-        'geno': 'randomizer.data.allies.palettes.geno',
-        'bowser': 'randomizer.data.allies.palettes.bowser',
-        'toadstool': 'randomizer.data.allies.palettes.toadstool',
-        'peach': 'randomizer.data.allies.palettes.toadstool',
-    }
-
-    module_name = palette_module_map[character]
-
-    try:
-        # Reload the module to pick up the newly added class
-        if module_name in sys.modules:
-            module = importlib.reload(sys.modules[module_name])
-        else:
-            module = importlib.import_module(module_name)
-
-        palette_class = getattr(module, palette_class_name)
-
-        safe_name = palette_name.lower().replace(' ', '_').replace("'", '')
-
-        char_output_dir = character if character != 'peach' else 'toadstool'
-        output_dir = REPO_ROOT / 'randomizer' / 'static' / 'randomizer' / 'images' / 'palette_previews' / char_output_dir
-        output_dir.mkdir(parents=True, exist_ok=True)
-        output_path = output_dir / f'{safe_name}.png'
-
-        generate_ally_palette_preview(
-            sprite_id=sprite_id,
-            palette_class=palette_class,
-            output_path=str(output_path),
-            mold_index=0,
-            scale=3
-        )
-
-        print(f"Generated palette preview: {output_path}")
-
-    except Exception as e:
-        print(f"Warning: Failed to generate palette preview: {e}")
-        traceback.print_exc()
+    if result.returncode != 0:
+        print(f"Warning: Failed to generate palette preview for {palette_class_name}")
+        if result.stderr.strip():
+            print(result.stderr.strip())
 
 
 def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
@@ -676,8 +642,6 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
     author = format_credits_name(author_name) if author_name else None
 
     lines = [
-        "",
-        "",
         f"class {class_name}({base_class}):",
         "    colours = [",
         format_palette_colors(basic_colors),
@@ -715,8 +679,11 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
         print(f"Error: Could not find all_palettes in {filename}")
         sys.exit(1)
 
+    # Normalize the run of blank lines before all_palettes so the new class always
+    # ends up separated by exactly two blank lines on both sides.
     insert_pos = match.start()
-    new_content = content[:insert_pos] + class_code + "\n\n\n" + content[insert_pos:]
+    prefix = content[:insert_pos].rstrip("\n")
+    new_content = prefix + "\n\n\n" + class_code + "\n\n\n" + content[insert_pos:]
 
     all_palettes_pattern = r"(^all_palettes.*?=.*?\[.*?)(^\])"
     match = re.search(all_palettes_pattern, new_content, re.MULTILINE | re.DOTALL)
@@ -724,14 +691,24 @@ def add_palette(fields: dict[str, str], raw_body: str = "") -> None:
         print(f"Error: Could not find all_palettes closing bracket in {filename}")
         sys.exit(1)
 
-    insert_pos = match.end(1)
-    new_content = new_content[:insert_pos] + f"    {class_name}(),\n" + new_content[insert_pos:]
+    # The final entry is allowed to omit its trailing comma while it is last, so
+    # add one before appending after it.
+    list_body = match.group(1).rstrip()
+    if not list_body.endswith(("[", ",")):
+        list_body += ","
+
+    new_content = (
+        new_content[:match.start(1)]
+        + list_body
+        + f"\n    {class_name}(),\n"
+        + new_content[match.end(1):]
+    )
 
     file_path.write_text(new_content)
     print(f"Added palette: {class_name} to {filename}")
 
     print("Generating palette preview image...")
-    generate_palette_preview_for_submission(character, class_name, palette_name)
+    generate_palette_preview_for_submission(character, class_name)
 
 
 class Command(BaseCommand):

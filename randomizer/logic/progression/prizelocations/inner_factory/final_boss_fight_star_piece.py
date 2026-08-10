@@ -62,13 +62,12 @@ class FinalBossFightStarPiece(StarPieceLocation):
         JmpIfVarEqualsConst(PRIMARY_TEMP_7000, 1, ["moleville_hint_text"]),
     ]
 
-    def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
-        # Under FACTORY win, defeating the final boss ends the game, so a star piece placed
-        # here could never be collected. Stay source-only: reject every placement (the
-        # vanilla StarPiece7 still seeds the pool via pull_prize and lands elsewhere).
-        if world.settings.is_flag_value(WinCondition, WinConditions.FACTORY):
-            return False
-        return super().can_accept(prize, inventory, world)
+    # Under FACTORY win, defeating the final boss ends the game, so a star piece placed
+    # here could never be collected. Stay source-only: reject every placement (the
+    # vanilla StarPiece7 still seeds the pool via pull_prize and lands elsewhere).
+    # Enforced by StarPieceLocation.can_accept, and read by the debug offset rotation
+    # so its preview never pins a piece here either.
+    _excluded_win_conditions = [WinConditions.FACTORY]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (

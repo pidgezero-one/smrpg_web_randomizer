@@ -54,6 +54,8 @@ WISH_POOL = wish_strings = [
     "[center]\nI wish SMRPG was remade\nfor the GBA...",
     "[center]\nI wish Luigi was playable.",
     "[center]\nPeople of Earth..\nLend me your energy!",
+    "[center]I wish nothing but\nthe best\nfooor you both~.",
+    "[center]\nI wish gameing was legal.",
 ]
 WISH_DIALOG_IDS = [
     DI3111_WISH_7,

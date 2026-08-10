@@ -564,8 +564,6 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         ).get_npc_by_target_id(NPC_5)
         _curtain_npc.set_initiator(EventInitiator.ANYTHING_EXCEPT_PRESS_A)
 
-    # For safety, delete Breaker Beam caster animations in case an enemy uses it that doesn't have a sequence 3
-
     heal_mode = world.settings.get_flag(DontAutoheal).selected
 
     # Full heals the randomizer adds that the original game does NOT have.

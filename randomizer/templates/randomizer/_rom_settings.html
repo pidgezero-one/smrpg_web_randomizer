@@ -208,8 +208,22 @@
             var starPieceLocations = previewData.star_piece_locations || [];
             var starPieceWorldAreas = previewData.star_piece_world_areas || [];
             var starPiecePrizes = previewData.star_piece_prizes || [];
+            var starPieceExcludedWinConditions = previewData.star_piece_excluded_win_conditions || [];
             var totalStarPiecesDefault = (typeof previewData.total_star_pieces_default === 'number')
                 ? previewData.total_star_pieces_default : 0;
+
+            function readWinCondition() {
+                // WinCondition renders as "O.objective" via _show_flag_ui.html, with option
+                // values equal to the WinConditions member names (FACTORY, SMITHY, ...).
+                var sel = document.querySelector('[name="O.objective"]');
+                return sel ? sel.value : null;
+            }
+
+            function starPieceLocExcluded(idx) {
+                var excluded = starPieceExcludedWinConditions[idx];
+                if (!excluded || !excluded.length) return false;
+                return excluded.indexOf(readWinCondition()) !== -1;
+            }
 
             function readTotalStarPieces() {
                 // The TotalStarPieces flag input is named "X.total_sp" via _show_flag_ui.html.
@@ -311,6 +325,13 @@
                             if (spUsedIndices[spIdx]) continue;
                             var area = starPieceWorldAreas[spIdx];
                             if (area && spUsedAreas[area]) continue;
+                            if (starPieceLocExcluded(spIdx)) {
+                                // Pick dropped: clearing this location's parent ends the
+                                // run under the selected win condition, so the backend
+                                // skips it too and the prize shuffles normally instead.
+                                spUsedIndices[spIdx] = true;
+                                break;
+                            }
                             spBody.append(
                                 '<tr><td>' + starPiecePrizes[sk] +
                                 '</td><td>' + starPieceLocations[spIdx] +
@@ -406,6 +427,9 @@
                 // is already updated.
                 setTimeout(refreshPreview, 0);
             });
+            // Win condition decides which star piece locations can hold a collectable
+            // piece (see starPieceLocExcluded), so a change to it re-picks the table.
+            $(document).on('change', '[name="O.objective"]', refreshPreview);
 
             // Number input handlers
             $('#prize-offset-number').on('input', function() {

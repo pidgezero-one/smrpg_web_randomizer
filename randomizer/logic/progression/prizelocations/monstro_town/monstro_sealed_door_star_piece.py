@@ -24,6 +24,11 @@ class MonstroSealedDoorStarPiece(StarPieceLocation):
     _id = ShuffleLocationSelector.CULEX_BOSS
     _world_area = WorldAreaEnum.MONSTRO_TOWN
     _parent = MonstroSealedDoorBossFight
+    # Under SEALED win, clearing the sealed door ends the run. The pre-shuffler already
+    # drops this location from world.locations in that case; declaring it here as well
+    # keeps the debug offset rotation from spending a pick on a location that won't
+    # exist, which used to delete a star piece from the pool without placing it.
+    _excluded_win_conditions = [WinConditions.SEALED]
     _npc_slots = [
         BossFightLocationNPC(
             R351_CULEXS_ROOM,

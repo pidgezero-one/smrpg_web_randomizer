@@ -1897,6 +1897,23 @@ class BossFightLocation(PrizeLocation):
         if not isinstance(prize, BossFightPrize) or prize.boss_fight_grant is None:
             return False
 
+        # Mirror of the Smithy guard in StarPieceLocation.can_access. Star pieces
+        # are now placed before their parent boss slot is filled, and the Smithy
+        # fight is deliberately deferred to the last placement pass, so the forward
+        # check can never see him at star piece placement time. Guard from this
+        # side instead: a slot whose star piece child is already holding a piece
+        # must not take Smithy, because beating him ends the run.
+        if isinstance(prize, SmithyBossFight) and world.settings.is_flag_value(
+            WinCondition, WinConditions.SMITHY
+        ):
+            for l in world.locations.values():
+                if (
+                    isinstance(l, StarPieceLocation)
+                    and getattr(l, "_parent", None) is type(self)
+                    and l.has_item
+                ):
+                    return False
+
         return super().can_accept(prize, inventory, world)
 
     def _apply_henchmen(self, world: GameWorld) -> tuple[
@@ -2587,20 +2604,32 @@ class StarPieceLocation(PrizeLocation):
     _parent: type[BossFightLocation]
     _can_be_empty: bool = True
 
+    _excluded_win_conditions: list[WinConditions] = []
+
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
 
         if hasattr(self, "_parent"):
             parent_location = world.get_location(self._parent)
-            if parent_location is None or parent_location.prize is None:
+            if parent_location is None:
                 return False
 
-            return not (
-                isinstance(parent_location.prize, SmithyBossFight)
+            if (
+                parent_location.prize is not None
+                and isinstance(parent_location.prize, SmithyBossFight)
                 and world.settings.is_flag_value(WinCondition, WinConditions.SMITHY)
-            ) and super().can_access(inventory, world)
+            ):
+                # Beating Smithy ends the run, so a piece granted by that fight
+                # can never be collected.
+                return False
         return super().can_access(inventory, world)
 
     def can_accept(self, prize: Prize, inventory: Inventory, world: GameWorld) -> bool:
+
+        # Clearing this location's parent ends the run under this win condition,
+        # so anything granted here is unreachable.
+        for win_condition in self._excluded_win_conditions:
+            if world.settings.is_flag_value(WinCondition, win_condition):
+                return False
 
         # Check if the parent boss fight location is disabled in EnabledBossChecks
         # If so, this star piece location cannot have a star piece

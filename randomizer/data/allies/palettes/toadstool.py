@@ -1262,6 +1262,63 @@ class ToadstoolShadowQ(ToadstoolPalette):
     author = "SMRPG ARMAGEDDON"
 
 
+class ToadstoolNoelle(ToadstoolPalette):
+    colours = [
+        0xF8F8F8,
+        0xD88898,
+        0xD88898,
+        0x985010,
+        0x502818,
+        0xF8F8F8,
+        0x70E0F8,
+        0xF8F8F8,
+        0x700000,
+        0xE8F8B8,
+        0xE8F8B8,
+        0x000000,
+        0xD0C8C8,
+        0x786860,
+        0x181818,
+    ]
+    poison_colours = [
+        0xA8A8F8,
+        0xA078F8,
+        0xA078F8,
+        0x585010,
+        0x302818,
+        0xA0A0A0,
+        0x7078F8,
+        0xA0A0A0,
+        0x400000,
+        0x88A8B8,
+        0x88A8B8,
+        0x000000,
+        0x989898,
+        0x004060,
+        0x181818,
+    ]
+    underwater_colours = [
+        0xD0D0D0,
+        0xB06070,
+        0xB06070,
+        0x702800,
+        0x280000,
+        0xD0D0D0,
+        0x48B8D0,
+        0xD0D0D0,
+        0x480000,
+        0xC0D090,
+        0xC0D090,
+        0x000000,
+        0xA8A0A0,
+        0x504038,
+        0x000000,
+    ]
+    id = ToadstoolPaletteOptions.NOELLE
+    name = "Noelle"
+    author = "MADDI"
+
+
 all_palettes: list[ToadstoolPalette] = [
     ToadstoolDefault(),
     ToadstoolDaisy(),
@@ -1285,4 +1342,5 @@ all_palettes: list[ToadstoolPalette] = [
     ToadstoolBlack(),
     ToadstoolIndigo(),
     ToadstoolShadowQ(),
+    ToadstoolNoelle(),
 ]
