@@ -2347,7 +2347,7 @@ class RemoveFlashes(BooleanFlag):
     _name = "Remove flashes"
     _description = """Removes some flashing animations (from spells, attacks, etc). 
 <br>
-<br>Disclaimer: While this feature is intended to promote accessibility, SMRPG Randomizer's developers are not accessibility experts and we may have missed some things. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk. If you would like to suggest an animation that should have flashes removed by this feature, please go to "Resources -> Report an Issue" in the randomizer website's menu."""
+<br>Disclaimer: This feature is intended to promote accessibility, but SMRPG Randomizer's developers are not medical experts. Players and viewers with photosensitivity should continue to engage with this randomizer at their own risk."""
     _id = "noflash"
 
 
