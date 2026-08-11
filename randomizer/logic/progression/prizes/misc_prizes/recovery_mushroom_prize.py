@@ -28,9 +28,6 @@ class RecoveryMushroomPrize(StandardPrize):
 
     @property
     def standing_grant(self) -> EventScript:
-        # No action queue in front of the jump: a sync queue blocks the main event thread
-        # for a couple of frames (player input locked) and E2822's
-        # RemoveObjectFromCurrentLevel already despawns the NPC in-frame.
         return EventScript([JmpToEvent(E2822_ASYNC_NO_ANIMATION_MUSHROOM)])
 
     @property

@@ -2946,10 +2946,14 @@ class PacketLocationRow1(StandingLocationRow1, PacketLocation):
         # A packet is a dynamically-spawned object one slot past the room's last static
         # NPC, so it has no presence bit inside its own level's dynamic-width slice
         # ($7E:6D20). ANY persistent presence write on it therefore clears bit 0 of the
-        # NEXT level's slice (that room's NPC_0). Two ways to write presence: event-level
-        # RemoveObject on $70A8 (F5/F9), and the action-level "set object presence" command
-        # (raw bytes FD F2) inside an ActionQueueSync. Walk the whole grant + every event
-        # reachable by JmpToEvent and fail the build if any such write survives.
+        # NEXT level's slice (that room's NPC_0). The real persistent writers are
+        # event opcode F5 (RemoveObjectAt70A8FromCurrentLevel) and the action-level
+        # "set object presence" (raw bytes FD F2) inside an ActionQueueSync - both reach
+        # C0/99B0. The F9 form (RemoveObjectFromCurrentLevel on $70A8) only clears bit 7
+        # of live object memory at $7E:60xx and is NOT persistent, so it is safe on a
+        # packet; it is still rejected below to keep every packet grant routed through a
+        # single uniform variant. Walk the whole grant + every event reachable by
+        # JmpToEvent and fail the build if any such write survives.
         def writes_presence(script: EventScript) -> bool:
             for cmd in script.contents:
                 if isinstance(cmd, RemoveObjectAt70A8FromCurrentLevel):

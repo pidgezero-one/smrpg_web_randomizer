@@ -34,11 +34,6 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 # Packet-safe variant of E2822_ASYNC_NO_ANIMATION_MUSHROOM.
-# See E4090 for the aliasing mechanism: a packet has no presence bit of its own, so any
-# persistent presence write (event RemoveObject F5/F9, OR action-level "set object
-# presence" FD F2) clears the NEXT room's NPC_0. E2822's RemoveObjectFromCurrentLevel
-# (F9) is replaced by a transient, object-local sprite hide (obj-mem bit 0x30.4 +
-# visibility off). No presence write may run for a packet; respawn is story-flag gated.
 script = EventScript([
 	ActionQueueSync(target=MEM_70A8, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x30, bits=[4]),

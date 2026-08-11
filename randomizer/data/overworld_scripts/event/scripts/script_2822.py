@@ -36,6 +36,7 @@ from ....variables.event_palette_names import *
 script = EventScript([
 	DisableObjectTrigger(MEM_70A8),
 	RemoveObjectFromCurrentLevel(MEM_70A8),
+	RemoveObjectAt70A8FromCurrentLevel(),
 	PlaySound(sound=SO014_FLOWER, channel=6),
 	MoveScriptToBackgroundThread2(),
 	RestoreAllHP(),

@@ -34,6 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
+    JmpIfMarioInAir(["EVENT_1246_ret_3"]),
 	JmpIfBitSet(INVISIBLE_FLAG_1_FOUND, ["EVENT_1246_ret_3"]),
     SetVarToConst(PRIMARY_TEMP_7000, 530),
 	RunEventAsSubroutine(E0253_NPC_QUEST_1_GRANT),

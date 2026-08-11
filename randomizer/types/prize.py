@@ -173,14 +173,6 @@ class Prize:
     def standing_grant(self) -> EventScript | None:
         return self._standing_grant
 
-    # Source freestanding-grant event -> its packet-safe variant. A packet is a
-    # dynamically-spawned object one slot past the room's last static NPC, so it has no
-    # presence bit of its own; ANY persistent presence write on it - event RemoveObject
-    # (F5/F9) OR the action-level "set object presence" (FD F2) - aliases into the NEXT
-    # room's NPC_0. Each variant is a copy of the grant with every such write stripped
-    # (object-local despawn only) and its own onward jumps repointed to variants. Grants
-    # that never write presence aren't listed and pass through unchanged; the guard in
-    # PacketLocation.render fails the build if any FD F2 / $70A8 write reaches a packet.
     _PACKET_VARIANT_EVENTS: dict[int, int] = {
         E1801_FREESTANDING_FLOWER: E4090_FREESTANDING_FLOWER_PACKET,
         E2822_ASYNC_NO_ANIMATION_MUSHROOM: E4091_ASYNC_NO_ANIMATION_MUSHROOM_PACKET,
