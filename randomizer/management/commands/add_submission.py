@@ -21,6 +21,13 @@ from django.core.management.base import BaseCommand, CommandError
 
 from smrpgpatchbuilder.datatypes.dialogs.formatter import (calculate_text_width, format_dialog, format_wish, validate_dialog)
 
+from randomizer.data.minigames.melody_bay import Do, Fa, La, Mi, Re, So, Ti
+
+# Staff value each note sits at, keyed by name. The composer tool restates this
+# in its notation ("Mi-6-25"), so it is used to tell that middle number apart
+# from the duration that follows it.
+NOTE_STAFF_VALUES = {n.name: n.val for n in (Fa, So, La, Ti, Do, Re, Mi)}
+
 # File paths relative to repository root
 REPO_ROOT = Path(settings.BASE_DIR)
 WISH_FILE = REPO_ROOT / "randomizer/data/minigames/star_hill_wishes.py"
@@ -442,6 +449,7 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
     """Parse song notation from the composer tool.
 
     Expected format examples:
+    - "Mi-6-25, Do-4-75" - composer tool: note, staff value, duration
     - "[(Do, 35), (Re, 18), (Mi, 42)]" - Python tuple format
     - "Do:35, Re:18, Mi:42" - colon-separated pairs
     - "Do-35, Re-18, Mi-42" - dash-separated pairs
@@ -455,6 +463,28 @@ def parse_song_notation(notation: str) -> list[tuple[str, int]]:
         for match in matches:
             note_name = match.group(1).capitalize()
             duration = int(match.group(2))
+            notes.append((note_name, duration))
+        return notes
+
+    # The composer tool emits "Mi-6-25": name, the note's staff value, then the
+    # duration. The middle number restates the note and is NOT a duration -- it
+    # must be matched before the two-part pattern below, which would otherwise
+    # stop at "Mi-6" and store the staff value as the duration.
+    triple_pattern = (
+        r"(Fa|So|La|Ti|Do|Re|Mi)\s*[:\-\s]\s*(\d+)\s*[:\-\s]\s*(\d+)"
+    )
+    matches = list(re.finditer(triple_pattern, notation, re.IGNORECASE))
+    if matches:
+        for match in matches:
+            note_name = match.group(1).capitalize()
+            staff_value = int(match.group(2))
+            duration = int(match.group(3))
+            expected = NOTE_STAFF_VALUES[note_name]
+            if staff_value != expected:
+                print(
+                    f"Warning: '{match.group(0)}' has staff value {staff_value}, but "
+                    f"{note_name} is {expected}. Reading {duration} as the duration."
+                )
             notes.append((note_name, duration))
         return notes
 
@@ -500,6 +530,17 @@ def add_song(fields: dict[str, str]) -> None:
         print(f"Error: Could not parse song notation: {notation}")
         sys.exit(1)
 
+    # Every duration matching its note's staff value means the parser locked onto
+    # the wrong number -- real durations run from roughly 8 to 100, staff values
+    # only 0 to 6. Refuse rather than write a silently wrong song.
+    if all(NOTE_STAFF_VALUES[n] == d for n, d in notes):
+        print(
+            "Error: every duration equals its note's staff value, so the notation "
+            f"was almost certainly misread: {notes}"
+        )
+        print(f"       Notation was: {notation!r}")
+        sys.exit(1)
+
     if len(notes) > 8:
         print(f"Warning: Song has {len(notes)} notes, but max is 8. Truncating.")
         notes = notes[:8]
@@ -508,7 +549,9 @@ def add_song(fields: dict[str, str]) -> None:
     submitter_credits = format_credits_name(name) if name else "ANONYMOUS"
 
     note_names = " ".join(n for n, _ in notes)
-    scroll_text = f"\\n          {note_names}[await]"
+    # Every song in the pool centers its scroll rather than padding with spaces,
+    # which only lines up for one particular note count.
+    scroll_text = f"\\n[center]{note_names}[await]"
 
     hint1, hint1_ticks = strip_markdown_ticks(hint1)
     hint2_pond, hint2_ticks = strip_markdown_ticks(hint2_pond)
