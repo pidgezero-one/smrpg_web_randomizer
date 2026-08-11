@@ -6,7 +6,8 @@ from copy import copy
 
 from ..types.prizelocation import FrogDiscipleLocation, StarPieceLocation
 from ..types.logic import Inventory
-from ..types.prize import StarPiecePrize, CharacterPrize, SpellPrize
+from ..types.prize import StarPiecePrize, CharacterPrize, SpellPrize, KeyPrize
+from ..types.flags import KeyItemsAnywhere, SpellsAnywhere, StarPieceAvailability
 from randomizer.utils.debug_output import debug_print
 
 if TYPE_CHECKING:
@@ -89,6 +90,66 @@ def _select_by_sphere(
         return locations[0]
     weights = [sphere_map.get(loc, 0) + 1 for loc in locations]
     return random.choices(locations, weights=weights, k=1)[0]
+
+_AREA_WEIGHT_CAP = 15
+
+
+def _area_spread_applies(item: Prize, world: GameWorld) -> bool:
+    """True for prize types whose eligible pool is opened up by an "anywhere" flag.
+
+    Only these three widen from a handful of dedicated slots to the ~500 standard
+    locations, and only then does an area's raw location count start to dominate
+    where the prize lands. Every other prize type keeps plain sphere selection.
+    """
+    if isinstance(item, StarPiecePrize):
+        return world.settings.isflag_enabled(StarPieceAvailability)
+    if isinstance(item, KeyPrize):
+        return world.settings.isflag_enabled(KeyItemsAnywhere)
+    if isinstance(item, SpellPrize):
+        return world.settings.isflag_enabled(SpellsAnywhere)
+    return False
+
+
+def _select_by_area(
+    locations: list[PrizeLocation],
+    sphere_map: dict[PrizeLocation, int],
+) -> PrizeLocation:
+    """Pick a world area first, then a location inside it.
+
+    Grouping is done on `locations`, which the caller has ALREADY filtered down to
+    what is accessible, accepting and empty. The cap therefore narrows against live
+    availability, never against an area's total roster: an area with 8 of its 10
+    locations still open competes with weight min(8, cap), not min(10, cap), and the
+    location is then drawn from those 8. Narrowing must not run ahead of
+    availability, or the draw could land on an area whose remaining locations were
+    already spoken for.
+    """
+    by_area: dict[object, list[PrizeLocation]] = {}
+    for loc in locations:
+        by_area.setdefault(getattr(loc, "_world_area", None), []).append(loc)
+
+    if len(by_area) == 1:
+        return _select_by_sphere(locations, sphere_map)
+
+    areas = list(by_area)
+    weights = [min(len(by_area[area]), _AREA_WEIGHT_CAP) for area in areas]
+    chosen_area = random.choices(areas, weights=weights, k=1)[0]
+    # Sphere weighting still decides which location within the chosen area.
+    return _select_by_sphere(by_area[chosen_area], sphere_map)
+
+
+def _select_location(
+    item: Prize,
+    locations: list[PrizeLocation],
+    sphere_map: dict[PrizeLocation, int],
+    world: GameWorld,
+) -> PrizeLocation:
+    """Route a placement to area-spread selection or plain sphere selection."""
+    if len(locations) == 1:
+        return locations[0]
+    if _area_spread_applies(item, world):
+        return _select_by_area(locations, sphere_map)
+    return _select_by_sphere(locations, sphere_map)
 
 
 def _diagnose_placement_failure(
@@ -318,7 +379,9 @@ def place(
                     if random.randint(0, 10) < 4 and star_locations:
                         accessible_locations = star_locations
                 if accessible_locations:
-                    selected = _select_by_sphere(accessible_locations, sphere_map)
+                    selected = _select_location(
+                        chosen, accessible_locations, sphere_map, world
+                    )
                     selected.set_prize(chosen)
                     pending.remove(chosen)
                     placements_count += 1
@@ -351,7 +414,9 @@ def place(
                     accessible_locations = frog_locations
 
             if len(accessible_locations) > 0:
-                selected = _select_by_sphere(accessible_locations, sphere_map)
+                selected = _select_location(
+                    character, accessible_locations, sphere_map, world
+                )
                 selected.set_prize(character)
                 pending.remove(character)
                 placements_count += 1
@@ -396,7 +461,7 @@ def place(
                 # Move onto the next item to see if it can be placed
                 continue
             placed_this_iteration = True
-            selected = _select_by_sphere(accessible_locations, sphere_map)
+            selected = _select_location(item, accessible_locations, sphere_map, world)
             selected.set_prize(item)
             pending.remove(item)
             placements_count += 1
