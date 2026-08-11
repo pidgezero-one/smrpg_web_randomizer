@@ -39,10 +39,33 @@ script = EventScript([
 	SetBit(TEMP_707C_7),
 	RunEventAsSubroutine(E0051_HENCHMAN_CONTAINER_1),
 	RunEventAsSubroutine(E0024_BATTLE_RESULT_CHECK),
+
+	Set7000ToCurrentLevel(),
 	PauseActionScript(NPC_9),
+    JmpIfVarEqualsConst(PRIMARY_TEMP_7000, R191_MUSHROOM_KINGDOM_OUTSIDE, ["e402_unoccupied_guard"]),
+
+	
+    RemoveObjectFromSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE),
+    RemoveObjectFromCurrentLevel(NPC_5),
+    RemoveObjectFromSpecificLevel(NPC_10, R191_MUSHROOM_KINGDOM_OUTSIDE),
+	ActionQueueSync(target=MARIO, subscript=[
+		A_TransferToXYZF(x=17, y=113, z=4, direction=EAST),
+		A_FaceSouthwest()
+	]),
+	StartAsyncEmbeddedActionScript(target=NPC_9, prefix=0xF1, subscript=[
+        A_VisibilityOn(),
+		A_TransferToXYZF(x=17, y=114, z=4, direction=EAST),
+		A_FaceNortheast(),
+        A_SetSolidityBits(cant_walk_through=True)
+	]),
+    Jmp(["E402_converge"]),
+	
 	StartAsyncEmbeddedActionScript(target=NPC_11, prefix=0xF1, subscript=[
         A_VisibilityOff(),
-	]),
+	], identifier="e402_unoccupied_guard"),
+	RemoveObjectFromSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE),
+	RemoveObjectFromCurrentLevel(NPC_10),
+	RemoveObjectFromSpecificLevel(NPC_10, R191_MUSHROOM_KINGDOM_OUTSIDE),
     RemoveObjectFromSpecificLevel(NPC_11, R191_MUSHROOM_KINGDOM_OUTSIDE),
     RemoveObjectFromCurrentLevel(NPC_11),
 	ActionQueueSync(target=MARIO, subscript=[
@@ -56,10 +79,11 @@ script = EventScript([
 		A_TransferToXYZF(x=17, y=114, z=4, direction=EAST),
 		A_FaceNortheast(),
 	]),
-	SetBit(TEMP_7049_6),
+
+
+	
+	SetBit(TEMP_7049_6, identifier="E402_converge"),
 	RunEventAsSubroutine(E0276_REFOCUS_CAMERA_ON_SELF),
-    RemoveObjectFromSpecificLevel(NPC_5, R190_MUSHROOM_KINGDOM_DURING_MACK_OUTSIDE),
-    RemoveObjectFromSpecificLevel(NPC_10, R191_MUSHROOM_KINGDOM_OUTSIDE),
 	FadeInFromBlack(sync=False),
 	Pause(30),
 	RunEventAsSubroutine(E0178_NPC_QUEST_1_CONTAINER),

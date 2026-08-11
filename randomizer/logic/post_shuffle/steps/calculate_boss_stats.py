@@ -98,6 +98,7 @@ def _calculate_location_stats(
     Derives all exclusions and multipliers from the original prize's configuration:
     - HP = sum of formation members participating in HP slicing (not in hp_slice_excluded
       or scaling_excluded), plus extra_hp_enemies, with hp_pie_contribution_multipliers applied
+    - XP = same set, same multipliers, same location multiplier as HP
     - Other stats = average of anchor_enemy (or all non-excluded formation members if None)
 
     Returns (hp, xp, coins, attack, defense, magic_attack, magic_defense, evade, magic_evade)
@@ -138,11 +139,14 @@ def _calculate_location_stats(
     for enemy, enemy_class in hp_enemy_pairs:
         multiplier = hp_multipliers.get(enemy_class, 1.0)
         hp += round(enemy.hp * multiplier)
-        xp += enemy.xp
+        xp += round(enemy.xp * multiplier)
         coins += enemy.coins
 
-    # Apply location HP multiplier (e.g., Cloaker/Domino: you only fight 2 of 4 enemies)
+    # Apply location HP multiplier (e.g., Cloaker/Domino: you only fight 2 of 4 enemies).
+    # XP rides the same multiplier: if you only fight half the formation, you only earn
+    # half the formation's experience.
     hp = round(hp * original_prize.location_hp_multiplier)
+    xp = round(xp * original_prize.location_hp_multiplier)
 
     anchor_spec = original_prize.anchor_enemy
     if anchor_spec is None:
@@ -191,6 +195,12 @@ def _apply_stats_to_prize(
 
     Evade/Magic Evade:
     - Scale against the anchor mean, the way the four stats above used to.
+
+    XP:
+    - Runs the identical pipeline as HP: same participant set, same pie contribution
+      multipliers, same post-slice hp_slice_multipliers, same anchor fallback for
+      excluded enemies. Only the clamp differs (set_xp asserts 0..9999).
+    - Coins still slice without pie multipliers.
 
     Args:
         prize: The boss fight prize to scale
@@ -277,20 +287,20 @@ def _apply_stats_to_prize(
         ref_new_hp = location_hp
 
     # === XP/Coins pie slicing (mirrors HP slicing, accounting for instance counts) ===
-    xp_slice_participant_classes = {c for c in enemy_counts.keys() if c not in hp_slice_excluded}
+    # Same participant set as HP - hp_slice_excluded governs both pies.
     total_xp_for_slicing = sum(
-        cast(Enemy, c()).xp * enemy_counts[c]
-        for c in xp_slice_participant_classes
-    ) if xp_slice_participant_classes else 0
+        cast(Enemy, c()).xp * pie_multipliers.get(c, 1.0) * enemy_counts[c]
+        for c in hp_slice_participant_classes
+    ) if hp_slice_participant_classes else 0
     total_coins_for_slicing = sum(
         cast(Enemy, c()).coins * enemy_counts[c]
-        for c in xp_slice_participant_classes
-    ) if xp_slice_participant_classes else 0
+        for c in hp_slice_participant_classes
+    ) if hp_slice_participant_classes else 0
 
     ref_xp: float = sum(cast(Enemy, c()).xp for c in anchor_classes) / len(anchor_classes)
     ref_coins: float = sum(cast(Enemy, c()).coins for c in anchor_classes) / len(anchor_classes)
     if total_xp_for_slicing > 0:
-        ref_new_xp = round(xp * (ref_xp / total_xp_for_slicing))
+        ref_new_xp = round(xp * (ref_xp * avg_pie_multiplier / total_xp_for_slicing))
     else:
         ref_new_xp = xp
     if total_coins_for_slicing > 0:
@@ -345,6 +355,8 @@ def _apply_stats_to_prize(
         enemy.set_magic_evade(min(100, scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade)))
 
         # === XP Calculation (mirrors HP slicing) ===
+        pie_adjusted_xp = original.xp * pie_multipliers.get(cast(type[Enemy], enemy_class), 1.0)
+
         if enemy_class in hp_slice_excluded:
             # Excluded from pie - scale relative to anchor
             if ref_xp > 0:
@@ -353,10 +365,14 @@ def _apply_stats_to_prize(
                 new_xp = original.xp
         elif total_xp_for_slicing > 0:
             # Participate in pie - divide location XP proportionally (counts in denominator)
-            new_xp = round(xp * (original.xp / total_xp_for_slicing))
+            new_xp = round(xp * (pie_adjusted_xp / total_xp_for_slicing))
         else:
             new_xp = original.xp
-        enemy.set_xp(max(1, new_xp))
+
+        # Same post-slice multiplier HP uses (e.g., Dodo's 2.5x)
+        new_xp = round(new_xp * slice_multiplier)
+        # set_xp asserts 0..9999
+        enemy.set_xp(min(9999, max(1, new_xp)))
 
         # === Coins Calculation (mirrors HP slicing) ===
         if enemy_class in hp_slice_excluded:
