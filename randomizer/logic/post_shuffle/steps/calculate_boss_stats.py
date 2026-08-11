@@ -44,25 +44,50 @@ _GODMODE_EXCLUDED_FIGHTS: tuple[type, ...] = (
     Culex3DBossFight,
 )
 
-def _anchor_mean(
+def _anchor_classes_for_stat(
     prize: BossFightPrize,
     stat: StatAnchorName,
     default_classes: list[type],
-    get: Callable[[Enemy], int],
-) -> float:
-    """Mean of one stat across the prize's anchor enemies for that stat.
+) -> list[type]:
+    """The enemy classes allowed to anchor one stat for this prize.
 
     Uses _stat_anchor_overrides[stat] when the prize declares one (e.g. Booster's
     magic attack anchors to his Sniffits), otherwise the prize's normal anchor.
     """
     override = prize.stat_anchor_overrides.get(stat)
     if override is None:
-        classes: list[type] = default_classes
-    elif isinstance(override, list):
-        classes = list(override)
-    else:
-        classes = [override]
+        return default_classes
+    if isinstance(override, list):
+        return list(override)
+    return [override]
+
+def _anchor_mean(
+    prize: BossFightPrize,
+    stat: StatAnchorName,
+    default_classes: list[type],
+    get: Callable[[Enemy], int],
+) -> float:
+    """Mean of one stat across the prize's anchor enemies for that stat."""
+    classes = _anchor_classes_for_stat(prize, stat, default_classes)
     return statistics.mean(get(cast(Enemy, c())) for c in classes)
+
+def _anchor_peak(
+    prize: BossFightPrize,
+    stat: StatAnchorName,
+    default_classes: list[type],
+    get: Callable[[Enemy], int],
+) -> float:
+    """Highest value of one stat across the prize's anchor enemies for that stat.
+
+    Used as the reference when applying a location's attack, defense, magic attack and
+    magic defense, so the location stat lands on whichever anchor already leads in it
+    and every other enemy scales down from there. Anchoring to the mean pushes the
+    leading anchor above the location's stat (Bundt/Raspberry defense 10/20 against a
+    defense-40 location would give Raspberry 53), and because the damage formula is
+    linear that quietly raises the DPS bar the location was tuned for.
+    """
+    classes = _anchor_classes_for_stat(prize, stat, default_classes)
+    return max(get(cast(Enemy, c())) for c in classes)
 
 def _calculate_location_stats(
     location: BossFightLocation,
@@ -155,9 +180,17 @@ def _apply_stats_to_prize(
     - Enemies IN hp_slice_excluded_enemies (or additional_enemies_to_scale) get HP
       scaled relative to anchor: anchor_new_hp * (original_hp / anchor_original_hp)
 
-    Other Stats:
-    - Anchor enemy gets the location stat directly
-    - Non-anchor enemies get: location_stat * (original_stat / anchor_original_stat)
+    Attack/Defense/Magic Attack/Magic Defense:
+    - Whichever anchor enemy has the highest original value of a stat gets the
+      location stat for it directly. Each stat picks its own anchor this way, so
+      one member can lead defense while another leads magic defense.
+    - Everyone else gets: location_stat * (original_stat / peak_anchor_original_stat).
+      Enemies outside the anchor set can land above the location stat when they
+      started above the leading anchor (e.g. Torte's defense of 50 against the
+      Bundt/Raspberry anchors) - that is expected, only anchors are held to the cap.
+
+    Evade/Magic Evade:
+    - Scale against the anchor mean, the way the four stats above used to.
 
     Args:
         prize: The boss fight prize to scale
@@ -208,12 +241,17 @@ def _apply_stats_to_prize(
     anchor_instances = [cast(Enemy, c()) for c in anchor_classes]
     num_anchors = len(anchor_instances)
     ref_hp: float = sum(e.hp for e in anchor_instances) / num_anchors
-    # Per-stat anchors must match the ones _calculate_location_stats used, or a fight
-    # scaled into its own slot would not round-trip back to its vanilla stats.
-    ref_attack: float = _anchor_mean(prize, "attack", anchor_classes, lambda e: e.attack)
-    ref_defense: float = _anchor_mean(prize, "defense", anchor_classes, lambda e: e.defense)
-    ref_magic_attack: float = _anchor_mean(prize, "magic_attack", anchor_classes, lambda e: e.magic_attack)
-    ref_magic_defense: float = _anchor_mean(prize, "magic_defense", anchor_classes, lambda e: e.magic_defense)
+    # The four combat stats reference the *leading* anchor rather than the anchor mean,
+    # so no anchor ends up above the stat the location handed down. The eligible classes
+    # per stat still match the ones _calculate_location_stats used (_stat_anchor_overrides
+    # applies to both); only the reduction differs.
+    ref_attack: float = _anchor_peak(prize, "attack", anchor_classes, lambda e: e.attack)
+    ref_defense: float = _anchor_peak(prize, "defense", anchor_classes, lambda e: e.defense)
+    ref_magic_attack: float = _anchor_peak(prize, "magic_attack", anchor_classes, lambda e: e.magic_attack)
+    ref_magic_defense: float = _anchor_peak(prize, "magic_defense", anchor_classes, lambda e: e.magic_defense)
+    # Evade stays on the mean - it is a hit-rate percentage, not a term in the
+    # linear damage formula, so it has none of the DPS-threshold problem that
+    # moved the four combat stats to the leading anchor.
     ref_evade: float = _anchor_mean(prize, "evade", anchor_classes, lambda e: e.evade)
     ref_magic_evade: float = _anchor_mean(prize, "magic_evade", anchor_classes, lambda e: e.magic_evade)
 

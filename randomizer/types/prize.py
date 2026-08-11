@@ -697,9 +697,13 @@ class BossFightPrize(Prize):
     # Additional enemies outside the formation that should also receive stat scaling
     _additional_enemies_to_scale: list[type[Enemy]] = []
     # The anchor enemy(s) for stat ratio calculations - other enemies' stats scale relative to this
-    # If None, uses the average of all formation members as the reference
-    # If a single enemy class, uses that enemy's stats as reference
-    # If a list of enemy classes, uses the average of those specific enemies as reference
+    # If None, every formation member is eligible to anchor
+    # If a single enemy class, only that enemy can anchor
+    # If a list of enemy classes, only those enemies can anchor
+    # When the location's attack/defense/magic attack/magic defense are applied, each of
+    # those goes to whichever eligible anchor has the highest original value of it and the
+    # rest scale down from there, so different members can anchor different stats.
+    # HP/XP/coins and evade/magic evade still use the anchor mean.
     _anchor_enemy: type[Enemy] | list[type[Enemy]] | None = None
     # Per-stat anchor overrides. A stat named here uses these enemies as its scaling
     # reference instead of _anchor_enemy; every other stat still uses _anchor_enemy.
@@ -785,7 +789,9 @@ class BossFightPrize(Prize):
 
     @property
     def anchor_enemy(self) -> type[Enemy] | list[type[Enemy]] | None:
-        """The anchor enemy(s) for stat ratio calculations. Other enemies' stats scale relative to this."""
+        """The enemies eligible to anchor stat ratio calculations. Attack, defense, magic
+        attack and magic defense each go to whichever of them leads in that stat, and
+        everyone else scales relative to that; other stats use the anchor mean."""
         return self._anchor_enemy
 
     @property

@@ -100,6 +100,91 @@ def escape_string(s: str) -> str:
     return s
 
 
+# Placeholder the minigame shuffler swaps for a "[center]Memo left by X:" header.
+WRITER_TOKEN = "%RANDOM_WRITER%"
+
+_PY_ESCAPES = {"n": "\n", "t": "\t", "r": "\r", '"': '"', "'": "'", "\\": "\\"}
+
+# Markers that plain prose would not contain: a backslash escape, the writer
+# placeholder, or a trailing control token. Their presence means the field was
+# written as source code rather than as text to be formatted.
+_SOURCE_MARKER_RE = re.compile(
+    r"\\.|" + re.escape(WRITER_TOKEN) + r"|\[(?:await|end|page)\]\s*$"
+)
+
+
+def _decode_escapes(body: str) -> str:
+    """Decode the Python escape sequences in a string-literal body."""
+    out: list[str] = []
+    i = 0
+    while i < len(body):
+        char = body[i]
+        if char == "\\" and i + 1 < len(body):
+            escape = body[i + 1]
+            # Python leaves an unrecognized escape verbatim, so we do too. The
+            # caller flags any backslash that survives.
+            out.append(_PY_ESCAPES.get(escape, "\\" + escape))
+            i += 2
+            continue
+        out.append(char)
+        i += 1
+    return "".join(out)
+
+
+def unquote_submission(value: str, label: str) -> str:
+    """Recover the logical text from a field that was submitted as source code.
+
+    Submitters routinely copy an entry out of a data file to use as a template
+    and paste it back verbatim, so a field can arrive as
+    ``"%RANDOM_WRITER%\\n\\nHe's not a tadpole.[await]",`` -- surrounding quotes,
+    two-character \\n escapes, and the trailing comma included. format_dialog()
+    treats those backslashes and quotes as prose and re-wraps the whole literal,
+    which is how the "prince" entry landed in the pool double-escaped.
+
+    A backslash has zero width in the dialog font, so it is never intended prose;
+    escapes are always decoded when present. Surrounding quotes are only stripped
+    alongside another source marker, so a hint that genuinely opens and closes on
+    a quoted phrase is left alone.
+    """
+    text = value.strip()
+    # A line copied out of a pool list brings its trailing comma with it.
+    if text.endswith(","):
+        text = text[:-1].rstrip()
+
+    quoted = len(text) >= 2 and text.startswith('"') and text.endswith('"')
+    body = text[1:-1] if quoted else text
+
+    if not _SOURCE_MARKER_RE.search(body):
+        return value
+
+    decoded = _decode_escapes(body)
+    if quoted:
+        print(f"Note ({label}): submitted as a quoted source literal; unquoted it.")
+    if decoded != body:
+        print(f"Note ({label}): decoded escape sequences to real line breaks.")
+    # Nothing should survive decoding as a backslash: it has no glyph, so it
+    # renders as nothing. Either the submitter typo'd a line break (writing \R,
+    # or \\n) or they escaped a backslash they never meant to type. Context is
+    # repr'd so a surviving backslash reads as \\ and a real break as \n.
+    for match in re.finditer(r"\\.?", decoded):
+        context = decoded[max(0, match.start() - 15):match.end() + 15]
+        print(
+            f"Warning ({label}): a literal backslash has no glyph and will not render. "
+            f"Near {context!r} -- did they mean a line break?"
+        )
+    return decoded
+
+
+def has_writer_prefix(hint: str) -> bool:
+    """True when a hint already names who wrote it.
+
+    Either the %RANDOM_WRITER% placeholder the shuffler fills in, or a literal
+    "[center]Memo left by ...:" header the submitter chose because they want a
+    specific character to speak that hint.
+    """
+    return hint.startswith(WRITER_TOKEN) or hint.startswith("[center]")
+
+
 def add_wish(fields: dict[str, str]) -> None:
     """Add a Star Hill wish to the wish pool."""
     wish_text = fields.get("Wish text", "")
@@ -107,12 +192,21 @@ def add_wish(fields: dict[str, str]) -> None:
         print("Error: No wish text found in issue")
         sys.exit(1)
 
-    if wish_text and wish_text[-1] not in ".!?~":
+    wish_text = unquote_submission(wish_text, "wish")
+
+    # A wish copied out of the pool already carries [center] and the leading
+    # newlines format_wish() adds for vertical centering. Running either step
+    # again doubles the prefix and pushes the text off the bottom of the box.
+    pre_formatted = wish_text.startswith("[center]")
+    if pre_formatted:
+        print("Note (wish): already centered; skipping punctuation and centering steps.")
+
+    if not pre_formatted and wish_text[-1] not in ".!?~":
         wish_text += "."
 
     wish_text = format_dialog(wish_text)
-    wish_text = format_wish(wish_text)
-    wish_text = "[center]" + wish_text
+    if not pre_formatted:
+        wish_text = "[center]" + format_wish(wish_text)
 
     warnings = validate_dialog(wish_text)
     for w in warnings:
@@ -162,13 +256,13 @@ def add_quiz_question(fields: dict[str, str], non_smrpg: bool = False) -> None:
         print("Error: Missing required fields (question, correct answer, wrong answers)")
         sys.exit(1)
 
-    question = question.rstrip()
+    question = unquote_submission(question, "question").rstrip()
     if question and not question.endswith("?"):
         question += "?"
 
-    correct = clean_quiz_answer(correct)
-    wrong1 = clean_quiz_answer(wrong1)
-    wrong2 = clean_quiz_answer(wrong2)
+    correct = clean_quiz_answer(unquote_submission(correct, "correct answer"))
+    wrong1 = clean_quiz_answer(unquote_submission(wrong1, "wrong answer 1"))
+    wrong2 = clean_quiz_answer(unquote_submission(wrong2, "wrong answer 2"))
 
     question = format_dialog(question)
     warnings = validate_dialog(question)
@@ -232,34 +326,39 @@ def format_hint_prefix(name: str) -> str:
     return f"[center]Memo left by {name}:"
 
 
+REQUIRED_HINT_FIELDS = [
+    "Trampoline Room Hint",
+    "Paratroopa Room Hint",
+    "3D Maze Room Hint",
+    "Coin Snake Room Hint",
+    "Cannonball Room Hint",
+    "Rolling Barrel Room Hint",
+]
+
+OPTIONAL_HINT_FIELDS = [f"Optional hint {n}" for n in range(1, 6)]
+
+
 def add_password(fields: dict[str, str]) -> None:
     """Add a ship password to the password pool."""
     word = fields.get("Your word", "")
     name = fields.get("Your name or handle", "").strip()
-    hint1 = fields.get("Trampoline Room Hint", "")
-    hint2 = fields.get("Paratroopa Room Hint", "")
-    hint3 = fields.get("3D Maze Room Hint", "")
-    hint4 = fields.get("Coin Snake Room Hint", "")
-    hint5 = fields.get("Cannonball Room Hint", "")
-    hint6 = fields.get("Rolling Barrel Room Hint", "")
+
     def clean_optional(val: str) -> str | None:
         val = val.strip()
         if not val or val == "_No response_":
             return None
         return val
 
-    hint7 = clean_optional(fields.get("Optional hint 1", ""))
-    hint8 = clean_optional(fields.get("Optional hint 2", ""))
-    hint9 = clean_optional(fields.get("Optional hint 3", ""))
-    hint10 = clean_optional(fields.get("Optional hint 4", ""))
-    hint11 = clean_optional(fields.get("Optional hint 5", ""))
+    required_hints = [(f, fields.get(f, "")) for f in REQUIRED_HINT_FIELDS]
+    optional_hints = [(f, clean_optional(fields.get(f, ""))) for f in OPTIONAL_HINT_FIELDS]
 
     if not word or len(word) != 6:
         print(f"Error: Password must be exactly 6 characters (got: '{word}')")
         sys.exit(1)
 
-    if not all([hint1, hint2, hint3, hint4, hint5, hint6]):
-        print("Error: All 6 required hints must be provided")
+    missing = [f for f, hint in required_hints if not hint]
+    if missing:
+        print(f"Error: All 6 required hints must be provided (missing: {', '.join(missing)})")
         sys.exit(1)
 
     submitter = name if name else "Anonymous"
@@ -272,41 +371,51 @@ def add_password(fields: dict[str, str]) -> None:
             return hint + "[await]"
         return hint
 
-    def format_hint(hint: str) -> str:
+    def prepare_hint(hint: str, label: str) -> str:
+        """Normalize a submitted hint into the string stored in the pool."""
+        hint = unquote_submission(hint, label)
         hint = format_dialog(hint)
         hint = ensure_await(hint)
-        # Validate centering works (password hints use [center])
-        warnings = validate_dialog("[center]" + hint)
-        for w in warnings:
-            print(f"Warning (hint): {w}")
-        hint = escape_string(hint)
-        return f'"%RANDOM_WRITER%\\n\\n{hint}"'
+        # Password hints render centered. A hint that already opens with its own
+        # header carries [center] itself; only bare ones need it added to check
+        # that centering fits.
+        prefix = "" if has_writer_prefix(hint) else "[center]"
+        for w in validate_dialog(prefix + hint):
+            print(f"Warning ({label}): {w}")
+        return hint
 
-    def format_optional_hint(hint: str | None) -> str:
+    def format_hint(hint: str, label: str) -> str:
+        hint = prepare_hint(hint, label)
+        # A hint that already names its writer -- because the submitter copied an
+        # existing entry, or wants a specific character to speak it -- must not
+        # get a second header stacked on top.
+        if not has_writer_prefix(hint):
+            hint = f"{WRITER_TOKEN}\n\n{hint}"
+        return f'"{escape_string(hint)}"'
+
+    def format_optional_hint(hint: str | None, label: str) -> str:
         if not hint:
             return "None"
-        hint = format_dialog(hint)
-        hint = ensure_await(hint)
-        warnings = validate_dialog("[center]" + hint)
-        for w in warnings:
-            print(f"Warning (optional hint): {w}")
-        return f'"{escape_string(hint)}"'
+        return f'"{escape_string(prepare_hint(hint, label))}"'
 
     word_escaped = escape_string(word.lower())
 
+    formatted_required = [format_hint(hint, label) for label, hint in required_hints]
+    formatted_optional = [format_optional_hint(hint, label) for label, hint in optional_hints]
+
     new_entry = f'''    Password(
         "{word_escaped}",
-        {format_hint(hint1)},
-        {format_hint(hint2)},
-        {format_hint(hint3)},
-        {format_hint(hint4)},
-        {format_hint(hint5)},
-        {format_hint(hint6)},
-        {format_optional_hint(hint7)},
-        {format_optional_hint(hint8)},
-        {format_optional_hint(hint9)},
-        {format_optional_hint(hint10)},
-        {format_optional_hint(hint11)},
+        {formatted_required[0]},
+        {formatted_required[1]},
+        {formatted_required[2]},
+        {formatted_required[3]},
+        {formatted_required[4]},
+        {formatted_required[5]},
+        {formatted_optional[0]},
+        {formatted_optional[1]},
+        {formatted_optional[2]},
+        {formatted_optional[3]},
+        {formatted_optional[4]},
         submitter="{escape_string(submitter)}",
         submitter_credits="{submitter_credits}",
         submitter_hint_prefix="{escape_string(submitter_hint_prefix)}",
@@ -409,6 +518,10 @@ def add_song(fields: dict[str, str]) -> None:
         if not hint.rstrip().endswith("[await]"):
             return hint + "[await]"
         return hint
+
+    hint1 = unquote_submission(hint1, "Hint 1")
+    hint2_pond = unquote_submission(hint2_pond, "Hint 2 (pond)")
+    hint2_mines = unquote_submission(hint2_mines, "Hint 2 (mines)")
 
     hint1 = format_dialog(hint1)
     hint2_pond = format_dialog(hint2_pond)

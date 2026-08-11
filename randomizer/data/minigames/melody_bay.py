@@ -970,8 +970,8 @@ all_songs = [
         "All the Small Things",
         submitter="WEFFJEBSTER",
         submitter_credits="WEFFJEBSTER",
-        hint_1="It's All the Small Things.\nMi Do Ti Do Mi Do Ti Do.\nToadofsky says it's not real punk![await]",
-        hint_2="It's All the Small Things.\nMi Do Ti Do Mi Do Ti Do.\nBlink and you'll miss it![await]",
+        hint_1="It's All the Small Things.\n ♪“Mi Do Ti Do Mi Do Ti Do”.\nToadofsky says it's not real punk![await]",
+        hint_2="It's All the Small Things.\n ♪“Mi Do Ti Do Mi Do Ti Do”.\nBlink and you'll miss it![await]",
         hint_3="Say it ain't so! I will not go! Turn the lights off! Carry me home![await]",
         scroll='\n[center]Mi Do Ti Do Mi Do Ti Do[await]'),
     Song(
@@ -979,9 +979,9 @@ all_songs = [
         "One",
         submitter="WEFFJEBSTER",
         submitter_credits="WEFFJEBSTER",
-        hint_1="It's One.\nLa Mi La Do Fa Mi Fa Do.\nIt's from before Toadofsky\ncut his hair![await]",
-        hint_2="It's One.[await]\nYou can't really hear the bass\ntadpoles, though...[await]",
-        hint_3="The Moleville Blues?\nLa Mi La Do... [await]\nFa Mi Fa Do... [await][page]\nSure, it's a bit of a bummer, but\nwait'll ya get to the fast part![await]",
+        hint_1="It's One.\n ♪“La Mi La Do Fa Mi Fa Do”.\n It's from before Toadofsky\n cut his hair![await]",
+        hint_2="It's One.[await]\n You can't really hear the bass\n tadpoles, though...[await]",
+        hint_3=" The Moleville Blues?\n La Mi La Do... [await]\n Fa Mi Fa Do... [await][page]\n Sure, it's a bit of a bummer, but wait'll ya get to the fast part![await]",
         scroll='\n[center]La Mi La Do Fa Mi Fa Do[await]'),
     Song(
         [(Do, 4), (Ti, 3), (La, 2), (So, 1), (La, 2)],
@@ -992,4 +992,13 @@ all_songs = [
         hint_2="It's All I Want!\nDo Ti La So La.\nYeah yeah yeah yeah yeah![await]",
         hint_3="We been thinkin' of takin' that\nol' minecart outta the mines\nand runnin' a taxi service![await]",
         scroll='\n[center]Do Ti La So La[await]'),
+    Song(
+        [(La, 2), (Ti, 3), (Do, 4), (Mi, 6), (Do, 4), (Ti, 3), (La, 2), (Ti, 3)],
+        "Terra's Theme",
+        submitter="WEFFJEBSTER",
+        submitter_credits="WEFFJEBSTER",
+        hint_1=" My favorite song?[await][page]\n It's Terra's Theme!\n ♪“La Ti Do Mi Do Ti La Ti”.[await]\n Toadofsky's no Nobuo![await]",
+        hint_2=" My favorite song?[await][page]\n It's Terra's Theme!\n ♪“La Ti Do Mi Do Ti La Ti”.[await]\n Is Mallow half Esper?[await]",
+        hint_3=" Back before there was a star piece here, we were hidin' some big ol' frozen bird thing in these mines![await]",
+        scroll='\n[center]La Ti Do Mi Do Ti La Ti[await]'),
 ]
