@@ -12,6 +12,10 @@ Three independent sites:
   $3:4757-$3:5016 swap the title-screen / file-select character
   graphic to the alternate protagonist sprite.
 
+* **File-select "LV" readout** - one byte at $3:4A8C retargets the
+  level the file box prints from Mario to the starter. Also driven
+  by the *starter*, so it stays consistent with the graphic above.
+
 * **Overworld walker engine hooks** - when the *overworld walker* isn't
   Mario, two sites:
 
@@ -60,6 +64,26 @@ _STARTER_GRAPHIC_SITES: list[tuple[int, int]] = [
     (0x35016, 3),
 ]
 
+# File-select "LV" readout. $C3:4A82 draws one file box's level:
+#
+#   C3/4A82  A9 1F        LDA #$1F        ; glyph $1F = "LV"
+#   C3/4A84  85 70        STA $70
+#   C3/4A86  20 6C 78     JSR $786C       ; draw it
+#   C3/4A89  A6 6E        LDX $6E         ; X = save slot base (slot * $800)
+#   C3/4A8B  BF 00 00 40  LDA $400000,X   ; vanilla: Mario's level
+#   C3/4A8F  85 70        STA $70
+#   C3/4A91  20 D2 78     JSR $78D2       ; draw the number
+#
+# Save files live in BW-RAM at $40:0000 + slot*$800, each a byte-for-byte
+# image of $7F:F800-$7F:FFFF. Character records are $14 bytes with level at
+# offset +0, ordered by ally index (Mario $00, Toadstool $14, Bowser $28,
+# Geno $3C, Mallow $50) - so the redirect is just index * $14 written over
+# the low operand byte of that LDA. $C3:4A82 is called from both file-box
+# layouts ($C3:4A34 boot file select, $C3:4A5D in-game save menu), so this
+# single byte covers both screens.
+_LEVEL_READOUT_OPERAND = 0x34A8C
+_ALLY_RECORD_STRIDE = 0x14
+
 
 def get_patch(
     starter_index: int,
@@ -70,7 +94,8 @@ def get_patch(
 
     Args:
         starter_index: Ally index of the run's *starter*. 0 = Mario;
-            anything else triggers the file-select graphic swap.
+            anything else triggers the file-select graphic swap and
+            retargets the file-select level readout.
         overworld_index: Ally index of the *overworld walker*. 0 = Mario;
             anything else triggers the world-map sprite + the engine
             hooks.
@@ -87,6 +112,11 @@ def get_patch(
     if starter_index != 0:
         for addr, offset in _STARTER_GRAPHIC_SITES:
             out[addr] = bytes([SPR0031_ALT_PROTAGONIST_1 + offset])
+
+        # ...and the "LV" number next to it.
+        out[_LEVEL_READOUT_OPERAND] = bytes(
+            [starter_index * _ALLY_RECORD_STRIDE]
+        )
 
     # Overworld walker engine hooks (driven by the *overworld walker*).
     if overworld_index != 0:
