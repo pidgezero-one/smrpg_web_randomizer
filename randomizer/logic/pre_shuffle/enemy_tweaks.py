@@ -4,6 +4,7 @@ import random
 from typing import TYPE_CHECKING
 
 from randomizer.data.spells.spells import CakerBeamSpell
+from ..battle_vram_calculator import scan_all_formations
 from smrpgpatchbuilder.datatypes.monster_scripts.commands import (
     CastSpell,
     ClearVar,
@@ -213,6 +214,42 @@ def _get_enemy_lists():
     return SIDEKICK_ENEMIES, BOSS_ENEMIES
 
 
+# Breaker Beam is the most graphics-hungry spell in the pool: on top of the usual
+# sprite it spawns a 4bpp Layer 3 effect (EF0101) and an HDMA polygon mask, and it
+# puts its OBJ tiles at a hardcoded VRAM address rather than negotiating one.
+# Vanilla only ever casts it from Gunyolk (pack 149, 10240 bytes of enemy sprite
+# VRAM) and the Axem Rangers (pack 182, 16384), so 16384 is the highest reservation
+# the animation is known to survive. Pack 184 (Cloaker/Domino/Mad Adder) reserves
+# 24576 - the single largest formation in the game - and Breaker Beam softlocks
+# there: the animation fades the screen out, then waits forever on AMEM $6F bit 0,
+# which is only set once its object queue runs to completion.
+BREAKER_BEAM_MAX_FORMATION_VRAM = 16384
+
+
+def _breaker_beam_safe_monsters(world: GameWorld) -> set[int]:
+    """Monster IDs whose worst-case formation still has room for Breaker Beam.
+
+    Computed from formation membership, which is safe to do here even though the
+    formation shuffler runs later: it never touches boss packs, and it caps the
+    formations it does rebuild at VANILLA_MAX_NONBOSS_UNIQUE_VRAM (14336), below
+    our threshold. Monsters absent from every formation are mid-fight summons
+    (DOMINOEnemy2, the Smithy forms, King Bomb, the clone bosses); their live VRAM
+    can't be bounded from formation data, so they are treated as unsafe.
+    """
+    worst: dict[int, int] = {}
+    for pack in scan_all_formations(world):
+        for formation in pack.formations:
+            for sprite in formation.unique_sprites:
+                worst[sprite.monster_id] = max(
+                    worst.get(sprite.monster_id, 0), formation.unique_vram_total
+                )
+    return {
+        monster_id
+        for monster_id, vram in worst.items()
+        if vram <= BREAKER_BEAM_MAX_FORMATION_VRAM
+    }
+
+
 def apply_enemy_tweaks(world: GameWorld) -> None:
     """Apply enemy and combat-related tweaks.
 
@@ -293,20 +330,25 @@ def apply_enemy_tweaks(world: GameWorld) -> None:
             StaticESpell, SandStormSpell, BlizzardSpell, DrainBeamSpell,
             MeteorBlastSpell, LightBeamSpell, WaterBlastSpell, SolidifySpell,
             PetalBlastSpell, AuroraFlashSpell, BoulderSpell, CoronaSpell,
-            MeteorSwarmSpell, ShredderSpell, BreakerBeamSpell,
+            MeteorSwarmSpell, ShredderSpell,
             SledgeSpell, SwordRainSpell, SpearRainSpell, ArrowRainSpell,
         ]
-        for script in world.monster_scripts.scripts:
+        # Breaker Beam only goes to monsters whose formation can afford its effects.
+        breaker_beam_pool: list[type[EnemySpell]] = spell_pool + [BreakerBeamSpell]
+        breaker_beam_safe = _breaker_beam_safe_monsters(world)
+
+        for monster_id, script in enumerate(world.monster_scripts.scripts):
+            pool = breaker_beam_pool if monster_id in breaker_beam_safe else spell_pool
             for cmd in script.contents:
                 if isinstance(cmd, CastSpell):
                     # Skip special spells - spell slots contain types, not instances
                     excluded_spells = (DoNothing, EscapeSpell, BigBangSpell, Engine023Spell, RecoverSpell, MegaRecoverSpell, CakerBeamSpell, WeirdMushroomSpell)
                     if cmd.spell_1 is not None and cmd.spell_1 not in excluded_spells:
-                        cmd.set_spell_1(random.choice(spell_pool))
+                        cmd.set_spell_1(random.choice(pool))
                     if cmd.spell_2 is not None and cmd.spell_2 not in excluded_spells:
-                        cmd.set_spell_2(random.choice(spell_pool))
+                        cmd.set_spell_2(random.choice(pool))
                     if cmd.spell_3 is not None and cmd.spell_3 not in excluded_spells:
-                        cmd.set_spell_3(random.choice(spell_pool))
+                        cmd.set_spell_3(random.choice(pool))
 
     # Punchinello 2 Strong Bob-Omb facing-direction likelihood
     p2bobomb_value_map = {

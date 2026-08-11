@@ -734,6 +734,23 @@ pool = [
         submitter_credits="KATSTASAPH",
         submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
+    Password(
+        "cannon",
+        "%RANDOM_WRITER%\n\nThis thing knows ball.[await]",
+        "[center]Memo left by Boomer:\nI feel like I should have one.[await]",
+        "[center]Memo left by Geno:\n\nMy elbow is charred.[await]",
+        "[center]Memo left by B. Bill:\nActually, they're called\nBILL BLASTERS.[await]",
+        "%RANDOM_WRITER%\n\nLook... around you...[await]",
+        "%RANDOM_WRITER%\n\nAren't puzzles a blast?[await]",
+        "[center]Memo left by Torte:\nVat? I have the ability?\nNo![await]",
+        "%RANDOM_WRITER%\nThe Super Mario Bros. Movie is NOT-- wait, you mean--[await]",
+        "[center]Memo left by Bowser:\nMy castle has more\nthan this ENTIRE SHIP![await][page]\n\nWell, it did...[await]",
+        "[center]Memo left by Shaman:[await]\nYou know how much I\nhad to pay to get one\nfor my Sky Bridge?[await]",
+        "%RANDOM_WRITER%\nWho put these things\nat the edge of a cliff?[await]",
+        submitter="katstasaph",
+        submitter_credits="KATSTASAPH",
+        submitter_hint_prefix="[center]Memo left by katstasaph:",
+    ),
 ]
 
 all_symbols = list("""0123456789♥♪•~©:;#×+%↑→←*&()-/?!.,\'""")
