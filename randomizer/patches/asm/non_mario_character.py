@@ -1,7 +1,7 @@
 """Patches that activate when the protagonist (overworld and/or starter)
 is not Mario.
 
-Three independent sites:
+Independent sites:
 
 * **World map character sprite** ($3E:90AA) - picks one of four
   precomputed byte arrays based on which non-Mario ally walks the
