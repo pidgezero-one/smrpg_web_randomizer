@@ -1001,4 +1001,13 @@ all_songs = [
         hint_2=" My favorite song?[await][page]\n It's Terra's Theme!\n ♪“La Ti Do Mi Do Ti La Ti”.[await]\n Is Mallow half Esper?[await]",
         hint_3=" Back before there was a star piece here...[await][page]\n We were hidin' some big ol' frozen bird thing in these mines![await]",
         scroll='\n[center]La Ti Do Mi Do Ti La Ti[await]'),
+    Song(
+        [(La, 28), (Ti, 28), (Do, 28), (Mi, 28), (Re, 14), (Mi, 14), (Re, 14), (Ti, 0)],
+        "Creative Exercise",
+        submitter="pidgezero_one",
+        submitter_credits="PIDGEZERO_ONE",
+        hint_1=" I've gotten really into Mario Paint\n lately. Is that weird?\n I don't have arms.[await]",
+        hint_2=" My favorite song?[await][page]\n It's “Creative Exercise.”\n ♪“La Ti Do Mi Re Mi Re Ti”.[await][page]\n It makes me want to paint\n something, but I don't have arms.[await]",
+        hint_3=" When I'm done workin' for the day,\n I'm goin' home and playin' Mario\n Paint.[await][page]\n ♪“La Ti Do Mi Re Mi Re Ti”...[await]",
+        scroll='\n[center]La Ti Do Mi Re Mi Re Ti[await]'),
 ]
