@@ -1,6 +1,6 @@
 """Core placement algorithms for randomizer."""
 from __future__ import annotations
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Callable, Sequence
 import random
 from copy import copy
 
@@ -79,7 +79,7 @@ def compute_location_spheres(world: GameWorld) -> dict[PrizeLocation, int]:
 
 
 def _select_by_sphere(
-    locations: list[PrizeLocation],
+    locations: Sequence[PrizeLocation],
     sphere_map: dict[PrizeLocation, int],
 ) -> PrizeLocation:
     """Select a location with weighted bias toward higher spheres.
@@ -111,7 +111,7 @@ def _area_spread_applies(item: Prize, world: GameWorld) -> bool:
 
 
 def _select_by_area(
-    locations: list[PrizeLocation],
+    locations: Sequence[PrizeLocation],
     sphere_map: dict[PrizeLocation, int],
 ) -> PrizeLocation:
     """Pick a world area first, then a location inside it.
@@ -140,7 +140,7 @@ def _select_by_area(
 
 def _select_location(
     item: Prize,
-    locations: list[PrizeLocation],
+    locations: Sequence[PrizeLocation],
     sphere_map: dict[PrizeLocation, int],
     world: GameWorld,
 ) -> PrizeLocation:
@@ -193,6 +193,10 @@ def _diagnose_placement_failure(
 # that would otherwise raise, so genuinely unsolvable input still terminates.
 _MAX_REPAIR_STALLS = 4
 _MAX_REPAIR_VALIDATIONS = 64
+
+# Don't start placing star pieces until enough of the world has opened up that there are 5 normal locations available
+# this will prevent it from over-favouring star hill
+_MIN_STAR_SLOTS_BEFORE_PLACING = 5
 
 
 def _legal_placements(world: GameWorld) -> set[PrizeLocation]:
@@ -340,6 +344,13 @@ def place(
     placements_count = 0
     repairs_left = _MAX_REPAIR_STALLS if world.allow_placement_repair else 0
     priority_types = tuple(priority_classes) if priority_classes else ()
+    stars_unlocked = False
+
+    def star_gate_open(star_locations: Sequence[PrizeLocation]) -> bool:
+        nonlocal stars_unlocked
+        if len(star_locations) >= _MIN_STAR_SLOTS_BEFORE_PLACING:
+            stars_unlocked = True
+        return stars_unlocked
 
     def get_candidate_locations():
         locs = world.locations.values()
@@ -376,7 +387,12 @@ def place(
                         l for l in accessible_locations
                         if isinstance(l, StarPieceLocation)
                     ]
-                    if random.randint(0, 10) < 4 and star_locations:
+                    if not star_gate_open(star_locations):
+                        # Too early for a star piece
+                        accessible_locations = []
+                    elif random.randint(0, 10) < 4:
+                        # Roll says "dedicated slot". If none are open, wait for
+                        # one rather than spending the piece on an item location
                         accessible_locations = star_locations
                 if accessible_locations:
                     selected = _select_location(
@@ -434,41 +450,56 @@ def place(
         else:
             ordered_pending = pending
         placed_this_iteration = False
-        for _, item in enumerate(ordered_pending):
-            player_has = collect_accessible_items(world)
-            accessible_locations = [
-                l for l in candidate_locations
-                if l.can_access(player_has, world)
-                and l.can_accept(item, player_has, world)
-                and not l.has_item
-            ]
-            if force_frog_disciple:
-                frog_locations = [
-                    l for l in accessible_locations
-                    if isinstance(l, FrogDiscipleLocation)
+        deferred_star = False
+        # Two passes. The first honours the star piece gate; the second runs
+        # only if the gate actually held something back and nothing else could
+        # be placed either
+        for defer_stars in (True, False):
+            if not defer_stars and not deferred_star:
+                break
+            for item in ordered_pending:
+                player_has = collect_accessible_items(world)
+                accessible_locations = [
+                    l for l in candidate_locations
+                    if l.can_access(player_has, world)
+                    and l.can_accept(item, player_has, world)
+                    and not l.has_item
                 ]
-                if len(frog_locations) > 0:
-                    accessible_locations = frog_locations
-            if isinstance(item, StarPiecePrize):
-                star_locations = [
-                    l for l in accessible_locations
-                    if isinstance(l, StarPieceLocation)
-                ]
-                reduce = random.randint(0, 10)
-                if reduce < 4 and star_locations:
-                    accessible_locations = star_locations
-            if len(accessible_locations) == 0:
-                # Move onto the next item to see if it can be placed
-                continue
-            placed_this_iteration = True
-            selected = _select_location(item, accessible_locations, sphere_map, world)
-            selected.set_prize(item)
-            pending.remove(item)
-            placements_count += 1
-            if on_placed:
-                on_placed(item, selected)
-            break
-            # Start again from the beginning of the now-shortened pending list
+                if force_frog_disciple:
+                    frog_locations = [
+                        l for l in accessible_locations
+                        if isinstance(l, FrogDiscipleLocation)
+                    ]
+                    if len(frog_locations) > 0:
+                        accessible_locations = frog_locations
+                if isinstance(item, StarPiecePrize):
+                    star_locations = [
+                        l for l in accessible_locations
+                        if isinstance(l, StarPieceLocation)
+                    ]
+                    if defer_stars and not star_gate_open(star_locations):
+                        deferred_star = True
+                        continue
+                    reduce = random.randint(0, 10)
+                    if reduce < 4 and star_locations:
+                        accessible_locations = star_locations
+                    elif reduce < 4 and defer_stars:
+                        deferred_star = True
+                        continue
+                if len(accessible_locations) == 0:
+                    # Move onto the next item to see if it can be placed
+                    continue
+                placed_this_iteration = True
+                selected = _select_location(item, accessible_locations, sphere_map, world)
+                selected.set_prize(item)
+                pending.remove(item)
+                placements_count += 1
+                if on_placed:
+                    on_placed(item, selected)
+                break
+                # Start again from the beginning of the now-shortened pending list
+            if placed_this_iteration:
+                break
 
         if len(pending) == 0:
             break

@@ -2645,7 +2645,7 @@ class NimbusOutdoorFlag(InvisibleFlagLocation):
     _y_coord = 49
     _world_area = WorldAreaEnum.NIMBUS_LAND
     _z_coord = 2
-    _clue_text = "My item is under a tree star.[await]"
+    _clue_text = " My item is under a tree star.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 1011),
         # RunDialog(

@@ -67,15 +67,15 @@ class FortuneEnum(StrEnum):
     RARE = '''\n[center]You'll find some rare items.[await]'''
     STAR = '''\n[center]You're going to save the world.[await]'''
     GREAT = '''\n[center]You'll pick up great items.[await]'''
-    SNACK = '''\n[center]Some tasty snacks are awaiting\nyou in the future.[await]'''
-    MEAL = '''\n[center]Looks like you'll have a great meal\nsometime in the future.[await]'''
-    DRINK = '''\n[center]You'll have a refreshing drink\n in the near future.[await]'''
+    SNACK = '''\n[center]Some tasty snacks are awaiting\n[center]you in the future.[await]'''
+    MEAL = '''\n[center]Looks like you'll have a great meal\n[center]sometime in the future.[await]'''
+    DRINK = '''\n[center]You'll have a refreshing drink\n[center]in the near future.[await]'''
     WEAPON = '''\n[center]You'll achieve great power.[await]'''
-    COINS = '''\n[center]Vast riches will be yours\n in the future.[await]'''
-    ARMOR = '''\n[center]You will develop great constitution\n in your future.[await]'''
-    ACCESSORY = '''\n[center]You'll have amazing fashion sense\n in the future.[await]'''
-    YIKES = '''\n[center]Yikes, looks like you'll have\nhardships ahead of you.[await]'''
-    SPELL = '''\n[center]You'll acquire many skills\n in your future.[await]'''
+    COINS = '''\n[center]Vast riches will be yours\n[center]in the future.[await]'''
+    ARMOR = '''\n[center]You will develop great constitution\n[center]in your future.[await]'''
+    ACCESSORY = '''\n[center]You'll have amazing fashion sense\n[center]in the future.[await]'''
+    YIKES = '''\n[center]Yikes, looks like you'll have\n[center]hardships ahead of you.[await]'''
+    SPELL = '''\n[center]You'll acquire many skills\n [center]n your future.[await]'''
 
 class TreasureHunterNickname:
     _nickname: str
