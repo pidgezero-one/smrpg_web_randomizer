@@ -257,7 +257,7 @@ class MushroomKingdomEmptyHouseFlag(InvisibleFlagLocation):
     _x_coord = 14
     _y_coord = 61
     _world_area = WorldAreaEnum.MUSHROOM_KINGDOM
-    _y_shift = 8
+    _x_shift = 8
     _clue_text = " Mine is under the bed in an empty\n house.[await]"
     _hint = [
         # SetVarToConst(PRIMARY_TEMP_7000, 448),

@@ -34,7 +34,5 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetBit(NOTE_DIRECTION),
-	SetSyncActionScript(NPC_0, A0977_NOTE_WITHOUT_KNIFE),
 	JmpToEvent(E0261_FADE_MUSIC_ROOM_LOADER)
 ])
