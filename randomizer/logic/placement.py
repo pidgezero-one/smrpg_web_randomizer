@@ -189,14 +189,10 @@ def _diagnose_placement_failure(
                   f" ({len(inaccessible_accepting)} inaccessible could accept)")
 
 
-# Bounds for the last-resort stall repair below. They only cap work on a path
-# that would otherwise raise, so genuinely unsolvable input still terminates.
 _MAX_REPAIR_STALLS = 4
 _MAX_REPAIR_VALIDATIONS = 64
 
-# Don't start placing star pieces until enough of the world has opened up that there are 5 normal locations available
-# this will prevent it from over-favouring star hill
-_MIN_STAR_SLOTS_BEFORE_PLACING = 5
+_MIN_STAR_SLOTS_BEFORE_PLACING = 8
 
 
 def _legal_placements(world: GameWorld) -> set[PrizeLocation]:
