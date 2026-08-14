@@ -297,6 +297,14 @@ def _apply_stats_to_prize(
         for c in hp_slice_participant_classes
     ) if hp_slice_participant_classes else 0
 
+    # Jinx, Jagger, Punchinello and Smithy are worth 0 XP in vanilla, so their
+    # formations have no ratio to slice by. Without a fallback every member takes
+    # the max(1, ...) clamp below and the fight pays 1 XP no matter which slot it
+    # was shuffled into - Jinx 3 on the Axem Rangers' ledge would be worth 1
+    # instead of 330. Split the location's budget evenly per instance instead.
+    xp_instances = sum(enemy_counts[c] for c in hp_slice_participant_classes)
+    even_xp_share = round(xp / xp_instances) if xp_instances else xp
+
     ref_xp: float = sum(cast(Enemy, c()).xp for c in anchor_classes) / len(anchor_classes)
     ref_coins: float = sum(cast(Enemy, c()).coins for c in anchor_classes) / len(anchor_classes)
     if total_xp_for_slicing > 0:
@@ -362,12 +370,12 @@ def _apply_stats_to_prize(
             if ref_xp > 0:
                 new_xp = round(ref_new_xp * (original.xp / ref_xp))
             else:
-                new_xp = original.xp
+                new_xp = even_xp_share
         elif total_xp_for_slicing > 0:
             # Participate in pie - divide location XP proportionally (counts in denominator)
             new_xp = round(xp * (pie_adjusted_xp / total_xp_for_slicing))
         else:
-            new_xp = original.xp
+            new_xp = even_xp_share
 
         # Same post-slice multiplier HP uses (e.g., Dodo's 2.5x)
         new_xp = round(new_xp * slice_multiplier)
@@ -385,6 +393,30 @@ def _apply_stats_to_prize(
         else:
             new_coins = original.coins
         enemy.set_coins(max(0, new_coins))
+
+LocationStats = tuple[int, int, int, int, int, int, int, int, int]
+
+
+def _backfill_zero_xp_budgets(
+    location_stats: list[tuple[BossFightLocation, LocationStats]],
+) -> list[tuple[BossFightLocation, LocationStats]]:
+    """Give the 0-XP locations an XP budget derived from their HP budget.
+
+    The four Dojo fights, Punchinello and Smithy are worth 0 XP in vanilla, so
+    _calculate_location_stats hands their slot an XP budget of 0 and anything
+    shuffled in pays 1 XP total - Culex in the Dojo would be worth 1 instead of
+    730. Those slots still have a real HP budget, so price them at the median
+    XP-per-HP of every location that does have one.
+    """
+    ratios = [s[1] / s[0] for _, s in location_stats if s[0] > 0 and s[1] > 0]
+    if not ratios:
+        return location_stats
+    xp_per_hp = statistics.median(ratios)
+    return [
+        (loc, s) if s[1] > 0 else (loc, (s[0], max(1, round(s[0] * xp_per_hp)), *s[2:]))
+        for loc, s in location_stats
+    ]
+
 
 def apply_boss_stat_scaling(world: GameWorld) -> None:
     """Apply stat scaling to boss fights based on settings.
@@ -414,6 +446,8 @@ def apply_boss_stat_scaling(world: GameWorld) -> None:
 
     if not location_stats:
         return
+
+    location_stats = _backfill_zero_xp_budgets(location_stats)
 
     if world.settings.is_flag_value(BossShuffleScaleStats, BossScaleOptions.MATCH):
         # Unmoved bosses already hold their correct stats, so skip them.

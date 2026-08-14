@@ -24,7 +24,7 @@ only one of the things that moves it.
 
 Each effect id below is set on exactly one room and the effects_npc check enforces
 that, so rewriting the row nibble in place cannot reach another room. Background-layer
-records are absent from the table on purpose: 0x1D and 0x22 both open with
+records are absent from the table on purpose: 0x1D, 0x1E and 0x22 all open with
 6D 81 89 (palette row 1), the factory/keep background glow shared verbatim with
 rooms 469 and 471, and BG rows do not move.
 
@@ -75,6 +75,7 @@ GLOW_RECORDS: dict[int, tuple[EffectsNpc, tuple[tuple[int, int, int], ...]]] = {
     406: (EffectsNpc.UNKNOWN_22, ((0x1D9EB4, 0xA0, SPR0109_GREEN_SWITCH),)),
     465: (EffectsNpc.UNKNOWN_20, ((0x1D9EAB, 0xA0, SPR0109_GREEN_SWITCH),)),
     470: (EffectsNpc.UNKNOWN_1D, ((0x1D9E9C, 0xA0, SPR0109_GREEN_SWITCH),)),
+    472: (EffectsNpc.UNKNOWN_1E, ((0x1D9EA2, 0x00, SPR0102_SAVE_POINT),)),
 }
 
 

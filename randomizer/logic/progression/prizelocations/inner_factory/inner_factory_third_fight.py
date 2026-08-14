@@ -11,10 +11,9 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequ
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_Pause, A_SetSequenceSpeed, A_SetSpriteSequence)
 from randomizer.logic.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
-from randomizer.types.prize import (Prize)
+from randomizer.types.prize import (BossFightHenchman, Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_10, NPC_7, NPC_8, NPC_9)
-from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (UsableEventScriptCommand)
 if TYPE_CHECKING:
     from randomizer.types.gameworld import (GameWorld)
 
@@ -70,8 +69,7 @@ def render_inner_factory_third_fight_slot(
                 attack_id, A_Pause(prepause)
             )
     else:
-        for slot in slot_configs:
-            world.action_scripts.delete_command_by_identifier(slot[1])
+        world.action_scripts.delete_command_by_identifier(attack_id)
 
 
 class InnerFactoryThirdFight(BossFightLocation):
@@ -104,25 +102,21 @@ class InnerFactoryThirdFight(BossFightLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_access_factory(world, inventory) and not_earlygame(world, inventory)
 
-    def render(self, world: GameWorld) -> tuple[
-        list[list[UsableEventScriptCommand]],
-        list[UsableEventScriptCommand],
-        list[tuple[int, int, int]],
-    ]:
-        op = super().render(world)
-        assert isinstance(self.prize, BossFightPrize)
-
-        # Process each slot separately
-        for slot_index in range(3):
-            if (
-                self.prize.character_henchmen is not None
-                and len(self.prize.character_henchmen) > slot_index
-            ):
-                render_inner_factory_third_fight_slot(
-                    world, self.prize.character_henchmen[slot_index], slot_index
-                )
-
-        return op
+    def _on_henchmen_assigned(
+        self,
+        world: GameWorld,
+        henchmen_assignments: list[
+            tuple[BossFightLocationHenchmanNPC, BossFightHenchman]
+        ],
+    ) -> None:
+        # Read the resolved assignments, not prize.character_henchmen: bosses with
+        # only _mook_henchmen (Count Down) get their character slots backfilled with
+        # mooks by the base class, and never populate character_henchmen.
+        by_slot = dict(henchmen_assignments)
+        for slot_index, slot in enumerate(self._character_henchman_slots or []):
+            henchman = by_slot.get(slot)
+            if henchman is not None:
+                render_inner_factory_third_fight_slot(world, henchman, slot_index)
 
 
 __all__ = ["InnerFactoryThirdFight"]
