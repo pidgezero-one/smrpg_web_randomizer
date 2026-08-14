@@ -4,6 +4,7 @@ from randomizer.data.enemies.enemies import (BANDANABLUEEnemy, BANDANAREDEnemyHe
 from randomizer.data.packs.pack_collection import (FORM0276_ONE_JOHNNY_FOUR_BANDANABLUE_TWO_WATERCRYSTAL)
 from randomizer.data.physical_objects.bosses import (JohnnyLargeObject, JohnnySmallObject, JohnnyStatueObject)
 from randomizer.data.physical_objects.henchmen import (BandanaBlueHenchman, BandanaRedHenchman)
+from randomizer.data.variables.battle_event_names import *
 from randomizer.data.variables.dialog_names import (
     DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING,
     DI1120_NIMBUS_BIRD_GUARD,
@@ -80,6 +81,8 @@ class JohnnyBossFight(BossFightPrize):
     # scales it with Johnny (matching Croco2/Booster/Punchinello) AND adds it to
     # the shuffler's boss_enemy_types so its henchman formations aren't reshuffled.
     _additional_enemies_to_scale = [BANDANAREDEnemyHenchman]
+
+    _force_start_event = BE0038_SET_7EE00A_TO_PARTY_SIZE_AT_START_OF_FIGHT
 
     _npc_models = [JohnnyLargeObject, JohnnySmallObject]
     _statue_npc = JohnnyStatueObject
