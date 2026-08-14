@@ -14,21 +14,7 @@ from randomizer.data.enemies.enemies import CZARDRAGONEnemy
 
 from randomizer.data.packets import P094_FIRE_SPELL_CHEST, P095_BLUE_SPELL_CHEST, P096_GREEN_SPELL_CHEST, P098_GRAY_SPELL_CHEST, P097_YELLOW_SPELL_CHEST
 from randomizer.logic.progression.prizes import BowserRecruitmentPrize, GenoRecruitmentPrize, MallowRecruitmentPrize, MarioRecruitmentPrize, ToadstoolRecruitmentPrize
-from randomizer.data.variables.dialog_names import (
-    DI1055_SEWER_GATING_TEXT,
-    DI1222_SHAMAN_SALESMAN_NOT_ENOUGH_COINS,
-    DI1223_SHAMAN_SALESMAN_400_COINS,
-    DI1224_SHAMAN_SALESMAN_2ND_PROMPT,
-    DI1227_SHAMAN_SALESMAN_800_COINS,
-    DI1296_PURTEND_STORE_NEED_FIREWORKS,
-    DI2112_RAZ_OCCUPIED,
-    DI2114_MARRYMORE_BOSS_NAMES,
-    DI2115_MARRYMORE_SHITPOST,
-    DI2117_MARRYMORE_SHITPOST,
-    DI2119_MARRYMORE_SHITPOST,
-    DI3072_TOWER_HENCHMAN_3_WINDOW,
-    DI3073_TOWER_HENCHMAN_3,
-)
+from randomizer.data.variables.dialog_names import *
 from randomizer.data.variables.screen_effect_names import SEF0004_UNKNOWN
 from randomizer.logic.progression.prizelocations import BoosterTowerIndoorBossFight, FinalBossFight, MarrymoreCharacter, SeasideBeachBossFight, VolcanoExitBossFight
 from randomizer.types.flags import BarrelVolcanoGate, BarrelVolcanoGating, BowsersKeepGate, BowsersKeepGating, EXPStarsAnywhere, FireworksOptions, FireworksSetting, KeepMinigameSpritesIntact, RangeFlag, SuperJump1Threshold, SuperJump2Threshold
@@ -141,6 +127,8 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
         world.enemies.get_by_type(BUNDTEnemy).set_name("BUNDT 1")
 
     if world.settings.isflag_enabled(RemakeNames):
+        world.update_dialog(DI2007_FOUND_A_BTUB_RING_AUTO_TERMINATE, '''[center]Found a “Nurture Ring”![end]''')
+        world.update_dialog(DI2009_GOT_A_BTUB_RING_AWAIT_TERMINATE, '''[center]Got a “Nurture Ring”![await]''')
         for enemy in world.enemies.enemies:
             e = cast(Enemy, enemy)
             if e.remake_name is not None:

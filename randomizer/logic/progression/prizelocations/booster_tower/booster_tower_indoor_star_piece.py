@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_do_tower_curtain_game, not_earlygame)
+from randomizer.logic.progression.prizelocations.access import (can_do_tower_curtain_game, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.logic.progression.prizelocations.booster_tower.booster_tower_indoor_boss_fight import (BoosterTowerIndoorBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)

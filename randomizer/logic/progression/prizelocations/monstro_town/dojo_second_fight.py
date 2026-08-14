@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.logic.renders import (render_dojo_fight)
-from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells, not_earlygame)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)

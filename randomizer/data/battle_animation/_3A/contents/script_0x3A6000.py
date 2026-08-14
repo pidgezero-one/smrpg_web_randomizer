@@ -767,11 +767,15 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	UseObjectQueueAtOffsetWithAMEM60PointerOffset(index=4, destinations=["command_0x3A8AC0"]),
 	RunSubroutine(["command_0x3A771E"]),
 	Jmp(["command_0x3A7550"]),
+
+	
 	DefineObjectQueue(["be0059_belome_confronts_a_character_you_all_look_delicious_0x3A69D7"], identifier="battle_event_0059_belome_confronts_a_character_you_all_look_delicious"),
 	RunSubroutine(["command_0x3A7531"], identifier="be0059_belome_confronts_a_character_you_all_look_delicious_0x3A69D7"),
 	UseSpriteQueue(field_object=0, destinations=["command_0x3AD902"], bit_2=True, bit_4=True),
 	RunSubroutine(["command_0x3A771E"]),
 	Jmp(["command_0x3A7550"]),
+
+	
 	DefineObjectQueue(["be0060_belome_clones_someone_0x3A69E7"], identifier="battle_event_0060_belome_clones_someone"),
 	RunSubroutine(["command_0x3A7531"], identifier="be0060_belome_clones_someone_0x3A69E7"),
 	UseSpriteQueue(field_object=0, destinations=["command_0x3AD9BC"], bit_2=True, bit_4=True),
@@ -793,8 +797,12 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	UseSpriteQueue(field_object=5, destinations=["command_0x3ADB52"], bit_2=True, bit_4=True),
 	UnknownCommand(bytearray([0x18, 0x00, 0x80])),
 	Jmp(["command_0x3A7550"]),
+
+	
 	DefineObjectQueue(["BE0062_JINX_4_BE_0x3A6A39"], identifier="battle_event_0062_jinx_4"),
 	Jmp(["jinx_4_outsourced"], identifier="BE0062_JINX_4_BE_0x3A6A39"),
+
+	
 	DefineObjectQueue(["be0063_unused_0x3A6A62"], identifier="battle_event_0063_unused"),
 	RunSubroutine(["command_0x3A7550"], identifier="be0063_unused_0x3A6A62"),
 	DefineObjectQueue(["be0064_unused_0x3A6A89"], identifier="battle_event_0064_unused"),
@@ -859,6 +867,8 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	DefineObjectQueue(["be0076_solo_fire_crystal_appears_0x3A6BFC"], identifier="battle_event_0076_solo_fire_crystal_appears"),
 	UseSpriteQueue(field_object=0, destinations=["solo_fire_sq"], bit_2=True, bit_4=True, identifier="be0076_solo_fire_crystal_appears_0x3A6BFC"),
 	Jmp(["command_0x3A7550"]),
+
+	
 	DefineObjectQueue(["BE0077_CULEX_3D_0x3A6C49"], identifier="battle_event_0077_CULEX_3d"),
 	RunSubroutine(["command_0x3A7531"], identifier="BE0077_CULEX_3D_0x3A6C49"),
 	UseSpriteQueue(field_object=1, destinations=["culex_subroutine_1"], bit_2=True, bit_4=True),
@@ -890,6 +900,9 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
     SummonMonster(monster=WINDCRYS3DEnemy, position=1, bit_7=True),
 	RunSubroutine(["command_0x3A7544"]),
     ReturnSpriteQueue(),
+
+
+	
 	DefineObjectQueue(["be0078_dodo_flutters_and_exits_battle_0x3A6C5A"], identifier="battle_event_0078_dodo_flutters_and_exits_battle"),
 	RunSubroutine(["command_0x3A7531"], identifier="be0078_dodo_flutters_and_exits_battle_0x3A6C5A"),
 	UseSpriteQueue(field_object=0, destinations=["command_0x3ADF08"], bit_2=True, bit_4=True),

@@ -159,32 +159,6 @@ class SeasideBeachBossFight(BossFightLocation):
         if not isinstance(self.prize, YaridovichBossFight):
             render_seaside_beach_boss(world, self.prize)
 
-            # Hide NPCs for unassigned character henchman slots
-            if (
-                self._character_henchman_slots is not None
-                and self.prize.character_henchmen is not None
-                and len(self.prize.character_henchmen) > 0
-            ):
-                assigned_count = len(self.prize.character_henchmen)
-                for slot_index, slot in enumerate(self._character_henchman_slots):
-                    if slot_index >= assigned_count:
-                        for room_id, npc_id in zip(slot.room_ids, slot.npc_ids):
-                            rm = world.rooms._rooms[room_id]
-                            assert rm is not None
-                            rm.get_npc_by_target_id(npc_id).set_visible(False)
-                        if slot_index == 0:
-                            deletions = [
-                                "ship_henchman_1_beach_1",
-                                "ship_henchman_1_beach_2",
-                                "ship_henchman_1_beach_3",
-                            ]
-                            for d in deletions:
-                                world.event_scripts.delete_command_by_identifier(d)
-                        if slot_index == 1:
-                            world.event_scripts.delete_command_by_identifier(
-                                "ship_henchman_2_beach_1"
-                            )
-
         return op
 
 

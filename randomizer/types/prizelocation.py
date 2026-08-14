@@ -3152,6 +3152,10 @@ class InvisibleFlagLocation(NPCLocationRow1, KeyItemLocation):
             action_script=av,
             speed=3,
             visible=False,
+            # Max out the collision box so the invisible flag is easy to bump into.
+            acute_axis=15,
+            obtuse_axis=15,
+            height=15,
             x=self._x_coord,
             y=self._y_coord,
             z=self._z_coord,

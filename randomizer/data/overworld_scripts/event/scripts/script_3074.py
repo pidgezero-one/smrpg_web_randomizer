@@ -82,6 +82,8 @@ script = EventScript([
 	PlaySound(sound=SO013_COIN, channel=6),
 	CreatePacketAt7010(packet=P101_INFINITE_COIN_STATIC, destinations=["EVENT_3074_ret_49"]),
 	#SetSyncActionScript(MEM_70A9, A0906_COIN_CHEST),
-	EnableObjectTrigger(MEM_70AA),
+	# A0008 clears object mem $30 bit 4 when its bounce ends, which re-enables the
+	# trigger. Re-enabling it here instead lets a re-hit restart A0008 mid-bounce,
+	# so the descent half never runs and the chest climbs in Z every hit.
 	Return(identifier="EVENT_3074_ret_49")
 ])

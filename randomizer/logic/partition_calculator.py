@@ -261,20 +261,30 @@ def _detect_changed_rooms(world: GameWorld) -> set[int]:
 # Rooms that size a declared animation by WHOLE 16x16 tiles instead of by present
 # 8x8 subtiles - i.e. min_vram_from_mold_geometry(..., player_sprite=True).
 #
-# The subtile packing is right everywhere it has been checked (Croco's two vanilla
-# records pin it exactly), but room 255's dojo slots are the one place where being
-# one unit short is known to corrupt a neighbour rather than land in slack: every
-# slot is cannot_clone, the blocks are allocated back to back, and a shuffled boss
-# can put a zero-slack sprite (Belome 3 Small - 16/16 subtiles) directly after a
-# mixed gridplane/tilemap sprite (256 Terrapin/Jagger, whose dojo_challenge molds
-# are 6-7 tiles). Whole-tile sizing is the conservative reading: it over-reserves
-# rather than under-reserves. Room 255 can absorb that - all three of its clone
-# buffers are EMPTY, so anything past the packed $40 cap lands in unclaimed VRAM.
+# room_id -> the object indices whose dedicated block is sized by whole 16x16 tiles
+# instead of present 8x8 subtiles. These are rows of back-to-back cannot_clone
+# blocks, where being one unit short corrupts the next NPC instead of landing in
+# slack. Subtile packing reads a 5-tile / 13-subtile mold as 0 (13 fits the
+# 16-subtile baseline) but the block is 4 tile slots wide, so one tile spills.
+# Room 255 = 256 Terrapin/Jagger's dojo_challenge ahead of a zero-slack Belome 3
+# Small; room 472 = the three factory_pierce hammer slots, 5 tiles on every model
+# that can land there and shipped at 1 in vanilla. Both lists are exactly the
+# room's npc_expected_animations keys - neighbours like room 472's Factory Director
+# slot are deliberately left on subtile sizing so a shuffled model there is not
+# inflated for sequences it never plays.
 #
-# Do NOT widen this set without checking the room's buffers and cursor budget;
-# whole-tile sizing in a room with an active buffer (rooms 77/78/206/207, chest in
-# buffer A) is the R206 overrun.
-WHOLE_TILE_ANIMATION_VRAM_ROOMS: set[int] = {255}
+# Both rooms leave buffer A EMPTY, so the cursor may pass its packed $40 base into
+# unclaimed VRAM. Do NOT widen this without checking that: whole-tile sizing where
+# buffer A is active (rooms 77/78/206/207, chest in A) is the R206 overrun.
+WHOLE_TILE_ANIMATION_VRAM_OBJECTS: dict[int, frozenset[int]] = {
+    255: frozenset({0, 1, 2, 3, 4}),
+    472: frozenset({7, 8, 9}),
+}
+
+
+def _uses_whole_tile_vram(room_id: int, obj_index: int) -> bool:
+    """Whether this room object sizes its dedicated block by whole 16x16 tiles."""
+    return obj_index in WHOLE_TILE_ANIMATION_VRAM_OBJECTS.get(room_id, frozenset())
 
 
 def _size_dedicated_min_vram(
@@ -294,22 +304,23 @@ def _size_dedicated_min_vram(
 
     Gridplane sprites live in a fixed-size block, so min_vram_size stays 0.
 
-    KNOWN GAP (measured 2026-08-05, not fixed here): is_gridplane is
-    molds[0].gridplane, so MIXED sprites - gridplane direction molds plus
-    tilemap action molds, e.g. sprite 256 Terrapin/Jagger - are skipped
-    entirely and keep whatever the NPC record shipped. Dropping the early-out
-    raises 37 rooms by one unit each, and among them re-inflates sprite 48
-    (Croco) in rooms 77/78/206/207 from the vanilla 0 to 1 - the R206
-    chest-buffer overrun that the subtile formula exists to avoid, because the
-    all-sequences scan sizes for seq 4/6 that CROCO_NPC_2's rooms never play.
-    Scoping the scan to direction sequences + declared animations avoids that
-    but computes 0 for Jagger too, so the geometry rule (not the scan scope) is
-    what under-predicts. Needs an in-emulator measurement before changing.
+    is_gridplane is molds[0].gridplane, so MIXED sprites - gridplane direction
+    molds plus tilemap action molds, e.g. 256 Terrapin/Jagger or 764 Poundette -
+    would be skipped entirely and keep whatever the NPC record shipped. Lifting
+    that early-out globally re-inflates sprite 48 (Croco) in rooms 77/78/206/207
+    from the vanilla 0 to 1, which is the R206 chest-buffer overrun, so it is
+    lifted only for WHOLE_TILE_ANIMATION_VRAM_OBJECTS.
+
+    Those objects also size by whole 16x16 tiles. Step 5b applies the same rule
+    but only to a *placed* shuffled boss/henchman model, never to the room's
+    authored occupant - so both paths must honour the mapping or an object with
+    shuffling off stays broken.
 
     Only increases, never decreases - an NPC default may be hand-tuned above
     what the formula computes.
     """
-    if is_gridplane:
+    whole_tile = _uses_whole_tile_vram(room_id, obj_index)
+    if is_gridplane and not whole_tile:
         return
 
     current_min = (
@@ -326,7 +337,12 @@ def _size_dedicated_min_vram(
                     f"sequence {seq_idx} frame references mold_id {frame.mold_id} "
                     f"but sprite only has {len(molds)} molds"
                 )
-        max_vram = max(max_vram, min_vram_from_sequence_for_sprite(world, sprite_id, seq_idx))
+        max_vram = max(
+            max_vram,
+            min_vram_from_sequence_for_sprite(
+                world, sprite_id, seq_idx, player_sprite=whole_tile
+            ),
+        )
 
     if max_vram > current_min:
         obj.set_min_vram_size(max_vram)
@@ -1035,7 +1051,7 @@ def _recalculate_room_partition(world: GameWorld, room_id: int) -> None:
                                     world,
                                     sprite_id,
                                     seq_id,
-                                    player_sprite=room_id in WHOLE_TILE_ANIMATION_VRAM_ROOMS,
+                                    player_sprite=_uses_whole_tile_vram(room_id, obj_idx),
                                 )
                                 max_vram_needed = max(max_vram_needed, vram)
                                 matched = True

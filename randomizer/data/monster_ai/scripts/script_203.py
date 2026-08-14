@@ -43,7 +43,7 @@ script = MonsterScript([
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
 	IfHPBelow(0),
-    IfTargetKOed(MONSTER_1_CALL),
+	IfTargetKOed(MONSTER_1_CALL),
 	RemoveTarget(ALL_ALLIES_EXCLUDING_SELF),
 	CallTarget(MONSTER_1_CALL),
 	RemoveTarget(SELF),

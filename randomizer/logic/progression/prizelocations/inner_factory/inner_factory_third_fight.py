@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import (NORMAL)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_Pause, A_SetSequenceSpeed, A_SetSpriteSequence)
-from randomizer.logic.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame)
+from randomizer.logic.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -69,6 +69,9 @@ def render_inner_factory_third_fight_slot(
             world.action_scripts.scripts[script_id].insert_before_identifier(
                 attack_id, A_Pause(prepause)
             )
+    else:
+        for slot in slot_configs:
+            world.action_scripts.delete_command_by_identifier(slot[1])
 
 
 class InnerFactoryThirdFight(BossFightLocation):

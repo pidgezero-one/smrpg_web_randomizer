@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, not_earlygame)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.logic.progression.prizelocations.monstro_town.dojo_third_fight import (DojoThirdFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)

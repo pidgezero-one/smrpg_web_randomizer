@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (ActionScript)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_EndLoop, A_Jmp, A_JmpIfRandom1of2, A_Pause, A_ReturnQueue, A_SetSpriteSequence, A_StartLoopNTimes, A_VisibilityOn)
-from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, not_earlygame)
+from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)

@@ -67,8 +67,19 @@ def can_defeat_bosses(world: GameWorld, inventory: Inventory, count: int) -> boo
 
 
 def not_earlygame(world: GameWorld, inventory: Inventory) -> bool:
-    return can_defeat_bosses(world, inventory, 5)
+    return can_defeat_bosses(world, inventory, 10)
 
+
+def is_early_midgame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 10)
+
+
+def is_late_midgame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 20)
+
+
+def is_lategame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 30)
 
 def can_access_bandits_way(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Bandit's Way."""
@@ -220,7 +231,6 @@ def can_clear_chapel(world: GameWorld, inventory: Inventory) -> bool:
         and inventory.has_item(BroochPrize)
         and inventory.has_item(CrownPrize)
         and can_access_chapel(world, inventory)
-        and not_earlygame(world, inventory)
     )
 
 
@@ -242,13 +252,13 @@ def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(SeaGate, SeaGating.BUNDT):
         return inventory.has_item(BundtBossFight)
     if world.settings.is_flag_value(SeaGate, SeaGating.MARRYMORE):
-        return can_clear_chapel(world, inventory) and not_earlygame(world, inventory)
+        return can_clear_chapel(world, inventory)
     return True
 
 
 def can_clear_ship(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Sunken Ship."""
-    return can_access_sea(world, inventory) and not_earlygame(world, inventory)
+    return can_access_sea(world, inventory)
 
 
 def can_access_ship_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -270,7 +280,7 @@ def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_clear_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
-    return can_access_seaside_boss(world, inventory) and not_earlygame(world, inventory)
+    return can_access_seaside_boss(world, inventory)
 
 
 def can_access_lands_end(world: GameWorld, inventory: Inventory) -> bool:
@@ -299,7 +309,7 @@ def can_access_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Belome Temple."""
-    return can_access_temple_boss(world, inventory) and not_earlygame(world, inventory)
+    return can_access_temple_boss(world, inventory)
 
 
 def can_access_temple_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -319,7 +329,7 @@ def can_access_monstro_town(world: GameWorld, inventory: Inventory) -> bool:
         )
     if world.settings.is_flag_value(MonstroTownGate, MonstroTownGating.BELOME_2):
         return inventory.has_item(Belome2BossFight)
-    return True
+    return True 
 
 
 def can_access_fifth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:

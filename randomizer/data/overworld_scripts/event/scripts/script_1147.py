@@ -249,7 +249,6 @@ script = EventScript([
 	PlayMusicAtDefaultVolume(M0005_SEASIDETOWN, identifier="EVENT_1147_play_music_default_volume_42"),
 	EnterArea(room_id=R316_SEASIDE_TOWN_BEACH, face_direction=NORTHWEST, x=8, y=30, z=0),
 	SetBit(SEASIDE_LIBERATED),
-	RemoveObjectFromSpecificLevel(NPC_1, R213_SEASIDE_TOWN_DURING_YARIDOVICH_BEETLES_ARE_USBOMB_SHOP),
 	ActionQueueSync(target=SCREEN_FOCUS, subscript=[
 		A_SetWalkingSpeed(FASTEST),
 		A_WalkToXYCoords(x=0, y=8)
