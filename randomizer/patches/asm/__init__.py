@@ -49,6 +49,10 @@ Always-on byte patches:
     * :mod:equip_menu_sort - Sort the equipment list when the Equip menu opens.
     * :mod:special_items_menu_sort - Sort the key-items list when its menu opens.
     * :mod:title_loop - Title screen loops forever (no attract-mode demo).
+    * :mod:game_over_continue_fix - Clamp the character id the game-over
+      auto-continue turns into an MVN offset, so a bad multiply or slot
+      count cannot scribble over the saved event flags (lost EXP +
+      despawned NPCs after ResetAndChooseGame).
     * :mod:battle_init - Copy overworld party size to battle party size.
     * :mod:star_piece_sprite_fix - Credits ending sequence sprite ID.
     * :mod:room_layouts - Room area-layout records.
@@ -88,6 +92,7 @@ from . import (
     dialog_font_item_punctuation,
     disable_garden_intro,
     exp_star_music_sticky,
+    game_over_continue_fix,
     hold_b,
     invincibility_fix,
     key_item_inventory,
@@ -130,6 +135,7 @@ __all__ = [
     "dialog_font_item_punctuation",
     "disable_garden_intro",
     "exp_star_music_sticky",
+    "game_over_continue_fix",
     "hold_b",
     "invincibility_fix",
     "key_item_inventory",

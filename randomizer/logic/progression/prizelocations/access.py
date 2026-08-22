@@ -66,6 +66,9 @@ def can_defeat_bosses(world: GameWorld, inventory: Inventory, count: int) -> boo
     return inventory.has_item_count(BossFightPrize, count)
 
 
+def almost_earlygame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 5)
+
 def not_earlygame(world: GameWorld, inventory: Inventory) -> bool:
     return can_defeat_bosses(world, inventory, 10)
 
@@ -131,6 +134,15 @@ def can_access_pipe_vault(world: GameWorld, inventory: Inventory) -> bool:
     return True
 
 
+def can_do_mushroom_derby(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to do the curtain game in Booster Tower."""
+    if world.settings.isflag_enabled(ShuffleCookies) and not inventory.has_item(
+        CookiesPrize
+    ):
+        return False
+    return can_access_pipe_vault(world, inventory)
+
+
 def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the uper entrance to the mines."""
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
@@ -140,7 +152,7 @@ def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> boo
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
         return inventory.has_item(BowyerBossFight)
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
-        return can_access_pipe_vault(world, inventory)
+        return can_do_mushroom_derby(world, inventory)
     return True
 
 
@@ -426,7 +438,7 @@ def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
         return can_access_keep(world, inventory)
     if world.settings.is_flag_value(FactoryGate, FactoryGating.KEEP):
-        return can_access_keep(world, inventory) and not_earlygame(world, inventory)
+        return can_pass_obstacle_courses(world, inventory) and not_earlygame(world, inventory)
     return True
 
 

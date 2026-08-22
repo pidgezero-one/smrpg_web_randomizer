@@ -103,7 +103,7 @@ room = Room(
             byte7_upper2=3,
             cannot_clone=True),
         RegularNPC( # 1
-            npc=npcs.TORTE_NPC,
+            npc=npcs.TORTE_NPC_V1,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0630_MARRYMORE_KITCHEN_CHEF_1,
             action_script=A0330_MARRYMORE_HEAD_CHEF,
@@ -129,9 +129,9 @@ room = Room(
             slidable_along_walls=False,
             cant_move_if_in_air=False,
             byte7_upper2=3,
-            cannot_clone=True),
+            cannot_clone=True,),
         RegularNPC( # 2
-            npc=npcs.TORTE_NPC,
+            npc=npcs.TORTE_NPC_V1,
             initiator=EventInitiator.PRESS_A_FROM_ANY_SIDE,
             event_script=E0631_MARRYMORE_KITCHEN_CHEF_2,
             action_script=A0331_MARRYMORE_2ND_CHEF,

@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_tower, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_do_tower_curtain_game, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, ShuffleLocationSelector, WorldAreaEnum)
@@ -32,7 +32,7 @@ class BoosterTowerBalconyBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_tower(world, inventory) and not_earlygame(world, inventory)
+        return can_do_tower_curtain_game(world, inventory) and not_earlygame(world, inventory)
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []

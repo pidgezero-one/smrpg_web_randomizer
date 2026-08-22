@@ -786,7 +786,6 @@ FORMATION_FORCED_ENEMIES: dict[Formation, list[type]] = {
     FORM0219_ONE_NINJA_ONE_DOPPEL: [NINJAEnemy],
     FORM0220_TWO_NINJA_ONE_HIPPOPO: [NINJAEnemy],
     FORM0221_FIVE_NINJA: [NINJAEnemy],
-    FORM0234_FIVE_AMEBOID: [AMEBOIDEnemy],
     FORM0235_THREE_GLUMREAPER: [GLUMREAPEREnemy],
     FORM0236_ONE_GLUMREAPER_ONE_HIPPOPO: [GLUMREAPEREnemy],
     FORM0237_TWO_GLUMREAPER_TWO_DOPPEL: [GLUMREAPEREnemy],
@@ -832,6 +831,13 @@ FORMATION_FORCED_ENEMIES: dict[Formation, list[type]] = {
     FORM0362_TWO_BOBOMB_ONE_CLUSTER: [BOBOMBEnemyStatic],
     FORM0363_FOUR_BOBOMB: [BOBOMBEnemyStatic],
 }
+
+# Formations the EnemyFormations shuffler must never modify.
+PROTECTED_FORMATIONS: list[Formation] = [FORM0234_FIVE_AMEBOID]
+
+# Enemies the EnemyFormations shuffler must never add to any formation.
+# AMEBOID is locked to its vanilla formation (FORM0234).
+SHUFFLE_EXCLUDED_ENEMY_TYPES: set[type] = {AMEBOIDEnemy}
 
 
 def randomize_enemy_formations(world: GameWorld) -> None:
@@ -880,8 +886,14 @@ def randomize_enemy_formations(world: GameWorld) -> None:
 
     eligible_enemy_types = [
         type(e) for e in world.enemies.enemies
-        if not e.ohko_immune and type(e) not in boss_enemy_types
+        if not e.ohko_immune
+        and type(e) not in boss_enemy_types
+        and type(e) not in SHUFFLE_EXCLUDED_ENEMY_TYPES
     ]
+
+    protected_formation_ids: set[int] = {
+        f.formation_id for f in PROTECTED_FORMATIONS if f.formation_id is not None
+    }
 
     # Undead enemies (Dry Bones, Vomer) have 0 HP and self-revive; dropping
     # them into certain early-game / scripted encounters softlocks or unfairly
@@ -957,6 +969,9 @@ def randomize_enemy_formations(world: GameWorld) -> None:
             continue
 
         for formation in pack.formations:
+            if formation.formation_id in protected_formation_ids:
+                continue
+
             current_members = [m for m in formation.members if m is not None]
             if not current_members:
                 continue

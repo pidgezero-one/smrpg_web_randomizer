@@ -14,6 +14,13 @@ from ..variables.event_script_names import *
 from ..variables.action_script_names import *
 
 room = Room(
+    # Crowded enough to need the clone buffer a palette-swap merge frees,
+    # and its henchmen stay on poses the canonical sprite can render.
+    # Valentina fills henchman slots 4-9 with Birdy (269) and Bluebird
+    # (333), which are a SHIFTED pair -> (269, 1); without the merge they
+    # burn two of the three buffers and leave the room at exactly 3/3
+    # alongside the Chancellor.
+    allow_sprite_merging=True,
     partition=Partition(
         ally_sprite_buffer_size=1,
         allow_extra_sprite_buffer=False,

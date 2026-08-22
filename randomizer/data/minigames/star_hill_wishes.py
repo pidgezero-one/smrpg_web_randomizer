@@ -56,6 +56,8 @@ WISH_POOL = wish_strings = [
     "[center]\nPeople of Earth..\nLend me your energy!",
     "[center]I wish nothing but\nthe best\nfooor you both~.",
     "[center]\nI wish gameing was legal.",
+    "[center]\n\nI wish Yoshis were real.",
+    "[center]\nI just want to tell you both good luck. We’re all counting on you."
 ]
 WISH_DIALOG_IDS = [
     DI3111_WISH_7,

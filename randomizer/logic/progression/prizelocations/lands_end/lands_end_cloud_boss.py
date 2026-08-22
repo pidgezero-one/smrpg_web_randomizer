@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, almost_earlygame, is_early_midgame, is_late_midgame, is_lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, ShuffleLocationSelector, WorldAreaEnum)
@@ -44,7 +44,7 @@ class LandsEndCloudBoss(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return not_earlygame(world, inventory)
+        return almost_earlygame(world, inventory)
 
 
 __all__ = ["LandsEndCloudBoss"]

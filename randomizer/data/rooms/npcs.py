@@ -8973,6 +8973,27 @@ TORTE_NPC = NPC(
     byte6_bit2=False,
 )
 
+TORTE_NPC_V1 = NPC(
+    sprite_id=SPR0398_TORTE,
+    shadow_size=ShadowSize.OVAL_SMALL,
+    acute_axis=2,
+    obtuse_axis=2,
+    height=11,
+    y_shift=0,
+    show_shadow=False,
+    directions=VramStore.DIR0_SWSE_NWNE,
+    min_vram_size=1,
+    priority_0=False,
+    priority_1=False,
+    priority_2=True,
+    cannot_clone=True,
+    extra_palette_source_offset=0,
+    extra_palette_row_count=0,
+    byte5_bit6=False,
+    byte5_bit7=False,
+    byte6_bit2=False,
+)
+
 TORTE_NPC_0 = NPC(
     sprite_id=SPR0398_TORTE,
     shadow_size=ShadowSize.OVAL_SMALL,

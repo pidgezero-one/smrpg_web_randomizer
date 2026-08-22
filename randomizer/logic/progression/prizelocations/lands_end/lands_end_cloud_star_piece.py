@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (almost_earlygame)
 from randomizer.logic.progression.prizelocations.lands_end.lands_end_cloud_boss import (LandsEndCloudBoss)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -39,7 +39,7 @@ class LandsEndCloudStarPiece(StarPieceLocation):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return super().can_access(inventory, world) and not_earlygame(world, inventory)
+        return super().can_access(inventory, world) and almost_earlygame(world, inventory)
 
 
 __all__ = ["LandsEndCloudStarPiece"]

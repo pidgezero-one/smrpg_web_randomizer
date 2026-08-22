@@ -269,6 +269,11 @@ def get_patch(world: GameWorld) -> Patch:
     patch.add_dict(asm.menu_item_always_available.get_patch(), source="menu_item_always_available")
     patch.add_dict(asm.grid_menu_navigation.get_patch(), source="grid_menu_navigation")
     patch.add_dict(asm.title_loop.get_patch(), source="title_loop")
+    # Bound the character id the game-over auto-continue ($C3:7B4C) turns
+    # into an MVN offset. Unclamped it can walk into the saved event-flag
+    # block, which reads as "EXP not kept + NPCs despawned" after a
+    # ResetAndChooseGame. Vanilla bug; see the module docstring.
+    patch.add_dict(asm.game_over_continue_fix.get_patch(), source="game_over_continue_fix")
 
     # Flag-gated byte patches.
     if (world.settings.is_flag_value(EXPChallenge, EXPChallengeOptions.NONE)

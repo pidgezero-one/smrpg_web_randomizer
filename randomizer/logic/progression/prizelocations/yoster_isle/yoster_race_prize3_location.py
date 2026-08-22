@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_pipe_vault)
+from randomizer.logic.progression.prizelocations.access import (can_do_mushroom_derby)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (NPCLocationRow4, ShuffleLocationSelector, WorldAreaEnum)
 if TYPE_CHECKING:
@@ -41,7 +41,7 @@ class YosterRacePrize3Location(NPCLocationRow4):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_pipe_vault(world, inventory)
+        return can_do_mushroom_derby(world, inventory)
 
 
 __all__ = ["YosterRacePrize3Location"]
