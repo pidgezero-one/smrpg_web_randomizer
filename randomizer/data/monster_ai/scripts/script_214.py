@@ -31,7 +31,7 @@ script = MonsterScript([
 	RemoveTarget(SELF),
 	Wait1TurnandRestartScript(),
 	IfTargetedByRegularAttack(),
-	IfVarLessThan(BV7EE007, 6),
+	IfVarLessThan(BV7EE007, 5),
 	SetTarget(SELF),
 	Attack(ATKMATKneg5Attack),
 	IncreaseVarBy1(BV7EE007),
