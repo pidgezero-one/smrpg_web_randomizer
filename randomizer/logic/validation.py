@@ -88,6 +88,14 @@ def _validate_character_requirements(settings: Settings) -> None:
             f"You can choose at most 5 starting characters."
         )
 
+    # StartingCharacter1 always exists and the protagonist sprite swap reads the
+    # ally it holds, so an empty starter list is not a "solo from nobody" run -
+    # it crashes the build.
+    if num_starters < 1:
+        raise SettingsValidationError(
+            "No starting characters are selected. You must choose at least one."
+        )
+
     # Each starter slot (explicit ally or Random_X) consumes one distinct ally
     # in the seed, so the number of starter slots cannot exceed the
     # 'Total playable allies' setting. This catches cases like 5 Random_X

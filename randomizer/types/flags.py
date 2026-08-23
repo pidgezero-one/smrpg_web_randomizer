@@ -4,6 +4,7 @@ from typing import Generic, TypeVar, TYPE_CHECKING, Any
 from ..data.spells.spells import ALL_SPELLS
 from ..types.spell import CharacterSpell
 from ..data.allies.allies import ally_collection
+from .ally import Ally
 from .base import CategorizationOption, ClassCategorizationOption
 from copy import deepcopy
 import random
@@ -479,26 +480,34 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
     _id = "starters"
     _requires_all = [(ShuffleCharacters(), True)]
 
-    def resolve_random_selections(self, rng: "random.Random | None" = None) -> list:
+    def resolve_random_selections(
+        self,
+        rng: "random.Random | None" = None,
+        available: list[Ally] | None = None,
+    ) -> list[Ally]:
         """Resolve enabled selections, replacing Random_X with actual allies.
 
         Args:
             rng: Optional random.Random instance for reproducible randomization.
                  If None, uses the global random module (which should be seeded).
+            available: The allies a Random_X slot may draw from. Defaults to every
+                 ally. Callers that know the seed's roster pass it, so a random
+                 starter is never a character the seed doesn't actually contain.
 
         Returns a list of Ally instances in the order they should be assigned.
         """
 
-        # Get all available allies
-        available_allies = list(ally_collection._allies)
+        available_allies = list(
+            available if available is not None else ally_collection._allies
+        )
 
         # Pre-populate used_allies with all explicitly selected allies
         # so random picks never duplicate a hard-set character
-        used_allies: list = [
+        used_allies: list[Ally] = [
             option.value for option in self.enabled
             if not (isinstance(option.value, str) and option.value.startswith("Random_"))
         ]
-        result: list = []
+        result: list[Ally] = []
 
         for option in self.enabled:
             value = option.value
@@ -506,10 +515,15 @@ class StartingCharacters(CategorizationFlagWithOrdinance[StartingCharacterEnum])
             if isinstance(value, str) and value.startswith("Random_"):
                 # Pick a random ally from those not yet used
                 remaining = [a for a in available_allies if a not in used_allies]
-                if remaining:
-                    chosen = rng.choice(remaining) if rng else random.choice(remaining)
-                    used_allies.append(chosen)
-                    result.append(chosen)
+                if not remaining:
+                    raise FlagError(
+                        "Not enough allies to fill the random starting character "
+                        "slots. Raise 'Total playable allies', enable more "
+                        "characters, or choose fewer starting characters."
+                    )
+                chosen = rng.choice(remaining) if rng else random.choice(remaining)
+                used_allies.append(chosen)
+                result.append(chosen)
             else:
                 # This is an actual ally instance
                 result.append(value)

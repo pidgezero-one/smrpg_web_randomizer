@@ -39,6 +39,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
 
 from randomizer.logic.progression.prizes import CookiesPrize, MarioDollPrize
 from ...data.rooms.npcs import EMPTY_NPC
+from ...data.allies.allies import ally_collection
 
 from ..placement import PlacementException, place, collect_accessible_items
 from ...types.logic import Inventory
@@ -912,6 +913,21 @@ def shuffle_rules(world: GameWorld) -> dict[int, list[type[Prize]]]:
         progression_required_chars | set(chars_to_include)
     )
 
+    # Resolve the StartingCharacters flag's Random_X slots against that roster,
+    # once per attempt. Drawing from the roster is what keeps a random starter
+    # in the prize pool: picking from all five allies could name a character
+    # MaxCharacters or AvailableCharacters left out of the seed, and the starter
+    # location would then be handed nothing at all.
+    if world._cached_starting_chars is None:
+        roster_allies = [
+            ally
+            for ally in ally_collection._allies
+            if all_character_prizes.get(ally.name) in selected_roster
+        ]
+        world._cached_starting_chars = starting_chars_flag.resolve_random_selections(
+            available=roster_allies
+        )
+
     selected_spells = select_spells(world, selected_roster)
 
     selected_damaging_spells: list[type[SpellPrize]] = [
@@ -1459,6 +1475,7 @@ def shuffle_prizes(world: GameWorld) -> None:
     world._cached_char_fill = None
     world._cached_spell_damage_char = None
     world._cached_spells = None
+    world._cached_starting_chars = None
     # Fresh least-used ledger per attempt, so a retry re-deals the substitute
     # fill instead of inheriting the previous attempt's usage counts.
     world.substitute_draw_counts = {}
@@ -1719,26 +1736,31 @@ def shuffle_prizes(world: GameWorld) -> None:
         "Toadstool": ToadstoolRecruitmentPrize,
     }
 
-    # Get starting characters from settings (resolved, so Random_X are actual allies)
-    starting_chars_flag = world.settings.get_flag(StartingCharacters)
-    resolved_starting_chars = starting_chars_flag.resolve_random_selections()
+    # Resolved once per attempt in shuffle_rules, against the roster, so every
+    # starter here is a character this seed actually contains. Re-resolving would
+    # roll a different party than the roster and spell pool were built for.
+    resolved_starting_chars = world._cached_starting_chars
+    assert (
+        resolved_starting_chars is not None
+    ), "shuffle_rules must resolve starting characters before placement"
 
     for loc in world.locations.values():
         if isinstance(loc, StartingCharacterLocation):
             loc_idx = starting_char_locations.get(type(loc))
             if loc_idx is not None and loc_idx < len(resolved_starting_chars):
                 ally = resolved_starting_chars[loc_idx]
-                if ally and hasattr(ally, "name") and ally.name in ally_name_to_prize:
-                    prize_cls = ally_name_to_prize[ally.name]
-                    char_in_pool = any(
-                        isinstance(p, prize_cls) for tier in pool.values() for p in tier
+                prize_cls = ally_name_to_prize[ally.name]
+                char_in_pool = any(
+                    isinstance(p, prize_cls) for tier in pool.values() for p in tier
+                )
+                if not char_in_pool:
+                    raise ValueError(
+                        f"Starting character '{ally.name}' is not in the prize pool. "
+                        f"The starter roster and the character roster have diverged."
                     )
-                    if char_in_pool:
-                        loc.set_prize(prize_cls())
-                        remove_prize_from_pool(pool, prize_cls, world)
-                        continue
-                    # else: character was excluded, skip this location
-            # If no starting character assigned to this slot, leave it empty
+                loc.set_prize(prize_cls())
+                remove_prize_from_pool(pool, prize_cls, world)
+            # Slots past the end of the enabled starter list hold nothing.
             continue
 
         elif not should_shuffle(loc, world):

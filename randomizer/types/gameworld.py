@@ -235,6 +235,13 @@ class GameWorld:
     # damage spell gate. Cached and reset alongside _cached_char_fill.
     _cached_spell_damage_char: type[CharacterPrize] | None = None
 
+    # The StartingCharacters flag's Random_X slots resolved to concrete allies,
+    # drawn from the roster so a random starter is always a character the seed
+    # contains. Resolving it more than once per attempt would hand the starter
+    # locations a different party than the roster and spell pool were built for,
+    # so it is cached and reset alongside _cached_char_fill.
+    _cached_starting_chars: list[Ally] | None = None
+
     # Cached spell pool for the current shuffle attempt. Same reason as
     # _cached_char_fill: select_spells() picks at random, and re-rolling it on
     # every shuffle_rules() call desyncs the tier assignment between calls.

@@ -767,31 +767,10 @@ def set_locations(world: GameWorld) -> None:
             **world.locations,
             StartingCharacter5: StartingCharacter5(),
         }
-    # Resolve starting character selections (handles "Random_X" values)
-    # and assign prizes to the starting character locations
-    resolved_allies = strchars.resolve_random_selections()  # Uses seeded global random
-    # Map allies by index to their prize classes (allies are all the same type)
-    ally_to_prize: dict[int, type] = {
-        MARIO_Ally.index: MarioRecruitmentPrize,
-        MALLOW_Ally.index: MallowRecruitmentPrize,
-        GENO_Ally.index: GenoRecruitmentPrize,
-        BOWSER_Ally.index: BowserRecruitmentPrize,
-        TOADSTOOL_Ally.index: ToadstoolRecruitmentPrize,
-    }
-    starting_char_locations = [
-        StartingCharacter1,
-        StartingCharacter2,
-        StartingCharacter3,
-        StartingCharacter4,
-        StartingCharacter5,
-    ]
-    for i, ally in enumerate(resolved_allies):
-        if i < len(starting_char_locations):
-            loc_type = starting_char_locations[i]
-            if loc_type in world.locations:
-                prize_cls = ally_to_prize.get(ally.index)
-                if prize_cls:
-                    world.locations[loc_type].set_prize(prize_cls())
+    # The starter locations are deliberately left empty here. shuffle_prizes
+    # clears every shuffled location's prize before it fills anything, so a prize
+    # set at this point is discarded - and resolving the flag's Random_X slots
+    # here would only burn RNG draws on a party the seed then throws away.
 
     if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
         world.locations = {
