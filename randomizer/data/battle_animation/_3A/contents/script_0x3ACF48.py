@@ -1720,14 +1720,46 @@ script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, s
 	RunSubroutine(["command_0x3A7531"], identifier="belome_3_outsourced"),
 	UseSpriteQueue(field_object=0, destinations=["command_0x3AD9BC"], bit_2=True, bit_4=True),
 	RunSubroutine(["command_0x3A7729"]),
+    # Count the clone type being summoned and give Belome the matching elemental
+    # immunity. BE83 takes it back when that type's count returns to zero.
+    # Bowser Copy S has no element bit - non-elemental spells are blocked by the
+    # $C2:C55E ASM hook instead.
+    SetAMEM8BitToAbsolute7E(0x6A, 0x7EFC4C),
+    SetAMEM8BitToAbsolute7E(0x60, BV7EE00F),
+    JmpIfAMEM8BitEqualsConst(0x60, 1, destinations=["belome3_grant_toadstool"]),
+    JmpIfAMEM8BitEqualsConst(0x60, 2, destinations=["belome3_grant_bowser"]),
+    JmpIfAMEM8BitEqualsConst(0x60, 3, destinations=["belome3_grant_geno"]),
+    JmpIfAMEM8BitEqualsConst(0x60, 4, destinations=["belome3_grant_mallow"]),
+    SetAMEM8BitToAbsolute7E(0x69, BV7EE009),
+    IncAMEM8BitByConst(0x69, 1),
+    SetAbsolute7EToAMEM8Bit(BV7EE009, 0x69),
+    SetAMEMBits(0x6A, [7]),  # Mario Clone S -> jump
+    Jmp(["belome3_grant_done"]),
+    SetAMEM8BitToAbsolute7E(0x69, BV7EE00A, identifier="belome3_grant_toadstool"),
+    IncAMEM8BitByConst(0x69, 1),
+    SetAbsolute7EToAMEM8Bit(BV7EE00A, 0x69),
+    SetAMEMBits(0x6A, [4]),  # Toadstool 3 -> ice
+    Jmp(["belome3_grant_done"]),
+    SetAMEM8BitToAbsolute7E(0x69, BV7EE00B, identifier="belome3_grant_bowser"),
+    IncAMEM8BitByConst(0x69, 1),
+    SetAbsolute7EToAMEM8Bit(BV7EE00B, 0x69),
+    Jmp(["belome3_grant_done"]),
+    SetAMEM8BitToAbsolute7E(0x69, BV7EE00C, identifier="belome3_grant_geno"),
+    IncAMEM8BitByConst(0x69, 1),
+    SetAbsolute7EToAMEM8Bit(BV7EE00C, 0x69),
+    SetAMEMBits(0x6A, [6]),  # Geno Clone S -> fire
+    Jmp(["belome3_grant_done"]),
+    SetAMEM8BitToAbsolute7E(0x69, BV7EE00D, identifier="belome3_grant_mallow"),
+    IncAMEM8BitByConst(0x69, 1),
+    SetAbsolute7EToAMEM8Bit(BV7EE00D, 0x69),
+    SetAMEMBits(0x6A, [5]),  # Mallow Copy S -> thunder
+    SetAbsolute7EToAMEM8Bit(0x7EFC4C, 0x6A, identifier="belome3_grant_done"),
     SetAMEM8BitToAbsolute7E(0x60, BV7EE00E),
     JmpIfAMEMBitsSet(0x60, [0], ["belome3_spritequeue_2_trigger"]),
     UseSpriteQueue(field_object=1, destinations=["belome3_spritequeue"], bit_2=True, bit_4=True),
 	Jmp(["command_0x3A6A08"]),
 	RemoveObject(identifier="belome3_spritequeue"),
     SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=135, y=119, z = 0, set_x=True, set_y=True, set_z=True),
-    ClearAMEM8Bit(0x60),
-    SetAbsolute7EToAMEM8Bit(BV7EE00D, 0x60),
     SetAMEM8BitToAbsolute7E(0x60, BV7EE00F),
 	JmpIfAMEM8BitEqualsConst(0x60, 1, destinations=["summon_toadstool_clone_s"]),
 	JmpIfAMEM8BitEqualsConst(0x60, 2, destinations=["summon_bowser_clone_s"]),
@@ -1754,9 +1786,6 @@ script = AnimationScriptBlock(expected_size=7676, expected_beginning=0x3ACF48, s
 	Jmp(["command_0x3A7550"]),
 	RemoveObject(identifier="belome3_spritequeue_2"),
     SetAMEM32ToXYZCoords(origin=ABSOLUTE_POSITION, x=215, y=159, z = 0, set_x=True, set_y=True, set_z=True),
-    ClearAMEM8Bit(0x60),
-    SetAMEM8BitToConst(0x60, 1),
-    SetAbsolute7EToAMEM8Bit(BV7EE00D, 0x60),
     SetAMEM8BitToAbsolute7E(0x60, BV7EE00F),
     #
 	JmpIfAMEM8BitEqualsConst(0x60, 1, destinations=["summon_toadstool_clone_s_2"]),

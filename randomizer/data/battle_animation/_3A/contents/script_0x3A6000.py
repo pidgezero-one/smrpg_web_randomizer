@@ -978,22 +978,22 @@ script = AnimationScriptBlock(expected_size=4189, expected_beginning=0x3A6000, s
 	SetAMEM8BitToAbsolute7E(0x69, BV7EE009, identifier="belome3clone_1"),
 	JmpIfAMEM8BitGreaterOrEqualThanConst(0x69, 1, ["belome3clone_2"]),
 	SetAMEM8BitToAbsolute7E(0x69, 0x7EFC4C),
-    DecAMEM8BitByConst(0x69, 128),
+    ClearAMEMBits(0x69, [7]),  # Mario Clone S gone -> drop jump immunity
     SetAbsolute7EToAMEM8Bit(0x7EFC4C, 0x69),
 	SetAMEM8BitToAbsolute7E(0x6A, BV7EE00A, identifier="belome3clone_2"),
     JmpIfAMEM8BitGreaterOrEqualThanConst(0x6A, 1, ["belome3clone_3"]),
 	SetAMEM8BitToAbsolute7E(0x6A, 0x7EFC4C),
-    DecAMEM8BitByConst(0x6A, 16),	
+    ClearAMEMBits(0x6A, [4]),  # Toadstool 3 gone -> drop ice immunity
     SetAbsolute7EToAMEM8Bit(0x7EFC4C, 0x6A),
 	SetAMEM8BitToAbsolute7E(0x6C, BV7EE00C, identifier="belome3clone_3"),
     JmpIfAMEM8BitGreaterOrEqualThanConst(0x6C, 1, ["belome3clone_4"]),
 	SetAMEM8BitToAbsolute7E(0x6C, 0x7EFC4C),
-    DecAMEM8BitByConst(0x6C, 64),
+    ClearAMEMBits(0x6C, [6]),  # Geno Clone S gone -> drop fire immunity
 	SetAbsolute7EToAMEM8Bit(0x7EFC4C, 0x6C),
 	SetAMEM8BitToAbsolute7E(0x6D, BV7EE00D, identifier="belome3clone_4"),
     JmpIfAMEM8BitGreaterOrEqualThanConst(0x6D, 1, ["belome3clone_5"]),
 	SetAMEM8BitToAbsolute7E(0x6D, 0x7EFC4C),
-    DecAMEM8BitByConst(0x6D, 32),
+    ClearAMEMBits(0x6D, [5]),  # Mallow Copy S gone -> drop thunder immunity
 	SetAbsolute7EToAMEM8Bit(0x7EFC4C, 0x6D),
 	SetAMEM8BitToAbsolute7E(0x6B, BV7EE00B, identifier="belome3clone_5"),
 	JmpIfAMEM8BitGreaterOrEqualThanConst(0x6B, 1, ["command_0x3A7550"]),

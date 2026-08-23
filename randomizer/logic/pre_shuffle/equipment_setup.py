@@ -5,6 +5,7 @@ from typing import (TYPE_CHECKING)
 
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBuff
 from ...types.item import Equipment
+from ...types.spell import CharacterSpell
 
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.commands.commands import (PlaySound, ScreenFlash)
 from smrpgpatchbuilder.datatypes.battle_animation_scripts.arguments.flash_colours import WHITE, RED, AQUA, YELLOW
@@ -105,7 +106,8 @@ def apply_equipment_settings(world: GameWorld) -> None:
     # Random character spell elements
     if world.settings.isflag_enabled(CharacterSpellElements):
         spells_to_update = [
-            s for s in world.spells.spells if s.element != Element.NONE
+            s for s in world.spells.spells
+            if s.element != Element.NONE and isinstance(s, CharacterSpell)
         ]
         for spell in spells_to_update:
             spell.set_element(
