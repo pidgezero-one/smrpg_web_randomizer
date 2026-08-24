@@ -14,3 +14,11 @@
 - booster tower entry requires elder key + room key
 - optional fix for "go world" glitch on shovel knights
 - plando
+- exp stars:
+    - keep dark room
+    - booster pass secret
+    - occupied MK vault
+    - valley corner
+    - mushroom way
+    - pipe vault 
+    - tower parachute room / room key chest (walk over board with no fights)
