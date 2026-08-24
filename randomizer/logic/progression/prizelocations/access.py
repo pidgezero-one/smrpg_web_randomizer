@@ -413,7 +413,8 @@ def can_do_valley_pipes(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear the pipes."""
     # You're expected to have the lamb's lure and be able to despawn the chewies.
     # The chewies are also the only fight in the game that rolls a formation at random on contact without needing to room-reload. 
-    if inventory.has_item_count(ProgressiveEggPrize, 2) and (world.settings.isflag_enabled(SeeYa) or inventory.has_item(SeeYaPrize)):
+
+    if (inventory.has_item_count(ProgressiveEggPrize, 2) and not world.settings.isflag_enabled(EnemyFormations) and not world.settings.is_flag_value(EnemyStats, EnemyStatsShuffleOptions.FULL_RANDOM)) and (world.settings.isflag_enabled(SeeYa) or inventory.has_item(SeeYaPrize)):
         return can_access_valley(world, inventory)
     return not_earlygame(world, inventory)
 
