@@ -13,3 +13,4 @@
 - randomize DPS on bombs
 - booster tower entry requires elder key + room key
 - optional fix for "go world" glitch on shovel knights
+- plando
