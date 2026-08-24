@@ -98,7 +98,9 @@ def _calculate_location_stats(
     Derives all exclusions and multipliers from the original prize's configuration:
     - HP = sum of formation members participating in HP slicing (not in hp_slice_excluded
       or scaling_excluded), plus extra_hp_enemies, with hp_pie_contribution_multipliers applied
-    - XP = same set, same multipliers, same location multiplier as HP
+    - XP = what the vanilla fight paid: every formation member not in scaling_excluded
+      (hp_slice_excluded members included - the player still earns them), plus
+      extra_hp_enemies, no contribution multipliers, same location multiplier as HP
     - Other stats = average of anchor_enemy (or all non-excluded formation members if None)
 
     Returns (hp, xp, coins, attack, defense, magic_attack, magic_defense, evade, magic_evade)
@@ -134,13 +136,29 @@ def _calculate_location_stats(
     hp_multipliers = original_prize.hp_pie_contribution_multipliers
 
     hp = 0
-    xp = 0
     coins = 0
     for enemy, enemy_class in hp_enemy_pairs:
         multiplier = hp_multipliers.get(enemy_class, 1.0)
         hp += round(enemy.hp * multiplier)
-        xp += round(enemy.xp * multiplier)
         coins += enemy.coins
+
+    # XP counts a different set than HP. Keeping hp_slice_excluded members out of the
+    # HP pie is deliberate - a summon's HP sits on top of the boss's rather than
+    # dividing it - but XP is the sum the player banks, so every member the fight
+    # pays for belongs in the budget. Johnny's slot priced at 90 (Johnny alone) while
+    # the vanilla fight pays 170 (+4 Bandana Blues at 20), so whoever was shuffled in
+    # earned about half of what Johnny did. Contribution multipliers are an HP-shaping
+    # knob and stay out of it: the budget is simply what the vanilla fight paid.
+    xp = sum(
+        cast(Enemy, m.enemy()).xp
+        for m in original_prize.formation_members
+        if m is not None and m.enemy not in scaling_excluded
+    )
+    xp += sum(
+        cast(Enemy, e_class()).xp
+        for e_class in original_prize.extra_hp_enemies
+        if e_class not in scaling_excluded
+    )
 
     # Apply location HP multiplier (e.g., Cloaker/Domino: you only fight 2 of 4 enemies).
     # XP rides the same multiplier: if you only fight half the formation, you only earn
@@ -197,10 +215,13 @@ def _apply_stats_to_prize(
     - Scale against the anchor mean, the way the four stats above used to.
 
     XP:
-    - Runs the identical pipeline as HP: same participant set, same pie contribution
-      multipliers, same post-slice hp_slice_multipliers, same anchor fallback for
-      excluded enemies. Only the clamp differs (set_xp asserts 0..9999).
-    - Coins still slice without pie multipliers.
+    - Slices the location's XP budget across every formation member (plus
+      extra_hp_enemies), weighted by vanilla XP * hp_pie_contribution_multipliers *
+      hp_slice_multipliers. Unlike HP, hp_slice_excluded members are inside this pie:
+      the player banks the whole formation's experience, so the fight has to pay the
+      budget and no more. Only additional_enemies_to_scale summons sit outside it and
+      scale off the anchor, since nothing bounds how many spawn.
+    - Coins still slice the HP participant set, without pie multipliers.
 
     Args:
         prize: The boss fight prize to scale
@@ -286,12 +307,35 @@ def _apply_stats_to_prize(
         # No participants in slicing - reference gets full location HP
         ref_new_hp = location_hp
 
-    # === XP/Coins pie slicing (mirrors HP slicing, accounting for instance counts) ===
-    # Same participant set as HP - hp_slice_excluded governs both pies.
-    total_xp_for_slicing = sum(
-        cast(Enemy, c()).xp * pie_multipliers.get(c, 1.0) * enemy_counts[c]
-        for c in hp_slice_participant_classes
-    ) if hp_slice_participant_classes else 0
+    # === XP pie slicing ===
+    # XP does NOT share the HP participant set. Everything in the formation earns the
+    # player experience, so hp_slice_excluded members slice the budget alongside the
+    # boss instead of taking an anchor-ratio share on top of it (Johnny's 4 Bandana
+    # Blues used to make his fight pay 1.9x whatever slot he landed in). Only true
+    # summons stay outside the budget and scale off the anchor, since nothing bounds
+    # how many spawn. enemy_counts is the authority on that: a class is a summon only
+    # if the fight has no counted instance of it. Cloaker/Domino's EarthLink is listed
+    # in both additional_enemies_to_scale and extra_hp_enemies, and it is the latter
+    # that decides - you fight exactly one, so it slices.
+    xp_slice_excluded = {c for c in all_enemy_classes if c not in enemy_counts}
+    xp_slice_participant_classes = set(enemy_counts.keys())
+
+    def xp_weight(c: type) -> float:
+        """One instance's share of the XP budget, before dividing by the total.
+
+        hp_slice_multipliers (e.g. Dodo's 2.5x) is folded in here rather than applied
+        after the slice, so a hand-tuned member takes a bigger cut of the budget
+        instead of minting XP on top of it.
+        """
+        return (
+            cast(Enemy, c()).xp
+            * pie_multipliers.get(c, 1.0)
+            * prize.hp_slice_multipliers.get(cast(type[Enemy], c), 1.0)
+        )
+
+    total_xp_weight = sum(
+        xp_weight(c) * enemy_counts[c] for c in xp_slice_participant_classes
+    ) if xp_slice_participant_classes else 0.0
     total_coins_for_slicing = sum(
         cast(Enemy, c()).coins * enemy_counts[c]
         for c in hp_slice_participant_classes
@@ -302,13 +346,14 @@ def _apply_stats_to_prize(
     # the max(1, ...) clamp below and the fight pays 1 XP no matter which slot it
     # was shuffled into - Jinx 3 on the Axem Rangers' ledge would be worth 1
     # instead of 330. Split the location's budget evenly per instance instead.
-    xp_instances = sum(enemy_counts[c] for c in hp_slice_participant_classes)
+    xp_instances = sum(enemy_counts[c] for c in xp_slice_participant_classes)
     even_xp_share = round(xp / xp_instances) if xp_instances else xp
 
     ref_xp: float = sum(cast(Enemy, c()).xp for c in anchor_classes) / len(anchor_classes)
     ref_coins: float = sum(cast(Enemy, c()).coins for c in anchor_classes) / len(anchor_classes)
-    if total_xp_for_slicing > 0:
-        ref_new_xp = round(xp * (ref_xp * avg_pie_multiplier / total_xp_for_slicing))
+    ref_xp_weight = sum(xp_weight(c) for c in anchor_classes) / len(anchor_classes)
+    if total_xp_weight > 0:
+        ref_new_xp = round(xp * (ref_xp_weight / total_xp_weight))
     else:
         ref_new_xp = xp
     if total_coins_for_slicing > 0:
@@ -362,23 +407,23 @@ def _apply_stats_to_prize(
         enemy.set_evade(min(100, scale_stat(evade, original.evade, ref_evade, enemy.ratio_evade)))
         enemy.set_magic_evade(min(100, scale_stat(magic_evade, original.magic_evade, ref_magic_evade, enemy.ratio_magic_evade)))
 
-        # === XP Calculation (mirrors HP slicing) ===
-        pie_adjusted_xp = original.xp * pie_multipliers.get(cast(type[Enemy], enemy_class), 1.0)
-
-        if enemy_class in hp_slice_excluded:
-            # Excluded from pie - scale relative to anchor
+        # === XP Calculation ===
+        if enemy_class in xp_slice_excluded:
+            # A summon, outside the budget - scale relative to the anchor. even_xp_share
+            # is the *participants'* fallback: handing it to a summon pays the whole
+            # slot budget per spawn (Punchinello's microbombs each earning Yaridovich's
+            # 120). Keep vanilla XP instead, the way HP and coins do.
             if ref_xp > 0:
                 new_xp = round(ref_new_xp * (original.xp / ref_xp))
             else:
-                new_xp = even_xp_share
-        elif total_xp_for_slicing > 0:
-            # Participate in pie - divide location XP proportionally (counts in denominator)
-            new_xp = round(xp * (pie_adjusted_xp / total_xp_for_slicing))
+                new_xp = original.xp
+        elif total_xp_weight > 0:
+            # Slice the budget - instance counts are already in the denominator, and
+            # slice_multiplier is inside xp_weight rather than applied afterwards.
+            new_xp = round(xp * (xp_weight(cast(type[Enemy], enemy_class)) / total_xp_weight))
         else:
             new_xp = even_xp_share
 
-        # Same post-slice multiplier HP uses (e.g., Dodo's 2.5x)
-        new_xp = round(new_xp * slice_multiplier)
         # set_xp asserts 0..9999
         enemy.set_xp(min(9999, max(1, new_xp)))
 

@@ -87,6 +87,7 @@ from randomizer.data.variables.event_script_names import (E1331_TOWER_BREAK_DOWN
 from randomizer.data.variables.room_names import (
     R179_SUNKEN_SHIP_POSTKC_AREA_06_MARIO_MIRROR_ROOM,
     R202_BOOSTER_TOWER_ENTRANCE,
+    R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH,
     R341_NIMBUS_LAND_GARROS_HOUSE,
     R496_FACTORY_GROUNDS_FIGHT_WITH_SMITHY_USES_SLEDGE,
 )
@@ -104,11 +105,13 @@ from randomizer.data.variables.sprite_names import (
     SPR0136_MARIO_IN_MINE_CART,
     SPR0621_OLD_CLASSIC_MARIO,
 )
+from randomizer.logic.palette_rows import (npc_palette_rows)
 from randomizer.logic.progression.prizelocations import (MushroomWayCharacter, StartingCharacter1)
 from randomizer.types.ally import (SpriteAnimationState)
 from randomizer.types.flags import (BoosterTowerGate, BoosterTowerGating)
 from randomizer.types.prize import (CharacterPrize)
 from randomizer.types.prizelocation import (CharacterRecruitmentLocation)
+from randomizer.types.room import (Room)
 from randomizer.utils.event_script_snippets.tower_access_scripts import (
     bowser_script,
     bowser_self_script,
@@ -142,6 +145,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import
     NPC_0,
     NPC_3,
     NPC_4,
+    NPC_6,
 )
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (
     ActionQueueSync,
@@ -383,6 +387,40 @@ def apply_protagonist_sprite_swaps(world: GameWorld) -> None:
                 break  # only demote one slot
 
 
+def _apply_seaside_boss_palette_morph_row(world: GameWorld) -> None:
+    """Point seaside_palette_morph_1 at whichever CGRAM row R315's boss NPC got.
+
+    The morph recolours object 6 (the fake elder who turns into the boss), so
+    it must target that object's palette row. Rows are handed out per distinct
+    palette in object order, so the row depends on how many palettes objects
+    0-5 claim - which changes once boss/henchman substitution has swapped their
+    NPCs, and again when a palette declares extra rows (the palette-swap merge
+    gives a carrier extra_palette_source_offset=1 + a row count, and those rows
+    sit adjacent to its own).
+
+    Runs before finalize_world grows ally_sprite_buffer_size for the chosen
+    protagonist, so the projected size is used instead of the current one -
+    Bowser needs two rows and pushes every NPC row down by one.
+    """
+    room = world.rooms._rooms[R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH]
+    assert isinstance(room, Room), (
+        f"Room {R315_SEASIDE_TOWN_DURING_YARIDOVICH_BEACH} not found"
+    )
+    projection = room.project_ally_sprite_buffer_size(world)
+    ally_buffer_size = None if projection is None else min(3, projection[0])
+
+    obj = room.get_npc_by_target_id(NPC_6)
+    palette = world.get_sprite(int(obj._npc.sprite_id)).palette_id
+    row = npc_palette_rows(world, room, ally_buffer_size).get(palette)
+    assert row is not None, (
+        f"R315 NPC_6 palette {palette} has no CGRAM row - it can only be missing "
+        "if the object shares the protagonist's palette, which the boss NPC never does"
+    )
+    world.event_scripts.get_command_by_identifier(
+        "seaside_palette_morph_1", PaletteSetMorphs
+    ).set_row(row)
+
+
 def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
     # Update the "hide from Toad" animation to use the overworld character's
     # defend mold, so the correct sprite frame shows when cowering.
@@ -480,11 +518,12 @@ def apply_recruitment_palette_adjustments(world: GameWorld) -> None:
     # in renders.py via _apply_r375_protagonist_palette_rows, called from
     # apply_ending_characters.
 
+    _apply_seaside_boss_palette_morph_row(world)
+
     # Set palettes that change when the protagonist changes.
     if ally.index == 2: # bowser shifts a lot of stuff...
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_from_row(NPC_PALETTE_ROW_4)
         world.event_scripts.get_command_by_identifier("mallow_statue_palette_set", PaletteSet).set_to_row(NPC_PALETTE_ROW_4)
-        world.event_scripts.get_command_by_identifier("seaside_palette_morph_1", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)
         world.event_scripts.get_subscript_command_by_identifier("keep_heal_arms_raised_aq", "keep_heal_arms_raised", A_SetSpriteSequence).set_mirror_sprite(False)
         try:
             world.event_scripts.get_command_by_identifier("kamek_palette", PaletteSetMorphs).set_row(NPC_PALETTE_ROW_3)

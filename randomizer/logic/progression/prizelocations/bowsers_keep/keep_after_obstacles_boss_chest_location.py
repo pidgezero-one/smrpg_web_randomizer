@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_exit_keep, can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_clear_keep)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, TreasureChestLocationRow1, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (A_PlaySound)
@@ -44,8 +44,8 @@ class KeepAfterObstaclesBossChestLocation(TreasureChestLocationRow1):
     _access_conditions = "Not a check if \"Shuffle Magikoopa's coin chest\" is turned off."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
-            world, inventory
+        return (
+            can_clear_keep(world, inventory)
         )
 
     def render(

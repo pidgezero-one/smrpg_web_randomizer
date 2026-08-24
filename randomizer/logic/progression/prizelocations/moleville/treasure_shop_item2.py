@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_clear_mines, can_clear_seaside_boss)
+from randomizer.logic.progression.prizelocations.access import (can_clear_mines, can_clear_seaside_boss, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (NPCLocationRow2, ShuffleLocationSelector, TreasureShopLocation, WorldAreaEnum)
 if TYPE_CHECKING:

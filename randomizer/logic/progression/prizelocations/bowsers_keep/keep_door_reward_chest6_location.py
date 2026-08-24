@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_exit_keep, can_clear_keep)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (SlotsPrize)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, TreasureChestLocationRow6, WorldAreaEnum)
@@ -44,12 +44,7 @@ class KeepDoorRewardChest6Location(TreasureChestLocationRow6):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        boss_condition = (
-            not_earlygame(world, inventory)
-            if world.settings.isflag_enabled(BowserDoorShuffle)
-            else True
-        )
-        return can_pass_obstacle_courses(world, inventory) and boss_condition
+        return can_exit_keep(world, inventory) and can_clear_keep(world, inventory)
     
     def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         op = super().render(world)

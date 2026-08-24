@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_pass_obstacle_courses)
+from randomizer.logic.progression.prizelocations.access import (can_pass_obstacle_courses, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_exit_keep, can_clear_keep)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StandingLocationRow1, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_8)
@@ -38,7 +38,7 @@ class KeepInvisibleBridgeCoin1Location(StandingLocationRow1):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_pass_obstacle_courses(world, inventory)
+        return can_exit_keep(world, inventory) and can_exit_keep(world, inventory)
 
 
 __all__ = ["KeepInvisibleBridgeCoin1Location"]

@@ -41,6 +41,7 @@ script = EventScript([
 	SummonObjectToSpecificLevel(NPC_6, R318_LANDS_END_DESERT_AREA_02),
 	FadeInFromBlack(sync=False),
 	JmpIfBitClear(TEMPLE_BOSS_DEFEATED, ["EVENT_1777_ret_32"]),
+    JmpIfBitClear(MAP_MONSTRO_TOWN, ["EVENT_1777_ret_32"]),
 	PlaySound(sound=SO123_CHAIN_RUMBLING_NOISE, channel=6),
 	Pause(1),
 	FadeOutSoundToVolume(duration=8, volume=0),

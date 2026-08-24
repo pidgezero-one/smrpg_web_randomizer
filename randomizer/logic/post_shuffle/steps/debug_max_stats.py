@@ -1,10 +1,13 @@
 """Debug-mode max stats. Runs AFTER shuffling and again after results are applied."""
 
 from __future__ import annotations
+from typing import TYPE_CHECKING
 from randomizer.data.items.items import SafetyRingItem, SignalRingItem
 from randomizer.logic.progression.prizelocations import StartingCharacter1
 from randomizer.types.prize import CharacterPrize
 from smrpgpatchbuilder.datatypes.spells.enums import Element, Status
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import (GameWorld)
 
 
 def apply_debug_max_stats(world: GameWorld) -> None:

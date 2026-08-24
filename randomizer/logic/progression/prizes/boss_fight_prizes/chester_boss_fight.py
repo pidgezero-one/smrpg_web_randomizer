@@ -1,5 +1,5 @@
 from __future__ import annotations
-from randomizer.data.enemies.enemies import (BAHAMUTTEnemy, CHESTEREnemy)
+from randomizer.data.enemies.enemies import (BAHAMUTTEnemy2, CHESTEREnemy)
 from randomizer.data.packs.pack_collection import (FORM0269_ONE_CHESTER_ONE_BAHAMUTTENEMY2)
 from randomizer.data.physical_objects.bosses import (ChesterLargeObject, ChesterSmallObject, MimicStatueObject)
 from randomizer.data.variables.dialog_names import (
@@ -41,7 +41,7 @@ class ChesterBossFight(BossFightPrize):
     _formation = FORM0269_ONE_CHESTER_ONE_BAHAMUTTENEMY2
     _members = [
         FormationMember(CHESTEREnemy, 183, 127),
-        FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
+        FormationMember(BAHAMUTTEnemy2, 135, 119, hidden_at_start=True),
     ]
     _seaside_letter_name_if_volcano_boss = "a purple box sliding about"
     _seaside_letter_name_if_final_boss = "Chester's monsters."
@@ -52,7 +52,7 @@ class ChesterBossFight(BossFightPrize):
     _statue_npc = MimicStatueObject
 
     _anchor_enemy = CHESTEREnemy
-    _hp_slice_excluded_enemies = [BAHAMUTTEnemy]
+    _hp_slice_excluded_enemies = [BAHAMUTTEnemy2]
 
     _dialog_replacements = {
         DI0049_NIMBUS_EGG_BOSS_TALK_AFTER_WINNING: """CHESTER: Go on, take it. Just let\n me go back to sleep.[await]""",

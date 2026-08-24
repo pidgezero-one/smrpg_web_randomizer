@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (boss_slot_min_vram_cap_for_room, can_damage_enemies_with_spells)
+from randomizer.logic.progression.prizelocations.access import (boss_slot_min_vram_cap_for_room, can_damage_enemies_with_spells, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.mushroom_way.mushroom_way_character import MushroomWayCharacter
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)

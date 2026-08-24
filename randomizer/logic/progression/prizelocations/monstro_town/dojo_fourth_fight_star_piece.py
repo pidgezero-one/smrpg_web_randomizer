@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.monstro_town.dojo_fourth_fight import (DojoFourthFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -38,8 +38,10 @@ class DojoFourthFightStarPiece(StarPieceLocation):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_monstro_town(world, inventory) and not_earlygame(
-            world, inventory
+        return (
+            super().can_access(inventory, world)
+            and can_access_monstro_town(world, inventory)
+            and not_earlygame(world, inventory)
         )
 
 

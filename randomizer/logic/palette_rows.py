@@ -43,14 +43,23 @@ def protagonist_palette_id(world: GameWorld) -> int | None:
     return world.get_sprite(PROTAGONIST_BASE_SPRITE_ID[ally_index]).palette_id
 
 
-def npc_palette_rows(world: GameWorld, room: Room) -> dict[int, int]:
-    """CGRAM row each distinct NPC palette id occupies in room."""
+def npc_palette_rows(
+    world: GameWorld, room: Room, ally_buffer_size: int | None = None
+) -> dict[int, int]:
+    """CGRAM row each distinct NPC palette id occupies in room.
+
+    ally_buffer_size overrides the partition's current value, for callers that
+    run before finalize_world's update_partition_by_protagonist has grown the
+    buffer for the chosen protagonist.
+    """
     partition = room.partition
     assert partition is not None, "room has no partition"
+    if ally_buffer_size is None:
+        ally_buffer_size = partition.ally_sprite_buffer_size
 
     protagonist_palette = protagonist_palette_id(world)
     rows: dict[int, int] = {}
-    row = PROTAGONIST_PALETTE_ROW + partition.ally_sprite_buffer_size
+    row = PROTAGONIST_PALETTE_ROW + ally_buffer_size
     for obj in room.objects:
         sprite_id = int(obj._npc.sprite_id)
         if sprite_id == EMPTY_SPRITE_ID:

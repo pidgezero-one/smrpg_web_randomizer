@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_exit_keep, can_clear_keep)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, ShuffleLocationSelector, WorldAreaEnum)
@@ -34,8 +34,8 @@ class KeepFinalBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_pass_obstacle_courses(world, inventory) and not_earlygame(
-            world, inventory
+        return (
+            can_clear_keep(world, inventory)
         )
 
     def post_unlocks(self, world: GameWorld) -> EventScript:

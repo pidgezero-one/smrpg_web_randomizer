@@ -45,6 +45,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 from randomizer.types.flags import (LandsEndGate, LandsEndGating)
 
 if TYPE_CHECKING:
+    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (UsableEventScriptCommand)
     from randomizer.types.gameworld import (GameWorld)
     from randomizer.types.prizelocation import (BossFightLocation)
     from randomizer.types.physical_objects import (BossNPC)

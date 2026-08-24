@@ -12,7 +12,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (A_FixedFCoordOn)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_FaceNortheast, A_FaceNorthwest, A_FaceSoutheast, A_FaceSouthwest, A_Jmp, A_Pause, A_ResetProperties, A_ReturnQueue, A_SetBit, A_SetSequenceSpeed, A_SetSpriteSequence, A_ShiftXYPixels, A_ShiftZUpSteps, A_WalkNorthPixels, A_WalkSouthPixels)
 from typing import (cast)
-from randomizer.logic.progression.prizelocations.access import (boss_slot_min_vram_cap_for_room, can_damage_enemies_with_spells, can_do_tower_curtain_game, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_clear_tower, boss_slot_min_vram_cap_for_room, can_damage_enemies_with_spells, can_do_tower_curtain_game, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.marrymore.marrymore_character import MarrymoreCharacter
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
@@ -549,7 +549,7 @@ class BoosterTowerIndoorBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_do_tower_curtain_game(world, inventory) and not_earlygame(
+        return can_clear_tower(
             world, inventory
         )
 

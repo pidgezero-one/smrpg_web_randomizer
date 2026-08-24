@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_fifth_dojo_boss, can_access_inner_mines, can_access_sealed_door_boss, can_access_temple_boss, can_access_tower, can_clear_chapel, can_clear_ship)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_access_fifth_dojo_boss, can_access_inner_mines, can_access_sealed_door_boss, can_clear_temple_boss, can_do_tower_curtain_game, can_clear_chapel, can_clear_ship, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (KeyItemLocation, NPCLocationRow6, ShuffleLocationSelector, WorldAreaEnum)
 if TYPE_CHECKING:
@@ -26,12 +26,12 @@ class PostgameVoucherLocation(NPCLocationRow6, KeyItemLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
             can_access_inner_mines(world, inventory)
-            and can_access_tower(world, inventory)
+            and can_do_tower_curtain_game(world, inventory)
             and can_clear_chapel(world, inventory)
             and can_clear_ship(world, inventory)
-            and can_access_temple_boss(world, inventory)
+            and can_clear_temple_boss(world, inventory)
             and can_access_sealed_door_boss(world, inventory)
-            and can_access_fifth_dojo_boss(world, inventory)
+            and can_access_monstro_town(world, inventory)
         )
 
     _hint = [

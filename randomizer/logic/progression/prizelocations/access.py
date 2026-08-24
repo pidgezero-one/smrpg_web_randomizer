@@ -67,10 +67,38 @@ def can_defeat_bosses(world: GameWorld, inventory: Inventory, count: int) -> boo
 
 
 def almost_earlygame(world: GameWorld, inventory: Inventory) -> bool:
-    return can_defeat_bosses(world, inventory, 5)
+    return can_defeat_bosses(world, inventory, 3)
+
+
+def is_midgame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 6)
 
 def not_earlygame(world: GameWorld, inventory: Inventory) -> bool:
     return can_defeat_bosses(world, inventory, 10)
+
+def lategame(world: GameWorld, inventory: Inventory) -> bool:
+    return can_defeat_bosses(world, inventory, 15)
+
+def expect_halfway_decent_movement(world: GameWorld, inventory: Inventory) -> bool:
+    if world.settings.is_flag_value(
+        ProgressionLogicDifficulty, ProgressionLogicDifficultyOptions.NORMAL
+    ):
+        return almost_earlygame(world, inventory)
+    return True
+
+def expect_ok_movement(world: GameWorld, inventory: Inventory) -> bool:
+    if world.settings.is_flag_value(
+        ProgressionLogicDifficulty, ProgressionLogicDifficultyOptions.NORMAL
+    ):
+        return is_midgame(world, inventory)
+    return True
+
+def expect_good_movement(world: GameWorld, inventory: Inventory) -> bool:
+    if world.settings.is_flag_value(
+        ProgressionLogicDifficulty, ProgressionLogicDifficultyOptions.NORMAL
+    ):
+        return not_earlygame(world, inventory)
+    return True
 
 
 def is_early_midgame(world: GameWorld, inventory: Inventory) -> bool:
@@ -96,7 +124,7 @@ def can_access_bandits_way(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_access_sewer(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Kero Sewers."""
-    if can_access_lands_end(world, inventory):
+    if can_dodge_lands_end_enemies(world, inventory):
         return True
     if world.settings.is_flag_value(KeroSewersGate, KeroSewersGating.MALLOW):
         return inventory.has_item(MallowRecruitmentPrize)
@@ -120,7 +148,7 @@ def can_access_forest(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_forest(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Forest Maze."""
-    return can_access_forest(world, inventory)
+    return can_access_forest(world, inventory) and almost_earlygame(world, inventory)
 
 
 def can_access_pipe_vault(world: GameWorld, inventory: Inventory) -> bool:
@@ -145,14 +173,16 @@ def can_do_mushroom_derby(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_access_moleville_entrance(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the uper entrance to the mines."""
+    if not expect_halfway_decent_movement(world, inventory):
+        return False
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.GENO):
-        return inventory.has_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) 
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.FOREST):
-        return can_access_forest(world, inventory)
+        return can_access_forest(world, inventory) 
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOWYER):
         return inventory.has_item(BowyerBossFight)
     if world.settings.is_flag_value(Moleville1Gate, Moleville1Gating.BOSHI):
-        return can_do_mushroom_derby(world, inventory)
+        return can_do_mushroom_derby(world, inventory) 
     return True
 
 
@@ -166,7 +196,7 @@ def can_access_inner_mines(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_mines(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Moleville Mines."""
-    return can_access_inner_mines(world, inventory)
+    return can_access_inner_mines(world, inventory) and almost_earlygame(world, inventory)
 
 
 def can_access_moleville_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -174,27 +204,27 @@ def can_access_moleville_postgame_boss(world: GameWorld, inventory: Inventory) -
     return (
         can_access_inner_mines(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
 def can_access_tower(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to enter Booster Tower."""
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MARIO):
-        return inventory.has_item(MarioRecruitmentPrize)
+        return inventory.has_item(MarioRecruitmentPrize) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MALLOW):
-        return inventory.has_item(MallowRecruitmentPrize)
+        return inventory.has_item(MallowRecruitmentPrize) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.GENO):
-        return inventory.has_item(GenoRecruitmentPrize)
+        return inventory.has_item(GenoRecruitmentPrize) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.BOWSER):
-        return inventory.has_item(BowserRecruitmentPrize)
+        return inventory.has_item(BowserRecruitmentPrize) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.TOADSTOOL):
-        return inventory.has_item(ToadstoolRecruitmentPrize)
+        return inventory.has_item(ToadstoolRecruitmentPrize) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.MINES):
-        return can_access_inner_mines(world, inventory)
+        return can_access_inner_mines(world, inventory) and expect_halfway_decent_movement(world, inventory)
     if world.settings.is_flag_value(BoosterTowerGate, BoosterTowerGating.PUNCHINELLO):
-        return inventory.has_item(PunchinelloBossFight)
-    return True
+        return inventory.has_item(PunchinelloBossFight) and expect_halfway_decent_movement(world, inventory)
+    return expect_halfway_decent_movement(world, inventory)
 
 
 def can_do_tower_curtain_game(world: GameWorld, inventory: Inventory) -> bool:
@@ -206,19 +236,23 @@ def can_do_tower_curtain_game(world: GameWorld, inventory: Inventory) -> bool:
     return can_access_tower(world, inventory)
 
 
+def can_clear_tower(world: GameWorld, inventory: Inventory) -> bool:
+    return can_do_tower_curtain_game(world, inventory) and almost_earlygame(world, inventory)
+
+
 def can_access_tower_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the postgame boss at Booster Tower."""
     return (
-        can_do_tower_curtain_game(world, inventory)
+        can_clear_tower(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
 def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Booster Hill."""
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.TOWER):
-        return can_do_tower_curtain_game(world, inventory)
+        return can_clear_tower(world, inventory)
     if world.settings.is_flag_value(BoosterHillGate, BoosterHillGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     return True
@@ -227,7 +261,7 @@ def can_access_hill(world: GameWorld, inventory: Inventory) -> bool:
 def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to enter the Marrymore chapel."""
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.TOWER):
-        return can_do_tower_curtain_game(world, inventory)
+        return can_clear_tower(world, inventory)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.KGGG):
         return inventory.has_item(KnifeGuyGrateGuyBossFight)
     if world.settings.is_flag_value(MarrymoreGate, MarrymoreGating.HILL):
@@ -237,12 +271,11 @@ def can_access_chapel(world: GameWorld, inventory: Inventory) -> bool:
 
 def can_clear_chapel(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the boss of Marrymore."""
+    has_gear = inventory.has_item(ShoesPrize) and inventory.has_item(RingPrize) and inventory.has_item(BroochPrize) and inventory.has_item(CrownPrize)
+    if not world.settings.isflag_enabled(ShuffleWeddingGear):
+        has_gear = True
     return (
-        inventory.has_item(ShoesPrize)
-        and inventory.has_item(RingPrize)
-        and inventory.has_item(BroochPrize)
-        and inventory.has_item(CrownPrize)
-        and can_access_chapel(world, inventory)
+        has_gear and can_access_chapel(world, inventory) and is_midgame(world, inventory)
     )
 
 
@@ -251,7 +284,7 @@ def can_access_chapel_postgame_boss(world: GameWorld, inventory: Inventory) -> b
     return (
         can_clear_chapel(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
@@ -268,9 +301,14 @@ def can_access_sea(world: GameWorld, inventory: Inventory) -> bool:
     return True
 
 
+def can_access_early_ship(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to clear Sunken Ship."""
+    return can_access_sea(world, inventory) and expect_ok_movement(world, inventory)
+
+
 def can_clear_ship(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to clear Sunken Ship."""
-    return can_access_sea(world, inventory)
+    return can_access_early_ship(world, inventory) and is_midgame(world, inventory)
 
 
 def can_access_ship_postgame_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -278,7 +316,7 @@ def can_access_ship_postgame_boss(world: GameWorld, inventory: Inventory) -> boo
     return (
         can_clear_ship(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
@@ -292,7 +330,7 @@ def can_access_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_clear_seaside_boss(world: GameWorld, inventory: Inventory) -> bool:
-    return can_access_seaside_boss(world, inventory)
+    return can_access_seaside_boss(world, inventory) and is_midgame(world, inventory)
 
 
 def can_access_lands_end(world: GameWorld, inventory: Inventory) -> bool:
@@ -310,13 +348,28 @@ def can_access_lands_end(world: GameWorld, inventory: Inventory) -> bool:
     return True
 
 
+def can_dodge_lands_end_enemies(world: GameWorld, inventory: Inventory) -> bool:
+    return can_access_lands_end(world, inventory) and expect_ok_movement(world, inventory)
+
+
+def can_pass_whirlpools(world: GameWorld, inventory: Inventory) -> bool:
+    if world.settings.isflag_enabled(SkipAnts):
+        return can_dodge_lands_end_enemies(world, inventory)
+    return can_dodge_lands_end_enemies(world, inventory) and is_midgame(world, inventory)
+
+def can_access_temple(world: GameWorld, inventory: Inventory) -> bool:
+    if not world.settings.isflag_enabled(EXPStarsAnywhere):
+        return can_pass_whirlpools(world, inventory)
+    return can_pass_whirlpools(world, inventory) and is_midgame(world, inventory)
+
+
 def can_access_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Belome Temple."""
     if world.settings.is_flag_value(BelomeTempleGate, BelomeTempleGating.KEY):
-        return inventory.has_item(TempleKeyPrize) and can_access_lands_end(
+        return inventory.has_item(TempleKeyPrize) and can_dodge_lands_end_enemies(
             world, inventory
-        )
-    return can_access_lands_end(world, inventory)
+        ) and is_midgame(world, inventory)
+    return can_dodge_lands_end_enemies(world, inventory) and is_midgame(world, inventory)
 
 
 def can_clear_temple_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -329,7 +382,7 @@ def can_access_temple_postgame_boss(world: GameWorld, inventory: Inventory) -> b
     return (
         can_clear_temple_boss(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
@@ -349,25 +402,45 @@ def can_access_fifth_dojo_boss(world: GameWorld, inventory: Inventory) -> bool:
     return (
         can_access_monstro_town(world, inventory)
         and inventory.has_item(StayVoucherPrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
+
+def can_access_valley(world: GameWorld, inventory: Inventory) -> bool:
+    return expect_good_movement(world, inventory)
+
+
+def can_do_valley_pipes(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to clear the pipes."""
+    # You're expected to have the lamb's lure and be able to despawn the chewies.
+    # The chewies are also the only fight in the game that rolls a formation at random on contact without needing to room-reload. 
+    if inventory.has_item_count(ProgressiveEggPrize, 2) and (world.settings.isflag_enabled(SeeYa) or inventory.has_item(SeeYaPrize)):
+        return can_access_valley(world, inventory)
+    return not_earlygame(world, inventory)
+
+def can_clear_valley(world, inventory):
+    return can_access_valley(world, inventory) and not_earlygame(world, inventory)
 
 
 def can_access_outer_nimbus(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to get to Nimbus Land."""
     if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
-        return not_earlygame(world, inventory)
+        return can_clear_valley(world, inventory)
     if world.settings.is_flag_value(NimbusGate, NimbusGating.MEGASMILAX):
         return inventory.has_item(MegasmilaxBossFight)
     return True
 
 
-def can_access_nimbus_castle(world: GameWorld, inventory: Inventory) -> bool:
+def can_enter_statue_game(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access Nimbus Castle."""
     outer_access = can_access_outer_nimbus(world, inventory)
     if world.settings.is_flag_value(NimbusGate, NimbusGating.PAINT):
         return outer_access and inventory.has_item(GoldPaintPrize)
     return outer_access
+
+
+def can_access_nimbus_castle(world: GameWorld, inventory: Inventory) -> bool:
+    """If true, the player is expected to be able to access Nimbus Castle."""
+    return can_enter_statue_game(world, inventory) and expect_good_movement(world, inventory)
 
 
 def can_access_inner_nimbus(world: GameWorld, inventory: Inventory) -> bool:
@@ -394,8 +467,8 @@ def can_access_volcano(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.NIMBUS):
         return can_clear_nimbus_boss(world, inventory)
     if world.settings.is_flag_value(BarrelVolcanoGate, BarrelVolcanoGating.VALENTINA):
-        return inventory.has_item(ValentinaBossFight)
-    return True
+        return inventory.has_item(ValentinaBossFight) and expect_good_movement(world, inventory)
+    return expect_good_movement(world, inventory)
 
 
 def can_clear_volcano(world: GameWorld, inventory: Inventory) -> bool:
@@ -408,18 +481,31 @@ def can_access_keep(world: GameWorld, inventory: Inventory) -> bool:
     if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.VOLCANO):
         return can_clear_volcano(world, inventory)
     if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.STAR_6):
-        return inventory.has_item_count(StarPiecePrize, 6)
+        return inventory.has_item_count(StarPiecePrize, 6) and expect_good_movement(world, inventory)
     if world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.AXEM):
-        return inventory.has_item(AxemRangersBossFight)
-    return True
+        return inventory.has_item(AxemRangersBossFight) and expect_good_movement(world, inventory)
+    return expect_good_movement(world, inventory)
 
 
 def can_pass_obstacle_courses(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to pass the obstacle courses in Bowser's Keep."""
     return can_access_keep(world, inventory) and can_damage_enemies_with_spells(
         world, inventory
-    )
+    ) and not_earlygame(world, inventory)
 
+
+def can_exit_keep(world: GameWorld, inventory: Inventory) -> bool:
+    if world.settings.is_flag_value(BowserDoorRequirements, 6) or world.settings.isflag_enabled(BowserDoorShuffle):
+        return can_pass_obstacle_courses(world, inventory)
+    if world.settings.is_flag_value(BowserDoorRequirements, 5):
+        return is_midgame(world, inventory)
+    return expect_good_movement(world, inventory)
+
+
+def can_clear_keep(world: GameWorld, inventory: Inventory) -> bool:
+    return can_exit_keep(world, inventory) and not_earlygame(world, inventory)
+        
+    
 
 def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the Outer Factory."""
@@ -427,19 +513,23 @@ def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
         return (
             inventory.has_item_count(StarPiecePrize, 6)
             and can_access_keep(world, inventory)
-            and not_earlygame(world, inventory)
+            and expect_good_movement(world, inventory)
         )
     if world.settings.is_flag_value(FactoryGate, FactoryGating.EXOR):
         return (
             inventory.has_item(ExorBossFight)
             and can_access_keep(world, inventory)
-            and not_earlygame(world, inventory)
+            and expect_good_movement(world, inventory)
         )
     if world.settings.is_flag_value(FactoryGate, FactoryGating.OPEN):
-        return can_access_keep(world, inventory)
+        return can_access_keep(world, inventory) and expect_good_movement(world, inventory)
     if world.settings.is_flag_value(FactoryGate, FactoryGating.KEEP):
-        return can_pass_obstacle_courses(world, inventory) and not_earlygame(world, inventory)
-    return True
+        return can_clear_keep(world, inventory) and expect_good_movement(world, inventory)
+    return expect_good_movement(world, inventory)
+
+
+def can_defeat_factory_bosses(world: GameWorld, inventory: Inventory) -> bool:
+    return can_access_factory(world, inventory) and lategame(world, inventory)
 
 
 def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) -> bool:
@@ -465,15 +555,15 @@ def can_access_inner_factory_final_boss(world: GameWorld, inventory: Inventory) 
         and (
             can_access_bucket
             or can_access_casino
-            or can_access_factory(world, inventory)
+            or can_defeat_factory_bosses(world, inventory)
         )
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 
 def can_access_sealed_door_boss(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the sealed door boss."""
-    boss_reqs = can_access_monstro_town(world, inventory) and not_earlygame(
+    boss_reqs = can_access_monstro_town(world, inventory) and lategame(
         world, inventory
     )
     item_reqs: bool = False
@@ -494,7 +584,7 @@ def can_access_sealed_postgame_boss(world: GameWorld, inventory: Inventory) -> b
         can_access_sealed_door_boss(world, inventory)
         and inventory.has_item(StayVoucherPrize)
         and inventory.has_item(ExtraShinyStonePrize)
-        and not_earlygame(world, inventory)
+        and lategame(world, inventory)
     )
 
 

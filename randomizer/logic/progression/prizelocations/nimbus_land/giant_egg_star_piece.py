@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_inner_nimbus, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_inner_nimbus, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.nimbus_land.giant_egg_boss_fight import (GiantEggBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)

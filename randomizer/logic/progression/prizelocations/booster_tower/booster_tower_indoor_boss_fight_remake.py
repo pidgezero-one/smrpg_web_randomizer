@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_FaceSoutheast, A_FaceSouthwest, A_SetSpriteSequence)
-from randomizer.logic.progression.prizelocations.access import (can_access_tower_postgame_boss, can_damage_enemies_with_spells)
+from randomizer.logic.progression.prizelocations.access import (can_access_tower_postgame_boss, can_damage_enemies_with_spells, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)

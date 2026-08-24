@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_ship_postgame_boss)
+from randomizer.logic.progression.prizelocations.access import (can_access_ship_postgame_boss, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_access_early_ship, can_clear_ship)
 from randomizer.logic.progression.prizelocations.sunken_ship.ship_postgame_boss_fight import (ShipPostgameBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -47,7 +47,9 @@ class ShipPostgameStarPiece(StarPieceLocation):
 
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_ship_postgame_boss(world, inventory)
+        return super().can_access(inventory, world) and can_access_ship_postgame_boss(
+            world, inventory
+        )
 
 
 __all__ = ["ShipPostgameStarPiece"]

@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.overworld_area_names import (OW50_BARREL_VOLCANO)
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_clear_volcano)
+from randomizer.logic.progression.prizelocations.access import (can_clear_volcano, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.barrel_volcano.volcano_exit_boss_fight import (VolcanoExitBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)

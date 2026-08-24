@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_clear_chapel)
+from randomizer.logic.progression.prizelocations.access import (can_clear_chapel, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.marrymore.marrymore_boss_fight import (MarrymoreBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -48,7 +48,9 @@ class MarrymoreBossFightStarPiece(StarPieceLocation):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_clear_chapel(world, inventory)
+        return super().can_access(inventory, world) and can_clear_chapel(
+            world, inventory
+        )
 
 
 __all__ = ["MarrymoreBossFightStarPiece"]

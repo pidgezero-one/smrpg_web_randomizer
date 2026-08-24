@@ -11,7 +11,7 @@ class FrightBombItem(RegularItem):
     _text_shop_menu = "Fright Bomb......"
 
     _item_id: int = 144
-    _description: str = " Fear Attack on\n all enemies"
+    _description: str = " Fear Attack on\n one enemy"
     _inflict: int = 100
     _price: int = 100
     _effect_type = EffectType.INFLICTION

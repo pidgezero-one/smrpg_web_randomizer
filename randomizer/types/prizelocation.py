@@ -11,6 +11,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.controller_inputs i
 from randomizer.data.variables.dialog_names import DI2010_DEBUG_7000
 from randomizer.logic.progression.prizes import (
     BoomerBossFight,
+    SmithyBossFight,
     FirstMimicFightLauncher,
     InfiniteCoinsPrize,
     SecondMimicFightLauncher,
@@ -136,7 +137,6 @@ from ..types.physical_objects import PixelShift
 if TYPE_CHECKING:
     from ..types.logic import Inventory
     from ..types.gameworld import GameWorld
-    from randomizer.logic.progression.prizes import SmithyBossFight
     from ..types.enemy import Enemy
     from ..types.physical_objects import ItemNPC, BossNPC, HenchmanNPC
     from ..types.flags import BooleanFlag

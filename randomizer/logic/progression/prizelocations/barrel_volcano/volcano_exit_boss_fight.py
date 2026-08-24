@@ -10,7 +10,7 @@ from randomizer.types.flags import *
 from randomizer.data.variables.overworld_area_names import (OW50_BARREL_VOLCANO)
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_StartLoopNTimes)
-from randomizer.logic.progression.prizelocations.access import (can_clear_volcano, can_damage_enemies_with_spells)
+from randomizer.logic.progression.prizelocations.access import (can_clear_volcano, can_damage_enemies_with_spells, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, RemoveIfNotFilled, ShuffleLocationSelector, WorldAreaEnum)

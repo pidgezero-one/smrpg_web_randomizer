@@ -3015,7 +3015,7 @@ FORM0269_ONE_CHESTER_ONE_BAHAMUTTENEMY2 = Formation(
     id=269,
     members=[
         FormationMember(CHESTEREnemy, 183, 127),
-        FormationMember(BAHAMUTTEnemy, 135, 119, hidden_at_start=True),
+        FormationMember(BAHAMUTTEnemy2, 135, 119, hidden_at_start=True),
     ],
     music=NormalBattleMusic(),
     unknown_bit=True,

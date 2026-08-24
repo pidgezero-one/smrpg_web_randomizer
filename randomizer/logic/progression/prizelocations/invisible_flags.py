@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_bandits_way, can_access_chapel, can_access_factory, can_access_forest, can_access_lands_end, can_access_moleville_entrance, can_access_monstro_town, can_access_nimbus_castle, can_access_outer_nimbus, can_access_pipe_vault, can_access_sea, can_access_sewer, can_access_tower, can_access_volcano, can_clear_chapel, can_clear_forest, can_clear_mines, can_clear_nimbus_boss, can_clear_seaside_boss, can_clear_ship, can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_bandits_way, can_access_chapel, can_access_factory, can_access_forest, can_access_lands_end, can_access_moleville_entrance, can_access_monstro_town, can_access_nimbus_castle, can_access_outer_nimbus, can_access_pipe_vault, can_access_sea, can_access_sewer, can_access_tower, can_access_volcano, can_clear_chapel, can_clear_forest, can_clear_mines, can_clear_nimbus_boss, can_clear_seaside_boss, can_clear_ship, can_pass_obstacle_courses, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (InvisibleFlagLocation, PrizeLocation, ShuffleLocationSelector, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_10, NPC_3, NPC_6)

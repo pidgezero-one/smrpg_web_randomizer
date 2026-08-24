@@ -8,6 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.logic.progression.prizelocations.sunken_ship.mimic2_boss_fight import (Mimic2BossFight)
+from randomizer.logic.progression.prizelocations.access import (expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_access_early_ship, can_clear_ship)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
 if TYPE_CHECKING:
@@ -25,7 +26,9 @@ class Mimic2StarPiece(StarPieceLocation):
     _access_conditions = "Stays in Sunken Ship if \"Shuffle mimic chests\" is disabled."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return inventory.has_item(SecondMimicFightLauncher)
+        return super().can_access(inventory, world) and inventory.has_item(
+            SecondMimicFightLauncher
+        )
 
 
 __all__ = ["Mimic2StarPiece"]

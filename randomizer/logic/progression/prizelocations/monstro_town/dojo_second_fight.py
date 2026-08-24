@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.logic.renders import (render_dojo_fight)
-from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -44,9 +44,7 @@ class DojoSecondFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_monstro_town(world, inventory) and not_earlygame(
-            world, inventory
-        )
+        return can_access_monstro_town(world, inventory) and is_midgame(world, inventory)
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from randomizer.data.enemies.enemies import (BAHAMUTTEnemy2, BOBOMBEnemyHenchman, JINXCLONEEnemy, KAMEKEnemy, KINGBOMBEnemy, TERRAPINEnemy)
+from randomizer.data.enemies.enemies import (BAHAMUTTEnemy, BOBOMBEnemyHenchman, JINXCLONEEnemy, KAMEKEnemy, KINGBOMBEnemy, TERRAPINEnemy)
 from randomizer.data.packs.pack_collection import (FORM0316_ONE_KAMEK_ONE_TERRAPIN)
 from randomizer.data.physical_objects.bosses import (MagikoopaLargeObject, MagikoopaSmallObject, MagikoopaStatueObject)
 from randomizer.data.physical_objects.henchmen import (JinxCloneHenchman, MicrobombHenchman)
@@ -56,7 +56,7 @@ class KamekBossFight(BossFightPrize):
     _anchor_enemy = KAMEKEnemy
     _scaling_excluded_enemies = [TERRAPINEnemy]
     _hp_slice_excluded_enemies = [TERRAPINEnemy]
-    _additional_enemies_to_scale = [JINXCLONEEnemy, KINGBOMBEnemy, BAHAMUTTEnemy2]
+    _additional_enemies_to_scale = [JINXCLONEEnemy, KINGBOMBEnemy, BAHAMUTTEnemy]
 
     _seaside_letter_name_if_volcano_boss = "a hooded sorceror flying"
     _seaside_letter_name_if_final_boss = "Magikoopa's guys."

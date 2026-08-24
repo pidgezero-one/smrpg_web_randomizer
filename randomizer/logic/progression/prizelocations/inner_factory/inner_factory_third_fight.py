@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.arguments.sequence_speeds import (NORMAL)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_Pause, A_SetSequenceSpeed, A_SetSpriteSequence)
-from randomizer.logic.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_factory, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_defeat_factory_bosses)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (BossFightHenchman, Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -100,7 +100,7 @@ class InnerFactoryThirdFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_factory(world, inventory) and not_earlygame(world, inventory)
+        return can_defeat_factory_bosses(world, inventory)
 
     def _on_henchmen_assigned(
         self,

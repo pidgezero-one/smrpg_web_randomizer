@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_access_valley, can_do_valley_pipes, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.bean_valley.bean_valley_planter_boss_fight import (BeanValleyPlanterBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -37,7 +37,7 @@ class BeanValleyPlanterStarPiece(StarPieceLocation):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return super().can_access(inventory, world) and not_earlygame(world, inventory)
+        return super().can_access(inventory, world) and not_earlygame(world, inventory) and can_access_valley(world, inventory)
 
 
 __all__ = ["BeanValleyPlanterStarPiece"]

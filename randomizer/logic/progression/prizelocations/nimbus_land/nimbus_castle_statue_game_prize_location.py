@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_inner_nimbus)
+from randomizer.logic.progression.prizelocations.access import (can_access_inner_nimbus, can_enter_statue_game, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (NPCLocationRow1, ShuffleLocationSelector, WorldAreaEnum)
 if TYPE_CHECKING:
@@ -46,7 +46,7 @@ class NimbusCastleStatueGamePrizeLocation(NPCLocationRow1):
     _access_conditions = "You will always get this regardless of if you win or fail."
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_inner_nimbus(world, inventory)
+        return can_enter_statue_game(world, inventory)
 
 
 __all__ = ["NimbusCastleStatueGamePrizeLocation"]

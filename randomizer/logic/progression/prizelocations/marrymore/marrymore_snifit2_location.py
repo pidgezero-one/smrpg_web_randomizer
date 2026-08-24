@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_chapel)
+from randomizer.logic.progression.prizelocations.access import (can_access_chapel, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (KeyItemLocation, NPCLocationRow2, PacketLocation, ShuffleLocationSelector, WorldAreaEnum)
 if TYPE_CHECKING:

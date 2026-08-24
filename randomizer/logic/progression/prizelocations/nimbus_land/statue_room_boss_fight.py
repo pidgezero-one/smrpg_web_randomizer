@@ -15,7 +15,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands impor
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_Pause, A_SetSpriteSequence)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments import (EAST)
 from typing import (cast)
-from randomizer.logic.progression.prizelocations.access import (can_access_nimbus_castle, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_enter_statue_game, can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -427,7 +427,7 @@ class StatueRoomBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_nimbus_castle(world, inventory) and not_earlygame(
+        return can_enter_statue_game(world, inventory) and not_earlygame(
             world, inventory
         )
 

@@ -12,7 +12,7 @@ from randomizer.utils.event_script_snippets.es_non_smithy_final_boss import (es_
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands import (A_FixedFCoordOn)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_Pause, A_SetSpriteSequence)
 from typing import (cast)
-from randomizer.logic.progression.prizelocations.access import (can_access_inner_factory_final_boss, can_damage_enemies_with_spells)
+from randomizer.logic.progression.prizelocations.access import (can_access_inner_factory_final_boss, can_damage_enemies_with_spells, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_defeat_factory_bosses)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -211,7 +211,9 @@ class FinalBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_inner_factory_final_boss(world, inventory)
+        return (
+            can_access_inner_factory_final_boss(world, inventory)
+        )
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],

@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_moleville_entrance)
+from randomizer.logic.progression.prizelocations.access import (can_access_moleville_entrance, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.moleville.outer_mines_boss_fight import (OuterMinesBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -41,7 +41,7 @@ class OuterMinesStarPiece(StarPieceLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return super().can_access(inventory, world) and can_access_moleville_entrance(
             world, inventory
-        )
+        ) and almost_earlygame(world, inventory)and almost_earlygame(world, inventory)
 
 
 __all__ = ["OuterMinesStarPiece"]

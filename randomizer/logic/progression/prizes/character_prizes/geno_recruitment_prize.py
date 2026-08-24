@@ -11,6 +11,7 @@ from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import
 from randomizer.types.flags import (BoosterTowerGate, BoosterTowerGating, Moleville1Gate, Moleville1Gating, PipeVaultGate, PipeVaultGating)
 
 if TYPE_CHECKING:
+    from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands.types.classes import (UsableEventScriptCommand)
     from randomizer.types.gameworld import (GameWorld)
 
 

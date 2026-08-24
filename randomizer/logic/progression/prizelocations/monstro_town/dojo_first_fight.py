@@ -11,7 +11,7 @@ from randomizer.utils.event_script_snippets.es_mimic_rise import (get_mimic_rise
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_FaceNorthwest, A_Pause, A_SetSpriteSequence)
 from typing import (cast)
 from randomizer.logic.renders import (update_ally_challenge)
-from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells)
+from randomizer.logic.progression.prizelocations.access import (can_access_monstro_town, can_damage_enemies_with_spells, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -111,7 +111,7 @@ class DojoFirstFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_monstro_town(world, inventory)
+        return can_access_monstro_town(world, inventory) and is_midgame(world, inventory)
 
     def render(self, world: GameWorld) -> tuple[
         list[list[UsableEventScriptCommand]],

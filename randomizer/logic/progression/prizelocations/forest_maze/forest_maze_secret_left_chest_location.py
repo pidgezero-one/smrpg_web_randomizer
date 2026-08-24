@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_forest)
+from randomizer.logic.progression.prizelocations.access import (can_access_forest, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (SlotsPrize)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, TreasureChestLocationRow5, WorldAreaEnum)
@@ -42,7 +42,7 @@ class ForestMazeSecretLeftChestLocation(TreasureChestLocationRow5):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_forest(world, inventory)
+        return can_access_forest(world, inventory) and expect_halfway_decent_movement(world, inventory)
 
 
 __all__ = ["ForestMazeSecretLeftChestLocation"]

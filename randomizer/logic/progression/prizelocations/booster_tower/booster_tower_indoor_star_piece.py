@@ -8,7 +8,7 @@ from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_do_tower_curtain_game, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_clear_tower, can_do_tower_curtain_game, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.logic.progression.prizelocations.booster_tower.booster_tower_indoor_boss_fight import (BoosterTowerIndoorBossFight)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)
@@ -51,8 +51,9 @@ class BoosterTowerIndoorStarPiece(StarPieceLocation):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_do_tower_curtain_game(world, inventory) and not_earlygame(
-            world, inventory
+        return (
+            super().can_access(inventory, world)
+            and can_clear_tower(world, inventory)
         )
 
 

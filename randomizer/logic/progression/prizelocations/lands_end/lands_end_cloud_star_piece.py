@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (almost_earlygame)
+from randomizer.logic.progression.prizelocations.access import (almost_earlygame, expect_good_movement, not_earlygame, expect_halfway_decent_movement, is_midgame, expect_ok_movement, lategame, can_dodge_lands_end_enemies, can_pass_whirlpools, can_access_temple)
 from randomizer.logic.progression.prizelocations.lands_end.lands_end_cloud_boss import (LandsEndCloudBoss)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StarPieceLocation, WorldAreaEnum)

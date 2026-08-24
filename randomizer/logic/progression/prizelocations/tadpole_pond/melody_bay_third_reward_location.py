@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_temple_boss, can_clear_mines, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_clear_temple_boss, can_clear_mines, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (KeyItemLocation, NPCLocationRow3, ShuffleLocationSelector, WorldAreaEnum)
 if TYPE_CHECKING:
@@ -40,8 +40,7 @@ class MelodyBayThirdRewardLocation(NPCLocationRow3, KeyItemLocation):
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return (
             can_clear_mines(world, inventory)
-            and can_access_temple_boss(world, inventory)
-            and not_earlygame(world, inventory)
+            and can_clear_temple_boss(world, inventory)
         )
 
 

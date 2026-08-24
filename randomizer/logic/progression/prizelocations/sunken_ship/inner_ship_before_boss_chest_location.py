@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_clear_ship)
+from randomizer.logic.progression.prizelocations.access import (can_clear_ship, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_access_early_ship)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, TreasureChestLocationRow1, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_4)
@@ -44,7 +44,7 @@ class InnerShipBeforeBossChestLocation(TreasureChestLocationRow1):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_clear_ship(world, inventory)
+        return can_access_early_ship(world, inventory)
 
     def render(self, world: GameWorld) -> tuple[list[list[UsableEventScriptCommand]], list[UsableEventScriptCommand]]:
         op = super().render(world)

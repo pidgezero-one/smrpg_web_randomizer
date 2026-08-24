@@ -106,7 +106,6 @@ class StarPiecesCategory(FlagCategory):
         ShuffleStarPieces,
         TotalStarPieces,
         EnabledBossChecks,
-        ProgressionLogicDifficulty,
         DisperseStarPieces,
     ]
     _size: int = 3
@@ -225,6 +224,7 @@ class OtherAccessSubcategory(FlagCategory):
         WinCondition,
         StarPiecesRequired,
         BowserDoorRequirements,
+        ProgressionLogicDifficulty,
         CasinoWarp,
         BucketWarp,
         FastTravel,

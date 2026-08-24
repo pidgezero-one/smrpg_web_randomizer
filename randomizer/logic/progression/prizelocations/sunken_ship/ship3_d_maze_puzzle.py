@@ -7,7 +7,7 @@ from randomizer.data.variables.action_script_names import *
 from randomizer.data.variables.pack_names import *
 from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
-from randomizer.logic.progression.prizelocations.access import (can_access_sea)
+from randomizer.logic.progression.prizelocations.access import (can_access_sea, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_access_early_ship, can_clear_ship)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.packet_type import (PacketType)
 from randomizer.types.prizelocation import (PacketLocationRow1, ShuffleLocationSelector, WorldAreaEnum)
@@ -41,7 +41,7 @@ class Ship3DMazePuzzle(PacketLocationRow1):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_sea(world, inventory)
+        return can_access_early_ship(world, inventory)
 
 
 __all__ = ["Ship3DMazePuzzle"]

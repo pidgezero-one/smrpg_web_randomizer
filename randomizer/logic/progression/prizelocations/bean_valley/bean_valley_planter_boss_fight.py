@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.classes import (ActionScript)
 from smrpgpatchbuilder.datatypes.overworld_scripts.action_scripts.commands.commands import (A_EndLoop, A_Jmp, A_JmpIfRandom1of2, A_Pause, A_ReturnQueue, A_SetSpriteSequence, A_StartLoopNTimes, A_VisibilityOn)
-from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, not_earlygame, is_early_midgame, is_late_midgame, is_lategame)
+from randomizer.logic.progression.prizelocations.access import (can_damage_enemies_with_spells, can_access_valley, can_do_valley_pipes, not_earlygame, is_early_midgame, is_late_midgame, is_lategame, expect_good_movement, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationNPC, ShuffleLocationSelector, WorldAreaEnum)
@@ -150,7 +150,7 @@ class BeanValleyPlanterBossFight(BossFightLocation):
         )
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return not_earlygame(world, inventory)
+        return not_earlygame(world, inventory) and can_access_valley(world, inventory)
 
     def post_unlocks(self, world: GameWorld) -> EventScript:
         content: list[UsableEventScriptCommand] = []

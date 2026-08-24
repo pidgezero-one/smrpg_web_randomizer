@@ -737,21 +737,24 @@ class TotalStarPieces(RangeFlag):
 class ProgressionLogicDifficultyOptions(CategorizationOption):
     """Enumeration for progression logic difficulty levels"""
 
-    NORMAL = "Default"
-    HARD = "Hard"
+    NORMAL = "Easy"
+    MED = "Normal"
+    HARD = "No Logic"
 
 
 # ✅
 class ProgressionLogicDifficulty(SelectOneFlag[ProgressionLogicDifficultyOptions]):
     _name = "Progression logic difficulty"
-    _description = """<b>Normal</b> - Your expected early progression items are most likely to be found earlier in the game.
+    _description = """<b>Easy</b> - You generally won't be expected to fight bosses or dodge enemies that are way above your expected level.
 <br>
-<br><b>Hard</b> - Your early progression items may be found in lategame areas.
+<br><b>Normal</b> - Early progression won't be behind mid-lategame bosses. However, you will be expected to dodge high-level enemies with good movement regardless of your expected level.
+<br>
+<br><b>No Logic</b> - Early progression can be anywhere, including lategame areas, with no consideration of your expected level.
 <br>
 <br>This setting assumes you are scaling boss fights according to their location. It is effectively useless if you don't."""
     choices = [o for o in ProgressionLogicDifficultyOptions]
     _id = "proglogic"
-    _default = ProgressionLogicDifficultyOptions.NORMAL
+    _default = ProgressionLogicDifficultyOptions.MED
     _requires_all = [(ShuffleStarPieces(), True)]
 
 

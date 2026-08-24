@@ -9,7 +9,7 @@ from randomizer.logic.progression.prizes import *
 from randomizer.types.flags import *
 from randomizer.data.physical_objects.items import (DefaultItem, FlowerObject, FrogCoinObject, RecoveryMushroomObject, SmallFrogCoinObject)
 from randomizer.data.variables.variable_names import (PRIMARY_TEMP_7000)
-from randomizer.logic.progression.prizelocations.access import (can_access_lands_end)
+from randomizer.logic.progression.prizelocations.access import (can_access_lands_end, expect_good_movement, not_earlygame, expect_halfway_decent_movement, almost_earlygame, is_midgame, expect_ok_movement, lategame, can_dodge_lands_end_enemies, can_pass_whirlpools, can_access_temple)
 from randomizer.types.logic import (Inventory)
 from randomizer.types.prizelocation import (ShuffleLocationSelector, StandingLocationRow13, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_12)
@@ -57,7 +57,7 @@ class BelomeTempleTreasuryBottomLeftCornerItemLocation(StandingLocationRow13):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_access_lands_end(world, inventory) and inventory.has_item(
+        return can_access_temple(world, inventory) and inventory.has_item(
             TempleKeyPrize
         )
 

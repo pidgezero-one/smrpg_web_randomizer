@@ -1,10 +1,13 @@
 """Force zero-XP settings. Runs AFTER all XP manipulation."""
 
 from __future__ import annotations
+from typing import TYPE_CHECKING
 from randomizer.data.variables.pack_names import *
 from randomizer.data.enemies.enemies import (KINGBOMBEnemy)
 from randomizer.types.flags import ExperienceNoBosses, ExperienceNoRegular
 from randomizer.logic.pre_shuffle.enemy_tweaks import _get_enemy_lists
+if TYPE_CHECKING:
+    from randomizer.types.gameworld import (GameWorld)
 
 
 def apply_experience_zero_settings(world: GameWorld) -> None:

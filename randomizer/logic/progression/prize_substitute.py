@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import random
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Sequence
 
 from randomizer.logic.progression.prizes import (
     Coins10Prize,
@@ -22,7 +22,12 @@ from randomizer.types.flags import (
     ItemQuality,
     ItemQualityOptions,
 )
-from randomizer.types.prize import Prize
+from randomizer.types.prize import (
+    EmptyPrize,
+    FPFlowerPrize,
+    ItemPrize,
+    Prize,
+)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
