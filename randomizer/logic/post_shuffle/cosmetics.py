@@ -164,6 +164,9 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
             "EVENT_3089_delete_vowel_1",
             "EVENT_3089_delete_vowel_2",
             "EVENT_3089_delete_vowel_3",
+            "EVENT_4077L_165_delete_vowel_2",
+            "EVENT_4077L_165_delete_vowel_1",
+            "EVENT_4077L_165_delete_vowel_3"
         ]
         for d in deletables:
             world.event_scripts.delete_command_by_identifier(d)

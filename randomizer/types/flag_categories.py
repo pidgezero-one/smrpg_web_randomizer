@@ -49,6 +49,7 @@ class CharacterRecruitmentSubcategory(FlagCategory):
         AllowAllySwitching,
         AvailableCharacters,
         StartingCharacters,
+        PlayAsStarter,
     ]
     _size: int = 4
     _id: str = "P"
@@ -386,7 +387,6 @@ class NamesCategory(FlagCategory):
 
     _name: str = "Names"
     _flags: list[type[Flag]] = [
-        PlayAsStarter,
         ChangeNames,
         RemakeNames,
         CanonNames,
