@@ -456,7 +456,9 @@ def randomize_enemy_drops(world: GameWorld) -> None:
     ]
 
     for enemy in world.enemies.enemies:
-        enemy.set_coins(mutate_normal(int(enemy.coins), minimum=0, maximum=255))
+        old_coins = int(enemy.coins)
+        if old_coins > 0:
+            enemy.set_coins(mutate_normal(old_coins, minimum=1, maximum=255))
 
         old_xp = int(enemy.xp)
         new_xp = mutate_normal(old_xp, minimum=1, maximum=0xFFFF)
