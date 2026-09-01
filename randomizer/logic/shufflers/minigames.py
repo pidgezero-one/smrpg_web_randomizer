@@ -1,6 +1,7 @@
 """Minigame randomization logic."""
 from __future__ import annotations
 from randomizer.utils.debug_output import debug_print
+from copy import deepcopy
 import random
 from typing import TYPE_CHECKING, Optional, cast
 
@@ -151,6 +152,7 @@ def randomize_password(world: GameWorld) -> None:
     password = random.choice(password_pool)
     world.password = password.word
     decoy_word = random.choice([p for p in password_pool if p != password])
+    password = deepcopy(password)
     correct_positions = []
 
     # create password submission logic

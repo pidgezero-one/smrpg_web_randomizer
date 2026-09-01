@@ -174,6 +174,8 @@ def _shuffle_items(world: GameWorld):
         # otherwise, start fresh
         shuffle_prizes(world)
     world.placement_result = shuffler_cache.serialize(world)
+    
+    random.seed("post-placement:%s" % world.seed)
 
     if DEBUG_FILE_DUMPS:
         with open("spoiler.json", "w") as f:
@@ -225,6 +227,7 @@ def build_world(world: GameWorld) -> None:
     # Save a snapshot of rooms before shuffling so we can restore on retry
     # (shuffle adds invisible items to rooms which would accumulate on retries)
     rooms_snapshot = deepcopy(world.rooms)
+    startup_snapshot = deepcopy(world.event_2496_startup)
 
     success = False
     while not success:
@@ -234,6 +237,7 @@ def build_world(world: GameWorld) -> None:
         except PlacementException as e:
             # Restore rooms to pre-shuffle state before retrying
             world.rooms = deepcopy(rooms_snapshot)
+            world.event_2496_startup = deepcopy(startup_snapshot)
             # Reset dummy indices so _pre_allocate_dummy_npcs reruns with fresh rooms.
             # Also reset _invisible_item_locations so set_locations re-runs the
             # flag-NPC swap loop - otherwise the freshly re-added dummies stay at

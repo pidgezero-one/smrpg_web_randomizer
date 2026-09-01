@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import gzip
 import hashlib
-import random
 import struct
 from functools import lru_cache
 from typing import TYPE_CHECKING
@@ -13,10 +12,10 @@ from randomizer.types.prizelocation import PrizeLocation
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 _MAGIC = b"SMRP"
-_HEADER = struct.Struct("<4sB32sQHII")
-_MT_BLOCK = 624 
+_HEADER = struct.Struct("<4sB32s32sQHI")
+_VERSION_FIELD = 32
 _NO_CHARACTER = 0xFF 
 
 
@@ -52,33 +51,6 @@ def _location_classes() -> dict[str, type[PrizeLocation]]:
     return {cls.__name__: cls for cls in _concrete_subclasses(PrizeLocation)}
 
 
-def _words_consumed(seed: int) -> int:
-    target = random.getstate()
-    target_block, target_index = target[1][:_MT_BLOCK], target[1][_MT_BLOCK]
-
-    random.seed(seed)
-    blocks = 0
-    while True:
-        if random.getstate()[1][:_MT_BLOCK] == target_block:
-            break
-        for _ in range(_MT_BLOCK):
-            random.getrandbits(32)
-        blocks += 1
-        if blocks > 1_000_000:
-            random.setstate(target)
-            raise ShufflerCacheError("could not locate RNG stream position")
-
-    words = max(blocks - 1, 0) * _MT_BLOCK + target_index
-    random.setstate(target)
-    return words
-
-
-def _fast_forward(seed: int, words: int) -> None:
-    random.seed(seed)
-    for _ in range(words):
-        random.getrandbits(32)
-
-
 def _vocabulary_digest() -> int:
     """Fingerprint of both vocabularies this build would encode against."""
     joined = "\n".join(location_vocabulary()) + "\v" + "\n".join(prize_vocabulary())
@@ -106,6 +78,11 @@ def _amount_carrying_prizes() -> frozenset[str]:
             # define; they are never placed, so they need no amount.
             continue
     return frozenset(needs)
+
+
+def _version_tag(world: GameWorld) -> bytes:
+    """The randomizer build a blob was written by, fixed-width for the header"""
+    return str(world.version).encode("utf-8")[:_VERSION_FIELD].ljust(_VERSION_FIELD, b"\x00")
 
 
 def _flags_digest(world: GameWorld) -> bytes:
@@ -150,10 +127,10 @@ def serialize(world: GameWorld) -> bytes:
     header = _HEADER.pack(
         _MAGIC,
         FORMAT_VERSION,
+        _version_tag(world),
         _flags_digest(world),
         seed,
         len(by_name),
-        _words_consumed(seed),
         _vocabulary_digest(),
     )
     # mtime=0: gzip stamps the current time into its header by default, which
@@ -165,12 +142,18 @@ def serialize(world: GameWorld) -> bytes:
 
 def apply(world: GameWorld, blob: bytes) -> None:
     raw = gzip.decompress(blob)
-    magic, version, flags_digest, seed, count, words, vocab = _HEADER.unpack_from(raw)
+    magic, version, build, flags_digest, seed, count, vocab = _HEADER.unpack_from(raw)
     if magic != _MAGIC:
         raise ShufflerCacheError("not a placement cache blob")
     if version != FORMAT_VERSION:
         raise ShufflerCacheError(
             f"cache format {version}, this build writes {FORMAT_VERSION}"
+        )
+    if build != _version_tag(world):
+        raise ShufflerCacheError(
+            f"cached placement was made by randomizer version "
+            f"{build.rstrip(bytes(1)).decode('utf-8', 'replace')!r}, this build is "
+            f"{str(world.version)!r}; regenerate"
         )
     if vocab != _vocabulary_digest():
         raise ShufflerCacheError(
@@ -256,8 +239,6 @@ def apply(world: GameWorld, blob: bytes) -> None:
                 prize.set_character(classes[char_names[owner]])
         location.set_prize(prize)
         world.notify_prize_placed(location, prize)
-
-    _fast_forward(seed, words)
 
 
 __all__ = ["FORMAT_VERSION", "ShufflerCacheError", "apply", "prize_vocabulary", "serialize"]

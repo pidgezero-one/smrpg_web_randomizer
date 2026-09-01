@@ -567,7 +567,7 @@ def shuffle_shops(world: GameWorld) -> None:
                         items_already_placed.add(item)
 
         guarantee_items = []
-        for item_type in all_pool_items:
+        for item_type in sorted(all_pool_items, key=lambda cls: cls.__name__):
             if item_type in items_already_placed:
                 continue
             if item_type in all_excluded:
