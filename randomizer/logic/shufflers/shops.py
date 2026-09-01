@@ -6,10 +6,10 @@ import random
 from typing import TYPE_CHECKING, cast
 
 from ...data.variables.dialog_names import *
-from ...types.item import Item
+from ...types.item import Item, Equipment
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import SetVarToConst
 from ...data.items.items import SeeYaItem
-from ...data.shops.shops import SH03_FROG_DISCIPLE
+from ...data.shops.shops import SH03_FROG_DISCIPLE, shop_collection
 from smrpgpatchbuilder.datatypes.items.classes import Weapon, Armor, Accessory
 from ...data.items.items import (
         GoodieBagItem,
@@ -111,10 +111,52 @@ from randomizer.logic.progression.prizelocations import (
         FrogDiscipleLocation4,
         FrogDiscipleLocation5,
     )
+from .equipment import (
+        calc_equip_rank,
+        EQUIP_PRICE_PER_RANK,
+        EQUIP_FROG_PRICE_PER_RANK,
+        MAX_FROG_COIN_PRICE,
+    )
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
     from smrpgpatchbuilder.datatypes.items.classes import Item as BaseItem
+
+# need this to determine which items still need price adjustments when item stats are vanilla
+VANILLA_SHOP_ITEMS: frozenset[type[BaseItem]] = frozenset(
+    item
+    for shop in shop_collection.shops
+    if shop is not None
+    for item in (shop.items or [])
+    if item is not None
+)
+
+
+def reprice_nonvanilla_shop_items(world: GameWorld) -> None:
+    """Reprice some items depending on their shop presence. 
+    i.e. Quartz Charm was never purchaseable in the original game so its price is set to like 7 coins, 
+    so we want to make that more proportional to its utility if it's sold in the randomizer"""
+
+    if world.settings.isflag_enabled(FreeShops):
+        return
+
+    for shop in world.shops.shops:
+        if shop is None:
+            continue
+        frog_coin_shop = shop.buy_frog_coin_one or shop.buy_frog_coin
+        for item_type in (shop.items or []):
+            if item_type is None or item_type in VANILLA_SHOP_ITEMS:
+                continue
+            item = world.items.get_by_type(item_type)
+            if not isinstance(item, Equipment):
+                continue
+            rank = calc_equip_rank(item)
+            if frog_coin_shop:
+                price = round(rank * EQUIP_FROG_PRICE_PER_RANK)
+                item.set_price(min(MAX_FROG_COIN_PRICE, max(1, price)))
+            else:
+                price = round(rank * EQUIP_PRICE_PER_RANK)
+                item.set_price(min(9999, max(2, price)))
 
 
 def exclude_seeya_from_frog_disciple(world: GameWorld) -> None:

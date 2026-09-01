@@ -22,6 +22,7 @@ from ...types.flags import (
         InfuseSpellElements, CharacterSpellElements,
         EquipmentProperties, EquipmentPropertiesOptions,
         IgnoreNamesakeProperties, EquipmentCharacters, EquipmentCharactersOptions,
+        StarPieceHints,
     )
 from ...data.spells.spells import (
         GenoBeamSpell, GenoFlashSpell, PsychBombSpell, CrusherSpell, BowserCrushSpell,
@@ -42,6 +43,7 @@ from ...data.items.items import (
         FroggieStickItem, RibbitStickItem, ParasolItem,
         # Accessories
         WakeUpPinItem, AntidotePinItem, TrueformPinItem, FearlessPinItem,
+        SignalRingItem,
     )
 from ..shufflers.equipment import (
         randomize_equipment_properties,
@@ -268,7 +270,7 @@ def apply_equipment_settings(world: GameWorld) -> None:
         if isinstance(item, Equipment):
             item.set_description(item.build_equipment_description())
 
-    # Reprice equipment from combat rank in every mode. Vanilla prices are not
-    # power-ordered, and items vanilla never sells carry junk placeholder prices
-    # that shop shuffling would otherwise honour at face value.
+    if not world.settings.isflag_enabled(StarPieceHints):
+        world.items.get_by_type(SignalRingItem).set_arbitrary_value(0)
+
     reprice_equipment_by_rank(world)

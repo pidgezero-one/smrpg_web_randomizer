@@ -14,6 +14,7 @@ class Seed(models.Model):
     file_select_hash = models.CharField(max_length=100, default="")
     race_mode = models.BooleanField(default=False)
     spoiler = JSONField(default={})
+    placement = models.TextField(default="", blank=True)
 
 
 class Patch(models.Model):

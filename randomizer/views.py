@@ -1,5 +1,6 @@
 from randomizer.logic.check_list import CHECK_ROWS
 from randomizer.logic.offset_preview import get_ordered_lists
+import base64
 import binascii
 import hashlib
 import json
@@ -40,6 +41,7 @@ from randomizer.types.patch import PatchJSONEncoder
 from .models import Seed, Patch
 from .forms import GenerateForm
 from .main import create, VERSION
+from .logic.generate import build_world_for, save_seed
 from .types.settings import Settings
 from .types.flags import Flag, CategorizationFlag, CategorizationFlagWithOrdinance, BooleanFlag, RangeFlag, SelectOneFlag
 
@@ -325,11 +327,9 @@ class GenerateView(MixinClass, FormView):
             s.offset_star_pieces = offset_star_pieces
             s.offset_invisible_flags = offset_invisible_flags
 
-            world = create(
-                seed,
-                s,
-                debug_bps_patches=debug_bps_patches,
-                )
+            world = build_world_for(
+                seed, s, debug_mode=debug_mode, debug_bps_patches=debug_bps_patches
+            )
             patches = {"US": world.get_patch()}
         except FlagError as e:
             # Catch error with flags and return that error message instead.
@@ -363,26 +363,7 @@ class GenerateView(MixinClass, FormView):
 
         # Save patch to the database (don't need to save EU since it's the same as US).
         with transaction.atomic():
-            # If there's an existing seed with the same hash, replace it.
-            try:
-                s = Seed.objects.get(hash=world.hash)
-            except Seed.DoesNotExist:
-                pass
-            else:
-                s.delete()
-
-            s = Seed(
-                hash=world.hash,
-                seed=seed,
-                version=VERSION,
-                mode="open",  # Deprecated but required by model
-                debug_mode=debug_mode,
-                flags=world.settings.flag_string,
-                file_select_char=world.file_select_character,
-                file_select_hash=world.file_select_hash,
-                race_mode=race_mode,
-                spoiler=world.spoiler)
-            s.save()
+            s = save_seed(world, seed, debug_mode=debug_mode, race_mode=race_mode)
 
             for region, patch in patches.items():
                 patch_dump = json.dumps(patch, cls=PatchJSONEncoder)
@@ -480,8 +461,11 @@ class GenerateStreamView(MixinClass, View):
                     s.offset_star_pieces = offset_star_pieces
                     s.offset_invisible_flags = offset_invisible_flags
 
-                    # Create world with progress callback
-                    world = create(seed, s, progress_callback=on_progress, debug_bps_patches=debug_bps_patches)
+                    world = build_world_for(
+                        seed, s, debug_mode=debug_mode,
+                        debug_bps_patches=debug_bps_patches,
+                        progress_callback=on_progress,
+                    )
 
                     # Generate patch
                     patch = world.get_patch()
@@ -507,25 +491,9 @@ class GenerateStreamView(MixinClass, View):
 
                     # Save to database
                     with transaction.atomic():
-                        try:
-                            existing = Seed.objects.get(hash=world.hash)
-                            existing.delete()
-                        except Seed.DoesNotExist:
-                            pass
-
-                        seed_obj = Seed(
-                            hash=world.hash,
-                            seed=seed,
-                            version=VERSION,
-                            mode="open",  # Deprecated but required by model
-                            debug_mode=debug_mode,
-                            flags=world.settings.flag_string,
-                            file_select_char=world.file_select_character,
-                            file_select_hash=world.file_select_hash,
-                            race_mode=race_mode,
-                            spoiler=world.spoiler,
+                        seed_obj = save_seed(
+                            world, seed, debug_mode=debug_mode, race_mode=race_mode
                         )
-                        seed_obj.save()
 
                         patch_dump = json.dumps({"US": {}}, cls=PatchJSONEncoder)
                         h = hashlib.sha1()

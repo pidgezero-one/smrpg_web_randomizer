@@ -60,7 +60,7 @@ from ...types.prize import ItemPrize
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
-    from smrpgpatchbuilder.datatypes.items.classes import Equipment
+    from ...types.item import Equipment
 
 
 def randomize_equipment_properties(world: GameWorld) -> None:
@@ -287,15 +287,18 @@ def _randomize_single_equip_chars(
     """Randomize equippable characters for a single item."""
     # Pick random number of characters with lower numbers weighted heavier
     num_equippable = random.randint(1, random.randint(1, 5))
-    new_chars: set[PartyCharacter] = set()
+    new_chars: list[PartyCharacter] = []
 
     for _ in range(num_equippable):
-        char_choices = set(all_chars) - new_chars
+        char_choices = [c for c in all_chars if c not in new_chars]
         if not char_choices:
             break
-        new_chars.add(random.choice(list(char_choices)))
+        new_chars.append(random.choice(char_choices))
 
     item.set_equip_chars(list(new_chars))
+
+
+ARBITRARY_VALUE_WEIGHT = 10
 
 
 def calc_equip_rank(item: Equipment) -> float:
@@ -322,6 +325,7 @@ def calc_equip_rank(item: Equipment) -> float:
         + 7.5 * len(item.elemental_resistances)
         + 50 * (1 if item.prevent_ko else 0)
         + 30 * len(item.temp_buffs)
+        + ARBITRARY_VALUE_WEIGHT * item.arbitrary_value
     )
     return rank
 
@@ -329,6 +333,11 @@ def calc_equip_rank(item: Equipment) -> float:
 # Coins per point of combat rank. Vanilla rank spans 0-345 and vanilla equipment
 # prices span 2-1998, so 6 keeps repriced equipment on the vanilla coin scale.
 EQUIP_PRICE_PER_RANK = 6
+
+FROG_COINS_PER_COIN = 10
+EQUIP_FROG_PRICE_PER_RANK = EQUIP_PRICE_PER_RANK / FROG_COINS_PER_COIN
+
+MAX_FROG_COIN_PRICE = 999
 
 
 def reprice_equipment_by_rank(world: GameWorld) -> None:
@@ -344,14 +353,23 @@ def reprice_equipment_by_rank(world: GameWorld) -> None:
 
     dummy_equipment = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
     # These store a FROG COIN count in .price, not coins (the equipment members of
-    # shops.py's ORIGINAL_FROG_COIN_ITEMS). Repricing them in coins would corrupt
-    # the frog-coin conversion shuffle_shops applies when they change shop type.
+    # shops.py's ORIGINAL_FROG_COIN_ITEMS), so they are ranked on the same scale
+    # but priced at the frog coin rate. shuffle_shops multiplies by
+    # FROG_COINS_PER_COIN if one of them lands in a regular shop, which recovers
+    # the coin price the same rank would have produced.
     frog_coin_priced = {ExpBoosterItem, CoinTrickItem, ScroogeRingItem}
-    skip = dummy_equipment | frog_coin_priced
 
     for item in world.items.items:
-        if isinstance(item, (Weapon, Armor, Accessory)) and type(item) not in skip:
-            price = round(calc_equip_rank(item) * EQUIP_PRICE_PER_RANK)
+        if not isinstance(item, (Weapon, Armor, Accessory)):
+            continue
+        if type(item) in dummy_equipment:
+            continue
+        rank = calc_equip_rank(item)
+        if type(item) in frog_coin_priced:
+            price = round(rank * EQUIP_FROG_PRICE_PER_RANK)
+            item.set_price(min(MAX_FROG_COIN_PRICE, max(1, price)))
+        else:
+            price = round(rank * EQUIP_PRICE_PER_RANK)
             item.set_price(min(9999, max(2, price)))
 
 

@@ -445,7 +445,7 @@ def apply_cosmetic_settings(world: GameWorld) -> None:
 
 
     bossfight_pool = [cast(BossFightPrize, l.prize) for l in world.locations.values() if isinstance(l, BossFightLocation) and isinstance(l.prize, BossFightPrize)]
-    boss_pool = list(set([(x.marrymore_name(
+    boss_pool = list(dict.fromkeys([(x.marrymore_name(
         world.settings.isflag_enabled(RemakeNames),
         world.settings.isflag_enabled(CanonNames),
     ), x.marrymore_gender) for x in bossfight_pool]))

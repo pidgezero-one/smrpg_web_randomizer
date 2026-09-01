@@ -137,7 +137,7 @@ def randomize_tadpole_pond(world: GameWorld) -> None:
     world.song_3 = selection[2].scroll_text
 
     world.song_authors = list(
-        set(
+        dict.fromkeys(
             [selection[0].submitter_credits,
             selection[1].submitter_credits,
             selection[2].submitter_credits]

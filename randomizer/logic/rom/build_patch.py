@@ -96,11 +96,11 @@ def get_patch(world: GameWorld) -> Patch:
     if any(
         world.settings.get_flag(f).selected.name != "DEFAULT" for f in palette_flags
     ) or world.overworld_character.ally.index != 0:
-        patch.add_dict(world.mario_palette.render(world))
-        patch.add_dict(world.mallow_palette.render(world))
-        patch.add_dict(world.geno_palette.render(world))
-        patch.add_dict(world.bowser_palette.render(world))
-        patch.add_dict(world.toadstool_palette.render(world))
+        patch.add_dict(world.mario_palette.render(world), source="mario_palette")
+        patch.add_dict(world.mallow_palette.render(world), source="mallow_palette")
+        patch.add_dict(world.geno_palette.render(world), source="geno_palette")
+        patch.add_dict(world.bowser_palette.render(world), source="bowser_palette")
+        patch.add_dict(world.toadstool_palette.render(world), source="toadstool_palette")
 
 
     # Render scripts and dialogs FIRST to reclaim unused space for animations
@@ -238,7 +238,7 @@ def get_patch(world: GameWorld) -> Patch:
 
     world._report_progress("Writing patch...", 95)
     credits_data = update_credits(world)
-    patch.add_dict(credits_data)
+    patch.add_dict(credits_data, source="credits")
 
     # Always-on byte patches.
     patch.add_dict(asm.key_item_inventory.get_patch(), source="key_item_inventory")
@@ -374,11 +374,11 @@ def get_patch(world: GameWorld) -> Patch:
         patch.add_dict(asm.debug_fp.get_patch(), source="debug_fp")
 
     # Palettes
-    patch.add_dict(world.sprite_palettes.render())
-    patch.add_dict(world.event_palettes.render())
+    patch.add_dict(world.sprite_palettes.render(), source="sprite_palettes")
+    patch.add_dict(world.event_palettes.render(), source="event_palettes")
     for s in world.spells.spells:
         if isinstance(s, CharacterSpell):
-            patch.add_dict(s.palette_patch)
+            patch.add_dict(s.palette_patch, source="spell_palettes")
 
     patch.add_dict(asm.room_174_battlefield.get_patch(), source="room_174_battlefield")
     patch.add_dict(asm.room_325_solidity.get_patch(), source="room_325_solidity")
