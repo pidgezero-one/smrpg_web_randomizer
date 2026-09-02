@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import base64
 import logging
+import re
 from typing import Callable
 
 from django.db import transaction
@@ -31,12 +32,15 @@ from randomizer.logic.progression.prizelocations.marios_house.starting_character
 )
 from randomizer.main import VERSION, create
 from randomizer.models import Seed, SpriteRender
-from randomizer.types.flags import PlayAsStarter
+from randomizer.types.flags import FlagError, PlayAsStarter
 from randomizer.types.prize import CharacterPrize
 from randomizer.types.gameworld import GameWorld
 from randomizer.types.settings import Settings
 
 logger = logging.getLogger(__name__)
+
+# One "X(flag|flag:value)" group of the flag string.
+_FLAG_BLOCK = r"([A-Z])\(([^)]*)\)"
 
 
 def load_placement_cache(
@@ -211,16 +215,63 @@ def save_seed(world: GameWorld, seed: int | str, *, debug_mode: bool, race_mode:
     return row
 
 
+def settings_from_flag_string(flag_string: str) -> Settings:
+    """Build Settings from one flag string covering gameplay and cosmetics both.
+
+    `Settings.set_from_flag_string` ignores anything it does not recognise, so a
+    typo'd or truncated string parses cleanly into settings that are quietly not
+    the ones asked for - a different flag string, a different seed hash, and a
+    generated seed nobody wanted, with no error raised anywhere. Callers handed a
+    string from somewhere else want to hear about that, so it is checked here.
+
+    Raises:
+        FlagError: the string names a flag that does not exist, or holds text
+            outside any `X(...)` block.
+    """
+    settings = Settings()
+    settings.set_from_flag_string(flag_string)
+
+    known = settings._build_flag_id_map()
+    ids = [
+        entry.split(":", 1)[0].strip()
+        for _, body in re.findall(_FLAG_BLOCK, flag_string)
+        for entry in body.split("|")
+        if entry.strip()
+    ]
+    unknown = [i for i in ids if i not in known]
+    leftover = re.sub(_FLAG_BLOCK, "", flag_string).strip()
+    if unknown or leftover:
+        raise FlagError(
+            f"unusable flag string {flag_string!r}: "
+            + ", ".join(
+                part
+                for part in (
+                    f"unknown flags {unknown}" if unknown else "",
+                    f"unparsed text {leftover!r}" if leftover else "",
+                )
+                if part
+            )
+        )
+    return settings
+
+
 def generate_seed(
     seed: int | str,
-    settings: Settings,
+    settings: Settings | str,
     *,
     debug_mode: bool = False,
     race_mode: bool = False,
     debug_bps_patches: bool = False,
     progress_callback: Callable[[str, int], None] | None = None,
 ) -> tuple[GameWorld, Seed]:
-    """Generate a seed, assemble its patch and store it, reusing what already exists. Returns the world and its stored row."""
+    """Generate a seed, assemble its patch and store it, reusing what already exists.
+
+    `settings` may be a flag string, so a caller holding nothing but a seed and a
+    string - a queue worker, say - has one call to make and no conversion of its
+    own to get right. Returns the world and its stored row.
+    """
+    if isinstance(settings, str):
+        settings = settings_from_flag_string(settings)
     world = build_world_for(
         seed,
         settings,
@@ -241,6 +292,7 @@ __all__ = [
     "generate_seed",
     "load_placement_cache",
     "save_seed",
+    "settings_from_flag_string",
     "save_sprite_render",
     "load_sprite_render",
 ]
