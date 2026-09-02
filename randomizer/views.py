@@ -41,7 +41,7 @@ from randomizer.types.patch import PatchJSONEncoder
 from .models import Seed, Patch
 from .forms import GenerateForm
 from .main import create, VERSION
-from .logic.generate import build_world_for, save_seed
+from .logic.generate import build_world_for, ensure_sprite_render_variants, save_seed
 from .types.settings import Settings
 from .types.flags import Flag, CategorizationFlag, CategorizationFlagWithOrdinance, BooleanFlag, RangeFlag, SelectOneFlag
 
@@ -361,16 +361,20 @@ class GenerateView(MixinClass, FormView):
             "forced_overrides": world.settings.forced_overrides,
         }
 
-        # Save patch to the database (don't need to save EU since it's the same as US).
         with transaction.atomic():
             s = save_seed(world, seed, debug_mode=debug_mode, race_mode=race_mode)
 
-            for region, patch in patches.items():
-                patch_dump = json.dumps(patch, cls=PatchJSONEncoder)
+            for region in patches:
+                patch_dump = json.dumps({}, cls=PatchJSONEncoder)
                 h = hashlib.sha1()
                 h.update(patch_dump.encode())
-                p = Patch(seed=s, region=region, sha1=h.hexdigest(), patch=patch_dump)
-                p.save()
+                Patch.objects.update_or_create(
+                    seed=s,
+                    region=region,
+                    defaults={"sha1": h.hexdigest(), "patch": patch_dump},
+                )
+
+        ensure_sprite_render_variants(s, seed, world, debug_mode=debug_mode)
 
         # Check if we're including the patch data in the response.
         if self.return_patch_data:
@@ -495,16 +499,18 @@ class GenerateStreamView(MixinClass, View):
                             world, seed, debug_mode=debug_mode, race_mode=race_mode
                         )
 
-                        patch_dump = json.dumps({"US": {}}, cls=PatchJSONEncoder)
+                        patch_dump = json.dumps({}, cls=PatchJSONEncoder)
                         h = hashlib.sha1()
                         h.update(patch_dump.encode())
-                        p = Patch(
+                        Patch.objects.update_or_create(
                             seed=seed_obj,
                             region="US",
-                            sha1=h.hexdigest(),
-                            patch=patch_dump,
+                            defaults={"sha1": h.hexdigest(), "patch": patch_dump},
                         )
-                        p.save()
+
+                    ensure_sprite_render_variants(
+                        seed_obj, seed, world, debug_mode=debug_mode
+                    )
 
                 except FlagError as e:
                     logger.error("Flag error during generation: %s", e.args[0])

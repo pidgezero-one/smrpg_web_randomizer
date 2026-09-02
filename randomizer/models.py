@@ -17,6 +17,19 @@ class Seed(models.Model):
     placement = models.TextField(default="", blank=True)
 
 
+class SpriteRender(models.Model):
+    """A cached SpriteCollection render for one seed and one PlayAsStarter value"""
+
+    seed = models.ForeignKey(Seed, on_delete=models.CASCADE, related_name="sprite_renders")
+    play_as_starter = models.BooleanField()
+    blob = models.TextField()
+
+    class Meta:
+        unique_together = [
+            ("seed", "play_as_starter"),
+        ]
+
+
 class Patch(models.Model):
     seed = models.ForeignKey(Seed, on_delete=models.CASCADE)
     region = models.CharField(max_length=8)

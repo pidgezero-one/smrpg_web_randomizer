@@ -264,6 +264,20 @@ class Settings:
         """Check if a boolean flag is on or not."""
         return self.is_flag_value(flag_class, True)
 
+    def set_boolean_flag(self, flag_class: type[BooleanFlag], enabled: bool) -> None:
+        """Turn a boolean flag on or off after the settings have been built.
+
+        is_flag_value memoises on read and nothing else writes flags this late, so
+        the cache is dropped here rather than left to answer from the old value.
+        """
+        flag = self.get_flag(flag_class)
+        if not isinstance(flag, BooleanFlag):
+            raise RandomizerSettingsException(
+                f"set_boolean_flag on non-boolean flag {flag_class.__name__}"
+            )
+        flag.enabled = enabled
+        self._is_flag_value_cache.clear()
+
     # ==================== Flag String Encoding ====================
 
     @staticmethod

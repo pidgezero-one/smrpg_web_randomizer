@@ -25,8 +25,14 @@ from django.db import transaction
 
 from randomizer.logic.build_world import compute_seed_hash
 from randomizer.logic.rom.shuffler_cache import ShufflerCacheError
+from randomizer.logic.rom.sprite_cache import (serialize as serialize_sprites)
+from randomizer.logic.progression.prizelocations.marios_house.starting_character1 import (
+    StartingCharacter1,
+)
 from randomizer.main import VERSION, create
-from randomizer.models import Seed
+from randomizer.models import Seed, SpriteRender
+from randomizer.types.flags import PlayAsStarter
+from randomizer.types.prize import CharacterPrize
 from randomizer.types.gameworld import GameWorld
 from randomizer.types.settings import Settings
 
@@ -64,6 +70,84 @@ def encode_placement(world: GameWorld) -> str:
     return base64.b64encode(world.placement_result).decode() if world.placement_result else ""
 
 
+def load_sprite_render(
+    seed: int | str, settings: Settings, debug_mode: bool
+) -> bytes | None:
+    """A previous run's packed sprites for this seed and PlayAsStarter value"""
+    if debug_mode or settings.prize_offset is not None or settings.mimic_offset is not None:
+        return None
+    row = (
+        SpriteRender.objects.filter(
+            seed__hash=compute_seed_hash(VERSION, seed, settings.flag_string),
+            play_as_starter=settings.isflag_enabled(PlayAsStarter),
+        )
+        .only("blob")
+        .first()
+    )
+    if row is None or not row.blob:
+        return None
+    return base64.b64decode(row.blob)
+
+
+def save_sprite_render(row: Seed, world: GameWorld) -> None:
+    """Store the render this world produced, replacing any row it supersedes."""
+    if world.sprite_writes is None or world.sprite_reclaim_banks is None:
+        return
+    blob = serialize_sprites(world.sprite_writes, world.sprite_reclaim_banks, VERSION)
+    SpriteRender.objects.update_or_create(
+        seed=row,
+        play_as_starter=world.settings.isflag_enabled(PlayAsStarter),
+        defaults={"blob": base64.b64encode(blob).decode()},
+    )
+
+
+def ensure_sprite_render_variants(
+    row: Seed,
+    seed: int | str,
+    world: GameWorld,
+    *,
+    debug_mode: bool = False,
+) -> str:
+    """Make sure both PlayAsStarter variants are stored for this seed so that anyone coming from the permalink doesnt have to regen SpriteCollection"""
+    settings = world.settings
+    if debug_mode or settings.prize_offset is not None or settings.mimic_offset is not None:
+        return "skipped"
+
+    other = not settings.isflag_enabled(PlayAsStarter)
+    if row.sprite_renders.filter(play_as_starter=other).exists():
+        return "present"
+
+    mine = row.sprite_renders.filter(
+        play_as_starter=settings.isflag_enabled(PlayAsStarter)
+    ).first()
+    if mine is None:
+        return "skipped"
+
+    starter = world.get_location(StartingCharacter1)
+    if (
+        starter is not None
+        and isinstance(starter.prize, CharacterPrize)
+        and starter.prize.ally.index == 0
+    ):
+        SpriteRender.objects.update_or_create(
+            seed=row, play_as_starter=other, defaults={"blob": mine.blob}
+        )
+        return "copied"
+
+    flipped = Settings()
+    flipped.set_from_flag_string(settings.get_flag_string())
+    flipped.set_boolean_flag(PlayAsStarter, other)
+    # PlayAsStarter is gated on ShuffleCharacters, so on a seed that cannot turn it
+    # on there is no second variant anyone can ask for.
+    if flipped.isflag_enabled(PlayAsStarter) != other:
+        return "skipped"
+
+    other_world = build_world_for(seed, flipped, debug_mode=debug_mode)
+    other_world.get_patch()  # discarded; run for the sprite render it leaves behind
+    save_sprite_render(row, other_world)
+    return "packed"
+
+
 def build_world_for(
     seed: int | str,
     settings: Settings,
@@ -79,10 +163,11 @@ def build_world_for(
     and the seed is generated from scratch, which is what would have happened
     before any of it was cached.
     """
+    world: GameWorld | None = None
     cache = load_placement_cache(seed, settings, debug_mode)
     if cache is not None:
         try:
-            return create(
+            world = create(
                 seed,
                 settings,
                 progress_callback=progress_callback,
@@ -93,32 +178,36 @@ def build_world_for(
             logger.warning(
                 "stored placement rejected for seed %r (%s), regenerating", seed, exc
             )
-    return create(
-        seed,
-        settings,
-        progress_callback=progress_callback,
-        debug_bps_patches=debug_bps_patches,
-    )
+    if world is None:
+        world = create(
+            seed,
+            settings,
+            progress_callback=progress_callback,
+            debug_bps_patches=debug_bps_patches,
+        )
+    world.offer_sprite_blob(load_sprite_render(seed, settings, debug_mode))
+    return world
 
 
 def save_seed(world: GameWorld, seed: int | str, *, debug_mode: bool, race_mode: bool) -> Seed:
-    """Persist the world as a Seed row, replacing any row with the same hash."""
+    """Persist the world as a Seed row, updating any row with the same hash"""
     with transaction.atomic():
-        Seed.objects.filter(hash=world.hash).delete()
-        row = Seed(
+        row, _ = Seed.objects.update_or_create(
             hash=world.hash,
-            seed=seed,
-            version=VERSION,
-            mode="open",  # Deprecated but required by model
-            debug_mode=debug_mode,
-            flags=world.settings.flag_string,
-            file_select_char=world.file_select_character,
-            file_select_hash=world.file_select_hash,
-            race_mode=race_mode,
-            spoiler=world.spoiler,
-            placement=encode_placement(world),
+            defaults={
+                "seed": seed,
+                "version": VERSION,
+                "mode": "open",  # Deprecated but required by model
+                "debug_mode": debug_mode,
+                "flags": world.settings.flag_string,
+                "file_select_char": world.file_select_character,
+                "file_select_hash": world.file_select_hash,
+                "race_mode": race_mode,
+                "spoiler": world.spoiler,
+                "placement": encode_placement(world),
+            },
         )
-        row.save()
+        save_sprite_render(row, world)
     return row
 
 
@@ -154,4 +243,6 @@ __all__ = [
     "generate_seed",
     "load_placement_cache",
     "save_seed",
+    "save_sprite_render",
+    "load_sprite_render",
 ]

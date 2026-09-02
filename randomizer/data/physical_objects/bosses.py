@@ -1552,6 +1552,7 @@ class MagikoopaSmallObject(BossNPC):
         0x4A1000,
         0x181818,
     ]
+    _eye_height = 14
 
 
 class ClerkSmallObject(BossNPC):

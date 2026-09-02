@@ -6,6 +6,7 @@ Extracted from types/gameworld.py.
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+import logging
 import random
 from concurrent.futures import (ThreadPoolExecutor)
 from randomizer.data.credits.credits import (update_credits)
@@ -20,6 +21,11 @@ from randomizer.data.variables.sprite_palette_names import (
     SPAL379_ABXY_BUTTONS_FROM_BOWYER_S_BUTTON_LOCK,
 )
 from randomizer.logic.green_switch_glow import (get_patch as _green_switch_glow_patch)
+from randomizer.logic.rom.sprite_cache import (
+    SpriteCacheError,
+    deserialize as deserialize_sprites,
+)
+from randomizer.logic.rom.sprite_reclaim import (dialog_reclaim_ranges)
 from randomizer.logic.shufflers.minigames import (get_minecart_track_patch)
 from randomizer.patches import (asm)
 from randomizer.logic.progression.prizelocations.marios_house.starting_character1 import (
@@ -52,6 +58,8 @@ from typing import (cast)
 
 if TYPE_CHECKING:
     from randomizer.types.gameworld import GameWorld
+
+logger = logging.getLogger(__name__)
 
 
 def get_patch(world: GameWorld) -> Patch:
@@ -155,7 +163,7 @@ def get_patch(world: GameWorld) -> Patch:
     )
     progress += 3
 
-    for start, end in world.overworld_dialogs.get_unused_ranges():
+    for start, end in dialog_reclaim_ranges(world):
         world.sprites.animation_data_banks.append(AnimationBank(start, end))
 
     unused = world.action_scripts.get_unused_range()
@@ -181,8 +189,25 @@ def get_patch(world: GameWorld) -> Patch:
     # the same tile group so their subtile ordering matches - battle
     # animation events 82/86 use sprite 491's sequences interchangeably
     # with sprite 490's during the Smithy fight.
-    for p in world.sprites.render(shared_image_groups=[[490, 491]]):
-        patch.add_data(p[0], p[1], source="sprites")
+    banks = [(int(b.start), int(b.end)) for b in world.sprites.animation_data_banks]
+    world.sprite_reclaim_banks = banks
+
+    writes: list[tuple[int, bytes]] | None = None
+    blob, world.pending_sprite_blob = world.pending_sprite_blob, None
+    if blob is not None:
+        try:
+            writes = deserialize_sprites(blob, banks, world.version)
+        except SpriteCacheError as exc:
+            logger.warning("stored sprite render rejected (%s), repacking", exc)
+    if writes is None:
+        writes = [
+            (addr, bytes(data))
+            for addr, data in world.sprites.render(shared_image_groups=[[490, 491]])
+        ]
+    random.seed("post-sprites:%s" % world.seed)
+    world.sprite_writes = writes
+    for addr, data in writes:
+        patch.add_data(addr, data, source="sprites")
     progress += 3
 
     # World map / file-select / overworld walker character overrides

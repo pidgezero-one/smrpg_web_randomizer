@@ -535,6 +535,10 @@ class GameWorld:
         self._debug_bps_patches = debug_bps_patches
         self.event_palettes = event_palettes
         self.sprite_palettes = sprite_palettes
+        
+        self.pending_sprite_blob: bytes | None = None
+        self.sprite_writes: list[tuple[int, bytes]] | None = None
+        self.sprite_reclaim_banks: list[tuple[int, int]] | None = None
 
         build_world(self)
 
@@ -543,6 +547,10 @@ class GameWorld:
         """Finalize character starting stats based on starting level and optimal choices."""
         pass
 
+
+    def offer_sprite_blob(self, blob: bytes | None) -> None:
+        """Offer a stored sprite render for the next get_patch() to replay"""
+        self.pending_sprite_blob = blob
 
     def get_patch(self) -> Patch:
         """Assemble the ROM patch. Implementation lives in logic/rom/build_patch.py."""
