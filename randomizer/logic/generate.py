@@ -220,13 +220,7 @@ def generate_seed(
     debug_bps_patches: bool = False,
     progress_callback: Callable[[str, int], None] | None = None,
 ) -> tuple[GameWorld, Seed]:
-    """Generate a seed and store it, reusing a cached placement when possible.
-
-    The same call covers both jobs a queue needs: a brand new seed finds no
-    stored placement and runs the full search, while a permalink revisit - the
-    same seed and gameplay flags with different cosmetics - finds one and skips
-    it. Callers do not choose between the two.
-    """
+    """Generate a seed, assemble its patch and store it, reusing what already exists. Returns the world and its stored row."""
     world = build_world_for(
         seed,
         settings,
@@ -234,12 +228,16 @@ def generate_seed(
         debug_bps_patches=debug_bps_patches,
         progress_callback=progress_callback,
     )
-    return world, save_seed(world, seed, debug_mode=debug_mode, race_mode=race_mode)
+    world.get_patch()
+    row = save_seed(world, seed, debug_mode=debug_mode, race_mode=race_mode)
+    ensure_sprite_render_variants(row, seed, world, debug_mode=debug_mode)
+    return world, row
 
 
 __all__ = [
     "build_world_for",
     "encode_placement",
+    "ensure_sprite_render_variants",
     "generate_seed",
     "load_placement_cache",
     "save_seed",
