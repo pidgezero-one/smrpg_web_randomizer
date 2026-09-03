@@ -15,7 +15,7 @@ There are two different forms for reporting bugs: one for issues that affect gam
 * You get a game over in a fight, but your game world was not restored to the state it was in at your last save (except for party member levels and stats, which persist through game overs).
 * You get KOed by an attack that did not deplete your HP.
 * A save box isn't glowing.
-* You pick up an item that doesn't match the sprite it was rendered as, or the Moleville blue toad sells you an item that doesn't match what he descriped.
+* You pick up an item that doesn't match the sprite it was rendered as, or the Moleville blue toad sells you an item that doesn't match what he described.
 * Anything else that isn't working.
 
 ## Examples of things you should check BEFORE submitting a report 
