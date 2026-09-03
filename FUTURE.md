@@ -4,7 +4,22 @@
 - Entrance randomizer
 - Wishsanity
 - Bucketsanity
+- true coinsanity (rooms with regular coins default to belome temple sprite behaviour, include coin snake)
+- true shopsanity (might need some serious ASM bullshit)
+- midas river waterfall coins included in shuffle - do this by adding new frames to the standard coin npc representing tiny items
 - sanity for places that give you a repeated prize instead of one
+    - rose way lakitu
+    - wiggler jump
+    - fat yoshi
+    - moleville minecart wager
+    - apprentice sidequest
+    - marrymore tip prize within suite
+    - mushroom boy
+    - potentially restore booster hill beetle game and add checks for each beetle type exchange
+    - sky bridge
+    - ant bounce
+    - blackjack
+    - casino slots
 - fake mushroom randomizes every time you use it, not at roll time
 - choose how many spells you start with and how many are shuffled
 - freebie settings: sliding scale from 0 to 100% chance
@@ -22,3 +37,19 @@
     - mushroom way
     - pipe vault 
     - tower parachute room / room key chest (walk over board with no fights)
+- Land's end whirlpool gating: despawn the NPCs
+    - Unlock condition options:
+        - exchange the Cricket Jam
+        - knock over the Land's End barrel
+        - full clear the Sky Bridge on highest difficulty
+- Bean Valley gating: block the entrance and exit pipe. Use vines as the blocker if you can
+    - Unlock condition options:
+        - Plant the Seed
+        - Use the Temple Key
+        - Scale the Troopa cliff in under 12 seconds
+        - Clear Melody Bay
+        - Defeat Jinx 3
+        - Clear Dojo 3
+        - Defeat Culex 1
+        - Clear Sealed Door 1
+- something to do with the four spikeys that get turned into landfills in booster pass (need to think of how to handle cases where they were fought instead of despawned. maybe grant either way per spikey depending on what you did)
