@@ -483,7 +483,7 @@ class ReturningVeteran(Preset):
         "For people who played SMRPG growing up and may do an occasional playthrough nowadays but don't necessarily know all of its obscure secrets inside out."
     )
     _flags: str = (
-        "P(rchars)     Q(perms:random_accessories_all)     C(exp:triple)     X(rstars|bosses:/39b8v//)     T(ritems|itemqual:completely_random)     L(keys_anywhere|postgame|chests://P9/3/B//HAA0/Xt4BgAAA89BZOPKhAwi/N+c///7V+xP0N4+//vP7+/C)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel)     S(rshops|shopqual:completely_random|showperms)     B(rboss|pool:f79v3N/P)     E(drops|formations)     F(skips|seeya)"
+        "P(rchars)     Q(perms:random_accessories_all)     C(exp:triple)     X(rstars|bosses:/39b8v//)     T(ritems|itemqual:completely_random|xpstars)     L(keys_anywhere|chests://P9/3/B//HAA0/Xt4BgAAA89BZOPKhAwi/N+Y///7V+xP0N4+//vP7+/CP)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel)     S(rshops|shopqual:completely_random|showperms|nosell:5)     B(rboss|pool:f79v3N/P)     E(drops|formations)     F(skips|fixinv|seeya)"
     )
 
 
@@ -494,7 +494,7 @@ class VeteranPreset(Preset):
         "For people who know the original game (and its remake) upside down and inside out. Everything is shuffled and no checks are disabled. Your knowledge of equipment properties and monster behaviours will come in handy."
     )
     _flags: str = (
-        "P(rchars)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(rshops|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+        "P(rchars|allyswap|starters:4)     Q(perms:vanilla_accessories_all|hints)     C(exp:double|uncap|uncapfp)     X(rstars|disperse)     T(ritems|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(fake|xpstar:bosses|fix_kg)     A(fm:open|bh:tower|bk:star_6)     O(fasttravel|skipcart|skipant)     G(rng)     S(rshops|biasshops|showperms)     B(rboss|pool://9////f)     F(skips|seeya)"
     )
 
 
@@ -505,7 +505,7 @@ class RandomizerPreset(Preset):
         "A highly access-restrictive preset for people who enjoy solving the puzzle of randomized progression."
     )
     _flags: str = (
-        "P(rchars)     Q(perms:random_accessories_all|props:random|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|itemqual:completely_random|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:elder|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|melody|pwd|rng)     S(rshops|shopqual:mostly_random|biasshops|showperms)     B(rboss)     E(drops)     F(skips)"
+        "P(rchars|allyswap|starters:4)     Q(perms:random_accessories_all|props:random|hints)     C(exp:double|stats|charspells|infuse|spellelements|uncap|uncapfp)     X(rstars)     T(ritems|itemqual:completely_random|biasitems|restrict_monstro|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:bowyer|bh:kggg|land:elder|tmpl:key|mt:belome_2|nl:paint|bv:valentina|bk:axem|wf:exor)     O(seaside:johnny|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(ball|button|quiz|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:mostly_random|biasshops|showperms|nosell:4)     B(rboss)     E(drops|formations)     F(skips|fixinv|seeya)"
     )
 
 
@@ -514,7 +514,7 @@ class GodPreset(Preset):
     _name: str = '"The world\'s my oyster"'
     _description: str = "A preset where your order of operations is wide open."
     _flags: str = (
-        "P(rchars|starters:4:5:6:7:8)     Q(perms:random_accessories_all|props:random|unsafe|hints)     C(stats|charspells)     X(rstars|total_sp:7)     T(ritems|itemqual:completely_random|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|objective:stars|endgame:7|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:completely_random|showperms)     B(rboss|bossscale:godmode)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|seeya)"
+        "P(rchars|allyswap|starters:4:5:6:7:8)     Q(perms:random_accessories_all|props:random|unsafe|hints)     C(stats|charspells|spellelements|uncap|uncapfp)     X(rstars|total_sp:7)     T(ritems|itemqual:completely_random|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|moveflags|postgame)     I(replace|fake|xpstar:none|fix_kg|sj1:10|sj2:20)     A(bw:open|fm:open|bt:open|mm:open|sea:open|mt:open|bv:open|bk:open|wf:open)     O(seaside:open|objective:stars|endgame:7|doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant|skip_musty)     G(ball|button|quiz|quizext|melody|pwd|doorshuffle|rng)     S(rshops|shopqual:completely_random|showperms|nosell:Q)     B(rboss|bossscale:godmode|noheal:all)     E(enemystats:full_random|drops|formations|attacks|enemyspells|noregexp|nobossexp)     F(skips|nowhirl|nobigbang|noko|seeya)"
     )
 
 
@@ -523,7 +523,7 @@ class Speedrunner(Preset):
     _description: str = (
         "For any% speedrunners who don't remember much about casual playthroughs or MOTS speedruns (but might have done Low Level once or twice)."
     )
-    _flags: str = "Q(hints)     C(exp:double|uncap)     X(rstars|bosses:fz9v3t/f)     T(ritems|hill|marry)     L(keys_anywhere|stars_anywhere|chests://P//3/D//XA/9/f9+9/b4/99/5//d9gzi/d+f//n71/9/8P7////v7+vf)     I(replace|fake)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel|skipcart)     G(rng)     S(showperms)     B(rboss|allsprites|pool://9////f)     F(skips|seeya)"
+    _flags: str = "P(allyswap)     Q(hints)     C(exp:double|uncap)     X(rstars|bosses:fz9v3t/f)     T(ritems|hill|marry)     L(keys_anywhere|stars_anywhere|chests://P//3/D//XA/9/f9+9/b4/99/5//d9gzi/d+f//n71/9/8P7////v7+vfP)     I(replace|fake)     A(bw:mushroom_way|fm:open|bh:tower|mm:tower|sea:open)     O(doorcount:1|fasttravel|skipcart|skipant)     G(rng)     S(showperms|nosell:Q)     B(rboss|allsprites|pool://9////f)     F(skips|seeya)"
 
 
 class LegacyQuick(Preset):
@@ -596,14 +596,6 @@ class LegacyBingo(Preset):
     )
 
 
-class Pidge(Preset):
-
-    _name: str = "Pidge loves this preset"
-    _description: str = "She likes testing with this, so it's here for convenience."
-    _flags: str = (
-        "P(rchars|starters:4)     Q(perms:vanilla_accessories_all|props:some|hints)     C(exp:double|charspells|infuse|uncap)     X(rstars)     T(ritems|xpstars|hill|mimics|slots|beetle|kamek|marry|doll|cookies|fireworks:progressive)     L(keys_anywhere|stars_anywhere|spells_anywhere|moveflags|postgame)     I(replace|fake|xpstar:bosses|fix_kg)     A(ks:rfc|pv:geno|me:geno|bh:kggg|mm:tower|land:elder|tmpl:key|nl:paint|bv:valentina|bk:axem|wf:open)     O(doorcount:1|cwarp|bwarp|fasttravel|skipcart|skipant)     G(quiz|melody|pwd|rng)     S(rshops|showperms)     B(rboss|pool://9////f)     E(drops)     F(skips|seeya)"
-    )
-
 
 PRESETS = [
     ReturningVeteran,
@@ -618,5 +610,4 @@ PRESETS = [
     LegacyExpert,
     LegacyAsyncTournament,
     LegacyBingo,
-    Pidge,
 ]
