@@ -30,4 +30,9 @@ There are two different forms for reporting bugs: one for issues that affect gam
 * Some sprites in battle glitch out when there are too many tiles on the same horizontal row, i.e. Bowser is in your middle slot, Yaridovich attacks your rightmost slot, Bowser temporarily disappears partially from the graphics overflow
 * EXP stars in some world areas (particularly areas that didn't originally support EXP stars, like Booster Tower, Forest Maze, etc) freeze you for about a quarter second when activating or deactivating. This is known.
 * Any glitch that happens with Crowd Control, which is not officially supported.
-* A randomized ship password or Melody Bay tune being too hard to solve. Don't enable these settings if you aren't ready to do some bruteforcing for references you aren't familiar with.
+* Anything related to transmission of prizes in Archipelago. That should be brought up in the [Archipelago discord server](https://randomizer-beta.smrpgspeedruns.com/community).
+* A randomized ship password or Melody Bay tune being too hard to solve. Don't enable these settings if you aren't ready to do some bruteforcing for references you aren't familiar with, the UI already warns you about this.
+* Coin sprites and frog coin sprites are staying still and not spinning. This is a vram-sensitive concession that had to be made to allow these items to be shuffled into any prize location.
+* Allies transforming into each other temporarily when they use some attacks or spells that they don't normally use in the original game. These animations are not transferrable on their own and have the original character baked into them. If this is a problem, use settings that keep weapons and spell assignments with their original owners.
+* Some boss sprites (Mack, Exor, Count Down, etc) don't have a walking animation or can't face northwest/northeast. The animation frames just don't exist for every boss to be able to do this, so some of them are static objects that shift around on the ground.
+* Dialogs missing from cutscenes or boss fights. This is on purpose to reduce mashing.
