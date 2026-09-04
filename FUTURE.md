@@ -9,12 +9,14 @@
 - midas river waterfall coins included in shuffle - do this by adding new frames to the standard coin npc representing tiny items
 - something to do with the four spikeys that get turned into landfills in booster pass (need to think of how to handle cases where they were fought instead of despawned. maybe grant either way per spikey depending on what you did)
 - sanity for places that give you a repeated prize instead of one
+    - midas river frog coin exchange
     - rose way lakitu
     - wiggler jump
-    - fat yoshi
+    - fat yoshi first 50
     - moleville minecart wager
     - apprentice sidequest
     - marrymore tip prize within suite
+    - marrymore bellhop rewards you when you tip him
     - mushroom boy
     - potentially restore booster hill beetle game and add checks for each beetle type exchange
     - sky bridge
@@ -26,6 +28,7 @@
 
 - EXP packets as collectibles
 - Entrance randomizer
+- password hints as collectibles
 
 ## New features
 
