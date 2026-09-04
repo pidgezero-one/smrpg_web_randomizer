@@ -1082,4 +1082,13 @@ all_songs = [
         hint_2="' I love Flower Garden![await]\nBut I can never hear it\nover baby Mario's crying.[delay]\nOh! You're...[delay]\nI'm gonna go swim some laps.[await]\n...underwater.[await]'[await]",
         hint_3="' All together now, y'all!\n ♪“Ti Re Re Ti So So La Ti”[await]\nWish I was sittin'\nin a flower garden.[await]'[await]",
         scroll='\n[center]Ti Re Re Ti So So La Ti[await]'),
+    Song(
+        [(Do, 55), (Do, 65), (Ti, 15), (Do, 15), (Re, 15), (Do, 15), (La, 15), (Do, 0)],
+        "Memory",
+        submitter="katstasaph",
+        submitter_credits="KATSTASAPH",
+        hint_1=" ' My favorite song?[await][page]\n It's “Memory” from “Cats”.\n ♪“Do Do Ti Do Re Do La Do”.[await]\n I wish cats were real.[await]'[await]",
+        hint_2=" ' My favorite song?[await][page]\n It's “Memory” from “Cats”.\n ♪“Do Do Ti Do Re Do La Do”.[await]\n But not even Frogfucius has\\seen a\n real cat before.[await]'[await]",
+        hint_3=" 'Cats? No memory of 'em.\n I reckon there ain't one\n cat in this entire world.[delay]\n Belome?\n Why, he's a dog!'[await]",
+        scroll='\n[center]Do Do Ti Do Re Do La Do[await]'),
 ]
