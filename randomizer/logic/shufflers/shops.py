@@ -110,7 +110,7 @@ from randomizer.logic.progression.prizelocations import (
     )
 from .equipment import (
         calc_equip_price,
-        FROG_COINS_PER_COIN,
+        frog_coins_per_coin,
     )
 
 if TYPE_CHECKING:
@@ -127,7 +127,7 @@ VANILLA_SHOP_ITEMS: frozenset[type[BaseItem]] = frozenset(
 
 
 def reprice_nonvanilla_shop_items(world: GameWorld) -> None:
-    """Reprice items whose vanilla price doesn't suit the shop they landed in."""
+    """Reprice items that weren't shop items in the original game."""
 
     if world.settings.isflag_enabled(FreeShops):
         return
@@ -790,14 +790,14 @@ def shuffle_shops(world: GameWorld) -> None:
                 continue
             item = world.items.get_by_type(item_type)
             if item and item.price > 0:
-                item.set_price(max(1, item.price // FROG_COINS_PER_COIN))
+                item.set_price(max(1, item.price // frog_coins_per_coin(item)))
 
         for item_type in ORIGINAL_FROG_COIN_ITEMS:
             if item_type in frog_coin_items:
                 continue
             item = world.items.get_by_type(item_type)
             if item and item.price > 0:
-                item.set_price(min(9999, item.price * FROG_COINS_PER_COIN))
+                item.set_price(min(9999, item.price * frog_coins_per_coin(item)))
 
     for shop in world.shops.shops:
         if shop is None:

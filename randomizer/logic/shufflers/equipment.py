@@ -7,7 +7,7 @@ from smrpgpatchbuilder.datatypes.spells.enums import Element, Status, TempStatBu
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.party_character import PartyCharacter
 
 from ..utils import mutate_normal
-from ...types.item import Weapon, Armor, Accessory
+from ...types.item import Item, Weapon, Armor, Accessory, Equipment
 from ...types.flags import EquipmentCharactersOptions
 from ...data.items.items import (
         WeaponItem,
@@ -60,7 +60,6 @@ from ...types.prize import ItemPrize
 
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
-    from ...types.item import Equipment
 
 
 def randomize_equipment_properties(world: GameWorld) -> None:
@@ -315,9 +314,16 @@ def calc_equip_rank(item: Equipment) -> float:
 EQUIP_PRICE_PER_RANK = 1.5
 ACCESSORY_PRICE_PER_RANK = 3.0
 
-FROG_COINS_PER_COIN = 3
+FROG_COINS_PER_COIN = 25
+EQUIP_FROG_COINS_PER_COIN = 12
 
 MAX_FROG_COIN_PRICE = 999
+
+
+def frog_coins_per_coin(item: Item) -> int:
+    """The coins-per-frog-coin exchange rate that applies to this item."""
+
+    return EQUIP_FROG_COINS_PER_COIN if isinstance(item, Equipment) else FROG_COINS_PER_COIN
 
 
 def calc_equip_price(item: Equipment, frog_coin_shop: bool = False) -> int:
@@ -326,7 +332,7 @@ def calc_equip_price(item: Equipment, frog_coin_shop: bool = False) -> int:
     rate = ACCESSORY_PRICE_PER_RANK if isinstance(item, Accessory) else EQUIP_PRICE_PER_RANK
     price = calc_equip_rank(item) * rate
     if frog_coin_shop:
-        return min(MAX_FROG_COIN_PRICE, max(1, round(price / FROG_COINS_PER_COIN)))
+        return min(MAX_FROG_COIN_PRICE, max(1, round(price / frog_coins_per_coin(item))))
     return min(9999, max(2, round(price)))
 
 
