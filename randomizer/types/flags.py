@@ -1645,10 +1645,24 @@ class BiasShopShuffle(BooleanFlag):
     ]
 
 
-class NoPickMeUps(BooleanFlag):
-    _name = "Exclude Pick Me Ups"
-    _description = """If enabled, Pick Me Ups will not be sold in any shops."""
-    _id = "nolife"
+class PickMeUpOptions(CategorizationOption):
+    """Enumeration for where Pick Me Ups are allowed to be sold"""
+
+    DEFAULT = "Default"
+    EARLY = "Early"
+    NONE = "None"
+
+
+class PickMeUpAvailability(SelectOneFlag[PickMeUpOptions]):
+    _name = "Pick Me Ups"
+    _description = """<b>Default</b>: Pick Me Ups appear in at least one shop, but they are NOT guaranteed to be in a shop you can access at the start of the seed.
+<br>
+<br><b>Early</b>: Pick Me Ups appear in at least one shop, and they ARE guaranteed to be in a shop you can access at the start of the seed.
+<br>
+<br><b>None</b>: Pick Me Ups are not be sold in any shop."""
+    choices = [o for o in PickMeUpOptions]
+    _default = PickMeUpOptions.DEFAULT
+    _id = "pickmeups"
     _requires_all = [(ShuffleShops(), True)]
 
 

@@ -63,7 +63,8 @@ from ...types.flags import (
         ShopQuality,
         ShopQualities,
         BiasShopShuffle,
-        NoPickMeUps,
+        PickMeUpAvailability,
+        PickMeUpOptions,
         FreeShops,
         SeaGate,
         SeaGating,
@@ -158,7 +159,8 @@ def shuffle_shops(world: GameWorld) -> None:
 
     quality = world.settings.get_flag(ShopQuality).selected
     bias_enabled = world.settings.isflag_enabled(BiasShopShuffle)
-    no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
+    pickmeups = world.settings.get_flag(PickMeUpAvailability).selected
+    no_pickmeups = pickmeups == PickMeUpOptions.NONE
     free_shops = world.settings.isflag_enabled(FreeShops)
 
     FROG_DISCIPLE_SHOP = SH03_FROG_DISCIPLE
@@ -640,7 +642,7 @@ def shuffle_shops(world: GameWorld) -> None:
                 f"Shop index {shop.index} ended up with zero items after shuffling"
             )
 
-    if not no_pickmeups:
+    if pickmeups == PickMeUpOptions.EARLY:
         early_has_pickmeup = any(
             shop is not None
             and shop.index in early_shops
@@ -717,6 +719,41 @@ def shuffle_shops(world: GameWorld) -> None:
                     current_item_shop_count[dropped] = max(
                         0, current_item_shop_count.get(dropped, 0) - 1
                     )
+                target_items.append(PickMeUpItem)
+                target.set_items(target_items)
+                current_item_shop_count[PickMeUpItem] = (
+                    current_item_shop_count.get(PickMeUpItem, 0) + 1
+                )
+
+    elif pickmeups == PickMeUpOptions.DEFAULT:
+        may_guarantee = True
+        if quality == ShopQualities.ORIGINAL:
+            original_pickmeup_shops = original_item_shop_count.get(PickMeUpItem, 0)
+            current_pickmeup_shops = current_item_shop_count.get(PickMeUpItem, 0)
+            may_guarantee = (
+                original_pickmeup_shops > 0
+                and current_pickmeup_shops < original_pickmeup_shops
+            )
+
+        has_pickmeup = any(
+            shop is not None and PickMeUpItem in (shop.items or [])
+            for shop in world.shops.shops
+        )
+
+        if may_guarantee and not has_pickmeup:
+            eligible_shops = [
+                shop
+                for shop in world.shops.shops
+                if shop is not None
+                and shop.index != FROG_DISCIPLE_SHOP
+                and original_shop_data.get(shop.index, {}).get("has_consumable", False)
+                and len(shop.items or []) < 15
+                and PickMeUpItem not in (shop.items or [])
+            ]
+
+            if eligible_shops:
+                target = random.choice(eligible_shops)
+                target_items = [i for i in (target.items or []) if i is not None]
                 target_items.append(PickMeUpItem)
                 target.set_items(target_items)
                 current_item_shop_count[PickMeUpItem] = (

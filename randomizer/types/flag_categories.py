@@ -264,7 +264,7 @@ class ShopsCategory(FlagCategory):
         ShuffleShops,
         ShopQuality,
         BiasShopShuffle,
-        NoPickMeUps,
+        PickMeUpAvailability,
         ShowEquips,
         FreeShops,
         ProtectSpecialItems,

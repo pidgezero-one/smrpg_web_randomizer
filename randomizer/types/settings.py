@@ -171,7 +171,7 @@ class Settings:
             ShuffleShops: ShuffleShops(),
             ShopQuality: ShopQuality(),
             BiasShopShuffle: BiasShopShuffle(),
-            NoPickMeUps: NoPickMeUps(),
+            PickMeUpAvailability: PickMeUpAvailability(),
             ShowEquips: ShowEquips(),
             FreeShops: FreeShops(),
             ProtectSpecialItems: ProtectSpecialItems(),

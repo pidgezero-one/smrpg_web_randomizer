@@ -55,7 +55,7 @@ from ...data.items.items import (
         KerokeroColaItem,
         RockCandyItem,
     )
-from ...types.flags import NoPickMeUps, RestrictSpecialEquips, Remake
+from ...types.flags import PickMeUpAvailability, PickMeUpOptions, RestrictSpecialEquips, Remake
 from ...types.prize import ItemPrize
 
 if TYPE_CHECKING:
@@ -353,7 +353,7 @@ def reprice_equipment_by_rank(world: GameWorld) -> None:
 def build_item_impact_categories(world: GameWorld) -> None:
     """Build item impact categories for use in shop shuffling and other systems."""
 
-    no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
+    no_pickmeups = world.settings.is_flag_value(PickMeUpAvailability, PickMeUpOptions.NONE)
 
     world.low_impact_items = [
         MushroomItem,
