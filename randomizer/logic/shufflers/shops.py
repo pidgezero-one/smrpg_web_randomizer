@@ -3,7 +3,7 @@
 from __future__ import annotations
 from ...types.prize import ItemPrize
 import random
-from typing import TYPE_CHECKING, cast
+from typing import TYPE_CHECKING, Callable, cast
 
 from ...data.variables.dialog_names import *
 from ...types.item import Item, Equipment
@@ -108,7 +108,23 @@ from randomizer.logic.progression.prizelocations import (
         FrogDiscipleLocation3,
         FrogDiscipleLocation4,
         FrogDiscipleLocation5,
+        StartingItem1Location,
+        StartingItem2Location,
+        StartingItem3Location,
+        StartingItem4Location,
     )
+from randomizer.logic.progression.prizelocations.access import (
+        can_access_factory,
+        can_access_juice_bar_alto,
+        can_access_juice_bar_soprano,
+        can_access_juice_bar_tenor,
+        can_access_keep,
+        can_access_monstro_town,
+        can_access_outer_nimbus,
+        can_access_sea,
+        can_access_volcano,
+    )
+from randomizer.types.logic import (Inventory)
 from .equipment import (
         calc_equip_price,
         frog_coins_per_coin,
@@ -117,6 +133,57 @@ from .equipment import (
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
     from smrpgpatchbuilder.datatypes.items.classes import Item as BaseItem
+
+SHOP_ACCESS: dict[int, Callable[["GameWorld", Inventory], bool]] = {
+    SH03_FROG_DISCIPLE: can_access_sea,
+    SH07_SEA_AND_SHIP_SHAMAN: can_access_sea,
+    SH08_SEASIDE_TOWN_MINION: can_access_sea,
+    SH10_JUICE_BAR_ALTO: can_access_juice_bar_alto,
+    SH11_JUICE_BAR_TENOR: can_access_juice_bar_tenor,
+    SH12_JUICE_BAR_SOPRANO: can_access_juice_bar_soprano,
+    SH13_SEASIDE_WEAPON: can_access_sea,
+    SH14_SEASIDE_ARMOR: can_access_sea,
+    SH15_SEASIDE_ACCESSORY: can_access_sea,
+    SH16_SEASIDE_HEALTH_FOOD: can_access_sea,
+    SH17_MONSTRO: can_access_monstro_town,
+    SH18_VOLCANO_ITEM: can_access_volcano,
+    SH19_VOLCANO_ARMOR: can_access_volcano,
+    SH20_GOOMBETTE: can_access_monstro_town,
+    SH21_NIMBUS_LAND: can_access_outer_nimbus,
+    SH22_KEEP_1: can_access_keep,
+    SH23_KEEP_2: can_access_keep,
+    SH24_FACTORY_TOAD: can_access_factory,
+}
+
+STARTING_ITEM_LOCATIONS = (
+    StartingItem1Location,
+    StartingItem2Location,
+    StartingItem3Location,
+    StartingItem4Location,
+)
+
+
+def starting_inventory(world: GameWorld) -> Inventory:
+    """Prizes the player holds before gaining control, from the starting item slots."""
+
+    prizes = []
+    for loc_type in STARTING_ITEM_LOCATIONS:
+        location = world.locations.get(loc_type)
+        if location is not None and location.prize is not None:
+            prizes.append(location.prize)
+    return Inventory(prizes)
+
+
+def is_earlygame(shop_index: int, world: GameWorld, inventory: Inventory | None = None) -> bool:
+    """Whether a shop can be reached at the start of the game."""
+
+    gate = SHOP_ACCESS.get(shop_index)
+    if gate is None:
+        return True
+    if inventory is None:
+        inventory = starting_inventory(world)
+    return gate(world, inventory)
+
 
 VANILLA_SHOP_ITEMS: frozenset[type[BaseItem]] = frozenset(
     item
@@ -228,16 +295,14 @@ def shuffle_shops(world: GameWorld) -> None:
     if not world.settings.is_flag_value(BowsersKeepGate, BowsersKeepGating.OPEN):
         should_get_better_items.extend([SH22_KEEP_1])
 
-    not_early = set(should_get_better_items)
-    not_early.add(FROG_DISCIPLE_SHOP)
-    if world.settings.is_flag_value(NimbusGate, NimbusGating.VALLEY):
-        not_early.add(SH21_NIMBUS_LAND)
+    start_inventory = starting_inventory(world)
     early_shops = frozenset(
         shop.index
         for shop in world.shops.shops
         if shop is not None
         and shop.index not in DUMMY_SHOPS
-        and shop.index not in not_early
+        and not (shop.buy_frog_coin or shop.buy_frog_coin_one)
+        and is_earlygame(shop.index, world, start_inventory)
     )
 
     low_impact_items = world.low_impact_items
