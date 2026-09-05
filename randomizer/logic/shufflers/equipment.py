@@ -92,8 +92,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                 else:
                     stat_point_value += val * 2
 
-        # Randomize number of attributes to go up or down
-        # 1/3 chance all non-zero stats go up
         ups: list[str] = []
         if random.randint(1, 3) == 1:
             ups = [attr for attr in EQUIP_STATS if getattr(item, attr, 0) > 0]
@@ -105,7 +103,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                 if set(ups) & set(primary_stats):
                     break
 
-        # Attributes going down (1/3 chance all negative stats go down)
         if random.randint(1, 3) == 1:
             downs = [attr for attr in EQUIP_STATS if getattr(item, attr, 0) < 0]
         else:
@@ -114,7 +111,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
             )[0]
             downs = random.sample(EQUIP_STATS, num_down)
 
-        # Priority to going up
         downs = [d for d in downs if d not in ups]
 
         score = stat_point_value
@@ -161,7 +157,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
             )
             item.set_variance(new_variance)
 
-        # Determine tier based on item price (rough approximation)
         price = item.price
         if price <= 50:
             tier = 1
@@ -175,16 +170,14 @@ def randomize_equipment_properties(world: GameWorld) -> None:
             tier = 5
 
         odds_map = {1: 2 / 3, 2: 1 / 2, 3: 1 / 4, 4: 1 / 8, 5: 3 / 32}
-        odds = odds_map.get(tier, 0) / 2  # Halved as per 7.1.3 update
+        odds = odds_map.get(tier, 0) / 2
 
         if odds > 0:
-            # Instant KO protection
             ko_odds = odds
             if isinstance(item, Weapon):
                 ko_odds /= 2
             item.set_prevent_ko(random.random() < ko_odds)
 
-            # Elemental immunities/resistances
             item.set_elemental_immunities([])
             item.set_elemental_resistances([])
             elements = [Element.ICE, Element.FIRE, Element.THUNDER]
@@ -201,16 +194,13 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                     elif random.random() < odds:
                         item.append_elemental_immunity(elem)
 
-            # Safety check: ensure no element is in both immunity and resistance lists
             immunities_set = set(item.elemental_immunities)
             resistances_set = set(item.elemental_resistances)
             overlap = immunities_set & resistances_set
             if overlap:
-                # Remove overlapping elements from resistances (immunity takes priority)
                 for elem in overlap:
                     item.remove_elemental_resistance(elem)
 
-            # Status immunities
             item.set_status_immunities([])
             status_list = [
                 Status.MUTE,
@@ -224,7 +214,6 @@ def randomize_equipment_properties(world: GameWorld) -> None:
                 if random.random() < odds:
                     item.append_status_immunity(status)
 
-            # Temp buffs (weighted toward accessories/armor)
             buff_odds = odds
             if isinstance(item, Weapon):
                 buff_odds /= 2
@@ -246,38 +235,32 @@ def randomize_equipment_properties(world: GameWorld) -> None:
 
 def randomize_equipment_characters(
     world: GameWorld,
-    setting,  # EquipmentCharactersOptions
+    setting,
 ) -> None:
     """Randomize which characters can equip each piece of equipment."""
 
     ALL_CHARS = [
         PartyCharacter(i) for i in range(5)
-    ]  # Mario=0, Mallow=1, Geno=2, Bowser=3, Peach=4
+    ]
 
     for item in world.items.items:
         if not isinstance(item, (Weapon, Armor, Accessory)):
             continue
 
         if setting == EquipmentCharactersOptions.EQUIP_ALL:
-            # Anyone can equip anything
             item.set_equip_chars(list(ALL_CHARS))
 
         elif setting == EquipmentCharactersOptions.VANILLA_ACCESSORIES_ALL:
-            # Only accessories get all chars
             if isinstance(item, Accessory):
                 item.set_equip_chars(list(ALL_CHARS))
-            # Weapons and armor keep vanilla (no change needed)
 
         elif setting == EquipmentCharactersOptions.RANDOM_ACCESSORIES_ALL:
             if isinstance(item, Accessory):
-                # All accessories can be equipped by anyone
                 item.set_equip_chars(list(ALL_CHARS))
             else:
-                # Weapons and armor get randomized
                 _randomize_single_equip_chars(item, ALL_CHARS)
 
         elif setting == EquipmentCharactersOptions.RANDOM:
-            # Everything gets randomized
             _randomize_single_equip_chars(item, ALL_CHARS)
 
 
@@ -285,7 +268,6 @@ def _randomize_single_equip_chars(
     item: Equipment, all_chars: list[PartyCharacter]
 ) -> None:
     """Randomize equippable characters for a single item."""
-    # Pick random number of characters with lower numbers weighted heavier
     num_equippable = random.randint(1, random.randint(1, 5))
     new_chars: list[PartyCharacter] = []
 
@@ -330,33 +312,28 @@ def calc_equip_rank(item: Equipment) -> float:
     return rank
 
 
-# Coins per point of combat rank. Vanilla rank spans 0-345 and vanilla equipment
-# prices span 2-1998, so 6 keeps repriced equipment on the vanilla coin scale.
-EQUIP_PRICE_PER_RANK = 6
+EQUIP_PRICE_PER_RANK = 1.5
+ACCESSORY_PRICE_PER_RANK = 3.0
 
-FROG_COINS_PER_COIN = 10
-EQUIP_FROG_PRICE_PER_RANK = EQUIP_PRICE_PER_RANK / FROG_COINS_PER_COIN
+FROG_COINS_PER_COIN = 3
 
 MAX_FROG_COIN_PRICE = 999
 
 
+def calc_equip_price(item: Equipment, frog_coin_shop: bool = False) -> int:
+    """Price an equipment item from its combat rank, on the vanilla coin scale."""
+
+    rate = ACCESSORY_PRICE_PER_RANK if isinstance(item, Accessory) else EQUIP_PRICE_PER_RANK
+    price = calc_equip_rank(item) * rate
+    if frog_coin_shop:
+        return min(MAX_FROG_COIN_PRICE, max(1, round(price / FROG_COINS_PER_COIN)))
+    return min(9999, max(2, round(price)))
+
+
 def reprice_equipment_by_rank(world: GameWorld) -> None:
-    """Set each equipment's price from its combat rank (buff-aware).
-
-    Vanilla prices don't track power: items the game never sells carry junk
-    placeholder prices (Quartz Charm 7 coins for a strictly-better Ghost Medal),
-    and shop shuffling happily sells them at face value. Rank-based pricing puts
-    every equip on one scale.
-
-    Placeholder/empty equipment slots keep their (zero) price.
-    """
+    """Set each equipment's price from its combat rank (buff-aware)."""
 
     dummy_equipment = {WeaponItem, ArmorItem, AccessoryItem, SpaceItem, SpaceItem2}
-    # These store a FROG COIN count in .price, not coins (the equipment members of
-    # shops.py's ORIGINAL_FROG_COIN_ITEMS), so they are ranked on the same scale
-    # but priced at the frog coin rate. shuffle_shops multiplies by
-    # FROG_COINS_PER_COIN if one of them lands in a regular shop, which recovers
-    # the coin price the same rank would have produced.
     frog_coin_priced = {ExpBoosterItem, CoinTrickItem, ScroogeRingItem}
 
     for item in world.items.items:
@@ -364,21 +341,11 @@ def reprice_equipment_by_rank(world: GameWorld) -> None:
             continue
         if type(item) in dummy_equipment:
             continue
-        rank = calc_equip_rank(item)
-        if type(item) in frog_coin_priced:
-            price = round(rank * EQUIP_FROG_PRICE_PER_RANK)
-            item.set_price(min(MAX_FROG_COIN_PRICE, max(1, price)))
-        else:
-            price = round(rank * EQUIP_PRICE_PER_RANK)
-            item.set_price(min(9999, max(2, price)))
+        item.set_price(calc_equip_price(item, type(item) in frog_coin_priced))
 
 
 def build_item_impact_categories(world: GameWorld) -> None:
-    """Build item impact categories for use in shop shuffling and other systems.
-
-    Categorizes consumables and equipment into low/high/highest impact tiers.
-    Equipment is ranked based on stats, immunities, and special properties.
-    """
+    """Build item impact categories for use in shop shuffling and other systems."""
 
     no_pickmeups = world.settings.isflag_enabled(NoPickMeUps)
 
@@ -432,7 +399,6 @@ def build_item_impact_categories(world: GameWorld) -> None:
     world.equipment_ranks = [(type(e), calc_equip_rank(e)) for e in all_equipment]
     world.equipment_ranks.sort(key=lambda x: x[1], reverse=True)
 
-    # Categorize equipment: top 20% = highest, next 30% = high, bottom 50% = low
     total_equip = len(world.equipment_ranks)
     highest_cutoff = int(total_equip * 0.2)
     high_cutoff = int(total_equip * 0.5)
@@ -482,11 +448,7 @@ def build_item_impact_categories(world: GameWorld) -> None:
 
 
 def build_item_to_prize_mapping(world: GameWorld) -> None:
-    """Build a mapping from item classes to their corresponding prize classes.
-
-    Iterates through all ItemPrize subclasses and creates a reverse mapping
-    from their item attribute to the prize class itself.
-    """
+    """Build a mapping from item classes to their corresponding prize classes."""
 
     world.item_to_prize = {}
 
