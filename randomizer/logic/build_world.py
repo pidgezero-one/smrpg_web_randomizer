@@ -17,7 +17,7 @@ from randomizer.logic.post_shuffle.steps.debug_max_stats import (apply_debug_max
 from randomizer.logic.pre_shuffle.prize_locations import (set_locations)
 from randomizer.logic.rom import shuffler_cache
 from randomizer.logic.shufflers.items import (post_shuffle_cleanup, shuffle_prizes)
-from randomizer.logic.solvability import (SettingsRelaxed, assert_solvable, relax_deadlocked_gates)
+from randomizer.logic.solvability import (SettingsRelaxed, assert_placement_reachable, assert_solvable, relax_deadlocked_gates)
 import random
 from copy import (deepcopy)
 from randomizer.data.items.definitions.able_juice_item import (AbleJuiceItem)
@@ -174,6 +174,7 @@ def _shuffle_items(world: GameWorld):
     else:
         # otherwise, start fresh
         shuffle_prizes(world)
+        assert_placement_reachable(world)
     world.placement_result = shuffler_cache.serialize(world)
 
     random.seed("post-placement:%s" % world.seed)

@@ -24,6 +24,18 @@ class PlacementException(Exception):
         super().__init__(f"No progress made in placement; {unplaced_count} items could not be placed: {unplaced_items}")
 
 
+class UnreachablePlacementException(PlacementException):
+    def __init__(self, stranded: list[str]):
+        Exception.__init__(
+            self,
+            f"Placement finished with {len(stranded)} prize(s) in locations that "
+            f"can never be reached from an empty inventory: {stranded}",
+        )
+        self.unplaced_count = len(stranded)
+        self.unplaced_items = stranded
+        self.stranded = stranded
+
+
 def collect_accessible_items(world: GameWorld) -> Inventory:
     progress = True
     accessible_items = Inventory()

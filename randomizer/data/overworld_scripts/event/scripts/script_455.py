@@ -38,8 +38,8 @@ script = EventScript([
 	SetBit(TEMP_7043_4),
 	PlaySound(sound=SO066_KICK_BALL_SHELL, channel=6),
 	SetSyncActionScript(MARIO, A0210_GOOMBA_THUMPIN),
-	SetSyncActionScript(NPC_4, A0423_GOOMBA_THUMPIN_BONK),
-	Inc(SECONDARY_TEMP_7024),
+	SetSyncActionScript(NPC_8, A0423_GOOMBA_THUMPIN_BONK),
+	AddConstToVar(SECONDARY_TEMP_7024, 3),
 	CopyVarToVar(from_var=TEMP_7026, to_var=PRIMARY_TEMP_7000),
 	RunDialog(dialog_id=DI0833_GOOMBA_THUMPIN_SCORE, above_object=MARIO, closable=False, sync=True, multiline=True, use_background=False),
 	Return()

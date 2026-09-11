@@ -43,6 +43,7 @@ from ..types.flags import (
 )
 from ..types.prize import BossFightPrize, CharacterPrize
 from ..types.prizelocation import KeyItemLocation
+from .placement import UnreachablePlacementException
 
 if TYPE_CHECKING:
     from ..types.gameworld import GameWorld
@@ -515,3 +516,30 @@ def assert_key_pool_placeable(
         f"UNREACHABLE KEY LOCATIONS ({len(unreachable)}):\n  "
         + "\n  ".join(unreachable)
     )
+
+
+def unreachable_placements(world: GameWorld) -> list[str]:
+    inventory = Inventory()
+    reached: set[PrizeLocation] = set()
+    progress = True
+    while progress:
+        progress = False
+        for loc in world.locations.values():
+            if loc in reached or not loc.can_access(inventory, world):
+                continue
+            reached.add(loc)
+            if loc.has_item:
+                inventory.append(loc.prize)
+            progress = True
+
+    return sorted(
+        f"{type(loc).__name__}: {type(loc.prize).__name__}"
+        for loc in world.locations.values()
+        if loc.has_item and loc not in reached
+    )
+
+
+def assert_placement_reachable(world: GameWorld) -> None:
+    stranded = unreachable_placements(world)
+    if stranded:
+        raise UnreachablePlacementException(stranded)
