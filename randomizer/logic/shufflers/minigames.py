@@ -62,6 +62,9 @@ from ...data.variables.dialog_names import (
 if TYPE_CHECKING:
     from ...types.gameworld import GameWorld
 
+def format_author_hint(author: str) -> str:
+    return f"[center]Memo left by {author}:"
+
 
 def randomize_tadpole_pond(world: GameWorld) -> None:
     """Randomize the Melody Bay song minigame."""
@@ -277,7 +280,8 @@ def randomize_password(world: GameWorld) -> None:
     hint_authors_copy = list(hint_authors)
     random.shuffle(hint_authors_copy)
     # guarantee that the hint submitter will get their name on one of the hints
-    writers = [password.submitter_hint_prefix] + hint_authors_copy
+    author_pool = [password.submitter] + hint_authors_copy
+    writers = [format_author_hint(author) for author in author_pool]
     RWRITER = "%RANDOM_WRITER%"
     number_of_writers = len(
         [

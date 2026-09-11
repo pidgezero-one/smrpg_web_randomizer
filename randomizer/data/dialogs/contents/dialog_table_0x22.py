@@ -756,9 +756,7 @@ dialog_data[277] = ''' Um••••••`MAIN_CHARACTER_NAME`?[await]
  This is “Booster Hill”, where there
  isn’t anything to do yet.[await][page]
  You’ll need to come back later.[await]
- So, please follow me to the exit.[await]
-  [select]  (Go with him)
-  [select]  (Don’t go with him)[await]'''
+ So, please follow me to the exit.[await]'''
 dialog_data[278] = ''' Follow me, it’s right this way.[await]'''
 dialog_data[279] = ''' Okay, whatever![await]'''
 dialog_data[280] = ''' There are no more items left.

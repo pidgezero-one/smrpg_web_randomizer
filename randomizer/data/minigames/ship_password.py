@@ -2,60 +2,67 @@ import random
 from ..variables.dialog_names import *
 
 hint_authors = [
-    "[center]Memo left by [filename]:",
-    "[center]Memo left by Abyssonym:",
-    "[center]Memo left by Alanim:",
-    "[center]Memo left by Amazing Ampharos:",
-    "[center]Memo left by anaxemranger:",
-    "[center]Memo left by Anthony Mulberry:",
-    "[center]Memo left by ateatree:",
-    "[center]Memo left by bigmalletman:",
-    "[center]Memo left by Broatmeal:",
-    "[center]Memo left by Calereliya:",
-    "[center]Memo left by Cavin856:",
-    "[center]Memo left by Chaosicx:",
-    "[center]Memo left by cleartonic:",
-    "[center]Memo left by CoDanTheBarbarian:",
-    "[center]Memo left by Cynas:",
-    "[center]Memo left by Darkkefka:",
-    "[center]Memo left by djfox11:",
-    "[center]Memo left by Doomsday31415:",
-    "[center]Memo left by Dorkmaster Flek:",
-    "[center]Memo left by eggtalk:",
-    "[center]Memo left by Flare:",
-    "[center]Memo left by Foralias:",
-    "[center]Memo left by giangurgolo:",
-    "[center]Memo left by GoodMorningCrono:",
-    "[center]Memo left by Gozengatta:",
-    "[center]Memo left by GuntherRidel:",
-    "[center]Memo left by inthenameofDT:",
-    "[center]Memo left by Invariel:",
-    "[center]Memo left by LackAttack:",
-    "[center]Memo left by LockeColeLive:",
-    "[center]Memo left by Lylovir:",
-    "[center]Memo left by Minamiyo:",
-    "[center]Memo left by Mr. Dean:",
-    "[center]Memo left by Nimbus:",
-    "[center]Memo left by Omega:",
-    "[center]Memo left by patcdr:",
-    "[center]Memo left by pidge:",
-    "[center]Memo left by Rosalie:",
-    "[center]Memo left by Saxxon Fox:",
-    "[center]Memo left by SeanCass:",
-    "[center]Memo left by Seraphin Eveles:",
-    "[center]Memo left by smbai:",
-    "[center]Memo left by SNESChalmers:",
-    "[center]Memo left by Solidus Snake:",
-    "[center]Memo left by Space Cow:",
-    "[center]Memo left by swinch:",
-    "[center]Memo left by SysL:",
-    "[center]Memo left by Tinywetblanket:",
-    "[center]Memo left by WeffJebster:",
-    "[center]Memo left by Will319:",
-    "[center]Memo left by WonderJ:",
-    "[center]Memo left by Xelecium:",
-    "[center]Memo left by Xirr:",
-    "[center]Memo left by Yakibomb:",
+    "[filename]",
+    "0xwas",
+    "Abyssonym",
+    "AJ Nitro",
+    "Alanim",
+    "Amazing Ampharos",
+    "anaxemranger",
+    "Anthony Mulberry",
+    "ateatree",
+    "aWillSandwich",
+    "bigmalletman",
+    "Broatmeal",
+    "Calereliya",
+    "Cavin856",
+    "Chaosicx",
+    "cleartonic",
+    "CoDanTheBarbarian",
+    "Cynas",
+    "Darkkefka",
+    "djfox11",
+    "Doomsday31415",
+    "Dorkmaster Flek",
+    "eggtalk",
+    "Flare",
+    "Foralias",
+    "giangurgolo",
+    "GoodMorningCrono",
+    "Gozengatta",
+    "GuntherRidel",
+    "ikuyo",
+    "inthenameofDT",
+    "Invariel",
+    "katstasaph",
+    "LackAttack",
+    "LockeColeLive",
+    "Lylovir",
+    "Maddi",
+    "Minamiyo",
+    "Mister Mike",
+    "Mr. Dean",
+    "Nimbus",
+    "Omega",
+    "patcdr",
+    "pidge",
+    "Rosalie",
+    "Saxxon Fox",
+    "SeanCass",
+    "Seraphin Eveles",
+    "smbai",
+    "SNESChalmers",
+    "Solidus Snake",
+    "Space Cow",
+    "swinch",
+    "SysL",
+    "Tinywetblanket",
+    "WeffJebster",
+    "Will319",
+    "WonderJ",
+    "Xelecium",
+    "Xirr",
+    "Yakibomb",
 ]
 
 
@@ -75,7 +82,6 @@ class Password:
 
     submitter = "anonymous"
     submitter_credits = "ANONYMOUS"
-    submitter_hint_prefix = "[center]Memo left by Anonymous:"
 
     def __init__(
         self,
@@ -93,7 +99,6 @@ class Password:
         hint11=None,
         submitter="Anonymous",
         submitter_credits="ANONYMOUS",
-        submitter_hint_prefix="[center]Memo left by Anonymous:",
     ):
         self.word = word
         self.trampoline_hint = hint1
@@ -110,7 +115,6 @@ class Password:
         self.optional_hints = []
         self.submitter = submitter
         self.submitter_credits = submitter_credits
-        self.submitter_hint_prefix = submitter_hint_prefix
 
 
 box_dialog_ids = [
@@ -257,8 +261,7 @@ pool = [
         "%RANDOM_WRITER%\n\nHe is gonna work me to death.[await]",
         "[center]DRY BONES: I was a Koopa, just\nlike my boss... once.[await]",
         "Naegleria & Cynas",
-        "NAEGLERIA",
-        "[center]Memo left by Naegleria & Cynas:",
+        "NAEGLERIA        CYNAS",
     ),
     Password(
         "mallow",
@@ -274,8 +277,7 @@ pool = [
         "%RANDOM_WRITER%\n\nDoesn't look like a frog to me.[await]",
         "[center]\nDRY BONES: The password is a\nname.[await]",
         "Naegleria",
-        "NAEGLERIA        CYNAS",
-        "[center]Memo left by Naegleria:",
+        "NAEGLERIA",
     ),
     Password(
         "smithy",
@@ -292,7 +294,6 @@ pool = [
         "[center]\nDRY BONES: The password is a\nname.[await]",
         "Naegleria",
         "NAEGLERIA",
-        "[center]Memo left by Naegleria:",
     ),
     Password(
         "flower",
@@ -309,7 +310,6 @@ pool = [
         "[center]\nDRY BONES: Leaf me alone.[await]",
         "HeroicReplicas",
         "HEROICREPLICAS",
-        "[center]Memo left by HeroicReplicas:",
     ),
     Password(
         "crafts",
@@ -326,7 +326,6 @@ pool = [
         "[center]DRY BONES: The password's letters\nare hidden among six wrecked kinds\nof ship.[await]",
         "Projectyl",
         "PROJECTYL",
-        "[center]Memo left by Projectyl:",
     ),
     Password(
         "ocelot",
@@ -343,7 +342,6 @@ pool = [
         None,
         "TriumphantBass",
         "TRIUMPHANTBASS",
-        "[center]Memo left by TriumphantBass:",
     ),
     Password(
         "wallet",
@@ -360,7 +358,6 @@ pool = [
         "[center]\nDRY BONES: I may be sat on.[await]",
         "Aweglib",
         "AWEGLIB",
-        "[center]Memo left by Aweglib:",
     ),
     Password(
         "stamos",
@@ -377,7 +374,6 @@ pool = [
         "[center]DRY BONES: Have you been reading\nthe notes posted around these\nrooms?[await]",
         "FedoraFriday",
         "FEDORAFRIDAY",
-        "[center]Memo left by FedoraFriday:",
     ),
     Password(
         "boxboy",
@@ -394,7 +390,6 @@ pool = [
         None,
         "Cynas",
         "CYNAS",
-        "[center]Memo left by Cynas:",
     ),
     Password(
         "catnip",
@@ -460,7 +455,6 @@ pool = [
         "[center]\nDRY BONES: Naps are the best.[await]",
         "Calereliya",
         "CALERELIYA",
-        "[center]Memo left by Calereliya:",
     ),
     Password(
         "beetle",
@@ -477,7 +471,6 @@ pool = [
         None,
         "Calereliya",
         "CALERELIYA",
-        "[center]Memo left by Calereliya:",
     ),
     Password(
         "♪♪♪♪♪♪",
@@ -494,7 +487,6 @@ pool = [
         None,
         "Calereliya",
         "CALERELIYA",
-        "[center]Memo left by Calereliya:",
     ),
     Password(
         "shells",
@@ -511,7 +503,6 @@ pool = [
         "[center]\nDRY BONES: She sells them...[await]",
         "Naegleria",
         "NAEGLERIA",
-        "[center]Memo left by Naegleria:",
     ),
     Password(
         "donkey",
@@ -528,7 +519,6 @@ pool = [
         "[center]DRY BONES: He's the leader of the\nbunch, you know him well![await]",
         submitter="LimeFiasco",
         submitter_credits="LIMEFIASCO",
-        submitter_hint_prefix="[center]Memo left by LimeFiasco:",
     ),
     Password(
         "weston",
@@ -545,7 +535,6 @@ pool = [
         None,
         "Mr Dean",
         "MR DEAN",
-        "[center]Memo left by Mr Dean:",
     ),
     Password(
         "corals",
@@ -562,7 +551,6 @@ pool = [
         "%RANDOM_WRITER%\n\nThe 'a' is next to the 'r'.[await]",
         submitter="lwelyk",
         submitter_credits="LWELYK",
-        submitter_hint_prefix="[center]Memo left by lwelyk:",
     ),
     Password(
         "belome",
@@ -579,7 +567,6 @@ pool = [
         "%RANDOM_WRITER%\n\nYuck! How repulsive![await]",
         submitter="lwelyk",
         submitter_credits="LWELYK",
-        submitter_hint_prefix="[center]Memo left by lwelyk:",
     ),
     Password(
         "bowyer",
@@ -596,7 +583,6 @@ pool = [
         None,
         submitter="lwelyk",
         submitter_credits="LWELYK",
-        submitter_hint_prefix="[center]Memo left by lwelyk:",
     ),
     Password(
         "jawful",
@@ -613,7 +599,6 @@ pool = [
         "%RANDOM_WRITER%\nParticularly loves eating[1]   hamburgers and hashed-beef rice.[await]",
         submitter="ForsakenM",
         submitter_credits="FORSAKENM",
-        submitter_hint_prefix="[center]Memo left by ForsakenM:",
     ),
     Password(
         "domino",
@@ -630,7 +615,6 @@ pool = [
         "%RANDOM_WRITER%\nWhat happened to the the whole\n“weapon world” schtick?[await]",
         submitter="ForsakenM",
         submitter_credits="FORSAKENM",
-        submitter_hint_prefix="[center]Memo left by ForsakenM:",
     ),
     Password(
         "crusty",
@@ -647,7 +631,6 @@ pool = [
         "%RANDOM_WRITER%\nShares a name with a sitcom clown\nand an undersea burger joint.[await]",
         submitter="ForsakenM",
         submitter_credits="FORSAKENM",
-        submitter_hint_prefix="[center]Memo left by ForsakenM:",
     ),
     Password(
         "johnny",
@@ -664,7 +647,6 @@ pool = [
         "%RANDOM_WRITER%\nReturns and defends you in your\ntime of need.[await]",
         submitter="ForsakenM",
         submitter_credits="FORSAKENM",
-        submitter_hint_prefix="[center]Memo left by ForsakenM:",
     ),
     Password(
         "goober",
@@ -681,7 +663,6 @@ pool = [
         None,
         submitter="nintendonut",
         submitter_credits="NINTENDONUT",
-        submitter_hint_prefix="[center]Memo left by nintendonut:",
     ),
     Password(
         "mearls",
@@ -698,7 +679,6 @@ pool = [
         None,
         submitter="MikeyMet",
         submitter_credits="MIKEYMET",
-        submitter_hint_prefix="[center]Memo left by MikeyMet:",
     ),
     Password(
         "prince",
@@ -715,7 +695,6 @@ pool = [
         "%RANDOM_WRITER%\nRoyal Jugem Bus Lakitu, you're much too fast...[await]",
         submitter="katstasaph",
         submitter_credits="KATSTASAPH",
-        submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
     Password(
         "arrrrr",
@@ -732,7 +711,6 @@ pool = [
         "%RANDOM_WRITER%\n\nMARRRRRIO![await]",
         submitter="katstasaph",
         submitter_credits="KATSTASAPH",
-        submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
     Password(
         "cannon",
@@ -749,7 +727,6 @@ pool = [
         "%RANDOM_WRITER%\nWho put these things\nat the edge of a cliff?[await]",
         submitter="katstasaph",
         submitter_credits="KATSTASAPH",
-        submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
     Password(
         "hammer",
@@ -766,7 +743,6 @@ pool = [
         "...Nailed it.[await]",
         submitter="WEFFJEBSTER",
         submitter_credits="WEFFJEBSTER",
-        submitter_hint_prefix="[center]Memo left by WEFFJEBSTER:",
     ),
     Password(
         "boomer",
@@ -783,7 +759,6 @@ pool = [
         "[center]Shaker? I barely know 'er![await]",
         submitter="katstasaph",
         submitter_credits="KATSTASAPH",
-        submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
     Password(
         "fungus",
@@ -800,7 +775,6 @@ pool = [
         " This is just like Among Us.[await]",
         submitter="katstasaph",
         submitter_credits="KATSTASAPH",
-        submitter_hint_prefix="[center]Memo left by katstasaph:",
     ),
 ]
 

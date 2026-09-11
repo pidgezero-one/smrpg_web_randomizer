@@ -38,7 +38,7 @@ class KeepInvisibleBridgeCoin3Location(StandingLocationRow3):
     ]
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
-        return can_exit_keep(world, inventory) and can_exit_keep(world, inventory)
+        return can_exit_keep(world, inventory)
 
 
 __all__ = ["KeepInvisibleBridgeCoin3Location"]

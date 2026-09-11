@@ -328,11 +328,6 @@ def format_credits_name(name: str) -> str:
     return result if result else "ANONYMOUS"
 
 
-def format_hint_prefix(name: str) -> str:
-    """Format the hint prefix."""
-    return f"[center]Memo left by {name}:"
-
-
 REQUIRED_HINT_FIELDS = [
     "Trampoline Room Hint",
     "Paratroopa Room Hint",
@@ -370,7 +365,6 @@ def add_password(fields: dict[str, str]) -> None:
 
     submitter = name if name else "Anonymous"
     submitter_credits = format_credits_name(name) if name else "ANONYMOUS"
-    submitter_hint_prefix = format_hint_prefix(submitter)
 
     def ensure_await(hint: str) -> str:
         """Ensure hint ends with [await]."""
@@ -425,7 +419,6 @@ def add_password(fields: dict[str, str]) -> None:
         {formatted_optional[4]},
         submitter="{escape_string(submitter)}",
         submitter_credits="{submitter_credits}",
-        submitter_hint_prefix="{escape_string(submitter_hint_prefix)}",
     ),
 '''
 

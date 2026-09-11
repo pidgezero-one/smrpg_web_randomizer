@@ -511,6 +511,8 @@ def can_pass_obstacle_courses(world: GameWorld, inventory: Inventory) -> bool:
 
 
 def can_exit_keep(world: GameWorld, inventory: Inventory) -> bool:
+    if not can_access_keep(world, inventory):
+        return False
     if world.settings.is_flag_value(BowserDoorRequirements, 6) or world.settings.isflag_enabled(BowserDoorShuffle):
         return can_pass_obstacle_courses(world, inventory)
     if world.settings.is_flag_value(BowserDoorRequirements, 5):
@@ -521,7 +523,6 @@ def can_exit_keep(world: GameWorld, inventory: Inventory) -> bool:
 def can_clear_keep(world: GameWorld, inventory: Inventory) -> bool:
     return can_exit_keep(world, inventory) and not_earlygame(world, inventory)
         
-    
 
 def can_access_factory(world: GameWorld, inventory: Inventory) -> bool:
     """If true, the player is expected to be able to access the Outer Factory."""
