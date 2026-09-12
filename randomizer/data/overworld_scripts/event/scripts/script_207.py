@@ -35,7 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitClear(KEEP_GATED_BY_STAR_PIECES, ["EVENT_207_jmp_to_event_2"]),
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 6, ["EVENT_207_clear_bit_3"]),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	CompareVarToConst(PRIMARY_TEMP_7000, 6),
+	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_207_clear_bit_3"]),
 	JmpToEvent(E3090_OPEN_LANDS_END_IF_GATED_BY_STAR_PIECES, identifier="EVENT_207_jmp_to_event_2"),
 	ClearBit(MAP_DIRECTIONAL_NIMBUS_LAND_VISTA_HILL, identifier="EVENT_207_clear_bit_3"),
 	SetBit(MAP_VISTA_HILL),

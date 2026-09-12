@@ -174,7 +174,7 @@ def apply_shuffler_independent_settings(world: GameWorld) -> None:
         world.update_dialog(DI2027_WIN_CONDITION, '''\n[center]Good luck beating Smithy![await]''')
     elif world.settings.is_flag_value(WinCondition, WinConditions.STARS):
         world.event_2496_startup += [SetBit(WIN_CONDITION_STAR_PIECES)]
-        world.event_scripts.get_command_by_identifier("end_game_after_collecting_star_piece", JmpIfVarEqualsConst).set_value(world.settings.get_flag(StarPiecesRequired).value)
+        world.event_scripts.get_command_by_identifier("end_game_after_collecting_star_piece", CompareVarToConst).set_value(world.settings.get_flag(StarPiecesRequired).value)
         world.update_dialog(DI2027_WIN_CONDITION, f" Good luck finding the {world.settings.get_flag(StarPiecesRequired).value} Star Pieces![await]")
     elif world.settings.is_flag_value(WinCondition, WinConditions.SEALED):
         world.event_2496_startup += [SetBit(WIN_CONDITION_MONSTRO_DOOR)]

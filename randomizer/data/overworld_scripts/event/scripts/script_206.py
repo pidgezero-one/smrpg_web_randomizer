@@ -35,7 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitClear(SEA_GATED_BY_STAR_PIECES, ["EVENT_206_jmp_to_event_2"]),
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 4, ["EVENT_206_set_bit_3"]),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	CompareVarToConst(PRIMARY_TEMP_7000, 4),
+	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_206_set_bit_3"]),
 	JmpToEvent(E0207_UNLOCK_KEEP_IF_GATED_BY_STAR_PIECES, identifier="EVENT_206_jmp_to_event_2"),
 	SetBit(MAP_SEA, identifier="EVENT_206_set_bit_3"),
 	SetBit(MAP_DIRECTIONAL_SEASIDE_DOWN_SEA),

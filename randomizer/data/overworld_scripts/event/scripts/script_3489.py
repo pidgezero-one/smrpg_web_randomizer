@@ -35,6 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	SetVarToConst(TEMP_702A, 0),
+	SetVarToConst(TEMP_7030, 0),
 	JmpIfBitSet(UNKNOWN_MIDAS_RIVER_7079_0, ["EVENT_3489_enable_controls_3"]),
 	SetVarToConst(MIDAS_RIVER_70D4, 0),
 	EnableControls([LEFT, RIGHT, DOWN, UP, X, A, Y, B], identifier="EVENT_3489_enable_controls_3"),

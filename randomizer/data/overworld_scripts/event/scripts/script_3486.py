@@ -135,7 +135,7 @@ script = EventScript([
 		A_SetAllSpeeds(NORMAL)
 	]),
 	RemoveObjectFromCurrentLevel(NPC_4),
-	JmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3486_ret_51"]),
+	JmpIfBitSet(BUCKET_WARP_BIT, ["EVENT_3479_flush_star_pieces"]),
 	JmpIfBitSet(UNKNOWN_MIDAS_RIVER_7079_0, ["EVENT_3486_jmp_if_bit_set_46"]),
 	SetBit(UNKNOWN_7065_6),
 	SetBit(UNKNOWN_7065_7),

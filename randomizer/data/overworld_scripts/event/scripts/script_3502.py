@@ -194,13 +194,13 @@ script = EventScript([
 	Jmp(["EVENT_3502_hill_ends"]),
 	RunDialog(dialog_id=DI1193_NO_FLOWER_HILL, above_object=TOADSTOOL, closable=True, sync=True, multiline=False, use_background=False, identifier="EVENT_3502_run_dialog_61_2"),
     
-	JmpIfVarEqualsConst(TEMP_7032, 0, ["EVENT_3400_hill"], identifier="EVENT_3502_hill_ends"),
+	JmpIfVarEqualsConst(TEMP_7030, 0, ["EVENT_3400_hill"], identifier="EVENT_3502_hill_ends"),
 	
 	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
-	AddVarTo7000(TEMP_7032),
+	AddVarTo7000(TEMP_7030),
     Dec(PRIMARY_TEMP_7000),
     CopyVarToVar(from_var=PRIMARY_TEMP_7000, to_var=STAR_PIECE_COUNTER),
-    
+    SetVarToConst(TEMP_7030, 0),
     JmpToEvent(E3092_STAR_PIECE_GRANT),
 	
 

@@ -34,7 +34,7 @@ from ....spells.spells import *
 from ....variables.event_palette_names import *
 
 script = EventScript([
-	SetVarToConst(TEMP_7032, 0),
+	SetVarToConst(TEMP_7030, 0),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3])
 	]),

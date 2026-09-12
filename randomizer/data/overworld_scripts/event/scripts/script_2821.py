@@ -35,5 +35,6 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	PlaySound(sound=SO081_STAR, channel=6),
-	JmpToEvent(E3092_STAR_PIECE_GRANT)
+	Inc(TEMP_7030),
+	Return()
 ])

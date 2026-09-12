@@ -532,7 +532,7 @@ script = EventScript([
 	JmpToEvent(E2226_KEEP_3RD_BOSS, identifier="EVENT_3400_jmp_to_event_484"),
     
     
-	SetVarToConst(TEMP_7032, 0, identifier="EVENT_3400_hill"),
+	SetVarToConst(TEMP_7030, 0, identifier="EVENT_3400_hill"),
 	ExitToWorldMap(area=OW27_BOOSTER_HILL, bit_6=True, bit_7=True),
 	Return(),
     

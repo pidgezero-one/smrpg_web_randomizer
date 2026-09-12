@@ -33,7 +33,7 @@ from ..data.variables.event_script_names import *
 from ..data.variables.variable_names import (
     ITEM_ID,
     PRIMARY_TEMP_7000,
-    TEMP_7032,
+    TEMP_7030,
 )
 from enum import StrEnum
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types import Battlefield
@@ -388,7 +388,7 @@ class StarPiecePrize(StandardPrize):
     def hill_grant(self) -> EventScript:
         return EventScript(
             [
-                Inc(TEMP_7032),
+                Inc(TEMP_7030),
                 SetBit(self._hint),
                 PlaySound(sound=SO081_STAR, channel=4),
                 Return(),

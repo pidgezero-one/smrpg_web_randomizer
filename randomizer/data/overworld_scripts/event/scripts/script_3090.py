@@ -35,7 +35,9 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	JmpIfBitClear(LANDS_END_GATED_BY_STAR_PIECES, ["EVENT_3090_jmp_2"]),
-	JmpIfVarEqualsConst(STAR_PIECE_COUNTER, 5, ["EVENT_3090_set_bit_3"]),
+	CopyVarToVar(from_var=STAR_PIECE_COUNTER, to_var=PRIMARY_TEMP_7000),
+	CompareVarToConst(PRIMARY_TEMP_7000, 5),
+	JmpIfComparisonResultIsGreaterOrEqual(["EVENT_3090_set_bit_3"]),
 	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET, identifier="EVENT_3090_jmp_2"),
 	ClearBit(LANDS_END_GATED, identifier="EVENT_3090_set_bit_3"),
 	JmpToEvent(E3093_OPEN_ABYSS_IF_STAR_PIECE_THRESHOLD_MET)

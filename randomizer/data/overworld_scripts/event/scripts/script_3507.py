@@ -35,7 +35,7 @@ from ....variables.event_palette_names import *
 
 script = EventScript([
 	ClearBit(UNKNOWN_707B_4),
-	SetVarToConst(TEMP_7032, 0),
+	SetVarToConst(TEMP_7030, 0),
 	ActionQueueAsync(target=MARIO, subscript=[
 		A_ObjectMemorySetBit(arg_1=0x0B, bits=[3])
 	]),
@@ -86,7 +86,6 @@ script = EventScript([
     
 	JmpIfBitClear(BOOSTER_HILL_CLOSED, ["booster_hill_already_done"]),
 	RunDialog(dialog_id=DI1197_BOOSTER_HILL_NOT_UNLOCKED_YET, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     Jmp(["EVENT_3507_pause_18"]),
     
 	
@@ -96,7 +95,6 @@ script = EventScript([
 	JmpIfComparisonResultIsLesser(["some_items_left"]),
 
 	RunDialog(dialog_id=DI2003_TOAD_WARNS_YOU_TO_LEAVE_EMPTY_HILL, above_object=NPC_12, closable=True, sync=False, multiline=True, use_background=False),
-	JmpIfDialogOptionBSelected(["EVENT_3507_copy_var_to_var_26"]),
     Jmp(["EVENT_3507_pause_18"]),
     
 	
