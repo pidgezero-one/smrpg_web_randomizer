@@ -77,10 +77,10 @@ script = EventScript([
 	RemoveObjectFromSpecificLevel(NPC_6, R469_FACTORY_GROUNDS_AREA_01),
 	RemoveObjectFromSpecificLevel(NPC_7, R469_FACTORY_GROUNDS_AREA_01),
 	ActionQueueAsync(target=NPC_8, subscript=[
-		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, mirror_sprite=True),
+		A_SetSpriteSequence(index=2, is_sequence=True, looping=True, mirror_sprite=True, identifier="factory_1st_boss_look_up"),
 		A_WalkNorthwestPixels(1),
 		A_SetSpriteSequence(index=0, is_sequence=True, looping=True, mirror_sprite=True)
-	]),
+	], identifier="factory_1st_boss_look_up_aq"),
 	FadeInFromBlack(sync=False),
 	ActionQueueSync(target=NPC_8, subscript=[
 		A_WalkSoutheastPixels(12)

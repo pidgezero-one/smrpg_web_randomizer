@@ -12,8 +12,18 @@ from randomizer.types.logic import (Inventory)
 from randomizer.types.prize import (Prize)
 from randomizer.types.prizelocation import (BossFightLocation, BossFightLocationHenchmanNPC, BossFightLocationNPC, RemoveIfNotFilled, ShuffleLocationSelector, WorldAreaEnum)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (NPC_6, NPC_7, NPC_8)
+from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.classes import (UsableEventScriptCommand)
 if TYPE_CHECKING:
     from randomizer.types.gameworld import (GameWorld)
+
+
+def render_inner_factory_first_fight(world: GameWorld, prize: BossFightPrize) -> None:
+    """Drop the post-henchman look-up sequence for bosses other than Clerk/Manager/Director"""
+    if isinstance(prize, (ClerkBossFight, ManagerBossFight, DirectorBossFight)):
+        return
+    world.event_scripts.delete_subscript_command_by_identifier(
+        "factory_1st_boss_look_up_aq", "factory_1st_boss_look_up"
+    )
 
 
 class InnerFactoryFirstFight(BossFightLocation):
@@ -56,6 +66,18 @@ class InnerFactoryFirstFight(BossFightLocation):
 
     def can_access(self, inventory: Inventory, world: GameWorld) -> bool:
         return can_defeat_factory_bosses(world, inventory)
+
+    def render(self, world: GameWorld) -> tuple[
+        list[list[UsableEventScriptCommand]],
+        list[UsableEventScriptCommand],
+        list[tuple[int, int, int]],
+    ]:
+        op = super().render(world)
+        if isinstance(self.prize, self._originally_held):
+            return op
+        assert isinstance(self.prize, BossFightPrize)
+        render_inner_factory_first_fight(world, self.prize)
+        return op
 
 
 __all__ = ["InnerFactoryFirstFight"]
