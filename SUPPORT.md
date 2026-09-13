@@ -37,3 +37,4 @@ There are two different forms for reporting bugs: one for issues that affect gam
 * Some boss sprites (Mack, Exor, Count Down, etc) don't have a walking animation or can't face northwest/northeast. The animation frames just don't exist for every boss to be able to do this, so some of them are static objects that shift around on the ground.
 * Dialogs missing from cutscenes or boss fights. This is on purpose to reduce mashing.
 * With "Spells Anywhere" enabled, you keep your spells after a game over and can still collect them from any chests that have been reset by a game over. This is expected because spells are normally tied to ally state and not world state. Collecting a spell twice doesn't do anything and you can ignore it.
+* Cloudflare errors, unless they persist longer than 20 minutes. This usually means new code is being deployed and you just have to wait a few minutes before trying to roll a seed.
