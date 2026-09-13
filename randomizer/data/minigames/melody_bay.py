@@ -1048,4 +1048,13 @@ all_songs = [
         hint_2=" ' My favorite song?[await][page]\n It's “Memory” from “Cats”.\n ♪“Do Do Ti Do Re Do La Do”.[await]\n But not even Frogfucius has\\seen a\n real cat before.[await]'[await]",
         hint_3=" 'Cats? No memory of 'em.\n I reckon there ain't one\n cat in this entire world.[delay]\n Belome?\n Why, he's a dog!'[await]",
         scroll='\n[center]Do Do Ti Do Re Do La Do[await]'),
+    Song(
+        [(La, 60), (La, 30), (Mi, 60), (Do, 30), (Ti, 45), (Do, 15), (Ti, 30), (La, 0)],
+        "Scarborough Fair",
+        submitter="katstasaph",
+        submitter_credits="KATSTASAPH",
+        hint_1=" ' My favorite song?[await][page]\n It's the one that goes,\n ♪“La La Mi Do Ti Do Ti La”,\n Parsley, sage, rosemary,\n and thyme~[await]\n Frogfucius likes it 'cause\n his name is in it.[await]'[await]",
+        hint_2=" ' My favorite song?[await][page]\n It's the one that goes,\n ♪“La La Mi Do Ti Do Ti La”,\n Parsley, saaage, rosemary--[delay]\n Everything's OK, Frogfucius!\n I'm just singing the song![await]'[await]",
+        hint_3=" 'Y'know 'Scarborough Fair'?\n ♪She was once a\n true love of mine♪?[await]\n Well, obviously she ain't one\n now, else she'd get down\n here and start diggin'.[await]",
+        scroll='\n[center]La La Mi Do Ti Do Ti La[await]'),
 ]
