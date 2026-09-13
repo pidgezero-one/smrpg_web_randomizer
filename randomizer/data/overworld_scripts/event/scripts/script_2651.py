@@ -38,6 +38,7 @@ script = EventScript([
 	CompareVarToConst(PRIMARY_TEMP_7000, 6, identifier="enable_boss_access_2"),
     JmpIfComparisonResultIsGreaterOrEqual(["EVENT_2651_jmp_to_event_4"]),
 	SetBit(BUCKET_WARP_BIT),
+    ClearBit(BUCKET_WARP_DIRECTIONAL_BIT),
 	EnterArea(room_id=R069_MIDAS_RIVER_WATERFALL, face_direction=SOUTH, x=9, y=108, z=0, run_entrance_event=True),
 	Return(),
 	JmpToEvent(E3791_OPEN_FACTORY_FINAL_BOSS_ROOM, identifier="EVENT_2651_jmp_to_event_4"),
