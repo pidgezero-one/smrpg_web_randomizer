@@ -177,14 +177,13 @@ def _shuffle_items(world: GameWorld):
         assert_placement_reachable(world)
     world.placement_result = shuffler_cache.serialize(world)
 
-    random.seed("post-placement:%s" % world.seed)
-
     if DEBUG_FILE_DUMPS:
         with open("spoiler.json", "w") as f:
             json.dump(world.spoiler, f, indent=2, default=str)
 
     post_shuffle_cleanup(world)
 
+    random.seed("post-placement:%s" % world.seed)
 
 def _apply_shuffle_results(world: GameWorld):
     """Apply shuffle results to game data. Called after successful shuffle."""

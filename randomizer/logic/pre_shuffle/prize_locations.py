@@ -6,7 +6,8 @@ from randomizer.logic.progression.prizelocations import *
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.area_objects import (
     NPC_10, NPC_11, NPC_19,
 )
-from randomizer.types.flags import (WinCondition, WinConditions, AvailableCharacters, FixKnifeGuy, FireworksSetting, FireworksOptions, StartingCharacters, NimbusGate, NimbusGating, Remake, InvisibleFlagsSetting, KeyItemsAnywhere, StarPieceAvailability, SeeYa, ShuffleShops, ShuffleItems)
+from randomizer.logic.queries import is_frog_shop_reduced
+from randomizer.types.flags import (WinCondition, WinConditions, AvailableCharacters, FixKnifeGuy, FireworksSetting, FireworksOptions, StartingCharacters, NimbusGate, NimbusGating, Remake, InvisibleFlagsSetting, KeyItemsAnywhere, StarPieceAvailability)
 from smrpgpatchbuilder.datatypes.overworld_scripts.event_scripts.commands import (SummonObjectToSpecificLevel)
 from smrpgpatchbuilder.datatypes.overworld_scripts.arguments.types.area_object import (
     AreaObject,
@@ -624,18 +625,8 @@ def set_locations(world: GameWorld) -> None:
 
     
 
-    # SeeYa removes SeeYaPrize (Frog Disciple 1's item). The shop only shrinks to
-    # 4 items when it is NOT fully shuffled: if BOTH shops and items are shuffled
-    # the pool has a surplus, so the 5th slot fills normally and all 5 locations
-    # must stay. Only drop FrogDiscipleLocation1 when SeeYa is on and the shop is
-    # effectively unshuffled (shops off OR items off). This predicate MUST match
-    # the FROG_DISCIPLE_ITEM_5_PURCHASED sale-bit condition in gameworld.py - a
-    # 4-item shop with the bit unset opens a glitched empty menu.
-    frog_shop_reduced = world.settings.isflag_enabled(SeeYa) and not (
-        world.settings.isflag_enabled(ShuffleShops)
-        and world.settings.isflag_enabled(ShuffleItems)
-    )
-    if not frog_shop_reduced:
+    # SeeYa removes SeeYaPrize (Frog Disciple 1's item), so the slot only stays when placement will refill it
+    if not is_frog_shop_reduced(world):
         world.locations[FrogDiscipleLocation1] = FrogDiscipleLocation1()
 
 

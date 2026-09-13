@@ -32,13 +32,12 @@ from randomizer.logic.pre_shuffle.pre_shuffler_settings import (
 )
 from randomizer.logic.pre_shuffle.thresholds import apply_threshold_settings
 from randomizer.logic.progression.prizelocations import (E0091_INVISIBLE_ITEM_SUMMONER, E2496_START_GAME)
+from randomizer.logic.queries import is_frog_shop_reduced
 from randomizer.types.flags import (
     FireworksOptions,
     FireworksSetting,
     SeeYa,
-    ShuffleItems,
     ShuffleMarioDoll,
-    ShuffleShops,
     SkipAnts,
     SkipMinecart,
     SkipMustyFearsSequence,
@@ -79,16 +78,8 @@ def _set_startup_event_flags(world: GameWorld) -> None:
         world.event_2496_startup += [
             AddToInventory(SeeYaItem),
         ]
-        # Pre-set the 5th Frog Disciple sale bit whenever SeeYa shrinks the
-        # shop to 4 items - i.e. any time it is NOT fully shuffled (shops off
-        # OR items off). If both are shuffled the shop keeps 5 items and the
-        # bit must stay clear. This MUST match the FrogDiscipleLocation1
-        # removal predicate in prize_locations.py; a 4-item shop with the bit
-        # unset leaves an empty 5th slot that opens a glitched menu.
-        if not (
-            world.settings.isflag_enabled(ShuffleShops)
-            and world.settings.isflag_enabled(ShuffleItems)
-        ):
+        # Pre-set the 5th Frog Disciple sale bit whenever SeeYa shrinks the shop to 4 items
+        if is_frog_shop_reduced(world):
             world.event_2496_startup += [
                 SetBit(FROG_DISCIPLE_ITEM_5_PURCHASED),
             ]

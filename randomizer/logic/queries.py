@@ -23,12 +23,14 @@ from randomizer.data.items.items import (
     WonderChompItem,
     ZoomShoesItem,
 )
+from randomizer.logic.progression.prizelocations import FrogDiscipleLocation1
 from randomizer.logic.progression.prizelocations.invisible_flags import (
     ThreeMustyFearsBonesProxy,
     ThreeMustyFearsBooProxy,
     ThreeMustyFearsGreaperProxy,
 )
 from randomizer.types.check_flags import (EnabledBossChecks, EnabledRegularChecks, ShuffledBosses)
+from randomizer.types.flags import (SeeYa, ShuffleItems, ShuffleShops)
 from randomizer.types.prizelocation import (
     BossFightLocation,
     CharacterRecruitmentLocation,
@@ -119,6 +121,16 @@ def is_location_enabled(world: GameWorld, location_type: type[PrizeLocation]) ->
         return any(m.value == location_type for m in regular_checks_flag.enabled)
 
 
+def is_frog_shop_reduced(world: GameWorld) -> bool:
+    """Whether SeeYa shrinks the Frog Disciple shop from 5 items to 4"""
+    settings = world.settings
+    return settings.isflag_enabled(SeeYa) and not (
+        settings.isflag_enabled(ShuffleShops)
+        and settings.isflag_enabled(ShuffleItems)
+        and is_location_enabled(world, FrogDiscipleLocation1)
+    )
+
+
 def allocate_formation_id(world: GameWorld) -> int:
     """Allocate a unique formation ID for a new Formation object.
 
@@ -142,4 +154,4 @@ def allocate_formation_id(world: GameWorld) -> int:
     return fid
 
 
-__all__ = ['is_monstro_item', 'is_location_enabled', 'allocate_formation_id']
+__all__ = ['is_monstro_item', 'is_location_enabled', 'is_frog_shop_reduced', 'allocate_formation_id']
