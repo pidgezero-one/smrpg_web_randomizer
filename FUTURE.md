@@ -59,6 +59,7 @@
 
 - fake mushroom randomizes every time you use it, not at roll time
 - choose how many spells you start with and how many are shuffled
+- Allow keeping certain enemies within a group: i.e. smithy, axems, gunyolk, culex, and the 7 postgame bosses can only be shuffled within each other
 
 ## Legality adjustment
 
@@ -74,3 +75,7 @@
 ## Support
 
 - SNI client interface for fxpak pro
+
+## Base mechanic
+
+- Ship shaman tells you which characters are corret, not just how many
