@@ -38,6 +38,7 @@ class TORTEEnemy(Enemy):
     _cursor_y: int = 3
     _ohko_immune: bool = True
     _psychopath_message: str = " Cake! Vatch zee CAKE.[await]"
+    _disable_auto_death = True
 
 
 __all__ = ["TORTEEnemy"]

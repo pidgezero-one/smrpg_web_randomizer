@@ -28,5 +28,11 @@ script = MonsterScript([
 	Wait1TurnandRestartScript(),
 	RunBattleDialog(136),
 	Attack(Attack3),
-	StartCounterCommands()
+	StartCounterCommands(),
+    IfCurrentlyInFormationID(286),
+	Wait1TurnandRestartScript(),
+	IfHPBelow(0),
+	RunObjectSequence(3),
+	RemoveTarget(SELF),
+	Wait1TurnandRestartScript(),
 ])
